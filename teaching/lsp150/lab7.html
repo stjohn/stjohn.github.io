@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <title>Lab 7, LSP 150, Lehman College-- CUNY, Fall 2004</title>
+</head>
+<body style="background-color: rgb(255, 255, 255);" link="#003399" vlink="#236b8e"> 
+
+
+<h1>Laboratory Exercise 7<br>
+</h1>
+
+<h2>LSP 150: Computers &amp; Society<br>
+Lehman College-- CUNY<br>4 November 2004</h2>
+
+
+
+<hr>
+<h3>Communication</h3>
+
+
+
+Today's lab focuses on communication.  The first set of programs
+beams a number to another robot, who responds by beeping.  
+If you have your robot with a bumper and light sensor, you should
+also try the <a href="lmstorms/RoboTag.nqc">RoboTag.nqc</a>
+program.
+
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  When using the light sensor, it is wired to 
+sensor port 2.  The touch sensor is wired to sensor port 1
+and is attached to a bumper).
+
+
+</p>
+
+<h3>Sending Messages</h3>
+
+Pick a number between 1 and 7.&nbsp; Write a program called <tt>sendMessage.nqc</tt> that 
+will send that number.&nbsp; To test
+your program, ownload the <a href="beep.nqc">beep.nqc</a> program to one
+robot and your send message program to another robot.&nbsp;  So, one robot will be running
+the <tt>beep.nqc</tt> program and the other will be running
+<tt>sendMessage.nqc</tt>.<br>
+
+<br>
+
+Next, write a program that will pick a random number between 1 and
+7.&nbsp; Built in to NQC is a function that will randomly choose
+numbers for you.&nbsp; For example, <br>
+
+<pre>x = Random(4);&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; // Generates a random number between 0 and 4<br></pre>
+
+will assign a random number to the variable x, between 0 and 4.&nbsp;
+For this program, you should choose a number larger than 0, since you'd
+like the robot to beep at least once.&nbsp; For example, if you'd like
+a number between 1 and 10 stored in variable x, you could use:<br>
+
+<br>
+
+<pre>x = Random(9)+1;&nbsp;&nbsp;&nbsp;   // Generates a random number between 1 and 10<br></pre>
+
+
+<br>
+Use the random number generator to generate a number between
+1 and 7 to be sent.&nbsp; To make it easier to tell if your robot is
+doing the right thing, we'll use a trick to make the view screen to
+display the number.&nbsp; Since the <tt>OUT_B</tt> port is not being used, set the power level for <tt>OUT_B </tt>to be the random number you just generated (see the NQC Reference Sheet for how to set the power levels).<br>
+<br>
+Modify the <tt>beep.nqc</tt> program to display the incoming
+message as the value for <tt>OUT_B</tt>, as well as beeping
+that number of times.
+
+
+<p>
+Next, write a program that will turn left if it receives
+an even number as a message and turns right if it receives
+an odd number.
+
+
+</p>
+
+<h3>RoboTag</h3>
+
+
+
+If you have your robot with a bumper and light sensor, you should
+also try the <a href="lmstorms/RoboTag.nqc">RoboTag.nqc</a>
+program.
+<h3>Finishing up for the Day<br>
+</h3>
+
+
+
+To get credit for this laboratory, you need to show and explain your
+programs to Prof. St. John, as well as demonstrate that they run using
+your robot.<br>
+
+
+
+<br>
+
+
+
+We must be out of the computer laboratory by 11:50am.&nbsp; As such, if
+you
+are not ready to demonstrate your work by 11:45am, you can do so in the
+next laboratory.&nbsp; Before leaving the room, make sure that all
+computers
+and monitors are turned off, that any paper and trash have been
+removed, and that all chairs are returned
+to their proper places.&nbsp; Also, make sure you pack up your IR tower
+in
+your shoe box, since they're difficult to replace.
+&nbsp;&nbsp;
+<br>
+
+<br>
+</body></html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Plotting Recipes, Revisited, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Graphing & Plotting Recipes, Revisited</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science</h2>
+<h3>
+Spring 2016</h3>
+
+
+</div>
+
+<div>
+On the first day we used <tt>matplotlib.pyplot</tt> to compare y = log(x) 	or 	y = &radic;<span style="text-decoration:overline;">&nbsp;x&nbsp;</span>.  The first section is repeated from the first day-- try redoing these with list comprehensions before moving on to the <tt>numpy</tt> section.
+</div>
+
+
+
+<div>
+<h3>Graphing Mathematical Functions:</h3>
+
+The <tt>pyplot</tt> module of <tt>matplotlib</tt> provides lots of useful ways to plot data to the screen.  Let's use it to answer the question, which grows faster:
+<blockquote>
+ 		y = log(x) 	or 	y = &radic;<span style="text-decoration:overline;">&nbsp;x&nbsp;</span>?   
+</blockquote>
+
+<p>
+To test out this question, we will write a program that:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<li> Sets up a list of numbers (x-values) for our functions.
+	<li> Computes the y-values of our numbers for our functions.
+	<li> Creates plots of the two functions.
+	<li> Shows the plots in a separate graphics window.
+</ol>
+
+Let's add in the Python code that for each of these steps:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<pre>
+import math	
+import matplotlib.pyplot as plt
+	</pre>
+	
+	<i>Since it's unwieldly to type "matplotlib.pyplot" before every function we'd like to use from that library, instead we'll use the common abbreviation of "plt".  With this, we can plt.plot(), instead of matplotlib.pyplot.plot().</i>
+	<li> Sets up a list of numbers (x-values) for our functions.
+<pre>
+x = range(1,101)
+</pre>
+	<i>Remember:  Python starts counting at 0 and goes up to, but not including the 101.  So, this creates the list [1,2,...,100].</i>
+	
+
+	
+	<li> Computes the y-values of our numbers for our functions.
+<pre>
+y1 = []
+for i in x:
+   y = math.log(i)
+   y1.append(y)
+y2 = []
+for i in x:
+    y = math.sqrt(i)
+    y2.append(y)   
+</pre>
+
+	<i>We need two separate lists since we have two separate functions to graph.</i>
+	
+	<p>How could you rewrite the above using list comprehensions?
+	
+	<li> Creates plots of the two functions.
+<pre>
+plt.plot(x,y1,label='y1 = log(x)')
+plt.plot(x,y2,label='y2 = sqrt(x)')
+plt.legend()
+</pre>
+
+	<i>Creates the plot for safe keeping but does not display it until told to (see next lines).</i>
+	
+	<li> Shows the plots in a separate graphics window.
+<pre>
+plt.show()
+</pre>
+	<i>This line pops up the new graphics window to display the plots.</i>
+</ol>
+
+
+
+<p>
+From your plots, which do you think grows faster:  log(x) or sqrt(x)?
+
+</div>
+
+<div>
+<h3>The <tt>numpy</tt> Module</h3>
+
+The <a href="http://www.numpy.org">numpy</a> is a module for numerical analysis and is part of <a href="http://scipy.org">scipy</a>.  It is distributed with anaconda, so, is now on your machines!  It's main focus is on linear algebra (manipulating of vectors and matrices) and also has differential equation solvers (i.e. it will integrate functions for you, numerically).  
+
+<p>
+It is commonly used with the abbreviation, <tt>np</tt>:
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+</pre>
+
+<p>
+Numpy's main object is a <i>homogeneous</i> multidimensional array.  That is, sequences of similar objects in most any dimension.  You can access the elements in the arrays by tuples of positive numbers.  For example, if you have a 10 x 10 grid of numbers, it could be stored in a 2-dimensional array, and each element could be accessed by specifying the row and column using a tuple:  (1,2) would give the element at row 1 and column 2.  The number of dimensions is called the <i>rank</i> of the array and the dimensions are often called <i>axes</i>.
+
+<p>
+Try the following at the prompt:
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+a = np.array([2,3,4])		#Sets up a 1-dimensional array with 3 elements
+print a
+b = np.array(range(100))	#Not common but does work
+print b
+c = np.linspace(0,99,100)	#More common, linearly space 100 numbers between 0 and 99, inclusive
+print c
+</pre>
+
+<p>Let's use these commands to create the simple plots from above:
+
+<pre>
+x = np.linspace(1,100,100)
+y1 = np.log(x)
+y2 = np.sqrt(x)
+</pre>
+
+We need to use numpy's log and square root functions since those can handle arrays as inputs (the ones in the math library are expecting just single numbers, not np.arrays).
+
+<p>
+We can plot these in the same way as before:
+<pre>
+plt.plot(x,y1)
+plt.plot(x,y2)
+plt.show()
+</pre>
+
+<p>Side Note:  As we just demonstrated, the <tt>matplotlib</tt> library accepts both lists of numbers and arrays of numbers from the <tt>numpy</tt> library. 
+
+
+<h4>Challenges</h4>
+
+<p>Using the Python program you wrote above, try the following:
+
+<ul>
+	<li> Modify your program to plot points from 1 to 1001.  Which function is larger at x=1000?
+	<li> <tt>pyplot</tt> has many ways to customize your plots.  Many follow the same format as those we used in <tt>basemap</tt>.  
+	Using the 
+	<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">pyplot documentation</a>, change your plot to show the plots in different colors and with dashed and dotted line styles.
+</ul>
+
+</div>

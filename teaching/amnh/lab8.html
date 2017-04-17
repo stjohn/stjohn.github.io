@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 8, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Counting Revisited: Using Dictionaries to accumulate pattern counts; 
+Scraping data from the web; Parsing Structured Data: genbank & SQL
+</div>
+
+<div>
+<h3>Dictionaries & Translating Codons</h3>
+
+A traditional use of dictionaries is to find the definition (or value) of a word (or key).  These can be set up in advance or created and modified by your program as more data becomes available.  For example, the file, <a href="gencode.py">gencode.py</a> contains a dictionary with codons as keys and their corresponding amino acid codes as values:
+<pre>
+gencode = {'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M', 'ACA':'T',
+           'ACC':'T', 'ACG':'T', 'ACT':'T', 'AAC':'N', 'AAT':'N',
+           'AAA':'K', 'AAG':'K', 'AGC':'S', 'AGT':'S', 'AGA':'R',
+           'AGG':'R', 'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
+           'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P', 'CAC':'H',
+           'CAT':'H', 'CAA':'Q', 'CAG':'Q', 'CGA':'R', 'CGC':'R',
+           'CGG':'R', 'CGT':'R', 'GTA':'V', 'GTC':'V', 'GTG':'V',
+           'GTT':'V', 'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
+           'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E', 'GGA':'G',
+           'GGC':'G', 'GGG':'G', 'GGT':'G', 'TCA':'S', 'TCC':'S',
+           'TCG':'S', 'TCT':'S', 'TTC':'F', 'TTT':'F', 'TTA':'L',
+           'TTG':'L', 'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
+           'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W'}
+</pre>
+('_' is used for the stop in this table from <a href="http://pythonforbiologists.com">pythonForBiologists</a>).
+
+<p>
+Using this dictionary, we can quickly look up amino acid codes for codons.  For example, 
+<pre>
+print "The code for CTT is:", gencode["CTT"]
+</pre>
+
+<p>
+Our first program will take translate a DNA strand into the corresponding protein.  That is, it will look at the dna as three letter chunks (codons), look up each in the dictionary of values.  To make it easier to reuse, we will define a function:
+<pre>
+def translate(dna):
+"""
+Returns the dna translated into corresponding protein.
+"""
+</pre>
+Once defined, we can use the function to translate any DNA strand:
+<pre>
+>>> dna = 'GATGGAACTTGACTACGTAAA'
+>>> print dna, 'translates to', translate(dna)
+GATGGAACTTGACTACGTAAA translates to DG
+</pre>
+
+<p>
+How can we do this?  First, let's think about how we would do this by hand.  Given a DNA strand, we would split it into codons (three letter substrings).  For example, the strand above would be:
+<pre>
+GAT GGA ACT TGA CTA CGT AAA 
+</pre>
+We would then translate each one by using the look-up table:
+<pre>
+D G T _ L R K
+</pre>
+and then glue together to get the translation <tt>DGT_LRK</tt>.
+
+<p>
+Let's follow that same strategy in Python.  Implement each of the steps below:
+<ol>
+	<li> Split the dna string into codons
+	<li> Translate each codon to the corresponding amnio acid by looking up the value in the dictionary.
+	<li> Concatenate that value to the protein string
+	<li> Return the protein string.
+</ol>
+
+Test your function to make sure that it translates correctly.
+
+</div>
+
+
+<div>
+<h3>Counting Revisited</h3>
+
+<p>
+Using dictionaries, counting becomes much easier.  One of our earlier challenges was to count the number of base pairs in a sequence:
+<pre>
+dna = 'GATGGAACTTGACTACGTAAATT'
+</pre>
+Our initial approach set up a separate counter for each possibilities and then looped through the string, counting as it went:
+<pre>
+numA = 0
+numC = 0
+numG = 0
+numT = 0
+for bp in dna:
+    if bp == 'A':
+        numA += 1
+    elif bp == 'C':
+        numC += 1
+    elif bp == 'G':
+        numG += 1
+    elif bp == 'T':
+        numT += 1
+print "A:", numA, "C:", numC, "G:", numG, "T:", numT   
+</pre>
+<p>
+Or to use <tt>count()</tt> to traverse the string for each basepair:
+<pre>
+numA = dna.count('A')
+numC = dna.count('C')
+numG = dna.count('G')
+numT = dna.count('T')
+print "A:", numA, "C:", numC, "G:", numG, "T:", numT"
+</pre>
+<p>
+We can approach this again, using dictionaries.  The 'keys' for the dictionary will be the basepairs, and for each key, its value will be the number of times it occurs in the string.  We only need to initalize one variable, the dictionary, instead of counters for each variable:
+<pre>
+bpCounts = {}
+for bp in dna:
+    if bp in bpCounts:	#Occurred before, just increment count
+        bpCounts[bp] += 1
+    else:		#First time, set to 1
+    	bpCounts[bp] = 1
+print bpCounts
+</pre>
+
+<p>
+Using the <tt>get()</tt> function, we can make this even shorter:
+<pre>
+bpCounts = {}
+for bp in dna:
+	bpCounts[bp] = bpCounts.get(bp,0) + 1
+
+print bpCounts
+</pre>
+
+
+<p>
+Test the code on different values for the variable <tt>dna</tt>.
+
+
+<h4>
+Challenges:</h4>
+<ul>
+	<li> What would you change to make this work with RNA strands?
+	<li> What would you change to make this work with protein sequences?
+</ul>
+</div>
+
+<div>
+<h3>Structured Data</h3>
+</div>
+
+<div>
+<h3>Scraping Webpages</h3>
+
+<p>
+Webpages are formatted using the HyperText Markup Language (HTML) which is a series of commands on how the pages should be formatted, along with links and embedded calls to programs. For example, if you would like a word to show up in <b>bold</b>, you surround it by "tags" that say what to do:
+<pre>
+&ltb&gtbold&lt/b&gt
+</pre>
+The opening tag starts the bold text and the closing tag (indicated by the '/') ends the bold text.  Most HTML commands follow this same style:  there's an opening tag, paired with a closing text that includes a '/' and the same name.
+
+
+<p>
+We can access files stored on webpages inside Python.  The built-in 
+<tt>urllib</tt> module has functions to mimic the file I/O we have seen before.  
+
+<p>Let's say we want to make a list of all the RGGS seminars for the term.  We can `scrap the data' on the comparative biology seminar page into our Python program.  We can then search for strings that look like dates and print out the subsequent lines.  The interface is very similarly to opening files:
+<ol>
+	<li> Use <tt>urllib.open()</tt> to open file.
+	<li> Then can use <tt>read()</tt>, <tt>readline()</tt> or <tt>readlines()</tt> to traverse file.
+</ol>
+(If you are going to be parsing lots and lots of HTML files, you should consider the <a href="">beautifulSoup</a> that does a great job handling badly formatted files).
+
+<p>
+The museum's webpage is machine generated (you can look at the raw code by saving the HTML file and then opening it with TextEdit, TextWrangler, or some other editor meant for text files).  The code is very clean with no missing ending tags (unlike the HTML for the page you're currently reading...).
+
+<p>
+Here are the first couple of lines with the seminar dates:
+<p>
+<img src="seminarRawFile.png" width=800>
+
+<p>
+We can search the file for dates, and then print out the subsequent lines with the speaker and title.  We can do this in several different ways.  Here's one approach:
+<ol>
+	<li> Open the URL ('URL' stands for Uniform Record Locator and is the location of the file.  It usually starts out <tt>http://www...</tt>).
+	<li> Read the file into a list of strings, called <tt>lines</tt>.
+	<li> For each line in <tt>lines</tt>, check if it contains the date.
+	<li>	If so, print out the date and the subsequent lines with name, affiliation, and title.
+	<li> Close file.
+</ol>
+
+<p>We are just missing the tools to open webpages.  There are several options (both built-in and modules you can download).  The simplest is <tt>urllib</tt> (and its related <tt>urllib2</tt> and <tt>requests</tt>).  Let's work with <tt>urllib2</tt> since it's very common.  First we need to import the module:
+<pre>
+import urllib2
+</pre>
+<p>
+To open a webpage:
+<pre>
+webpage = urllib2.urlopen("http://www.amnh.org/our-research/richard-gilder-graduate-school/academics-and-research/seminars-and-conferences")
+</pre>
+which will now functions like a file handler for files stored locally.  (This will take a bit depending on network connectivity.)
+
+<p>
+We can use it in with our standard reading functions: <tt>read()</tt>, <tt>readline()</tt> and <tt>readlines()</tt>.  For example, 
+<pre>
+lines = webpage.readlines()
+</pre>
+<p>
+Now, each line of the webpage is in the variable <tt>lines</tt>, and we can loop through it.  Here's an outline: it traverses the list by line number since we'll want to refer to the lines after it (where the name and titles are stored):
+<pre>
+for i in range(len(lines)):
+	#Check if the lines[i] has a date in it (can use find() or regular expressions)
+	#If it does print it, 
+	#	as well as the subsequent lines[i+2] (has name) and 
+	#	lines[i+4] (has title)
+</pre>
+
+<p>Test and debug your program and then figure out how to print just the date, name, affiliation, and title (without the HTML formatting statements).
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> Modify your program to just print out the dates, using full names for the months and the full year:  i.e. <tt>25 January 2016</tt> for <tt>25-Jan-16</tt>.
+	<li> Modify your program to also count the number of seminars, as well as the number of internal seminar (i.e. those with AMNH listed as the affiliation).
+</ul>
+
+
+</div>
+
+<div>
+<h3>genbank files</h3>
+
+We can use a similar approach to accessing genbank data.  The National Center for Biotechnology Information (NCBI) allows <a href="http://www.ncbi.nlm.nih.gov/sites/batchentrez?db=Nucest">batch downloads</a> from the Nucleotide and Protein databases it maintains. It has some guidelines for access:
+<ul>
+	<li> For more than 100 requests, do this on weekends or after hours.
+	<li> Use <a href="http://eutils.ncbi.nlm.nih.gov">http://eutils.ncbi.nlm.nih.gov</a> instead of the standard web page.
+	<li> Make no more than 3 requests a second (automatically done by the module <tt>bioPython</tt> that we will be using).
+</ul>
+
+<p>
+Below follows the <a href="http://people.duke.edu/~ccc14/pcfb/biopython/BiopythonEntrez.html">excellent tutorial</a> from the CFAR Workshop at Duke (the goal of which is to "teach researchers how to use the Unix shell, the Python programming language, databases and image manipulation tools to execute common scientific chores" in 4 days (wow!).  
+
+<p>
+<a href="http://biopython.org/wiki/Main_Page">BioPython</a> is a package of useful functions for biological tasks.  It is not a default part of Python and can be downloaded by:
+<pre>
+conda install biopython
+</pre>
+
+<p>It has a wide-ranging set of functions, but today, we will just use the functions that access the NCBI databases.  To use those, your code should begin:
+<pre>
+from Bio import Entrez
+</pre>
+NCBI requires an email from each user:
+<pre>
+Entrez.email = "kstjohn@amnh.org"	#Replace with your own!
+</pre>
+Let's check what we have access to:
+<pre>
+handle = Entrez.einfo()
+record = Entrez.read(handle)
+record["DbList"]
+</pre>
+<p>
+will print out all the databases that you can query.
+
+<p>
+To find out information about a given database, we can repeat the <tt>einfo()</tt> call, but with a parameter specifying the database:
+<pre>
+handle = Entrez.einfo(db="pubmed")
+record = Entrez.read(handle)
+record["DbInfo"]["Description"]		#Description of the database
+record["DbInfo"]["Count"]			#Number of entries in pubmed
+</pre>
+<p>Try with several of the other databases from the DbList that you printed above.  What do they do?  How big are there?
+
+<p>You can search the database for a given term (for example all entries that contain biopython):
+<pre>
+handle = Entrez.esearch(db="pubmed", term="biopython")
+record = Entrez.read(handle)
+record["IdList"]
+</pre>
+<p>What entries contain "AMNH"?
+
+<p>We can also fetch individual entries from a database:
+<pre>
+handle = Entrez.efetch(db="pubmed", id="21210977")
+print handle.read()
+</pre>
+<p>
+What is the first entry in pubmed that contains "AMNH"?
+
+
+<p>
+Let's get some sequences!  We can use the same ideas on the sequence databases:
+<pre>
+handle = Entrez.esearch(db="nucleotide",term="Cypripedioideae[Orgn] AND matK[Gene]")
+record = Entrez.read(handle)
+record["Count"]
+</pre>
+will give the number of entries for the matK gene in Cypripedioideae.
+
+<p>Try with your favorite species/gene!
+
+We will use the <a href="http://biopython.org/wiki/SeqIO">SeqIO</a> functions (sequence I/O) of <tt>bioPython</tt> to print sequences from the nucleotide database:
+<pre>
+from Bio import Entrez, SeqIO
+handle = Entrez.efetch(db="nucleotide", id="186972394",rettype="gb", retmode="text")
+for record in SeqIO.parse(handle, "genbank"):
+    print "Genbank id:\t", record.id
+    print "Sequence:\t"record.seq
+    print "Entry length:\t", len(record)
+handle.close()
+</pre>
+
+<p>The options "gb" and "text" refer to genbank text format.  Feel free to use the ID above, or substitute one of your own.
+
+<p>
+Combining these, we can filter search results.  For example, say we only want to take the short sequences from a search (stored in <a href="http://biopython.open-bio.org/SRC/biopython/Tests/GenBank/cor6_6.gb"> from cor6_6.gb</a>) and store in a FASTA file:
+<pre>
+# From biopython.org tutorial:
+from Bio import SeqIO
+
+short_sequences = [] # Setup an empty list
+for record in SeqIO.parse(open("cor6_6.gb", "rU"), "genbank") :
+    if len(record.seq) < 300:
+        # Add this record to our list
+        short_sequences.append(record)
+        
+print "Found {0} short sequences".format(len(short_sequences))
+output_handle = open("short_seqs.fasta", "w")
+SeqIO.write(short_sequences, output_handle, "fasta")
+output_handle.close()
+</pre>
+
+<h4>Challenges</h4>
+<ul>
+	<li> Download 10 (or more sequences) from genbank, and create a FASTA file 
+	from it.
+	<li> Using those same sequences, print out the translated protein sequences.
+</ul>
+
+
+</div>
+
+<div>
+<h3>SQL files</h3>
+
+<p>
+<i>I promised SQL files, but writing up the details of the lab, I realized that it was too long.  We are postponing SQL to a later lab when there's more time to introduce the details of the language, using a simple server, and the standard access modules.  Apologies!
+</i>
+<!--
+Need to use sqlite?  Download from:
+
+Is there an sql reader in python that's commonly used other than <tt>sqlite3</tt>?  Built-in, so, only need sqlite3 to show that the info can be browsed elsewhere.-->
+</div>
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  30 March 2016<br>
+Title:  Lab 8: Dictionaries & Structured Data<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

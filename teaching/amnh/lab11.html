@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 11, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 11<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Assembling Short Reads:  Overlap Graphs & de Bruijn Graphs
+</div>
+
+<div>
+<h3>Assembling Reads</h3>
+
+In lecture, we explored the question:
+<blockquote>
+	How do you assemble a genome from reads?
+</blockquote>
+
+<p>Let's rephrase as a computational question:
+
+<ul>
+	<li><b>Input:</b> A sequence of k-mers, with possible multiple copies of each one.
+	<li><b>Outputs:</b> A single sequence incorporating all the reads (allowing for errors)
+
+</ul>
+<p> That says the same thing but in language a computer scientist could translate into the skeleton of a function:
+<pre>
+def assemble(k_mers):
+	"""
+	Takes k_mers and returns a sequence
+	"""
+	
+	sequence = []
+	
+	###More stuff goes here!###
+	
+	return sequence
+</pre>
+
+<p> The function currently doesn't do much (just returns an empty list).  Before we fill in the details, let's write some code that will get input from a file (since it will get tedious typing in the reads while we're debugging the code).  
+The function should take a file name as an input and return a list of the reads in the file:
+<pre>
+def getReadsFromFile(infile):
+	f = open(infile)
+	#Depending on the file, could have extra newlines at end, strip off:
+	data = f.read().rstrip()
+	return data.split("\n")
+</pre>
+
+<p>
+Test to make sure it's working with <a href="simpleReads.txt">simpleReads.txt</a> and <a href="textbookReads.txt">textbookReads.txt</a> 
+(i.e. try:  <tt>print getReadsFromFile("simpleReads.txt")</tt> which should return a list of the 4 reads in the file).
+
+<p>
+What's next?  Here's the steps we'll need to fill in the <tt>assemble()</tt> function (based on algorithms described in Chapter 3 of the book or <a href="http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html">Compeau, Pevzner, & Tesler 2011</a>).  The function should:
+<ol>
+	<li> Make the de Bruijn graph from the reads.
+	<li> Compute all the Eulerian cycles from the de Bruijn graphs.
+	<li> Return all the Eulerian cycles.
+</ol>
+
+To do this, we'll need a de Bruijn graph.  Since this is fairly sparse graph, a good choice is an adjacency list, implemented with a dictionary (described below).  Once we have it, we can break down each of the steps above into functions, and then implement the functions one-by-one, testing as we go.
+
+
+
+</div>
+
+<div>
+<h3>Implementing de Bruijn Graphs</h3>
+
+<p>
+We'll use adjacency lists and dictionaries to implement the de Bruijn graphs.
+Recall that for a de Bruijn graph:
+<ul>
+	<li> edges are labeled by the reads, and
+	<li> vertices are labeled by the suffix of incoming edges (and prefix of outgoing edges).
+</ul>
+
+<p>
+The entries in our dictionary have the following structure:
+<pre>
+	(prefix,[(read1,suffix1,count1),(read2,suffix2,count2),...])
+</pre>
+If there are outgoing edges (that is there's a suffix that never occurs as a prefix), the last part of the tuple is an empty list.
+
+
+<p>
+Here is an example of a very simple graph (basically just a path):
+<p>
+<img src="pathGraph.png">
+<p>
+Since some nodes have the same labels, they're distinguished by color (we'll use numbers when needed since they're easier to represent in the computer).
+
+<p>
+The labels of the vertices are the suffix/prefix of reads, so, those will be the keys to the dictionary storing the adjacency list.  For each key, we need to keep information about its outgoing edges.  For example, the read <tt>TAA</tt> would generate two dictionary entries:
+<pre>
+	"TA" : ["AA"] 
+	"AA" : []
+</pre>
+where <tt>TA</tt> and <tt>AA</tt> are the keys for values are (possibly empty) lists of tuples.  To simplify things, we will just keep the label of the destintation node (since combining the source and destination labels gives back the read).  What happens if the next read is <tt>AAT</tt>?  That corresponds to an edge <tt>AA &rarr; AT</tt>.  The prefix, <tt>AA</tt> is already in the dictionary.  For <tt>AA</tt>, we add an outgoing edge to <tt>AT</tt>.  For <tt>AT</tt>, we add a new entry with no outgoing edges to give
+a dictionary:
+<pre>
+	{"TA" : ["AA"], 
+	 "AA" : ["AT"],
+	 "AT" : []
+	}
+</pre>
+What happens when we add the read <tt>ATG</tt>?  It's prefix is <tt>AT</tt>, and it's suffix is <tt>TG</tt>.  Since <tt>AT</tt> is already in the dictionary, we add to its existing entry.  <tt>TG</tt> is not, so, we create a new entry:
+<pre>
+	{"TA" : ["AA"], 
+	 "AA" : ["AT"],
+	 "AT" : ["TG"],
+	 "TG" : []
+	}
+</pre>
+Let's say we see the read <tt>ATG</tt> again.  Since we care about how many times reads are seen, we'll add it in as a separate entry (unlike most graphs where we only allow one edge between any pair of vertices):
+<pre>
+	{"TA" : ["AA"], 
+	 "AA" : ["AT"],
+	 "AT" : ["TG","TG"],
+	 "TG" : []
+	}
+</pre>
+Why do this?  Each of these edges gives a possible "path" through the completed sequence.  Keeping these entries separate will make finding complete sequences easier. 
+
+<p>Rewriting the steps we did to create the new entries (and adding a few to set things up properly):
+
+<p>
+<tt>createDeBruijnGraph(reads):</tt>
+<ol>
+	<li> Initialize a dictionary, <tt>adjList</tt> to hold the adjacency list.
+	<li> For each read in reads:
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; Get the <tt>prefix</tt> and <tt>suffix</tt>
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; If the <tt>prefix</tt> is in the dictionary, 
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Add 
+		<tt>suffix</tt> to its adjacencies: <tt>adjList[prefix] = suffix</tt>
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; Else
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Create a new dictionary entry: <tt>adjList[prefix] = [suffix]</tt>,  
+
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; If the <tt>suffix</tt> is not in the dictionary, 
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Add in an entry with no outgoing edges:
+		<tt>adjList[suffix] = []</tt>
+	<li> Return dictionary.
+</ol>
+
+<p>
+Now that it's in pseudocode, it's straightforward to translate this into Python.  First, copy the outline into an editor, and try to fill in as many steps as possible before checking the code in <a href="deBruijn.py">deBruijn.py</a>.
+
+<h4>Eulerian Cycles</h4>
+
+<p>
+A cycle that traverses each edge of a graph exactly once is called an 
+<b>Eulerian cycle</b>, and we say that a graph containing such a cycle is Eulerian. 
+When graphs are balanced (all nodes have the same number of incoming and outgoing edges), then there's an Eulerian cycle.  Our graphs are almost balanced: the starting and the ending nodes are not balanced.  This can be solved by just connecting them.  It's a bit tedious but the idea is to find the node with no outgoing edges and then find the one with no incoming edges, and link them 
+(see <tt>balancedGraph()</tt> in <a href="deBruijn.py">deBruijn.py</a> for details).
+
+<p>
+We've completed the hard work of setting up the (balanced) de Bruijn graph.  Let's use it to find possibilities for the reconstructed sequence.
+The following algorithm constructs an Eulerian cycle in an arbitrary directed graph:
+
+<p>
+<tt>eulerianCycle(graph)</tt><br>
+<i>Form a cycle Cycle by randomly walking in Graph (don't visit the same edge twice!)</i>
+<ol>
+	<li> While there are unexplored edges in <tt>graph</tt>:
+	<li> &nbsp; &nbsp; &nbsp; &nbsp;
+			If possible, extend the current path by adding to the end.
+<li> &nbsp; &nbsp; &nbsp; &nbsp;
+			If not, find an node, <tt>i</tt> on the path with outgoing edges.
+			<li> &nbsp; &nbsp; &nbsp; &nbsp;
+			Reorder the path to start from <tt>i</tt> to the end, then the 
+			beginning to <tt>i</tt>. 
+	<li> &nbsp; &nbsp; &nbsp; &nbsp;
+			<tt>cycle</tt> &larr; <tt>cycle2</tt>
+	<li> return <tt>cycle</tt>
+</ol>
+
+<p>We already have the graph structure set up, so, let's make a copy of it, <tt>unexplored</tt>, that we can use to cross off edges when we crossed them.  
+
+<p>
+Our algorithm is going to start at a random place and keep walking until stuck.  For example, say we have traversed the green highlighted edges as numbered below:
+<p>
+<img src="figure4_23.png" width=600>
+
+<p>
+When Leo the ant (yes, that's what the book calls him) reaches the blue node, he 
+can follow edge 5 (only unvisited edge leaving the blue node) and then go on to edge 
+If it's visited every edge, then we're done.  But what if it hasn't:
+<p>
+<img src="figure4_24.png" width=600>
+
+<p>Instead of tossing out all the work we've done and starting from scratch, let's build on what we have, namely let's keep the green cycle above and find some node in the cycle that has an unvisited edge:
+<p>
+<img src="figure4_25.png" width=600>
+
+<p>We can restart the walk at the red node above and visit a new cycle and then glue it together with our previous work (the cycle colored in green).  We can keep repeating this process until the all the edges are visiting.
+
+<p> Let's write the code for this.  First set up a function that takes a graph as input and returns an empty list for the cycle:
+
+<pre>
+def eulerianCycle(graph):
+     cycle = []
+     return cycle
+</pre>
+Test this to make sure there's no typos, and then let's add in more.  We need a copy of the graph that we can modify to keep track of the edges left to explore.  
+To make a copy of a dictionary, use the <tt>copy()</tt> function:
+<pre>
+def eulerianCycle(graph):
+     """
+     Form a cycle Cycle by randomly walking in Graph
+     (don't visit the same edge twice!)
+     """
+     
+     #Put all edges into the unexplored edges:
+     unexplored = graph.copy()
+     cycle = []
+     return cycle
+</pre>
+
+Test that, and let's choose a random graph to start the cycle.  For dictionaries, we can remove something from the dictionary with <tt>popitem()</tt>
+(if a node has multiple neighbors, we'll put the ones we don't use back).
+<pre>
+def eulerianCycle(graph):
+     """
+     Form a cycle Cycle by randomly walking in Graph
+     (don't visit the same edge twice!)
+     """
+     #Put all edges into the unexplored edges:
+     unexplored = graph.copy()
+     #Grab an edge from graph to start off the cycle:
+     key, value = unexplored.popitem()
+     #Use that as the start of our cycle:
+     cycle = [key,value[0]]
+     #Add back to the dictionary if there's > 1 outgoing edges
+     if len(value) > 1:
+          unexplored[key] = value[1:]
+
+	 print "The graph:", graph
+	 print "The unexplored edges:, unexplored
+	 print "The cycle", cycle
+	
+	 return cycle
+</pre>
+Since dictionaries are stored in arbitrary order, different runs of the program might give you different edges chosen for your cycle.  Test and make sure you get the <tt>unexplored</tt> graph has one less edge (namely the one in <tt>cycle</tt>) than <tt>graph</tt>.
+
+<p>How do we extend the cycle?  Let's look again at Figure 4.23:
+<p>
+<img src="figure4_23.png" width=600>
+
+<p>The next edge extends out from the last node in the cycle.  For us, that's stored in <tt>cycle[-1]</tt>.  So, let's check if it has any outgoing edges, and if so, use it to extend the cycle (after making sure one step forward works, we'll add it to a loop to repeat it):
+<pre>
+          #Check if you can go extend the cycle:
+          if cycle[-1] in unexplored:
+               neighbors = unexplored.pop(cycle[-1])
+               if len(neighbors) > 0:
+                    if len(neighbors) > 1:
+                         #Put back the remaining unvisited edges:
+                         unexplored[cycle[-1]] = neighbors[1:]
+                    #Add to cycle
+                    cycle.append(neighbors[0])                      
+</pre>
+
+<p>
+What if the last node in the cycle has no unexplored outgoing edges?  Then, we need to look at other nodes in the cycle and find one that does:
+<p>
+<img src="figure4_25.png" width=600>
+
+<p>In code, this would be:
+<pre>
+</pre>
+          #Select a node i in cycle with still unexplored edges.
+          else:                   
+               for i in range(len(cycle)):
+                    print i, cycle
+                    if cycle[i] in unexplored:
+                         neighbors = unexplored.pop(cycle[i])
+                         if len(neighbors) > 0:
+                              if len(neighbors) > 1:
+                                   #Put back the remaining unvisited edges:
+                                   unexplored[cycle[-1]] = neighbors[1:]                         
+                              #Reorder cycle to put i at the end:
+                              cycle = cycle[:i] + cycle[i:] 
+                              #Add to cycle
+                              cycle.append(neighbors[0])
+
+                         break
+</pre>
+<p> That's all the pieces, we now need to put the if-else statement that looks for the next node in a while loop:
+<pre>
+     #While there are unexplored edges in graph:
+     while unexplored:
+          #Check if you can go extend the cycle:
+          if cycle[-1] in unexplored:
+                ...
+          #Select a node i in cycle with still unexplored edges.
+          else:         		  
+		  		...
+</pre>
+Inside the loop, we're removing an edge from <tt>unexplored</tt> every iteration, so, the structure is getting smaller and eventually <tt>while unexplored</tt> will be false (so it will stop!).
+
+<p>
+Here's all the pieces together (also in <a href="deBruijn.py">deBruijn.py</a>)
+<pre>
+def eulerianCycle(graph):
+     """
+     Form a cycle Cycle by randomly walking in Graph
+     (don't visit the same edge twice!)
+     """
+     #Put all edges into the unexplored edges:
+     unexplored = graph.copy()
+     #Grab an edge from graph to start off the cycle:
+     key, value = unexplored.popitem()
+     #Use that as the start of our cycle:
+     cycle = [key,value[0]]
+     #Add back to the dictionary if there's > 1 outgoing edges
+     if len(value) > 1:
+          unexplored[key] = value[1:]
+     
+     #While there are unexplored edges in graph:
+     while unexplored:
+          #Check if you can go extend the cycle:
+          if cycle[-1] in unexplored:
+               neighbors = unexplored.pop(cycle[-1])
+               if len(neighbors) > 0:
+                    if len(neighbors) > 1:
+                         #Put back the remaining unvisited edges:
+                         unexplored[cycle[-1]] = neighbors[1:]               
+                    #Add to cycle
+                    cycle.append(neighbors[0])
+
+          #Select a node i in cycle with still unexplored edges.
+          else:                   
+               for i in range(len(cycle)):
+                    print i, cycle
+                    if cycle[i] in unexplored:
+                         neighbors = unexplored.pop(cycle[i])
+                         print "neighbors", neighbors
+                         if len(neighbors) > 0:
+                              #Reorder cycle to put i at the end:
+                              cycle = cycle[:i] + cycle[i:] 
+                              if len(neighbors) > 1:
+                                   #Put back the remaining unvisited edges:
+                                   unexplored[cycle[-1]] = neighbors[1:]
+                              #Add to cycle
+                              cycle.append(neighbors[0])
+                         break
+
+     return cycle
+</pre>
+
+<p>Try running the code on several different sets of reads to make sure it works.
+
+
+<h4>Pulling It Altogether</h4>
+
+<p>Adding in the functions we wrote, we have a program that takes reads and prints out the cycle (still to do:  convert the cycle into a finished sequence):
+<pre>
+def assemble(k_mers):
+     """
+     Takes k_mers and returns a sequence
+     """
+     g = createDeBruijnGraph(reads)
+     print "The graph is: ", g     
+     balanceGraph(g)
+     print "The balanced graph is: ", g
+     
+     print "\n\nBuilding up the Eulerian cycle"
+     c = eulerianCycle(g)
+     print "\n\nFound the cycle:", c
+
+     #Missing step:  convert the cycle c into the sequence:
+     return c
+</pre>
+
+
+<h4>Challenges</h4>
+<ul>
+	<li> Given a string <tt>Text</tt>, its k-mer composition <tt>Composition(k,Text)</tt> is the collection of all k-mer substrings of Text (including repeated k-mers). For example,
+<pre>
+Composition(3,"TATGGGGTGC") = {ATG, GGG, GGG, GGT, GTG, TAT, TGC, TGG}
+</pre>
+Note that the k-mers can appear in any order.
+
+<p>Generate the k-mer composition of a string.
+
+	<li> Find the string spelled by a genome path.<br>
+Given: A sequence of k-mers <tt>Pattern_1, ... , Pattern_n</tt> such that the last k - 1 symbols of Pattern_i are equal to the first k - 1 symbols of Pattern_{i+1} for i from 1 to n-1.<br>
+Return: A string Text of length k+n-1 where the i-th k-mer in Text is equal to Pattern_i for all i.
+
+<p> For example, with the data:
+<pre>
+ACCGA
+CCGAA
+CGAAG
+GAAGC
+AAGCT
+</pre>
+The output should be:
+<pre>
+ACCGAAGCT
+</pre>
+</ul>
+</div>
+
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  20 April 2016<br>
+Title:  Lab 11:  Assembling Reads<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

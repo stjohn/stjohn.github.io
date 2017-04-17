@@ -1,0 +1,692 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Programming Problem List, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	7px ; 	
+  }
+  </style>
+</head>
+<body>
+
+<div id="header"><br>
+<img id="bookImage" alt="mapping quake data" src="../images/mappingQuakeData5.png"
+ width="120">
+<h2>Programming Problem List<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br><br>
+</h2>
+</div>
+
+
+<div>
+
+<h3>General Notes</h3>
+
+
+<ul>
+	<li> Every program should begin with a comment that includes your name and a brief description.
+
+	<pre>
+#Name: Herbert H. Lehman
+#Date: February 4, 2017
+#This program prints: hello world
+
+print("Hello world")
+	</pre>
+	<li> You are encouraged to submit your assignments early.  Below lists the 
+		last date on which each assignment will be accepted.
+		Assignments must be 
+		<b>submitted before midnight</b> on the date due. 
+	<li> <b>No credit will be given for an assignment submitted late. </b>
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+	<li>For more information on using Blackboard, see the <a href="lab1.html">first 
+lab</a>.
+	<li> While you are encouraged to work with others, <b>all work submitted must be your own.</b>  As 
+	a rule of thumb, <b>you must do your own typing</b>.  If it is not from the book or class webpage and
+	you did not type it, it is plagiarism.  
+	For the first incident, your grade will be a 0 for the assignment (even for cases 
+	where you typed the program but others submitted it as their own).  For the second incident of 
+	cheating or plagiarism, your grade will be a 0 for the homework component of the grade (15%
+	of your overall grade).  For the third incident, you will fail the class.  We report all 
+	incidents to the Office of Student Affairs.
+
+	<li> Learning programming is like learning a foreign language:  you will learn more (with 
+	less work) if you practice every day.  Some of the programs below are easy; some will take
+	more time.  Set aside a block of time every day to work on programming.  If you complete the
+	program for that day, go on to the next with your remaining time.
+<ul>
+</div>
+
+<div>
+
+<hr>
+<p>Submit the following programs via Blackboard:</p>
+<hr>
+
+<ol>
+<a id="set1"></a>
+	<li > <b>Due Date: 3 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints "Hello World" to the screen.
+	<li > <b>Due Date: 6 February</b>  <b style="float:right">Reading: Chapter 4</b><br>		
+		Write a program that draws a hexagon.
+		<br>
+		<i>Note:  Choose a name for your file that is <b>not</b> <tt>turtle.py</tt>. 
+		When executing the "import turtle" statement, the computer first looks in the folder where the file is saved for the turtle module and then in the libraries (and other places on the path).  So, it thinks the module is itself, causing all kinds of errors.  To avoid this, name your program something like "myTurtle.py" or "program2.py".
+		</i>
+	<li > <b>Due Date: 7 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints your name to the screen 20 times.
+
+	<li > <b>Due Date: 8 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that draws a octagon (8-sided polygon).
+		
+	<li > <b>Due Date: 9 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that implements the 
+	<a href="http://en.wikipedia.org/wiki/Pseudocode">pseudocode</a> ("informal high-level description of the operating principle of a computer program or other algorithm") below:
+	
+<pre>
+    Repeat 45 times:
+        Walk forward 100 steps
+        Turn right 92 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="spiral.jpg">
+	
+	
+<a id="set2"></a>						
+<hr>
+
+	<li > <b>Due Date: 13 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
+		Write a program that draws a hexagon.  Each side of the hexagon must be a different color.
+
+	<li > <b>Due Date: 14 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
+		Write a program that will print out:
+<pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Blast off!
+</pre>
+		
+	<li > <b>Due Date: 15 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
+		Write a program that implements the pseudocode below:
+	
+<pre>
+    For i = 10, 20, 30,... ,200:
+        Walk forward i steps
+        Turn left 90 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="blockSpiral.png">	
+
+	
+	
+	<li > <b>Due Date: 16 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
+		The Turtle drawing library has a command that will control the width that's drawn to the screen.  For example, if you turtle was named <tt>tony</tt>, the following command would set the pen to draw at size 10:
+		<pre>tony.pensize(10)
+		</pre>
+		Write a program that implements the pseudocode below:
+	
+<pre>
+    For i = 10, 15, 20, 25, ..., 50:
+        Change the pen size to i
+        Walk forward i steps
+        Turn left 50 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="bloatedSpiral.png">	
+
+
+		
+	<li > <b>Due Date: 17 February</b>  <b style="float:right">Reading: Chapter 4 & 5</b><br>				
+		Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.<br>
+		<i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>	
+
+<a id="set3"></a>
+<hr>
+
+
+
+	<li > <b>Due Date: 22 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
+		Write a program that prints out the numbers from 2000 to 2017 to the screen.
+
+	<li > <b>Due Date: 23 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that draws a colorful 5-pointed star to screen.  Your program should prompt the user for the color that the star will drawn.
+		<br><i>Hint:  See <a href="lab3.html">Lab 3</a></i>.
+		
+
+	<li > <b>Due Date: 24 February</b>  <b style="float:right">Reading: Chapter 2</b><br>
+		Write a program that asks the user for their name and then writes their name to the screen 10 times.
+
+		
+	<li > <b>Due Date: 25 February</b>  <b style="float:right">Reading: Chapter 2</b><br>	
+
+		Write a program that implements the pseudocode below:
+<pre>
+1.  Ask the user for the number of days until finals.
+2.  Print out the weeks until finals (weeks = days // 7)
+3.  Print out the leftover days (leftover = days % 7)
+</pre>	
+
+	
+
+	<li > <b>Due Date: 27 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+	
+		Use turtle graphics to write your name to the screen, surrounded by a box or polygon.  You may write your name in "cursive" by moving the turtle, or may use the <tt>write()</tt> command to have it printed to the graphics screen.
+		<br>
+		<i>Hint: See <a href="lab3.html">Lab 3</a> for an example of the <tt>write()</tt> method for turtles.</i>			
+	
+	
+<a id="set4"></a>
+<hr>
+
+
+	<li > <b>Due Date: 28 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+
+		Using turtle graphics, draw a grid:  
+		<br><br>
+		<img src="grid.jpg" height=300>
+
+		<p>You may use any combination of turtle commands, but your image should have 9 by 9 grid shown above.
+		<br>
+		<i>Hint: Resize the drawing canvas to give coordinates that are easier to use (see <a href="lab3.html">Lab 3</a>). </i>
+		
+
+	<li > <b>Due Date: 1 March</b>  <b style="float:right">Reading: Think CS Turtle Chapter</b><br>
+		Write a program that asks the user for a message and draws it to the graphics screen using turtle's <tt>write()</tt> function.
+		<br>
+		<i>Hint: See <a href="lab3.html">Lab 3</a> for an example of the <tt>write()</tt> method for turtles.</i>				
+
+	<li > <b>Due Date: 2 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
+		Write a program that takes a file of colors (one name per line) and draws a figure with each line drawn another color of the file.  That is, the first line your turtle draws should be the first color in the file. 
+		<br>
+		<i>Hint: See <a href="lab4.html">Lab 4</a>.</i>	
+
+	<li > <b>Due Date: 3 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
+		Write a program that takes the file where each line has two items, separated by a comma, and prints out the first item on each line to the screen.  Assume that your file is called <a href="colorShape">colorShape</a>.
+		<p>
+		For example, if the contents of your file matched the one used in the lab, then your output should look like:
+<pre>
+blue
+red
+purple
+blue
+red
+</pre>
+		<br>
+		<i>Hint: See <a href="lab4.html">Lab 4</a>.</i>	
+
+	<li > <b>Due Date: 6 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
+		Modify the first program in <a href="lab4.html">Lab 4</a>.  For your program, assume that each line of the file has a whole number, and use that to adjust the pen size of each line drawn. 
+		<p>
+		For example, if the contents of your file is:
+<pre>
+10
+1
+15
+8 
+7
+2
+50
+</pre>
+		then your drawing would be:
+	
+		<p>
+		<img src = "sizeFile.png">
+
+		<br>
+		<i>Hint: You can convert a string to a number using </i><tt>int(c)</tt> <i>and use that as the input parameter to </i><tt>pensize()</tt><i> (i.e. </i><tt>tortuga.pensize(int(c))</tt><i>).</i>	
+
+<a id="set5"></a>
+<hr>
+
+	<li > <b>Due Date: 7 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+		Write a program that prompts the user to enter a list of numbers.  Each number is separated from the next by a comma (',').  Your program should then print out the numbers, one per line.
+		
+		Here is a sample interaction:
+		<pre>Please enter your list of numbers:  3, 1, 4, 5, 1, 9
+		
+You entered:
+
+3
+1
+4
+5
+1
+9
+
+Thank you for using my program!
+</pre>
+
+	<p><i>Hint:  See <a href="lab5.html">Lab 5</a>.</i>
+
+	<li > <b>Due Date: 8 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+		Write a program that prompts the user to enter a list of names.  Each person's name is separated from the next by a semi-colon (`;') and the names are entered <tt>lastName, firstName</tt>.  Your program should then print out the names, one per line, with the first names first followed by the last names.
+		
+		Here is a sample interaction:
+		<pre>Please enter your list of names:  Amadou, Zara; Burchman, Elaine; Fera, Joe; Owen, Megan; Schneiderman, Rob; St. John, Katherine
+		
+You entered:
+
+Zara Amadou
+Elaine Burchman
+Joe Fera
+Megan Owen
+Rob Schneiderman
+Katherine St. John
+
+Thank you for using my name organizer! 
+		</pre>	
+
+		<i>Hint:  Do this problem in parts:  first, split the list by person (what should the delimiter be?).  Then, split each of person's name into first and last name (what should the delimiter be here?).
+		</i>
+
+
+	<li > <b>Due Date: 9 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+	Write a program that asks the user for a string and then prints it out in all upper case and then all lower case.  
+	Here is a sample run of the program: 
+	<pre>Please enter a string:  Look behind, look here, look ahead
+You entered (shouting):  LOOK BEHIND, LOOK HERE, LOOK AHEAD
+But better (whispering): look behind, look here, look ahead
+</pre>			
+
+		
+
+	
+	
+	<li > <b>Due Date: 10 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+
+		Implement the following piece of pseudocode as a complete program:
+		
+		<pre>
+    1.  Prompt the user to enter a string and call it s.
+    2.  Let l be the length of s.
+    3.  For i from 0 upto l-1:
+    4.     print s[0:i]
+    5.  For i from 0 upto l-1:
+    6.     print s[i:l]
+    5.  Print a closing statement
+		</pre>
+		Here is a sample run of the program:
+		<pre>Enter string: a man a plan a canal panama
+
+a		
+a 
+a m
+a ma
+a man
+a man 
+a man a
+a man a 
+a man a p
+a man a pl
+a man a pla
+a man a plan
+a man a plan 
+a man a plan a
+a man a plan a 
+a man a plan a c
+a man a plan a ca
+a man a plan a can
+a man a plan a cana
+a man a plan a canal
+a man a plan a canal 
+a man a plan a canal p
+a man a plan a canal pa
+a man a plan a canal pan
+a man a plan a canal pana
+a man a plan a canal panam
+a man a plan a canal panama
+ man a plan a canal panama
+man a plan a canal panama
+an a plan a canal panama
+n a plan a canal panama
+ a plan a canal panama
+a plan a canal panama
+ plan a canal panama
+plan a canal panama
+lan a canal panama
+an a canal panama
+n a canal panama
+ a canal panama
+a canal panama
+ canal panama
+canal panama
+anal panama
+nal panama
+al panama
+l panama
+ panama
+panama
+anama
+nama
+ama
+ma
+a		
+
+Thank you for using my program!</pre>
+
+
+
+
+
+	<li > <b>Due Date: 11 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+
+		Write a program that prompts the user to enter 5 lines of text and then outputs the total number of characters that they entered.
+		
+		<p>
+		Here is a sample interaction:
+		<pre>Enter line: Sing me no song, read me no rhyme
+line character count is 33
+Enter line: Don't waste my time, show me!
+line character count is 29
+Enter line: Don't talk of June, don't talk of fall
+line character count is 38
+Enter line: Don't talk at all!
+line character count is 18
+Enter line: Show me!
+line character count is 8
+The number of characters entered is: 126
+		</pre>	
+
+	
+		
+		
+<a id="set6"></a>
+<hr>			
+	
+	<li > <b>Due Date: 13 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+
+	Write a program that asks the user to enter whole numbers, separated by spaces and 
+	prints out the total of the numbers entered.
+	
+		Here is a sample interaction:
+		<pre>Please enter your list of numbers:  3 1 4 5 1 9
+		
+Your total is 23
+</pre>
+
+	<p><i>Hint:  See <a href="lab5.html">Lab 5</a>.</i>
+
+	<li > <b>Due Date: 15 March</b>  <b style="float:right">Reading: Chapters 9 & 11</b><br>
+
+
+		Write a program that asks the user for the name of a file.  You may assume that every line of the contains a single floating point number.
+		Your program should print out the sum of the numbers in the file.
+
+		<p>For example, if your file contained:
+<pre>
+8.0
+-2.5
+100.0
+6.5
+</pre>
+		<p>Then a sample run of your program would look like:
+<pre>
+Please enter your file name:  nums.txt
+The sum of your numbers is 112.0.
+</pre>
+
+		<br>
+		<i>Hint:  see <a href="lab5.html">Lab 5</a>.</i>
+
+
+	<li > <b>Due Date: 16 March</b>  <b style="float:right">Reading: Chapter 9</b><br>	
+	
+		Modify your program from <a href="lab6.html">Lab 6</a>  that graphs historical NYC population data.  Instead of plotting the data as a line graph, use the pandas <tt>plot.bar()</tt> function for creating bar charts:
+		
+		<p>
+		<img src="nycBar.png" height = 400>
+
+
+	<li > <b>Due Date: 17 March</b>  <b style="float:right">Reading: Chapter 9</b><br>	
+	
+		Modify your program from <a href="lab6.html">Lab 6</a>  that graphs shelter census data.  In addition to graphing the data, also print to the screen (Python shell), the minimum, average (mean), and maximum numbers of total individuals in the shelter.
+
+	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: Chapter 7</b><br>	
+	
+		Write a program that asks the user for a whole number.  If that number is even, your turtle should draw a blue line towards the left hand side of the screen. If that number is odd, your turtle should draw a red line towards the right hand side of the screen.
+		
+		<br>
+		<p><i>Hint:  See <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a> of the Python textbook.</i>
+
+
+<a id="set7"></a>
+<hr>
+
+	<li > <b>Due Date: 22 March</b>  <b style="float:right">Reading: Chapter 6</b><br>	
+
+		<a href="lab7.html">Lab 7</a> focuses on top-down design; that is, beginning with an outline for the <tt>main()</tt> and filling in the  function definitions.
+		Fill in the missing function definitions for this program:
+	<pre>
+import turtle
+def main():
+	myWin = turtle.Screen()     		#The graphics window
+	tristan = turtle.Turtle()		#Tristan will be our turtle for this program
+	drawStem(tristan)			#Draw a green stem 	
+	for i in range(20):
+		drawPetal(tristan,"blue")	#Draws a blue petal for our flower
+		drawPetal(tristan,"purple")	#Draws a purple petal for our flower
+	myWin.exitonclick()         		#Close the window when clicked	
+
+main()
+	</pre>
+		That is, write the functions <tt>drawStem()</tt> and <tt>drawPetal()</tt>.  Include all functions, including the <tt>main()</tt> above in the file you submit.
+		Sample output of the program:<br>
+	<img src="../../cmp/cmp230/f14/flower.jpg">	
+		<p >(Note:  you can change the color that your turtle, using the function, <tt>color()</tt>.
+		For example, if you turtle is called <tt>tess</tt> to change it's color in <tt>stringColor</tt>,
+		write <tt>tess.color(stringColor)</tt>.)	
+
+	<li > <b>Due Date: 23 March</b>  <b style="float:right">Reading: Chapter 6</b><br>		
+	
+	
+			Complete the following program, which reads in a file that has multiple grades, each separated by a comma, and prints out the computed average. That is, write the functions <tt>getGrades()</tt> and <tt>calculateAverage()</tt>:
+<pre>
+def main():
+      grades = getGrades()   #get the file name containing the grades
+                             #and return the contents of the file
+      avg = calculateAverage(grades) #separate the grades into numbers and compute
+                             #the average
+      print("The calculated average is:", avg)
+main()
+</pre>
+
+			<br>
+		<i>Hint:  You may assume that there is one grade per line of the file.  See <a href="lab7.html">Lab 7</a>.</i>	
+			
+
+
+	<li > <b>Due Date: 24 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		The program <a href="../../cmp/cmp230/f14/turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
+		<ul>
+			<li> 'F':  moves the turtle forward
+			<li> 'L':  turns the turtle 90 degrees to the left
+			<li> 'R':  turns the turtle 90 degrees to the right
+			<li> '^':  lifts the pen
+			<li> 'v':  lowers the pen
+		</ul>
+		For example, if the user enters the string "FLFLFLFL^FFFvFLFLFLFL", the turtle would move forward and then turn left.  It repeats this 4 times, drawing a square.  Next, it lifts the pen and move forward 3, puts the pen back down and draw another square.
+		
+		<p>
+		Modify this program to allow the user also to specify with the following symbols:
+		<ul>
+			<li> 'B':  moves the turtle backwards
+			<li> 'r':  change the pen color to red			
+			<li> 'g':  change the pen color to green
+			<li> 'b':  change the pen color to blue
+		</ul>		
+
+		<p>Submit your modified program (including a comment at the top of the program with your name).		
+
+	<li > <b>Due Date: 27 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a function that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should print out <tt>January</tt>.  If the parameter is 2, your function should print out <tt>February</tt>, etc.
+
+		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
+	
+
+	<li > <b>Due Date: 29 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
+		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
+		<ul>
+			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
+			
+			<li> If the number of rides is 3 or more, then do the following computation:
+			<ul>
+				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
+				<li> 7-day cost of ride is $31.00/number of rides.
+			</ul>
+			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
+			<p>
+			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
+		</ul>
+
+<a id="set8"></a>
+<hr>
+
+	<li > <b>Due Date: 30 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Using folium (see <a href="lab8.html">Lab 8</a>), create a map that will mark 5 cities.  When you click on the marker for each city, it should pop-up the name of the city.
+
+		<p>
+		For this program, submit your .py program (not the .html file that it generates).
+
+	<li > <b>Due Date: 3 April</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Using folium (see <a href="lab8.html">Lab 8</a>), create a map that shows all the traffic collisions on your birthday last year.
+		
+		<p> This assignment uses collision data collected and made publicly by 
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+		</blockquote>
+		Download <b>Collisions on your birthday</b>:  Using the "Filter" option, choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.
+	
+		<p>
+		For this program, submit your .py program (not the .html file that it generates).
+		
+	<li > <b>Due Date: 4 April</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Using folium (see <a href="lab8.html">Lab 8</a>), create a map that shows all the traffic collisions in your favorite zipcode.  For this map, mark all accidents involving a TAXI with a yellow icon.  Note that either the vehicle type 1 or vehicle type 2 could be a taxi (i.e. you need to check for at least one of these being a taxi).
+		
+		<p> This assignment uses collision data collected and made publicly by 
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+		</blockquote>
+		Download <b>Collisions by zipcode</b>:  Using the "Filter" option, choose your zipcode and "Export" (in CSV format) all collisions for that day.  If the file is too large to easily export, add an additional filter conditions that restricts the date is in 2016.
+	
+		<p>
+		For this program, submit your .py program (not the .html file that it generates).
+
+	<li > <b>Due Date: 5 April</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Using pandas and folium (see <a href="lab8.html">Lab 8</a>), make a map of all the museums in New York City.  Your map should have a marker for each museum and include the name of the museum as a popup.
+		<p> This assignment uses collision data collected and made publicly by 
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z">https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z</a>.
+		</blockquote>
+		Download using the "Export" button (in CSV format).
+			
+		<p>
+		For this program, submit your .py program (not the image that it generates).	
+		
+		<p><i>Hint:  You will need to use string methods to extract the latitude and longitude from the location data.</i></p>
+
+
+	<li > <b>Due Date: 7 April</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		
+		In <a href="lab8.html">Lab 8</a>, you created a github account.  Submit the name of your account.
+
+<a id="set9"></a>
+<hr>
+
+	<li > <b>Due Date: 19 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+		The program <a href="../../cmp/cmp230/f14/errors2.py">errors2.py</a> has lots of errors.  Fix the errors and sumbit the modified program.
+		<br><i>Hint:  see end of <a href="lab9.html">Lab 9</a>.</i>
+
+	<li > <b>Due Date: 20 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a function that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
+		<ul>
+			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
+			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
+			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
+			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
+			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
+			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+		<p> You should include in the file a <tt>main()</tt> that calls your function several times to demonstrate that it works.
+
+	<li > <b>Due Date: 24 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Define a Python function named calculate_tax() which accepts one parameter, income, and returns the income tax. Income is taxed according to the following rule: the first $250,000 is taxed at 40% and any remaining income is taxed at 80%. For example, <tt>calculate_tax(100000)</tt> should return $100,000 * 0.40 = $40,000, while <tt>calculate_tax(300000)</tt> should return $250,000 * 0.40 + 50,000 * 0.80 = $140,000.
+		
+		<p>  In your .py file, you should include a main() that calls your function several times to demonstrate that it works.
+
+	<li > <b>Due Date: 26 April</b>  <b style="float:right">Reading: Chapter 8</b><br>		
+	
+		Write a program that asks the user to enter a string. If the user enters an empty string, your program should continue prompting the user for a new string until they enter a non-empty string. Your program should then print out the string entered.
+
+	
+	<li > <b>Due Date: 27 April</b>  <b style="float:right">Reading: Chapter 8</b><br>	
+		
+		Modify the  tic-tac-toe program from <a href="lab9.html">Lab 9</a> to check that the user chooses an empty square.  Your program should ask the user for coordinates of where to play.  While their choice of square if filled, you should continue to ask them until they choose an empty square.  When the choose an empty square, the program continues as before.
+	
+		
+<p>		
+<p>
+<br>
+<hr>
+<i>More to come...</i>
+<hr>
+<!--	
+
+
+		
+<a id="set10"></a>
+<hr>
+
+Intro to R, start by rewriting Python programs as R
+
+
+	
+
+-->
+</ol>
+
+
+</div>
+
+<div>
+Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
+
+	<p>
+	<img src="http://imgs.xkcd.com/comics/python.png">
+</div>
+
+
+<div>
+<i style="float:right">(This file was last modified on 21 March 2017.)</i><br>
+</div>
+</body>
+</html>

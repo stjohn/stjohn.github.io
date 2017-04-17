@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #1, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #1</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b>  Simple plots using matplotlib, scraping data from WeatherUnderground<br>
+<b>Deadline:</b>  Thursday, 11 February 2016, 10:30am 
+</div>
+
+<div>
+
+<h3>Getting Started with <tt>matplotlib</tt></h3>
+
+This homework uses <tt>matplotlib</tt> which is available with <a href="https://www.continuum.io/downloads">anaconda</a> or visit <a href="http://matplotlib.org">matplotlib</a>.
+	
+<p>	If you would prefer not to upgrade your Python installation (or would like to work through a browswer), there are several web-based services.  One that already has the libraries were are using is <a href="http://www.pythonanywhere.com">PythonAnywhere</a>.
+
+</div>
+
+<div>
+<h3>Weather Data</h3>
+
+<p>Built-in to Python are functions for downloading pages ('scraping data') directly from the web.  We will use the urllib2 library to plot historical weather data.
+
+<p>
+We will use just one function from urllib2, urlopen(), which takes as input a URL (uniform record locator of a web page) and opens the page for reading.  The format is:
+<pre>
+	import urllib2
+	page = urllib2.urlopen("http://lehman.edu")
+</pre>
+Once the page variable is set up, it can be used just like a file variable.  For example, you can read all the lines into a list of strings:
+<pre>
+	lines = page.readlines()
+</pre>
+in the same way as a file.
+
+
+<p>We can also combine data from multiple pages into a single program.  We will use Weather Underground's historical weather data to plot temperatures.  The idea is:  
+<ul>
+	<li> Open up the webpage for each year.
+	<li> Find the maximum temperature on the page.
+	<li> Store it in a list.
+	<li> Once all years have been processed, plot the years and maximum temperatures using matplotlib.
+</ul>
+<p>
+The hard part is figuring out the URL for the webpages.  Let's look at the URLs
+<pre>
+http://www.wunderground.com/history/airport/KLGA/2000/02/02/DailyHistory
+http://www.wunderground.com/history/airport/KLGA/2001/02/02/DailyHistory
+http://www.wunderground.com/history/airport/KLGA/2002/02/02/DailyHistory
+http://www.wunderground.com/history/airport/KLGA/2003/02/02/DailyHistory
+http://www.wunderground.com/history/airport/KLGA/2004/02/02/DailyHistory
+</pre>
+<p>
+The only thing that changes is the year, the suffix before it and the prefix after it stay the same.  Let's store those in variables and then loop through the years:
+<pre>
+    prefix = "http://www.wunderground.com/history/airport/KLGA/"
+    suffix = "/07/07/DailyHistory"
+    for year in range(2000,2015):
+        url = prefix+str(year)+suffix
+        ...
+</pre>
+<p>
+Each time through the loop, the <tt>url</tt> variable will hold the <tt>prefix+str(year)+suffix</tt>. 
+
+<p>Try running the program, <a href="weather.py">weather.py</a> and then start the assignment.
+		
+
+</div>
+
+<div>
+<h3>Assignment</h3>
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+<tr>
+<th>#1-2</th>
+<td colspan=2>
+Using the above as a starting point, use matplotlib to produce a plot of the high temperature over the last 25 years for your birthday.  For example, if you were born on February 2, then your plot would be the same as the first plot of the sample program
+<a href="weather.py">weather.py</a>.  Make sure to change the title of your plot to include your name and birthday.  <br><br>
+#1:  Submit your Python program as a <b>.py</b> file.<br>
+#2:  Submit a screen shot of the graphics window containing the plot.  <br><br>
+Note:  You will use this same data set below. Since scraping the data takes the most time of running the program, save it and use it again for the programs.
+</td>
+</tr>
+
+<tr>
+<th>#3-4</th>
+<td>
+Modify the above program to plot both the minimum and maximum temperature for the last 25 years for your birthday.
+<br><br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot. 
+</td>
+<td>
+Using the data you collected, compute the average high temperature for your birthday over the last 20 years.  Plot the maximum temperature from above as well as a constant line representing the average temperature (i.e. y = ave).
+<br><br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot.   
+</td>
+</tr>
+
+<th>#5-6</th>
+<td colspan=2>
+Collect the minimum temperatures for January 2016.  Display the collected data as a histogram.<br><br>
+#5:  Submit your Python program as a <b>.py</b> file.<br>
+#6:  Submit a screen shot of the graphics window containing the plot.  <br> 
+</td>
+</tr>
+
+</table>
+
+
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

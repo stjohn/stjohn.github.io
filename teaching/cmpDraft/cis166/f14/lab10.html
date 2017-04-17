@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 10, CIS 166, Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+This lab focuses on decisions and gives more techniques for finding errors.
+</div>
+
+
+<div>
+In Lab 3, we started with a program that drew a square to the screen, using turtle graphics:
+<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(4):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+Recall, our turtle, named <tt>daniel</tt>, moved forward 100 steps, made a 90 degree right
+turn, and then repeated these actions for a total of 4 times.  Let's modify it, so, that it 
+will draw an 8 sided polygon:
+<pre>
+import turtle
+
+def main():
+	numSides = 8                #Number of sides of the polygon
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)	#Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+To make it easier to modify, we stored the number of sides in just one place (the variable
+named <tt>numSides</tt>) and use it in range statement in the for-loop as well as calculating
+the amount needed to turn each time.
+
+<p>Run the program to make sure there's no errors.  On the graphics window, you should see
+an octogon (8-sided) figure.  How would you make an octogon like this:
+<p>
+<img src="redGreen8.jpg">
+
+<p>
+Notice that the edges change colors, the first, third, fifth, and seventh edges are red;
+while the second, fourth, sixth, and eighth edges are green.  Since we start counting with
+0, we have that the edges are red when the loop index variable <tt>i</tt> is 0,2,4,6.  The edges
+are green when the loop index variable is 1,3,5,7.  
+
+<p>To make the colors change, we need to test for when the loop index variable is even.  
+A way to say that mathematically is <tt>i</tt> is even when <tt>i</tt> divided by 2 has no remainder.
+In python, we can write that as:
+<pre>
+	if i % 2 == 0:
+		daniel.color("red")
+</pre>
+
+Let's add that to our program:
+<pre>
+#Blinking turtle for introductory programming lab
+
+import turtle
+
+def main():
+    numSides = 8
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        if i % 2 == 0:
+            daniel.color("red")      
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)  #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+What does that do?  How do we make the color green for when <tt>i</tt> is odd?  Let's add in an 
+<tt>else</tt> to our <tt>if</tt> statement:
+<pre>
+	if i % 2 == 0:
+		Turn daniel red
+	else:
+		Turn daniel green
+</pre>
+Putting all the pieces together, we get:
+<pre>
+#Blinking turtle for introductory programming lab
+
+import turtle
+
+def main():
+    numSides = 8
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        if i % 2 == 0:
+            daniel.color("red")
+        else:
+            daniel.color("green")        
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)  #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+
+Try the program to make sure that the colors change, depending on the value of <tt>i</tt>.
+Next, change your program to make a 10-sided polygon (hint:  you only need to change one line).
+
+</div>
+
+<div>
+<h3>Finding Errors, II</h3>
+
+<p>In <a href="lab6.html">Lab 6</a>, we looked at some common syntax errors and how to fix them.  Most of those errors were missing punctuation (such at colons, quotes, or plus signs).  Let's look at a few more errors that occur when using conditionals, loops, and functions:
+
+<pre>
+ADD MORE
+</pre>
+</div>
+
+
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+</html>

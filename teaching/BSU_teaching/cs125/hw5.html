@@ -1,0 +1,122 @@
+<title>Homework 5 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 5 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">This homework is due by 9 p.m., Friday,
+	12 March 1999.</font>  See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> CCJ: Exercise R6.4, p 278.
+	<li> CCJ: Exercise R6.11, p 279.
+	<li> CCJ: Exercise R6.12, p 279.
+	<li> CCJ: Exercise R6.21, p 281.
+	<li> CCJ: Exercise R6.22, p 281.
+</ul>
+
+<h2>Graded Problems</h2>
+
+<font color="red">
+    You must include comments for all functions, following the
+    <tt>javadoc</tt> format.  See CCJ, p 183-185 for more details.
+</font>
+
+<p>
+    <dt><b>P13.</b> (bar chart): Exercise P6.8, p 283.  
+    	Submit this as program 13 
+	using the electronic submission.  Please call the
+	file (and the class) Program13.  
+	Include an HTML	file in the directory called Program13.html
+	that displays your applet.
+
+	<p>
+	<b>Note:</b> You may assume that all input is in integer form,
+	and there will be no more than 20 bars.<br>
+	Your program should prompt the user
+	for all input using the GraphicsApplet interface (not
+	the console).  That is, you should use <tt>readInt()</tt>, not
+	<tt>Console.in.readInt()</tt>.
+
+	<p>
+	<b>Hint:</b> You might want to change the coordinate system
+	to match the range of the data (that is, from 0 to 100).  See
+	CCJ, p 113 for more details.
+
+			
+<p>		
+    <dt><b>P14.</b> (random walk): Write a program to simulate the 
+    	walk of a drunkard
+    	in a square street grid.  Draw a grid of 21 streets
+	horizontally and 21 streets vertically (see CCJ, p 271).  
+	Place a simulated person at
+	the center of the grid (i.e. at (0,0)), denoted by
+	a point.  For 100 times, have the simulated person
+	randomly pick a direction (east, west, north, south),
+	move one block in that direction, and redraw the
+	dot.  Circle the starting and stopping positions of
+	the walk with a circle of radius one quarter.<p>
+	Prompt the user if they would like to try again.  If
+	their answer starts with 'y' or 'Y', clear the window
+	and simulate another random walk.  If the user enters
+	anything else, thank them for playing.<p>
+	For example,
+	<p>
+	<applet code = "RandomWalk.class"
+		height = 300
+		weight = 300
+		alt = "(Your browswer does not run Java applets.)">
+	</applet>
+	<p>
+    	Submit this as program 14 using the electronic submission.  
+	Please call the file (and the class) Program14.  
+	Include an HTML	file in the directory called Program14.html
+	that displays your applet.
+
+	<p><b>Extra credit</b> if you also highlight the path that
+	the simulated person walks.  Since we're working
+	in black and white, one way to do this would be
+	to draw a line slightly below and above the path,
+	making the path appear as a wider line.
+
+<p>
+    <dt><b>P15.</b> (drawing roses): Exercise P6.21, p 288.  Submit this as 
+    	program 15 using the electronic submission.  Please call the
+	file (and the class) Program15.  
+	Include an HTML	file in the directory called Program15.html
+	that displays your applet.
+
+	<p><b>For the extra credit:</b> Your program should prompt the user
+	for the number of leaves using the GraphicsApplet interface (not
+	the console).  That is, you should use <tt>readInt()</tt>, not
+	<tt>Console.in.readInt()</tt>.
+			
+<!-- Save for HW 6
+    <dt><b>P16.</b> (Person class) .....  Submit this as program 16
+	using the electronic submission.  Please call the
+	file (and the class) Program16.
+	<br>
+	Idea for this one:  give a file (with the javadoc comments) for
+		a class to hold information about a person and they fill
+		in the methods.  Also give them the driver program.  So,
+		basically, this program is a very gentle introduction to 
+		writing a class.
+	(need to provide Program16.java and framework of Person.java)  
+-->
+
+</body>

@@ -1,0 +1,176 @@
+<title>Notes for 11 February, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 11 February</h1>
+<h2> Computer Engineering 6, Winter 1998<br>
+Introduction to Computer Science</h2>
+
+<br>
+
+<hr>
+<b>Money example: </b>
+<hr>
+
+<pre>
+/* Example of friends and overloading
+ *  
+ * 11 February 1998
+ * 
+ * Jean Potatohead
+ * jpotatoh@scudc.scu.edu
+ *
+ * This program uses a class Money to store dollars and cents.
+ * The operators ==, +, and << have been overloaded for Money. 
+ */
+
+#include &lt;iostream.h&gt
+
+class Money
+{
+	public:
+		Money();	// Default constructor
+		Money(int new_dollars);	
+				// Sets dollars to new_dollars, cents to 0
+		Money(int new_dollars, int new_cents); 
+				// Sets both dollars and cents
+		void print();	// Print out amount
+		void input();	// Get input
+		
+		friend int equal(Money amt1, Money amt2);
+					// Friend function that compares
+		
+		friend int operator ==(Money amt1, Money amt2);
+					// Friend function that compares
+		friend Money operator +(Money amt1, Money amt2);
+		friend ostream& operator &lt&lt(ostream& outs, Money amt);
+	
+	private:
+		int dollars;
+		int cents;
+};
+
+main()
+{
+	Money pocket(5,99), 
+		mine(1,101), 
+		yours(30), 
+		obj1, 
+		obj2, 
+		total;
+	
+	if ( equal(mine, yours) )
+		cout &lt&lt "We have the same amount!";
+
+	if ( mine == yours )   // Same as above, but using overloaded ==
+		cout &lt&lt "We have the same amount!";
+		
+	cout &lt&lt "Please enter the cost of the object 1:\n";
+	obj1.input();
+	
+	cout &lt&lt "Please enter the cost of the object 2:\n";
+	obj2.input();
+	
+	cout &lt&lt "First item is " &lt&lt obj1
+		&lt&lt endl;
+	cout &lt&lt "Second item is " &lt&lt obj2
+		&lt&lt endl;
+	
+	cout &lt&lt "The sum is "
+		&lt&lt obj1 + obj2;
+}
+
+Money::Money()
+// Default constructor
+{
+	cents = 0;
+	dollars = 0;
+}
+
+Money::Money(int new_dollars)	
+// Sets dollars to new_dollars, cents to 0
+{
+	cents = 0;
+	dollars = new_dollars;
+}
+
+Money::Money(int new_dollars, int new_cents) 				
+// Sets both dollars and cents
+{
+	cents = new_cents%100;
+	dollars = new_dollars + new_cents/100;
+}
+
+void Money::print()
+// Print out amount
+{
+	cout &lt&lt "$" &lt&lt dollars &lt&lt ".";
+	if ( cents < 10 )
+		cout &lt&lt "0";
+	cout &lt&lt cents;
+}
+
+void Money::input()
+// Get input
+{
+	char dollar_sign, decimal_pt;
+	
+	cin >> dollar_sign
+		>> dollars
+		>> decimal_pt
+		>> cents;
+}		
+
+int equal(Money amt1, Money amt2)
+// Friend function that compares
+{
+	return ( ( amt1.dollars == amt2.dollars)
+		&& ( amt1.cents == amt2.cents ) );
+}		
+
+int operator ==(Money amt1, Money amt2)
+// Friend function that compares
+{
+	return ( ( amt1.dollars == amt2.dollars)
+		&& ( amt1.cents == amt2.cents ) );
+}		
+
+Money operator +(Money amt1, Money amt2)
+{
+	Money temp;
+	
+	temp.cents = (amt1.cents + amt2.cents)%100;
+	temp.dollars = amt1.dollars + amt2.dollars
+		+ (amt1.cents + amt2.cents)/100;
+	
+	return ( temp );
+}
+
+ostream& operator &lt&lt(ostream& outs, Money amt)
+{
+	outs &lt&lt "$" &lt&lt amt.dollars
+		&lt&lt ".";
+	if ( amt.cents < 10 )
+		outs &lt&lt "0";
+	outs &lt&lt amt.cents;
+	return (outs);
+}
+
+</pre>
+<hr>
+
+<b> Sample output: </b>
+
+<hr>
+
+<pre>
+Please enter the cost of the object 1:
+$1.23
+Please enter the cost of the object 2:
+$3.47
+First item is $1.23
+Second item is $3.47
+The sum is $4.70
+</pre>

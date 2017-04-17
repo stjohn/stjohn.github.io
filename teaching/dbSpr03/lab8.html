@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><title>Lab 8 for CMP 420, Spring 2003, Lehman College, CUNY</title></head><body bgcolor="#ffffff" link="#003399" vlink="#236b8e"> <h1>Laboratory Exercise 8</h1><h1>Filtering and Formatting Data</h1><h2>CMP 420: Database Systems<br> Lehman College, City University of New York<br>3 April 2003</h2><hr><!--
+<h3>More on Unix</h3>
+
+The Unix operating system has many, useful built-in commands.
+The beginning of each lab has several commands that you should
+try and make sure you understand how they work:
+<ul>
+	<li> <tt>man </tt><i>commandname</i><br>
+	This is one way to get information about a command.  For
+	example, if you would like to know more the command <tt>ls</tt>
+	and the possible options, you type:
+<pre>
+    man ls
+</pre>
+	How do you get a directory listing, ordered by the last modification
+	time of the files?
+
+	<li> <tt>more</tt> <i>filename</i><br>
+	This command displays the <i>filename</i> one screenful at a time.
+	It's very useful for looking at a file that's longer than 26 lines. 
+
+	<li> <tt>wc</tt> <i>filename</i><br>
+	<tt>wc</tt> counts the number of characters, words, and lines in 
+	a file.  
+
+	<li> <i>command1</i> | <i>command2</i><br>
+	| (pronounced: "pipe") lets you take the output from the first 
+	command and send it to input of the next command.  For example, if
+	you would like to count the number of items in your directory, you
+	could first list your directory and pipe the output into word count:
+<pre>
+    ls | wc -l
+</pre>
+	What does the "-l" option do?  
+	<p>
+	How many student accounts are there on the system?  <br>
+	<i>(Hint: if you go up one directory <tt>cd ../</tt>, you will be
+	in the student accounts directory.  Count how many accounts are
+	there.  After you're done, you can return to your directory by 
+	typing: <tt>cd</tt>.)</i>
+</ul>
+--><h3>Employee Database</h3>Last lab, we used the Java interface to SQL,called JDBC<tt></tt>.  Today, we will populate a simple databaseusing&nbsp;<tt></tt>data from the web.  The database willcontain two tables:<pre>    Employees(ID, Name, Address, StartYear, StopYear, Salary)<br>    Colleges(SchoolName, StudentName)<br></pre>Telnet into <tt>comet</tt> and create a database for today'slab (or use the one you created for <a href="lab7.html">Lab 7</a>). &nbsp;You should create tables corresponding to the schemaabove, with the following constraints: <ul>    <li> ID is the primary key for Employee.    </li><li> StudentName is the primary key for Colleges.    </li><li> Address has a default value of "1600 Pennsylvania Ave."    </li><li> Name, SchoolName, and StudentName cannot be <tt>NULL</tt>.</li></ul><h3>Populating the Database</h3>One way to enter the information into your database is to typein every line by hand.  Another way is to read in the databasestored as a file.  For today's lab, we will use data from theweb to populate the database, found at:<a href="http://www.presidentsusa.net/index.html">http://www.presidentsusa.net/index.html</a>.We will use the information about the presidents found thereto populate our database.<p>Unfortunately, most data on the web cannot be immediately loadedinto your database.  You first must format it, so, it can be correctly loaded.  For example, this <a href="http://www.presidentsusa.net/presvplist.html">page</a>gives most of the information needed for the first table, while information for the second table can be found <a href="http://www.campvishus.org/PresBirthCollege.htm#college">here</a>.  However,it is not in the correct format (for example of the correct format, see the <a href="lab2data.txt">lab2data.txt</a>).</p><p>The main part of today's lab is to write a <i>filter</i> programthat reads in the data from the presidential webpage (save it asa file in your account), and writes out a file with the "INSERT ... VALUES"statements needed to insert the information about the presidentsinto the database. </p><p>Some hints on how to do this:</p><ul>    <li> You may use whichever programming language you feel most 	comfortable.  On the system is C, C++, perl, and Java with most	of the standard libraries.  Ask if you would like to use a	language not listed above.    </li><li> Start by writing a program that reads in a file line by line,	and prints out each line to the screen.    </li><li> Next, break each line you read in into pieces (in Java, you	might want to use a string tokenizer class).  Note that you	can throw away the information about the vice presidents at	the end of the lines since it's not needed in this database.    </li><li> Next, write out the lines with the necessary SQL commands to	insert the data into the database.    </li><li> We will use the presidental number as their ID.  For example,	George Washington will have ID number 1, while George W. Bush	will have ID number 43.    </li><li> Note that two presidents served less than a year, so, have	only StartYears on the webpage.  You should either "preprocess"	the file (add StopYears before running your program), or have	conditionals in your program that handle this situation.<br>	[President William Harrison caught pneumonia during his	inaugeration and died during his first year in office.  	President Garfield was assassinated by a rival's supporter	and died 80 days into his term.]</li></ul>Once you have created you data file, you can read it into yourdatabase using the "psql -f" option or using JDBC as described in the last lab.<p>Write a similar program to use the information about the collegesthat the presidents attended to populate the <tt>Colleges</tt> table.</p><h3>Using your Database</h3>Demonstrate your database works by:<ul>    <li> listing all presidents who served before 1800.    </li><li> listing all presidents who attended Harvard or Yale	and served at least 6 years.</li></ul><h3>Final Comments</h3>Before leaving the lab, you need to log out and shut down yourcomputer.  First, you should quit all applications.  Then,go to the <tt>K</tt> menu in the bottom left hand corner andselect <tt>Log Out</tt>.  Choose the <tt>Shut Down</tt> option,and shut off the monitor when you're done.<p>Remember to pick up any files you sent to the printer and totake any personal belongings.  It is difficult to get backinto the lab later (since it's locked when not in use), so,it's worth making sure you haven't forgotten anything.</p><br><br></body></html>

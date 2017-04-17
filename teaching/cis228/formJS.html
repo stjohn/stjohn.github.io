@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Validating Form Input</title>
+	<style>
+		body { 
+			font-family: sans-serif; 
+			background-color: #ffffaa;
+		}
+		th { 
+			text-align: right; 
+		}
+	</style>
+	<script>
+		function validateNonEmpty(inputField) {
+			if (inputField.value.length == 0) {
+				alert("Please enter a value.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+  </head>
+  <body>
+  	<h1>Validating Form Input</h1>
+  	
+  	<p>
+  	This is an example of validating form input, and the form is not 
+  	linked to any web application.
+  	</p>
+
+    <form>
+    
+    <table>
+      <tr>
+      	<th>Enter your name:</th> 
+      	<td><input type="text" name="name" value="" onblur="validateNonEmpty(this)"/></td>
+      </tr>
+      <tr>
+      	<th>Street:</th>
+      	<td><input type="text" name="street" value="" /></td>
+      </tr>
+      <tr>
+      	<th>City:</th>
+      	<td><input type="text" name="city" value="" /></td>
+      </tr>
+      <tr>
+      	<th>State:</th>
+      	<td><input type="text" name="state" value="" size="2"/></td>
+      </tr>
+      <tr>
+      	<th>Zip Code:</th>
+      	<td><input type="text" name="zip" value="" size="5"/></td>
+      </tr>
+	<table>
+
+
+    <br /><br/ >  
+    <input type="submit" value="Order Now!"/>      
+    </form>
+  </body>
+</html>
+

@@ -1,0 +1,781 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+<META NAME="description" CONTENT="No Title">
+<META NAME="keywords" CONTENT="exam2key">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="exam2key.css">
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1"
+ HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif_gr.gif">   
+<BR>
+<B> Next:</B> <A NAME="tex2html2"
+ HREF="node1.html">About this document ...</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+1">
+Exam 2
+<BR>
+Computer Programming 326 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+Wednesday, 5 April 2000
+</FONT></DIV>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>1.
+<DD>True or False (1 point each): 
+    <DL COMPACT>
+<DT>(a)
+<DD><U>T</U>
+A try block may have multiple catch blocks associated with it.
+        <DT>(b)
+<DD><U>F</U>
+		There are no derived classes of the base class <TT>Exception</TT>.
+        <DT>(c)
+<DD><U>T</U>
+		Methods from some of the Java class libraries throw exceptions.
+        <DT>(d)
+<DD><U>F</U>
+		Both binary files and text files must be created using a 
+		text editor.
+        <DT>(e)
+<DD><U>T</U>
+		You can pass parameters to an applet from an HTML document
+		by using the <TT>&lt;param&gt;</TT> tag.
+        <DT>(f)
+<DD><U>F</U>
+		Both Java and HTML are case sensitive.
+        <DT>(g)
+<DD><U>F</U>
+		The number of elements in an array named <TT>a</TT> is given by 
+		<TT>a.length()</TT>.
+        <DT>(h)
+<DD><U>F</U>
+		The Applet class extends the Frame class.
+        <DT>(i)
+<DD><U>T</U>
+		Applets can contain Buttons, Labels and other GUI components.	
+        <DT>(j)
+<DD><U>F</U>
+		Every applet must contain a panel.
+        <DT>(k)
+<DD><U>F</U>
+		<TT>PrintWriter</TT> is an output stream.
+    </DL>
+
+<P>
+<DT>2.
+<DD>Write the Java code that declares 
+	<DL COMPACT>
+<DT>(a)
+<DD>(2 points) a button <TT>dButton</TT> with the title 
+``<TT>Done</TT>'':
+<PRE>
+Button dButton = new Button("Done");
+</PRE>
+	    <DT>(b)
+<DD>(2 points) an exception <TT>e</TT> with the message 
+		``<TT>Error!</TT>'':
+<PRE>
+Exception e = new Exception("Error!");
+</PRE>
+	    <DT>(c)
+<DD>(3 points) an input stream, <TT>iStream</TT>, attached to a 
+		<B>binary</B> file, <TT>numbers.dat</TT>:
+<PRE>
+DataInputSteam iStream = 
+    new DataInputStream(new FileInputStream("numbers.dat"));
+</PRE>
+	    <DT>(d)
+<DD>(3 points) an array <TT>names</TT> of 5 strings:
+<PRE>
+String[] names = new String[5];
+</PRE></DL>   
+
+<P>
+<DT>3.
+<DD>What is the output of the following programs:
+	<DL COMPACT>
+<DT>(a)
+<DD>(3 points)
+<PRE>
+import java.awt.*; 
+public class Mystery3A extends Frame 
+{   public static void main(String[] args)
+    {   Mystery3A demo  = new Mystery3A();
+        demo.setVisible(true);
+    }
+    public Mystery3A()
+    {   setSize(300, 200);
+        addWindowListener(new WindowDestroyer());
+    }
+    public void paint(Graphics g)
+    {   g.setColor(Color.black);
+        g.drawRect(10,10,150,100);
+    }
+}
+</PRE>
+<B>Output:</B>
+
+<P>
+INSERT Mystery3A.gif
+
+<P>
+<DT>(b)
+<DD>(3 points)
+<PRE>
+import java.awt.*; 
+public class Mystery3B extends Frame 
+{   public static void main(String[] args)
+    {
+        Mystery3B demo  = new Mystery3B();
+        demo.setVisible(true);
+    }
+    public Mystery3B()
+    {   setSize(300, 200);
+        addWindowListener(new WindowDestroyer());
+    }
+    public void paint(Graphics g)
+    {   g.setColor(Color.black);
+        for ( int i = 1 ; i &lt;= 3 ; i++ )
+            g.drawRect(10*i, 10*i, 100, 100); 
+    }
+}
+</PRE>
+
+<P>
+<B>Output:</B>
+
+<P>
+INSERT Mystery3B.gif
+
+<P>
+<DT>(c)
+<DD>(4 points)
+<PRE>
+import java.awt.*; 
+public class Mystery3C extends Frame 
+{   public static final int RADIUS = 75;
+    public static final int XCENTER = 150;
+    public static final int YCENTER = 100;
+    public static void main(String[] args)
+    {   Mystery3C demo  = new Mystery3C();
+        demo.setVisible(true);
+    }
+    public Mystery3C()
+    {   setSize(300, 200);
+        addWindowListener(new WindowDestroyer());
+    }
+    public void paint(Graphics g)
+    {   g.setColor(Color.black);
+        for ( int i = 0 ; i &lt; 8 ; i++ )
+        {   int x1 = (int)(Math.cos(2*Math.PI*i/8)*RADIUS
+                           + XCENTER); 
+            int y1 = (int)(Math.sin(2*Math.PI*i/8)*RADIUS
+                           + YCENTER); 
+            int x2 = (int)(Math.cos(2*Math.PI*(i+1)/8)*RADIUS
+                           + XCENTER); 
+            int y2 = (int)(Math.sin(2*Math.PI*(i+1)/8)*RADIUS
+                           + YCENTER); 
+            g.drawLine(x1, y1, x2, y2);
+        }
+    }
+}
+</PRE>
+
+<P>
+<B>Output:</B>
+
+<P>
+INSERT Mystery3C.gif
+
+<P>
+</DL>
+
+<P>
+<DT>4.
+<DD>(5 points each) Given the input file, <TT>story.txt</TT>:
+                <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><TT> story.txt</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT">This is a very,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">very short</TD>
+</TR>
+<TR><TD ALIGN="LEFT">story.</TD>
+</TR>
+</TABLE>
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>What is the output of the following program:
+<PRE>
+import java.io.*;
+public class Mystery4A
+{  public static void main(String[] args)
+   {  try
+      {  BufferedReader inputStream = 
+             new BufferedReader(new FileReader("story.txt"));
+         PrintWriter outputStream =
+             new PrintWriter(new FileOutputStream("lines.txt"));
+         int count = 0;
+         String line = inputStream.readLine();
+         while (line != null)
+         {  count++;
+            if ( count % 2 == 0 )
+                System.out.println(line);
+            else
+                outputStream.println(line);
+            line = inputStream.readLine(); 
+         }
+         inputStream.close();
+         outputStream.close();
+      }
+      catch(FileNotFoundException e)
+      {  System.out.println("File story.txt not found."); }
+      catch(IOException e2)
+      {  System.out.println("Error reading from file."); }
+   }
+}
+</PRE>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Screen Output:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">very short</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+                <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Contents of </B><B><TT> lines.txt</TT>:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">This is a very</TD>
+</TR>
+<TR><TD ALIGN="LEFT">story.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(b)
+<DD>What is the output of the following program,
+    		(given the input file, <TT>story.txt</TT>):
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><TT> story.txt</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT">This is a very,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">very short</TD>
+</TR>
+<TR><TD ALIGN="LEFT">story.</TD>
+</TR>
+</TABLE>
+
+<P>
+<PRE>
+import java.io.*;
+public class Mystery4B
+{  public static void main(String[] args)
+   {  try
+      {  BufferedReader inputStream = 
+             new BufferedReader(new FileReader("story.txt"));
+         PrintWriter outputStream =
+             new PrintWriter(new FileOutputStream("lines.txt"));
+         int count = 0;
+         String line = inputStream.readLine();
+         while (line != null)
+         {  count = line.length();
+            outputStream.println(count + " " + line);
+            line = inputStream.readLine(); 
+         }
+	 System.out.println("The end."); 
+         inputStream.close();
+         outputStream.close();
+      }
+      catch(FileNotFoundException e)
+      {  System.out.println("File story.txt not found."); }
+      catch(IOException e2)
+      {  System.out.println("Error reading from file."); }
+   }
+}
+</PRE>
+                <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Screen Output:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">The end.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+                <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Contents of </B><B><TT> lines.txt</TT>:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">14 This is a very</TD>
+</TR>
+<TR><TD ALIGN="LEFT">10 very short</TD>
+</TR>
+<TR><TD ALIGN="LEFT">6 story.</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE></DL>
+
+<P>
+<DT>5.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>(2 points)
+Suppose your program attempts to read past the end of a 
+		<TT>text</TT> file (opened with <TT>BufferedReader</TT>). 
+		Which of the following is true?
+		<DL COMPACT>
+<DT>i.
+<DD>An <TT>EOFException</TT> will be thrown.
+<DT>ii.
+<DD><U><B>
+			A special value will be returned to indicate 
+			that the end of the</B></U>
+<BR>
+			<U><B>file has been reached.</B></U>
+           	    <DT>iii.
+<DD>The program will crash.
+           	    <DT>iv.
+<DD>None of the above.
+		</DL>
+
+<P>
+<DT>(b)
+<DD>(4 points) Consider the following code fragment:
+<PRE>
+try
+{
+    int num = SavitchIn.readLineInt();
+    if (num &gt; 100)
+        throw new Exception("num is too big");
+    System.out.println("You entered " + num);
+}
+catch(Exception e)
+{
+    System.out.print("Exception: ");
+    System.out.println(e.getMessage());
+}
+</PRE>
+         	Which of the following statements is true?
+		<DL COMPACT>
+<DT>i.
+<DD>If the value 25 is entered the fragment will 
+display: 
+			<TT>You entered 25</TT>
+           	    <DT>ii.
+<DD>If the value 25 is entered the fragment will 
+			display:
+         		<TT>You entered 25</TT>
+<BR>
+followed on the next line by:
+         		<TT>Exception: num is too big</TT>
+           	    <DT>iii.
+<DD>If the value 150 is entered the fragment will 
+			display: 
+			<TT>Exception: num is too big</TT>
+           	    <DT>iv.
+<DD>If the value 150 is entered the fragment will 
+			display:
+			<TT>You entered 150</TT>
+<BR>
+followed on the next line by: 
+         		<TT>Exception: num is too big</TT>
+           	    <DT>v.
+<DD><U><B>i and iii</B></U> 
+           	    <DT>vi.
+<DD>ii and iv 
+		</DL>
+
+<P>
+<DT>(c)
+<DD>(4 points)
+		Which of the following statements about catch-blocks 
+		is true?
+		<DL COMPACT>
+<DT>i.
+<DD>A try-block can have only one catch-block.
+<DT>ii.
+<DD><U><B>
+			Every catch-block has a parameter which specifies 
+			the kind of</B></U>
+<BR>
+			<U><B>exception(s) it catches.</B></U>
+           	    <DT>iii.
+<DD>The order of multiple catch-blocks appear does 
+			not matter.
+           	    <DT>iv.
+<DD>A method, which contains a catch-block, never 
+			needs a throws clause in its header.
+           	    <DT>v.
+<DD>ii and iii.
+           	    <DT>vi.
+<DD>ii and iv.
+		</DL></DL>
+
+<P>
+<DT>6.
+<DD>(10 points) 
+	The following program throws a <TT>NumberFormatException</TT>
+	if the string ``<TT>hi</TT>'' is entered into the text field.
+	Modify the program so that such exceptions are caught and
+	handled.  When such an exception occurs, reset
+	the text field to ``<TT>Error: Reenter number.</TT>''
+<BR>
+	<B>Clearly mark any changes you make to the program:</B>
+<PRE>
+import java.awt.*; import java.awt.event.*;
+public class Lab4 extends Frame implements ActionListener
+{   public static final int RADIUS = 75;
+    public static final int XCENTER = 150;
+    public static final int YCENTER = 125;
+    public static void main(String[] args)
+    {   Lab4 pieDemo  = new Lab4();
+        pieDemo.setVisible(true);
+    }
+    public Lab4()
+    {   setLayout(new BorderLayout());
+        setSize(300, 200);
+        addWindowListener(new WindowDestroyer());
+        textPanel = new Panel(); 
+        Label textLabel = new Label("Enter number of pieces:");
+        textPanel.add(textLabel);
+        theText = new TextField(3);
+        textPanel.add(theText);
+        Button doneButton = new Button("Done");
+        doneButton.addActionListener(this);
+        textPanel.add(doneButton);
+        add(textPanel, "South");
+    }
+    public void actionPerformed(ActionEvent e) 
+    {   if (e.getActionCommand().equals("Done"))
+//CHANGES: ADDED TRY AND CATCH BLOCKS:
+        { try{
+            pieces = 
+                Integer.valueOf(theText.getText().trim()).intValue();
+          }
+          catch (Exception e)
+          {
+            theText.setText("Error: Reenter number.");
+          } 
+        }
+//END OF CHANGES
+        else
+            theText.setText("Error in memo interface");
+        repaint();
+    } 
+    public void paint(Graphics g)
+    {   g.setColor(Color.black);
+        g.drawOval(XCENTER-RADIUS, YCENTER-RADIUS, 2*RADIUS, 2*RADIUS); 
+        for ( int i = 0 ; i &lt; pieces ; i++ )
+        {   int x = (int)(Math.cos(2*Math.PI*i/pieces)*RADIUS+XCENTER); 
+            int y = (int)(Math.sin(2*Math.PI*i/pieces)*RADIUS+YCENTER); 
+            g.drawLine(XCENTER, YCENTER, x, y);
+        }
+    }
+    private Panel textPanel;
+    private TextField theText;
+    int pieces = 0;
+}
+</PRE>
+	
+    <DT>7.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>(3 points) Consider the following array declaration:
+<PRE>
+String[ ] word = {"one", "two", "three"};
+</PRE>
+Which of the following could appear in a Java program?
+		<DL COMPACT>
+<DT>i.
+<DD><TT>int size = word.length();</TT>
+<DT>ii.
+<DD><TT>word.length = 3;</TT>
+                    <DT>iii.
+<DD><TT>int size = word[1].length();</TT>
+           	    <DT>iv.
+<DD><TT>word[2] = "four";</TT>
+                    <DT>v.
+<DD><U><B>iii and iv.</B></U>
+	    	</DL>
+
+<P>
+<DT>(b)
+<DD>(3 points) 
+		Which of the following statements about the concept 
+		of a stream in Java is true?
+		<DL COMPACT>
+<DT>i.
+<DD>A stream is an object which represents a flow 
+of data.
+           	    <DT>ii.
+<DD>An input stream provides data to a program as 
+			it is executing.
+           	    <DT>iii.
+<DD>An output stream can be generated by a program.
+           	    <DT>iv.
+<DD><TT>System.out</TT> is an output stream object.
+           	    <DT>v.
+<DD><U><B>All of the above.</B></U>
+           	    <DT>vi.
+<DD>ii and iii.
+	    	</DL>
+
+<P>
+<DT>(c)
+<DD>(4 points)
+		Suppose a class contains the following declaration:
+<PRE>
+DataOutputStream myFile = 
+         new DataOutputStream(new FileOutputStream("file.dat"));
+</PRE>
+         	Which of the following statements is true?
+		<DL COMPACT>
+<DT>i.
+<DD><TT>myFile</TT> is the name of a stream.
+<DT>ii.
+<DD><TT>file.dat</TT> is the name of a stream.
+           	    <DT>iii.
+<DD>The declaration connects the real file name, 
+			<TT>file.dat</TT>, to the object <TT>myFile</TT>.
+           	    <DT>iv.
+<DD><TT>myFile</TT> and <TT>file.dat</TT> can be used 
+			interchangeably.
+           	    <DT>v.
+<DD><U><B>i and iii.</B></U>
+           	    <DT>vi.
+<DD>i, iii, and iv.
+		</DL></DL>
+
+<P>
+<DT>8.
+<DD>(10 points)
+	Modify the following program to count the number of <TT>words</TT>
+	in the file <TT>story.txt</TT>.
+<BR>
+	<B>Clearly mark any changes you make to the program:</B>
+	
+<PRE>
+import java.io.*;
+public class TextEOFDemo
+{
+   public static void main(String[] args)
+   {
+      try
+      {
+         BufferedReader inputStream = 
+             new BufferedReader(new FileReader("story.txt"));
+         PrintWriter outputStream = 
+             new PrintWriter(new FileOutputStream("storylines.txt"));
+        
+         int count = 0;
+//CHANGE: ADDED COUNTER FOR WORDS:
+         int wordCount = 0;
+         String line = inputStream.readLine();
+         while (line != null)
+         {
+            count++;
+//CHANGE: FOR EACH LINE, USE STRINGTOKENIZER TO COUNT WORDS:
+            StringTokenizer s = new StringTokenizer(line);
+            wordCount += s.countTokens();
+//END OF CHANGE
+            outputStream.println(count + " " + line);
+            line = inputStream.readLine(); 
+         }
+         System.out.println(count 
+                          + " lines written to storylines.txt.");
+//CHANGE: PRINT OUT WORD COUNT
+         System.out.println(wordCount 
+                          + " words written to storylines.txt.");
+
+         inputStream.close();
+         outputStream.close();
+      }
+      catch(FileNotFoundException e)
+      {
+         System.out.println("File story.txt not found.");
+      }
+      catch(IOException e2)
+      {
+         System.out.println("Error reading from file story.txt.");
+      }
+   }
+}
+</PRE>
+
+<P>
+<DT>9.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>(2 points)
+A file that contains an HTML document should end in
+		<DL COMPACT>
+<DT>i.
+<DD><TT>.class</TT>
+<DT>ii.
+<DD><TT>.java</TT>
+           	    <DT>iii.
+<DD><U><B>.html</B></U>
+           	    <DT>iv.
+<DD><TT>.txt</TT>
+           	    <DT>v.
+<DD>None of the above.
+		</DL>
+
+<P>
+
+<P><P>
+<BR>
+
+	     <DT>(b)
+<DD>(3 points)
+		An applet class
+		<DL COMPACT>
+<DT>i.
+<DD>is a descendent class of the class Applet.
+<DT>ii.
+<DD>normally does not have a main method.
+           	    <DT>iii.
+<DD>normally uses a method named <TT>init()</TT> to do the 
+			things that would ordinarily be done in a 
+			constructors for an AWT GUI.
+           	    <DT>iv.
+<DD><U><B>All of the above.</B></U>
+           	    <DT>v.
+<DD>None of the above.
+		</DL>
+
+<P>
+
+<P><P>
+<BR>
+
+	    <DT>(c)
+<DD>(5 points)
+		Consider the following HTML document: 
+<PRE>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;/HEAD&gt;
+&lt;body&gt;
+&lt;H1&gt;My Java Applet&lt;/H1&gt;
+&lt;APPLET CODE="MyApplet.class" &gt;
+&lt;/APPLET&gt;
+&lt;/body&gt;
+&lt;/HTML&gt;
+</PRE>
+         	Which of the following statements is <B>false</B>?
+		<DL COMPACT>
+<DT>i.
+<DD>This code cannot be view by a browser because the 
+HTML commands should be all upper case letters.
+           	    <DT>ii.
+<DD>It is assumed that the file containing the HTML 
+			document and the file, <TT>MyApplet.class</TT> are in 
+			the same directory (folder).
+           	    <DT>iii.
+<DD><U><B>
+			The file containing the HTML document must have 
+			be named</B></U>
+<BR>
+			<U><B>MyApplet.html.</B></U>
+		    <DT>iv.
+<DD>All of the above.
+		    <DT>v.
+<DD>None of the above.
+		</DL>
+
+<P>
+</DL>
+
+<P>
+<DT>10.
+<DD>(10 points)
+	Write a complete Java program that asks the user for a file
+	name and outputs the first data item in that file to the screen.
+	Assume that the file is a <B>binary</B> file, and the first data 
+	item is a string that was written to the file with the method
+	<TT>writeUTF()</TT>.
+
+<P>
+This is from the self-test questions on p 477, answer on p 531.
+
+<P>
+</DL>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html3"
+ HREF="node1.html">About this document ... </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1"
+ HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif_gr.gif">   
+<BR>
+<B> Next:</B> <A NAME="tex2html2"
+ HREF="node1.html">About this document ...</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Katherine St. John</I>
+<BR><I>2000-04-05</I>
+</ADDRESS>
+</BODY>
+</HTML>

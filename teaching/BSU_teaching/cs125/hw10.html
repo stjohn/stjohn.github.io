@@ -1,0 +1,255 @@
+<title>Homework 10 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 10 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">This homework is due by 9 p.m., Friday,
+	7 May 1999.</font>  See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+        <li> CCJ: Exercise R13.4, p 535.
+        <li> CCJ: Exercise R13.5, p 535.
+        <li> CCJ: Exercise R13.13, p 536.
+        <li> CCJ: Exercise P13.10, p 539.
+        <li> CCJ: Exercise P13.13, p 539.
+        <li> CCJ: Exercise R14.1, p 562.  
+        <li> CCJ: Exercise R14.5, p 563.
+        <li> CCJ: Exercise P14.2, p 566.
+
+        <li> Give 3 examples of ethical dilemmas arising from
+        Artificial Intelligence and Expert Systems.  What
+        makes these dilemmas distinct to AI?
+
+        <li> In Chapter 8 of the Ethics Book, the effect of
+        computers on the workplace is discussed.  Should this
+        chapter be included in a book on ethics?  Justify your
+        answer.
+</ul>
+
+<h2>Graded Problems</h2>
+
+    You must comment your code (see book for examples).<br>
+    You must include comments for all functions, following the
+    <tt>javadoc</tt> format.  See CCJ, p 183-185 for more details.
+
+<p>
+<font color="red">Extra Credit:</font> There will be extra credit points
+        for turning these programs in early. For each program turned in
+        by Thursday 9 pm, you receive 5 extra credit points. For each
+        program turned in by Wednesday 9 pm, you receive 10 extra credit
+        points.
+
+
+<ol>
+	
+<p>
+    <dt><b>P29.</b> (Daily Appointments) 
+	Write a class called
+        <tt>Daily</tt> to keep track of daily appointments.
+        Your class should contain a list of appointments (you
+        may assume that there will be no more than 50 appointments
+        per day) and a counter that keeps track of the number of
+        appointments.  Your class should contain a default constructor
+        that initializes the array and sets the counter to 0.
+        <p>
+        Your class should also contain the following methods:
+        <ul>
+            <li> <tt>public void addAppointment(Appointment a)</tt>
+                that inserts an appointment into the list.  The list
+                should be sorted by beginning time of appointments.
+
+            <li> <tt>public Appointment getAppointment(int n) </tt>
+                that returns the <tt>n</tt>th appointment on the list.  If
+                <tt>n</tt> is larger than the number of appointments,
+                this function should return <tt>null</tt>.
+
+            <li> <tt>public void print()</tt> that prints all
+                the appointments.
+
+            <li> <tt>public int search(String s)</tt> that finds the
+                first appointment that contains <tt>s</tt> as part
+                of its description and returns its index in the list.
+        </ul>
+
+        <p>
+        Your main program should ask the user to enter an appointment
+        as many appointments as they wish.  Then, it should give them
+        the choice of adding an appointment, finding an appointment
+        by substring or number, or printing.  For example:
+	<pre>> javac Program29
+Please enter the beginning time for an appointment
+(year month day hour min second):
+1999 5 10 15 30 0
+
+Please enter the ending time for an appointment
+(year month day hour min second):
+1999 5 10 17 30 0
+
+Please enter a description of the appointment:
+Final Exam!
+
+Do you want to enter another appointment? (y/n)
+y
+	
+Please enter the beginning time for an appointment
+(year month day hour min second):
+1999 5 10 4 0 0
+
+Please enter the ending time for an appointment
+(year month day hour min second):
+1999 5 10 15 0 0
+
+Please enter a description of the appointment:
+Study for exam
+	
+Do you want to enter another appointment? (y/n)
+n
+
+Choose one of the following options:
+  1) Add another appointment
+  2) Find an appointment by substring
+  3) Find an appointment by appointment number
+  4) Print all appointments
+  5) Quit
+Your choice:
+2
+
+Enter the substring:
+Final
+
+The appointment is: Final Exam!
+Beginning Time: 1999 5 10 15 30 0
+Ending Time: 1999 5 10 17 30 0
+	
+Choose one of the following options:
+  1) Add another appointment
+  2) Find an appointment by substring
+  3) Find an appointment by appointment number
+  4) Print all appointments
+  5) Quit
+Your choice:
+5
+
+Thank you for using the daily appointments program!
+</pre>
+
+        <p>
+        You should include comments for each of your functions that can be
+        used by javadoc to generate documentation (see notes from class
+        or the book for more details about using javadoc).  
+        This program should be console-based.
+
+        Submit this as program 29 using the electronic submission.
+        Please call the file (and the class) Program29.
+
+
+<p>
+    <dt><b>P30.</b> (Sun Sorting Demo) 
+On their Applets page, Sun has a <a href=
+        "http://www.java.sun.com/applets/jdk/1.0/demo/
+	SortDemo/index.html">sorting demonstration</a>.
+        Copy the following files into your directory from the Sun
+        site:
+        <ul>
+                <li><a href=
+                "http://www.java.sun.com/applets/jdk/1.0/demo/SortDemo/SortItem
+.java">The applet.</a>
+
+                <li><a href=
+                "http://www.java.sun.com/applets/jdk/1.0/demo/SortDemo/SortAlgo
+rithm.java">The "generic"
+                        sorting algorithm.</a>
+
+                <li><a href=
+                "http://www.java.sun.com/applets/jdk/1.0/demo/SortDemo/BubbleSo
+rtAlgorithm.java">The Bubble
+                        Sort algorithm.</a>
+
+                <li><a href=
+                "http://www.java.sun.com/applets/jdk/1.0/demo/SortDemo/index.ht
+ml">The HTML file</a> (view the source of this).
+
+        </ul>
+        Make two new subclasses of the <tt>SortAlgorithm</tt>
+        class for selection sort and merge sort (see
+        the book for the algorithms, or, for merge sort, you may use
+        P25 of <a href="hw8.html">Homework 8</a>).
+        Make a new HTML file (based on the one above) that displays
+        selection sort, merge sort, and bubble sort.
+        Note that you do not modify SortAlgorithm.  Instead
+        you create new classes, similar to <tt>BubbleSortAlgorithm</tt>,
+        called <tt>SelectionSortAlgorithm</tt> and <tt>MergeSortAlgorithm</tt>.
+
+        <p>
+        Submit this as program 30
+        using the electronic submission.  Please call the
+        file (and the class) Program30.
+        Include an HTML file in the directory called Program30.html
+        that displays your applet.
+
+
+<p>
+    <dt><b>P31.</b> (Binary Search Tree) 
+	Write a program that reads in words from a file
+	called <tt><a href="dictionary.dat">dictionary.dat</a></tt>
+	and inserts each word into a binary search tree.  Your
+	program should then print out the words in alphabetical
+	order.  Words may occur multiple times in the input 
+	file.  However, they should only be placed in the binary
+	search tree the first time they occur.
+
+	<p>
+        Submit this as program 31
+        using the electronic submission.  Please call the
+        file (and the class) Program31.
+
+	<p>
+	<b>Extra Credit:</b> Extra credit will be given if, along
+	with the sorted list you also print out the height of
+	the binary search tree used.  For example, for 
+	<tt>dictionary.dat</tt>, the resulting binary search
+	tree would be:
+
+	<img src="bst.jpg">
+
+	<p>
+	The height of this tree is 5.
+
+	<p>
+	<b>Hints:</b>
+	<ul>
+	    <li> Modify the program <tt>Etree.java</tt> (from
+	    Chapter 13) to work with words instead of employees.
+	    The programs from the book can be found in:
+	    <pre>
+	    /usr/local/javas/ccj
+	    </pre>
+
+	    <li> Since we allow duplicate words, your inserting 
+	    method must also check if the word is already in the binary
+	    search tree.
+
+	    <li> On the extra credit, think recursively.
+	</ul>
+	
+	
+   
+
+
+</body>

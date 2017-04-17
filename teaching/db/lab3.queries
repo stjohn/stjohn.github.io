@@ -1,0 +1,33 @@
+SELECT * 
+  FROM orders 
+  WHERE date_part('year',ord_placed)=2001;
+
+SELECT * 
+  FROM orders 
+  WHERE date_part('year',ord_placed)=2001 
+        AND date_part('month',ord_placed)<=3;
+
+SELECT ord_product, sum(ord_qty) 
+  FROM orders
+  WHERE date_part('day',ord_placed)=1
+  GROUP BY ord_product;
+
+SELECT ord_id, ord_product, ord_placed, ord_delivered 
+  FROM orders
+  WHERE date_part('month', ord_placed) <> date_part('month', ord_delivered);
+
+SELECT ord_id, ord_product, ord_placed, ord_delivered 
+  FROM orders
+  WHERE date_part('month', ord_placed) <> date_part('month', ord_delivered) 
+  ORDER BY ord_placed;
+
+SELECT ord_id, co_name, pr_desc, ord_placed, ord_delivered
+  FROM orders, companies, products
+  WHERE co_id = ord_company AND ord_product = pr_code AND 
+        date_part('year',ord_placed)=2000;
+
+SELECT ord_id, co_name, pr_desc, ord_placed, ord_delivered
+  FROM orders, companies, products
+  WHERE co_id = ord_company AND ord_product = pr_code AND 
+        date_part('year',ord_placed)=2000 
+  ORDER BY co_name;

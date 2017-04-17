@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>Cookie Examples</title>
+<style>
+	body {
+		background-color: #ccaaff;
+		font-family: sans-serif;
+	}
+	span {
+		background-color: #aa88ff;
+		padding: 10px;
+		margin: 10px;
+	}
+	li {
+		margin: 20px;
+		padding: 5px;
+	}
+</style>
+<script type="text/javascript">
+	function getCookie(NameOfCookie){ 
+		var begin, end;
+		
+		if (document.cookie.length > 0) { 
+			begin = document.cookie.indexOf(NameOfCookie+"=");
+			if (begin != -1) { 
+				begin += NameOfCookie.length+1;
+				end = document.cookie.indexOf(";", begin);
+				if (end == -1) 
+					end = document.cookie.length;
+				return unescape(document.cookie.substring(begin, end)); 
+			}
+		}
+		return null;
+	}
+
+	function setCookie(NameOfCookie, value, expiredays) { 
+		var ExpireDate = new Date ();
+		ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
+		document.cookie = NameOfCookie + "=" + escape(value) +
+			((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
+	}
+
+	function delCookie (NameOfCookie) { 
+		if (getCookie(NameOfCookie)) {
+			document.cookie = NameOfCookie + "=" +
+					"; expires=Thu, 01-Jan-70 00:00:01 GMT";
+		}
+	}
+
+	function sendGreetings() {
+		var userName;
+		var numDays = 7;	//Cookie will expire in a week
+			
+		userName = getCookie("name");
+		if ( userName ) {
+			alert("Welcome back, " + userName + "!");
+		}
+		else {
+			userName = prompt("What is your name?", "Enter your name here.");
+			if (userName) {
+				alert("It is good to meet you, " + userName + ".");
+				setCookie("name", userName, numDays);
+			}
+		}
+	}
+	
+	function updateCount() {
+	
+		var countCookie = getCookie("count");	
+	
+
+		
+		if ( countCookie ) {
+			count = parseInt(countCookie);
+			count++;
+		}
+		else {
+			count = 1;
+		}
+		
+		setCookie("count", count, 365);
+		document.getElementById("counter").innerHTML = "Visits = " + count;
+	}
+</script>
+</head>
+
+<body onload="updateCount()">
+<h1>Cookie Examples</h1>
+
+<p> Below are several simple examples of using cookies:
+<ul>
+	<li> Click on the button for greetings:
+	<span id="greetings" onclick="sendGreetings()">Greetings</span>
+	</li>
+
+	<li> Here's a count of the number of times you have visited this page:
+	<span id="counter">Visits = 0</span>
+	</li>
+
+	<li> Clear the cookies for this page:  
+	<span onclick="delCookie('name')">Reset Name</span>
+	<span onclick="delCookie('count');updateCount()">Reset Counter</span>
+
+</ul>
+
+</body>
+</html> 

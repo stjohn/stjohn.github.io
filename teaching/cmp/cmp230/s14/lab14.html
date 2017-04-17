@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 14, CMP 230, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 14<br>
+CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+This lab works with associative arrays (dictionaries).
+</div>
+
+
+<div>
+In the text, Zelle develops a <a href="wordfreq.py">program</a> to count the word
+frequency in a file.  For example, if you run the program on itself, you will get:
+<pre>
+This program analyzes word frequency in a file
+and prints a report on the n most frequent words.
+
+File to analyze: wordfreq.py
+Output analysis of how many words? 10
+'                  6
+text               6
+words              6
+counts             5
+items              5
+n                  5
+in                 4
+of                 4
+word               4
+1                  3
+</pre>
+To count the number of words, he uses an associative array, or dictionary.  These
+are similar to arrays, but only store entries where they are needed.  For our 
+counting of words above, instead of having an entry for every word in the English
+language, we set up a dictionary:
+
+<pre>
+    counts = {}
+</pre>
+It starts out empty, but as we encounter new words, we add to the count for
+those words in a similar fashion as for lists or arrays:
+<pre>
+    counts[w] = counts.get(w,0) + 1
+</pre>
+After we have processed the entire file, we turn our dictionary into a list 
+that we can sort and print out the <tt>n</tt> items that have occurred most:
+<pre>
+    items = list(counts.items())
+    items.sort()
+    items.sort(key=byFreq, reverse=True)
+    for i in range(n):
+        word, count = items[i]
+        print("{0:<15}{1:>5}".format(word, count))
+</pre>
+
+<p>
+Let's try this on another file <a href="http://nifty.stanford.edu/2013/denero-muralidharan-trends/data/sandwich.txt">sandwich.txt</a> 
+(from the <a href="http://nifty.stanford.edu/">nifty program</a> developed by 
+John DeNero and Aditi Muralidharan).  This file is a collection of tweets collected
+over 24 hours, that contain the word sandwich (the format follows <a href="http://www.json.org">JSON</a>
+used by <a href="http://www.twitter.com">Twitter</a>).  When we run our program 
+again, with a small change to the <tt>open()</tt> so it can handle the extra characters
+that occur in tweets:
+<pre>
+    text = open(fname,'r',encoding='utf8').read()	#Added in encoding to handle tweets
+</pre>
+we can print out the most common words:
+<pre>
+This program analyzes word frequency in a file
+and prints a report on the n most frequent words.
+
+File to analyze: sandwich.txt
+Output analysis of how many words? 10
+sandwich         783
+2011             779
+08               503
+09               471
+co               353
+http             351
+t                350
+a                307
+3                205
+4                183
+</pre>
+Why so many numbers?  Let's look at the first couple of lines of <tt>sandwich.txt</tt>
+<pre>
+[33.979703999999998, -118.037312]	6	2011-08-28 19:35:49	Flat Iron steak sandwich, Arnold Palmer (under contract at BIOLA) (@ The 6740) http://t.co/xCE6jou
+[42.917841000000003, -78.877071999999998]	6	2011-08-28 19:41:00	Pulled pork sandwich, mac-n-cheese from Fat Bob's. (@ Elmwood Avenue Festival of the Arts) http://t.co/pkedqkn
+[47.864685469999998, -122.28599858]	6	2011-08-28 19:59:49	Why is lettuce so important to a sandwich/burger when it taste like nothing and has no nutritional value?
+[40.70896407, -73.818375709999998]	6	2011-08-28 20:10:57	Hurricane Tuna Sandwich fix (@ Dunkin' Donuts w/ 3 others) [pic]: http://t.co/qzXaFD2
+</pre>
+Each line has a lot of additional information, in addition to the twitter message.  
+The first numbers are the location, a callback (which we will ignore), the date and time, 
+and then lastly the tweet itself.  
+
+<p>
+Let's break up the information and create two different dictionaries:
+<ul>
+	<li> <tt>counts</tt> will hold the count of words found in the tweets (the 3rd and last field of 
+	each line, if we separate by tabs), and
+	<li> <tt>hours</tt> will hold the count of how many tweets occurred each hour (the end of 
+	the second field of each line, if we separate by tabs).
+</ul>
+Since we're treating different parts of each line differently, let's traverse the file
+line-by-line and create a <tt>text</tt> string variable that will hold the tweets (that
+can be processed as before) and a dictionary of the hours and frequency that tweets 
+occur.
+
+<p>First, we'll go through the file and split each line into fields, keeping only the
+hour that the tweet occurred and the tweeted message:
+<pre>
+    infile = open(fname,'r',encoding='utf8')
+
+    #Split up the lines to have the number of events each hour,
+    #   and put the tweets in text to be processed as before.
+    text = ""
+    times = {}
+    for lines in infile.readlines():
+        fields = lines.split("\t")
+        text = text + fields[3]
+        time = fields[2].split()[1]
+        hour = time[0:2]
+        times[hour] = times.get(hour,0) + 1
+        print(hour, fields[3])	#Print for testing, remove before running final program
+</pre>
+
+<p>
+Try running the <a href="tweetFreq.py">program</a> with the test print above.
+Then comment out the print, since it's not needed once you've verified it
+is getting the right fields.
+
+<p>
+Next, we'll print out the hours and the number of tweets in the dictionary for
+each hour.  We'll follow the same format as Zelle used for counting words:
+
+<pre>
+    #Print out when tweets occur:
+    items = list(times.items())
+    items.sort()
+    for item in items:
+        #Each item is a list of the key and the associated entry:
+        print("At hour", item[0], ", there were", item[1], "tweets.")
+
+</pre>
+
+At what hour do most people tweet about sandwiches?  Try your program on the other
+tweets collected at the <a href="http://nifty.stanford.edu/2013/denero-muralidharan-trends/data">nifty
+site</a>.  Each file there is labelled by the common topic (i.e. "soup", "obama", or "party").
+
+
+</div>
+
+
+<div>
+<h3>The Complete Programs</h3>
+
+<b>wordfreq.py</b> (from 
+the <a href="http://mcsp.wartburg.edu/zelle/python/ppics2/index.html">textbook</a> with a small
+modification to the <tt>open()</tt> to handle the extra characters that occur in tweets):
+<pre>
+# wordfreq.py
+
+def byFreq(pair):
+    return pair[1]
+
+def main():
+    print("This program analyzes word frequency in a file")
+    print("and prints a report on the n most frequent words.\n")
+
+    # get the sequence of words from the file
+    fname = input("File to analyze: ")
+    text = open(fname,'r',encoding='utf8').read()	#Added in encoding to handle tweets
+    text = text.lower()
+    for ch in '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~':
+        text = text.replace(ch, ' ')
+    words = text.split()
+
+    # construct a dictionary of word counts
+    counts = {}
+    for w in words:
+        counts[w] = counts.get(w,0) + 1
+
+    # output analysis of n most frequent words.
+    n = eval(input("Output analysis of how many words? "))
+    items = list(counts.items())
+    items.sort()
+    items.sort(key=byFreq, reverse=True)
+    for i in range(n):
+        word, count = items[i]
+        print("{0:<15}{1:>5}".format(word, count))
+
+if __name__ == '__main__':  main()
+
+
+</pre>
+
+<b>tweetFreq.py</b>
+<pre>
+# Modified version of wordfreq.py (from Zelle's 2nd Edition)
+#   to analyze tweet times
+
+def byFreq(pair):
+    return pair[1]
+
+def main():
+    print("This program analyzes word frequency in a file")
+    print("and prints a report on the n most frequent words.\n")
+
+    # get the sequence of words from the file
+    fname = input("File to analyze: ")
+
+###New code between these comments: ###
+    
+    infile = open(fname,'r',encoding='utf8')
+
+    #Split up the lines to have the number of events each hour,
+    #   and put the tweets in text to be processed as before.
+    text = ""
+    times = {}
+    for lines in infile.readlines():
+        fields = lines.split("\t")
+        text = text + fields[3]
+        time = fields[2].split()[1]
+        hour = time[0:2]
+        times[hour] = times.get(hour,0) + 1
+        print(hour, fields[3])	#Print for testing, remove before running final program        
+
+    #Print out when tweets occur:
+    items = list(times.items())
+    items.sort()
+    for item in items:
+        #Each item is a list of the key and the associated entry:
+        print("At hour", item[0], ", there were", item[1], "tweets.")
+        
+###New code between these comments: ###  
+        
+    #Process the text as before:
+    text = text.lower()
+    for ch in '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~':
+        text = text.replace(ch, ' ')
+    words = text.split()
+
+    # construct a dictionary of word counts
+    counts = {}
+    for w in words:
+        counts[w] = counts.get(w,0) + 1
+
+    # output analysis of n most frequent words.
+    n = eval(input("Output analysis of how many words? "))
+    items = list(counts.items())
+    items.sort()
+    items.sort(key=byFreq, reverse=True)
+    for i in range(n):
+        word, count = items[i]
+        print("{0:<15}{1:>5}".format(word, count))
+
+
+if __name__ == '__main__':  main()
+
+</pre>
+
+
+</div>
+
+</html>

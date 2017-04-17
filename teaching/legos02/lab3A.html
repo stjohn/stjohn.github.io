@@ -1,0 +1,87 @@
+<title>Lab 3A, COSMOS 2002, UC Davis</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+
+<h1>Laboratory Exercise 3A<h1>
+<h2>Robotics<br>
+COSMOS 2002<br>
+UC Davis</h2>
+
+<hr>
+<h3>Making Goals</h3>
+
+The goal of today's lab is to move a small object or ball from the
+starting zone to the target (or goal).  Your robot should push the
+ball into the goal, kick the ball (take a running start at the ball),
+but should not lift the ball from the ground.
+
+<p><b>Design requirements:</b>  This lab assumes that the two motors
+are wired to output ports A and C.  Further, each motor is attached
+to a means of locomotion (legs, treads, feet, etc.).  The touch sensor
+is wired to sensor port 1 and is attached to a bumper that pushes
+the ball.  The light sensor is wired to sensor port 2 and used to
+track colored tape on the ground.
+
+<p><b>Programs used:</b> Today's lab uses <a
+href="guidenqc/linebot1.nqc">linebot1.nqc</a>, and the line following
+programs written for the <a href="lab3.html">lab 3</a>.
+
+<p><b>Lab set-up:</b> The lab should have a small soccer goal set up
+with radial paths of tape leading into the goal.  They should be marked
+with contrasting stripes of take to signal the robots when they've 
+reached the goal, and when to shoot the ball.  You may want to set
+this all up in the children's swimming pool, used in 
+<a href="lab4.html">lab 4</a>.
+
+<h3>Dribbling towards the Goal</h3>
+
+First, modify your bumper to be better at holding the ball.  For example,
+if you built the bumper out of the yellow beams, pictured below:
+<br>
+<img src="bumper.jpg" height=200>
+
+<p>
+Reverse the yellow pieces so that they're curving out, instead of in.
+Now, modify the <a href="guidenqc/linebot1.nqc">linebot1.nqc</a>
+to follow a black line and stop when it crosses the yellow line marking
+the front of the goal.  Your robot should then back up, turn around,
+and the follow the black line back to the starting area, where it should
+celebrate making a goal by playing a song.
+
+<h3>Penalty Kicks</h3>
+
+For this program, the ball will be placed in the front of the goal and
+your robot should again follow the taped line from the starting area.
+When the robot contacts the ball (i.e. the bumper is pressed), the robot
+should stop, turn around and return to the starting area.  If hit with
+enough force, the ball should roll into the goal.  If not, move the 
+ball closer to the goal, and try again with the same program.
+your robot should again follow the 
+
+<h3>Goalies</h3>
+
+Each robot will take a turn being the goalie.  When the robot is the
+goalie, he should:
+<ul>
+    <li> sing a song to celebrate any balls he catches in his bumper.
+    <li> if he catches a ball, move it out of the goal and return
+	to the goal.
+</ul>
+If there's time, the goalie should also send a message to the shooter
+that he's caught the ball.  Modify the shooter's program to only
+celebrate if the goalie does not catch the ball.  See the book's
+chapter on communication (Chapter 17) for more details on sending 
+and receiving messages.
+
+<h3>Projects</h3>
+
+If there's time, you should work on designing your project.  Look
+at the <a href="projects.html">project page</a> for ideas.  Also,
+fill out the <a href="project_planning.html">project planning</a>
+with the hardware and software needed for your project.
+
+</body>
+</html>
+
+

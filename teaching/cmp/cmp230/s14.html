@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>CMP 230, Programming Methods I, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2><br>CMP 230: Programming Methods I <br>
+<!--CIS 166: Computer Programming for Information Processing I<br>-->
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+CMP 230 and CIS 166 both cover introductory programming in python.  The programming and assessments
+differ, but instructors are knowledgable in the content for both classes, and you are welcome and 
+encouraged to 
+attend any of <a href="officeHours.html">office hours, tutoring hours, and review sessions</a>.
+
+<table  border="1" >
+	<tr>
+		<th>Instructor:</th><th>E-mail:</th><th>Course(s): </th>
+	</tr>
+	<tr>
+		<td>Mr. Hendrix Tavarez</td><td>hendrix.tavarez</td><td>CIS 166-01, MW 1-2:40, G 217</td>
+	</tr>
+	<tr>
+		<td>Mr. Joshua Rogers</td><td>joshua.rogers.cuny@gmail.com</td><td>CIS 166-C401, TTh 11-12:40, G 221</td>
+	</tr>
+	<tr>
+		<td>Mr. Ali Syed</td><td>asyed2@gc.cuny.edu</td><td>CIS 166-F401, TTh 4-5:40, G 221</td>
+	</tr>
+	<tr>
+		<td>Prof. Katherine St. John</td><td>stjohn</td><td>CMP 230-01, W 1-2:40, G 219<br>
+													CMP 230-I401, W 11-12:40, G 219</td>
+	</tr>	
+	<tr>
+		<td>Ms. Maryam Ghaffari Saadat</td><td>maryam.ghaffari.saadat@gmail.com</td>
+													<td>CMP 230-01, M 1-2:40, G 219<br>
+													CMP 230-I401, M 11-12:40, G 219</td>
+	</tr>
+	<tr>
+		<td>Prof. Nancy Griffeth</td><td>nancy.griffeth</td><td>CMP 230-C401, TTh 11-12:40, G 219</td>
+	</tr>	
+	<tr>
+		<td>Dr. Eric Ford</td><td>eric.ford1</td><td>CMP 230-H401, MW 9-11:40, G 219<br>
+													CMP 230-ZF81, MW 6-7:40, G 219</td>
+	</tr>		
+</table>
+Unless noted, all email addresses are @lehman.cuny.edu.
+</div>
+
+
+<div>
+<h3>Announcements:</h3>
+<ul>  
+	<li> The <a href="http://mcsp.wartburg.edu/zelle/python/ppics2/index.html">book's webpage</a>
+		(includes sample programs and powerpoint slides).
+<!--
+	<li> All <a href="officeHours.html">office hours, tutoring hours, and review sessions</a>.-->
+	<li> Information about the <a href="s14/final/final.html">final exam</a>, including exams from 
+		previous years.
+</ul>
+</div>
+
+<div>
+<h3>Outline:</h3>
+
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:</b></td>
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+		<td><b>Deadlines:</b></td>
+	</tr>
+	<tr>
+		<td><b>#1</b>
+		<br>27/28 January</td>
+		<td>Review of campus computer policy and academic integrity code,<br>
+			Overview of software and hardware, compilers and interpreters, printing and
+			simple functions
+		<td><a href="s14/syl.html">Syllabus</a>,<br>
+		<a href="s14/ps230.html">Problem Sets</a>,<br>
+		<a href="s14/lab1.html">Lab 1</a></td>		
+		<td><a href="http://www.lehman.edu/academics/advising/academic-integrity.php">Academic Integrity Policy</a>,<br>
+		Chapter 1</td>	
+		<td>
+		<a href="s14/quizzes.html">Quiz 1</a></td>
+		</td>
+	</tr>
+	
+		<td><b>#2</b>
+		<br>29/30 January</td>
+		<td>Problem solving and the design process
+			variables, assignment statements, swapping values; <br>
+			Definite Loops</td>		
+		<td></td>		
+		<td>Chapter 2</td>	
+		<td><a href="s14/ps230.html">Program 1</a>,<br>
+		<a href="s14/quizzes.html">Quiz 2</a></td>
+		</td>
+	</tr>
+	
+	<tr>
+		<td><b>#3</b><br>
+		3/4 February</td>
+		<td>More on Definite Loops (For loops),<br>
+			Computing with numbers: data types, using the math library</td>		
+		<td><a href="s14/lab2.html">Lab 2</a></td>		
+		<td>Chapters 2 and 3</td>
+		<td><a href="s14/ps230.html#week2">Programs</a>,<br>
+		<a href="s14/quizzes.html#week2">Quiz 3</a></td>
+		</td>
+		
+	</tr>		
+	<tr>
+		<td><b>#4</b><br>
+		5/6 February</td>
+		<td>
+			Computing with numbers: data types, using the math library, type
+			conversions, handling large numbers, using variables as accumulators</td>		
+		<td></td>		
+		<td>Chapters 2 and 3</td>
+		<td><a href="s14/ps230.html#week2">Programs</a>,<br>
+		<a href="s14/quizzes.html#week2">Quiz 4</a></td>
+		</td>
+		
+	</tr>	
+	
+
+	<tr>
+		<td><b>#5</b><br>10/11 February</td>
+		<td>Objects and Graphics: using objects, simple graphics programming</td>		
+		<td><a href="s14/lab3.html">Lab 3</a></td>		
+		<td>Chapter 4</td>
+		<td><a href="s14/ps230.html#week3">Programs</a>,<br>
+		<a href="s14/quizzes.html#week3">Quiz 5</a></td>
+		</td>		
+	</tr>
+	<tr>
+		<td>12 February</td>
+		<td colspan = 4><span class="announcement">Lincoln's Birthday:  Campus Closed/No Classes</span></td>
+	</tr>	
+		
+
+	<tr>
+		<td><b>#6</b><br>13/19 February</td>
+		<td>Objects and Graphics: using objects, simple graphics programming</td>		
+		<td></td>		
+		<td>Chapter 4</td>
+		<td><a href="s14/ps230.html#week3">Programs</a>,<br>
+		<a href="s14/quizzes.html#week3">Quiz 6</a></td>
+		</td>		
+	</tr>
+	
+	
+	
+	<tr>
+		<td>17 February</td>
+		<td colspan = 4><span class="announcement">President's Day:  Campus Closed/No Classes</span></td>
+	</tr>	
+
+	<tr>
+		<td><b>#7</b><br>
+		18/20 February</td>
+		<td>Objects and Graphics: using mouse clicks and textual input</td>
+			
+		<td><a href="s14/lab4.html">Lab 4</a></td>		
+		<td>Chapter 4</td>
+		<td><a href="s14/ps230.html#week4">Programs</a>,<br>
+		<a href="s14/quizzes.html#week4">Quiz 7</a></td>
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td>20 February</td>
+		<td colspan = 4><span class="announcement">Classes follow Monday schedule</span></td>
+	</tr>	
+	
+	<tr>
+		<td><b>#8</b><br>
+		24/25 February</td>
+		<td>Objects and Graphics: using mouse clicks and textual input</td>
+			
+		<td></td>		
+		<td>Chapter 4</td>
+		<td><a href="s14/ps230.html#week4">Programs</a>,<br>
+		<a href="s14/quizzes.html#week4">Quiz 8</a></td>
+		</td>		
+		
+	</tr>	
+
+
+		
+
+	<tr>
+		<td><b>#9</b><br>
+		26/27 February</td>
+		<td>Computing with strings: simple string processing</td>	
+		
+		<td><a href="s14/lab5.html">Lab 5</a></td>
+		<td>Chapter 5</td>
+		<td><a href="s14/ps230.html#week5">Programs</a>,<br>
+		<a href="s14/quizzes.html#week5">Quiz 9</a></td>
+		</td>		
+		
+	</tr>
+	
+	<tr>
+		<td><b>#10</b><br>
+		3/4 March</td>
+		<td>Computing with strings: formatting,
+		multi-line strings, file processing</td>	
+		
+		<td></td>
+		<td>Chapter 5</td>
+		<td><a href="s14/ps230.html#week5">Programs</a>,<br>
+		<a href="s14/quizzes.html#week5">Quiz 10</a></td>
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td><b>#11</b><br>
+		5/6 March
+		</td>
+		<td>Computing with Strings: more on file processing</td>
+		<td><a href="s14/lab6.html">Lab 6</a></td>
+		<td>Chapter 5</td>
+		<td><a href="s14/ps230.html#week6">Programs</a>,<br>
+		<a href="s14/quizzes.html#week6">Quiz 11</a></td>
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td><b>#12</b><br>
+		10/11 March
+		</td>
+		<td>Computing with Strings: more on formatting and pattern matching</td>
+		<td></td>
+		<td>Chapter 5</td>
+		<td><a href="s14/ps230.html#week6">Programs</a>,<br>
+		<a href="s14/quizzes.html#week6">Quiz 12</a></td>
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td><b>#13</b><br>
+		12/13 March
+		</td>
+		<td>Defining Functions: functions and parameters, return values,
+			modifying input parameters</td>
+		<td><a href="s14/lab7.html">Lab 7</a></td>
+		<td>Chapter 6</td>
+		<td><a href="s14/ps230.html#week7">Programs</a>,<br>
+		<a href="s14/quizzes.html#week7">Quiz 13</a></td>
+		</td>		
+
+	</tr>
+	
+	<tr>
+		<td><b>#14</b><br>
+		17/18 March
+		</td>
+		<td>Defining Functions: functions and parameters, return values,
+			modifying input parameters</td>
+		<td></td>
+		<td>Chapter 6</td>
+		<td><a href="s14/ps230.html#week7">Programs</a>,<br>
+		<a href="s14/quizzes.html#week7">Quiz 14</a></td>
+		</td>		
+
+	</tr>
+		
+	<tr>
+		<td><b>#15</b><br>
+		19/20 March</td>
+		<td>Defining Functions: designing programs with functions
+			</td>		
+		<td><a href="s14/lab8.html">Lab 8</a></td>	
+		<td>Chapter 6</td>	
+		<td><a href="s14/ps230.html#week8">Programs</a>,<br>
+		<a href="s14/quizzes.html#week8">Quiz 15</a></td>
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td><b>#16</b><br>
+		24/25 March</td>
+		<td>Decisions
+		</td>		
+		<td></td>	
+		<td>Chapter 7</td>	
+		<td><a href="s14/ps230.html#week8">Programs</a>,<br>
+		<a href="s14/quizzes.html#week8">Quiz 16</a></td>
+		</td>		
+		
+	</tr>
+
+	
+	<tr>
+		<td><b>#17</b><br>
+		26/27 March</td>
+		<td>More on Decisions
+			</td>		
+		<td><a href="s14/lab9.html">Lab 9</a></td>		
+		<td>Chapter 7</td>	
+		<td><a href="s14/ps230.html#week9">Programs</a>,<br>
+		<a href="s14/quizzes.html#week9">Quiz 17</a></td>
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td><b>#18</b><br>
+		31 March/1 April</td>
+		<td>More on Decisions; Exception Handling
+			</td>		
+		<td></td>		
+		<td>Chapter 7 </td>	
+		<td><a href="s14/ps230.html#week9">Programs</a>,<br>
+		<a href="s14/quizzes.html#week9">Quiz 18</a></td>
+		</td>		
+		
+	</tr>
+	
+	<tr>
+		<td><b>#19</b><br>
+		3/4 April</td>
+		<td>Loops and Booleans: indefinite loops, boolean variables and
+expressions</td>		
+		<td><a href="s14/lab10.html">Lab 10</a></td>		
+		<td>Chapter 8</td>
+		<td><a href="s14/ps230.html#week10">Programs</a>,<br>
+		<a href="s14/quizzes.html#week10">Quiz 19</a></td>
+		</td>		
+
+	</tr>
+	
+	<tr>
+		<td><b>#20</b><br>
+		7/8 April</td>
+		<td>More on loops:  interactive loops, sentinel values 		
+		</td>		
+		<td></td>		
+		<td>Chapter 8</td>
+		<td><a href="s14/ps230.html#week10">Programs</a>,<br>
+		<a href="s14/quizzes.html#week10">Quiz 20</a></td>
+		</td>		
+
+	</tr>
+
+
+	<tr>
+		<td><b>#21</b><br>
+		9/10 April</td>
+		<td>
+Loops and Booleans: file loops, nesting loops
+		</td>		
+		<td><a href="s14/lab11.html">Lab 11</a></td>			
+		<td>Chapter 8</td>
+		<td><a href="s14/ps230.html#week11">Programs</a>,<br>
+		<a href="s14/quizzes.html#week11">Quiz 21</a></td>
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td>14-22 April</td>
+		<td colspan = 4><span class="announcement">Spring Recess: No class</span></td>
+	</tr>
+
+
+	<tr>
+		<td><b>#22</b><br>
+		23/24 April</td>
+		<td>Introduction to Simulation and Design: analysis and specification</td>		
+		<td></td>		
+		<td>Chapter 9</td>
+		<td><a href="s14/ps230.html#week11">Programs</a>,<br>
+		<a href="s14/quizzes.html#week11">Quiz 22</a></td>
+		</td>		
+
+	</tr>
+	
+
+
+	<tr>
+		<td><b>#23</b><br>
+		28/29 April</td>
+		<td>
+Simulation and Design:  top down design,
+bottom up implementation, prototyping; Random Numbers 
+		</td>		
+		<td><a href="s14/lab12.html">Lab 12</a></td>		
+		<td>Chapter 9</td>
+		<td><a href="s14/ps230.html#week12">Programs</a>,<br>
+		<a href="s14/quizzes.html#week12">Quiz 23</a></td>
+		</td>		
+
+	</tr>
+	
+	<tr>
+		<td><b>#24</b><br>
+		30 April/1 May</td>
+		<td>More on Simulation and Design; Defining Classes
+		</td>		
+		<td></td>		
+		<td>Chapters 9 and 10</td>
+		<td><a href="s14/ps230.html#week12">Programs</a>,<br>
+		<a href="s14/quizzes.html#week12">Quiz 24</a></td>
+		</td>		
+
+	</tr>
+
+
+	<tr>
+		<td><b>#25</b><br>
+		5/6 May</td>
+		<td>
+		More on Defining Classes		
+		</td>		
+		<td><a href="s14/lab13.html">Lab 13</a></td>		
+		<td>Chapter 10</td>	
+		<td><a href="s14/ps230.html#week13">Programs</a>,<br>
+		<a href="s14/quizzes.html#week13">Quiz 25</a></td>
+		</td>		
+		
+		
+	</tr>
+
+	<tr>
+		<td><b>#26</b><br>
+		7/8 May</td>
+		<td>Data Collections	
+		</td>		
+		<td></td>		
+		<td>Chapter 11</td>	
+		<td><a href="s14/ps230.html#week13">Programs</a>,<br>
+		<a href="s14/quizzes.html#week13">Quiz 26</a></td>
+		</td>		
+		
+		
+	</tr>
+
+
+	<tr>
+		<td><b>#27</b><br>
+		12/13 May</td>
+		<td>More on Data Collections:  Dictionaries
+		</td>		
+		<td><a href="s14/lab14.html">Lab 14</a></td>		
+		<td>Chapter 11</td>
+		<td><a href="s14/ps230.html#week14">Programs</a>,<br>
+		<a href="s14/quizzes.html#week14">Quiz 27</a></td>
+		</td>		
+		
+		
+	</tr>
+	
+	<tr>
+		<td><b>#28</b><br>
+		14/15</td>
+<td>Review</td>		
+		<td></td>		
+		<td>Chapters 1-11</td>
+		<td><a href="s14/ps230.html#week15">Programs</a>,<br>
+		<a href="s14/quizzes.html#week15">Quiz 28</a></td>
+		</td>		
+		
+		
+	</tr>
+
+	
+	<tr>
+		<td>16 May</td>
+		<td colspan = 4><span class="announcement">Reading Day</span>
+		</td>	
+	</tr>
+
+	<tr>
+		<td><b>19 May<br> <span class="announcement">8:30-10:30am</span></b></td>
+		<td><span class="announcement">Final Exam for CMP 230-C401 (MW 9-11)</span></td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><b><span class="announcement">11am-1pm</span></b></td>
+		<td><span class="announcement">Final Exam for CIS 166-01 (MW 1-3)</span>
+			<br>
+			<span class="announcement">Final Exam for CMP 230-01 (MW 1-3)</span></td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>	
+	
+	<tr>
+		<td><b><span class="announcement">6:15-8:15pm</span></b></td>
+		<td><span class="announcement">Final Exam for CMP 230-ZF81 (MW 6-8)</span></td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>	
+	<tr>
+		<td><b>20 May<br> <span class="announcement">3:45-5:45pm</span></b></td>
+		<td><span class="announcement">Final Exam for CIS 166-F401 (TTh 4-6)</span></td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>	
+
+	
+	<tr>
+		<td><b>21 May<br> <span class="announcement">11am-1pm</span></b></td>
+		<td><span class="announcement">Final Exam for CMP 230-I401 (MW 11-1)</span></td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><b>22 May<br> <span class="announcement">11am-1pm</span></b></td>
+		<td><span class="announcement">Final Exam for CIS 166-C401 (TTh 11-1)</span><br>
+			<span class="announcement">Final Exam for CMP 230-C401 (TTh 11-1)</span>
+		</td>		
+		<td></td>		
+		<td></td>
+		<td></td>
+	</tr>	
+
+</table>
+
+
+
+<br>
+<br>
+<br>
+(Last updated: 31 March 2014)

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8, LSP 150, Lehman College-- CUNY, Fall 2004</title>
+</head>
+<body style="background-color: rgb(255, 255, 255);" link="#003399"
+ vlink="#236b8e">
+<h1>Laboratory Exercise 8<br>
+</h1>
+<h2>LSP 150: Computers &amp; Society<br>
+Lehman College-- CUNY<br>
+11 November 2004</h2>
+<hr>
+<h3>Rotation Sensor<br>
+</h3>
+Today's lab focuses on using a new sensor, called the rotation sensor.
+The rotation sensor measures the amount something has turned.&nbsp;
+We'll write several programs to test the rotation sensor and then use
+it to&nbsp; go exact distances, independent of how strong the batteries
+in the robot are.
+<p><b>Design requirements:</b> This lab assumes that the
+two motors are wired to output ports A and C. Further, each motor is
+attached to a means of locomotion (legs, treads,
+feet, etc.).&nbsp; A rotation sensor should be attached to the shaft of
+one of your motors and connected to a sensor port.
+</p>
+<h3>Testing the Sensor<br>
+</h3>
+The rotation sensor allows us to measure how much something has
+turned.&nbsp; Like other sensors, you must tell the robot what kind of
+sensor you are using.&nbsp; For example, to set up a rotation sensor on
+an input port you have called ANGLE (that is, you have #define at the
+top of the program saying which input port is called ANGLE):<br>
+<pre>   SetSensor(ANGLE, SENSOR_ROTATION);&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; </pre>
+The sensor can measure how far something has turned (see p. 28-29 for
+pictures) in increments of 22.5 degrees.&nbsp; So, a value for the
+rotation sensor of 16 occurs when you've turned 16*22.5 = 360
+degrees.&nbsp; So, a full rotation equals a measurement of 16.&nbsp; If
+you would like to turn 90 degrees, you would stop when you see a
+measure measurement of 4.&nbsp; To test the value of the rotation
+sensor, we use the same format as for other sensors.&nbsp; For example,
+assume ANGLE is the input port for your sensor.<br>
+<br>
+<pre>  until (ANGLE == 16);&nbsp;&nbsp;&nbsp;   // Wait until one full rotation has occurred<br></pre>
+<br>
+To start today, write a simple program that moves both motors forward
+at a very, very slow speed and has a rotation sensor attached to one of
+the motors.&nbsp; Use the view button to examine the input from the
+rotation sensor.&nbsp; What values does it take?&nbsp; Change the
+program (or the motor leads) so that the robot goes backwards.&nbsp;
+What happens to the values from the rotation sensor?<br>
+<br>
+Next, write a program that will beep every full revolution of the
+motors.<br>
+<h3>Going Precise Distances</h3>
+With a rotation sensor, you can now write programs where your robot
+goes precise distances.&nbsp; This makes going repeatable distances
+(for example, as in the obstacle course) much easier, since you no
+longer have to adjust the time to make up for weakening
+batteries.&nbsp; <br>
+<br>
+Write a program, using the rotation sensor that will trace out one side
+of a tile on the floor.&nbsp; Note that this will likely be several
+full rotations.&nbsp; Use your second program from before to get a
+rough estimate (the number of beeps equals the number of full
+rotations) and then perfect your program by trial and error.<br>
+Next, write a program that will trace out a complete square.<br>
+<h3>Finishing up for the Day<br>
+</h3>
+To get credit for this laboratory, you need to show and explain your
+programs to Prof. St. John, as well as demonstrate that they run using
+your robot.<br>
+<br>
+We must be out of the computer laboratory by 11:50am.&nbsp; As such, if
+you
+are not ready to demonstrate your work by 11:45am, you can do so in the
+next laboratory.&nbsp; Before leaving the room, make sure that all
+computers
+and monitors are turned off, that any paper and trash have been
+removed, and that all chairs are returned
+to their proper places.&nbsp; Also, make sure you pack up your IR tower
+in
+your shoe box, since they're difficult to replace.
+&nbsp;&nbsp;
+<br>
+<br>
+</body>
+</html>

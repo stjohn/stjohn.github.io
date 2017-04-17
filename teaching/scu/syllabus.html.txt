@@ -1,0 +1,205 @@
+<title>Syllabus for CS 117, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Syllabus for Computer Science 117</h1>
+<h2>Boise State University, Fall 1998</h2>
+<h2>Introduction to C++</h2>
+
+<hr>
+<b>Instructor:</b> Dr. Katherine St. John<br>
+<b>E-mail:</b> <a href="mailto:stjohn@cs.idbsu.edu">stjohn@cs.idbsu.edu</a><br>
+<b>Phone:</b> ??? <br>
+<b>Office:</b> ??? <br>
+<b>Office Hours:</b> ??? and by appointment.<br>
+
+<b>Lecture:</b> T Th 10:40-11:55 in ???<br>
+
+<hr>
+
+<ul>
+	<li> <b>Catalog Description</b><br>
+		An introductory course in computer programming, using the
+		C++ language in a unix environment. Topics include:
+		scalar types; aggregate types; pointer and reference types;
+		statements; expressions; functions; libraries; and a brief
+		introduction to classes, objects, and overloading.  Emphasis
+		is on: development, compilation, debugging, and execution of
+		complete programs implementing given algorithms for
+		numerical, scientific, and engineering applications.
+
+	<li> <b>Prerequisites</b><br>
+  		M147 Precalculus or satisfactory placement score.
+
+	<li> <b>Textbook</b><br>
+		<i>Essential C++ for Engineers and Scientists,</i> 
+		by Jeri Hanly. Addison-Wesley, 1997.
+
+</ul> 
+
+<hr>
+
+</body>
+</html>
+
+
+
+\Section{Activities}
+
+Grades are based on student performance of several
+activities. They are listed below, along with their relative
+weights.
+
+\begin{TasksII}
+  Homework  & 20\% \\
+  Boardwork & 5\% \\
+  Exam \#1  & 20\% \\
+  Exam \#2  & 20\% \\
+  Final     & 35\% \\
+\end{TasksII}
+
+Four homework sets are assigned during the semester.
+
+Weekly boardwork sets are like homework. However, students
+are selected randomly, without replacement, to transcribe
+their answers to the chalkboard/whiteboard. The answers are
+then analyzed, by the class, for important qualities such as
+correctness and readability.
+
+Two exams and a final are administered during the semester.
+These are in-class, open-note, and open-textbook (but no
+other books) tests.
+
+\Section{Documentation Standards}
+
+Good documentation and programming style is very important.
+Your programs must demonstrate these qualities for full
+credit.  Good documentation and programming style includes:
+\begin{itemize}
+\item heading comments giving: author, date, class, and description
+\item function/procedure comments giving description of:
+  purpose, parameters, and return value
+\item other comments where clarification of source code is needed
+\item proper and consistent indentation
+\item proper structure and modularity
+\end{itemize}
+
+When you submit a program, include: the source code, sample
+input data, and its corresponding results.
+
+\Section{Grading}
+
+Homework is to be submitted at the beginning of lecture on
+the day it is due. Late work is not accepted.
+
+Makeup examinations are not administered.
+
+Scores are posted near my office, as they become available.
+You are encouraged to check your scores to ensure they are
+recorded properly.  If you feel that a grading mistake has
+been made, contact me within two weeks of the date that work
+is returned. Old scores are not changed.
+
+\Section{Collaboration}
+
+On homework and boardwork, a student must work
+independently.  Ideas and general principles can be
+discussed with other students, but work must be original.
+
+Keep your source code to yourself. See the \unix\ commands
+\texttt{chmod go-rwx} and \texttt{ls -l}.
+
+On exams, of course, each student must work entirely
+independently.
+ 
+\Section{Computer Accounts}
+
+Each student receives an account on \texttt{topaz}, one of
+the department's computers, which runs the \linux\ operating
+system.
+
+The dialect of \cpp\ used in the class is that accepted by
+the \gnu\ Compiler, version 2.7.2.1 for \texttt{i386-linux}.
+
+You are responsible for understanding and complying with the
+departmental computing policy. Violations may result in
+account suspension.
+
+\Section{Schedule}
+
+\input{sched1.tex}
+\newpage
+\input{sched2.tex}
+
+\end{document}
+------------------------------------------------------------
+Jan 19 Mon (Holiday)
+Jan 21 Wed Syllabus
+Jan 23 Fri Computers                                                 1.1--1.2
+
+Jan 26 Mon                                                           1.3--1.4
+Jan 28 Wed Basic Elements of C++                                     2.1
+Jan 30 Fri                                                           2.2
+
+Feb 02 Mon                                                           2.3
+Feb 04 Wed                                           HW#1            2.4
+Feb 06 Fri                                                           2.5
+
+Feb 09 Mon                                                           2.6
+Feb 11 Wed                                           HW#2    HW#1    2.7--2.8
+Feb 13 Fri Control Structures                                        3.1
+
+Feb 16 Mon (Holiday)
+Feb 18 Wed                                                           3.2
+Feb 20 Fri                                                   HW#2    3.3
+
+Feb 23 Mon                                                           3.4
+Feb 25 Wed                                                           3.5--3.6
+Feb 27 Fri Repetition Structures                                     4.1
+
+Mar 02 Mon (Exam #1)
+Mar 04 Wed                                                           4.2
+Mar 06 Fri                                           HW#3            4.3
+
+Mar 09 Mon                                                           4.4
+Mar 11 Wed                                                           4.5
+Mar 13 Fri                                                           4.6--4.7
+
+Mar 16 Mon User-Defined Functions                                    5.1
+Mar 18 Wed                                                           5.2
+Mar 20 Fri                                                   HW#3    5.3
+
+Mar 23 Mon (Vacation)
+Mar 25 Wed (Vacation)
+Mar 27 Fri (Vacation)
+
+Mar 30 Mon                                                           5.4
+Apr 01 Wed                                                           5.5
+Apr 03 Fri                                                           5.6--5.7
+
+Apr 06 Mon (Exam #2)
+Apr 08 Wed Classes of Objects                                        6.1
+Apr 10 Fri                                                           6.2
+
+Apr 13 Mon                                           HW#4            6.3
+Apr 15 Wed                                                           6.4
+Apr 17 Fri                                                           6.5
+
+Apr 20 Mon Arrays and Strings                                        7.1
+Apr 22 Wed                                                           7.2
+Apr 24 Fri                                                           7.3
+
+Apr 27 Mon                                                   HW#4    7.4
+Apr 29 Wed                                                           7.5
+May 01 Fri                                                           7.6
+
+May 04 Mon Wrapup
+May 06 Wed
+May 08 Fri
+
+May 12 Tue (Final: 8:00--10:00)
+

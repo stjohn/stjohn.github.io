@@ -1,0 +1,12 @@
+task main() {
+  int count = 0;
+  while (count <= 5) {
+    PlaySound(SOUND_CLICK);
+    Wait(count * 20);
+    increment(count);
+  }
+}
+
+void increment(int& n) {
+  n++;
+}

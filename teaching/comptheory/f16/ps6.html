@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 6 for CMP 416/685: Computability Theory, CUNY, Fall 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<img id="bookImage" alt="cover picture" src="../cover.gif"
+ width="90"><br>
+ 
+<h2>Problem Set 6:  Pushdown Automata</h2>
+<h3>Computer Science 416/685: Computability Theory<br>
+Lehman College, City University of New York<br>
+Fall 2016<br><br></h3>
+</div>
+
+
+<div>
+<font color="#ff0000">Due Dates: &nbsp;Oral presentations of material begin on 20 October.<br>
+Written descriptions of material presented due one week after presentation.</font><br>
+</div>
+
+
+
+
+
+<div>
+
+<b>Topics:</b> Pushdown Automata (Chapter 2).<br>
+<br>
+An integral part of this class is understanding and presenting the problems
+assigned as homework. Everyone is expected to do all the problems,
+but we will take turns on who presents the problem solutions to the class
+(every 2-3 weeks, depending on the number of students in the class). Within
+a week of presenting a problem solution to the class, you must submit a written
+description of it, via the Blackboard system. The written solutions
+will be posted on the Blackboard website for the class, so, they can used
+by everyone to study for the exams. Since it's hard to write
+down answers that are concise and are easily readable by all, if you wish
+to improve a grade on any problem, you may resubmit it for grading.
+</div>
+
+
+
+<div>
+<h2>Undergraduate Problems</h2>
+All students enrolled should complete the following:<br>
+<br>
+<ol>
+
+	<li> Give a string that can be derived in two different ways from the grammar:
+	<blockquote>
+		E &rarr; E + E | E x E | (E) | a
+	</blockquote>
+	</li>
+	
+	<li> Convert the following CFG into an equivalent CFG in Chomsky normal form, using the procedure given in Theorem 2.6.
+	<blockquote>
+		E &rarr; E + E | E x E | (E) | a
+	</blockquote>
+	</li>
+	
+	<li>  Let G be the context free grammar:
+	<blockquote>
+		E &rarr; E + T | T <br>
+		T &rarr; T x F | F <br>
+		F &rarr; (E) | <tt>a</tt>
+	</blockquote>
+	Using the procedure in Theorem 2.12, convert G into an equivalent pushdown automata.
+	<br><br>
+	
+
+	<li> Give a context free grammar that generates the language 
+	<blockquote>
+		A = {a<sup>i</sup>b<sup>j</sup>c<sup>k</sup> | i,j,k &ge; 0 and i=j or j=k}
+	</blockquote>	
+	Is your grammar ambiguous?  Why or why not?
+	<br><br>
+	<li>  Describe a Pushdown Automata that accepts the language:
+	<blockquote>
+		L = {w | w contains more 1's than 0's}
+	</blockquote>		
+	
+
+
+	
+	<li>  Convert the following CFG into an equivalent CFG in Chomsky normal form, using the procedure given in Theorem 2.6.
+	<blockquote>
+		A &rarr; BAB | B| &epsilon; <br>
+		B &rarr; 00 | &epsilon;
+	</blockquote>
+
+
+</ol>
+</div>
+
+<div>
+<h2>Graduate Problems</h2>
+Students enrolled for graduate credit, should complete all the undergraduate problems, as well as:<br>
+<br>
+<ol>
+
+	<li>  Let G be the context free grammar:
+	<blockquote>
+		R &rarr; XRX | S<br>
+		S &rarr; <tt>a</tt>T<tt>b</tt> | <tt>b</tt>T<tt>a</tt> <br>
+		T &rarr; XTX | X | &epsilon;<br>
+		X &rarr; <tt>a</tt> | <tt>b</tt>
+	</blockquote>
+	Using the procedure in Theorem 2.12, convert G into an equivalent pushdown automata.	
+	<br><br>
+	<li> Show that the collection of context free languages is closed under the union operation.	
+	</li>	
+</ol>
+</div>
+</body></html>

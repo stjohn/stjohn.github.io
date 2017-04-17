@@ -1,0 +1,168 @@
+<title>Lab 2 for Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Laboratory 2</h2>
+<h3>Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h3>
+<hr>
+<b>Netscape, Mail, and the Game of Nim</b>
+<hr>
+
+
+<h3>Setting Up lab2 Directory</h3>
+
+	
+	At the beginning of every lab, you should make a subdirectory to 
+	hold your work for that lab.  Change directories to your coen6
+	subdirectory, create a new directory called "lab2", and change
+	directories to your new subdirectory, lab2.  Recall, 
+	to do this, you type (in a Unix Window):
+
+	<pre>	cd coen6
+	mkdir lab2
+	cd lab2</pre>
+
+	<p>
+	It is often useful to go the parent directory of the one you
+	are in.  To do this, you type:
+	<pre>	cd ..</pre>
+	This will take you back to the coen6 directory.  If you want
+	to go back to your home, or starting, directory, you can do
+	"cd .." again.  Since you often want to return to your home
+	directory, there is a special command to do so.  It is:
+	
+	<pre>	cd ~</pre>
+	This will take you back to your home directory, no matter where
+	you are.
+
+
+<h3>Playing Nim</h3>
+
+	Today, we are going to write a program that plays the game of
+	nim.
+    	The game of nim starts with a whole number (between 1 and 50) of 
+     playing sticks. The two players take turns subtracting 1, 2, or 3
+     sticks from the pile. The player who takes the last stick loses. Write
+     a program that takes a integer between 1 and 50 as input, and
+     alternatively asks each player for the number of sticks (1, 2, or 3)
+     they would like to remove from the pile. When the pile is empty, the
+     program should announce which player is the winner.
+
+	You should write an algorithm, test your algorithm, then write
+	and test your program.
+
+<h3>Program Style and Comments</h3>
+
+	Your program should have include a comment header with your
+	name, e-mail, honesty pledge, and a short description of what
+	the program does (including any assumptions, or preconditions,
+	you have made).  The program should be properly indented following
+	the style discussed in class and illustrated in the text.
+	Besides the initial comments, you should include comments for
+	any aspect of your algorithm or implementatation that is not
+	self-evident.
+
+<h3>Netscape</h3>
+
+	All homeworks and labs are posted on the class webpage.  Before
+	you leave lab, you should print out the next homework, since it
+	will not be passed out.  To do this, you need to bring up Netscape.
+	Click on the arrow above the "N" icon on the icon strip at the
+	bottom of your screen (near the center of the strip).  Choose
+	"Netscape 4.04".  It will take a little bit of time for Netscape
+	to load.  If this is your first time using netscape from this 
+	account, you will be see  several dialog boxes of greetings, before
+	the main Netscape window appears.  When the main window appears,
+	click on the "Open Page" option from the File menu.  Type in the
+	URL (Universal Record Locator) for our class:
+	
+	<pre>	http://www.cse.scu.edu/~kstjohn/coen6/coen6.html</pre>
+
+	From that page, click on "Homework 2."  To print Homework 2, 
+	click on the Print icon at the top of the Netscape Window.  A
+	dialog box will appear.  You will need to change the "Print Command"
+	in that box to:
+	
+	<pre>	lp -d laser</pre>
+
+	and then click on "Print" in the lower left hand corner of the
+	box.  Netscape will send this to the line (or queue) of files
+	waiting to be printed and will bring up a dialog box to tell you
+	the number in line your file is.  Click on "OK" and get your 
+	printout from the lab monitor (the laser printer is located
+	directly behind the lab monitor's desk).  
+
+<h3>Using Netscape Mail</h3>
+
+	We will also use Netscape for mail.  Before using Netscape Mail,
+	it is a good idea to check to see that the preferences are 
+	correct.  To do this, click on "Preferences" under the Edit 
+	Menu.  Next click on "Mail & Groups" under the Category bar on 
+	the left.  Click on "Identity" and make sure that the name and 
+	e-mail address are correct.  Next, click on "Mail Server", your
+	user name should be the same as your login.  Your outgoing and
+	incoming mail server should be "mail" (if you are setting this
+	up at home, they should be "mail@scudc.scu.edu" and you should
+	also click on "Leave messages on server").  Click on "OK", and
+	you are now ready to use Netscape Mail.
+
+	<p>
+	To open Netscape mail, you can either click on the mail icon
+	in the bottom right hand corner of Netscape or you can choose
+	"Messenger Mailbox" from the Communicator menu.  To send a
+	message, choose "New Msg".  In the "To:" box, type in:
+
+	<pre>	coen006@scudc.scu.edu</pre>
+
+	to send mail to the class account.  For a subject, you should
+	type in:
+
+	<pre>	lab 2</pre>
+
+	We will use the subject to sort your homework and labs for 
+	grading, so, you need to use exactly what is given as a subject
+	to ensure your work is sorted correctly.
+	
+	<p>
+	To include your homework, click on the "Attach" button and 
+	choose "File..." from the submenu.  This will bring up a 
+	dialog box from which you can choose the name of the file
+	you would like to send.  You only need to send your source
+	code (e.g. nim.cpp), not any of your captured interactions
+	with the computer.
+	
+	
+	<p>
+	To see if you have any new mail while in Netscape Mail, click
+	on the "Get Msg" button.  
+	The class account will send an acknowledgment message (usually
+	within 5 minutes) when 
+	your work has been submitted.  Keep this message since it
+	will be your proof that you turned in your homework. 
+
+<h3>What to Turn In</h3>
+
+	
+	Before leaving the lab, you should give the TA:
+	<ul>
+		<li> a printout of the C++ file 
+		<li> a printout of at least <b>2</b> interactions between
+			between you and the computer when the
+			nim program is run. 
+	</ul>
+
+	You should also mail a copy of your program only (no need to 
+	mail the interactions) to 
+	<pre> 	coen006</pre>
+	with a subject of 
+	<pre>	lab 2</pre>
+	
+	<p>
+	If you finish the lab early, you should use the rest of the time 
+	to start the homework.
+	
+
+</body>

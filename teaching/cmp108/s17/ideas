@@ -1,0 +1,45 @@
+Lab based on bokeh:
+
+Google Maps API key:  AIzaSyCdpRWhGsCGOCPRNH3Q2hY6gn4oMeSKaCU
+
+Use Lab 7 from CMP-- uses functions and turtles together
+
+Lab 6-- use the finding errors midway through term
+
+https://data.cityofnewyork.us/Health/Most-Popular-Baby-Names-by-Sex-and-Mother-s-Ethnic/25th-nujf/data
+
+<div>
+<h3>Using Decisions</h3>
+
+<ul>
+	<li> Change shape of point marked depending on type of 311 complaint
+	<li> Change size of earthquake based on magnitude of the quake
+</ul>
+
+<ul>
+	<li> Get a size to change the pensize that's drawing-- need to convert to int (review of last time).
+	<li> Get a message to print out on the screen
+	<li> Next program:  use stamp() and penup() and mark out points on screen
+
+	<li> Add in debugging here or after functions?
+	<li> When functions are introduced, use CMP Lab 7-- does turtles and functions
+	<li> Use babyName data with graphing-- matplotlib or seaborn or bokeh?  
+
+</ul>
+
+
+</div>
+
+<div>
+
+Add in groupby() and count() to aggregate data...  
+Apply to collisions?  
+Make a new column for month, or hour, or minutes after hour, groupby and plot.
+</div>
+
+<div>
+<h3>Mapping Coordinates</h3>
+
+Work through mapping points to a map-- start with cities?  make the size be integer division by 1,000,000
+
+</div>

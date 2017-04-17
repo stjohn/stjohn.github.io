@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 12, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 12<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab continues our work on simulations, focusing on stock simulations.
+
+</div>
+
+
+<div>
+<h3>Random Walks and Stock Prices</h3>
+
+Random walks (and their more sophisticated cousins, Monte Carlo methods)
+are used to simulate diverse phenomena from predicting stock prices to 
+predicting the weather.
+
+<p>We will focus on simulating how the price of a stock changes over a
+quarter.  We will start with the price of $0, and each day with probability
+<tt>prob</tt>, the price will increase by a dollar.  If
+it does not increase, it's price will go down by a dollar:
+<pre>
+    money = 1
+
+    for day in range(90):
+        if (random() < prob):
+            money = money + 1
+        else:
+            money = money - 1
+</pre>
+Instead of just tracking one stock, we'll track 10 different ones, using 
+a list, <tt>prob[]</tt>, to hold the probability of change for each stock.
+We can make a graphic version of this by plotting the change in money 
+made each day:
+<pre>
+def simulate(turtleList, prob, money, time):
+    #Calculate and graph amount money made over time days
+    for day in range(time):
+        for i in range(len(turtleList)):
+            #If the random number is below the turtle's prob, go up
+            if (random() < prob[i]):
+                money[i] = money[i] + 1
+                turtleList[i].left(45)
+                turtleList[i].forward(10)
+                turtleList[i].right(45)
+            #Else, go down
+            else:
+                money[i] = money[i] - 1
+                turtleList[i].right(45)
+                turtleList[i].forward(10)
+                turtleList[i].left(45)
+
+</pre>
+
+To run this program, we need to set up the lists as well as the graphics environment.
+First, let's write out the main:
+<pre>
+def main():
+    #Keep track of the money made by each turtle/chain:
+    money = [0]*10
+    prob = [0]*10
+
+    #Set up screen and turtles
+    setUpScreen()
+    turtleList = setUpTurtles(10)
+    for i in range(10):
+        prob[i] = random()
+        print(prob[i])
+
+    #Simulate the money gained and lost for each stock over 90 days:
+    simulate(turtleList, prob, money, 90)
+         
+    print("Max money made is", max(money))
+    print("Min money made is", min(money))
+
+    turtle.Screen().exitonclick()
+
+main()
+</pre>
+We start by setting up empty lists to hold the money made as well as the 
+probability of success for each turtle.  Our <tt>main()</tt> also includes
+several calls to functions that we need to write:
+<ul>
+	<li> <tt>setUpScreen()</tt>:  draws an axis to the screen
+	<li> <tt>setUpTurtles()</tt>:  sets up 10 different turtles, all different colors
+	<li> <tt>simulate()</tt>: simulates the amount of money made over the time period
+</ul>
+
+<p>
+Let's look at each one separately:
+
+<p>
+<b>setUpScreen()</b>:  Creates a turtle just for drawing the x-axis.  It lifts the pen, moves far
+to the left, and then draws across the screen.
+
+<pre>
+#A function that sets up the x-axis on the screen:
+def setUpScreen():
+    #Create a turtle to draw the x-axis
+    t = turtle.Turtle()
+    t.speed(0)
+    #Lift it's pen up and move it to the far left
+    t.up()
+    t.right(180)
+    t.forward(350)
+    #Draw the axis
+    t.down()
+    t.right(180)
+    t.forward(700)
+</pre>
+
+
+<b>setUpTurtles()</b>:  This function uses a for-loop to create 10 turtles.  Each turtle 
+is moved to the starting position (at the far left of the screen), has had its speed
+adjusted to full (10), and been set to a random color.  It is then appended to the end
+of the list.  After all 10 turtles are created, the list is returned.
+
+<pre>
+#Sets up num turtles to all start at the far left,
+#   to tell them apart, color them different shades
+def setUpTurtles(num):    
+    turtleList = []             #Our list of turtles
+    for i in range(num):
+        t = turtle.Turtle()
+        t.speed(0)              #Fastest turtle speed to avoid boredom
+        t.up()
+        t.right(180)
+        t.forward(350)
+        t.right(180)
+        t.down()
+        #Choose random values for the red, green, and blue (RGB):
+        t.color(random(), random(), random())
+        turtleList.append(t)
+
+    return(turtleList)
+</pre>
+
+<b>simulate()</b>:  This is where the simulation occurs.  As in our random walk lab, a 
+random number is generated.  If it is less than the probability for the given turtle, the
+turtle moves up (makes money.  Otherwise, the turtle moves down (loses money).
+
+<pre>
+def simulate(turtleList, prob, money, time):
+    #Calculate and graph amount money made over 90 days
+    for day in range(time):
+        for i in range(len(turtleList)):
+            #If the random number is below the turtle's prob, go up
+            if (random() < prob[i]):
+                money[i] = money[i] + 1
+                turtleList[i].left(45)
+                turtleList[i].forward(10)
+                turtleList[i].right(45)
+            #Else, go down
+            else:
+                money[i] = money[i] - 1
+                turtleList[i].right(45)
+                turtleList[i].forward(10)
+                turtleList[i].left(45)
+
+</pre>
+
+
+</div>
+
+<div>
+<h3>The Complete Program:</h3>
+
+Try running the complete program several times to see how the simulation changes:
+
+<pre>
+import turtle
+from random import *
+
+#A function that sets up the x-axis on the screen:
+def setUpScreen():
+    #Create a turtle to draw the x-axis
+    t = turtle.Turtle()
+    t.speed(0)
+    #Lift it's pen up and move it to the far left
+    t.up()
+    t.right(180)
+    t.forward(350)
+    #Draw the axis
+    t.down()
+    t.right(180)
+    t.forward(700)
+
+#Sets up num turtles to all start at the far left,
+#   to tell them apart, color them different shades
+def setUpTurtles(num):    
+    turtleList = []             #Our list of turtles
+    for i in range(num):
+        t = turtle.Turtle()
+        t.speed(0)              #Fastest turtle speed to avoid boredom
+        t.up()
+        t.right(180)
+        t.forward(350)
+        t.right(180)
+        t.down()
+        #Choose random values for the red, green, and blue (RGB):
+        t.color(random(), random(), random())
+        turtleList.append(t)
+
+    return(turtleList)
+
+
+def simulate(turtleList, prob, money, time):
+    #Calculate and graph amount money made over time days
+    for day in range(time):
+        for i in range(len(turtleList)):
+            #If the random number is below the turtle's prob, go up
+            if (random() < prob[i]):
+                money[i] = money[i] + 1
+                turtleList[i].left(45)
+                turtleList[i].forward(10)
+                turtleList[i].right(45)
+            #Else, go down
+            else:
+                money[i] = money[i] - 1
+                turtleList[i].right(45)
+                turtleList[i].forward(10)
+                turtleList[i].left(45)
+
+
+def main():
+    #Keep track of the money made by each turtle/chain:
+    money = [0]*10
+    prob = [0]*10
+
+    #Set up screen and turtles
+    setUpScreen()
+    turtleList = setUpTurtles(10)
+    for i in range(10):
+        prob[i] = random()
+        print(prob[i])
+
+    #Simulate the money gained and lost for each stock over 90 days:
+    simulate(turtleList, prob, money, 90)
+         
+    print("Max money made is", max(money))
+    print("Min money made is", min(money))
+
+    turtle.Screen().exitonclick()
+
+main()
+
+</pre>
+</div>

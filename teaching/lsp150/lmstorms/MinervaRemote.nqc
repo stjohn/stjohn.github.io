@@ -1,0 +1,77 @@
+#define FORWARD_MESSAGE 16
+#define SPIN_MESSAGE 17
+#define STOP_MESSAGE 18
+#define GRAB_MESSAGE 19
+#define RELEASE_MESSAGE 20
+#define HEARTBEAT_MESSAGE 21
+
+#define HEARTBEAT_TIME 20
+
+task main() {
+  SetSensor(SENSOR_1, SENSOR_LIGHT);
+  SetSensor(SENSOR_2, SENSOR_TOUCH);
+  SetSensor(SENSOR_3, SENSOR_TOUCH);
+  
+  start lightWatcher;
+  start touchWatcher;
+  start heartbeat;
+}
+
+task touchWatcher() {
+  while (true) {
+    if (SENSOR_2 == 1) {
+      SendMessage(FORWARD_MESSAGE);
+      Wait(10);
+      until (SENSOR_2 == 0);
+      SendMessage(STOP_MESSAGE);
+    }
+    if (SENSOR_3 == 1) {
+      SendMessage(SPIN_MESSAGE);
+      Wait(10);
+      until (SENSOR_3 == 0);
+      SendMessage(STOP_MESSAGE);
+    }
+  }
+}
+
+#define TOLERANCE 3
+int current;
+int minimum;
+int maximum;
+int midline;
+
+int lastArmMessage;
+
+task lightWatcher() {
+  minimum = 100;
+  maximum = 0;
+  
+  while (true) {
+    current = SENSOR_1;
+    if (current < minimum) minimum = current;
+    if (current > maximum) maximum = current;
+    midline = minimum + (maximum - minimum) / 2;
+  
+    if (SENSOR_1 <= (midline - TOLERANCE) &&
+        lastArmMessage != RELEASE_MESSAGE) {
+      PlayTone(494, 10);
+      PlayTone(660, 10);
+      SendMessage(RELEASE_MESSAGE);
+      lastArmMessage = RELEASE_MESSAGE;
+    }
+    if (SENSOR_1 >= (midline + TOLERANCE) &&
+        lastArmMessage != GRAB_MESSAGE) {
+      PlayTone(660, 10);
+      PlayTone(494, 10);
+      SendMessage(GRAB_MESSAGE);
+      lastArmMessage = GRAB_MESSAGE;
+    }
+  }
+}
+
+task heartbeat() {
+  while (true) {
+    SendMessage(HEARTBEAT_MESSAGE);
+    Wait(HEARTBEAT_TIME);
+  }
+}

@@ -1,0 +1,217 @@
+<title>Homework 5, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+<h2>Homework 5</h2>
+<h2>Computer Engineering 6, Winter 1998<br> 
+Introduction to Computing</h2>
+
+
+<hr>
+<b>Due by noon, Thursday, 12 February.</b><br>
+The starred problems include programming and should be submitted
+both electronically and on paper.  In the paper portion of the
+starred problems, you should include output of several test runs
+that demonstrates what your program does.
+The electronic portion
+should be sent to coen006@scudc.scu.edu (with subjects
+"hw 5.4" and "hw 5.5", respectively).
+The paper portion should
+be placed in Dr. St. John's box in the Engineering Center. 
+<hr>
+
+<ol>
+	<li> Consider the following code (and assume it is embedded
+	in a complete and correct program and then run):
+<pre>
+char next;
+int count = 0;
+cout &lt&lt "Enter a line of input:\n";
+cin.get(next);
+while ( next != '\n' )
+{
+    if ( (count%2) == 0 )
+        cout &lt&lt next;
+    count++;
+    cin.get(next);
+}
+</pre> 
+
+	If the dialogue begins as follows, what will be the next line
+	of output?
+<pre>
+Enter a line of output:
+abcdef gh
+</pre>
+
+	<li> Write the definition for the void-function called
+	<b>text_to_screen</b> which has one formal parameter called 
+	<b>file_stream</b> that is of type <b>ifstream</b>.  The
+	precondition and postcondition for the function are:
+
+<pre>
+// Precondition: The stream file_stream has been connected to a file
+// with a call to the member function open.
+// Postcondition: The contents of the file connected to file_stream
+// have been copied to the screen character by character so that the
+// screen output is the same as the contents of the text in the file.
+// (This function does not close the file).
+</pre>
+	This problem can be done by hand and should not be turned in
+	electronically. 
+
+	<li> Write a C++ function that will read a line of text
+	from the keyboard and echo the line in uppercase letters.
+	<br>
+	This problem can be done by hand and should not be turned in
+	electronically. 
+	 
+	<li>* Write a program that adds line numbers to a file
+	and stores the result in an output file.  For example,
+	if your input file is:
+<pre>
+hello
+helloo
+hellooo
+</pre>
+	Your output file would be:
+<pre>
+1   hello
+2   helloo
+3   hellooo
+</pre>
+	Your program should ask the user for the name of the 
+	input and output files.  It should also use the formatting
+	functions to make the line number take at most 4 spaces 
+	and always be flush to the left column.
+
+	<li>* Write a program counts the number of characters (not
+	including carriage returns), the number of words, and the
+	number of lines in a file.  Ask the user to enter the name
+	of the file and print your results to the screen.
+
+	<p>
+	You can check your work by
+	using the UNIX command <b>wc</b> on your input file.  For
+	example, if you type
+	<pre>wc template.html</pre>
+	at the "bash$" prompt, the response is:
+	<pre>33     116     810 template.html</pre>
+	where 33 is the number of lines, 116 is the number of words,
+	and 810 is the number of characters in template.html.  Note
+	that it is difficult to read this output without prior 
+	knowledge of what the columns should be.  Your program should
+	label the output for the user.
+
+</ol>
+<!--  Don't know arrays yet!
+<ol>
+	<li> Write a function definition that swaps the values of two 
+	variables of type <b>double</b> with the following function 
+	prototype:
+<pre>
+    void swap( double& first, double& second );
+</pre>
+
+
+	<li> What is the output of the following code (when embedded
+	in a complete and correct program)?
+<pre>
+    char letters[3] = {'a', 'b', 'c'};
+    int index;
+
+    for ( index = 0 ; index < 3 ; index++ )
+         cout &lt&lt letters[index]  &lt&lt " " &lt&lt letters[2-index] 
+              &lt&lt endl;
+</pre>
+
+	<li> What is the output of the following code (when embedded
+	in a complete and correct program)?
+<pre>
+    double a[3] = {1.2, 3.4, 5.6};
+
+    cout &lt&lt a[0] &lt&lt " " &lt&lt a[1] &lt&lt " " &lt&lt a[2]
+         &lt&lt endl;
+    a[1] = a[2];
+    a[0] = a[1];
+    cout &lt&lt a[0] &lt&lt " " &lt&lt a[1] &lt&lt " " &lt&lt a[2]
+         &lt&lt endl;
+</pre>
+
+
+	<li>* Write a program that asks the user to enter 10 decimal
+		numbers and stores them in an array.  The program 
+		then prints out the numbers read in, separated by
+		spaces.  If the first number is greater than the 
+		second number, the two numbers' values are 
+		swapped in the array using the <b>swap</b> function
+		for Problem 1.  Print out the array.  
+		If the second number is then greater than the 
+		third number, the two numbers' values are 
+		swapped in the array using the <b>swap</b> function.
+		Then print out the array.  You should continue this
+		swapping if the number is greater than the the
+		next one until you reach the end of the array.
+		Print out the result of each swap.
+
+		For example, if the user enters:
+<pre>
+    3.2 0.4 6.0 5.0 1.1 8.0 1.5 2.2 5.2 2.2
+</pre>
+		The output of the program would be:
+<pre>
+The numbers entered:
+    3.2 0.4 6.0 5.0 1.1 8.0 1.5 2.2 5.2 2.2
+Checking item 1 and 2:
+    0.4 3.2 6.0 5.0 1.1 8.0 1.5 2.2 5.2 2.2
+Checking item 2 and 3:
+    0.4 3.2 6.0 5.0 1.1 8.0 1.5 2.2 5.2 2.2
+Checking item 3 and 4:
+    0.4 3.2 5.0 6.0 1.1 8.0 1.5 2.2 5.2 2.2
+Checking item 4 and 5:
+    0.4 3.2 5.0 1.1 6.0 8.0 1.5 2.2 5.2 2.2
+Checking item 5 and 6:
+    0.4 3.2 5.0 1.1 6.0 8.0 1.5 2.2 5.2 2.2
+Checking item 6 and 7:
+    0.4 3.2 5.0 1.1 6.0 1.5 8.0 2.2 5.2 2.2
+Checking item 7 and 8:
+    0.4 3.2 5.0 1.1 6.0 1.5 2.2 8.0 5.2 2.2
+Checking item 8 and 9:
+    0.4 3.2 5.0 1.1 6.0 1.5 2.2 5.2 8.0 2.2
+Checking item 9 and 10:
+    0.4 3.2 5.0 1.1 6.0 1.5 2.2 5.2 2.2 8.0
+</pre>
+
+	<li>* Write a program that allows the user to enter up to 
+		25 non-negative scores, and prints out the average
+		of the scores and the standard deviation.  The standard
+		deviation is defined to be the square root of the 
+		average of the values 
+<pre>
+( s1 - a )*( s1 - a ), ( s2 - a )*( s2 - a ), ... ,( sLast-a )*( sLast - a)
+</pre>
+		where s1,...,sLast are the score the user entered and
+		a is the average.  
+
+		For example, if the user entered the
+		four numbers: 3 5 7 9.  The average would be (3+5+7+9)/4.0,
+		which equals 6.  The standard deviation is 
+<pre>
+sqrt[(3 - 6)*(3 - 6) + (5 - 6)*(5 - 6) + (7 - 6)*(7 - 6) + (9 - 6)*(9 - 6)/4]
+        = sqrt[[9 + 1 + 1 + 9)/4]
+        = sqrt(20/4)
+	= sqrt(5)
+</pre>
+
+		Your program should use an array to store the scores,
+		include functions that compute the 
+		average, compute the standard deviation, and handle
+		getting the information, and printing the results. 
+		Also, include a loop that lets the user repeat this computation
+		for new input values until the user says he or she wants
+		to end the program.  
+
+</ul>
+-->
+

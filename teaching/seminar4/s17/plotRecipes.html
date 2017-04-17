@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Plot Recipes, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Graphing & Plotting Recipes</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+
+</div>
+
+
+<div>
+
+<h3>Graphing Mathematical Functions:</h3>
+
+The <tt>pyplot</tt> module of <tt>matplotlib</tt> provides lots of useful ways to plot data to the screen.  Let's use it to answer the question, which grows faster:
+<blockquote>
+ 		y = log(x) 	or 	y = &radic;<span style="text-decoration:overline;">&nbsp;x&nbsp;</span>?   
+</blockquote>
+
+<p>
+To test out this question, we will write a program that:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<li> Sets up a list of numbers (x-values) for our functions.
+	<li> Computes the y-values of our numbers for our functions.
+	<li> Creates plots of the two functions.
+	<li> Shows the plots in a separate graphics window.
+</ol>
+
+Let's add in the Python code that for each of these steps:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<pre>
+import math	
+import matplotlib.pyplot as plt
+	</pre>
+	
+	<i>Since it's unwieldly to type "matplotlib.pyplot" before every function we'd like to use from that library, instead we'll use the common abbreviation of "plt".  With this, we can plt.plot(), instead of matplotlib.pyplot.plot().</i>
+	<li> Sets up a list of numbers (x-values) for our functions.
+<pre>
+x = range(1,101)
+</pre>
+	<i>Remember:  Python starts counting at 0 and goes up to, but not including the 101.  So, this creates the list [1,2,...,100].</i>
+	
+	<li> Computes the y-values of our numbers for our functions.
+<pre>
+y1 = []
+for i in x:
+   y = math.log(i)
+   y1.append(y)
+y2 = []
+for i in x:
+    y = math.sqrt(i)
+    y2.append(y)   
+</pre>
+
+	<i>We need two separate lists since we have two separate functions to graph.</i>
+	
+	<li> Creates plots of the two functions.
+<pre>
+plt.plot(x,y1,label='y1 = log(x)')
+plt.plot(x,y2,label='y2 = sqrt(x)')
+plt.legend()
+</pre>
+
+	<i>Creates the plot for safe keeping but does not display it until told to (see next lines).</i>
+	
+	<li> Shows the plots in a separate graphics window.
+<pre>
+plt.show()
+</pre>
+	<i>This line pops up the new graphics window to display the plots.</i>
+</ol>
+
+
+
+<p>
+From your plots, which do you think grows faster:  log(x) or sqrt(x)?
+
+
+<h4>Challenges</h4>
+
+<p>Using the Python program you wrote above, try the following:
+
+<ul>
+	<li> Modify your program to plot points from 1 to 1001.  Which function is larger at x=1000?
+	<li> pyplot has many ways to customize your plots.  Using the 
+	<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">pyplot documentation</a>, change your plot to show the plots in different colors and with dashed and dotted line styles.
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Plotting Data:</h3>
+
+We can use the same techniques to plot data.   As a warm-up, download the <a href="http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html">scatter_plot.py</a>.  
+Run the program, and then, with a partner, figure out what each of line of the program does.
+
+<p>
+Next, Let's focus on the question:  "Has Lyme Disease Increased?" and examine data from the <a href="http://www.cdc.gov/lyme/stats/">Center for Disease Control (CDC)</a> to answer that question.  Let's start with the tri-state area.  Here are the years and occurrences:
+<pre>
+years = [2003,2004,2005,2006,2007,2008,2009,2010,2011]
+ny = [5399,5100,5565,4460,4165,5741,4134,2385,3118]
+nj = [2887,2698,3363,2432,3134,3214,4598,3320,3398]
+ct = [1403,1348,1810,1788,3058,2738,2751,1964,2004]
+</pre>
+
+<p>
+To plot New York data  as a `scatter plot' (dots at each (x,y) point), we add the commands:
+<pre>
+import matplotlib.pyplot as plt #Library of plotting functions
+plt.scatter(years, ny)
+plt.show()
+</pre>
+
+<h4>Challenges:</h4>
+
+<ul>
+	<li> Add to your program, commands that will plot also the New York and Connecticut data.  (Hint:  set up each as a scatter plot, and then use a show() to display all at once).
+	<li> When displaying multiple data sets on the same plot, adding colors and labels help distinguish the different data sets.  For example, to add a label for New York:
+<pre>
+plt.plot(years, ny, label='NY')
+</pre>
+	Add in labels for New Jersey and Connecticut data.  You can then display a legend by adding the command:
+<pre>
+plt.legend()
+</pre>
+Add axis labels and a title: 
+<pre>
+plt.title("Lyme Disease in NY, NJ, & CT")
+plt.xlabel('Years')
+plt.ylabel('Number of Cases') 
+</pre>
+
+
+<li> The <a href="https://en.wikipedia.org/wiki/Demographics_of_New_York_City">historical population of New York City</a>, by borough, has been organized into lists in <a href="nycRawTotals.py">nycRawTotals.py</a>.		Plot the data for each borough and the overall totals.
+
+	</ul>
+
+</div>
+
+<div>
+
+<h3>Plotting Data from Files:</h3>
+
+Often there is too much data to type into your program.  In these cases, it is easier to read in the information from a file.  Below is a mixture of novel and previously used commands for accessing file from data and strings.  Try to puzzle each one out on paper and then try in Python. 
+
+<p><i>The data file <a href="statesSummary.csv">statesSummary.csv</a> is from the <a href="http://www.cdc.gov/lyme/stats/tables.html#modalIdString_CDCTable_1">CDC</a>.  Before starting the program, open up the csv file and see what it looks like.</i>
+
+<ul>
+	<li> Use the pyplot libraries as well as numpy (nice math library):
+<pre>
+import matplotlib.pyplot as plt 
+import numpy as np
+</pre>
+
+	<li> Open the file:
+<pre>
+infile = open('statesSummary.csv','r')
+</pre>
+
+	<li> Read the first line separately to pull out the years (they're the column headers in the csv file) and store them in a list <tt>years</tt>
+<pre>
+yearLine = infile.readline()
+yearWords = yearLine.split(",")
+years = []
+for w in yearWords[1:]:
+     years.append(int(w))
+</pre>
+
+	<li> Next, take the first 5 lines of the file, split them into individual numbers, and store to be used in the plot.  Note that the first column has the name of the state and should be stored separately from the data to make plotting easier.  
+
+<pre>
+for i in range(5):
+     line = infile.readline()
+     words = line.split(",")
+     stateName = words[0]
+     stateValues = []
+     for w in words[1:]:
+          stateValues.append(int(w))
+     color = np.random.rand(3)   
+     plt.scatter(years, stateValues,
+           c=color, label=stateName)
+</pre>
+
+	<li> Lastly, set up and display the plot:
+<pre>
+plt.title("Cases of Lyme Disease") 
+plt.xlabel('Years')                
+plt.ylabel('Number of Cases')      
+plt.legend(loc = 2,
+           fontsize = 'x-small')
+plt.show()
+</pre>
+
+</ul>
+
+
+<h4>Challenges:</h4>
+	<ul>
+		<li> Modify your program to print out the summary data for the first 10 states.
+		<li> Modify your program to print out only the data from 2005 onward (drop the early data from your plot).
+	</ul>
+	
+<h4>Harder Challenges:</h4>
+	<ul>
+		<li>Modify your program to make the points proportional to the number of cases reported. <br>
+	(Hint:  you need an array of areas and can use arrays multiple times in the scatter command).
+		<li> Modify your program to also display the total cases every year.
+	(Hint:  you will need to create an additional array to store the totals.)
+	</ul>
+
+</div>
+
+<div>
+<h3>CSV Library</h3>
+
+<p>Above, we use the general, file I/O of Python.  Another option is the very useful package designed only for handling CSV files.  Unsurprisingly, it's called <a href="https://docs.python.org/3/library/csv.html">csv</a> and handles much of the parsing of lines that we did above.  Included below is a simple example (<a href="csvEx.py">csvEx.py</a>):
+<p>
+<pre>#Simple use of csv module.
+#Assumes "in.csv" is in the same folder.
+#Katherine St. John
+#Spring 2016
+
+import csv
+
+#Using the dictionary reader to access by column names
+f = open("in.csv")
+reader = csv.DictReader(f)
+m = [row['Homework'] for row in reader if int(row['Homework']) < 90]
+f.close()
+print m[-1]
+
+#Using the regular csv reader (ignoring first line with column names).
+#Note the use of 'with' for files:
+
+with open("in.csv") as f:
+     reader = csv.reader(f)
+     reader.next()  #Ignore line with column names
+     m = [row[2] for row in reader if int(row[2]) < 90]
+print m[-1]
+</pre>
+
+<p>You are welcome to use any approach to opening files in your homework and projects.
+</div>
+			

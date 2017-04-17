@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img style = "max-width:100%" src = "wordle7.jpg"><br>
+<small><i>(Created with wordle with text from wiki)</i></small>
+<br>
+
+<br>
+<h1>
+CMP 464-C401/MAT 456-01: Topics Course: Data Science</h1>
+
+Spring 2016<br>
+Tuesdays & Thursdays: 11am-12:40pm<br>
+Prof. Katherine St. John <br>
+Email: <tt>stjohn AT lehman cuny edu</tt><br>
+<a href="../officeHours.html">Office Hours</a>
+</h2>
+
+</div>
+
+
+<div>
+<h3>Announcements:</h3>
+<ul>  
+<!--
+	<li> No class or office hours on Tuesday, 9 February since CUNY is following a Friday schedule.
+-->
+	<li> The <a href="final/final.html">final exam</a> is Thursday, 26 May, 11am-1pm.
+	<li> Unless otherwise noted:
+		<ul>
+			<li> Homework assignments are due on Blackboard Thursdays at 10:30am.
+			<li> Quizzes are due on Blackboard Saturdays at noon.
+		</ul>
+</ul>
+</div>
+
+
+<div>
+<h3>Useful Links:</h3>
+<ul>  
+	<li> <a href = "syl.html">Syllabus</a>
+	<li> <a href = "faq.html">Frequently Asked Questions</a>
+	<li> <a href = "project.html">Project Information</a>
+	<li> <a href = "https://github.com/joelgrus/data-science-from-scratch">Textbook's github repository</a>
+	<li> Python:
+		<ul>
+			<li> <a href = "https://www.continuum.io/downloads">Anaconda</a> distribution (has many, useful packages included)
+			<li> <a href = "http://www.pythonanywhere.com">PythonAnywhere</a>:  browser-based Python system (for those who don't want to add/update the Python on their computer)<br>
+			(See <a href="https://help.pythonanywhere.com/pages/MatplotLibGraphs/">help page</a> about saving <tt>matplotlib</tt> plots.)
+		</ul>
+	<li> <a href="http://interactivepython.org/runestone/static/thinkcspy/toc.html">How to Think Like a Computer Scientist</a>:  good review (that's also free!)
+</ul>
+</div>
+
+<div>
+<h3>Outline:</h3>
+
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td>
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+		<td><b>Quiz Topics:</b></td>
+		<td><b>HW/Project:</b></td>
+	</tr>
+	<tr>
+		<td><b>#1</b>
+		<br>2 February</td>
+		<td>First Day Details, Topics Overview, Python 2 vs. 3, Python Refresher: basics;
+		Quick look at <a href="http://www.matplotlib.com">matplotlib</a>'s
+		line and bar charts;
+		</td>
+		<td><a href="syl.html">Syllabus</a>,
+		<a href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram">DS venn diagram</a>, <br>
+		Gallery: 
+		<a href="http://bl.ocks.org/mbostock/8460692">NY density</a>,
+		<a href="http://mbostock.github.io/d3/talk/20111116/airports-all.html">nearest airport</a>,
+		<a href="http://toddwschneider.com/posts/a-tale-of-twenty-two-million-citi-bikes-analyzing-the-nyc-bike-share-system/">citibike</a>,
+		<a href="http://iquantny.tumblr.com/post/137259799714/almost-one-third-of-nyc-is-not-patrolled-by-the">precincts</a>,
+		<a href="http://visualizing.nyc/bus-riding-the-best-kept-secret-of-nyc-transit/">buses vs. subways</a>,
+		<a href="http://www.tunnelvisionapp.com">transit + census</a>,
+		<a href="http://ourworldindata.org/data/population-growth-vital-statistics/life-expectancy/">life spans</a>,
+		<a href="http://www.cdc.gov/vhf/ebola/outbreaks/2014-west-africa/cumulative-cases-graphs.html">ebola</a>,
+		<a href="http://www.nejm.org/doi/full/10.1056/NEJMp1113569">disease</a>,
+		<a href="http://www.indeed.com/salary?q1=python+developer&l1=New+York%2C+NY&q2=java+developer&l2=New+York%2C+NY">jobs</a>;<br>
+		<a href="https://docs.python.org/2/library/functions.html?highlight=print_function#print">Printing (from __future__)</a>,
+		<a href="plotRecipes.html">Plotting recipes</a>,
+		<a href="http://matplotlib.org">matplotlib</a>,
+		<a href = "https://github.com/joelgrus/data-science-from-scratch">Textbook's repo</a>
+		</td>		
+		<td><a href="http://www.lehman.edu/academics/arts-humanities/documents/CUNYPolicyonAcademicIntegrity.pdf">Academic Integrity Policy</a>,<br>
+		Chapters 1-3</td>	
+		<td rowspan = 2>
+		#1: Academic Integrity</td>
+		<td rowspan = 2></td>
+	</tr>
+
+
+	
+	
+	<tr>
+		<td><b>#2</b>
+		<br>4 February</td>
+		<td> More on <a href="http://www.matplotlib.com">matplotlib</a>:
+		histograms and scatterplots;
+		Data as vectors: scaling, dot products;
+		Means & Variance;
+		<br>
+		Python Refresher: list comprehensions & zip
+		
+</td>		
+		<td>
+		<a href="http://www.pythontutor.com/visualize.html#code=import+math%0A%0A%23Accummulating+list+example%0Aleaps+%3D+%5B%5D%0Afor+year+in+range(1980,2020,4%29%3A%0A++++if+year%25100+!%3D0+or+year%25400+%3D%3D+0%3A+%0A++++++++leaps.append(year%29%0A%23Does+the+same+thing,+using+list+comprehensions++++%0Aleaps2+%3D+%5By+for+y+in+range(1980,2020,4%29+if+(y%25100+!%3D0+or+y%25400+%3D%3D+0%29%5D%0A%0A%23Example+for+computing+averages+and+standard+deviations%0Atemps+%3D+%5B21,25,39,41,35,26,20%5D%0A%23PythonTutor+doesn't+support+from+__future__,+so,+cast+to+get+floating+division%3A%0Aave+%3D+float(sum(temps%29%29/len(temps%29%0A%0A%23Computing+standard+deviation%0Adiffs+%3D+%5B%5D%0Afor+t+in+temps%3A%0A++++diffs.append((t-ave%29**2%29%0Avariance+%3D+sum(diffs%29/(len(diffs%29+-1%29%0Astd+%3D+math.sqrt(variance%29%0A%0A%23Can+rewrite+a+bit+shorter+with+list+comprehensions%3A%0Avar2+%3D+%5B(t-ave%29**2+for+t+in+temps%5D%0Astd2+%3D+math.sqrt(sum(diffs%29/(len(diffs%29-1%29%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">list comprehension examples</a>,
+		<a href="http://matplotlib.org">matplotlib</a>,
+		<a href = "https://github.com/joelgrus/data-science-from-scratch">Textbook's repo</a>,
+		<a href="http://www.koalastothemax.com">summaries sometimes hides the big picture</a>, <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe's Quartet</a></td>		
+		<td>Chapters 2,4,5</td>	
+	</tr>
+	
+	<tr>
+		<td>4 February</td>
+		<td colspan = 5  align="center"><span class="announcement">Last day to drop without "WD" grade</span></td>
+	</tr>	
+	<tr>
+		<td>9 February</td>
+		<td colspan = 5  align="center"><span class="announcement">No class:  Classes follow a Friday schedule</span></td>
+	</tr>	
+	
+	
+	<tr>
+		<td><b>#3</b>
+		<br>11 February</td>
+		<td>Statistics: Basics;
+		<br>Python Refresher:  lists, tuples, & dictionaries
+		</td>		
+		<td><a href="weather.py">weather.py</a>, 
+		<a href="lymeScaled.py">lymeScaled.py</a>, 
+		<a href="http://news.e-scribe.com/397">lists vs. tuples</a>,
+		<a href="basicStats.html">basic stats</a>,
+		<a href="http://www.pythontutor.com/visualize.html#code=eng2esp%3D%7B%7D%0Aprint+eng2esp%0A%0Aeng2esp%5B'one'%5D+%3D+'uno'%0Aprint+eng2esp%0A%7B'one'%3A+'uno'%7D%0Aeng2esp%5B'two'%5D+%3D+'dos'%0Aprint+eng2esp%0A%7B'two'%3A+'dos',+'one'%3A+'uno'%7D%0Aprint+eng2esp%5B'two'%5D%0A%0Acounts+%3D+%7B%7D%0Afor+l+in+%22a+man+a+plan+a+canal+panama%22%3A%0A%09counts%5Bl%5D+%3D+counts.get(l,0%29+%2B+1%0A%0Afor+k+in+counts.keys(%29%3A%0A++++print+k,+counts%5Bk%5D%0A++++%0AsortedList+%3D+sorted(counts.items(%29%29%0A%0A%0AsortByValue+%3D+%5B(k,v%29+for+v,k+in+sorted(%0A++++++++++++++++%5B(v,k%29+for+k,v+in+counts.items(%29%5D%0A++++++++++++++++%29%0A++++++++++++%5D%0A++++++++++++%0AsortReverseValue+%3D+sortByValue%5B%3A%3A-1%5D+++++++++%0A%0Aprint+%22Counts%3A%22,+counts%0Aprint+%22sortedList%3A%22,+sortedList%0Aprint+%22sorted+by+values%3A%22,+sortByValue%0Aprint+%22sorted+by+reverse+order+on+values%22,+sortReverseValue%0A%0A++++&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">dictionary examples</a>
+		</td>		
+		<td>Chapters 2,5</td>	
+		<td>#2: Python Basics</td>
+		<td><a href="hw1.html">HW #1: Simple graphs with <tt>pyplot</tt></a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#4</b>
+		<br>16 February</td>
+		<td>More on Stats:  Correlation & Causation, Simpson's Paradox; <br>Getting Data:  CSV Files
+		</td>		
+		<td><a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/statistics.py">book's statistics.py</a> (depends on
+		<a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/linear_algebra.py">linear_algebra.py</a>), 
+		<a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson's paradox wiki</a>,
+		<a href="http://economix.blogs.nytimes.com/2013/05/01/can-every-group-be-worse-than-average-yes/?_r=0">wage growth paradox</a>,
+		<a href="csvEx.py">simple csv example</a> & <a href="in.csv">data</a></td>		
+		<td>Chapters 2,6,9</td>	
+		<td rowspan=2>#3:  Vectors, Means, and Variances
+		</td>
+		<td rowspan=2>
+		<a href="hw2.html">HW #2: Scaling Vector Data</a>
+		</td>
+	</tr>
+	
+
+	
+	<tr>
+		<td><b>#5</b>
+		<br>18 February</td>
+		<td>Probability:  Distributions & Central Limit Theorem;
+		<br>Python Refresher:  collections</td>		
+		<td><a href="dsWiki.txt">dsWiki.txt</a> (for group work), 
+		<a href="http://onlinestatbook.com/2/calculators/normal_dist.html">normal distribution calculator</a>, 
+		<a href="http://anydice.com">rolling dice</a>,
+		<a href="http://blog.vctr.me/posts/central-limit-theorem.html">Central Limit Theorem Visualized</a>,
+		<a href="https://spin.atomicobject.com/2015/02/12/central-limit-theorem-intro/">Matt Nedrich on CLT</a></td>		
+		<td>Chapters 2,6</td>	
+	</tr>
+
+	<tr>
+		<td>18 February</td>
+		<td colspan = 5  align="center"><span class="announcement">Last day to drop with "WD" grade</span></td>
+	</tr>	
+	
+	<tr>
+		<td><b>#6</b>
+		<br>23 February</td>
+		<td>Bayes Theorem; 
+		Naive Bayes:  Spam Filter Example;
+		<br>Python Refresher: regular expressions</td>		
+		<td><a href="https://github.com/tartley/python-regex-cheatsheet/releases/download/v0.3.3/cheatsheet.pdf">regex cheat sheet</a>, <a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/naive_bayes.py">book's naive Bayes spam filter</a>, <a href="http://spamassassin.apache.org/publiccorpus/">spam dataset</a></td>		
+		<td>Chapters 2,6,13</td>	
+		<td rowspan=2> #4:  Python Lists, Dictionaries, & csv</td>
+		<td rowspan=2><a href="hw3.html">HW #3: Binning Data & Measuring Dispersion</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#7</b>
+		<br>25 February</td>
+		<td>More on Bayes Theorem; Hypothesis & Inference;
+		Applications;<br>
+		Python Refresher:  more on  <tt>matplotlib</tt> & sets		
+		</td>		
+		<td><a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/naive_bayes.py">book's naive Bayes spam filter</a>, <a href="http://spamassassin.apache.org/publiccorpus/">spam dataset</a>,
+		<a href="twoPlots.py">twoPlots.py</a>,
+		<a href="http://stackoverflow.com/questions/3584805/in-matplotlib-what-does-the-argument-mean-in-fig-add-subplot111">subplots</a></td>		
+		<td>Chapters 2,7,8</td>	
+	</tr>	
+	
+	
+	<tr>
+		<td><b>#8</b>
+		<br>1 March</td>
+		<td>Hypothesis & Inference:  Confidence Intervals;	
+		Python Refresher: more on  <tt>matplotlib</tt>
+		</td>		
+		<td><a href="https://www.khanacademy.org/math/probability/statistics-inferential/hypothesis-testing/v/hypothesis-testing-and-p-values">Khan Academy on hypothesis testing</a>, <a href="http://onlinestatbook.com/2/calculators/normal_dist.html">normal distribution calculator</a>
+		</td>		
+		<td>Chapters 2,7</td>	
+		<td rowspan=2>#5: Correlation & Bayes Theorem</td>
+		<td rowspan=2><a href="hw4.html">HW #4:  Correlations & Distributions</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#9</b>
+		<br>3 March</td>
+		<td>
+		More on Confidence Intervals, A/B Testing;	
+		
+		<br>Python Refresher: <tt>numpy</tt>
+		</td>		
+		<td>
+		<a href="https://www.khanacademy.org/math/probability/statistics-inferential/confidence-intervals/v/confidence-interval-1">Khan Academy on confidence intervals</a>,
+		<a href="http://www.numpy.org">numpy</a>,  
+		<a href="plotRevisited.html">plotting revisited</a>
+		</td>		
+		<td>Chapters 7,25 </td>	
+	</tr>	
+	<tr>
+		<td><b>#10</b>
+		<br>8 March</td>
+		<td>Manipulating image files with <tt>numpy</tt>;<br>
+		Gradient Descent:  Estimating, Choosing Right Step Size
+		</td>		
+		<td><a href="http://www.scipy-lectures.org/intro/numpy/array_object.html">scipy lecture notes on arrays</a>, <a href="arraysImages.html">arrays & images</a>,
+		<a href="https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/">Matt Nedrich's intro to gradient descent</a> &
+		<a href="https://github.com/mattnedrich/GradientDescentExample">example</a>,
+		<a href="https://github.com/quinnliu">Quinn Liu's</a>
+		<a href="https://raw.githubusercontent.com/quinnliu/MachineLearning/master/imagesForExplanation/GradientDescentWithMutlipleLocalMinimum.jpg">gradient descent image</a>, <a href="3dSurface.py">3d surface example code</a>, <a href="http://matplotlib.org/1.3.1/mpl_toolkits/mplot3d/tutorial.html">mplot3d tutorial</a>, matplotlib <a href="http://matplotlib.org/users/colormaps.html">colormaps</a>
+		</td>		
+		<td>Chapters 8,9,25</td>	
+		<td rowspan=2>#6: Regular Expressions</td>
+		<td rowspan=2><a href="hw5.html">HW #5:  Bayes Theorem, Simpson's Paradox, & Regular Expressions</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#11</b>
+		<br>10 March</td>
+		<td>
+		More on gradient descent;
+		Example:  Simple Linear Regression; <br>
+		Geographical maps in <tt>matplotlib</tt>: <tt>basemap</tt>
+		</td>		
+		<td>
+		<a href="https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/">Matt Nedrich's intro to gradient descent</a> &
+		<a href="https://github.com/mattnedrich/GradientDescentExample">example</a>, <a href="http://www.holehouse.org/mlclass/04_Linear_Regression_with_multiple_variables.html">Andrew Ng's linear regression notes</a>;<br>
+		
+		<a href="http://matplotlib.org/basemap/">basemap</a>,
+		<a href="basemapIntro.html">basemap introduction</a>
+		
+		</td>		
+		<td>Chapters 2,8,9</td>	
+
+	</tr>	
+
+	<tr>
+		<td><b>#12</b>
+		<br>15 March</td>
+		<td> 
+		Linear Algebra Refresher:  Eigenvalues & Eigenvectors;<br>
+		Using standard data formats: ERSI's shapefiles, JSON, KML;<br>
+		More on basemap:  using shapefiles;
+		<td>
+		<a href="http://setosa.io/ev/eigenvectors-and-eigenvalues/">Eigenvectors & eigenvalues, visually</a>,
+		<a href="imageTrans.py">linear transformations example</a>;
+		<br>
+		<a href="https://doc.arcgis.com/en/arcgis-online/reference/shapefiles.htm">ERSI's shapefiles</a>,
+		<a href="https://en.wikipedia.org/wiki/Shapefile">shapefile wikipage</a>, <a href="http://www.json.org">json</a>, 
+		<a href="https://developers.google.com/kml/">KML</a>,
+		<a href="http://apprentice.craic.com/tutorials/28">summary & comparison</a>,
+		<a href="http://www.gdal.org/index.html">gdal conversion tools</a>,<br>
+		<a href="http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">NYC shapefiles</a>, 
+		<a href="http://basemaptutorial.readthedocs.org/en/latest/shapefile.html">shapefiles in basemap tutorial</a>,
+		<a href="basemapShp.html">shapefiles in basemap</a></td>		
+		<td>Chapters 9,10</td>	
+		<td rowspan=2>#7: Hypothesis & Inference</td>
+		<td rowspan=2><a href="hw6.html">HW #6: A/B Testing</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#13</b>
+		<br>17 March</td>
+		<td>
+		Using github; <br> 
+		Working with Data: Exploring and Visualizing;<br>	
+		More on Getting Data: scraping webpages, built-in methods, beautifulSoup;		
+		
+		<br>Python Refresher:  command line, args & kwargs</td>
+		</td>		
+		<td>
+		<a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a>,
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a>, <a href="https://education.github.com/pack">github student pack</a>,
+		<a href="https://education.github.com/git-cheat-sheet-education.pdf">github cheat sheet</a>;<br>
+		<a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe's Quartet</a><br>
+	
+		<a href="http://www.crummy.com/software/BeautifulSoup/">beautifulSoup</a>,
+		<a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/">soup documentation</a>,
+		<a href="http://cecilialiao.com/2014/02/03/wheres-beautifulsoup-in-anacondas-python/">where's beautifulSoup?</a>, Frances Zlotnick's
+		<a href="http://web.stanford.edu/~zlotnick/TextAsData/Web_Scraping_with_Beautiful_Soup.html">tutorial</a>,
+		<a href="http://www.openbookproject.net/tutorials/getdown/css/lesson4.html">DOM tutorial</a>,
+		<a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/getting_data.py">book's code</a></td>		
+		<td>Chapters 2,10,25</td>	
+	</tr>	
+
+	<tr>
+		<td><b>#14</b>
+		<br>22 March</td>
+		<td>
+		Working with Multidimensional Data: Rescaling, Principal Components Analysis;<br>
+		Not from scratch:  scipy, scikit-learn & Visualization
+		<br>Python Refresher:  iterators & generators 
+				
+		</td>		
+		<td><a href="http://setosa.io/ev/principal-component-analysis/">PCA, explained visually</a>, Lindsay Smith's <a href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf">computing PCA</a>, Sebastian Raschka's <a href="http://sebastianraschka.com/Articles/2015_pca_in_3_steps.html">PCA overview</a> and <a href="http://sebastianraschka.com/Articles/2014_pca_step_by_step.html">implementating in Python</a>;<br>
+
+		<a href="http://scipy.org">scipy</a>, <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn's PCA</a>, 
+		<a href="http://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#example-datasets-plot-iris-dataset-py">pca on iris dataset</a>, NY Fed's <a href="https://www.newyorkfed.org/research/college-labor-market/college-labor-market_unemployment.html">unemployment rates</a> and 
+		<a href="https://www.newyorkfed.org/research/college-labor-market/college-labor-market_compare-majors.html">by major</a></td>		
+		<td>Chapters 2,10,25</td>	
+		<td rowspan=2>#8: Gradient Descent & <tt>numpy</tt></td>
+		<td rowspan=2><a href="hw7.html">HW #7:  Gradient Descent & Images</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#15</b>
+		<br>24 March</td>
+		<td>
+		Machine Learning:  Modeling, Overfitting, Feature Extraction & Selection;  				
+		<br>Python Refresher:  lambdas & functions as arguments		
+		</td>		
+		<td><a href="https://wiki.python.org/moin/Generators">generators in Python</a>,
+		<a href="lambdaSortingEx.py">lambdaSortingEx.py</a></td>		
+		<td>Chapters 2,11</td>	
+	</tr>	
+
+	<tr>
+		<td><b>#16</b>
+		<br>29 March</td>
+		<td>
+		Other plotting packages:  D3 (javascript) and bokeh (python);<br>
+		Distances for Multidimensional Data;
+		k-Nearest Neighbors:  Language Example, Curse of Dimensionality,
+		<br>Python Refresher:  exceptions
+		</td>		
+		<td>
+		<a href="https://d3js.org"</a>Data Driven Documents (D3)</a>,
+		<a href="http://bokeh.pydata.org/en/latest/"</a>bokeh (D3 styled graphics in Python)</a>, 
+		<a href="http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html#userguide-quickstart">bokeh quickstart</a>, 
+		<a href="bokehPlottingEx.py">bokehPlottingEx.py</a>, <a href="bokehChartEx.py">bokehChartEx.py</a><br>
+		</td>		
+		<td>Chapters 2,11,12</td>	
+		<td rowspan=2>#9: Eigenvectors & eigenvalues</td>
+		<td rowspan=2><a href="hw8.html">HW #8: Mapping Data & Markov Chains</a><br><br>
+		<a href="project.html">Project</a>: Proposal</td>
+	</tr>
+	
+	<tr>
+		<td><b>#17</b>
+		<br>31 March</td>
+		<td>
+		Nearest Neighbors & Voronoi Diagrams;<br>
+		Clustering: k-means 
+		</td>		
+		<td><a href="http://mbostock.github.io/d3/talk/20111116/airports-all.html">nearest airport</a>, <a href="http://iquantny.tumblr.com/post/137259799714/almost-one-third-of-nyc-is-not-patrolled-by-the">precincts' Voronoi diagram</a>,
+		<a href="http://zderadicka.eu/voronoi-diagrams/">Voronoi diagrams from triagulations</a>, <a href="http://docs.scipy.org/doc/scipy-0.17.0/reference/generated/scipy.spatial.Voronoi.html">scipy Voronoi module</a>
+		<br>
+		<a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means (wiki)</a>,
+		<a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_color_quantization.html#example-cluster-plot-color-quantization-py">k-means image example</a>,
+		<a href="http://scikit-learn.org/stable/modules/clustering.html">scikit-learn clustering</a>,
+		</td>		
+		<td>Chapters 12,19</td>	
+	</tr>	
+
+		<td><b>#18</b>
+		<br>5 April</td>
+		<td>
+		More on clustering: hierarchical clustering, 
+		Multidimensional Scaling (MDS)
+		</td>		
+		<td><a href="http://www.onmyphd.com/?p=k-means.clustering&ckattempt=1">k means example</a>, <a href="https://www.quora.com/How-is-the-k-nearest-neighbor-algorithm-different-from-k-means-clustering">k-nearest-neighbor versus k-means</a>, <a href="http://scikit-learn.org/stable/modules/clustering.html">scikit-learn clustering</a>,
+		<a href="http://schools.nyc.gov/schoolsearch/Maps.aspx?grade=ALL&borough=M&q=">NYC Schools</a>, <a href="middleSchools.png">MS data</a> (for in class)<br>
+		<a href="http://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html">scikit's MDS</a>, Noel O'Boyle's <a href="http://baoilleach.blogspot.com/2014/01/convert-distance-matrix-to-2d.html">map example</a>, Zachary Nichols' <a href="http://www.onzou.com/nyc-scaled-to-commute-time.html">NYC scaled to commute time</a> and <a href="http://www.onzou.com/nyc-scaled-to-commute-time-part-2.html">part 2</a></td>		
+		<td>Chapters 10,19</td>	
+		<td rowspan=2>#10:  Using <tt>github</tt> & <tt>beautifulSoup</tt></td>
+		<td rowspan=2><a href="hw9.html">HW #9: Shading Maps & PCA</a></td>
+	</tr>
+	
+	<tr>
+		<td><b>#19</b>
+		<br>7 April</td>
+		<td>
+		Linear Regression, revisited;
+		Multiple Regression<br>
+		</td>		
+		<td><a href="http://onlinestatbook.com/2/regression/intro.html">regression recap</a></td>		
+		<td>Chapters 14-15</td>	
+	</tr>
+	
+	<tr>
+		<td>11 April</td>
+		<td colspan = 5  align="center"><span class="announcement">Last day to drop with "W" grade</span></td>
+	</tr>	
+		
+	<tr>
+		<td><b>#20</b>
+		<br>12 April</td>
+		<td>
+		More on Regression:
+		The Bootstrap,
+		Logistic Regression; <br>
+		Support Vector Machines
+		</td>		
+		<td><a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression wiki</a>, Marcel Caracliolo's <a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html">university entrance example</a>, 
+		<a href="http://www.dummies.com/how-to/content/using-logistic-regression-in-python-for-data-scien.html">dummies on iris data set</a>,
+		<a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">sklearn logistic regression</a>, 
+		<a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">311 Requests</a> (filter for Descriptor = "Pothole"),<br>
+		<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping wiki</a>, Auckland animation <a href="https://www.stat.auckland.ac.nz/~wild/ISR-15/anim/BS_cf_Samp_Mean-SNIPPET_50.gif">re-sampling from sample vs. samples</a>
+		</td>		
+		<td>Chapter 16</td>	
+		<td rowspan=2>#11:  PCA</td>
+		<td rowspan=2><a href="hw10.html">HW #10: Nearest Neighbors</a>
+		<!-- HTML data & 
+		MDS, Machine Learning & <tt>scikit-learn</tt>, Multiple Regression-->
+		<br><br>
+		<a href="project.html">Project</a>: Timeline
+		</td>
+	</tr>
+	
+	<tr>
+		<td><b>#21</b>
+		<br>14 April</td>
+		<td>More on SVMs;<br>
+		Natural Language Processing (NLP)
+		</td>		
+		<td><a href="http://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html">SVM intro</a>,
+		<a href="http://scikit-learn.org/stable/tutorial/basic/tutorial.html">sklearn ML introduction</a>, 
+		<a href="http://scikit-learn.org/stable/modules/svm.html">sklearn svm</a>,
+		<a href="http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html">face recognition</a>,
+		<a href="http://scikit-learn.org/stable/tutorial/basic/tutorial.html">sklearn ML intro</a>, 
+		<a href="http://www.scipy-lectures.org/advanced/scikit-learn/">sklearn ML advanced</a>
+		<br></td>		
+		<td>Chapters 16,20</td>	
+	</tr>
+	
+	<tr>
+		<td><b>#22</b>
+		<br>19 April</td>
+		<td>More on NLP;<br>
+		Decision Trees
+		</td>		
+		<td> 
+		<a href="http://www.wordle.net">wordle</a>, 
+		Google's <a href="https://books.google.com/ngrams">ngram viewer</a>,
+		Norvig's <a href="http://norvig.com/ngrams/">ngrams</a><br>
+		<a href="https://en.wikipedia.org/wiki/Decision_tree">wiki decision trees</a>,
+		<a href="http://scikit-learn.org/stable/modules/tree.html">sklearn decision trees</a></td>		
+		<td>Chapters 17,20
+		</td>
+		<td rowspan=2>#12: Nearest Neighbors & Clustering<!--Using Matrices to Represent Relations--></td>
+		<td rowspan=2><a href="hw11.html">HW #11: Voronoi Diagrams & Clustering</a>
+		<br><br>
+		<a href="project.html">Project</a>: Data Collection<br></td>	
+	</tr>
+	
+	<tr>
+		<td><b>#23</b>
+		<br>21 April</td>
+		<td>Refresher:  Trees & Graphs;
+		<br>
+		Network Analysis
+		</td>		
+		<td>
+		<a href="https://networkx.github.io/documentation/networkx-1.10/tutorial/index.html">networkx tutorial</a>, <a href="https://www.cl.cam.ac.uk/~cm542/teaching/2010/stna-pdfs/stna-lecture8.pdf">Cambridge tutorial</a>,
+		<a href="graphReview.html">graph review</a></td>		
+		<td>Chapter 21</td>	
+
+		
+	</tr>
+		
+	<tr>
+		<td>22-30 April</td>
+		<td colspan = 5  align="center"><span class="announcement">Spring Recess: No Classes</span></td>
+	</tr>	
+	
+	<tr>
+		<td><b>#24</b>
+		<br>3 May</td>
+		<td>Recommender Systems<br>
+		Neural Networks</td>		
+		<td><a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/network_analysis.py">book's network analysis script</a>,
+		networkx <a href="https://networkx.readthedocs.io/en/stable/examples/graph/index.html">built-in graphs</a>, <a href="https://github.com/bjedwards/NetworkX_fork/blob/master/examples/graph/knuth_miles.txt.gz">Knuth miles data</a>, 
+		<a href="http://ufldl.stanford.edu/tutorial/supervised/MultiLayerNeuralNetworks/">deep learning tutorial (Stanford)</a>,
+		<a href="https://en.wikipedia.org/wiki/Feedforward_neural_network">neural net wiki</a>
+		</td>		
+		<td>Chapters 18, 22</td>	
+		<td rowspan=2>#13: Regression & NLP</td>
+		<td rowspan=2><a href="hw12.html">HW #12:  MDS & Regression</a><br>
+		<br><a href="project.html">Project</a>: Analysis
+		<br><a href="project.html">Project</a>: Visualization & Draft Slide</td>
+	</tr>
+	
+	<tr>
+		<td><b>#25</b>
+		<br>5 May</td>
+		<td>MapReduce & PageRank</td>		
+		<td><a href="https://www.rose-hulman.edu/~bryan/googleFinalVersionFixed.pdf">PageRank as applied lin. alg.</a> (SIAM Review 2006)</td>		
+		<td>Chapter 23</td>			
+		
+	
+	</tr>
+
+	<tr>
+		<td><b>#26</b>
+		<br>10 May</td>
+		<td>Crash Course in SQL</td>		
+		<td><a href="https://www.khanacademy.org/computing/computer-programming/sql">Khan Academy on SQL</a>,
+		<a href="http://sqlitebrowser.org">sqlitebrowser</a>,
+		<a href="https://www.sqlite.org">sqlite</a>, <a href="introSQL.html">SQL lab</a></td>
+				<td>Chapter 24</td>		
+		<td rowspan=2><!--#14: Networks & Trees--></td>
+		<td rowspan=2><!--HW #13: NLP & Networks<br><br>-->Complete <a href="project.html">Project</a> </td>
+
+	</tr>
+	
+	<tr>
+		<td><b>#27</b>
+		<br>12 May</td>
+		<td>Not from scratch:  <tt>iPython</tt> (jupyter), <tt>pandas</tt>, and <tt>seaborn</tt><tt></td>		
+		<td>
+		<a href="http://twiecki.github.io/blog/2014/11/18/python-for-data-science/">Thomas Wiecki's modern guide to data science</a>,
+		<a href="http://opentechschool.github.io/python-data-intro/core/notebook.html">OpenTechSchool iPython tutorial</a>,<br>
+		<a href="https://github.com/jvns/pandas-cookbook">pandas cookbook</a>, <a href="https://s3.amazonaws.com/quandl-static-content/Documents/Quandl+-+Pandas,+SciPy,+NumPy+Cheat+Sheet.pdf">cheat sheet</a>,<br>
+		<a href="http://web.stanford.edu/~mwaskom/software/seaborn/index.html">seaborn</a>, 
+		<a href="https://github.com/datanews/elevators">elevator data</a></td>		
+		<td>Chapter 25</td>	
+	</tr>
+	
+
+	<tr>
+		<td><b>#28</b>
+		<br>17 May</td>
+		<td><a href="project.html">Project</a> Presentations</td>		
+		<td></td>		
+		<td></td>	
+		<td></td>
+		<td><a href="project.html">Project</a> Sneak Preview Slide</td>		
+	</tr>
+	
+	<tr>
+		<td>19-20 May</td>
+		<td colspan = 5 align="center"><span class="announcement">Reading Days (no class) </span></td>
+	</tr>
+	<tr>
+		<td>Tuesday<br>
+		24 May<br> 11am-1pm</td>
+		<td colspan = 5 align="center">Optional Review (meets in Gillet 137)</td>
+	</tr>	
+	<tr>
+		<td><span class="announcement">Thursday<br>
+		26 May<br> 11am-1pm</span></td>
+		<td colspan = 5 align="center"><span class="announcement">Final Examination (required)</span></td>
+	</tr>
+
+</table>
+
+
+<br>
+<br>
+<br>
+<i>(Last updated: 20 May 2016)</i>

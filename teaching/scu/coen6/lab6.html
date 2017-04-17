@@ -1,0 +1,99 @@
+<title>Lab 6 for Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Laboratory 6</h2>
+<h3>Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h3>
+<hr>
+
+<b>Classes: Roman Numbers</b>
+<hr>
+
+Write a program that accepts a year written as a four-digit
+Arabic (ordinary) numeral and outputs the year written in
+Roman numerals.  Important Roman numerals are: V for 5, 
+X for 10, L for 50, D for 500, and M for 1000.  Recall that
+some numbers are formed using a kind of subtraction of one 
+Roman "digit": e.g. IV for 4 (produced as V minus I), XL is
+40, CM is 900, et cetera.  A few sample years: MCM is 1900,
+MCML is 1950, MCMLX is 1960, MCMXL is 1940, MCMLXXXIX is 1989.
+Assume the year is between 1000 and 3000.  Your program should
+include a loop that lets the user repeat this calculation
+until the user says he or she is done.
+
+<p>
+Design your program around the class called "Year" described
+as follows:
+<pre>
+class Year
+{
+    public:
+        Year();                // Default Constructor
+        Year(int num);         // Constructor with one (Arabic) constructor
+        void Set(int num);     // Sets year to num
+        void Display_Arabic(); // Outputs year as regular number
+        void Display_Roman();  // Outputs year as Roman number
+    private:
+        // A prototype for your private "helper" function goes here...
+        int arabic;            // The year stored as regular number
+};
+</pre>
+
+<h3>Hints</h3>
+
+The member function <b>Display_Roman()</b> will have much in 
+common with the computing change program from 
+<a href="lab3.html">lab 3</a>.  Recall that that program
+determined the number of coins of each denomination that are needed
+to add up to some amount between 0 and 99 cents.  
+<b>Display_Roman()</b> should call a private "helper" function
+similar in principle to the function <b>compute_coin()</b> that was 
+used in lab 3; you will have to add a prototype for this function 
+to your class definition.
+
+<h3>Testing</h3>
+
+Test your program with a few realistic sample cases to see whether
+or not the output is correct.  Be sure that your tests include some
+that use the subtraction technique, and be sure that you also test
+every Roman digit.
+
+<h3>Style and Comments</h3>
+
+Your are expected to choose your identifiers in a way that suggest
+their content.  Indentation should be used, following the style of
+the book.  Unusual numbers which are not immediately recognizable
+from their value, or numbers that appear in several places throughout
+your code, should be replaced by named constants.
+
+<p>
+        Your program should have include a comment header with your
+        name, e-mail, honesty pledge, and a short description of what
+        the program does (including any assumptions, or preconditions,
+        you have made). The program should be properly indented
+        following the style discussed in class and illustrated in the
+        text. Besides the initial comments, you should include comments
+        for any aspect of your algorithm or implementatation that is not
+        self-evident.  
+
+<!-- sample comment -->
+
+<h3>What to Turn In</h3>
+        
+        Before leaving the lab, you should give the TA:
+        <ul>
+                <li> a printout of your program
+                <li> a printout of the interaction between you and the computer 
+                        when the program is run (see section on Testing above)
+                <li> and you should mail a copy of your webpage program to 
+                        the class account (coen006) with the subject: "lab 6".
+       </ul>
+
+        If you finish the lab early, you should use the rest of the 
+        time to start the homework.
+        
+</body>
+</html>

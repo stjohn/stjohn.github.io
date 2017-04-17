@@ -1,0 +1,141 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #5, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #5</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  geoJSON; Limits to Growth<br>
+<b>Deadline:</b>  Wednesday, 15 March 2017, 11:59pm 
+</div>
+
+
+<div>
+<h3>New York City Open Data</h3>
+
+We will use two different data sets from <a href="https://data.cityofnewyork.us/">OpenData NYC</a>.
+Download both files in CSV format:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/Social-Services/NYC-Wi-Fi-Hotspot-Locations/a9we-mtpn">NYC Wifi Locations</a>
+	<li> <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">Trash Basket Locations</a>
+</ul>
+Since the files are not that large (and lack easy-to-filter boundaries like zipcodes), we will use the entire file for each.
+</div>
+
+<div>
+<h3>Folium Notes</h3>
+
+<p> The programs in this assignment rely on <a href="https://pypi.python.org/pypi/folium">folium</a> which is an interface to the popular <a href="http://leafletjs.com">leaflet.js</a> library.  The library is magical in the maps it can produce, but the documentation for it is in bit out-of-date from the current version and will give deprecated warnings.  Here's a simple example mapping <a href="clusterMarkersCUNY.py">clusterMarkersCUNY.py</a> which:
+<ol>
+	<li> Sets up a map.
+	<li> Creates lists for the coodinates of each point (coords), the messages displayed for each point (popups), and the icon for each point (icons).
+	<li> It then loops through the dataframe, adding to the lists for each row.  Note that senior colleges are marked by a `cloud' icon, while all other campuses are green.
+	<li> It then adds all the markers at once, allowing them to cluster as you zoom out.
+	<li> The output is saved to an .html file:
+
+<p>
+<iframe src="cunyLocations.html" style="width: 90%; height: 300px" name="internal"></iframe>
+</ol>
+
+<p>Note:  on some browsers, the icons are being displayed as the default shape and color (blue), instead of the customized ones above.
+
+<h4>Customized Icons</h4>
+<p>
+If you would like to use customized icons, see this 
+<a href="http://qingkaikong.blogspot.com/2016/05/using-folium-2-use-customized-icon-and.html">tutorial</a>.
+
+</div>
+
+<div>
+<h3>Assignment</h3>
+
+
+<ul>
+
+	<li> In the readings for this week, Emily Badger (Washington Post) argues that cities can not "run out of room."  Daniel B. Luten argues that resources are not infinite, but finite, "that the Malthusian doctrine of limits is simple, is comprehensible, and has merit if not taken too literally."  Focuing on your favorite neighborhood, address the following:
+	<blockquote>
+	What are the largest limiting factors on future population growth in your neighborhood?  Has your neighborhood run out of room?  
+	</blockquote>
+	Support your reasoning with data from classwork and quotes from the reading.  Include citations for all work and data cited in your answer.
+			<ul>
+			<li> #1:  Submit a <b>.pdf</b> file.
+			</ul>
+	<br>
+	(The original Luten article is difficult to download.  Another by Luten, in the same spirit, but a bit more depressing is:  <a href="http://www.jstor.org/stable/pdf/27503204.pdf">Luten 1991</a>.)
+	
+	
+	<li> Using the
+	<a href="http://geojson.io/#map=2/20.0/0.0">geoJSON mapper</a>,
+	make a JSON file that includes the following features:
+		<ul>
+			<li> your neighborhood marked as a region (e.g. polygon)
+			<li> major transportation corridors (e.g. subway lines, major bus routes, or major roads) marked as lines
+			<li> three landmarks, marked as points (can be 3 points that are important in general or important to you)
+		</ul>
+		
+	Commit to github, and view using the github preview button (you should see you encoding rendered graphically on a map).  See <a href="cw5.html">classwork</a> from Lecture 5 for details. 
+		<ul>
+			<li> #2:  Submit your encoding as a <b>.json</b> file.<br>
+			<li> #3:  Submit a screen shot of the graphics window containing the plot.
+		</ul>
+		<br>
+
+
+	
+	<li>  Using folium, make a map of the NYC Wifi data set (see above).  Your map should:
+	<ul>
+		<li> have a marker for each wifi location in the data set,
+		<li> color the locations with "Free" access green, and 
+		<li> color all other locations red.
+	</ul>
+	When submitting:
+		<ul>
+			<li> #4:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #5:  Submit a screenshot of your map.
+		</ul>	
+	<br>
+
+	<li> Using folium, make a map of the NYC trash can data set (see above).  Your map should:
+	<ul>
+		<li> have a marker for each public trash basket in the data set,
+		<li> skip all private trash baskets (i.e. do not include in your marker set), 
+		<li> color all the recycling bins green or use a suitable icon, and 
+		<li> color all other locations a different color (or use another suitable icon).
+	</ul>
+	When submitting:
+		<ul>
+			<li> #6:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #7:  Submit a screenshot of your map.
+		</ul>	
+	<br>
+	
+	
+	<li> <b>Project Topic:</b>  What would you like to do for your group project?  
+	The default topic is "Where should we add housing?"  Indicate your team preference on the Projects Page:
+		<ul>
+			<li> Topic Preference:  Fill out the Project Topic Preference Survey Form on the Projects page.
+		</ul>
+	We will have 4 to 5 different teams for our class, based on students' interest.  If you are passionate about a topic related to shaping the future of New York that's not on the list, make sure to include it on 
+	"Other Possible Topics" line.
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

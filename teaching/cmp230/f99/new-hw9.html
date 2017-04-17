@@ -1,0 +1,116 @@
+<title>HW 9 for CMP 230-2, Fall 1999, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 9</h1>
+<h2>CMP 230-2: Programming Methods I<br>
+Lehman College, City University of New York<br>
+Fall 1999</h2>
+
+<hr>
+The suggested submission date for the programs in this
+homework is: <font color="blue">24 November 1999</font>.<br>
+For more details about
+submitting homework, see the 
+<a href="hw-guidelines.html">guidelines</a>.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not to be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> The self-test questions on p 254.
+	<li> The self-test questions on p 257.
+	<li> The self-test questions on p 266.
+</ul>
+
+<h2>Graded Problems</h2>
+
+<p>
+<p>
+<dt><b>P15.</b> Write a program that stores 10 words, that the user
+	enters, and then sorts the words alphabetically.<br>
+	An example run of the program is below:<br>
+<tt>
+  Enter word 1: <B>cat</B><BR>
+  Enter word 2: <B>bat</B><BR>
+  Enter word 3: <B>dog</B><BR>
+  Enter word 4: <B>aardvark</B><BR>
+  Enter word 5: <b>zebra</b><BR>
+  Enter word 6: <b>camel</b><BR>
+  Enter word 7: <b>eel</b><BR>
+  Enter word 8: <b>elephant</b><BR>
+  Enter word 9: <b>lion</b><BR>
+  Enter word 10: <b>bear</b>
+<br><br>
+The sorted list is:<br>
+aardvark bat bear camel cat dog eel elephant lion zebra
+</tt>
+<br>
+(Words entered by the user are in <b>bold</b>.)
+<p>
+<dt><b>P16.</b> Write a program to play Blackjack.  Your program
+	should use the <TT>DeckOfCards</TT> class which can be
+	found in <a href=""DeckOfCards.java>DeckOfCards.java</a>.
+	You should first declare an object of class type
+	<tt>DeckOfCards</tt> and use <tt>new</tt> to allocate
+	space:
+<pre>DeckOfCards myDeck = new DeckOfCards()
+</pre>
+	The default constructor initializes all 52 cards.  Before
+	using the deck you should use the <tt>shuffle()</tt> to 
+	make sure the deck is in random order:
+<pre>myDeck.shuffle()</pre>
+	Now, print out the top 2 cards on your deck.  If the sum
+        of their ranks is 21, print out "You win!" and quit the
+        program.  If the sum is < 21, ask the user if they would
+        like another card.  If not, quit.  If so, print out the
+        next card on the deck and the sum of the ranks.  Repeat
+        this process until the user quits, the total of their
+        cards is greater than or equal to 21, or they have 5
+        cards.  
+        <p>
+        An example run follows:<br>
+<TT><br>
+
+  Your cards are:<BR>
+  2 Clubs<BR>
+  Jack Spades<BR>
+<BR>
+  Your total is 12.  <BR>
+  Do you want another card? <b>y</b><BR>
+<br>
+  Your cards are:<BR>
+  2 Clubs<BR>
+  Jack Spades<BR>
+  3 Hearts<BR>
+  <BR><br>
+  Your total is 15.  <BR>
+  Do you want another card? <b>y</b><BR>
+  <BR><br>
+  Your cards are:<BR>
+  2 Clubs<BR>
+  Jack Spades<BR>
+  3 Hearts<BR>
+  7 Clubs<BR>
+<br>
+  Your total is 23.  <BR>
+  You lost!  <BR>
+  Thank you for playing!<BR>
+</TT>
+<p>
+	Hints:<BR>
+	<ul>
+		<li>To make the program easier, assume that Jacks, Queens, and
+		Kings are worth 10 and the Aces are worth 11.
+		<li>First, get things working for 2 cards.  Then use a loop
+		for 3, 4 and 5 cards.
+	</ul>
+</body>
+

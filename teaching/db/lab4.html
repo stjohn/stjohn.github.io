@@ -1,0 +1,158 @@
+<title>Lab 4 for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Laboratory Exercise 4</h1>
+<h2>CMP 420: Database Systems<br> 
+Lehman College, City University of New York<br>
+1 November 2001</h2>
+
+<hr>
+<h3>Unix Commands</h3>
+
+Each lab begins with several Unix commands that will be useful
+for completing today's lab and future labs and assignments.
+Try the following commands:
+<ul>
+	<li> <tt>printenv</tt><br>
+	When you log-on on the lab machines, a working environment is
+	set up for you.  Your environment includes your username, your
+	hostname, the operating system type, the default language (used
+	by help files and the keyboard), etc.  To see your current
+	environment, type:
+<pre> 
+    printenv
+</pre>
+
+	<li> <tt>grep</tt> <i>pattern [filename]</i><br>
+	The <tt>grep</tt> command lets you search for a pattern in 
+	standard input or a file.  For example,
+<pre>
+    printenv | grep PATH
+</pre>
+	searches the output from the <tt>printenv</tt> command for any
+	lines containing the word "PATH."  If you don't specify exactly
+	where a program is that you would like to run, the computer first
+	checks in all the directories listed in your path.
+	
+	<li> <tt>which</tt> <i>commandname</i><br>
+	When you type name of a program, the computer checks all the 
+	directories in your path for that program to run.  Often, you need
+	to know which version of the desired program the computer will 
+	choose to use.  To do this, use the <tt>which</tt>.  For example,
+	if you would like to know which java compiler is used when you
+	type <tt>javac</tt>, you type:
+<pre>
+    which javac
+</pre>
+	<li> <tt>locate</tt> <i>filename</i><br>
+	The <tt>locate</tt> command searches the entire file system for
+	the <i>filename</i>.  For example,
+<pre>
+    locate javac
+</pre>
+	gives the names of all files that contain "javac" in their complete
+	name.  Sometimes, this can be a lot of files and will scroll off
+	the screen.  For example, if you type:
+<pre>
+    locate java
+</pre>
+	you will see the 1900 files that contain "java" in their name.
+
+<!--
+	<li> <tt>&lt; </tt><br>
+	<li> <tt>&gt; </tt><br>
+	<li> <tt>&gt;&gt; </tt><br>
+	<li> <tt>diff</tt> <i>file1 file2</i><br>
+	<t>diff</tt> compares two files and reports back any difference.
+	This command is very useful for looking small changes in very 
+	large files.
+-->
+</ul>
+
+<h3>Using Java</h3>
+
+Today's lab focuses on using Java on the Linux systems.  Installed on
+the lab machines is the Java Developer's Toolkit (JDK 1.2.2), a standard
+release from Sun Microsystems.  
+<ul>
+    <li> Create a directory (or folder) for this lab.
+	<br>
+	<i>mkdir lab4</i>
+	<br>
+	(This command creates a new directory called ``lab4''.)
+    <li> Use this directory when creating any files for the
+    	exercise.  To move to that directory, type:
+<pre>
+    cd lab4
+</pre>
+	(This ``changes directories'' to p1.)
+	When you create files in the text editor, save them to your
+	subdirectory, <tt>lab4</tt>. 
+        (To return to your home or main directory, type: <tt>cd </tt>.)
+
+    <li> Create a simple java program that will print <tt>Hello World!</tt>
+	as text.  Call the class <tt>Hello</tt> and save the
+	file as <tt>Hello.java</tt>.
+    <li> To compile the file, type:
+<pre>
+    javac Hello.java
+</pre>
+	If there are errors, you will need to edit your program,
+	fix them, and compile again.
+    <li> To run your program, type:
+    	<br>
+	<i>java Hello</i>
+	<br>
+	(The program should say "Hello World!")
+</ol>
+
+<h3>Applets</h3>
+
+Now, make an applet that will print "Hello World" in red letters on
+a blue background.  As in other systems, you will need to create 
+an HTML file for you applet.  Compile your file as before and save
+your HTML file as <tt>hello.html</tt>.  To view your applet, you 
+can load the webpage into a browser (as you did on other systems), or
+you can use a program designed for viewing applets, called 
+<tt>appletviewer</tt>.  To use appletviewer, you type:
+<pre>
+    appletviewer hello.html
+</pre>
+
+<p>
+Add to your applet, 3 buttons that change the background color. 
+
+<p>
+If you have forgotten some of your java, the API's on the 
+Sun webpages are at:
+<a href="http://java.sun.com/products/jdk/1.2/docs/api/index.html">
+http://java.sun.com/products/jdk/1.2/docs/api/index.html</a>.
+
+<h3>Final Comments</h3>
+
+Before leaving the lab, you need to log out and shut down your
+computer.  First, you should quit all applications.  Then,
+go to the <tt>K</tt> menu in the bottom left hand corner and
+select <tt>Log Out</tt>.  Choose the <tt>Shut Down</tt> option,
+and shut off the monitor when you're done.
+
+<p>
+Remember to pick up any files you sent to the printer and to
+take any personal belongings.  It is difficult to get back
+into the lab later (since it's locked when not in use), so,
+it's worth making sure you haven't forgotten anything.
+
+<p>
+Also, remember to turn in Homework 6 before leaving!
+
+<p>
+Next lab, we will focus on designing and compiling Java
+programs on an Unix platform.  If you haven't programmed in
+Java in sometime, you should review how to write a program that
+instantiates objects and has a graphical user interface (GUI).
+
+</body>
+</html>
+
+

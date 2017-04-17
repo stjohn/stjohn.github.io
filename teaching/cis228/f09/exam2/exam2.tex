@@ -1,0 +1,422 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\topmargin= -25pt
+\textwidth=6 true in
+\textheight=9.5 true in
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\large
+\begin{center}
+%\mbox{ }
+%\vspace{.1in} \\
+    Exam II\\
+    CIS 228: The Internet \\
+    Prof.~St.~John\\ 
+    Lehman College\\
+    City University of New York\\ 
+    3 April 2008
+\end{center}
+}
+
+
+{\large
+\begin{center}
+\begin{tabular}{ll}
+\mbox{ }
+\vspace{.1in} \\
+NAME (Printed) & \ul{\hspace{3in}}\\ 
+NAME (Signed) & \ul{\hspace{3in}} \\
+E-mail & \ul{\hspace{3in}}\\
+\end{tabular}
+\end{center}
+
+
+{\small
+{\bf
+\begin{center}
+Exam Rules
+\end{center}
+\begin{itemize}
+	\item Show all your work.  Your grade will be based on the work shown.          
+	\item The exam is closed book and closed notes. 
+        \item When taking the exam, you may have with you pens or pencils,
+		and an 8 1/2" x 11" 
+		piece of paper filled with notes, programs, etc. 
+	\item You may not use a computer or calculator. 
+	\item All books and bags must be left at the front of the classroom 
+		during this exam. 
+	\item {\bf Do not open this exams until instructed to do so. }
+\end{itemize}
+}
+
+{\large
+\begin{center}
+\mbox{ }
+\vspace{.25in} \\
+\begin{tabular}{|c|l|}
+\hline \hline
+\hspace{.05in} Question 1 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 2 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 3 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 4 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 5 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline 
+\hspace{.05in} Question 6 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 7 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 8 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 9 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 10\hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+
+\hspace{.05in} TOTAL \hspace{.05in} & \hspace{1in} \mbox{ }  \\ \hline \hline
+\end{tabular}
+\end{center}
+}
+
+
+
+\newpage
+
+
+
+\begin{enumerate}
+
+%1 T or F
+   \item True or False:
+    \begin{enumerate}
+     	\item \underline{\hspace{.25in}} You can validate CSS files, in the same way you validate HTML files.
+     	\item \underline{\hspace{.25in}} Every CSS property declaration ends with a period.
+     	\item \underline{\hspace{.25in}} {\tt em} specifies absolute sizes for fonts.
+	\item \underline{\hspace{.25in}} If you mix 100\% red, 100\% green, and 100\% blue you will get black.
+	\item \underline{\hspace{.25in}} In strict HTML, you can nest block elements inside block elements.	
+	\item \underline{\hspace{.25in}} Pseudoclasses must be defined in your HTML file to be used.
+	\item \underline{\hspace{.25in}} The {\tt div} element is used to style in-line elements.
+	\item \underline{\hspace{.25in}} Tables are defined in columns, using the $<$tc$>$ element.
+	\item \underline{\hspace{.25in}} The $<$th$>$ element can designate either row or column headings.  
+	\item  \underline{\hspace{.25in}} POST and GET are both ways of sending data to the web application.
+    \end{enumerate}
+
+%2 Short answer:
+\item Answer in two sentences or less the following:
+\begin{enumerate}
+    \item What does the padding property do? Give an example. 
+    	\vspace{1.2in}
+    \item What does the margin property do? How does it differ from the padding property? 	
+    	\vspace{1in}
+\end{enumerate}     
+
+%3 HTML or CSS     
+     \item For each of the following, identify whether it would be done in HTML or CSS:	\begin{enumerate}
+	\itemsep 0pt
+		\item \underline{\hspace{.5in}}  organize items in a table
+		\item  \underline{\hspace{.5in}} include an image
+		\item  \underline{\hspace{.5in}} set the width of an element
+		\item  \underline{\hspace{.5in}}  change the text alignment of a paragraph
+		\item  \underline{\hspace{.5in}}  change the background color of the page
+	\end{enumerate}
+     
+
+\newpage
+%4 Hexcodes     
+     \item Fill in the following table with the corresponding decimal or hexcode representation of the 
+     	number.  For partial credit, show your work.
+	
+	{\large
+	%\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			{\bf Decimal} & {\bf Hexcode}\\
+			\hline
+			11 & \\
+			\hline
+			& \#11\\
+			\hline
+			20 & \\
+			\hline
+			& \#ab\\
+			\hline
+			& \#ff\\
+			\hline
+		\end{tabular}
+	%\end{center}
+     	}
+	\vspace{1in}
+
+%5 Form question:
+
+    \item Write the HTML that does the following:
+    	\begin{enumerate}
+		\item makes a text box where the user can enter their name:
+			\vspace{.5in}
+		\item makes a ``submit'' button with label, ``Order now'':
+			\vspace{.5in}
+		\item allows the user to select condiments for their order from
+			{\tt salt, pepper, garlic} (allow multiple items to be selected):
+			\vspace{1.5in}
+		\item makes a drop-down menu with a choice of:  ``House Blend,''
+			``Shade Grown Bolivia,'' ``Organic Guatemala,'' or ``Kenya.''
+	\end{enumerate}
+
+\newpage
+
+
+%6 Be the browser
+     \item Be the browser with the following HTML and CSS files.  Draw the page
+     and indicate any style (color, borders, etc) on your page:
+
+{\small     
+     \begin{center}
+
+        \begin{minipage}[t]{0.7\linewidth}
+         {\bf HTML:}
+  {\footnotesize
+        \begin{verbatim}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head> <title>Favorite Food</title>
+    <link type="text/css" rel="stylesheet" 
+      href="food.css" />
+  </head>
+  <body>
+    <div id="header"><h1>My Favorite Foods</h1></div>
+    <div id="sidebar">
+      <p> Recipes for both of these can be found in 
+      books on Italian and Spanish cooking at 
+      <a href="http://amazon.com">Amazon</a>.</p>
+    </div>
+    <div id="pesto"> <h2>Pesto</h2>
+      <p><a href="pesto.html">Pesto</a> is made from 
+      fresh basil, garlic, olive oil, and salt.</p>
+    </div>
+    <div id="dulce"> <h2>Dulce de Leche</h2>
+      <p>The ice cream, <a href="dulce.htm"l>Dulce
+        de Leche</a>, is made from milk and 
+        sugar and has a smooth caramel taste.</p>
+    </div>
+    <div id="footer">
+       <p>Katherine St. John, 
+       <span class="email">stjohn@lehman.cuny.edu</span></p>
+    </div>
+  </body>
+</html>
+ 
+        \end{verbatim}
+        }
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.25\linewidth}
+        {\bf CSS:}
+\begin{verbatim}
+div { 
+  border: dotted black 2px;
+}
+#sidebar {
+  width: 100px;
+  float: right;
+  background-color: blue;
+}
+#footer {
+  clear: both
+}
+#pesto {
+  background-color : green;
+}
+#dulce {
+  background-color: silver;
+}
+.email {
+   font-family: Courier, monospace;
+}
+\end{verbatim}
+        \end{minipage}    	
+	
+      \end{center} 
+}
+     
+     
+\newpage
+%7 Simple style sheet    
+     \item Write a {\bf complete} CSS style sheet that:
+     	\begin{itemize}
+		\itemsep 0pt
+		\item uses a sans-serif font throughout the page,
+		\item has a non-white background color,
+		\item $<$h1$>$ and $<$h2$>$ headings have a dotted bottom border,
+		\item $<$h1$>$ headings should have white text, and
+		\item paragraphs {\bf inside a {\tt div} element} from the class {\tt options} have solid
+			borders.
+
+	\end{itemize}
+\vspace{2in}
+     
+ %8 Build a table:
+     \item Write the HTML code {\bf and the style sheet} for the table with the following information:\\
+		(Hint: Remember to align the text for each cell.)
+	\begin{center}{\em Fall 2007: Total Enrollment by Undergraduate and Graduate Level}
+	\begin{tabular}{|l|r|r|r|}
+		\hline
+		&{\bf Undergraduate} &	{\bf Graduate} & 	{\bf Total} \\
+		\hline
+%		Senior Colleges && 126,651 & 29,445 & 156,096\\
+%				& City College & 11,181 & 3,211 & 14,392\\
+		 Lehman College & 8,864 & 2,058  &  10,922\\
+		\hline
+		Community Colleges &76,864 & & 76,864\\ 
+		\hline
+		{\bf Total University} & 203,515 & 29,445 & 232,960\\
+		\hline
+	\end{tabular}
+	\end{center}
+\newpage
+
+ 
+
+%9 Layouts     
+     \item Write the style sheet that will arrange the following page: 
+     	\begin{itemize}
+		\itemsep 0pt
+		\item the main and sidebar sections should be side-by-side, and not overlapping,
+		\item the award should be positioned on top of and overlapping the header, main, 
+			and sidebar sections,
+		\item the coupon should have a fixed position, halfway down the browser's left edge,
+		\item the footer should clear both sections.
+	\end{itemize}
+     
+     	(Hint: Do not change any of the HTML code.)
+
+  {\footnotesize
+        \begin{verbatim}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head> 
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Starbuzz Coffee</title>
+    <link rel="stylesheet" type="text/css" href="starbuzz.css" />
+  </head> 
+  <body>
+    <div id="header">
+      <img src="images/header.gif" alt="Starbuzz Coffee header image" />
+    </div>
+    <div id="award">
+      <img src="images/award.gif" alt="Roaster of the Year award" />
+    </div>
+    <div id="main">
+      <h1>QUALITY COFFEE, QUALITY CAFFEINE</h1>
+      <p>At Starbuzz Coffee, we are dedicated to filling all your  caffeine needs
+        through our quality coffees and teas.</p>
+      <h1>OUR STORY</h1>
+      <p> "A man, a plan, a coffee bean". Okay, that doesn't make a palindrome, but it 
+        resulted in a damn good cup of coffee.  Starbuzz's CEO is that man, and you 
+        already know his plan: a Starbuzz on every corner.</p> 
+      <h1>STARBUZZ COFFEE BEVERAGES</h1>
+      <p> We've got a variety of caffeinated beverages to choose
+        from at Starbuzz, including our 
+        <a href="beverages.html#house" title="House Blend">House Blend</a>,
+        <a href="beverages.html#mocha" title="Mocha Cafe Latte">Mocha Cafe Latte</a>, 
+        <a href="beverages.html#cappuccino" title="Cappuccino">Cappuccino</a>,
+        and a favorite of our customers, 
+        <a href="beverages.html#chai" title="Chai Tea">Chai Tea</a>.</p>
+      <p>We also offer a variety of coffee beans, whole or ground, for you to
+        take home with you.  Order your coffee today using our online
+        <a href="form.html" title="form.html">Bean Machine</a>, and take
+        the Starbuzz Coffee experience home.</p>
+    </div>
+    <div id="sidebar">
+      <p class="beanheading">
+        <img src="images/bag.gif" alt="Bean Machine bag" /> <br />
+        ORDER ONLINE with the <a href="form.html">BEAN MACHINE</a> <br />
+        <span class="slogan">FAST <br />FRESH <br />TO YOUR DOOR <br /></span>
+      </p>
+\end{verbatim}
+\newpage
+\begin{verbatim}
+      <p>Why wait?  You can order all our fine coffees right from the Internet 
+        with our new, automated Bean Machine.  How does it work?  Just click on 
+        the Bean Machine link, enter your order, and behind the scenes, your coffee 
+        is roasted, ground (if you want), packaged, and shipped to your door.</p>
+    </div>
+    <div id="footer">
+      &copy; 2005, Starbuzz Coffee<br />
+      All trademarks and registered trademarks appearing on 
+      this site are the property of their respective owners.
+    </div>
+    <div id="coupon">
+      <a href="freecoffee.html" title="Click here to get your free coffee">
+        <img src="images/ticket.gif" alt="Starbuzz coupon ticket" />
+      </a>
+    </div>
+  </body>
+</html>
+
+ \end{verbatim}
+        }
+        
+        
+        
+
+\newpage
+%10 Page and Style sheet from scratch
+     \item Write a {\bf complete} HTML file {\bf and} CSS file to display 
+     a blog page. The page should have a header (with title) and a footer
+     (with your contact information), as well as a navigation sidebar with links to the entries in your page.  
+     You should include at least three entries, each containing the date, a short paragraph, 
+     and an image.  When the user clicks on a date listed in the sidebar menu, the page should reload
+     to that part of the page (hint: use destination anchors).  The sidebar should appear to the right of 
+     the blog entries, and the footer should be at the bottom of the page, not overlapping any other 
+     section (i.e. it should ``clear'' all other sections). 
+
+
+\end{enumerate}
+\end{document}
+
+\newpage
+%10  Strict HTML
+\item Modify the following page to be in strict HTML 4.01.  Use the 
+appropriate {\tt <doctype>}  and {\tt <meta>} elements and fix non-compliant
+parts:
+\begin{verbatim}
+
+<html>
+
+  <head>
+    <title>Head First Lounge</title>
+  </head>
+
+  <body>
+
+    <h1>Welcome to the New and Improved Head First Lounge</h1>
+
+    <p>
+      <img src="images/drinks.gif">
+    </p>
+
+    <p>
+      Join us any evening for refreshing 
+      <a href="beverages/elixir.html">elixirs</a>, 
+      conversation and maybe a game or two of 
+      <em>Dance Dance Revolution</em>.  
+      Wireless access is always provided;  
+      BYOWS (Bring Your Own Web Server).
+    </p>
+
+    <h2>Directions</h2>
+
+    <p>
+      You'll find us right in the center 
+      of downtown Webville.  If you need help finding
+      us, check out our 
+      <a href="about/directions.html">detailed directions</a>. 
+      Come join us!
+    </p>
+
+  </body>
+</html>
+\end{verbatim}
+
+
+\end{enumerate}
+\end{document}
+
+

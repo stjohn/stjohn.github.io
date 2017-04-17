@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 7 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "7." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 7</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapters 6 (Transition to Java) and 7 (Events in Java).
+</p>
+
+
+<p>You should complete <b>150 points</b> worth of programs
+(with an additional 15 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+
+
+<!-- For ps 8: sorting make an array of stickFigures, sort by height
+sorting when we get to arrays: bubbling max to the front of the list, say with random sized stick figures
+also do with numbers entered by the user: start with finding the max, then do bubble sort, 
+merge sort?
+
+(Sorted Merge) P9.6, p 416. Your program should (in the following order):
+Ask for the length of the first sorted list of integers.
+Read in the first list of integers.
+Ask for the length of the second sorted list of integers.
+Read in the second list of integers.
+You may assume that the lists are sorted, and you do not have to error check for this. Your program should then print out the sorted list of numbers. Submit this as program 21 using the electronic submission. Please call the file (and the class) Program21.
+
+
+something easy/fun with recursion
+-->
+
+
+
+
+
+<!--
+Postpone until CMP 326:
+<li><b>Puzzle Piece</b> (20 points)
+
+<p>Write a class called </tt>PuzzlePiece</tt>. A puzzle piece will have a label which will be a 
+number between 1 and 15 and the location of the puzzle piece (which will be the coordinates of the 
+upper left corner). Your class should contain three constructors:</p>
+
+<blockquote>
+a default constructor that sets the coordinates to (0,0) and the label to 0,
+a constructor that has a single argument that is assigned to label and sets the coordinates to (0,0), and
+a constructor that takes three arguments: the label, the x-coordinate, and the y-coordinate (in that order) and sets the values.
+</blockquote>
+
+<p>
+PuzzlePiece should contain a move method:
+</p>
+
+<blockquote>
+    public void move(int dx, int dy)
+that changes the position by dx units in the x direction and dy units in the y direction. Finally, you should have a draw method:
+    public void draw()
+that draws a square containing the label, using the object's coordinates for the upper left corner.
+</blockquote>
+
+Write a second class called Program19 that uses PuzzlePiece and demonstrates its features. Program19 should construct two PuzzlePieces (one using the default constructor and one using the other constructor), it should draw the puzzle pieces, and it should move at least one of the pieces.
+
+Submit this as program 19 using the electronic submission. Please call the file (and the class) Program19. Include an HTML	file in the directory called Program19.html that displays your applet.
+-->
+
+
+<li><b>Lots of Circles</b> (10 points)
+
+<p>Make a copy of the <tt>Snowman</tt> program  (available
+from the CD or Blackboard) to use as the base for
+this program.  The program should allow users to enter the 
+number of circles they would like drawn on the screen in a
+text box and the circles should be drawn in panel.  You will
+need a label, <tt>Number of Circles</tt>, a text box, and an
+associated listener.  </p>
+
+<p>Hint:  Look at how the "stars" are drawn in the original
+program, and modify the drawing to make visible circles.</p>
+
+
+<li><b>Person Class</b> (10 points)
+
+<p>Finish the <tt>Person</tt> class (file available on Blackboard) that will be used to list contact
+information for people in an address book.  Comments above each method describe what the method should do.
+Also available on Blackboard is a driver, <tt>PersonDriver</tt> to demonstrate the <tt>Person</tt>
+class.</p>
+
+
+
+
+<li><b>Push Counter</b> (15 points)
+
+<p>
+Create a new project for the PushCounter program from the book (available from the CD or Blackboard). 
+The program consists of the files: <tt>PushCounter.java</tt>, <tt>PushCounterPanel.java</tt>, and 
+<tt>ButtonListener.java</tt>. Make sure it runs in Eclipse.</p>
+
+<p>Next, modify the program in the following way:</p>
+<blockquote>
+	&bull Add a button and a corresponding listener that will zero
+		the counter (that is, when your new button is pushed, the 
+		counter will be set to zero and that will be displayed in the
+		text field).</br>
+	&bull Add a button and listener that decrements the counter and updates
+		the text field accordingly.
+</blockquote>
+
+
+<li><b>Shapes</b> (15 points)
+
+<p>
+Make a program with three different buttons, labelled, <tt>Square</tt>, <tt>Circle</tt>, and 
+<tt>Oval</tt>. Your program should also have listeners for each of these shapes. When the user 
+clicks on one of the buttons, the corresponding shape should be drawn on the panel.
+</p>
+
+
+<li><b>Toggle</b> (15 points)
+
+<p>
+Make a copy of the <tt>PushCounter</tt> program to use for this program. Your program should 
+have a single button on a black background. If the button is pushed and the background is black, 
+the background turns yellow. Otherwise, if the button is pushed and the background is yellow, 
+turn the background black.
+</p>
+
+<li><b>Image Flicker</b> (10 points)
+
+<p>Extend the <tt>ImageFlicker</tt> program (consisting of 
+<tt>ImageFlicker.java</tt> and <tt>ImageFlickerPanel.java</tt>) 
+to show <b>five</b> images of your choice.  The user should
+be able to view the images by typing <tt>1</tt> through <tt>5</tt>
+to see the individual images, or the space bar to see a random
+image.
+</p>
+
+<li><b>Drawing Cards</b> (15 points)
+
+<p>Design and implement an application that displays
+a button and two labels.  Every time the button is pushed, 
+the first label displays a random number between 1 and 13, 
+and the second label displays randomly one of the following:
+<tt>Clubs</tt>, <tt>Diamonds</tt>, <tt>Hearts</tt>, or 
+<tt>Spades</tt>
+</p>
+
+<p>Hint:  First, write the code to do first label (with
+random number between 1 and 13).  Then, generate a random
+number between 1 and 4.  If the number is 1, change the 
+label to be <tt>Clubs</tt>.  If the number is 2, change
+the label to be <tt>Spades</tt>, etc.
+</p>
+
+<li><b>Random Walk</b> (15 points)
+
+<p>Write a program to simulate the walk of a drunkard in a square street grid. 
+Place a simulated person at the center of the window, denoted by a filled circle. 
+For 100 times, have the simulated person randomly pick a direction (east, west, north, south), 
+move one block in that direction, and redraw the circle. 
+</p>
+
+<p>So that you can watch the progression of the walk, have the person wait 0.1 seconds
+between each step.  To wait in Java, you can use the <tt>Thread.sleep()</tt> method.  For
+example, the following will make the current thread sleep for 1 second:
+<blockquote>
+<tt>Thread.sleep(1000); </tt>
+</blockquote>
+<p>
+Include a button labeled <tt>Play Again</tt> that clears the window and simulates another
+random walk.  
+</p>
+
+
+<li><b>Mouse Odometer</b> (20 points)
+
+<p>PP 7.1:  Design and implement an application that serves
+as a mouse odometer, continually displaying how far, in pixels,
+the mouse has moved (while in the program window). Display the
+current odometer value using a label.<br>
+Hint: Compare the current position of the mouse to the last 
+position and use the distance formula to determine how far the
+mouse has traveled.  Given two points (x,y) and (u,v), the 
+distance formula is <tt>Math.sqrt( (x-u)*(x-u) + (y-v)*(y-v) )</tt>.
+</p>
+
+
+<li><b>Space Ship</b> (10 points)
+
+<p>Extend the <tt>SpaceShip</tt> program (consisting of 
+<tt>Spaceship.java</tt>, <tt>SpaceshipPanel.java</tt>, and 
+<tt>SpaceshipFlight.java</tt>) to allow the user to change
+the size of the space ship.  If the user types <tt>L</tt>,
+the space ship should be large size; <tt>M</tt> should be medium
+size; and <tt>S</tt> should be small size.
+</p>
+
+
+<li><b>Traffic Light</b> (15 points)
+
+<p>
+PP 7.5 (p 151):  Design an application that draws a traffic
+light and uses a key press to change the state of the light.
+Each time the space key is pressed, change the state of the 
+light.
+</p>
+
+
+<li><b>Capture the Creature</b> (30 points)
+
+<p>PP 7.10:  Design and implement an application that plays
+a game called <tt>Catch-the-Creature</tt>.  Use an image
+(or a simple object) to represent the creature.   Have the 
+creature appear at a random location for a random duration,
+then disappear and reappear again.
+The goal is to "catch" the creature by pressing the mouse
+button while the mouse pointer is on the creature image.
+</p>
+
+<p>
+Create a separate class to represent the creature, and 
+include in it a methd that determines whether the location 
+of the mouse click corresponds to the current location of 
+the creature.  Display acount of the number of times the
+creature is caught.
+</p>
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 150 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 15 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

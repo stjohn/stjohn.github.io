@@ -1,0 +1,13 @@
+// tankbot1.nqc - drive straight ahead
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+
+task main()
+{
+    SetPower(LEFT,7);
+    On(LEFT);
+    SetPower(RIGHT,2);
+    On(RIGHT);
+    until(false);
+}

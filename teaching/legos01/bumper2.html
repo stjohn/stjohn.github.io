@@ -1,0 +1,102 @@
+<HTML>
+<!-- Copyright 1997 Dave Baum -->
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <TITLE>Bumper Car 2</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2 ALIGN=CENTER>Bumper Car 2</H2>
+
+<P>This is a simple vehicle with front and back bumpers. The drive train
+is fairly standard - tank treads driven by geared down (3:1) motors. The
+bumper design is interesting - the bumper pivots around an axle, and is
+kept in the extended position by use of a rubber band pulling down on the
+back side of the bumper. A small axle protrudes from the back of the bumper,
+and this presses against the touch sensor in the normal position. When an
+obstacle is hit, however, the bumper pivots and the small axle moves away
+from the touch sensor, thus breaking contact.</P>
+
+<P><IMG SRC="bumper2.jpg" WIDTH="320" HEIGHT="200" BORDER="0" ALT="Bumper Car"
+NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><IMG SRC="bumper2_side.jpg" WIDTH="320" HEIGHT="200" BORDER="0" ALT=
+"Bumper Car Side" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><IMG SRC="bumper2_drive.jpg" WIDTH="320" HEIGHT="200" BORDER="0" ALT=
+"Bumper Car Drive" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><IMG SRC="bumper2_bump.jpg" WIDTH="320" HEIGHT="200" BORDER="0" ALT=
+"Bumper Car Bumper" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><IMG SRC="bumper2_sensor.jpg" WIDTH="320" HEIGHT="200" BORDER="0" ALT=
+"Bumper Car Sensor" NATURALSIZEFLAG="0" ALIGN="BOTTOM"></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P><HR ALIGN=LEFT><A NAME="source"></A></P>
+
+<H3>NQC Source</H3>
+
+<P><A HREF="../../nqc/index.html" TARGET="_top"><IMG SRC="../../images/powernqc.gif"
+ALT="Powered by NQC" WIDTH="90" HEIGHT="35" BORDER="0" NATURALSIZEFLAG=
+"0" ALIGN="BOTTOM"></A></P>
+
+<PRE>
+<FONT SIZE=-1>/* bumper2.nqc</FONT>
+<FONT SIZE=-1> * written by Dave Baum for NQC 2.0</FONT>
+<FONT SIZE=-1> */</FONT>
+<FONT SIZE=-1>#define LEFT OUT_C</FONT>
+<FONT SIZE=-1>#define RIGHT OUT_A</FONT>
+<FONT SIZE=-1>#define FRONT SENSOR_1</FONT>
+<FONT SIZE=-1>#define BACK SENSOR_3</FONT>
+
+<FONT SIZE=-1>task main()</FONT>
+<FONT SIZE=-1>{</FONT>
+<FONT SIZE=-1>	SetSensor(FRONT, SENSOR_TOUCH);</FONT>
+<FONT SIZE=-1>	SetSensor(BACK, SENSOR_TOUCH);</FONT>
+
+<FONT SIZE=-1>	On(LEFT + RIGHT);</FONT>
+
+<FONT SIZE=-1>	while(true)</FONT>
+<FONT SIZE=-1>	{</FONT>
+<FONT SIZE=-1>		// wait until we hit something</FONT>
+<FONT SIZE=-1>		until(FRONT==0 || BACK==0);</FONT>
+<FONT SIZE=-1>		</FONT>
+<FONT SIZE=-1>		// reverse for a little</FONT>
+<FONT SIZE=-1>		Rev(LEFT+RIGHT);</FONT>
+<FONT SIZE=-1>		Wait(100);</FONT>
+<FONT SIZE=-1>		</FONT>
+<FONT SIZE=-1>		// pick new direction</FONT>
+<FONT SIZE=-1>		Fwd(LEFT);		</FONT>
+<FONT SIZE=-1>		Wait(Random(200));</FONT>
+<FONT SIZE=-1>		</FONT>
+<FONT SIZE=-1>		// resume straight</FONT>
+<FONT SIZE=-1>		Fwd(RIGHT);</FONT>
+<FONT SIZE=-1>	}</FONT>
+<FONT SIZE=-1>}</FONT>
+<HR ALIGN=LEFT> <TABLE WIDTH="100%" HEIGHT="24" BORDER="0" CELLSPACING=
+"0" CELLPADDING="0"><TR><TD WIDTH="50%" HEIGHT="17">&nbsp;<A HREF="../index.html" TARGET="_parent">[Top]</A> <A HREF="index.html">[Up]</A></TD><TD WIDTH="50%"
+ALIGN="RIGHT">&nbsp;Site Maintained by <A HREF="mailto:dbaum@enteract.com">dbaum@enteract.com</A></TD></TR></TABLE></PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #2, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #2</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Parking in Neighborhoods; More matplotlib plots<br>
+<b>Deadline:</b>  <strike>Wednesday, 15 February 2017, 11:59pm </strike>
+Wednesday, 22 February 2017, 11:59pm (postponed due to snow day)
+</div>
+
+
+
+
+<div>
+<h3> Parking Tickets in Your Neighborhood</h3>
+
+<p>
+Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you can access data from almost every city agency.   We will use the parking ticket data set.  Since it is quite large, even for a single year, we will focus on your neighborhood.  
+<ul>
+	<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www.nyc.gov/html/nypd/html/precinct_maps/precinct_finder.shtml">useful tool</a>)
+	<li>  
+	<a href= "https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2016/kiv2-tbus/data">Fiscal year 2016 (FY2016) parking tickets</a> for your precinct:  download the data set as a CSV, filtering by precinct. For example, Macaulay Honors College is located in the 20th Precinct, so, you would enter <tt>20</tt> on the filter.
+
+</ul>
+</div>
+
+<div>
+<h3>CSV Data Files</h3>
+
+CSV files store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
+<pre>
+1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
+</pre>
+<p>
+All lines are formatted similarly: they start with the 
+summons number, then the license plate, registration state, plate Type, date, and continue with the information about the location and type of violation, and sometimes additional information such as the who issued the ticket and the color of the car. The first line of the file gives the entries in the order they occur in the rows. 
+
+<p>
+The sample entry above gives details for a ticket issues on June 9, 2015 to a passenger car with Florida plates, L040HZ.  The red Nissan SUV received the ticket on West 83rd Street.  Each entry also begins with a unique identifier that can be used to look up the parking ticket.
+</div>
+
+<div>
+<h3>Assignment</h3>
+
+<ul>
+
+	<li> All Seminar 4 sections are required to have an out-of-class trip.  Ours is to visit the Cooper-Hewitt Museum's temporary exhibition on <a href ="https://www.cooperhewitt.org/channel/by-the-people/">By The People:  Designing a Better America.</a>  Questions for your visit are in <a href="hw3.html">Homework 3</a> and due <strike>22 February</strike> 1 March.  Using the museum's website, figure out when you can visit.  Allow at least 1 hour to see the exhibit.  When are you planning to visit Cooper-Hewitt exhibit?
+	<ul>
+			<li> #1:  Submit when you are planning to visit the Cooper-Hewitt exhibit.
+	</ul>
+	<br>
+
+	<li>  In your neighborhood, are there more in-state or out-of-state tickets issued in 2016?  Are more tickets given to commercial or passenger cars?  You can both questions by exploring the data set in Excel or writing a short Python program.
+	<ul>
+			<li> #2:  Submit a short answer of whether tickets are given to more in-state or out-of-state cars and to commercial or passenger cars.  Include actual numbers for the 4 categories and your methodology (the techniques in Excel or Python that you used to find the numbers).
+	</ul>	
+	<br>
+
+	<li> Who (i.e. which license plate) got the most tickets in your neighborhood?  In your answer, include the Python program that scraped the data and the top 10 license plates that got tickets.
+			<ul>
+			<li> #3:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #4:  Submit a list of the top 10 license plates that received tickets.  Include number of tickets that each received over FY 2016.
+		</ul>
+	<br>
+	
+	<li> What month has the most parking tickets?  
+		Display a histogram of the number of collisions that occur each month.  That is, your x-axis will have the numbers from 1 to 12 representing the months of the year and the y-axis will be the number of collisions.
+		Make sure to include in the title of your plot the zip code plotted. 
+		<ul>
+			<li> #5:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #6:  Submit a screen shot of the graphics window containing the plot.
+		</ul>
+		<br>
+		Hint:  Since all dates occur in the same format:  "MM/DD/YYYY", you can extract the month from <tt>dateString</tt> by <tt>monthNum = int(dateString[:2])</tt>.<br>
+
+	<li> Does parking affect your neighborhood?  Support your answer with the data you analyzed and relevant citations to this weeks' reading.
+		<ul>
+			<li> #7:  Submit your paragraph as a text or <b>.pdf</b> file.<br>
+		</ul>	
+
+	
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

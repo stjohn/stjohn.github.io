@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8<br>
+CIS 166 & CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Lab Dates:  Wednesday-Thursday, 7-8 November 2012</span></p>
+
+<p>
+Today's lab looks at decisions from Chapter 8.
+
+</div>
+
+
+<div>
+
+<h3>Archery Scoring</h3>
+
+<p>Read the following program:  
+<pre>
+# Archery Program for Lab 8
+# Lehman College, CUNY, Fall 2012
+
+from graphics import *
+
+def main():
+    w = GraphWin("Target Practice",400,400)
+    w.setCoords(-200,-200,200,200)
+
+    origin = Point(0,0)
+
+    for radius in range(10,0,-1):
+        c = Circle(origin, 20*radius)
+        c.draw(w)
+
+    w.getMouse()
+    w.close()
+
+main()
+</pre>
+What does it do?  Try running it to see if you are right (remember for graphics programs
+to run you will need the <tt>graphics.py</tt> file in the same directory).
+
+<p>We will use decision statements to make it a bit more colorful and look like an archery 
+target.  Since targets alternate the colors between rings, we will do the same.  For even
+numbered rings (that is, where <tt>i%2 == 0</tt>), we will color the rings red.  And for
+odd numbers, we will color the rings yellow.  Note that we are coloring the whole circle 
+each time and then coloring over the inside of it when we color the next smallest circle:
+<pre>
+</pre>
+The new part of this program is:
+<pre>
+    for radius in range(10,0,-1):
+        c = Circle(origin, 20*radius)
+        if radius % 2 == 0:
+            c.setFill("red")
+        else:
+            c.setFill("yellow")
+        c.draw(w)
+</pre>
+
+<p>Next, we will turn the program into a game, scoring where the user clicked on the 
+target.  Lets start by scoring bullseyes (or when the user clicks on the center).  We
+will give the user 10 points for clicking within the center ring.  Since we
+are going to use distance over and over again, we will write a separate function to 
+calculate it:
+<pre>
+def dist(p1,p2):
+    dist = sqrt((p1.getX()-p2.getX())**2 + (p1.getY() - p2.getY())**2)
+    return dist
+</pre>
+
+<p>After drawing the target, we will put up a message to give the user directions:
+<pre>
+    t = Text(Point(0,-225), "Click on the target")
+    t.setSize(20)
+    t.draw(w)
+</pre>
+Remember that <tt>Text</tt> graphics objects are just strings that show up in the graphics
+window.  Since the default font is really small, we have changed its size to 20 points
+before drawing the text to the window.
+
+<p>
+Our next step is to use the point the user clicked to figure out if they scored a bulleye 
+or not.  Since our inner ring has radius 20, the click is a bulleye if it is within 20
+of the origin:
+<pre>
+    p = w.getMouse()
+    d = dist(origin, p)
+    
+    #This line prints to the IDLE shell window, so, we can debug the program:
+    print("You clicked on (", p.getX(), ",", p.getY(),") with distance: ", d)
+
+    if d < 20:
+        t.setText("Bullseye!")
+    else:
+        t.setText("Missed!")
+</pre>
+
+<p>Putting all the pieces together, we have:
+<pre># Archery Program for Lab 8
+# Lehman College, CUNY, Fall 2012
+
+from graphics import *
+from math import *
+
+def dist(p1,p2):
+    dist = sqrt((p1.getX()-p2.getX())**2 + (p1.getY() - p2.getY())**2)
+    return dist
+
+def main():
+    w = GraphWin("Target Practice",500,500)
+    w.setCoords(-250,-250,250,250)
+
+    #make a point for the origin since we'll use it over and over again:
+    origin = Point(0,0)
+
+    #draw the target:
+    for radius in range(10,0,-1):
+        c = Circle(origin, 20*radius)
+        if radius % 2 == 0:
+            c.setFill("red")
+        else:
+            c.setFill("yellow")
+        c.draw(w)
+
+    #score the users click:
+    t = Text(Point(0,-225), "Click on the target")
+    t.setSize(20)
+    t.draw(w)
+    p = w.getMouse()
+    d = dist(origin, p)
+
+    #This line prints to the IDLE shell window, so, we can debug the program:
+    print("You clicked on (", p.getX(), ",", p.getY(),") with distance: ", d)
+
+    if d < 20:
+        t.setText("Bullseye!")
+    else:
+        t.setText("Missed!")
+    
+    #keep the window up until the user clicks
+    w.getMouse()
+    w.close()
+
+main()
+</pre>
+Try running it several times, clicking both on the center and elsewhere.  What
+messages do you see?
+
+
+<p>Lets make the program a bit more sophisticated and have it give a score of 10 
+for a bulleye, 1 point for hitting anywhere else in the target, and 0 for a total 
+miss of the target.  To do this, we only need to change the scoring section of
+the program.  Our first part will stay the same, but we need to distinguish 
+between what happens when they hit the rest of the target or miss altogether.  
+To do that, we will use the <tt>if-elif-else</tt> construct.  This allows us
+to have 3 different choices:
+<ul>
+	<li> they made a bulleye (distance < 20)
+	<li> they missed a bulleye but still hit the target (distance > 20 and distance < 200)
+	<li> they missed altogether (distance > 200)
+</ul>
+The <tt>if-elif-else</tt> will take care of some of these conditions for us
+automatically.  Here's the idea in pseudocode:
+<pre>
+	if distance < 20:
+		put up the message that they have a bullseye
+	elif distance < 200:	#We don't need to say distance > 20, since the only way 
+		#we will make it here is if that's so.  We only need the new condition =
+		put up the message that they hit the target
+	else:	#No conditions needed, this is what happens if all other conditions fail
+		put up the message that they missed
+</pre>
+
+<p>Here's the program with the additional decision for scoring:
+<pre>
+# Archery Program for Lab 8
+# Lehman College, CUNY, Fall 2012
+
+from graphics import *
+from math import *
+
+def dist(p1,p2):
+    dist = sqrt((p1.getX()-p2.getX())**2 + (p1.getY() - p2.getY())**2)
+    return dist
+
+def main():
+    w = GraphWin("Target Practice",500,500)
+    w.setCoords(-250,-250,250,250)
+
+    #make a point for the origin since we'll use it over and over again:
+    origin = Point(0,0)
+
+    #draw the target:
+    for radius in range(10,0,-1):
+        c = Circle(origin, 20*radius)
+        if radius % 2 == 0:
+            c.setFill("red")
+        else:
+            c.setFill("yellow")
+        c.draw(w)
+
+    #score the users click:
+    t = Text(Point(0,-225), "Click on the target")
+    t.setSize(20)
+    t.draw(w)
+    p = w.getMouse()
+    d = dist(origin, p)
+
+    #This line prints to the IDLE shell window, so, we can debug the program:
+    print("You clicked on (", p.getX(), ",", p.getY(),") with distance: ", d)
+
+    if d < 20:
+        t.setText("Bullseye! 10 points")
+    elif d < 200:
+        t.setText("Hit the target! 1 point")
+    else:
+        t.setText("Missed! 0 points")
+    
+    #keep the window up until the user clicks
+    w.getMouse()
+    w.close()
+
+main()
+</pre>
+Run your program multiple times until you see all three messages.
+
+
+<p>After completing your program, go to <tt>Assignments</tt> in Blackboard
+and click on the link: <tt>Lab 8</tt>.  Use the file upload interface
+to upload your program.  Remember to click the <tt>Submit</tt> button before
+closing the lab exercise.
+
+
+
+<p> With the remaining time, start <a href="ps7.html">Problem Set 7</a>.
+
+</p>
+</div>

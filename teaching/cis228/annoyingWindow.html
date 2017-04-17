@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Most Annoying Window</title>
+
+	<style>
+		body {
+			font : large, sans-serif;
+			background-color : #00aaaa;
+		}
+		#annoying {
+			margin:10px;
+			background-color:silver;
+			display : none;
+			position : absolute;
+			top : 30px;
+			right : 30px;
+			width : 200px;
+		}
+		#close {
+			width : 10px;
+			float : right;
+			margin : 5px;
+			padding : 3px;
+			padding-bottom : 0px;
+			border : thin black solid;
+		}
+		#message {
+			margin : 30px;
+			padding: 30px;
+		}
+	</style>
+
+    <script type="text/javascript">
+      
+      function closeWindow() {
+      	document.getElementById("annoying").style.display = "none";
+      	
+      	setTimeout("document.getElementById('annoying').style.display = 'block';", 3 * 1000);
+      }
+      
+      function popUpWindow() {
+      	document.getElementById("annoying").style.display = "block";
+      }
+    </script>
+  </head>
+
+  <body onload="popUpWindow()">
+    <div id="annoying">
+      <div id="close" onclick="closeWindow()">X </div> 
+      <div id="message">
+     		Message inside annoying window...
+      </div>
+    </div>
+    
+    <h1>Webpage with Annoying Pop-Up Window</h1>
+    
+    <p>
+    This page demonstrates how to create a "window" that appears 
+    in the browser window.  You can click it to go away, but it 
+    always comes back...
+    </p>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 3, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 3<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+<b>Topics:</b>  Newick tree format: parsing and (simple) visualization of trees; Looping through strings; using decisions.<br>
+</div>
+
+
+<div>
+
+<h3>Turtle Directions</h3>
+
+<p>
+Today's lab works through two examples of "looping through strings."  For the first example, we will use the following abbreviations to give directions to our turtles:
+<ul>
+	<li> F:  move forward one square
+	<li> R:  turn right 90 degrees
+	<li> L:  turn left 90 degrees
+	<li> U:  lift up pen (turtle can still move but does not draw)
+	<li> D:  put the pen down (the turtle draws its path again)
+</ul>
+For example, <tt>"RRFRFFFLFFLFFFFFF"</tt> is the path on the left:<br>
+
+<p>
+<img src="turtlePaths.jpg">
+
+<p>
+What set of directions created the path on the right?
+
+<p>
+Let's create a program to test this by drawing out paths, given a set of directions.  A possible outline for the program is:
+
+<tt>
+For each character in the directions:
+<ul>
+	<li> if the character is 'F', move your turtle forward.
+	<li> if the character is 'L', turn your turtle left.
+	<li> if the character is 'R', turn your turtle right.
+	<li> if the character is 'U', lift up the pen.
+	<li> if the character is 'D', put the pen down.	
+</ul>
+</tt>
+
+To turn this into Python code, we need to give names to variables we are using.  
+Lets call the string of directions, <tt>directions</tt> and use <tt>c</tt> as
+our loop index:
+<pre>
+directions = "RRFRFFFLFFLFFFFFF"
+
+for c in directions:
+</pre>
+
+<p>The rest of the loop can be done using decisions (remember to use "==" for comparison):
+<pre>
+    if c == 'F':
+        tess.forward(30)
+    if c == 'L':
+        tess.left(90)
+    ...
+</pre>
+
+<p>
+Since we only go to the second if-statement if the test on the first one fails (i.e. only check if the character is 'L' if we already checked and it wasn't 'F'), we can also write this as:
+<pre>
+    if c == 'F':
+        tess.forward(30)
+    elif c == 'L':
+        tess.left(90)
+    ...
+</pre>
+
+<p>
+The looping and decisions are the hardest part of the program, but we need a few more pieces to make it run:
+<ul>
+	<li> Remember to import the turtle library.
+	<li> You need to construct a turtle to do the drawing for you.
+	<li> End the program with an <tt>turtle.exitonclick()</tt> so that the program doesn't spin its wheels at the end.
+</ul>
+
+<p> Test your program on several sets of directions to make sure it works.
+
+</div>
+
+<div>
+<h3>Drawing Phylogenetic Trees</h3>
+
+A common use of trees is to represent the family history of a set of species.  For example, this cladogram represents some of the species found in the Halls of Dinosaurs.  Ornithomimids and Maniraptors are "siblings" in this tree, and Carnosaurs are their cousins.
+
+<p>
+A compact way to represent trees is via the Newick format.   This format groups siblings, then cousins, etc.  For the dinosaurs, we would group (Ornithomimids, Maniraptors).  The next most closely related species are the Carnosaurs.  This can be represented as:  (Carnosaurs, (Ornithomimids, Maniraptors)).  The whole tree of the 9 species is (using only the first 3 letters of each name to save space):  ((Sau, (Cer, (Car, (Orn, Man)))), (Leso,(Thy, (Eru, Mar)))).
+
+<p>
+In pairs, design a program that uses turtles to draw trees, using turtles.  Draw out a couple of simple ones, looking just at the string:
+<ul>
+	<li> (Ape, (Baboon, Chimp))
+	<li> ((Ape, Baboon), Chimp)
+	<li> (1,(2,(3,(4,(5,(6,(7,8)))))))	
+	<li> ((x,y), ((u,v),w))
+
+</ul>
+
+What should be drawn when you see a 
+<ul>
+	<li> '('
+
+	<li> ')'
+
+	<li> ','
+
+	<li> name (for this lab, we'll limit the names to single characters to make it easier to parse)
+</ul>
+
+<h4>Challenges</h4>
+<ul>
+	<li> Write a program that will draw out trees given the Newick format.  
+Computer scientists draw their trees with the roots in the air, biologists draw trees with roots in the ground, and folks in between often draw the trees sideways to avoid arguments.  Modify your program to draw your trees sideways. 
+
+	<li> If you used fixed angles for your branches (i.e.  the left child is always 60 degrees from the right child), then as you have more and more descendants they start drawing over each other.  How can you squeeze in more nodes at each level?
+
+	<li> (Optional):  The nodes in our trees had at most 3 neighbors (usually a parent and two children)-- called `binary trees' (computer science) or `fully resolved' (biology).  How could we represent and draw non-binary trees or trees with polytomies?
+
+	<li> (Optional): If you read in a tree in Newick format, can you design a program that says its height (the longest path from the root to a leaf) without drawing it?
+</ul>
+
+</div>
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  17 February 2016<br>
+Title:  Lab 3:  <br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>
+

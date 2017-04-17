@@ -1,0 +1,9 @@
+task main() {
+  SetSensor(SENSOR_1, SENSOR_PULSE);
+  while(true) {
+    if (SENSOR_1 == 4) {
+      PlaySound(SOUND_DOWN);
+      ClearSensor(SENSOR_1);
+    }
+  }
+}

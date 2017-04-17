@@ -1,0 +1,164 @@
+<title>Notes for 23 February, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 23 February</h1>
+<h2> Computer Engineering 6, Spring 1998<br>
+Introduction to Computer Science</h2>
+
+<br>
+
+<hr>
+<b>Checkers example</b>:  Write a class definition
+	for a C++ program to play the game of checkers.
+
+<hr>
+		<pre>
+#include &lt;iostream>
+
+class Checkers
+{
+	public:
+		Checkers();	// Default constructor
+			// sets the board to the beginning checkers 
+			// configutation
+		int move(char player, int old_x, int old_y,
+				  int new_x, int new_y);
+			// moves player's piece from (old_x, old_y)
+			// to (new_x, new_y)
+		friend ostream& operator &lt&lt(ostream& outs, Checkers game);
+			// Prints game board with coodinates
+	
+	private:
+		char board[8][8];
+			// Stores the board as an 8 x 8, 2 dimensional array
+			// with the x coodinate first, then the y coordinate
+};
+
+main()
+{
+	char answer;
+	Checkers game;
+	int old_x, old_y, new_x, new_y;
+	
+	cout &lt&lt "Welcome to checkers!\n";
+	cout &lt&lt "There are two players, black and red\n\n";
+	cout &lt&lt "Would you like to play a game? ";
+	cin >> answer;
+	
+	while ( answer == 'y' )
+	{
+		do {
+			cout &lt&lt game;
+			cout &lt&lt "Black's move:\n";
+			cout &lt&lt "What is the x-coordinate for the piece: ";
+			cin >> old_x;
+			cout &lt&lt "What is the y-coordinate for the piece: ";
+			cin >> old_y;
+			cout &lt&lt "What is the x-coordinate for the new position: ";
+			cin >> new_x;
+			cout &lt&lt "What is the y-coordinate for the new position: ";
+			cin >> new_y;
+		}
+		while (!game.move('b', old_x, old_y, new_x, new_y));
+		
+		do {
+			cout &lt&lt game;
+			cout &lt&lt "Red's move:\n";
+			cout &lt&lt "What is the x-coordinate for the piece: ";
+			cin >> old_x;
+			cout &lt&lt "What is the y-coordinate for the piece: ";
+			cin >> old_y;
+			cout &lt&lt "What is the x-coordinate for the new position: ";
+			cin >> new_x;
+			cout &lt&lt "What is the y-coordinate for the new position: ";
+			cin >> new_y;
+		}
+		while ( !game.move('r', old_x, old_y, new_x, new_y));
+
+		cout &lt&lt game;
+		cout &lt&lt "Would you like to keep playing? ";
+		cin >> answer;
+	}
+	
+	cout &lt&lt "Thank you for playing!\n Bye!\n";
+	
+}
+
+
+Checkers::Checkers()	
+// Default constructor
+// sets the board to the beginning checkers 
+// configutation
+{
+	int i, j;
+	
+	// set everything to blanks first:
+	for ( j=0; j &lt 8 ; j++ )
+		for ( i=0 ; i &lt 8 ; i++ )
+			board[i][j] = ' ';
+			
+	// put in black's pieces:
+	for ( j=0; j &lt 3 ; j++ )
+		for ( i=0 ; i &lt 8 ; i++ )
+			if ( (i+j)%2 == 0 )
+				board[i][j] = 'b';
+			
+	// put in red's pieces:
+	for ( j=5; j &lt 8 ; j++ )
+		for ( i=0 ; i&lt 8 ; i++ )
+			if ( (i+j)%2 == 0 )
+				board[i][j] = 'r';
+	
+}
+int Checkers::move(char player, int old_x, int old_y, 
+	int new_x, int new_y)
+// moves player's piece from (old_x, old_y)
+// to (new_x, new_y)
+{
+	// simple move, no checking:
+	board[old_x-1][old_y-1] = ' ';
+	board[new_x-1][new_y-1] = player;
+
+	return(1);
+}
+
+ostream& operator &lt&lt(ostream& outs, Checkers game)
+// Prints game board with coodinates
+{
+	int i, j;
+	
+	outs &lt&lt endl;
+	outs &lt&lt "  ";
+	for ( i=0; i &lt 8 ; i++)
+		outs &lt&lt "   " &lt&lt i+1;
+		
+	outs &lt&lt endl &lt&lt "   ";
+	
+	for ( i=0; i &lt 8 ; i++)
+		outs &lt&lt "----";
+		
+	outs &lt&lt endl;	
+	
+	for ( j=0; j &lt 8 ; j++ )
+	{
+		outs &lt&lt " " &lt&lt j+1 &lt&lt " | ";
+		for ( i=0 ; i &lt 8 ; i++ )
+		{
+			outs &lt&lt game.board[i][j] &lt&lt " | ";
+		}
+		outs &lt&lt endl &lt&lt "   ";	
+		for ( i=0; i &lt 8 ; i++)
+			outs &lt&lt "----";
+		outs &lt&lt "-" &lt&lt endl;
+	}
+	
+	outs &lt&lt endl;
+	return(outs);
+}	
+		
+		</pre>  
+
+</body>

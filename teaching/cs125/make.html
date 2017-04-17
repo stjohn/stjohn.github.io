@@ -1,0 +1,92 @@
+<title>Computer Science 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<hr>
+<h2>A sample makefile:</h2>
+
+This file is used by the make utility to help assembly
+programs that use multiple files.  A makefile should be
+placed in the directory where your programs are.  Once
+there, you need only type: "make run" to compile and
+run a non-applet program.
+
+<p>makefile</TT>:
+<TABLE BORDER COLS=1 WIDTH="90%" >
+<TR>
+<td>
+<p>
+<tt>
+# This is an example of a makefile for GNU make for use with
+</tt><br><tt>
+# java files (non applet version).
+</tt><br><tt>
+
+</tt><br><tt>
+# Requirements:
+</tt><br><tt>
+#
+</tt><br><tt>
+#  (1) All java source files for a project (and only those 
+</tt><br><tt>
+#      files) live in the same directory as this makefile.  New 
+</tt><br><tt>
+#      files can be added as they are incorporated into the 
+</tt><br><tt>
+#      project without changing this file.
+</tt><br><tt>
+#  (2) The file containing the function "main()" is named
+</tt><br><tt>
+#      "Manager.java"
+</tt><br><tt>
+#  (3) The lines beginning with javac and java must have a TAB
+</tt><br><tt>
+#       before them.  For example, without the tab before javac, 
+</tt><br><tt>
+#       you will get the error:
+</tt><br><tt>
+#
+</tt><br><tt>
+# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp         makefile:24: *** missing separator.  Stop.
+</tt><br><tt>
+#
+</tt><br><tt>
+#  To compile, simply type "make"
+</tt><br><tt>
+#
+</tt><br><tt>
+#  To execute the program, type "make run". 
+</tt><br><tt>
+
+</tt><br><tt>
+        
+%.class : %.java
+</tt><br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp	javac $< 
+</tt><br><tt>
+
+</tt><br><tt>
+objects := $(patsubst %.java,%.class,$(wildcard *.java))
+</tt><br><tt>
+</tt><br><tt>
+		          
+program : $(objects)
+</tt><br><tt>
+</tt><br><tt>
+
+run:
+</tt><br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp	java Manager
+
+</tt><br><tt>
+</tt><br><tt>
+
+</TR>
+</TABLE>
+
+
+
+</body>
+</html>

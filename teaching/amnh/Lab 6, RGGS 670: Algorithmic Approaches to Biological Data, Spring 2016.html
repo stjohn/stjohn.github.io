@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 6, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 6<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Using matplotlib & numpy:  plotting mathematical functions 
+and arrays
+
+<p>Today's lab focuses on other features of the popular <tt>matplotlib</tt> module:  in particular, drawing functions and plotting data. 
+</div>
+
+
+
+
+<div>
+<h3>Graphing Mathematical Functions:</h3>
+
+Last week, we used the <tt>basemap</tt> module of <tt>matplotlib</tt>.  Today's lab focuses on a more common package, <tt>pyplot</tt> and some additional ways to map data using <tt>basemap</tt>
+The <tt>pyplot</tt> module of <tt>matplotlib</tt> provides lots of useful ways to plot data to the screen.  Let's use it to answer the question, which grows faster:
+<blockquote>
+ 		y = log(x) 	or 	y = &radic;<span style="text-decoration:overline;">&nbsp;x&nbsp;</span>?   
+</blockquote>
+
+<p>
+To test out this question, we will write a program that:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<li> Sets up a list of numbers (x-values) for our functions.
+	<li> Computes the y-values of our numbers for our functions.
+	<li> Creates plots of the two functions.
+	<li> Shows the plots in a separate graphics window.
+</ol>
+
+Let's add in the Python code that for each of these steps:
+<ol>
+	<li> Uses the math and plotting libraries.
+	<pre>
+import math	
+import matplotlib.pyplot as plt
+	</pre>
+	
+	<i>Since it's unwieldly to type "matplotlib.pyplot" before every function we'd like to use from that library, instead we'll use the common abbreviation of "plt".  With this, we can plt.plot(), instead of matplotlib.pyplot.plot().</i>
+	<li> Sets up a list of numbers (x-values) for our functions.
+<pre>
+x = range(1,101)
+</pre>
+	<i>Remember:  Python starts counting at 0 and goes up to, but not including the 101.  So, this creates the list [1,2,...,100].</i>
+	
+
+	
+	<li> Computes the y-values of our numbers for our functions.
+<pre>
+y1 = []
+for i in x:
+   y = math.log(i)
+   y1.append(y)
+y2 = []
+for i in x:
+    y = math.sqrt(i)
+    y2.append(y)   
+</pre>
+
+	<i>We need two separate lists since we have two separate functions to graph.</i>
+	
+	<p>How could you rewrite the above using list comprehensions?
+	
+	<li> Creates plots of the two functions.
+<pre>
+plt.plot(x,y1,label='y1 = log(x)')
+plt.plot(x,y2,label='y2 = sqrt(x)')
+plt.legend()
+</pre>
+
+	<i>Creates the plot for safe keeping but does not display it until told to (see next lines).</i>
+	
+	<li> Shows the plots in a separate graphics window.
+<pre>
+plt.show()
+</pre>
+	<i>This line pops up the new graphics window to display the plots.</i>
+</ol>
+
+
+
+<p>
+From your plots, which do you think grows faster:  log(x) or sqrt(x)?
+
+</div>
+
+<div>
+<h3>The <tt>numpy</tt> Module</h3>
+
+The <a href="http://www.numpy.org">numpy</a> is a module for numerical analysis and is part of <a href="http://scipy.org">scipy</a>.  It is distributed with anaconda, so, is now on your machines!  It's main focus is on linear algebra (manipulating of vectors and matrices) and also has differential equation solvers (i.e. it will integrate functions for you, numerically).  
+
+<p>
+It is commonly used with the abbreviation, <tt>np</tt>:
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+</pre>
+
+<p>
+Numpy's main object is a <i>homogeneous</i> multidimensional array.  That is, sequences of similar objects in most any dimension.  You can access the elements in the arrays by tuples of positive numbers.  For example, if you have a 10 x 10 grid of numbers, it could be stored in a 2-dimensional array, and each element could be accessed by specifying the row and column using a tuple:  (1,2) would give the element at row 1 and column 2.  The number of dimensions is called the <i>rank</i> of the array and the dimensions are often called <i>axes</i>.
+
+<p>
+Try the following at the prompt:
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+a = np.array([2,3,4])		#Sets up a 1-dimensional array with 3 elements
+print a
+b = np.array(range(100))	#Not common but does work
+print b
+c = np.linspace(0,99,100)	#More common, linearly space 100 numbers between 0 and 99, inclusive
+print c
+</pre>
+
+<p>Let's use these commands to create the simple plots from above:
+
+<pre>
+x = np.linspace(1,100,100)
+y1 = np.log(x)
+y2 = np.sqrt(x)
+</pre>
+
+We need to use numpy's log and square root functions since those can handle arrays as inputs (the ones in the math library are expecting just single numbers, not np.arrays).
+
+<p>
+We can plot these in the same way as before:
+<pre>
+plt.plot(x,y1)
+plt.plot(x,y2)
+plt.show()
+</pre>
+
+<p>Side Note:  As we just demonstrated, the <tt>matplotlib</tt> library accepts both lists of numbers and arrays of numbers from the <tt>numpy</tt> library.  We will go into more detail about arrays in the next lab.
+
+
+<h4>Challenges</h4>
+
+<p>Using the Python program you wrote above, try the following:
+
+<ul>
+	<li> Modify your program to plot points from 1 to 1001.  Which function is larger at x=1000?
+	<li> <tt>pyplot</tt> has many ways to customize your plots.  Many follow the same format as those we used in <tt>basemap</tt>.  
+	Using the 
+	<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">pyplot documentation</a>, change your plot to show the plots in different colors and with dashed and dotted line styles.
+</ul>
+
+</div>
+
+<div>
+
+<h3>Plotting Data:</h3>
+
+We can use the same techniques to plot data.   As a warm-up, download the <a href="http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html">scatter_plot.py</a>.  
+Run the program, and then, with a partner, figure out what each of line of the program does.
+
+<p>
+Next, Let's focus on the question:  "Has Lyme Disease Increased?" and examine data from the <a href="http://www.cdc.gov/lyme/stats/">Center for Disease Control (CDC)</a> to answer that question.  Let's start with the tri-state area.  Here are the years and occurrences:
+<pre>
+years = [2003,2004,2005,2006,2007,2008,2009,2010,2011]
+ny = [5399,5100,5565,4460,4165,5741,4134,2385,3118]
+nj = [2887,2698,3363,2432,3134,3214,4598,3320,3398]
+ct = [1403,1348,1810,1788,3058,2738,2751,1964,2004]
+</pre>
+
+<p>
+To plot New York data  as a `scatter plot' (dots at each (x,y) point), we add the commands:
+<pre>
+import matplotlib.pyplot as plt #Library of plotting functions
+plt.scatter(years, ny)
+plt.show()
+</pre>
+
+<h4>Challenges:</h4>
+
+<ul>
+	<li> Add to your program, commands that will plot also the New York and Connecticut data.  (Hint:  set up each as a scatter plot, and then use a show() to display all at once).
+	<li> When displaying multiple data sets on the same plot, adding colors and labels help distinguish the different data sets.  For example, to add a label for New York:
+<pre>
+matplotlib.pyplot.plot(years, ny, label='NY')
+</pre>
+	Add in labels for New Jersey and Connecticut data.  You can then display a legend by adding the command:
+<pre>
+plt.legend()
+</pre>
+Add axis labels and a title: 
+<pre>
+plt.title("Lyme Disease in NY, NJ, & CT")
+plt.xlabel('Years')
+plt.ylabel('Number of Cases') 
+</pre>
+
+</div>
+
+<div>
+
+<h3>Plotting Data from Files:</h3>
+
+Often there is too much data to type into your program.  In these cases, it is easier to read in the information from a file.  Below is a mixture of novel and previously used commands for accessing file from data and strings.  Try to puzzle each one out on paper and then try in Python. 
+
+<p><i>The data file <a href="statesSummary.csv">statesSummary.csv</a> is from the <a href="http://www.cdc.gov/lyme/stats/tables.html#modalIdString_CDCTable_1">CDC</a>.  Before starting the program, open up the csv file and see what it looks like.</i>
+
+<ul>
+	<li> Use the pyplot and csv libraries as well as numpy (nice math library):
+<pre>
+import matplotlib.pyplot as plt 
+import numpy as np
+import csv
+</pre>
+
+	<li> Open the file:
+
+<pre>
+infile = open('statesSummary.csv','r')
+</pre>
+
+	<li> Read the first line separately to pull out the years (they're the column headers in the csv file) and store them in a list <tt>years</tt>
+<pre>
+infile = open('statesSummary.csv','rU')
+reader = csv.reader(infile)
+yearLine = reader.next()
+years = [int(w) for w in yearLine[1:]]
+</pre>
+
+	<li> Next, take the first 5 lines of the file, split them into individual numbers, and store to be used in the plot.  Note that the first column has the name of the state and should be stored separately from the data to make plotting easier.  
+
+<pre>
+for i in range(5):
+     line = reader.next()
+     stateName = line[0]
+     stateValues = [int(w) for w in line[1:]]
+     color = (0.0, i/5.0, 0.0)   
+     plt.scatter(years, stateValues,
+           c=color, label=stateName)
+</pre>
+
+	<li> Lastly, set up and display the plot:
+<pre>
+plt.title("Cases of Lyme Disease") 
+plt.xlabel('Years')                
+plt.ylabel('Number of Cases')      
+plt.legend(loc = 2,
+           fontsize = 'x-small')
+plt.show()
+</pre>
+</ul>
+
+<h4>Challenges:</h4>
+
+<ul>
+	<li> Try setting the colors by using the percentage of red, green, and blue:
+	<pre>
+color = (1.0,0.0,i/5.0)	#Color tuple:  100% red, 0% green, and blue increasing with i</pre>
+		What happens?
+	<li> Modify your program so that it will make a (very crowded) plot of all 50 states.  
+</ul>
+</div>
+
+<div>
+
+<h3>Shapes of Regions</h3>
+
+Since the plot of all 50 states was quite crowded, let's plot the colors to a map.  We will use <tt>basemap</tt>, as we did last week.  In addition, we will need the outline of the states, which are stored in 3 files in the <tt>basemap</tt> examples directory:  <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.dbf">st99_d00.dbf</a>, <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.shp">st99_d00.shp</a>, and <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.shx">st99_d00.shx</a>.
+
+<p>
+The <tt>basemap</tt> webpage has an example of coloring in states by population, 
+<a href="https://github.com/matplotlib/basemap/blob/master/examples/fillstates.py">fillstates.py</a>.  Once you have the 3 files with the shapes of the states, you can run this program to see the map (don't worry to much about all the details, we will go through in detail a simpler one first).
+
+<p>
+We will use a simpler version of it to map the Lyme Disease data, <a href="statesFilled.py">statesFilled.py</a>.  
+<ul>
+	<li> Try running it.  What happens?  
+	<li> Choose two more states and fill in colors for them. 
+	<li> How can we represent the Lyme disease data on a map?
+</ul>
+
+
+<h3>Mapping Regions</h3>
+
+Let's combine the two programs together so that we're filling in states with a color.  We will make the state with the highest incidence of Lyme disease the darkest color, and the lowest the lightest color.  To keep the visualization folks happy, we will use a gradient of a single color ('rainbow' gradients are <a href="https://eagereyes.org/basics/rainbow-color-map">misleading</a>).
+
+<p>
+For each state, we will need the total number of incidences.  We start out as before:
+<pre>
+import matplotlib.pyplot as plt 
+import numpy as np
+import csv
+infile = open('statesSummary.csv','r')
+reader = csv.reader(infile)
+yearLine = reader.next()
+years = [int(w) for w in yearLine[1:]]
+</pre>
+for each state, we'll save the name and total to a list:
+<pre>
+stateNames = []
+stateTotals = []
+for row in reader:
+     stateNames.append(row[0])
+     stateTotals.append(sum([int(r) for r in row[1:]]))
+</pre>
+
+<p><i>Note:  The use of two 'parallel' arrays, stateNames and stateTotals, is not the best programming practice.  Instead, since the information is linked (i.e. the ith state total is for the ith state name), we should store them in a linked way.  In the future, we will (using a dictionary which will be covered in next week's lecture), but for now, this works!</i>
+
+<p>
+We will scale every state total to be a fraction of the highest total:
+<pre>
+maxCases = float(max(stateTotals))
+scaledTotals = [i/maxCases for i in stateTotals]
+</pre>
+Now, let's add in the plotting of each state.  The first part is as before:
+<pre>
+import matplotlib.pyplot as plt
+from mpl_toolkits.basemap import Basemap
+from matplotlib.patches import Polygon
+
+# create the map
+map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
+        projection='lcc',lat_1=33,lat_2=45,lon_0=-95)
+
+# load the shapefile, use the name 'states'
+map.readshapefile('st99_d00', name='states', drawbounds=True)
+
+ax = plt.gca() # get current axes instance
+
+# collect the state names from the shapefile attributes so we can
+# look up the shape obect for a state by it's name
+names = []
+for shape_dict in map.states_info:
+    names.append(shape_dict['NAME'])
+</pre>
+
+What changes is how we add colors to each state.  The line <tt>c = ... </tt> sets the color to be 100% red, a percentage of green that's based on the scaled totals, and 100% blue.  When the scaled total for a state is low, this is close 
+to 100% red, 100% green, and 100% blue, which is white (on the computer, colors mix like light, instead of the traditional paint-- that is, as you add more, instead of getting darker (like paint), it gets lighter).  When the scaled total for a state is high, the color is still 100% red and blue but the green decreases, so, the color appears more purple:
+<pre>
+#For each state that we have Lyme Disease data:
+for i in range(len(stateNames)):
+     print "Plotting", stateNames[i]
+     seg = map.states[names.index(stateNames[i])]
+     c = (1.0,1.0-scaledTotals[i],1.0)
+     poly = Polygon(seg, facecolor=c,edgecolor='black')
+     ax.add_patch(poly)
+     
+plt.show()   
+</pre>
+
+(The whole file is in <a href="lymeMapped.py">lymeMapped.py</a>).
+
+<h4>Challenges:</h4>
+
+<ul>
+	<li> Make plots for the data only from the last year in the file: 2011.  
+	<li> Make a plot that shows the net increase in cases from 2010 to 2011 for each state.<br>
+	Hint:  Look at the CSV file and describe the steps you would need to compute this, then translate into Python.
+	<br>
+	
+	Some states might have a decrease (which will give a negative number 
+	for the difference).  There are several ways to handle this: 
+	<ul>
+		<li> Take the absolute value (<tt>abs()</tt>) and just map the change.
+		<li> Set any negative values to 0.  To do this with a list comprehension: <tt>[0 if i < 0 else i for i in myList]</tt>
+		<li> Check for negative values when setting the color.  If the change is negative, use a red scaled color to fill in the state, and if positive use a green scaled color.
+	</ul>  
+	<li> (Optional):  Normalize the data by population size.  That is, plot for each state the per capita incidence rates (<a href="https://github.com/matplotlib/basemap/blob/master/examples/fillstates.py">fillstates.py</a> has population for each state).
+</ul>
+
+</div>
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  7 March 2016<br>
+Title:  Lab 6:  <br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and intepretation of your results here.  
+
+
+</div>
+
+
+
+
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>
+

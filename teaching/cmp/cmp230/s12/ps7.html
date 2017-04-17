@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 7, CMP 230, Programming Methods 1, Lehman College, CUNY, Spring 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Problem Set 7<br>
+CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Due Date:  midnight, Friday, 20 April.</span></p>
+<p>
+This assignment focuses on decisions (Chapter 7).
+</p>
+</div>
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+<ol>
+	<li> Write a function that returns the number of positive integers in a list of integers.
+		Include your function in a program that allows the user to enter a list of numbers which 
+		is then used to demonstrate your function.
+	<li> Write a program that reads in a text file as indicated by the user, determines the 
+		longest word in the file, and prints that word out to the screen. Assume the file has 
+		one word per line. In the event that more than one word qualifies as the longest, 
+		print out the first such word only.
+	<li> Write a program asks the user for their birthdate (MM/DD/YYYY format) and 
+		prints out if the user is older than 18 and also if the user is over 21 as
+		of April 20th, 2012.
+	<li> Fixing the line:  Many systems decide who goes first based on priority.
+		For example, the registration process at Lehman gives priority for students with 
+		more credits.  Similarly, printer queues (lines) let a printing job with 
+		higher priority go first.  Write a function that takes a list of priorities (a list
+		of numbers).  The function should then compare the zero-th entry to the first
+		entry, and interchange them if the first is bigger than the second.  The function 
+		should continue comparing subsequent entries until it gets to the end of the list.  
+		
+		<p>For example, a call to the function, <tt>fixLine([9,2,15,7,1])</tt> will
+		first compare <tt>l[0] = 9</tt> to <tt>l[1] = 2</tt>.  Since <tt>2</tt> is less 
+		than <tt>9</tt>, your function should interchange the two entries, resulting in 
+		the list:
+		<pre>
+		[2,9,15,7,1]
+		</pre>
+		Next, your function should compare <tt>l[1] = 9</tt> to <tt>l[2] = 15</tt>.  <tt>15</tt>
+		is bigger than <tt>9</tt>, so, there is no need to interchange them, and the list
+		stays the same:
+		<pre>
+		[2,9,15,7,1]
+		</pre>
+		Continuing, the function compares <tt>l[2] = 15</tt> to <tt>l[3] = 7</tt> and 
+		interchanges them:
+		<pre>
+		[2,9,7,15,1]
+		</pre>
+		The process repeats with <tt>l[3] = 15</tt> and <tt>l[4] = 1</tt>, resulting in:
+		<pre>
+		[2,9,7,1,15]
+		</pre>		
+	
+		<p> Note that your function will only fix the largest entry's position in line
+		(if you run it repeatedly, it will put the rest of the entries in order).
+		
+		<p> Write a main function that will ask the user to enter a list of numbers
+		(separated by commas) and then pass that list to your function.  The main 
+		function should then print out the list resulting from your function.
+
+	<li> Chapter 7, #17 (bouncing ball)
+</ol>
+
+
+
+For more information on using Blackboard, see the <a href="ps1.html">first 
+problem set</a>.
+</div>
+
+<div>
+
+<h3>General Notes</h3>
+
+<ul>
+	<li>Two of the five submitted programs will be chosen at random for grading.  
+	<li>Assignments must be submitted by midnight on the date due. 
+	<li>No credit will be given for a late assignment. 
+	<li>Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+
+<ul>

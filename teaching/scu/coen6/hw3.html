@@ -1,0 +1,111 @@
+<title>Homework 3, COEN 6, Santa Clara University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+<h2>Homework 3</h2>
+<h3>Computer Engineering 6, Winter 1998<br> 
+Introduction to Computing</h3>
+
+
+<hr>
+<b>Due by noon, Thursday, 29 January.</b><br>
+The paper portion should
+be placed in Dr. St. John's box in the Engineering Center.
+25% of the score will be
+deducted for each day late. The starred problems include programming and should be submitted both electronically and on paper. In the
+paper portion of the starred problems, you should include output of 
+several test runs that demonstrates what your program does. The
+electronic portion should be sent to coen006@scudc.scu.edu
+(with subjects "hw 3.4" and "hw 3.5", respectively). 
+
+<hr>
+
+<ol>
+	<li> Determine the value of:
+		<ol>
+			<li> <pre>pow(2,3)</pre>
+			<li> <pre>(pow(2,3) <= pow(3,2))</pre>
+			<li> <pre>sqrt(pow(3,2))</pre>
+			<li> <pre>('a' == 'b')</pre>
+			<li> <pre>abs(3-5)</pre>
+		</ol>
+	<li> 
+	<ol>
+		<li type= a> What does the following program do:<br>
+<pre> #include &lt;iostream.h&gt
+// Mystery Program
+
+char mystery(int first, int second);
+
+main()
+{
+	cout << mystery(10,9) << "ow\n";
+}
+
+char mystery(int first, int second)
+{
+	if (first >= second)
+		return 'W';
+	else
+		return 'H';
+} </pre>
+
+	<li type=a> Suppose you have two function definitions with the following
+		prototypes:<br>
+<pre>
+	double the_answer(double data1, double data2);
+	double the_answer(double time, int count);
+</pre>
+		Which function definition would be used in the following 
+		function call and why would it be used? (x and y are of
+		type <b>double</b>)<br>
+<pre>
+	x = the_answer(y, 6.0)
+</pre>
+	</ol>
+
+	<li> Write a function prototype and function definition for a function
+		that takes three arguments, all of type <b>int</b>, and
+		returns the sum of its three arguments.
+
+
+	<li> * The price of stock on the New York Stock Exchange is now
+		given to the nearest sixteenth of a dollar; for example,
+		29 7/16 or 19 1/2.  Write a program that computes the 
+		value of the user's holding of one stock.  The program asks 
+		for the number of shares of the stock owned, the whole
+		dollar portion of the price and the fraction portion.
+		The fraction portion is to be input as two <b>int</b>
+		values, one for the numerator and one for the demoninator.
+		The program then outputs the value of the user's holdings.
+		Your program should allow the user to repeat this calculation
+		as often as the user wishes.  Your program will include a
+		function definition that has three <b>int</b> arguments
+		consisting of the whole dollar portion of the price and the 
+		two integers that make up the fraction part.  The function
+		returns the price of one share of stock as a single number
+		of type <b>double</b>.
+	<li> * If a waterballoon is fired with an angle of elevation,
+		<b>a</b> and an initial velocity, <b>v</b>,
+		the distance travelled <b>d</b> is:<br>
+<pre>
+	d = (v*v*sin(2*a))/g
+</pre>
+		(we are assuming that air resistance is negligible and the
+		only external force is due to gravity: <b>g = 9.8</b>).
+		Write a program that computes the 
+		distance the user's water balloon travels.  The program asks 
+		for angle of elevation and the initial velocity of the 
+		balloon.
+		The program then outputs the distance travelled.  If the
+		water balloon lands within 2 meters of the user, the program
+		should also print out a message saying the user has gotten
+		wet from the impact of the balloon.
+		Your program should allow the user to repeat this calculation
+		as often as the user wishes.  
+</ol>
+
+<hr>
+
+</body>

@@ -1,0 +1,128 @@
+\documentstyle[11pt]{article}
+\parskip 1em
+\topmargin 1pt \headheight 1pt \headsep 2pt \footskip 1pt 
+\oddsidemargin -10pt \evensidemargin -10pt \parindent 0pt
+\setlength\textheight{700pt}
+\setlength\textwidth{500pt}
+
+\begin{document}
+
+\input{epsf}
+
+{\bf Computer Science 125-002 \hfill First Examination \hfill Fall 1998}
+
+1. Assume that {\tt Foobar} is a class.  Draw a diagram which
+illustrates the various relationships after executing the following
+statements: [10 points]
+
+\hspace*{.5in}{\tt Foobar a;}\\
+\hspace*{.5in}{\tt Foobar b = new Foobar();}\\
+\hspace*{.5in}{\tt Foobar a = b;}\\
+
+2. For each of the following algebraic expressions, give an 
+equivalent expression using correct Java syntax (your 
+calculations should use {\tt double} quantities -- but
+you can use any variable without declaration).  [7 points each]
+
+
+
+(a) $\displaystyle{\frac{1}{a + b}}$
+
+(b) $\displaystyle{b^2 - 4ac}$
+
+(c) $\displaystyle{\sqrt{\frac{1}{1 + \frac{1}{x}}}}$
+
+
+3. Write a complete stand-alone (non applet) Java program which
+prompts a user for the weight of a first-class letter in ounces, computes
+and displays the postage in cents for the letter according to the
+following rules:
+
+\begin{itemize}
+\item The base charge for all letters is 33 cents.
+\item For a letter weighing more than one ounce,
+the added charge is 8 cents for each half ounce (or
+fraction of) beyond 1 ounce.  For example, a calculation
+for a letter of 
+1.6 ounces can be computed using\\
+
+\hspace*{.5in}33 + ceiling(2*(1.6-1.0))*8 cents or 49 cents.
+
+The ceiling function ({\tt ceil}) is
+part of the Math class (see page 63).
+\end{itemize}
+
+Use an {\tt int} function {\tt Charges} for calculating
+the postage charges using a single {\tt double parameter}
+which carries the weight of the letter.  Do all input
+and output within the {\tt main} function. [12 points]
+
+4. Consider the following recursive function (assume that some
+suitable enclosing class definition exists). [12 points]
+
+\begin{verbatim}
+    public void funny(int m, int n)
+    {
+        if ( n > 0)
+            return funny(n, m % n);
+        else
+            return m;
+    }
+\end{verbatim}
+
+Suppose that the above function is called from another class
+method as follows:
+
+\hspace*{.5in}{\tt System.out.println(funny(15, 12));}
+
+Show the chain of calls for the above and indicate the
+value which is printed.
+
+
+
+5. Explain the differences in usage between a static class
+method and an instance method.  [8 points]
+
+
+6. Indicate the output which is produced in the following
+program: [10 points]
+
+\begin{verbatim}
+    public class Example
+    {
+        public static void main(String[] args)
+        {
+            int Value = 4;
+            String s = new String("Hello");
+
+            mystery(Value, s);
+            System.out.println(Value + " " + s);
+        }
+
+        public static void mystery(int n, String foo)
+        {
+            n = 8;
+            foo = "Bye";
+        }
+    }
+\end{verbatim}
+
+
+
+Explain your responses.
+
+
+
+7. Write an {\tt if} or nested {\tt if} equivalent to
+each of the following flow diagrams: [9 points each]
+
+%\epsfysize=350pt\epsfbox{ifs.eps}
+
+8. Simplify the following boolean expression as much as
+possible: [9 points]
+
+\hspace*{.5in}{\tt (!( !(x>1)  || (y<3) ))}
+\end{document}
+
+
+

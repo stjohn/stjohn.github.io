@@ -1,0 +1,99 @@
+<title>Lab 10 for CMP 230-2, Fall 1999, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Laboratory Exercise 10</h1>
+<h2>CMP 230-2: Programming Methods I<br>
+Lehman College, City University of New York<br>
+24 November 1999</h2>
+
+<hr>
+
+Today's lab is on using projects in JBuilder.  To demonstrate
+their use, we'll continue working with the playing card example.
+
+<h3>Projects</h3>
+
+Projects, in JBuilder, are a way of grouping files for a program
+together.  For example, our <tt>Employee</tt> programs had two
+files: one was the "blueprint" for making objects of type
+<tt>Employee</tt> and the other file contained the main program.
+To keep these files together, we can create a project which 
+will make a separate folder to hold these programs.
+
+<p>
+Today, we'll create a project to hold the files for our card
+game.  Open JBuilder, and click on the <tt>New Project</tt> option 
+under the file menu.  A dialog box will appear in the middle
+of the screen.  The first line is where JBuilder will store
+your files.  You should change it to say:
+<pre>
+a:\myprojects\bridgegame\bridgegame.jpr
+</pre>
+The next lines in the dialog box are for your name, a title
+for the program, and a short description.  Fill these in, and
+click on <tt>Finish</tt>.
+
+<p>
+It will take JBuilder a few seconds to set up the project.  When
+it has, you will see a list of files on the left (which should
+look similar to before) and a title page on the left for your
+project.
+<p>
+Next, you want to add files to your project.  Click on the 
+plus (+) sign above the list of files.  This will open a new
+file for you.  Call the first file <tt>PlayingCard.java</tt>
+and cut-and-paste the file from the webpage.  
+(<a href="PlayingCard.java">PlayingCard.java</a>)
+Repeat with 
+<tt>DeckOfCards.java</tt> 
+(<a href="DeckOfCards.java">DeckOfCards.java</a>) 
+and <tt>Bridge.java</tt>
+(<a href="Bridge.java">Bridge.java</a>).
+<p>
+Next, add to the end of <tt>Bridge.java</tt> two lines of code
+that tell the user to "Press any key to continue" and saves
+their answer in Junk.  This will keep the runtime window from
+disappearing before you can view the output.
+
+<p>
+To compile and run your program using Projects is the same 
+as before.  If you have troubles, see Lab 1 or ask for help.
+
+<h3>Bridge Class</h3>
+
+Compile and run your Bridge program.  It deals out the deck
+of cards to 4 players (North, South, East, and West) and 
+prints out their hands.  For today, you need to sort each
+player's hands and print them out.  
+
+<p>
+Use the code from the SortCards program to sort each hand.
+Note: you will need to modify it slightly since it sorts
+an array called <tt>hand</tt> of 5 cards, and you need to
+sort 4 different arrays (one for each player) of 13 cards
+each.
+<p>
+Do not modify the <tt>PlayingCard.java</tt> or 
+the <tt>DeckOfCards.java</tt> files.
+
+<h3>Submitting Your Lab</h3>
+
+Make sure that your program are written in 
+good style and have good documentation (include your name
+and the honesty pledge).  After demonstrating
+your programs to Professor St. John <b>and explaining why your
+programs work</b>, mail her copies
+at <a href="mailto:stjohn@alpha.lehman.cuny.edu">stjohn@alpha.lehman.cuny.edu</a>.
+
+<p>
+If there is still time left in the lab, work on 
+<a href="hw10.html">Homework 10</a>.
+
+</body>
+</html>
+

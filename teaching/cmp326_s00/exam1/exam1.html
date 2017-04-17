@@ -1,0 +1,772 @@
+<html>
+<body bgcolor="white">
+<BIG>
+<DIV ALIGN="CENTER">
+Exam I<BR>
+Computer Programming 326-1 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+23 February 2000
+</DIV>
+</BIG>
+<P><DL COMPACT>
+<DT>1.
+<DD>True or False: 
+<DL COMPACT>
+<DT>(a)
+<DD><U> </U> The following is valid as 
+the condition of an if-else statement:
+		
+<P ALIGN="CENTER"><IMG WIDTH="1" HEIGHT="31"
+ SRC="img1.gif"
+ ALT="\begin{displaymath}
+(1 < \mbox{count} < 10)
+ \end{displaymath}"></P>
+        <DT>(b)
+<DD><U> </U> A variable could be
+		named <TT>while</TT>.
+        <DT>(c)
+<DD><U> </U> The class <TT>SavitchIn</TT>
+		is part of the Java language.
+        <DT>(d)
+<DD><U> </U> It is possible for the
+		body of a <TT>do-while</TT>-loop to be executed 0 times.
+        <DT>(e)
+<DD><U> </U> All non-<TT>void</TT> methods
+		contain one or more <TT>return</TT> statements.
+        <DT>(f)
+<DD><U> </U> The reserved word <TT>this</TT> 
+		must always be used when invoking (calling)
+        	one instance method from within another instance method.
+        <DT>(g)
+<DD><U> </U> The compiler always provides
+		default constructors.
+        <DT>(h)
+<DD><U> </U> A constructor can call 
+		the constructor of its base class by using the
+		keyword <TT>super</TT>.
+        <DT>(i)
+<DD><U> </U> Java allows for the creation 
+		of nameless objects.
+	<DT>(j)
+<DD><U> </U> Graphics objects have a 
+		coordinate system in which the
+        	origin point is located at the lower left corner and 
+		is called (0, 0).
+<P>    </DL>
+<P>    <DT>2.
+<DD>To the right of each lines of code, indicate the values
+	stored in the variables immediately after those lines have
+	been executed.  If a variable is uninitialized, enter <TT>?</TT>
+	in the box for that variable.
+	<DL COMPACT>
+<DT>(a)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>int x, y, z;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>double a, b = 3.2;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>z = 9;</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(b)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>y = z/5;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>a = y/2;</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(c)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>b = y/2.0;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>z = z*z+1;</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(d)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>a = a - y;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>b = 3.145;</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(e)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>x = (int) b + 1;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>a = z / (double) x;</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(f)
+<DD><TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>b = x;</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP><TT>a = Math.sqrt(z);</TT></TD>
+</TR>
+</TABLE>
+<P>        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP><TT>x</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>y</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>z</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>a</TT></TD>
+<TD ALIGN="CENTER" NOWRAP><TT>b</TT></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE></DL>
+<P>    <DT>3.
+<DD>What is the output for the following code fragments:   
+    <DL COMPACT>
+<DT>(a)
+<DD><PRE>
+if ( ( 5 &lt;= 4) &amp;&amp; ( 0 &gt; 1 ) )
+    System.out.println(&quot;Yes&quot;);
+else
+    System.out.println(&quot;No&quot;);
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	<DT>(b)
+<DD><PRE>
+string answer = &quot;N&quot;;
+if ( answer.toUpperCase().compareTo(&quot;y&quot;) ) 
+    System.out.println(&quot;Yes&quot;);
+else
+    System.out.println(&quot;No&quot;);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	<DT>(c)
+<DD><PRE>
+int x = 2, y = 3, z = 4;
+if ( (x &gt; y/3) &amp;&amp; ( (z &lt; y) || (z == 2*x) ) )
+    System.out.println(&quot;Yes&quot;);
+else
+    System.out.println(&quot;No&quot;);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	<DT>(d)
+<DD><PRE>
+double number = 9;
+boolean issquare = (Math.sqrt(number)*Math.sqrt(number) == number);
+boolean iseven = ( number % 2 == 0 );
+if ( iseven &amp;&amp; issquare )
+    System.out.println(&quot;Yes&quot;);
+else
+    System.out.println(&quot;No&quot;);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	<DT>(e)
+<DD><PRE>
+int year = 2001;
+if (( year%4 == 0 &amp;&amp; year%100 != 0 ) || ( year%400 == 0 ))
+    System.out.println(&quot;Yes&quot;);
+else
+    System.out.println(&quot;No&quot;);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE></DL>
+<P>    <DT>4.
+<DD>What is the output of the following pieces of code:
+        <DL COMPACT>
+<DT>(a)
+<DD><PRE>
+int numtimes = -1;
+do
+{
+    System.out.print(&quot;B&quot;);
+    numtimes++;
+} while ( numtimes &lt; 2 )
+System.out.print(&quot;Bye!&quot;);
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>            <DT>(b)
+<DD><PRE>
+int[] a = new int[5];
+a[0] = 2; a[1] = 8; a[2] = 6; a[3] = 4; a[4] = 10;
+for ( i = 0 ; i &lt; 4 ; i++)
+{
+    for ( j = 0 ; j &lt; 4 ; j++)
+    {
+        if ( a[j] &lt; a[j+1] )
+        {
+           int tmp = a[j];
+           a[j] = a[j+1];
+           a[j+1] = tmp;
+    }
+}
+for ( j = 0 ; j &lt; 5 ; j++)
+    System.out.print( a[j] + &quot; &quot;);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>            <DT>(c)
+<DD><PRE>
+import java.awt.*;
+import java.awt.event.*;
+public class FirstWindow extends Frame
+{   public static final int WIDTH = 300; 
+    public static final int HEIGHT = 200;
+    public static void main(String[] args)
+    {   FirstWindow myWindow = new FirstWindow();
+        myWindow.setSize(WIDTH, HEIGHT);
+
+        WindowDestroyer listener = new WindowDestroyer();
+        myWindow.addWindowListener(listener);
+
+        myWindow.setVisible(true);
+    }
+    public void paint(Graphics g)
+    {   for (int y = 100; y &lt; 200; y = y + 20)
+            g.drawString(&quot;Help!&quot;, 75, y); 
+    }
+}
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE></DL>
+<P>    <DT>5.
+<DD>Give the Java code to create the following objects:
+	<DL COMPACT>
+<DT>(a)
+<DD>A string containing your name:
+<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>(b)
+<DD>A button, entitled: ``Clear'' 
+		<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>(c)
+<DD>A label, entitled: ``Enter: '' 
+		<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>(d)
+<DD>A button, with no title, but whose background
+		color is blue:
+		<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>(e)
+<DD>A panel, with the border layout:
+		<BR>
+<BR>
+<BR>
+<BR>
+	</DL>
+<P>    <DT>6.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>If class B extends class A, and both classes 
+define a method with the following heading:
+<PRE>
+    public boolean myMethod();
+</PRE>
+         	Consider the following code fragment:
+<PRE>
+    B b = new B();
+    A a = b;
+    if ( a.myMethod() )
+</PRE>
+         	Which of the following statements is true?
+		<DL COMPACT>
+<DT>i.
+<DD>the call to <TT>myMethod</TT> is illegal because the 
+compiler cannot determine which version of 
+			<TT>myMethod</TT> to call.
+            	    <DT>ii.
+<DD><TT>myMethod</TT> of class <TT>B</TT> is called because 
+			Java uses dynamic binding of method calls.
+            	    <DT>iii.
+<DD><TT>myMethod</TT> of class <TT>A</TT> is called because 
+			<TT>a</TT> is of type <TT>A</TT>.
+            	    <DT>iv.
+<DD><TT>myMethod</TT> of class <TT>A</TT> is called because 
+			Java uses dynamic binding of method calls.
+		</DL>
+<P>
+<P>
+<BR>
+	    <DT>(b)
+<DD>Consider the following classes:
+<PRE>
+    public class Base
+    {   public void print() { System.out.println(num); }
+        public void setNum(int j) { num = j; }
+        private int num = 10;
+    }
+
+    public class Derived extends Base
+    {   public void setNum(int j) { num = j + 10; }
+        public static void main(String[] args)
+        {   Derived d = new Derived();
+            d.setNum(20);
+            d.print();
+        }
+    }
+</PRE>
+             Which of the following is true?
+	     <DL COMPACT>
+<DT>i.
+<DD>The output of the program will be 10.
+<DT>ii.
+<DD>The program will compile but there will be a run-time
+         		error.
+            	<DT>iii.
+<DD>The program will not compile.
+            	<DT>iv.
+<DD>The output of the program will be 20.
+            	<DT>v.
+<DD>The output of the program will be 30.
+	     </DL></DL>
+<P>    <DT>7.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Which of the following statements about the method
+paint is <B>not</B> true?
+		<DL COMPACT>
+<DT>i.
+<DD>It has one formal parameter of the type Graphics.
+<DT>ii.
+<DD>It must be defined by any class, which extends Frame.
+            	    <DT>iii.
+<DD>Calling the method repaint results in a call to the
+			method paint.
+            	    <DT>iv.
+<DD>In some circumstances it will be automatically called.
+            	    <DT>v.
+<DD>Your program can make an explicit call to paint.
+		</DL>
+<P>	    <DT>(b)
+<DD>If the size of a Frame is 200 by 200, the pixel in the lower
+         	left corner is at position:
+		<DL COMPACT>
+<DT>i.
+<DD>(0, 199)
+<DT>ii.
+<DD>(199, 199)
+            	    <DT>iii.
+<DD>(200, 0)
+            	    <DT>iv.
+<DD>(0, 0)
+            	    <DT>v.
+<DD>(199, 0)
+            	    <DT>vi.
+<DD>(0, 200)
+		</DL>
+<P>	    <DT>(c)
+<DD>Consider the following declarations:
+<PRE>
+    TextArea ta = new TextArea(10,20);
+    TextField tf = new TextField(10,20);
+</PRE>
+         	Which of the following is correct?
+		<DL COMPACT>
+<DT>i.
+<DD>a TextField and a TextArea cannot both be declared
+in the same Container.
+            	    <DT>ii.
+<DD>Both initializations are illegal since only a default
+         		constructor can be used.
+            	    <DT>iii.
+<DD>The TextArea is initialized correctly but the
+         		initialization of the TextField is illegal.
+            	    <DT>iv.
+<DD>The TextField is initialized correctly but the
+         		initialization of the TextArea is illegal.
+            	    <DT>v.
+<DD>Both are legal initializations.
+		</DL>
+<P>	    <DT>(d)
+<DD>Suppose there is a class:
+<PRE>
+    public class Demo extends Frame implements ActionListener
+</PRE>
+<P>
+Which of the following statements is true?
+		<DL COMPACT>
+<DT>i.
+<DD>This class must define the method:
+<PRE>
+    public void actionPerformed(ActionEvent e)
+</PRE>
+<DT>ii.
+<DD>This class must define the method:
+<PRE>
+    public void actionPerformed()
+</PRE>
+            	    <DT>iii.
+<DD>This class may optionally define a method called
+         actionPerformed.
+            	    <DT>iv.
+<DD>This class must define a method:
+<PRE>
+    public void paint(Graphics g)
+</PRE>
+            	    <DT>v.
+<DD>a and d
+            	    <DT>vi.
+<DD>a and b
+		</DL></DL>
+<P>    <DT>8.
+<DD>Consider the following class:
+<PRE>
+import java.awt.*; 
+import java.awt.event.*;
+
+/***************************************************************
+ *Simple demonstration of putting buttons in a container class.
+ ***************************************************************/
+public class Tally extends Frame implements ActionListener
+{
+    public static final int WIDTH = 300;
+    public static final int HEIGHT = 200;
+    /**********************************************************
+     *Creates and displays a window of the class Tally.
+     ***********************************************************/
+    public static void main(String[] args)
+    {
+        Tally buttonGui = new Tally();
+        buttonGui.setVisible(true);
+    }
+
+    public Tally()
+    {
+        setSize(WIDTH, HEIGHT);
+
+        addWindowListener(new WindowDestroyer()); 
+        setTitle(&quot;Tally&quot;);
+        setBackground(Color.blue);
+ 
+        setLayout(new FlowLayout());
+
+        Button stopButton = new Button(&quot;Add 1&quot;); 
+        stopButton.addActionListener(this);
+        add(stopButton);
+
+        Button goButton = new Button(&quot;Minus 1&quot;);
+        goButton.addActionListener(this); 
+        add(goButton);        
+    }
+
+    public void paint(Graphics g)
+    {
+        g.drawString(theText, 75, 100);
+    }
+ 
+    private String theText = &quot;&quot;;
+    private int tallyCount = 0;
+}
+</PRE>
+<P>	<DL COMPACT>
+<DT>(a)
+<DD>The class is missing a crucial method.  Which one?
+<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>(b)
+<DD>Write the missing method, so that the program performs
+		according to the description:
+<P>
+This program should keeps a running tally, or count. 
+		The program has 2 buttons. The first, &quot;Add 1&quot;, adds one 
+		to the tally. The second, &quot;Minus 1&quot;, subtracts one
+	        from the tally. The tally displays as a list of &quot;I&quot;.
+		So, if the current tally is 6, the program 
+		displays &quot;IIIIII&quot;.  The program updates the
+		display after a button is clicked. The tally
+		should never go below zero. If the user clicks
+		on &quot;Minus 1&quot; when the tally is zero, the tally
+		should stay zero.
+<P>	</DL>
+<P>    <DT>9.
+<DD>Write a <B>complete program</B> which creates
+	a <TT>Frame</TT> which displays <TT>your name</TT>.
+<P>    <DT>10.
+<DD>Modify the following program to display 3 buttons with
+	labels: ``Red'', ``Yellow'', and ``Green.'' When the user
+	clicks the ``Red'' button, the background color should change to
+	red. When the user clicks the ``Yellow'' button, the background
+	color should change to yellow. And similarly, the ``Green'' button
+	should change the background to green. Your program should not
+	display any messages.
+<P>
+Clearly mark any changes you make:
+<P><PRE>
+import java.awt.*; 
+import java.awt.event.*;
+/***************************************************************
+ *Simple demonstration of putting buttons in a panel. If you do
+ *not see the colored part of the window with text in it, use your
+ *mouse to increase the size of the window and it will appear.
+ ***************************************************************/
+
+public class PanelDemo extends Frame implements ActionListener
+{
+    public static final int WIDTH = 300;
+    public static final int HEIGHT = 200;
+
+    public static void main(String[] args)
+    {
+        PanelDemo guiWithPanel = new PanelDemo();
+        guiWithPanel.setVisible(true);
+    }
+    public PanelDemo()
+    {
+        setTitle(&quot;Panel Demonstration&quot;);
+        setSize(WIDTH, HEIGHT);
+        setBackground(Color.blue); 
+        addWindowListener(new WindowDestroyer());
+   
+        Panel buttonPanel = new Panel();
+        buttonPanel.setBackground(Color.white);
+
+        buttonPanel.setLayout(new FlowLayout());
+
+        Button stopButton = new Button(&quot;Red&quot;);
+        stopButton.setBackground(Color.red); 
+        stopButton.addActionListener(this);
+        buttonPanel.add(stopButton);
+
+        Button goButton = new Button(&quot;Green&quot;);
+        goButton.setBackground(Color.green);
+        goButton.addActionListener(this); 
+        buttonPanel.add(goButton);        
+
+        setLayout(new BorderLayout());
+        add(buttonPanel, &quot;South&quot;);
+    }
+ 
+    public void paint(Graphics g)
+    {
+        g.drawString(theText, 75, 100);
+    }
+   
+    public void actionPerformed(ActionEvent e) 
+    {
+       if (e.getActionCommand().equals(&quot;Red&quot;))
+        {
+            setBackground(Color.red);
+            theText = &quot;STOP&quot;; 
+        }
+        else if (e.getActionCommand().equals(&quot;Green&quot;))
+        {
+           setBackground(Color.green);
+           theText = &quot;GO&quot;;
+        }
+        else
+            theText = &quot;Error in button interface.&quot;;
+
+       repaint(); //force color and text change
+    }
+
+    
+   
+    private String theText = &quot;Watch me!&quot;;
+}
+</PRE>
+<P></DL></BIG></SMALL>
+<BR><HR>
+</BODY>
+</HTML>

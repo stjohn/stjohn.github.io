@@ -1,0 +1,154 @@
+// song_and_dance.nqc - drive and turn
+
+// motors
+#define LEFT OUT_A
+#define RIGHT OUT_C
+
+// how much time to spend turning or forward
+#define TURN_TIME		200
+#define STRAIGHT_TIME	100
+
+// speed to run a turned motor
+#define TURN_POWER	7
+
+task main()
+{
+   start sing;
+	// start with both motors on
+	On(LEFT+RIGHT);
+	
+	// repeat the following steps forever
+	while(true)
+	{
+		// turn right by slowing down the right tread
+		Rev(RIGHT);
+		Wait(TURN_TIME);
+		
+		// resume going straight
+		Fwd(RIGHT);
+		Wait(STRAIGHT_TIME);
+		
+		// turn left
+		Rev(LEFT);
+		fWait(TURN_TIME);
+		
+		// resume going straight
+		Fwd(LEFT);
+		Wait(STRAIGHT_TIME);
+	}
+}
+
+#define C	523	/* Middle C	*/
+#define CS	554	/* C Sharp	*/
+#define D	587	/* D		*/
+#define DS	622	/* D Sharp	*/
+#define E	660	/* E		*/
+#define F	699	/* F		*/
+#define FS	741	/* F Sharp	*/
+#define G	785	/* G		*/
+#define GS	832	/* G Sharp	*/
+#define A	880	/* A		*/
+#define AS	932	/* A Sharp	*/
+#define B	988	/* B		*/
+#define C2	1046	/* C (octave)	*/
+
+#define L	20	/* Long note duration	*/
+#define S	10	/* Short note duration	*/
+#define L2	24	/* Long wait duration	*/
+#define S2	12	/* Short wait duration	*/
+
+
+task sing() 
+{
+    while (true)
+    {
+	PlayTone(C2, L);
+	Wait(L2);
+	PlayTone(B, L);
+	Wait(L2);
+	PlayTone(AS, S);
+	Wait(S2);
+	PlayTone(B, S);
+	Wait(S2);
+	PlayTone(AS, S);
+	Wait(S2);
+	PlayTone(A, S);
+	Wait(S2);
+	PlayTone(GS, L);
+	Wait(L2);
+	PlayTone(G, L);
+	Wait(L2);
+	PlayTone(FS, L);
+	Wait(L2);
+	PlayTone(G, L);
+	Wait(L2);
+	PlayTone(A, L);
+	Wait(L2);
+	PlayTone(GS, L);
+	Wait(L2);
+	PlayTone(G, S);
+	Wait(S2);
+	PlayTone(GS, S);
+	Wait(S2);
+	PlayTone(G, S);
+	Wait(S2);
+	PlayTone(FS, S);
+	Wait(S2);
+	PlayTone(F, L);
+	Wait(L2);
+	PlayTone(E, L);
+	Wait(L2);
+	PlayTone(DS, L);
+	Wait(L2);
+	PlayTone(E, L);
+	Wait(L2);
+	PlayTone(G, L);
+	Wait(L2);
+	PlayTone(D, S);
+	Wait(S2);
+	PlayTone(D, S);
+	Wait(S2);
+	PlayTone(CS, L);
+	Wait(L2);
+	PlayTone(D, L);
+	Wait(L2);
+	PlayTone(G, L);
+	Wait(L2);
+	PlayTone(D, L);
+	Wait(L2);
+	PlayTone(CS, L);
+	Wait(L2);
+	PlayTone(D, L);
+	Wait(L2);
+	PlayTone(C, S);
+	Wait(S2);
+	PlayTone(CS, S);
+	Wait(S2);
+	PlayTone(D, S);
+	Wait(S2);
+	PlayTone(DS, S);
+	Wait(S2);
+	PlayTone(E, S);
+	Wait(S2);
+	PlayTone(F, S);
+	Wait(S2);
+	PlayTone(FS, S);
+	Wait(S2);
+	PlayTone(G, S);
+	Wait(S2);
+	PlayTone(GS, S);
+	Wait(S2);
+	PlayTone(A, S);
+	Wait(S2);
+	PlayTone(AS, S);
+	Wait(S2);
+	PlayTone(B, S);
+	Wait(S2);
+	PlayTone(A, L);
+	Wait(L2);
+	PlayTone(G, L);
+	Wait(L2);
+   }
+}
+
+

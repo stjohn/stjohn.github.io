@@ -1,0 +1,25 @@
+//light_log.nqc-- Take light readings every 1/10 second and save to datalog
+
+
+#define WAIT_TIME	10	//Time between clicks
+#define LIGHT		SENSOR_2	
+
+task main() 
+{
+
+    SetSensor(LIGHT, SENSOR_LIGHT);
+
+    //Make sure there's nothing left over from earlier:
+    CreateDatalog(0);	
+    
+    CreateDatalog(100);
+
+    int i;
+    for (i = 0; i < 100; i++)
+    {
+	AddToDatalog(LIGHT);
+	Wait(WAIT_TIME);
+    }
+}
+
+

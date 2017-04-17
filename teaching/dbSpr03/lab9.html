@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><title>Lab 9 for CMP 420, Spring 2003, Lehman College, CUNY</title></head><body bgcolor="#ffffff" link="#003399" vlink="#236b8e"> <h1>Laboratory Exercise 9</h1><h2>Indices in SQL</h2><h2>CMP 420: Database Systems<br> Lehman College, City University of New York<br>10 April 2003</h2><hr><h3>Indices in SQL</h3>An <i>index</i> on an attribute A of a relation is a data structurethat makes it efficient to find those tuples that have a fixed valuefor an attribute A.  Indices usually help with queries in which theirattribute A is compared with some constant.  When relations are verylarge, it becomes very costly to scan all the tuples for those witha specific value of the attributes.  <p>Looking at the text file that created the second lab<a href="lab2tables.txt">lab2tables.txt</a>, what indices have beenset up for the tables?  Come up with at least two other attributes,or pair of attributes, for which an index would be appropriate.Why did you choose these attributes for indices?</p><p>To add an index to your database, the format is very similar to theprevious <tt>CREATE</tt> commands we have seen:</p><pre>    CREATE INDEX nameOfIndex ON tableName(attributeName);<br></pre>For the two indices you came up with above, create an index for them in the lab 2 database.<p>Write two queries, one for each index, that takes advantage of yournew indices.  </p><h3>Views in SQL</h3>In lecture, we discussed views, or relations that rely on existing tables for their values.  The simplest form of a viewdefinition is:<pre>    CREATE VIEW nameOfView AS viewDefinition;<br></pre>where <tt>viewDefinition</tt> is an SQL query.  See Section 5.8(begins on p 294) for a long discussion of creating views.  Thereare also more details in the <a href="http://www.us.postgresql.org/users-lounge/docs/7.1/reference/sql-createview.html">Reference Manual</a>.<p>Create two different views:</p><ol>    <li> One that contains all orders for the company "Acme Investments Ltd"	in 2001.    </li><li> One that contains the name of the company and the total number of	orders for that company.</li></ol><!--
+<h3>Joins in SQL</h3>
+
+In lecture, we discussed the various ways you can join relations together.
+The corresponding commands in SQL are:
+<ul>
+    <li> <tt>relation1 CROSS JOIN relation2:</tt> this is the cross product
+	of the two relations.
+    <li> <tt>relation1 NATURAL JOIN relation2:</tt> all pairs of attributes
+	from the two relations having a common name are equated and one of
+	each pair of equated attributes is projected out.
+    <li> <tt>relation1 OUTER JOIN relation2</tt> all pairs of attributes
+	from the two relations having a common name are equated and one of
+	each pair of equated attributes is projected out, as in the 
+	natural join.  But the outer join keeps all tuples from the 
+	original relations, padding with NULLS if necessary.
+</ul>
+
+(To do the queries below, it helps if you think about joins on a familiar
+database.  You don't have to implement these, just write out the 
+answers by hand.<br>
+Using the running movie database schema from the book (see p 311, 
+Exercise 5.9.1), describe the tuples that would appear in the following
+SQL expressions:
+<ol>
+     <li> <tt>Studio CROSS JOIN Movie Exec;</tt>
+     <li> <tt>StarsIn FULL NATURAL OUTER JOIN MovieStar;</tt>
+     <li> <tt>StarsIn FULL OUTER JOIN MovieStar on name = starName;</tt>
+</ol>)
+
+<p>
+Write SQL queries that
+<ol>
+    <li> A table that contains all the information in the orders table,
+	except that the product code is replaced by the product name.
+	(Hint: rename attributes, or do a theta-join, so that the 
+	product codes are equated.)
+    <li> A table that contains all the information in the orders table,
+	except that the product code is replaced by the product name
+	and the company ID number is replaced by its name.
+</ol>
+--><h3>Final Comments</h3>Before leaving the lab, you need to log out and shut down yourcomputer.  First, you should quit all applications.  Then,go to the <tt>K</tt> menu in the bottom left hand corner andselect <tt>Log Out</tt>.  Choose the <tt>Shut Down</tt> option,and shut off the monitor when you're done.<p>Remember to pick up any files you sent to the printer and totake any personal belongings.  It is difficult to get backinto the lab later (since it's locked when not in use), so,it's worth making sure you haven't forgotten anything.</p><p></p><br></body></html>

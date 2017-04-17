@@ -1,0 +1,33 @@
+// forTurn.nqc - turn in place and beep, lots of times!
+//	Uses a for-loop, in place of a while loop	
+// UCD COSMOS, Cluster V, Summer 2001
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+
+//Time to turn 360 degrees
+#define TURN_TIME 645
+//Resting time between turns
+#define REST_TIME 50
+
+task main()
+{
+    //This variable will count the number of completed turns
+    int i;
+
+    for ( i = 0 ; i < 5 ; i++ )
+    {
+        //Turn in place, to the right
+        Fwd(LEFT);
+        Rev(RIGHT);
+        On(LEFT+RIGHT);
+
+        //Stop after a full revolution and beep!
+        Wait(TURN_TIME);
+        Off(LEFT+RIGHT);
+        PlaySound(SOUND_UP);
+
+	//Catch your breath, before turning again:
+	Wait(REST_TIME);
+    }
+}

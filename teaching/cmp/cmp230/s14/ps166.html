@@ -1,0 +1,1188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Programming Problem List, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	7px ; 	
+  }
+  </style>
+</head>
+<body>
+
+<div id="header">
+
+<h2>Programming Problem List<br>
+CIS 166, Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2013<br>
+</h2>
+</div>
+
+
+<div>
+
+<h3>General Notes</h3>
+
+<ul>
+	<li> Every program should begin with a comment that includes your name and a brief description,
+		contain a <tt>main()</tt> function and an invocation of the main at the end of the file:
+		For example:
+	<pre>
+#Name: Herbert H. Lehman
+#Date: February 4, 2013
+#This program prints: hello world
+
+def main():
+	print("Hello world")
+	
+main()
+	</pre>
+	<li> About one of every five submitted programs will be chosen, at random, for complete grading.	
+	<li> You are encouraged to submit your assignments early.  Below lists the 
+		last date on which each assignment will be accepted.
+		Assignments must be 
+		<b>submitted before midnight</b> on the date due. 
+	<li> <b>No credit will be given for an assignment submitted late. </b>
+	<li> Extra credit will be awarded for the programs that are chosen for complete grading 
+	that are submitted early. If a graded 
+	program is submitted more than 12 hours early, 1 extra credit point will be awarded. For 
+	graded programs submitted more than 24 hours early, 2 extra credit points will be awarded. 
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+	<li>For more information on using Blackboard, see the <a href="lab1.html">first 
+lab</a>.
+	<li> While you are encouraged to work with others, <b>all work submitted must be your own.</b>  As 
+	a rule of thumb, you must do your own typing.  If it is not from the book or class webpage and
+	you did not type it, it is plagiarism.  
+	For the first incident, your grade will be a 0 for the assignment (even for cases 
+	where you typed the program but others submitted it as their own).  For the second incident of 
+	cheating or plagiarism, you will fail the class.  We report all incidents to the Office of Student Affairs.
+
+	<li> Learning programming is like learning a foreign language:  you will learn more (with 
+	less work) if you practice every day.  Some of the programs below are easy; some will take
+	more time.  Set aside a block of time every day to work on programming.  If you complete the
+	program for that day, go on to the next with your remaining time.
+<ul>
+</div>
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+
+<ol>
+	<li> <b>Due Date: 31 January</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints your name to the screen in upper case letters.
+	<li> <b>Due Date: 3 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints your name to the screen 15 times.				
+	<li> <b>Due Date: 4 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Modify the chaos program (available from the author's website) so that 
+		it prints out 15 values instead of 10.	
+	<li> <b>Due Date: 5 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints out the first 10 numbers.<br>
+		<i>(Hint:  see the sample program on p 37 of Zelle's Chapter 2 lecture notes-- available
+		from his website.)</i>
+	<li> <b>Due Date: 6 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints out the first 20 <i>even</i> numbers.<br>
+		<i>(Hint:  see the sample program on p 37 of Zelle's Chapter 2 lecture notes-- available
+		from his website.)</i>		
+<hr>
+	<li> <b>Due Date: 10 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		 Modify the <tt>avg2.py</tt> program (Section 2.5.3 from the
+		book and from the book's webpage) to find the average of three exam scores.				
+	<li> <b>Due Date: 11 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that will print out a conversion table for dollars and another
+		currency.  The currency you should use is based on the first letter of your first name:
+		<table>
+			<tr>
+				<th>If your name begins with...</th><th>Use the currency:</th><th>$1 is worth:</th>
+			</tr>
+			<tr>
+				<th>A</th><td>Afghan Afghani (AFN)</td><td>51.08</td>
+			</tr>
+			<tr>
+				<th>B</th><td>Bangladeshi Taka (BDT)</td><td>80.58</td>
+			</tr>
+			<tr>
+				<th>C</th><td>Costa Rican Colon (CRC)</td><td>499.38</td>
+			</tr>
+			<tr>
+				<th>D</th><td>Danish Krone (DKK)</td><td>5.67</td>
+			</tr>
+			<tr>
+				<th>E</th><td>Euro (EUR)</td><td>0.77</td>
+			</tr>
+			<tr>
+				<th>F</th><td>Falkland Island Pound (FKP) </td><td>0.62</td>
+			</tr>
+			<tr>								
+				<th>G</th><td>Guatemalan Quetzal (GTQ)</td><td>0.13</td>
+			</tr>
+			<tr>
+				<th>H</th><td>Hungarian Forint (HUF) </td><td>0.00456</td>
+			</tr>
+			<tr>
+				<th>I</th><td>Indonesian Rupiah (IDR)</td><td>9639.99</td>
+			</tr>
+			<tr>
+				<th>J</th><td>Japanese Yen (JPY)</td><td>83.85</td>
+			</tr>
+			<tr>				
+				<th>K</th><td>Kenyan Shilling (KES)</td><td>0.0116</td>
+			</tr>
+			<tr>				
+				<th>L</th><td>Lebanese Pound (LPP)</td><td>0.000664</td>	
+			</tr>
+			<tr>				
+				<th>M</th><td>Moroccan Dirham (MAD)</td><td>0.118</td>
+			</tr>
+			<tr>				
+				<th>N</th><td>Nepalese Rupee (NPR)</td><td>0.0115</td>
+			</tr>
+			<tr>
+				<th>O</th><td>Omani Rial (OMR)</td><td>0.384</td>
+			</tr>
+			<tr>				
+				<th>P</th><td>Polish Zloty</td><td>3.11</td>
+			</tr>
+			<tr>
+				<th>Q</th><td>Qatari Riyal (QAR)</td><td>0.275</td>
+			</tr>
+			<tr>
+				<th>R</th><td>Russian Ruble (RUB)</td><td>30.80</td>
+			</tr>
+			<tr>
+				<th>S</th><td>Somali Shilling (SOS)</td><td>0.000619</td>
+			</tr>
+			<tr>
+				<th>T</th><td>Thai Baht (THB)</td><td>30.59</td>
+			</tr>
+			<tr>
+				<th>U</th><td>Ukrainian Hryvna (UAH)</td><td>8.10</td>
+			</tr>
+			<tr>
+				<th>V</th><td>Venezuelan Bolivar (VEH)</td><td>4.30</td>
+			</tr>
+			<tr>				
+				<th>W</th><td>Samoan Tala (WST)</td><td>2.27</td>
+			</tr>
+			<tr>				
+				<th>X</th><td>East Caribbean Dollar (XCD)</td><td>2.70</td>
+			</tr>
+			<tr>				
+				<th>Y</th><td>Yemeni Rial (YER)</td><td>0.00477</td>
+			</tr>
+			<tr>
+				<th>Z</th><td>Zimbabwean Dollar (ZWD)</td><td>361.90</td>				
+			</t>
+		</table>
+		For example, if your first name is <tt>Eric</tt>, you would use <tt>Euros</tt>.  From
+		the table above, we have that one dollar is worth 0.77 euros.
+		You should begin the program by printing out your name.
+		On each line, your program should write the number of dollars and the corresponding
+		number of your currency.  For example:
+		<pre>
+Eric's converting program
+		
+Dollars:    Euros:
+1           0.77
+2           1.53
+3           2.3
+4           3.07
+5           3.84
+		</pre>
+		Your program should print the information for 1, 2, ..., 10 dollars.  You do 
+		not need to worry about formatting (we will talk about that more in Chapter 5), 
+		but you do need to calculate all 10 entries.  
+		Hint:  modify the program from the <a href="lab2.html">Lab 2</a>.
+		
+	<li> <b>Due Date: 13 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for distance in yards and prints the number of 
+		yards and feet (assume that there are 3 feet to the yard).  
+		For example, if
+		the user entered, 10, your program would output, <tt>3 yards 1 feet</tt>.
+		Note that you should use "yards" and "feet" for all inputs (even
+		in the cases where it is grammatically incorrect). 
+
+		
+	<li> <b>Due Date: 14 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for the number of roses they have ordered
+		for Valentine's Day, and prints the number of dozens of roses and single roses.
+		For example, if
+		the user entered, 26, your program would output, <tt>2 dozen and 2 roses</tt>.
+		Note that you should use "dozen" and "roses" for all inputs (even
+		in the cases where it is grammatically incorrect).  
+		
+<hr>
+
+	<li> <b>Due Date: 18 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for time in days and prints the number of 
+		years and days (assume that it is not a leap year and there are 365 days in a year).  
+		For example, if
+		the user entered, 400, your program would output, <tt>1 years 35 days</tt>.
+		Note that you should use "years" and "days" for all inputs (even
+		in the cases where it is grammatically incorrect).  
+
+
+	<li> <b>Due Date: 19 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Built into python is a module for simple drawing, called Turtle graphics.  To 
+		use the Turtle graphics module, you must import it, just like with the math module.
+		Some basic turtle commands are:
+		<ul>
+			<li> <tt>left(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>right(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>forward(s):</tt> moves your turtle forward <tt>s</tt> steps
+			<li> <tt>backward(s):</tt> moves your turtle forward <tt>s</tt> steps
+		</ul>
+		
+		The following draws a 4-sided figure or square:
+		<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(4):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()		
+		</pre>
+		
+		Modify this program to draw a <b>6-sided figure or hexagon</b>.  Make sure to 
+		include the standard introductory comments at the beginning of your program
+		as well as to <b>change the name of the turtle to your name.</b>
+
+
+	<li> <b>Due Date: 20 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Modify the turtle program to draw two squares to the screen.  
+		Make sure to 
+		include the standard introductory comments at the beginning of your program
+		as well as to <b>change the name of the turtle to your name.</b>
+	
+	<li> <b>Due Date: 21 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program to calculate how much money you would have if saved $10 a month 
+		in your change jar.  Since you are not using a bank, no interest is paid on 
+		your savings.  Your program should ask the user for the number of days and display
+		the amount of money for each day.  The starting amount of money is $0.
+		Here is a sample interaction:
+		<pre>
+Please enter the number of days:  4
+Day 1:  $10
+Day 2:  $20
+Day 3:  $30
+Day 4:  $40
+		</pre>	
+		
+<hr>
+	<li> <b>Due Date: 24 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program to calculate how much money you would have if your money doubled
+		every day.  Your program should ask the user for the number of days and display
+		the amount of money for each day.  The starting amount of money is $1.
+		Here is a sample interaction:
+		<pre>
+Please enter the number of days:  8
+Day 1:  $1
+Day 2:  $2
+Day 3:  $4
+Day 4:  $8
+Day 5:  $16
+Day 6:  $32
+Day 7:  $64
+Day 8:  $128
+		</pre>	
+<!--	
+	<li> <b>Due Date: 25 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program to the interest owed on your credit card.  Your program should ask
+		the user for the average daily balance and use the following formula to calculate
+		the amount owed:
+		<pre>
+			amount = averageDailyBalance(1.0005)
+		</pre>
+		<pre>
+Please enter the number of days:  8
+Day 1:  $1
+Day 2:  $2
+Day 3:  $4
+Day 4:  $8
+Day 5:  $16
+Day 6:  $32
+Day 7:  $64
+Day 8:  $128
+		</pre>	
+						
+
+
+<hr>
+
+<!--
+	<li> <b>Due Date: 19 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Using Zelle's graphics module, 	draw a snowman with your initial (the first letter of
+		your first name) on him.  Your display should contain 3 or more circles forming the
+		body of the snowman, as well as a mouth and eyes.  In the center of the snowman, you
+		should include your initial or name.  You must use at least 3 different colors in your
+		drawing.
+		
+	<li> <b>Due Date: 20 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Modify the bouncing ball example from <a href="lab3.html">Lab 3</a> so that the ball 
+		bounces a little bit less each time.  At the end, it should appear to roll across the
+		x-axis.  	(Hint:  the only change needed is to the height of the ball.  How can
+		you make the height get smaller as time increases?)	
+			
+	<li> <b>Due Date: 21 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that displays a graphics window that shows the shades of one of
+		the basic colors:  red, green, or blue.  Every color is represented on screen 
+		by the amount of red, green, or blue it has (called the "rgb" value):<br><br>
+		
+		<table border="1">
+			<tr>
+				<td></td><td><img width=175 src="shadeRed.jpg"></td>
+					<td><img width=175 src="shadeGreen.jpg"></td>
+					<td><img width=175 src="shadeBlue.jpg"></td>
+			</tr>
+			<tr>
+				<th>starting value:</th><td>color_rgb(5,0,0)</td><td>color_rgb(0,51,0)</td><td>color_rgb(0,0,59)</td>
+			</tr>
+			<tr>
+				<th>ending value:</th><td>color_rgb(255,0,0)</td><td>color_rgb(0,255,0)</td><td>color_rgb(0,0,255)</td>
+			</tr>
+			<tr>
+				<th>shape:</th><td>a circle whose x-coordinate and radius increase each step</td>
+							<td>a circle whose x and y coordinates increase each step</td>
+							<td>skinny, full height rectangles whose x coordinate increases each step</td>
+			</tr>
+		</table>
+		<p>
+		Choose your favorite color of red, green, and blue.  Let <tt>startingValue</tt> be
+		the last two digits of your Blackboard username (long number usually starting with 
+		2011....) and set your favorite part of the color to that number (and the other 
+		two values to zero, as above).  
+		So, for example, if the last two digits of your username were 59 and your favorite
+		color is blue, you would use <tt>startingValue = 59</tt> and <tt>color_rgb(0,0,startingValue)</tt>.
+		Your program should display at least 100 objects
+		(circles, rectangles, or what ever you choose).  The first object should be your
+		favorite color with <tt>startingValue</tt>.  The last object should have the 
+		same color with <tt>startingValue</tt> replaced by 255.  The object should get
+		increasingly lighter.
+		
+		Hint:  Use <tt>(255-startingValue)</tt> objects and then you can let the color increase
+		by 1 each time.  To give a smooth transition, use the <tt>setOutline()</tt>
+		function on your object to make the outline color match (the default is white outlines on 
+		objects).
+		
+	<li> <b>Due Date: 22 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Modify the program <tt>triangle.py</tt> from the textbook (also available at the 
+		author's website) to draw a <b>5-sided polygon or pentagon</b> from 5 points 
+		clicked on by the user.	
+					
+	<li> <b>Due Date: 23 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
+ 		Modify the bouncing ball problem (from <a href="lab3.html">Lab 3</a>) to 
+		``wrap'' around the screen twice.  That is, when the ball gets to the right end of the 
+		screen, have it continue on the left hand side.  Hint:  use the remainder operator (%)
+		to make sure that the y-coordinate is always between 0 and the width of the window.
+
+<hr>
+	<li> <b>Due Date: 3 March</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that takes twenty mouse clicks from the user and draws a polygon
+		whose corners, or vertices, are the clicked points.  Hint:  use the program you
+		wrote for <a href="lab4.html">Lab 4</a> and add a line from the last point clicked
+		to the first point clicked.
+		
+	<li> <b>Due Date: 4 March</b>  <b style="float:right">Reading: Chapter 4</b><br>
+		Write a program that takes two mouse clicks from the user and draws rectangle
+		whose corners include the two points clicked.
+			
+	<li> <b>Due Date: 5 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Modify the <tt>decodeMessage.py</tt> program from <a href="lab5.html">Lab 5</a>
+		to use an offset entered by the user to encrypt the message.  The program in the
+		lab encrypts each character by the character 2 places ahead in the alphabet.  Your
+		program should ask the user for the offset and encrypt their string by replacing
+		each character by one that is <i>offset</i> places ahead in the alphabet.
+		
+	<li> <b>Due Date: 6 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for a list of prices of items purchased and 
+		prints out each price and the total, formatted nicely. Here is a 
+		sample run of the program:
+		<pre>
+Please enter the prices:  2.34, .99, 100, 81.05, 90
+		
+Your receipt:
+         2.34
+         0.99
+       100.00
+        81.05
+        90.00
+----------------
+Total: 274.38	
+		</pre>
+		(Hint:  use the <tt>format()</tt> statement discussed in Chapter 5.)
+					
+	<li> <b>Due Date: 7 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+		Make a list of at least 5 different places that you like to visit (these should
+		be places that you would like to visit and not identical to others' lists or
+		it will be picked up by the cheat-checking programs).  
+		
+		<p>
+		Your program should print out the list regularly and vertically.  For example,
+		<pre>
+['San Francisco', 'Christchurch ', 'Sydney       ', 'Bangkok      ', 'Copenhagen   ']
+S  C  S  B  C  
+a  h  y  a  o  
+n  r  d  n  p  
+   i  n  g  e  
+F  s  e  k  n  
+r  t  y  o  h  
+a  c     k  a  
+n  h        g  
+c  u        e  
+i  r        n  
+s  c           
+c  h           
+o   		</pre>
+		
+		Hint:  if you have a list of strings, <tt>places</tt>, then <tt>places[0][i]</tt>
+		refers to the ith character of the first word in your list.  Start by printing
+		out the first place name vertically, then add in the others.
+	
+		
+			
+<hr>
+	<li> <b>Due Date: 10 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that uses your full name and prints it to the screen, cycling
+		through the string.  You must store your name in a string and use a loop to 
+		print out the answer.  For example, if your name was "Herbert H. Lehman", the 
+		print out would be:
+		
+<pre>
+H e r b e r t   H .   L e h m a n
+e r b e r t   H .   L e h m a n H
+r b e r t   H .   L e h m a n H e
+b e r t   H .   L e h m a n H e r
+e r t   H .   L e h m a n H e r b
+r t   H .   L e h m a n H e r b e
+t   H .   L e h m a n H e r b e r 
+  H .   L e h m a n H e r b e r t 
+H .   L e h m a n H e r b e r t   
+.   L e h m a n H e r b e r t   H 
+  L e h m a n H e r b e r t   H .  
+L e h m a n H e r b e r t   H .   
+e h m a n H e r b e r t   H .   L 
+h m a n H e r b e r t   H .   L e 
+m a n H e r b e r t   H .   L e h 
+a n H e r b e r t   H .   L e h m 
+n H e r b e r t   H .   L e h m a
+</pre>
+
+		<tt>Too similar to the one above?</tt>
+	
+
+		
+	<li> <b>Due Date: 11 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks for a list of names and a list of cities, as well as
+		a file.  Your program should use the file as a template to generate letters 
+		customized with the names and cities entered.  You should 
+		generate a letter for each name/address pair on the inputted lists.
+		The customized letters should replace
+		every the <tt>**INSERT NAME HERE**</tt> with the name and <tt>**INSERT ADDRESS HERE**</tt>
+		with the address.
+
+		<p>
+		For example, if the file <tt>inputTemplate.txt</tt> contained:
+
+		<pre>
+						New York, New York
+						11 March 2013
+	
+**INSERT NAME HERE**
+**INSERT ADDRESS HERE**
+
+Dear **INSERT NAME HERE**,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in **INSERT ADDRESS HERE** appreciate it!
+
+Best wishes to **INSERT NAME HERE** and your family,
+
+	--CUNY
+		</pre>
+
+
+		<p>
+		A sample run of the program would be:
+		<pre>
+Please enter the name of the template file:  inputTemplate.txt
+Please enter names of recipients:  Herbert H. Lehman, Bernard M. Baruch, Fiorello H. LaGuardia
+Please list addresses:  Bronx NY, New York NY, Queens NY 
+		
+Your customized letters are below:
+		
+						New York, New York
+						11 March 2013
+	
+Herbert H. Lehman
+Bronx NY
+
+Dear Herbert H. Lehman,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in Bronx NY appreciate it!
+
+Best wishes to Herbert H. Lehman and your family,
+
+	--CUNY
+	
+	
+	
+
+						New York, New York
+						11 March 2013
+	
+Bernard M. Baruch
+New York NY
+
+Dear Bernard M. Baruch,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in New York NY appreciate it!
+
+Best wishes to Bernard M. Baruch and your family,
+
+	--CUNY
+	
+
+
+	
+						New York, New York
+						11 March 2013
+	
+Fiorello H. LaGuardia
+Queens NY
+
+Dear Fiorello H. LaGuardia,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in Queens NY appreciate it!
+
+Best wishes to Fiorello H. LaGuardia and your family,
+
+	--CUNY	
+		
+		</pre>
+
+			
+	<li> <b>Due Date: 12 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for the name of a file and a line length.
+		Your program should then "wrap" all lines that are longer than line length,
+		and print the result on the screen.
+		For example, if the file contains:
+		<pre>
+01234567890123456789012345
+This line has more than 20 characters.
+This one has less 
+And this one has lots, lots, lots, more than 20 characters!
+		</pre>
+		and the user entered the length of 20, all lines longer than 20 would 
+		be wrapped to the next line:
+		<pre>
+01234567890123456789
+012345	
+This line has more t
+han 20 characters.
+This one has less 
+And this one has lot
+s, lots, lots, more than 20 characters!
+		</pre>
+		Hint:  break the problem in to parts:  first write a program that will print lines
+		from a file to the screen (see <a href="lab6.html">Lab 6<a>).  Then modify 
+		your initial program to only print lines up to the length entered.  And, to finish
+		the program, then add in the code that prints lines that are longer than the length 
+		entered.
+		
+	<li> <b>Due Date: 13 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for a name of a file and then prints to 
+		the screen the number of characters and lines in the file.
+		Hint:  see <a href="lab6.html">Lab 6.</a>
+					
+	<li> <b>Due Date: 14 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that will take price data for stocks and print it graphically to
+		the screen.  Your program should begin by asking the user for the file name.  It
+		should then create a graphics window and plot the date versus price.  You may
+		assume that the file has the following format:
+<pre>
+"date","close","volume","open","high","low"
+"16:00","720.11","1,919,799","720.71","723","716.68"
+"2012/12/19","720.1100","1918493.0000","720.7100","723.0000","716.6800"
+"2012/12/18","721.0700","3004838.0000","716.6000","729.1000","715.0500"
+"2012/12/17","720.7800","3034558.0000","705.5000","738.2800","704.0200"
+"2012/12/14","701.9632","2129893.0000","699.1700","707.8200","698.4300"
+"2012/12/13","702.7000","3443866.0000","715.9200","716.4750","699.5500"
+"2012/12/12","697.5600","2425774.0000","699.2300","703.5100","693.4800"
+</pre>
+(file from: <a href="http://www.nasdaq.com/symbol/goog/historical">http://www.nasdaq.com/symbol/goog/historical</a>)
+
+	<p>where the first line describes the columns and each subsequent line of
+	the file describes the stock price on a given day, separated by commas.  
+	Note that the historical
+	data (from Nasdaq) lists the information in reverse chronological order, while
+	graphs of financial data always start with the oldest date first.  Your graph
+	should have the oldest date on the left, progressing to the newest date on 
+	the right.  
+	
+	<p>
+	Hint:  You may assume that the price of any stock is positive and below $1000, so, the
+	y-coordinates of your window should between 0 and 1000.  You may also assume that you are
+	graphing data from one year.  There are at most 52 weeks * 5 business days/week = 260 
+	days per year, so your x-coordinates should range from 0 to 260 (or a bit extra to make
+	it look nice).
+	
+	<p>
+	Here are some sample files you can use to test your program:
+	(from <a href="http://www.nasdaq.com/">http://www.nasdaq.com/</a>):
+	<ul>
+		<li> Apple: <a href="appleHistoricalData.csv">appleHistoricalData.csv</a> (1 year, ending 12/19/2012)
+		<li> Google: <a href="googleHistoricalData.csv">googleHistoricalData.csv</a> (1 year, ending 12/19/2012)
+		<li> IBM: <a href="ibmHistoricalData.csv">ibmHistoricalData.csv</a> (1 year, ending 12/19/2012)
+	</ul>
+	And a simple plotting of the data:
+	<table border=1>
+		<tr>
+			<td><img height = 175 src="appleSimple.jpg"></td>
+			<td><img height = 175 src="googleSimple.jpg"></td>
+			<td><img height = 175 src="ibmSimple.jpg"></td>			
+		</tr>
+	</table>
+
+		
+<hr>
+	<li> <b>Due Date: 17 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+
+		Modify the program from <a href="lab7.html">Lab 7</a> to allow the user to enter 
+		two different mathematical functions to be graphed. Your program should then 
+		display both on in the graphics window.
+	
+	<li> <b>Due Date: 18 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	   <i>(From Chapter 6, #1, Page 196)</i> Write a program to print the lyrics of the song "Old MacDonald." Your 
+        program should print the lyrics for five different animals, similar to the example verse below. 
+        <pre>
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	   And on that farm he had a <span class="italicRed">cow</span>, Ee-igh, Ee-igh, Oh!
+	   Whith a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> here and a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> there.
+	   Here a <span class="italicPink">moo</span>, there a <span class="italicPink">moo</span>, everywhere a <span class="italicPink">moo</span>, <span class="italicPink">moo</span>.
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	</pre>
+	(Hint: use a function with two input parameters one for the animal and the other for the related sound)
+			
+	<li> <b>Due Date: 19 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+		Fill in the missing function definitions for this program:
+		<pre>
+def main():
+	w = setUp()			#Creates and returns a graphics window
+	x1,y1,x2,y2 = userInput()	#Asks user for 4 inputs and returns numbers entered
+	displayLine(w,x1,y1,x2,y2)	#Draws a line from (x1,y1) to (x2,y2) on window w
+	conclusion(w)			#Gets a mouse click and closes window w
+main()</pre>
+		That is, write the functions <tt>setUp()</tt>, <tt>userInput()</tt>, <tt>displayLine()</tt> and
+      <tt>conclusion()</tt>.  Include all functions, including the <tt>main()</tt> above in the file 
+      you submit.
+		
+	<li> <b>Due Date: 20 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that takes as a parameter a list of strings and returns a list containing 
+	the lengths of each of the strings. That is, if the input parameter is <tt>["Daniel","Nashyl","Orla",
+        "Simone","Zakaria"]</tt>, your function should return <tt>[6, 6, 4, 6, 7]</tt>.
+	The file you submit should include a <tt>main()</tt> function that demonstrates that your
+	function works.
+					
+	<li> <b>Due Date: 21 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that uses turtle graphics to draw a pedal.  Your function should take
+	a turtle as its input parameter and draw a single pedal.  For example, <br>
+	
+	<img src="pedal.jpg">
+	
+	<p>
+	Draw a flower by repeatedly calling your function.   Your flower should have at least
+	10 pedal.  For example, <br>
+	
+	<img src="flower.jpg">	
+	
+	<p>
+	(Note:  you can change the color that your turtle, using the function, <tt>color()</tt>.
+	For example, if you turtle is called <tt>flower</tt> to change it's color to purple,
+	write <tt>flower.color("purple")</tt>.)
+
+<hr>
+	<li> <b>Due Date: 14 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a graphics program that changes colors depending where the user clicks on 
+		the window. If the user clicks on the left side, your name (or initials) should appear in green 
+		in the window. 
+		If the user clicks on the right side, your name (or initials) should appear in red in the window. 
+		(You may write your name in text or initials using graphics or text, and you may color
+		the letters or the background-- just as long as it is clear that the color has changed
+		when the mouse is clicked on the left or the right).
+		Your program 
+		should allow the user to click 5 times before ending the program.
+		(Hint:  see <a href="lab8.html">Lab 8</a>.)
+		
+	<li> <b>Due Date: 15 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a <b>function</b> that takes as two parameters: the zone and the ticket type, and
+returns the Copenhagen Transit fare. 
+<ul>
+	<li>If the zone is 2 or smaller and the ticket type is "adult," the fare is 23. 
+	<li>If the zone is 2 or smaller and the ticket type is "child," the fare is 11.5. 
+	<li>If the zone is 3 and the ticket type is "adult," the fare is 34.5.
+	<li>If the zone is 3 or 4 and the ticket type is "child," the fare is 23.
+	<li>If the zone is 4 and the ticket type is "adult," the fare is 46.
+	<li>If the zone is greater than 4, return a negative number (since your
+calculator does not handle inputs that high).
+</ul>
+		<p> You should include in the file a <tt>main()</tt> that calls your function
+		several times to demonstrate that it works.
+			
+	<li> <b>Due Date: 16 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a program that allows the user to choose which currency they would like
+		to convert.  Using the chart from #5, choose the currencies that begin with 
+		the first five unique letters of your name.  You should print out the currencies
+		your program will convert, ask the user for their currency choice, and then 
+		amount of money to be converted.  Your program should then print the amount
+		of money in the chosen currency.  For example:
+<pre>
+Sameh's Currency Converter
+Converts from dollars into Somali Shilling, Afghan Afghanis, Moroccan Dirhams, 
+Euros, and Hungarian Forints.
+Choose a currency ('S', 'A', 'M', 'E', 'H'):  h
+What amount: 1000
+
+The chosen currency is:  Hungarian Forints
+The converted amount is:  4.56 
+</pre>
+		
+	<li> <b>Due Date: 17 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+					
+Write a program that asks a user to enter a list of clothing items purchased.  Your program 
+		should then calculate their total bill with tax.  In New York City, the tax on clothing items
+		that priced $110 or less is 0%.  The tax on clothing items priced more than $110 is 8.5%.
+		
+		<p>
+		Here is a sample run of the program:
+		<pre>
+Please enter clothing prices, separated by commas:  100, 9.99, 200, 159.99	
+		
+Your receipt:
+	    100.00
+	      9.99
+	    200.00  T
+	    159.99  T
+	 ---------
+	    500.58 
+		</pre>
+		(The `T' indicates which items are taxed.  To make the receipt look nice, you can use 
+		<tt>format()</tt> and <tt>rjust()</tt> functions.					
+					
+					
+	<li> <b>Due Date: 18 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Modify the <tt>decodeMessage.py</tt> program from <a href="lab5.html">Lab 5</a> which 
+		encodes messages with lower case letters to one that can also encode messages with upper
+		case letters and numbers.
+		
+		<p>
+		For example, 
+		<pre>
+This program decodes a textual message
+Each character is replaced with the character 2 places ahead in the alphabet.
+The characters "'", ".", "(", ")", and " " are not decoded.
+
+Please enter the message to decode: 250 Bedford Park Blvd W, 10468
+
+The decoded message is: 472 Dgfhqtf Rctm Dnxf Y, 32680
+		</pre>
+		
+		<p>
+		(Hint:  try the original program on the message below.  What are the differences in the 
+		encoded messages it produces and the output above?)	
+
+<hr>
+	<li> <b>Due Date: 21 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+	Write a program that asks the user to enter a number between -10 and 10. If they 
+	enter a number out of range, print a message that the number is out of range and 
+	prompt them again for a number between 1900 and 2012. When the user enters a number 
+	in range, print the number to the screen and end the program.
+		
+	<li> <b>Due Date: 22 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+	Write a guessing word program.  First, pick a word, name, or phrase 
+	for the user to guess (make sure that it is different from others' words so the 
+	cheat-checking programs don't accidently
+	match your program to others and that the word is not obscene (since it will be 
+	flagged by the Blackboard system)).  
+	
+	<p>While the user has not guessed the word, print out two messages:  one
+	that says whether the message that was entered is <tt>too short</tt>, <tt>just right</tt>, 
+	or <tt>too long.</tt>  Your second message should tell the user if there guess 
+	was before or after in the ordering of strings.
+	Your game should continue until they guess your secret string and then should
+	print a message congratulating them.
+	Hint:  see <a href="lab9.html">Lab 9.</a>
+	
+	<li> <b>Due Date: 23 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		Write a program that reads in a text file, infile.txt, and prints out all the 
+		lines in the file to the screen until it encounters a line with fewer than 5
+		characters. Once it finds a short line (one with fewer than 4 characters), 
+		the program stops.
+		
+	<li> <b>Due Date: 24 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+Write a program that asks the users to enter a sequence of amounts to credit or debit to 
+	their account.  Your program should continue to process their amounts as long as their balance
+	is positive.  If at any point they have a negative balance, print a message and end the program.
+	If you are able to process all the amounts, print the final balance to the screen before 
+	ending the program.  You may assume that their beginning balance is $1000.
+	
+	<p>One sample run of the program:
+	<pre>
+Please enter the amounts to credit/debit from your account, separated by commas:  
+-500,100.01,-1000,333.33,85.02,-200
+	
+Beginning Balance:  $1000.00
+	
+Amount: -500
+Balance: $500.00
+Amount: 100.01
+Balance: $600.01
+Amount: -1000
+	
+Your balance has dropped below 0!  Please contact the bank immediately!
+	</pre>
+	
+	<p>Another sample run of the program:
+	<pre>
+Please enter the amounts to credit/debit from your account, separated by commas:  
+5.00,123.01,-600,7.89,-99.99
+	
+Beginning Balance:  $1000.00
+	
+Amount: 5.00
+Balance: $1005.00
+Amount: 123.01
+Balance: $1128.01
+Amount: -600
+Balance: $528.01
+Amount: 7.89
+Balance: $535.90
+Amount: -99.99
+Balance: $435.91
+	
+Your final balance is:  $435.91
+</pre>	
+					
+	<li> <b>Due Date: 25 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+Write a program for the game 'Hangman.'  Choose a secret word 
+	for the user to guess.  Then, prompt the user to guess a 
+	letter.  If they get it right, the letter should be filled in  
+	the word, if they get it wrong, add to mistake count.  The
+	program should continue to prompt the user and fill in letters
+	until the user has all the letters in the word, or the mistake
+	count reaches 6.
+	
+	<p>
+	For example, 
+<pre>
+Welcome to Hangman!
+The secret word has 6 unknown letters:  _ _ _ _ _ _
+Guess a letter:  K
+There is no K, mistake count = 1
+The secret word has 6 unknown letters:  _ _ _ _ _ _
+Guess a letter: A
+There is no A, mistake count = 2
+The secret word has 6 unknown letters:  _ _ _ _ _ _
+Guess a letter: T
+There is a T, mistake count = 2
+The secret word has 5 unknown letters:  _ _ T _ _ _
+Guess a letter: H
+There is a H, mistake count = 2
+The secret word has 4 unknown letters:  _ _ T H _ _
+Guess a letter: E
+There is no R, mistake count = 3
+The secret word has 4 unknown letters:  _ _ T H _ _
+Guess a letter: R
+There is no R, mistake count = 4
+The secret word has 4 unknown letters:  _ _ T H _ _
+Guess a letter: I
+There is no 1, mistake count = 5
+The secret word has 4 unknown letters:  _ _ T H _ _
+Guess a letter: N
+There is no R, mistake count = 6
+The secret word has 3 unknown letters:  _ _ T H _ N
+Guess a letter: P
+There is a P, mistake count = 6
+The secret word has 2 unknown letters:  P _ T H _ N
+Guess a letter: Y
+There is a Y, mistake count = 6
+The secret word has 1 unknown letters:  P Y T H _ N
+Guess a letter: O
+There is a O, mistake count = 6
+The secret word has 5 unknown letters:  P Y T H O N
+
+Congratulations!  You won the game!
+</pre>
+
+<p>To make the programming simpler, you may choose a secret word where every
+letter occurs at most once, as long as your word has over 5 letters.  As before,
+	make sure that your word is different from others' words so the 
+	cheat-checking programs don't accidently
+	match your program and that the word is not obscene (since it will be 
+	flagged by the Blackboard system).
+
+
+<hr>
+	<li> <b>Due Date: 2 May</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+		Modify the stock simulation from <a href="lab10.html">Lab 10</a> 
+		to calculate and print the average ending value of money.
+		
+	<li> <b>Due Date: 4 May</b>  <b style="float:right">Reading: Chapter 9</b><br>
+
+		Use turtle graphics to simulate a random walk of 1000 steps long.  
+		In your program, create a turtle <b>named for you</b> (for example, if your
+		name is Tom, your the name of your turtle variable should be <tt>tom</tt>).
+		At
+		every step, you should choose an angle between 0 and 360 degrees at random
+		and have your turtle turn by that angle and take 10 steps.  For example, to 
+		make Tom's turtle turn a random angle and walk 10 steps, you could write:
+		<pre>
+	angle = randrange(0,360)
+	tom.right(angle)
+	tom.forward(10)
+		</pre>	
+		
+	
+	<li> <b>Due Date: 6 May</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+	Is it likely that a monkey at a typewriter, randomly choosing character,
+	could write Hamlet?
+	
+	<p>
+	Write a simulation to answer this question.  That is, write a program that will 
+	randomly generate 100,000 strings of length 5 and count the number of strings 
+	that match "to be".  You may assume that your strings are lower case letters 
+	and spaces only.  That is, when you generate your string, you are choosing 
+	from the 27 characters: <pre>[' ','a','b','c','d',...'y','z']</pre>
+
+
+		
+	<li> <b>Due Date: 8 May</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+	Write a simulation of the rolling of 2 six-sided dice.  Your program should have
+	a function that <tt>oneRoll()</tt> that returns the sum of rolling your dice.
+	You may assume that each of the six sides is equally likely to be rolled (that
+	is, the dice are "fair").  Run your simulation 10,000 times and report the 
+	frequency that each sum occurred.  
+	
+	<p>A sample run of your program should look something like (but not identical
+	due to the randomness of the simulation):
+	<pre>
+2 : 292
+3 : 536
+4 : 810
+5 : 1100
+6 : 1428
+7 : 1631
+8 : 1439
+9 : 1100
+10 : 825
+11 : 543
+12 : 296	
+	</pre>
+	
+					
+	<li> <b>Due Date: 10 May</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	
+	Write a simulation of the rolling of 2 dice: <b>1 four-sided die and 1 eight-sided
+	die.</b>  That is, the first die has four sides, and you can roll, with equal
+	probability: 1,2,3, or 4.  The second die has eight sides, and you can roll with
+	equal probability: 1, 2, 3, 4, 5, 6, 7, or 8.  Your program should have
+	a function that <tt>oneRoll()</tt> that returns the sum of rolling your dice.
+	Run your simulation 10,000 times and report the frequency that each sum occurred.  	
+
+	<p>A sample run of your program should look something like (but not identical
+	due to the randomness of the simulation):
+	<pre>
+2 : 308
+3 : 629
+4 : 932
+5 : 1231
+6 : 1230
+7 : 1242
+8 : 1343
+9 : 1198
+10 : 938
+11 : 617
+12 : 332
+	</pre>
+
+
+<hr>
+	<li> <b>Due Date: 12 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+		
+		Modify the selectionSort (from Chapter 13 of the book or Zelle's website)
+		to sort lists of numbers backwards.  For example, the list, 
+		<tt>[125,4,145,59,168,34,14,42]</tt>, should be sorted as:
+		<tt>[168,145,125,59,42,34,14,4]</tt>.
+		
+		<p>
+		In your submitted file, include a <tt>main()</tt> function that demonstrates
+		that the sort algorithm works.
+	
+		
+	<li> <b>Due Date: 13 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+	
+	
+	The program below draws nested hexagons, via tail recursion:
+	<pre>
+from turtle import *
+def mystery2(t,x):
+	for i in range(6):
+		forward(x)
+		right(60)
+	if x > 0:
+		mystery2(t,x-10)
+t = Turtle()
+mystery2(t,50)	
+	</pre>
+	Modify the program so that it draws nested <b>triangles</b> instead.	
+			
+	<li> <b>Due Date: 14 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+	
+		Modify selectionSort (from Chapter 13 of the book or Zelle's website) 
+		to sort a list, but with the twist: your name always come first and the
+		rest of the names are in order "wrapping around" the alphabet.  
+		For example, if your starting list is:
+		<pre>
+	Eric, Sameh, Ali, Tom, Kostos, Tony, Katherine
+		</pre>
+		And your name is <tt>Kostos</tt>, the ending list would be:
+		<pre>
+	Kostos, Sameh, Tom, Tony, Ali, Eric, Katherine
+		</pre>
+		If your name is <tt>Eric</tt>, the ending list would be:
+		<pre>
+	Eric, Katherine, Kostos, Sameh, Tom, Tony, Ali
+		</pre>		
+		
+		<p>
+		In your submitted file, include a <tt>main()</tt> function that prints out your
+		name and demonstrates
+		that the sort algorithm works.
+		
+		<p>Hint:  you only need to change the "comparison" part of the sort, but you
+		will need to make it more complicated.  If you are trying to figure out which
+		of two strings, say <tt>string1</tt> and <tt>string2</tt> come first, you 
+		need to compare them first to your name.  If both are before or both are after
+		your name, you can compare in the same way as before.  If one of the strings 
+	    comes before your name and the other after your name, you will have additional
+	    comparisons.
+		
+	<li> <b>Due Date: 15 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+
+		Write the python code for the algorithm below:
+		(from <a href="http://rosettacode.org/wiki/Sorting\_algorithms/Stooge\_sort">rosettaCode.org</a>)
+<pre>
+algorithm stoogesort(L, i, j)
+	if L[j] < L[i] then
+		swap L[i] and L[j]
+	if j - i > 1 then
+		t := (j - i + 1)/3
+		stoogesort(L, i, j-t)
+		stoogesort(L, i+t, j)
+		stoogesort(L, i, j-t)
+	return L
+
+stoogesort(L, 0, length(L)-1)
+</pre>
+		In your submitted file, include a <tt>main()</tt> function that demonstrates
+		that the sort algorithm works.
+
+					
+	<li> <b>Due Date: 16 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+
+		Implement the following pseudocode in python:
+<pre>
+algortihm fern(turtle, size)
+    if size > 4
+    	Move turtle forward size/25 steps
+        Turn turtle 90 degrees left
+        fern(turtle, size*0.3)
+        Turn turtle 180 degrees right        
+        fern(turtle, size*0.3)
+        Turn turtle 90 degrees left
+        fern(turtle, size*0.85)
+        Move turtle backward size/25 steps
+</pre>
+	Include a main program that calls your fucntion with a turtle and size of 500<br>
+	(from <a href="http://nakkaya.com/2010/01/09/a-simple-turtle-graphics-implementation-in-clojure/">
+	http://nakkaya.com/2010/01/09/a-simple-turtle-graphics-implementation-in-clojure/</a>).
+	Note: starting at 500 will only draw a small fern.  If you would like to match the image
+	from the above site, you will need an input parameter of 1500 and a lot of patience while
+	it draws.
+	
+	
+	<p>Hints:
+	<ul>
+		<li> Have your turtle turn 90 degrees to the left so that the "fern" will draw
+			upwards.
+		<li> You can have the turtle draw faster by using the <tt>speed()</tt> function
+			from the turtle module.
+		<li>  Implement the algorithm above.  Do not search the internet for python code
+			and submit that.  Not only is that plagiarism (and will earn you a grade of 0
+			for the assignment), it will likely not implement the same fern as above, since
+			there are many, many different variants of this fractal drawing.
+	</ul>
+
+
+</pre>
+
+			
+-->
+
+</ol>
+
+
+</div>
+
+<div>
+Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of python:
+
+	<p>
+	<img src="http://imgs.xkcd.com/comics/python.png">
+</div>
+
+
+<div>
+<i style="float:right">(This file was last modified on 21 December 2012.)</i><br>

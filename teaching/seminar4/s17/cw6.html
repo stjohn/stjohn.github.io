@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Choropleth maps Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  choropleth maps</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+
+</div>
+
+<div>
+<h3>geoJSON and folium</h3>
+<i>
+(If you didn't complete this last time, work through the folium webpage on 
+geoJSON.)
+</i>
+<p>
+Folium provides a simple interface to leaflet.js for mapping geoJSON data.
+Work through example from tutorial that uses a geoJSON layer
+<a href="https://folium.readthedocs.io/en/latest/quickstart.html">Folium</a>.
+
+<p>
+<i>These have moved since this classwork was written, a similar version is
+at <a href=""></a>.  Note that the rewrite of the examples assumes that you are using jupyter and displays in-line.  To save an .html file to diplay, you need to save it (<tt>mapName.save(outfile='htmlFile.html')</tt>)</i>
+
+<p>
+Using your the geoJSON file that you created.  What do the different 
+tile options do?  That is, how do the following options change your
+map:
+
+<ul>
+	<li> <tt>tiles='Stamen Terrain'</tt>
+	<li> <tt>tiles='stamenwatercolor'</tt>
+	<li> <tt>tiles='Mapbox Bright'</tt>
+	<li> <tt>tiles='Stamen Toner'</tt>
+	<li> <tt>tiles='Cartodb Positron'</tt>
+</ul>
+
+</div>
+
+<div>
+<h3>Choropleth Maps</h3>
+
+<p>
+An useful way to display data is via choropleth maps, were each region is shaded to varying degrees.  In the simplest form, we can use a geoJSON file to add information (such as political or administrative boundaries) as a "layer" on our maps.  But, we can also, shade the regions by values such as density, employment, or school test scores:
+
+<p>
+<iframe src="testScores.html" style="width: 90%; height: 300px" name="internal"></iframe>
+
+<p>
+To create a map with shaded regions, we need:
+<ul>
+	<li> A geoJSON file with the regions.  For our first choropleth map, we'll use the NYC school district boundaries available from 
+	<p><a href="https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">Open Data NYC Planning</a><p>
+	(scroll down to "School, Police, Health & Fire" and export as geoJSON, called <tt>schoolDistricts.json</tt>).
+	
+	<p>
+	(If you have troubles downloading, here's the file:  <a href="schoolDistricts.json">schoolDistricts.json</a>
+	
+	
+	<li> A data file.  For our first map, we'll use the most recent test scores for public schools available from:  
+	<p><a href="http://schools.nyc.gov/Accountability/data/TestResults/ELAandMathTestResults">NYC Department of Education</a>
+	<p>
+	(download the <b>District</b> math scores, open in your favorite spreadsheet program, and export the sheet of scores for all students as a CSV file, 
+	called <tt>math20132016.csv</tt>).
+</ul>
+
+</div>
+
+<div>
+<h3>geoJSON Layer</h3>
+
+<p> Let's start by adding the geoJSON layer for our map (we'll add in shading in the next section).  
+
+<p> Assuming you have the files named as above, and in the same directory, we can start with:
+<pre>
+import folium
+
+#Create a map:
+schoolMap = folium.Map(location=[40.75, -74.125])
+
+#Create a layer, shaded by test scores:
+schoolMap.choropleth(geo_path="schoolDistricts.json",
+                     fill_opacity=0.5, line_opacity=0.5
+                     ) 
+
+#Output the map to an .html file:
+schoolMap.save(outfile='testScores.html')
+</pre>
+
+<p>In your favorite IDE, run this program.  The import statement, and the creating and saving are the same as before.  The only new function is <tt>choropleth()</tt>.  It has as input parameters:
+<ul>
+	<li><tt>geo_path</tt> gives the location of the geoJSON file that contains the regions.
+	<li>Opacity refers to the transparency of the shading on the regions (<tt>fill_opacity</tt>) and the boundaries (<tt>line_opacity</tt>).
+</ul>
+
+<p>Once we have data, we will add a few more parameters to link in the data and change the color shading.
+
+</div>
+
+
+<div>
+<h3>Slicing DataFrames</h3>
+
+<p>
+For data, we'll use the school test scores that you downloaded above.  The file has a lot of information:
+
+<p>
+<img src="mathCSV.png" width= "90%">
+
+<p>
+For our first map, we'll focus on the most recent year, 2016, and the results for 8th grade.  
+
+<ul>
+<li>
+To include in our Python program, let's use Pandas:
+<pre>
+import pandas as pd
+
+#Read in the test scores
+fullData = pd.read_csv('math20132016.csv', skiprows = 6)
+</pre>
+
+<p>(we're skipping the extraneous information on the first 6 rows).
+
+<li>Since we're only interested in 2016, we'll make a new dataFrame with only those rows that have the year 2016:
+<pre>
+scores2016 = fullData[fullData.Year == 2016]
+</pre>
+<li> Similarly, we can focus just on the 8th grade scores with:
+<pre>
+scores8th2016 = scores2016[fullData.Grade == "8"]
+print(scores8th2016)
+</pre>
+</ul>
+<p>Our new dataFrame is significantly smaller-- only 33 lines of data, one corresponding to each of the 33 regional school districts in New York City.
+We would like to shade each district by its average test score.  To do this, 
+we modify the <tt>choropleth()</tt> command to be:
+<pre>
+schoolMap.choropleth(geo_path="schoolDistricts.json",
+                     fill_color='YlGn', fill_opacity=0.5, line_opacity=0.5,
+                     threshold_scale = [100,200,300,400],
+                     data = scores8th2016,
+                     key_on='feature.properties.SchoolDist',
+                     columns = ['district', 'Mean Scale Score']
+                     ) 
+</pre>
+Let's focus only on the new parameters:
+<ul>
+	<li> The fill color gives the palette of colors used for shading.  Here, the arguement, <tt>fill_color='YlGn'</tt> sets the palette to be yellow ranging to green.
+	<li> The threshold scale labels the color bar on the map (<tt>threshold_scale = [100,200,300,400]</tt>).  If this is left off, folium equally divides the labels based on the data entered.
+	<li> To specify which dataFrame to use, we used: <tt>data = scores8th2016</tt>.
+	<li> The <tt>key_on</tt> arguments specifies which feature to use in the geoJSON file.  The input for this always starts with "feature".  In this file, the school district is specified under properties and called "SchoolDist".  Putting those altogether, we get:  
+	<tt>key_on='feature.properties.SchoolDist'</tt>
+	<li>Our last argument is the columns to use from the dataFrame.  The first needs to line up with the <tt>key_on</tt>, and the second is the value used for determining the shading.  If you want to shade by another value in the dataFrame, you just need to change this from 'Mean Scale Score' to the header of that other column.
+</ul>
+
+<p>Run your program and examine the map it produces.
+
+<p>Here's the whole file:  <a href="testScores.py">testScores.py</a>.
+
+
+</div>
+
+<div>
+<h3>Changing Colors & <tt>docstrings</tt></h3>
+
+Let's try chaning the colors used for shading the map.
+If we set it to "Blue":  we get the error:
+
+<span style = "color:red">
+<pre>
+File "/Users/stjohn/anaconda/lib/python3.5/site-packages/folium/folium.py", line 601, in choropleth
+raise ValueError('Please pass a valid color brewer code to '
+ValueError: Please pass a valid color brewer code to fill_local. See docstring for valid codes.
+</pre>
+</span>
+
+<p> It suggests looking at the docstring for valid codes.  The docstring is simple documentation that (well-written) code should contain.  The name of the function that's giving the error is <tt>choropleth</tt>.  It's not a stand-alone function (like <tt>print</tt>) but one that we apply to objects, so, to find its docstring, we need to give the class of the objects to which it belongs (<tt>Map</tt>) and the package where <tt>Map</tt> lives (<tt>folium</tt>):
+
+<pre>
+print(folium.Map.choropleth.__doc__)
+</pre>
+
+It prints out a very long message, but we're interested in what colors we can use.  Can you find the relevant section in the message:
+<pre>
+        Apply a GeoJSON overlay to the map.
+
+        Plot a GeoJSON overlay on the base map. There is no requirement
+        to bind data (passing just a GeoJSON plots a single-color overlay),
+        but there is a data binding option to map your columnar data to
+        different feature objects with a color scale.
+
+        If data is passed as a Pandas dataframe, the "columns" and "key-on"
+        keywords must be included, the first to indicate which DataFrame
+        columns to use, the second to indicate the layer in the GeoJSON
+        on which to key the data. The 'columns' keyword does not need to be
+        passed for a Pandas series.
+
+        Colors are generated from color brewer (http://colorbrewer2.org/)
+        sequential palettes on a D3 threshold scale. The scale defaults to the
+        following quantiles: [0, 0.5, 0.75, 0.85, 0.9]. A custom scale can be
+        passed to `threshold_scale` of length <=6, in order to match the
+        color brewer range.
+
+        TopoJSONs can be passed as "geo_path", but the "topojson" keyword must
+        also be passed with the reference to the topojson objects to convert.
+        See the topojson.feature method in the TopoJSON API reference:
+        https://github.com/mbostock/topojson/wiki/API-Reference
+
+
+        Parameters
+        ----------
+        geo_path: string, default None
+            URL or File path to your GeoJSON data
+        geo_str: string, default None
+            String of GeoJSON, alternative to geo_path
+        data_out: string, default 'data.json'
+            Path to write Pandas DataFrame/Series to JSON if binding data
+        data: Pandas DataFrame or Series, default None
+            Data to bind to the GeoJSON.
+        columns: dict or tuple, default None
+            If the data is a Pandas DataFrame, the columns of data to be bound.
+            Must pass column 1 as the key, and column 2 the values.
+        key_on: string, default None
+            Variable in the GeoJSON file to bind the data to. Must always
+            start with 'feature' and be in JavaScript objection notation.
+            Ex: 'feature.id' or 'feature.properties.statename'.
+        threshold_scale: list, default None
+            Data range for D3 threshold scale. Defaults to the following range
+            of quantiles: [0, 0.5, 0.75, 0.85, 0.9], rounded to the nearest
+            order-of-magnitude integer. Ex: 270 rounds to 200, 5600 to 6000.
+        fill_color: string, default 'blue'
+            Area fill color. Can pass a hex code, color name, or if you are
+            binding data, one of the following color brewer palettes:
+            'BuGn', 'BuPu', 'GnBu', 'OrRd', 'PuBu', 'PuBuGn', 'PuRd', 'RdPu',
+            'YlGn', 'YlGnBu', 'YlOrBr', and 'YlOrRd'.
+        fill_opacity: float, default 0.6
+            Area fill opacity, range 0-1.
+        line_color: string, default 'black'
+            GeoJSON geopath line color.
+        line_weight: int, default 1
+            GeoJSON geopath line weight.
+        line_opacity: float, default 1
+            GeoJSON geopath line opacity, range 0-1.
+        legend_name: string, default empty string
+            Title for data legend.
+        topojson: string, default None
+            If using a TopoJSON, passing "objects.yourfeature" to the topojson
+            keyword argument will enable conversion to GeoJSON.
+        reset: boolean, default False
+            Remove all current geoJSON layers, start with new layer
+
+        Returns
+        -------
+        GeoJSON data layer in obj.template_vars
+
+        Examples
+        --------
+        >>> m.choropleth(geo_path='us-states.json', line_color='blue',
+        ...              line_weight=3)
+        >>> m.choropleth(geo_path='geo.json', data=df,
+        ...              columns=['Data 1', 'Data 2'],
+        ...              key_on='feature.properties.myvalue',
+        ...              fill_color='PuBu',
+        ...              threshold_scale=[0, 20, 30, 40, 50, 60])
+        >>> m.choropleth(geo_path='countries.json',
+        ...              topojson='objects.countries')
+</pre>
+
+<p>
+Did you find it?  It's excerpted below:
+<pre>
+        fill_color: string, default 'blue'
+            Area fill color. Can pass a hex code, color name, or if you are
+            binding data, one of the following color brewer palettes:
+            'BuGn', 'BuPu', 'GnBu', 'OrRd', 'PuBu', 'PuBuGn', 'PuRd', 'RdPu',
+            'YlGn', 'YlGnBu', 'YlOrBr', and 'YlOrRd'.
+</pre>
+
+<p>Note, "Blue" is not on the list, but it is the default if we are filling a solid color.  Try some of the other color palettes to decipher the naming scheme.
+</div>
+
+
+<div>
+<h3>Additional Challenges</h3>
+<ul>
+	<li> Modify your program to shade regions the test scores for all grades (hint:  need to change the rows that you are printing).
+	<li> Modify your program to shade regions by the percentage of students proficient in all grades (hint:  need to change the rows that you are printing as well as the column-- proficient is considered scores of 3 or 4).
+	<li> Make a similar map for the English Language Exam Results.
+	<li> Make a map that is shaded by the improved from 2013 to 2016.  That is, regions should be shaded by the difference between the average score in 2013 and the average score in 2016.<br>
+	(Hint:  This one is a bit harder-- think about what you want to graph.  It is also explained in next week's classwork.)
+	
+</ul>
+</div>
+
+
+
+
+<div>
+<h3>Project & Presentation</h3>
+
+<p>
+All students in Seminar 4 are required to give a presentation to the mock city council in May.  Logistics will be sent out by MHC soon, but here's an overview:
+<ul>
+	<li> Students work together in teams of 3 to 5 students to address an issue on shaping the future of New York.
+	<li> The presentations are 10 minutes long.
+	<li> All students are expected to present part of the material.
+</ul>
+
+<h4>Choosing Teams</h4>
+
+<p>
+Given the size of our seminar, we can have 5 to 6 teams. The goal of today's classwork is to organize into teams and sketch out the theme(s) that you would like to address.
+
+<p>
+From the project topics survey, some are (very!) passionate about a given theme, and for others, they have many different interests.  To start the process:
+<ol>
+	<li> Summarize your interest into a 30 second description (e.g. what you wrote for the project topics survey).  It's fine to say that you're not sure, or give a very high-level interest (i.e. housing, transit) instead of something specific.
+	<li> We will go around the room and discuss the various interests.
+	<li> Next, we'll break into large groups based on interest (i.e. housing, transit, other...).
+	<li> If any group has 6 or more students, discuss subtopics and split into subgroups with no more than 5 students. 
+	<li> For classwork, write/email:
+		<ul>
+			<li> Team name/focus
+			<li> Group member names
+			<li> A specific question, topic, or idea you hope to address
+			<li> Possible data sources that you will need (brainstorm and we'll refine later based on what is publicly available)
+			<li> Possible analysis: what analysis of data and primary sources do you think might be needed?
+			<li> Possibe visualizations:  what you would hope to present visually during your presentation?
+		</ul>
+</ol>
+
+
+</div>

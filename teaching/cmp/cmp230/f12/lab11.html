@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 11, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 11<br>
+CIS 166 & CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Lab Dates:  On-line due to the lost week of the hurricane</span></p>
+
+<p>
+Today's lab focuses on sorting and searching (Chapter 13).
+
+</div>
+
+
+<div>
+
+<h3>Sorting Visualization</h3>
+
+The on-line lecture (available on Blackboard) focuses on the searching and 
+sorting.  This lab has visualizations of the sorts covered in the lecture.
+Download the <a href="sortGUI.py">sortGUI.py</a> file to your machine and
+run it.  Remember, that it will need the <tt>graphics.py</tt> file in the
+same directory.
+
+<p>
+The program generates 40 random numbers and first sorts the list with 
+the <b>selectionSort</b> algorithm from the textbook.  The code has been modified 
+slightly from the book to update the graphics display as it runs.
+When the program runs, it repeatedly traverses the list.  On its first 
+traversal of the list, it finds the largest number and then interchanges it
+with the last number in the list.  It then repeats looking for the next 
+largest number and puts that in the second-to-last position in the list.
+It keeps going putting the next largest number in its place until the whole
+list is sorted.  Run the program several times, paying attention to the 
+first sort only.  Can you see the largest number moving each time?
+
+<p>
+Next, the program generates 40 random numbers and sorts the list with the 
+<b>mergeSort</b> algorithm from the textbook.  mergeSort has a very different
+strategy:
+<ul>
+	<li> split the list in half,
+	<li> sort each half, and 
+	<li> merge the sorted halves back together
+</ul>
+To sort each half, the function calls itself (mergeSort) to perform the
+sort.  This is an example of <b>recursion</b>, which just means a function
+that calls itself.  For our list of 40 numbers, this means the program 
+will split the list in half, sort the first 20 numbers, then the next
+20 numbers, and merge the results back to form a single sorted list.  
+Run the program several times, paying attention to the end of the second sort.
+You can see the first sorted half and the second sorted half merging to form
+a single sorted list.  If you run the program again, and look earlier, you 
+can see the left half of the left side (first 10 slots) and the right half 
+of the left side (next 10 slots), being merged together to form a sorted
+list of the first half.  
+
+<p>mergeSort is very fast but harder to implement in code.  selectionSort
+is slower to run but easier to implement.
+
+<h3>BubbleSort</h3>
+
+Today, we are going to implement another sort, called <b>bubbleSort</b>.
+While bubbleSort is the most efficient way to sort big lists (
+<a href = "http://www.youtube.com/watch?v=k4RRi_ntQc8">President 
+Obama on the subject</a>, 
+<a href="http://overstated.net/2008/02/11/obama-not-bubble-sort">comments</a>), it is easy 
+to understand.
+
+<p>Algorithms are often written in <b>pseudo-code,</b> which is an 
+informal, high-level description:
+<pre>
+func bubblesort( var a as array )
+    for i from 2 to N
+        for j from 0 to N - 2
+           if a[j] > a[j + 1]
+              swap( a[j], a[j + 1] )
+end func
+</pre>
+(from <a href="http://www.algorithmist.com/index.php/Bubble_sort">www.algorithmist.com/index.php/Bubble_sort</a>)
+
+<p>
+Let's translate this line-by-line into python:
+<ul>
+	<li>
+<pre>
+func bubblesort( var a as array )
+    for i from 2 to N
+        for j from 0 to N - 2
+           if a[j] > a[j + 1]
+              swap( a[j], a[j + 1] )
+end func
+</pre>	
+	<li>
+<pre>
+func bubblesort( var a as array )
+</pre>	
+This first lines says we have a function with an array variable called <tt>a</tt>.
+In python, we define functions with the <tt>def</tt> keyword:
+<pre>
+	def bubbleSort(a):
+</pre>
+	<li>
+<pre>
+    for i from 2 to N
+</pre>	
+This next line is a <tt>for</tt> loop, but what is <tt>N</tt>?  Usually, <tt>N</tt>
+or <tt>n</tt> refers to the length of the list, so, let's set that up as a variable
+first, then write out the for loop:
+<pre>
+	N = len(a)
+	for i in range(2, N+1):
+</pre>
+Note that their for loop goes from 0 upto and including N, so, we need to change
+the range accordingly.
+
+	<li>
+<pre>
+        for j from 0 to N - 2
+</pre>	
+Since we have <tt>N</tt> defined, we can easily write out this for-loop:
+<pre>	
+		for j in range(N-1):
+</pre>
+
+	<li>
+<pre>
+           if a[j] > a[j + 1]
+</pre>	
+We need one small addition to make this line proper python:
+<pre>
+		   if a[j] > a[j+1]:
+</pre>
+	<li>
+<pre>
+              swap( a[j], a[j + 1] )
+</pre>	
+Lastly, we need to swap the two values.  In python, we can do this in one line 
+with simultaneous assignment:
+<pre>
+			  a[j],a[j+1] = a[j+1],a[j]
+</pre>
+
+</ul>
+
+Putting this altogether, we have:
+<pre>
+	def bubbleSort(a):
+		N = len(a)
+		for i in range(2,N+1):
+			for j in range(N-1):
+				if a[j] > a[j+1]:
+					a[j],a[j+1] = a[j+1],a[j]
+</pre>
+
+
+To make this function show the graphics, we will add two calls to the <tt>drawBox()</tt>
+as well as to <tt>sleep()</tt> (to slow it down enough to see):
+<pre>
+	def bubbleSort(a,w):
+		N = len(a)
+		for i in range(2,N+1):
+			for j in range(N-1):
+				if a[j] > a[j+1]:
+					a[j],a[j+1] = a[j+1],a[j]
+					drawBox(a, j, w)
+                	drawBox(a, j+1,w)
+            	time.sleep(.1)
+</pre>
+Note that we need to add <tt>w</tt>, the graphics window variable,
+to the formal parameters of our function
+so that we can use it when calling our drawing function.
+
+
+<p>Add the <tt>bubbleSort()</tt> above to your program and try running it.
+Can you see the largest value "bubble" up to the top?
+
+<p>After completing your program, go to <tt>Assignments</tt> in Blackboard
+and click on the link: <tt>Lab 11</tt>.  Use the file upload interface
+to upload your program.  Remember to click the <tt>Submit</tt> button before
+closing the lab exercise.
+
+
+
+<p> With the remaining time, start <a href="ps9.html">Problem Set 9</a>.
+
+</p>
+</div>

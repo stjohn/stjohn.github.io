@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Installing Eclipse on a Mac</title>
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF"><body>
+<body background="ministryofsillywalks.JPG">
+
+<font color="#C9040C"><div align="center"><h1>Installing Eclipse on a Mac</h1></div>
+
+
+<span style="font-size: 120%;">
+<p><i>Eclipse</i> is a multi-language software development environment.  We will use it in CMP 230 with Python, and in CMP 326 with Java.  It is a good tool to get acquainted with early.</p>
+
+<p>Eclipse is obtained from <a href="http://eclipse.org/downloads/">http://eclipse.org/downloads/. </a>  You want Eclipse Classic, 64bit, unless you have an old computer.  This downloads a tar file in your downloads folder which, when double clicked, expands into the eclipse folder.  Drag this to your Applications folder.</p>
+
+<p>When you start Eclipse, you will be asked for the name and location of a workspace folder.  The two most likely places for location are in your Documents folder, and in the Eclipse folder itself.  Either is fine, you choose.  Eventually you will probably have two workspaces, one for Java if you take CMP326, and one for Python.  Since Eclipse will start off ready for Java, you might call your first one javaworkspace.  Another will be created for Python shortly, and you won't use the javaworkspace for quite a while.</p>
+
+<p>Next, we set up Eclipse so it can work with Python as well as with Java.  Before you do this, Python 3 must be installed.  <a href="PythonOnAMac.html">Instructions here</a>.  Then, configuring Eclipse to work with Python is described in <a href="http://www.rose-hulman.edu/class/csse/resources/Eclipse/eclipse-python-configuration.htm">http://www.rose-hulman.edu/class/csse/resources/Eclipse/eclipse-python-configuration.htm</a>, and other places as well.  Here is a short summary.
+<ol>
+<li>From the File menu select Switch Workspace/other, and create a pythonworkspace.</li>
+<li>From the Help menu select Install New Software.</li>
+<li>Select Add.</li>
+<li>Enter http://pydev.org/updates under Location, and click OK.</li>
+<li>Back in the "Available Software" window, select the "PyDev for Eclipse" option. Do not select the "PyDev Mylyn Integration" flag.</li>
+<li>Click "Next", verify that PyDev is selected in the next window then select "Next" again.</li>
+<li>Accept the terms, and click Finish.  This will probably require that Eclipse be restarted.</li>
+<li>From the Eclipse menu select Preferences, expand Pydev, and select Interpreter-Python.</li>
+<li>Click New.  Type Python31 for Interpreter Name, and for Interpreter Executable, click Browse, and click your way through as follows.  Begin with your hard drive, select Library, then Frameworks, then Python.framework, then Versions, then 3.1, then bin, then python3.1, and click Open.</li>
+<li>Click OK when you have the next menu.  Use the default selections.</li>
+<li>Click OK, and that's it.</li>
+</ol>
+
+
+</p>
+</span>
+</font>
+</body>
+</html>

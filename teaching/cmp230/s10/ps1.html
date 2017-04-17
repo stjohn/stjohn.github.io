@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 1 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;		
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "1." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+    </style>
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 1</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+
+<p>
+This problem set is based on the material in Chapter 1: Objects.
+</p>
+
+
+<p>You should complete <b>50 points</b> worth of programs
+(with an additional 5 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<h3>General Information About the Lab</h3>
+<p>
+The department has the following policies for
+the lab:
+</p>
+<ul>
+  <li> There is no eating or drinking in the lab. </li>
+  <li> Due to restricted class sizes, children are not allowed in the
+computer labs. </li>
+  <li> Do not waste paper-- only print files that directly relate to
+the class. </li>
+  <li> Do not enter the lab until the scheduled class time. If the lab
+is open before class time, it is because another class is using it or
+for maintenance. </li>
+  <li> Always log out and turn off the monitor when you leave the lab. </li>
+</ul>
+</div>
+
+<div>
+<h3>Getting Started</h3>
+First, turn on the computer-- the button is
+in the front. The monitor should also come on, if it doesn't,
+the button for it is also in the front. It will take a few moments for
+the computer to get started. Some machines in the department are set up
+as dual boot.  If yours is, you will then see a RedHat logo
+on the left hand side of the screen, and the words <tt>linux</tt>
+and <tt>win</tt> in a white box on the right. Choose <tt>win </tt>and
+hit return. These machines are "dual-boot," with both Linux
+and Windows. By choosing <tt>win</tt>, the machine will boot up
+under the Windows operating system.
+</div>
+
+
+<div>
+
+<ol>
+
+<li><b>Getting Started with Alice</b> (5 points)
+<p>
+<img width="100" src="../images/skaterTutorial.png">
+</p>
+<p>
+Open the Alice animation system and choose <tt>Open World</tt> from the 
+<tt>File Menu</tt> (this should automatically open when you open Alice).   
+Click on the <tt>Tutorial</tt> tab, and choose Tutorial 1.  Work through 
+the entire tutorial.  Note more explicit directions on starting Alice can 
+be found in the textbook.
+</p>
+</li>
+
+<li><b>Placing &amp; Moving Objects</b> (5 points)
+<p>
+<img width="100" src="../images/spaceTutorial.png">
+</p>
+<p>
+Open the Alice animation system and choose <tt>Open World</tt> from the 
+<tt>File Menu</tt> (this should automatically open when you open Alice).   
+Click on the <tt>Tutorial</tt> tab, and choose Tutorial 4.  Work through 
+the entire tutorial.  
+</p>
+</li>
+
+<li><b>Favorite Animal</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/directoryThumbnail.png">
+</p>
+<p>Create a world for your favorite animal (chosen from the <tt>Animals</tt> 
+gallery).  Have your animal do at least three things.</p>
+</li>
+
+<li><b>Penguin</b> (15 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Penguin.png">
+</p>
+
+<p>
+Programming Project 1.1 (p 21): Create an Alice world in which a penguin
+waddles towards a hole in a frozen lake, tips over, and falls in.  The
+<tt>Penguin</tt> class can be found in the <tt>Animals</tt> gallery and
+the <tt>FrozenLake</tt> class can be found in the <tt>Environments</tt>
+gallery.  Use the <tt>Circle</tt> class (colored gray) from the 
+<tt>Shapes</tt> gallery to make the hole in the ice.  In addition to 
+the standard built-in methods, the <tt>Penguin</tt> class comes with a few
+other methods that you can call to help with this animation.
+</p>
+</li>
+
+<li><b>Combination Lock</b> (10 Points)
+<p>
+<img width="100" src="http://alice.org/gallery/Objects/ComboLock.png">
+</p>
+<p>
+Programming Project 1.2 (p 21): Create an Alice world that shows a 
+combination lock being dialed and then the latch opening.  Instead of
+the suggested combination, use for the first two numbers the day
+and month that you were born.  The <tt>ComboLock</tt> class
+is in the <b>Objects</b> gallery.<br>
+(Hint: the lock is made up of a latch and a dial.  Experiment with
+rolling and moving these components.)
+</p>
+</li>
+
+<li><b>Moving Vehicles</b> (10 Points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/directoryThumbnail.png">
+</p>
+
+<p>Alice has a simple way to do statements at the same time:  you 
+place those statements inside a <tt>Do Together</tt> block.</p>
+
+<p>
+Do <b>one</b> of the Programming Project 1.4 or 1.5 (p 22) and 
+create a set of vehicles (either planes and other flying objects, 
+or various boats) that move around the world.  You must have at
+least three objects that move at different speeds and in 
+different directions.
+</p>
+</li>
+
+<li><b>Helicopter Flight</b> (15 Points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Helicopter.png">
+</p>
+
+
+
+<p>
+Programming Project 1.10 (p 23): Create an Alice world in which a 
+helicopter lifts off the ground, flies in a wide circle, and lands.
+(An object can move in a circle by moving forward and turning one
+full rotation simultaneously.)  The helicopter's propellers should be
+rotating whenever the helicopter is in the air.  The 
+<tt>Helicopter</tt> class can be found in the <tt>Vehicles</tt>
+gallery.
+</p>
+</li>
+
+
+</ol>
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

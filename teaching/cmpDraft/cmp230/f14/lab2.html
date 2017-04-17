@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 2, CIS 166 & CMP 167/230,Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 2<br>
+CIS 166 & CMP 230 (CMP 167): Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab will focus more on writing simple programs in Python.
+</div>
+
+
+<div>
+
+<h3>Converter Program</h3>
+
+We will begin by writing a program similar to the one in the first part of Chapter 2.  Here is the
+problem:
+<blockquote>
+	Daniel has started to train for triathalons.  Unfortunately, his bike computer
+	only reads out distances in kilometers.  Write a conversion program for him that
+	takes as input kilometers and outputs the corresponding distance in miles.
+</blockquote>
+Our first step is to design the algorithm.  It follows a standard pattern:  <i>Input, Process, Output (IPO)</i>.
+
+<p>
+In a text window in IDLE, write out what the input is, what the process is, and what the output is.
+
+<p>
+Here is one possible design:
+<pre>
+	Input the distance in kilometers (call it km)
+	Calculate the distance in miles as ?
+	Output miles
+</pre>
+Above, we are missing an important part-- the formula to calculate miles from kilometers.  By
+typing <tt>1 km = miles</tt> into google, we find that 1 km = 0.621371 miles.  So, we can add
+that to our file:
+<pre>
+	Input the distance in kilometers (call it km)
+	Calculate the distance in miles as 0.621371*km
+	Output miles
+</pre>
+If you have not done so already, now would be a good time to save your work as the file, 
+<tt>km2miles.py</tt>.
+
+<p>
+Now, we are ready to convert our outline of the algorithm to Python.  Begin by adding a comment
+to the beginning of the file:
+<pre>
+# Lab 2:  Converter Program
+# YourNameHere, February 2014
+
+	Input the distance in kilometers (call it km)
+	Calculate the distance in miles as 0.621371*km
+	Output miles
+</pre>
+Next, let's add in the function definition, function call, and comment our outline so that we can
+test as we go:
+<pre>
+# Lab 2:  Converter Program
+# YourNameHere, February 2014
+
+def main():
+	#Input the distance in kilometers (call it km)
+	#Calculate the distance in miles as 0.621371*km
+	#Output miles
+
+main()
+</pre>
+Make sure that there are no typos by saving and running your program (F5 or run in the Run menu).
+
+<p>Next, fill in the program line by line.  First, ask the user for their input:
+<pre>
+# Lab 2:  Converter Program
+# YourNameHere, February 2014
+
+def main():
+	#Input the distance in kilometers (call it km)
+	km = eval(input('Enter distance in kilometers: '))
+	#Calculate the distance in miles as 0.621371*km
+	#Output miles
+
+main()
+</pre>
+Test to make sure that the program runs.  Note that it will ask for the input but will do nothing
+else since there is only that one Python statement in the <tt>main()</tt> function.
+
+<p>Python cares about spacing and distinguishes between spaces and tabs.  If you get
+an error above, check that each of the lines beneath the definition is indented using
+a TAB.
+
+<p>Now, process the input (ie do the conversion):
+<pre>
+# Lab 2:  Converter Program
+# YourNameHere, February 2014
+
+def main():
+	#Input the distance in kilometers (call it km)
+	km = eval(input('Enter distance in kilometers: '))
+	#Calculate the distance in miles as 0.621371*km
+	miles = 0.621371*km
+	#Output miles
+
+main()
+</pre>
+Save and run your program again.  It will ask for input but does not yet produce output.
+
+<p>Finally, add the print statement that shows the output:
+<pre>
+# Lab 2:  Converter Program
+# YourNameHere, February 2014
+
+def main():
+	#Input the distance in kilometers (call it km)
+	km = eval(input('Enter distance in kilometers: '))
+	#Calculate the distance in miles as 0.621371*km
+	miles = 0.621371*km
+	#Output miles
+	print("The miles are", miles)
+
+main()
+</pre>
+Save and run your program again.  This time, it will produce output.  Try it with some simple values
+to make sure that it gets the right answer.  For example, if you input 0 km, the output should also
+be 0.  If you input 1 km, you should output 0.621371 miles.
+
+
+<p>
+
+
+</div>
+
+<div>
+<h3>Miles-Kilometer Chart</h3>
+
+<p>Our second program for today builds on the program above to make a table that gives kilometers and 
+their corresponding kilometers:
+<pre>
+km	miles
+0 	 0.0
+1 	 0.621371
+2 	 1.242742
+3 	 1.864113
+4 	 2.485484
+5 	 3.106855
+6 	 3.728226
+7 	 4.349597
+8 	 4.970968
+9 	 5.592339
+</pre>
+Currently, our function asks us for input, but that's not needed here since we will always print 
+out the first kilometers from 0 to 10 and their corresponding miles.  For each conversion from 
+kilometers to miles, we use the same formula.  We could rewrite the formula 10 times, but it 
+would be faster to use a loop:
+<pre>
+#Lab 2, Chart of km-miles
+#YourNameHere
+
+def main():		# <-- Nothing inside the parenthesis, since no input is used 
+	for km in range(10):
+		miles = 0.621371*km
+</pre>
+Save this program as <tt>km2milesChart.py</tt> and run it.  What happens?  What is missing from 
+the loop?
+
+<p>
+For information to be displayed to the screen, we need to have a print statement:
+<pre>
+#Lab 2, Chart of km-miles
+#YourNameHere
+
+def main():
+	for km in range(10):
+		miles = 0.621371*km
+		print(miles)
+</pre>
+Add the print statement above, and run again.  What else is needed to produce the nice chart
+at the beginning of this section?  Try adding to the print statement to duplicate the chart 
+above.
+
+<p>
+How did you do?  Here is the final version of the program that produced the initial chart:
+<pre>
+#Lab 2, Chart of km-miles
+#YourNameHere
+
+def main():
+    print("km\tmiles")
+	for km in range(10):
+		miles = 0.621371*km
+		print(km, "\t", miles)
+		
+main()
+</pre>
+Note that the print() function call has 3 inputs: the two variables <tt>km</tt> and <tt>miles</tt>
+and a string <tt>"\t"</tt>.  There are several keys on the keyboard whose are represented by 
+special codes.  One such key is TAB;  if you want a TAB, you write <tt>\t</tt> in your string.
+
+</div>
+
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>

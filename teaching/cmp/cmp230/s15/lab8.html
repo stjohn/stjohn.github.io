@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8, CMP 167, Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8, CMP 167<br>
+Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on program design and unit testing.  We will write a program that draws (pixelated) pictures that are stored in files, using turtle graphics.  Our aim is to design our functions so that they can be reused for future programs.
+
+</div>
+
+
+<div>
+Our goal for today's lab is to read in a file and draw it to a grid on the screen.  Our files have been processed to contain a color for each grid location.  For example, if the <a href="stripes.txt">file</a> contained:
+
+<pre>
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+blue purple blue purple blue purple blue
+</pre>
+
+Then, we would display:<br>
+
+<img src="stripes.jpg" height=300>
+
+<p>
+What steps do we need to do this?  Here's an outline:
+
+<ol>
+	<li>  Print a welcome message.
+	<li>  Ask user for file name and read lines from file.
+	<li>  Set up a graphics window for drawing.
+	<li>  Draw colors to the graphics window.
+	<li>  Close window with mouse click.
+</ol>
+
+Translating this outline into Python we have:
+<pre>
+def main():
+    welcome()
+    lines, m, n = getData()
+    win = setUpScreen(m,n)
+    drawGrid(m,n)
+    drawColors(lines)
+    win.exitonclick()   
+</pre>
+
+Now, we need to fill in each step.  So that we can test as we go, we'll comment out the pieces we have yet to build:
+<pre>
+def main():
+    welcome()
+    #lines, m, n = getData()
+    #win = setUpScreen(m,n)
+    #drawGrid(m,n)
+    #drawColors(lines)
+    #win.exitonclick()   
+</pre>
+
+Since the <tt>welcome()</tt> is the easiest, let's fill that in first:
+
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+Read colors from a file and display using turtle graphics
+"""
+
+from turtle import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("This program prints pixelated pictures")
+    print("stored as lists of colors in text files.")
+    print()
+    
+def main():
+    welcome()
+    #lines, m, n = getData()
+    #win = setUpScreen(m,n)
+    #drawGrid(m,n)
+    #drawColors(lines)
+    #win.exitonclick() 
+
+main()
+</pre>
+Note that there are several ways to add comments to your program.  Here we are using the one that PyDocs can use to build help pages for your program.  It is of the form: <tt>"""words here are comments"""</tt>.
+
+<p>
+Try your barebones program above to make sure that there's no syntax errors.  
+Let's next set up the screen, since it's the next easiest.  We'll comment out everything else and use some dummy values for testing.  The isolated testing of parts of your program is called <b>unit testing</b> and is great way to make sure all the parts work before putting them together:
+
+<pre>
+from turtle import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("This program prints pixelated pictures")
+    print("stored as lists of colors in text files.")
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUpScreen(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    return win
+    
+def main():
+    #welcome()
+    #lines, m, n = getData()
+    m,n = 5,5  #Variables just for testing-- will remove once working
+    win = setUpScreen(m,n)
+    #drawGrid(m,n)
+    #drawColors(lines)
+    #win.exitonclick()     
+</pre>
+
+Try setting $m$ and $n$ to differen values to make sure it works. 
+
+<p>As a helping function for debugging, our program includes a <tt>drawGrid()</tt> function.  This is just the code we wrote for Tic-Tac-Toe packaged up as a function:
+
+<pre>
+""" Draws a grid to the graphics window"""
+def drawGrid(xMax,yMax):
+    tic = Turtle()
+    tic.speed(10)
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+</pre>
+
+Add it into your program and test it.  You will need to call <tt>setUpScreen()</tt> first, but we have already unit tested that any bugs or errors that we run into will be isolated to <tt>setUpScreen()</tt> simplifying the debugging.
+
+<p>Our remaining functions, <tt>getData()</tt> and <tt>drawColors(lines)</tt>
+need to get data from a file and draw to the screen.  Both employ other functions to accomplish these tasks.  Here's the program with each of them, as well as a helper function, called <tt>fillSquare()</tt> (which is very useful since it fills in a square just given the (x,y) coordinates).  <tt>fillSquare()</tt> uses new turtle functions: <tt>fillcolor()</tt> <tt>begin_fill()</tt> and <tt>end_fill()</tt>.  These functions tell the turtle that the shape it draws in between these commands will be filled with the specified color:
+
+
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+Read colors from a file and display using turtle graphics
+"""
+
+from turtle import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("This program prints pixelated pictures")
+    print("stored as lists of colors in text files.")
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUpScreen(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    return win
+
+""" Draws a grid to the graphics window"""
+def drawGrid(xMax,yMax):
+    tic = Turtle()
+    tic.speed(10)
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+
+""" Fills in the square (x,y) with color"""
+def fillSquare(x,y,color):
+    t = Turtle()
+    t.hideturtle()  #Hides cursor and speeds up drawing
+    t.speed(10)
+    t.up()
+    t.goto(x,y)
+    t.fillcolor(color)
+    t.begin_fill()
+    for i in range(4):
+        t.forward(1)
+        t.left(90)
+    t.end_fill()
+
+""" Ask user for input file and return the file handler, lines, height and width"""
+def getData():
+    fname = input('Enter file name: ')
+    infile = open(fname, "r")
+    lines = infile.readlines()
+    infile.close()
+    height = len(lines)
+    width = lines[0].count(" ")+1
+    print(height, width)
+    return lines, height, width
+
+
+
+"""Draws the colors to the graphics window:"""
+def drawColors(lines):
+    #For each row in the file:
+    for row in range(len(lines)):
+        #Break the row into pieces (stripping off any trailing newlines or spaces)
+        cells = lines[row].rstrip().split(" ")
+        #For each entry, fill in with the specified color:
+        for column in range(len(cells)):
+            fillSquare(column,row,cells[column])
+
+            
+def main():
+    welcome()
+    lines, m, n = getData()
+    win = setUpScreen(m,n)
+    drawGrid(m,n)
+    drawColors(lines)
+    win.exitonclick()       #Close window when mouse is clicked
+main()
+
+</pre>
+Try running your program.  What happens?  Create a new text file with colors and use our program to display it. 
+
+
+</div>
+</html>

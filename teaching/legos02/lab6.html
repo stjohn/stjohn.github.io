@@ -1,0 +1,127 @@
+<title>Lab 6, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<!--
+Lab ideas: 
+
+sorting m&m's by color
+
+count lines until hit obstacle-- return home and 
+report (need to introduce timers)
+
+Lab 5:
+can do in teams of two if you'd like, since building takes a while...
+lab on gearing, ratios, pulleys-- lift something really heavy?
+what to use as weights (lego bricks, wheels)?  Can you drag 
+your robot box?  How far?
+How fast can you make a car go?  
+Make a claw/arm (see lego book).  can you make it grasp an object?
+can it pick up a lego piece?
+
+
+Lab 6: 
+
+	Need white sheets of paper, big markers, more lego pieces,
+	lego people?
+
+
+	Can do in teams of two if you'd like
+	Customize robots, so we can tell them apart as they (there's
+		spare parts in hallway)
+	try the robotag program from the webpage with a partner on
+		the test ovals from your lego box
+	Simple communication: beam a number to another robot (0-7)
+		and it should beep that many times and display it
+		as the value for output port b.
+		(random number generator?)
+	Next, have your robots run to the end of the course, get a
+		trophy (a lego person) and bring it back.
+		You may mark the start and finish line on the paper
+		in whatever color you would like.  You can also set
+		the trophies anywhere past the finish line that works
+		for your robot design.  And you can set up walls at
+		the end (but not along the sides).
+	After dropping the trophy, tell the next person in the team
+		that you're back so they can go.  Make sure you tell
+		the robot who comes immediately after you and don't
+		signal the wrong robot accidently. 	
+
+obstacle course
+
+staying on a table/avoiding stairs
+
+datalog
+
+-->
+
+
+<h1>Laboratory Exercise 6</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program, UC Davis<br>
+19 July 2001</h2>
+
+<hr>
+<h3>Communication</h3>
+
+Today's lab focuses on communication.  The first set of programs
+beams a number to another robot, who responds by beeping.  
+If you have your robot with a bumper and light sensor, you should
+also try the <a href="lmstorms/RoboTag.nqc">RoboTag.nqc</a>
+program.
+
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  When using the light sensor, it is wired to 
+sensor port 2.  The touch sensor is wired to sensor port 1
+and is attached to a bumper).
+
+
+<h3>Sending Messages</h3>
+
+Download the <a href="beep.nqc">beep.nqc</a> program to your
+robot.  Try sending it a message via the command line.  For
+example:
+<pre>
+nqc -msg 4
+</pre>
+Next, write a program called <tt>sendMessage.nqc</tt> that 
+will send a number between 1 and 7 to another robot.  Test
+your program with another robot.  One robot will be running
+the <tt>beep.nqc</tt> program and the other will be running
+<tt>sendMessage.nqc</tt>.
+
+<p>
+Use the random number generator to generate a number between
+1 and 7 to be sent.  Display that number on the view screen
+as the value for <tt>OUT_B</tt> (since this output port isn't
+being used, you can set it's power level to the number you
+would like displayed).
+
+<p>
+Modify the <tt>beep.nqc</tt> program to display the incoming
+message as the value for <tt>OUT_B</tt>, as well as beeping
+that number of times.
+
+<p>
+Next, write a program that will turn left if it receives
+an even number as a message and turns right if it receives
+an odd number.
+
+
+<h3>RoboTag</h3>
+
+If you have your robot with a bumper and light sensor, you should
+also try the <a href="lmstorms/RoboTag.nqc">RoboTag.nqc</a>
+program.
+
+<h3>Projects</h3>
+
+You should use the remaining lab time to work on your project.
+
+</body>
+</html>
+
+

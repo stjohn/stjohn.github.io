@@ -1,0 +1,165 @@
+
+// Motor commands.
+#define COMMAND_NONE -1
+#define COMMAND_FORWARD 1
+#define COMMAND_REVERSE 2
+#define COMMAND_LEFT 3
+#define COMMAND_RIGHT 4
+#define COMMAND_STOP 5
+#define COMMAND_FLOAT 6
+
+// IR messages.
+#define MESSAGE_TAG 33
+#define MESSAGE_ACKNOWLEDGE 6
+
+#define BUMP_SENSOR SENSOR_1
+#define LIGHT_SENSOR SENSOR_2
+
+int score;
+int averageLight;
+
+int cruiseCommand;
+
+task cruise() {
+  cruiseCommand = COMMAND_FORWARD;
+  while (true) Wait(100);
+}
+
+int tagCommand;
+
+task tag() {
+  while(true) {
+    if (BUMP_SENSOR == 1) {
+      // Say tag!
+      SendMessage(MESSAGE_TAG);
+      // Coast to a stop.
+      tagCommand = COMMAND_FLOAT;
+      Wait(20);
+      // Check to see if we got an acknowledgement.
+      if (Message() == MESSAGE_ACKNOWLEDGE) {
+        PlaySound(3);
+        SetPower(OUT_B, score);
+        On(OUT_B);
+        if (score < 7) score = score + 1;
+      }
+      else PlaySound(2);
+      ClearMessage();
+      // Back up.
+      tagCommand = COMMAND_REVERSE;
+      Wait(50);
+      // Turn left or right for a random duration.
+      if (Random(1) == 0) tagCommand = COMMAND_LEFT;
+      else tagCommand = COMMAND_RIGHT;
+      Wait(Random(200));
+      tagCommand = COMMAND_NONE;
+    }
+    else tagCommand = COMMAND_NONE;
+  }
+}
+
+int avoidCommand;
+
+task avoid() {
+  while(true) {
+    if (LIGHT_SENSOR < averageLight - 3) {
+      // Back away from the border.
+      avoidCommand = COMMAND_FLOAT;
+      Wait(20);
+      avoidCommand = COMMAND_REVERSE;
+      Wait(50);
+      // Turn left or right for a random duration.
+      if (Random(1) == 0) avoidCommand = COMMAND_LEFT;
+      else avoidCommand = COMMAND_RIGHT;
+      Wait(Random(200));
+      avoidCommand = COMMAND_NONE;
+    }
+  }
+}
+
+int taggedCommand;
+
+task tagged() {
+  while(true) {
+    if (Message() == MESSAGE_TAG) {
+      taggedCommand = COMMAND_STOP;
+      SendMessage(MESSAGE_ACKNOWLEDGE);
+      PlaySound(4);
+      Wait(800);
+      ClearMessage();
+      taggedCommand = COMMAND_NONE;
+    }
+  }
+}
+
+int motorCommand;
+
+task arbitrate() {
+  while(true) {
+    if (cruiseCommand != COMMAND_NONE) motorCommand = cruiseCommand;
+    if (tagCommand != COMMAND_NONE) motorCommand = tagCommand;
+    if (avoidCommand != COMMAND_NONE) motorCommand = avoidCommand;
+    if (taggedCommand != COMMAND_NONE) motorCommand = taggedCommand;
+    motorControl();
+  }
+}
+
+sub motorControl() {
+  if (motorCommand == COMMAND_FORWARD)
+    OnFwd(OUT_A + OUT_C);
+  else if (motorCommand == COMMAND_REVERSE)
+    OnRev(OUT_A + OUT_C);
+  else if (motorCommand == COMMAND_LEFT) {
+    OnRev(OUT_A);
+    OnFwd(OUT_C);
+  }
+  else if (motorCommand == COMMAND_RIGHT) {
+    OnFwd(OUT_A);
+    OnRev(OUT_C);
+  }
+  else if (motorCommand == COMMAND_STOP)
+    Off(OUT_A + OUT_C);
+  else if (motorCommand == COMMAND_FLOAT)
+    Float(OUT_A + OUT_C);
+}
+
+task main() {
+  initialize();
+
+  cruiseCommand = COMMAND_NONE;
+  tagCommand = COMMAND_NONE;
+  avoidCommand = COMMAND_NONE;
+  taggedCommand = COMMAND_NONE;
+  
+  start cruise;
+  start tag;
+  start avoid;
+  start tagged;
+  
+  start arbitrate;
+}
+
+sub initialize() {
+  SetSensor(BUMP_SENSOR, SENSOR_TOUCH);
+  SetSensor(LIGHT_SENSOR, SENSOR_LIGHT);
+  ClearMessage();
+  score = 0;
+  Fwd(OUT_B);
+  SelectDisplay(5);
+  calibrateLightSensor();
+}
+
+#define NUMBER_OF_SAMPLES 10
+int i;
+int runningTotal;
+
+void calibrateLightSensor() {
+  // Take an average light reading.
+  i = 0;
+  runningTotal = 0;
+  while (i < NUMBER_OF_SAMPLES) {
+    runningTotal += LIGHT_SENSOR;
+    Wait(10);
+    i += 1;
+  }
+  averageLight = runningTotal / NUMBER_OF_SAMPLES;
+}

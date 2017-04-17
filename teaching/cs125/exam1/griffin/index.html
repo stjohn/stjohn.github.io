@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+<META NAME="description" CONTENT="No Title">
+<META NAME="keywords" CONTENT="griffin">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="griffin.css">
+</HEAD>
+<BODY bgcolor="white">
+
+<P>
+
+
+<P>
+<B>Computer Science 125-002 First Examination Fall 1998</B>
+
+<P>
+1. Assume that <TT>Foobar</TT> is a class.  Draw a diagram which
+illustrates the various relationships after executing the following
+statements: [10 points]
+
+<P>
+ <TT>Foobar a;</TT>
+<BR>
+ <TT>Foobar b = new Foobar();</TT>
+<BR>
+ <TT>Foobar a = b;</TT>
+<BR>
+
+<P>
+2. For each of the following algebraic expressions, give an 
+equivalent expression using correct Java syntax (your 
+calculations should use <TT>double</TT> quantities - but
+you can use any variable without declaration).  [7 points each]
+
+<P>
+(a) 
+<!-- MATH: $\displaystyle{\frac{1}{a + b}}$ -->
+<IMG
+ WIDTH="46" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\displaystyle{\frac{1}{a + b}}$">
+<P>
+(b) 
+<!-- MATH: $\displaystyle{b^2 - 4ac}$ -->
+<IMG
+ WIDTH="66" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif"
+ ALT="$\displaystyle{b^2 - 4ac}$">
+<P>
+(c) 
+<!-- MATH: $\displaystyle{\sqrt{\frac{1}{1 + \frac{1}{x}}}}$ -->
+<IMG
+ WIDTH="66" HEIGHT="64" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$\displaystyle{\sqrt{\frac{1}{1 + \frac{1}{x}}}}$">
+<P>
+3. Write a complete stand-alone (non applet) Java program which
+prompts a user for the weight of a first-class letter in ounces, computes
+and displays the postage in cents for the letter according to the
+following rules:
+
+<P>
+<UL>
+<LI>The base charge for all letters is 33 cents.
+<LI>For a letter weighing more than one ounce,
+the added charge is 8 cents for each half ounce (or
+fraction of) beyond 1 ounce.  For example, a calculation
+for a letter of 
+1.6 ounces can be computed using
+<BR>
+
+<P>
+33 + ceiling(2*(1.6-1.0))*8 cents or 49 cents.
+
+<P>
+The ceiling function (<TT>ceil</TT>) is
+part of the Math class (see page 63).
+</UL>
+<P>
+Use an <TT>int</TT> function <TT>Charges</TT> for calculating
+the postage charges using a single <TT>double parameter</TT>
+which carries the weight of the letter.  Do all input
+and output within the <TT>main</TT> function. [12 points]
+
+<P>
+4. Consider the following recursive function (assume that some
+suitable enclosing class definition exists). [12 points]
+
+<P>
+<PRE>
+    public void funny(int m, int n)
+    {
+        if ( n &gt; 0)
+            return funny(n, m % n);
+        else
+            return m;
+    }
+</PRE>
+<P>
+Suppose that the above function is called from another class
+method as follows:
+
+<P>
+ <TT>System.out.println(funny(15, 12));</TT>
+
+<P>
+Show the chain of calls for the above and indicate the
+value which is printed.
+
+<P>
+5. Explain the differences in usage between a static class
+method and an instance method.  [8 points]
+
+<P>
+6. Indicate the output which is produced in the following
+program: [10 points]
+
+<P>
+<PRE>
+    public class Example
+    {
+        public static void main(String[] args)
+        {
+            int Value = 4;
+            String s = new String("Hello");
+
+            mystery(Value, s);
+            System.out.println(Value + " " + s);
+        }
+
+        public static void mystery(int n, String foo)
+        {
+            n = 8;
+            foo = "Bye";
+        }
+    }
+</PRE>
+<P>
+Explain your responses.
+
+<P>
+7. Write an <TT>if</TT> or nested <TT>if</TT> equivalent to
+each of the following flow diagrams: [9 points each]
+
+<P>
+8. Simplify the following boolean expression as much as
+possible: [9 points]
+
+<P>
+ <TT>(!( !(x&gt;1)  || (y&lt;3) ))</TT>
+<BR><HR>
+</BODY>
+</HTML>

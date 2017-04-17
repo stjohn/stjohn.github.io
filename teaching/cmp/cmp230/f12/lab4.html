@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 4, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 4<br>
+CIS 166 & CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Lab Dates:  Wednesday-Thursday, 19-20 September 2012</span></p>
+
+<p>
+Since we missed lecture this week due to the holiday, today's lab will start
+with a quick lecture on graphics.  We will then focus on the interactive graphics
+sections of Chapter 4.
+
+</div>
+
+
+<div>
+
+<h3>Interactive Graphics</h3>
+
+<p>We will use the graphics package developed for the book. If you have not already
+downloaded the <tt>graphics.py</tt>, work through the directions in <a href="lab3.html">Lab 3</a>.
+
+<p>The first program for today is <tt>click.py</tt> from the book (downloadable
+from <a href="http://mcsp.wartburg.edu/zelle/python/">the book's website)</a>.
+Try running the program (remember you need to have the <tt>graphics.py</tt> file in the 
+same directory.  What does it do?  Let's look at the program:
+
+<ul>
+	<li> The first lines have a comment with the name of the program and ask that python load
+		the graphics module:
+<pre>
+# click.py
+from graphics import *
+
+</pre>
+	<li>  These lines give the name of the function we are defining (<tt>main()</tt>
+	and make a new variable, called <tt>win</tt>, that holds a graphics window object:
+<pre>
+def main():
+    win = GraphWin("Click Me!")
+
+</pre>
+
+	<li>  Next, we have a definite loop that prints out the point the user clicked.  The
+		point is saved in a variable called <tt>p</tt>.
+		The loop repeats 10 times.  After the end of the function definition, the function
+		<tt>main()</tt> is invoked:<
+<pre>
+    for i in range(10):
+        p = win.getMouse()
+        print("You clicked at:", p.getX(), p.getY())
+
+main()
+</pre>
+</ul>
+
+<p>Let's modify this program in several ways:
+<ul>
+	<li> Allow the user to click 20 times instead of 10.
+	<li> Show the points that the user clicks on the screen.<br>
+		(Hint:  look in the lecture notes for how other objects are drawn on the screen.  The 
+		same idea works for points.)
+	<li> Modify your program so that it will connect-the-dots that the user clicks upon.
+</ul>
+
+<p> This last one is more challenging.  To draw a line you will need to remember the point 
+from the click before.  Lets make a new variable called <tt>oldPoint</tt> to save the point
+and use it in the loop body to draw a line:
+
+<tt>
+	    p = win.getMouse()
+        print("You clicked at:", p.getX(), p.getY())
+        Line(oldPoint,p).draw(win)
+        oldPoint = p
+</tt>
+
+If your loop body to this, you will get an error.  What is it?  What is missing?  Remember
+you cannot use a variable until it has a value.  So, before your loop, lets give <tt>oldPoint</tt>
+a value:
+<tt>
+	oldPoint = Point(0,0)
+	for i in range(10):
+		...
+</tt>
+Now what happens when you run it?  Where does your line start?  Try it several times.  Does it 
+always start in the same place?  To have it start where the user first clicked, we need to get
+that value before we draw the line.  Here is one way to do this:
+<tt>
+def main():
+    win = GraphWin("Click Me!")
+    oldPoint = win.getMouse()
+    for i in range(10):
+	    p = win.getMouse()
+        print("You clicked at:", p.getX(), p.getY())
+        Line(oldPoint,p).draw(win)
+        oldPoint = p
+        p.draw(win)
+</tt>
+
+
+
+
+
+<!--
+<tt>build a static graphics image that uses some math functions...</tt>
+
+<tt>build a interactive graphics program...</tt>
+-->
+
+<p>After completing your program, go to <tt>Assignments</tt> in Blackboard
+and click on the link: <tt>Lab 4</tt>.  Use the file upload interface
+to upload your program.  Remember to click the <tt>Submit</tt> button before
+closing the lab exercise.
+
+
+
+<p> With the remaining time, start <a href="ps4.html">Problem Set 4</a>.
+
+</p>
+</div>

@@ -1,0 +1,31 @@
+Coding Quakes
+
+Science Goals:  To use earthquake observations to make inferences about the earth's crust.  To be able to plot observations given the GIS location (coordinates, mapping)
+Computing Goals:  To understand variables, loops, color representation, file I/O.  To introduce objects and functions, including passing parameters.
+
+
+Session 1:  Drawing with Turtles
+	making shapes (no loops)
+	colors (from color list)
+	colors from RBG
+	remove drawing initials
+	(move up/down to next lesson?)
+	
+Session 2:  Plotting Coordinates
+	up/down, stamp
+	dot-to-dot's
+	stamping cities
+	
+Session 3:  Plotting Earthquake locations
+	CSV data, splitting up lines
+	make the earthquakes color be based on magnitude
+	
+Session 4:  Looping through Lists and Files
+	Looping through a lists of colors
+	Looping through files of colors
+
+Session 5:  Plotting USGS data
+	Add in loop through numbers and adjusting colors, instead of the first lesson that adjusts lengths 
+		Have it only change blue, change it be green, change it to shades of yellow or orange as challenges
+	add in adjusting colors with the magnitude-- earthquakes with smaller values will be lighter-- multiply magnitude by 25 (will never be bigger than 10)
+

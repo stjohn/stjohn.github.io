@@ -1,0 +1,188 @@
+<title>Homework 8, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+<h2>Homework 8</h2>
+<h2>Computer Engineering 6, Winter 1998<br> 
+Introduction to Computing</h2>
+
+
+<hr>
+<b>Due by noon, Thursday, 12 March.</b><br>
+The starred problems include programming and should be submitted
+both electronically and on paper.  In the paper portion of the
+starred problems, you should include output of several test runs
+that demonstrates what your program does.
+The electronic portion
+should be sent to coen006@scudc.scu.edu (with subjects
+"hw 8.4" and "hw 8.5", respectively).
+The paper portion should
+be placed in Dr. St. John's box in the Engineering Center. 
+<hr>
+
+<ol>
+	<li> Suppose your program contains the following code to 
+	create a dynamic variable:
+<pre>
+double *p2;
+p2 = new double;
+</pre>
+	If there is not sufficient memory left in the heap, the above
+	call to <b>new</b> will fail.  Write code that checks to see
+	if this call to <b>new</b> failed for lack of heap storage and
+	that writes an error message to the screen if it does fail.
+
+	<li> If a class is named <b>MyClass</b> and it has constructor,
+	what is the constructor named?  If it has a destructor, what
+	is the destructor named?
+	<li>
+	<ol>	
+	    <li type= a> Write a recursive function definition for 
+		a function that has one parameter n of type <b>int</b> 
+		and returns
+		the nth Fibonacci number.  See p 416 for a definition of
+		the Fibonacci numbers.
+	    <li> Write a recursive function definition for the following
+		function:
+<pre>
+int squares(int n);
+//Precondition: n >= 1
+//Returns the sum of the squares of number 1 through n
+</pre>
+	</ol>
+
+
+	<li>* A <b>pretty print</b> program takes a program, which may
+	be indented in any particular way, and produces a copy of the
+	same program indented so that the bracket pairs ( "{" and "}" ) line
+	up, and inner pairs are indented more than outer pairs.  To make
+	things simpler, you may assume that the statements in if-else and
+	loops are compound statements
+	(that is, always surrounded by bracket pairs).
+	Write a pretty print program for C++.  Prompt the user for the
+	input and output file names.  Your program should have the
+	following recursive function:
+<pre>
+void indent(int level, istream& fin, ostream& fout);
+// Preconditions: fin and fout are opened to the input and output files
+// 	level counts the number of spaces to indent
+// This function indents each line level number of spaces
+// If a "{" is seen, indent is called again as
+//     indent(level+4,fin,fout)
+// If a "}" or the end of file is reached, the function returns
+</pre>
+	The main part of your program will be very simple-- the
+	function indent() does the work.
+	The initial call to the function in the main() would be:
+<pre>indent(0,fin,fout)</pre>
+	assuming that fin and fout are input and output streams
+	declared in main().
+	
+	
+	<li>* Write a program that stores the first name, last name, and
+                phone number of up to 30 people.  Your program should
+                then give the user the option of sorting by
+                name, sorting by phone number,
+                searching by last name
+                for a given person, printing the list,
+                or quitting.  To give these options
+                your program should present a the following list to the
+                user:
+<pre>
+Choose from the following options:  Type
+
+     1  if you would like to sort the list by name
+     2  if you would like to sort the list by phone number
+     3  if you would like to search the list by last name
+     4  if you would like to search the list by phone number
+     5  if you would like to print the list
+     6  if you would like quit the program
+
+Please enter your choice:
+</pre>
+
+     You should use the following structure and class definitions
+     in your program.
+
+<pre>
+struct PersonInfo
+{
+    char lastname[20];
+    char firstname[20];
+    int phonenumber;
+
+    void input();          //Prompts user for name and phone number
+    void print();          //Print out first name, last name, and
+                           //  phone number on the same line
+};
+
+class PhoneList
+{
+    public:
+        PhoneList();       //Default: set number of entries to 0
+        void print();      //Print out list of entries
+        void sortname();   //Sorts list by last name
+        void sortnumber(); //Sorts list by phone number
+        void searchname(char name[]);   //Search list by last name
+        void searchnumber(int num); //Search list by phone number
+    private:
+        void swap(PersonInfo& var1, PersonInfo& var2);
+                           //Private function that swaps people
+        int num_entries;   //Number of people in the phone list
+        PersonInfo entries[30]; //List of people
+	
+};
+
+</pre>
+
+                Note that the function <b>strcmp</b> (from <b>string.h</b>)
+                returns a negative number if
+                and only if the first string comes
+                before the second string alphabetically.  For example,
+<pre>
+( strcmp("andrew", "arian") < 0 )
+</pre>
+                would evaluate to true, while
+<pre>
+( strcmp("garrett", "charlie") < 0 )
+</pre>
+                would evaluate to false.
+
+                <p>
+                You may use any sorting function we have discussed
+                including the one you implemented in lab.
+                For searching, you may compare item by item or use a
+                more sophisticated search such as binary search.
+
+<!--
+	<li> What is the output of the following program? 
+<pre>
+#include &lt;iostream.h&gt
+void cheers(int n);
+int main()
+{
+    cheers(3);
+    return 0;
+}
+
+void cheers(int n)
+{
+    if ( n == 1 )
+    {
+        cout &lt&lt "Hurray\n";
+    }
+    else
+    {
+        cout &lt&lt "Hip ";
+        cheers(n - 1);
+    }
+}
+</pre>
+
+-->
+</ol>
+
+</body>
+</html>
+

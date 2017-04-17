@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 10 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 10</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers shortest paths and network flows.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+
+
+<ol>
+
+
+<li><b>Distance Between Two Cities</b> (10 points)
+
+<p>Write a program that asks a user for the latitude and
+longitude values for two cities and prints out their distance
+in miles.  
+
+<p>
+Note that coordinates for cities are often given in terms of degrees and 
+minutes (fractions of degrees).  To convert these coordinates into a 
+single real number for the latitude and longitude, you can use the simple
+formula of <tt>lat1 = originalLat + originalMin/60.0</tt>.  For example,
+the latitude and longitude for New York City is:
+<pre>
+	40 degrees 47 minutes (north)
+	73 degrees 58 minutes (west)
+</pre>
+So, <tt>lat1 = 40 + 47/60.0</tt> and <tt>lng1 = 73 + 58/60.0</tt>.  Since
+all the cities we are comparing will be north of the equator and west of 
+the dividing line, we can ignore signs in our calculations.
+
+
+<p>The following method takes latitude and
+longitude values for two cities and returns out their distance
+in miles.  (This method implements the <a href="http://www.movable-type.co.uk/scripts/latlong.html">Haversine formula</a>.)
+
+<pre>
+public static double distFrom(double lat1, double lng1, double lat2, double lng2) {
+  double earthRadius = 3958.75;
+  double dLat = Math.toRadians(lat2-lat1);
+  double dLng = Math.toRadians(lng2-lng1);
+  double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+             Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+             Math.sin(dLng/2) * Math.sin(dLng/2);
+  double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  double dist = earthRadius * c;
+  
+  return dist;
+}
+</pre>
+<p>
+Code from:
+<a href ="http://stackoverflow.com/questions/120283/working-with-latitude-longitude-values-in-java">http://stackoverflow.com/questions/120283/working-with-latitude-longitude-values-in-java</a>
+
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+<li><b>Distance Matrix for Cities</b> (20 points)
+
+<p>Extend your program above to calculate a distance matrix for 
+a list of cities.  Your program should accept input of the form:
+<pre>
+Albany, N.Y.	42	40	73	45
+Albuquerque, N.M.	35	05	106	39
+Amarillo, Tex.	35	11	101	50
+Anchorage, Alaska	61	13	149	54
+.
+.
+.
+</pre>
+where the data is tab-separated and the columns represent city
+name, latitude degrees, latitude minutes, longitude degrees, longitude 
+minutes.
+(data from <a href="http://www.infoplease.com/ipa/A0001796.html">http://www.infoplease.com/ipa/A0001796.html</a>)
+
+<p>Your program should calculate the distances between every 
+city pair (best to store in a 2-dimensional array for use in the
+next part of the assignment) and print out these values.
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+
+<li><b>Kruskal's Algorithm</b> (20 points)
+
+<p>
+Extend your program to report the weight of the minimum spanning tree for 
+a set of cities, using Kruskal's Algorithm (see class page for links to
+pseudocode).
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+<li><b>Prim's Algorithm</b> (20 points)
+
+<p>
+Extend your program to report the weight of the minimum spanning tree for 
+a set of cities, using Prim's Algorithm (see class page for links to
+pseudocode).
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+<li><b>Test Cases</b> (20 points)
+
+<p>
+Run your implementation of Kruskal's algorithm and Prim's algorithm on 
+the following test cases:
+<ul>
+	<li> <a href="cities_A.csv">US Cities starting with 'A'</a> (6 cities)<br>
+	(from <a href="http://www.infoplease.com/ipa/A0001796.html">http://www.infoplease.com/ipa/A0001796.html</a>)
+	<li> <a href="cities_US_Canada.csv">Selected US and Canadian Cities</a>
+		(from <a href="http://www.infoplease.com/ipa/A0001796.html">http://www.infoplease.com/ipa/A0001796.html</a>) (129 cities)<br>
+	<li> <a href="Airport_Codes_Truncated.csv">1000 Airport Codes of US Airports</a> (1000 of the 13,417 airports)<br>
+		(from <a href ="http://opendata.socrata.com/dataset/Airport-Codes-mapped-to-Latitude-Longitude-in-the-/rxrh-4cxm">http://opendata.socrata.com/dataset/Airport-Codes-mapped-to-Latitude-Longitude-in-the-/rxrh-4cxm</a>)
+</ul>
+<p>For each test case and each algorithm, report the running time and weight 
+of the minimum spanning tree found.
+
+<p>Note that for the airport data, the latitude and longitude already include
+the minutes as a decimal, so, that conversion above is not needed.
+
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+
+
+<li><b>Analysis</b> (10 points)
+
+<p>
+Using your data above, answer the following questions:
+<ul>
+
+	<li> Which algorithm computes lower weights for their minimum spanning trees?
+	<li> Which does better in running time?	
+	<li> Which algorithm would you choose to implement in the future for similar data?	Why?
+</ul>
+</p>
+<p>
+Submit your answers as a text file via Blackboard.
+</p>
+
+</ul>
+
+
+
+</div>
+</body>
+</html>

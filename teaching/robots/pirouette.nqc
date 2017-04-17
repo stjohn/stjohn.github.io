@@ -1,0 +1,21 @@
+// pirouette.nqc - turn 360 degrees and beep!
+// UCD COSMOS, Cluster V, Summer 2001
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+
+//Time to turn 360 degrees
+#define TURN_TIME 645
+
+task main()
+{
+    //Turn in place, to the right
+    Fwd(LEFT);
+    Rev(RIGHT);
+    On(LEFT+RIGHT);
+
+    //Stop after a full revolution and beep!
+    Wait(TURN_TIME);
+    Off(LEFT+RIGHT);
+    PlaySound(SOUND_UP);
+}

@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\begin{document}
+
+\title{Homework 8\\
+       CSc 72700: Analysis of Algoritms\\
+       CUNY Graduate Center, Fall 2001 }
+\date{Due Wednesday, 12 December 2001}
+\author{}
+\maketitle
+
+See the guidelines on the webpage for details about submitting homework.
+(If turning your homework in electronically, you can mail it directly
+to the grader at: {\tt ivm3@columbia.edu}.)
+
+\section*{Practice Problems}
+
+The problems in this section {\bf are not to be submitted}.  They are to
+help you understand the material, and some will appear on exams.
+
+\begin{itemize}
+    \item Bottleneck TSP, 37.2-3 on p 974
+	(in the second edition, 35.2-3, p 1033).
+    \item Non-crossing tours, 37.2-4 on p 974
+	(in the second edition, 35.2-4, p 1033).
+    \item In the Albers notes, three algorithms for the on-line 
+	$k$-paging problem are suggested: LFU (Least Frequently Used),
+	LRU (Least Recently Used), and FIFO (First In First Out).  The
+	first one is considered in a graded problem below.  In the notes,
+	the latter two are shown to $k$-competitive.  Are they $m$
+	competitive for $m < k$?
+    \item Hiring exactly once,
+	in the second edition (handout), 5.2-1, p 98.
+    \item Inversions,
+	in the second edition (handout), 5.2-5, p 99.
+    \item Permute with all,
+	in the second edition (handout), 5.3-3, p 105.
+\end{itemize}
+
+\section*{Graded Problems}
+
+These problems will be graded and should be submitted, following the
+guidelines on the webpage.
+
+\begin{enumerate}
+    \item Bin Packing\\
+	Problem 37-1 on p 983
+	(in the second edition, 35-1 on p 1049).
+    \item Deterministic $k$-paging algorithms\\
+	Consider a machine with $k$ fast memory locations and a 
+	large slow memory.  The input is a sequence of page requests.
+	If the page is fast memory, the request is satisfied.  If it
+	is not, a {\em page fault} occurs while some page is removed
+	from main memory and the desired page is loaded into the 
+	empty spot.  We measure the cost of an algorithm on an input
+	sequence $\sigma$ by the number of page faults required to 
+	service all the page requests
+	(see Albers notes, p 1-4 for more details).
+
+	Let {\bf LFU} (Least Frequently Used) be the algorithm that on
+	a page fault, evicts the page in memory that was used the 
+	least frequently.
+	\begin{enumerate}
+	    \item Show that for each $k$, there exists an instance
+		$\sigma$ such that
+		$$
+		    C_{LFU}(\sigma) > 2 \cdot C_{MIN}(\sigma)
+		$$
+	    \item Fix the $k$, the number of fast memory registers.
+		Show that for each $m > 0$, there exists an instance
+		$\sigma$ such that
+		$$
+		    C_{LFU}(\sigma) > m \cdot C_{MIN}(\sigma)
+		$$
+	    \item Conclude that the algorithm LFU is not competitive
+		(i.e. not $m$-competitive for any $m$).
+	\end{enumerate}
+	
+    \item The hat-check problem\\
+	In the second edition (handout), 5.2-4, p 98.
+	
+\end{enumerate}
+
+\end{document}

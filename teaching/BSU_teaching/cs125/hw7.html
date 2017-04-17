@@ -1,0 +1,145 @@
+<title>Homework 7 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 7 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">This homework is due by 9 p.m, Friday, 9 April 1999.</font>  
+	See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> CCJ: Exercise R8.4, p 361.
+	<li> CCJ: Exercise R8.9, p 361.
+	<li> CCJ: Exercise R9.1, p 413.
+	<li> CCJ: Exercise R9.2, p 413.
+	<li> CCJ: Exercise R9.3, p 413.
+	<li> Ethics: Scenario 4, p 233-236.  Who is responsible for
+		the construction accident?  If more than one party
+		is responsible, rank them in order of responsiblity.
+		Justify your answer.
+</ul>
+
+<hr>
+
+<h2>Graded Problems</h2>
+
+<font color="red">
+    You must comment your code (see book for examples).<br>
+    You must include comments for all functions, following the
+    <tt>javadoc</tt> format.  See CCJ, p 183-185 for more details.
+</font>
+
+	
+<p>
+    <dt><b>P19.</b> (PuzzlePiece) Write a class called <tt>PuzzlePiece</tt>.
+    	A puzzle piece will have a label which will be a number
+	between 1 and 15 and the location of the puzzle piece (which
+	will be the coordinates of the upper left corner).  
+	Your class should contain three 
+	constructors: 
+	<ul>
+		<li> a default constructor that sets the 
+		coordinates to (0,0) and the label to 0, 
+		<li> a constructor that has a single argument
+		that is assigned to label and sets the 
+		coordinates to (0,0), and
+		<li> a constructor that takes three arguments:
+		the label, the x-coordinate, and the y-coordinate
+		(in that order) and sets the values.
+	</ul>
+	<p>
+    	<tt>PuzzlePiece</tt> should contain a move method:
+	<pre>    public void move(int dx, int dy)</pre>
+	that changes the position by <tt>dx</tt> units in the x 
+	direction and <tt>dy</tt> units in the y direction.
+	Finally, you should have a draw method:
+	<pre>    public void draw()</pre>
+	that draws a square containing the label, using
+	the object's coordinates for the upper left corner.
+	<p>
+	Write a second class called Program19 that uses 
+	<tt>PuzzlePiece</tt> and demonstrates its features.
+	Program19 should construct two PuzzlePieces (one 
+	using the default constructor and one using the
+	other constructor), it should draw the puzzle pieces,
+	and it should move at least one of the pieces.
+	
+	<p>
+    	Submit this as program 19 
+	using the electronic submission.  Please call the
+	file (and the class) Program19.  
+	Include an HTML	file in the directory called Program19.html
+	that displays your applet.
+
+<p>
+    <dt><b>P20.</b> (Connect-the-Dots) Write a applet in 
+    	<tt>plain java</tt> that draws a dot when the user clicks
+	the mouse and connects that dot to the previous one.
+	Your applet should have a clear button that clears what
+	has been drawn.  For example: 
+<p>
+	<applet code="Connect.class"
+		width = 300 height = 300
+		alt="(Your browser is not java-enabled.)">
+	</applet>
+<p>
+	Hints:
+	<ul>
+	    <li> Modify OneColorDraw.java from <a href="plain.html">plain
+	    	java notes</a>.
+	    <li> There are two different cases for drawing.
+		The first is when there is no previous point to connect
+		the new point (this occurs when the applet first starts
+		and after the
+		clear button has been clicked).  The second case is when
+		you do have a previous point and you draw a line between
+		the two points.
+	    <li> You can draw a "dot" by drawing a "filled rectangle"
+	    	of small width and height.
+	</ul>
+    	Submit this as program 20 
+	using the electronic submission.  Please call the
+	file (and the class) Program20.  
+	Include an HTML	file in the directory called Program20.html
+	that displays your applet.
+
+<p>
+    <dt><b>P21.</b> (Sorted Merge) P9.6, p 416.  Your program
+    	should (in the following order):
+	<ol>
+	    <li> Ask for the length of the first sorted list of integers.
+	    <li> Read in the first list of integers.
+	    <li> Ask for the length of the second sorted list of integers.
+	    <li> Read in the second list of integers.
+	</ol>
+	You may assume that the lists are sorted, and you do not
+	have to error check for this.
+	Your program should then print out the sorted list of
+	numbers.  
+    	Submit this as program 21 
+	using the electronic submission.  Please call the
+	file (and the class) Program21.  
+
+<p>
+    <dt><b>P22.</b> (Permutations) P9.13, p 418.
+    	Submit this as program 22 using the electronic submission.
+	Please call the file (and the class) Program22.
+
+<hr>
+
+</body>

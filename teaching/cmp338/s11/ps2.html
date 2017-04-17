@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 2 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 2</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers review of sorting.  See the class
+webpage for references for elementary sorting algorithms
+and Chapter 2 of Cormen, Leiserson, and Rivest for analysis
+of functions.  
+
+</p>
+
+
+</div>
+
+
+
+
+<div>
+
+
+
+<ol>
+
+
+<li><b>Implement two additional sorting algorithms</b> (20 points each)
+
+<p>
+In lecture, we discussed two sorting algorithms:  <tt>bubble sort</tt>
+and <tt>merge sort</tt>.  Modify the existing code (available from 
+Blackboard) to include two additional sorts. </p>
+
+<p>Choose one sort from the following to implement:</p>
+<ul>
+	<li> <a href="http://en.wikipedia.org/wiki/Insertion_sort">insertion sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Selection_sort">selection sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Shell_sort">shell sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Gnome_sort">gnome sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Comb_sort">comb sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Odd-even_sort">odd-even sort</a>
+</ul>
+<p>Choose another sort from the following to implement:</p>
+<ul>
+	<li> <a href="http://en.wikipedia.org/wiki/Timsort">timsort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Smoothsort">smoothsort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Strand_sort">strand sort</a>
+	<li> <a href="http://en.wikipedia.org/wiki/Polyphase_merge_sort">polyphase mergesort</a>
+</ul>
+<p>
+Submit your sorting methods and a driver that demonstrates that they
+work to Blackboard.
+</p>
+
+<li><b>Test Cases</b> (40 points)
+
+<p>
+For each of the <b>four sorting algorithms,</b> 
+calculate how long each algorithm takes to sort the 
+following lists:
+<ul>
+	<li> a list of 1000 identical numbers
+	<li> a list of 1000 numbers in random order
+	<li> a list of 1000 numbers in increasing order
+	<li> a list of 1000 numbers in decreasing order
+	<li> a list of 990 numbers in increasing order, followed by 10 
+		numbers in random order
+	<li> a list of 5000 identical numbers
+	<li> a list of 5000 numbers in random order
+	<li> a list of 5000 numbers in increasing order
+	<li> a list of 5000 numbers in decreasing order
+	<li> a list of 4990 numbers in increasing order, followed by 10 
+		numbers in random order		
+</ul>
+
+<p>
+Run each test 10 times and make a table with your average as well
+as the standard deviation for each algorithm.  Submit your table 
+via Blackboard.</p>
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+Using the table you created, answer the following questions:
+</p>
+<ul>
+	<li> Which sort worked best on data in constant or increasing order
+	(ie already sorted data)?  Did the same sort do well on 
+	the case of mostly sorted data?
+	<li> In general, did the ordering of the incoming data 
+	affect the performance of the sorting algorithms?  Using
+	the data from your table, support your answer.  
+	<li> Which sort did best on the shorter (ie n=1000) data
+	sets?  Did the same one do better on the longer (ie n=5000)
+	data sets?
+	<li> In general, did the sorts from the first or second 
+	list do better?  Give a hypothesis as to why the difference
+	in performance exists.
+</ul>
+<p>Submit your answer via Blackboard.</p>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Programming Problem List, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	7px ; 	
+  }
+  </style>
+</head>
+<body>
+
+<div id="header">
+
+<h2>Programming Problem List<br>
+CIS 166, Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2013<br>
+</h2>
+</div>
+
+
+<div>
+
+<h3>General Notes</h3>
+
+<ul>
+	<li> Every program should begin with a comment that includes your name and a brief description,
+		contain a <tt>main()</tt> function and an invocation of the main at the end of the file:
+		For example:
+	<pre>
+#Name: Herbert H. Lehman
+#Date: February 4, 2013
+#This program prints: hello world
+
+def main():
+	print("Hello world")
+	
+main()
+	</pre>
+	<li> About one of every five submitted programs will be chosen, at random, for complete grading.	
+	<li> You are encouraged to submit your assignments early.  Below lists the 
+		last date on which each assignment will be accepted.
+		Assignments must be 
+		<b>submitted before midnight</b> on the date due. 
+	<li> <b>No credit will be given for an assignment submitted late. </b>
+	<li> Extra credit will be awarded for the programs that are chosen for complete grading 
+	that are submitted early. If a graded 
+	program is submitted more than 12 hours early, 1 extra credit point will be awarded. For 
+	graded programs submitted more than 24 hours early, 2 extra credit points will be awarded. 
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+	<li>For more information on using Blackboard, see the <a href="lab1.html">first 
+lab</a>.
+	<li> While you are encouraged to work with others, <b>all work submitted must be your own.</b>  As 
+	a rule of thumb, you must do your own typing.  If it is not from the book or class webpage and
+	you did not type it, it is plagiarism.  
+	For the first incident, your grade will be a 0 for the assignment (even for cases 
+	where you typed the program but others submitted it as their own).  For the second incident of 
+	cheating or plagiarism, you will fail the class.  We report all incidents to the Office of Student Affairs.
+
+	<li> Learning programming is like learning a foreign language:  you will learn more (with 
+	less work) if you practice every day.  Some of the programs below are easy; some will take
+	more time.  Set aside a block of time every day to work on programming.  If you complete the
+	program for that day, go on to the next with your remaining time.
+<ul>
+</div>
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+
+<ol>
+	<li style="color:#999"> <b>Due Date: 31 January</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints "I love python" to the screen.
+	<li style="color:#999"> <b>Due Date: 3 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints your name to the screen 15 times.				
+	<li style="color:#999"> <b>Due Date: 4 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Modify the chaos program (available from the author's website) so that 
+		it prints out 15 values instead of 10.	
+	<li style="color:#999"> <b>Due Date: 5 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints out the first 10 numbers.<br>
+		<i>(Hint:  see the sample program on p 37 of Zelle's Chapter 2 lecture notes-- available
+		from his website.)</i>
+	<li style="color:#999"> <b>Due Date: 6 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints out the first 20 <i>even</i> numbers.<br>
+		<i>(Hint:  see the sample program on p 37 of Zelle's Chapter 2 lecture notes-- available
+		from his website.)</i>		
+
+<a id="week2"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 10 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		 Modify the <tt>avg2.py</tt> program (Section 2.5.3 from the
+		book and from the book's webpage) to find the average of three exam scores.				
+	<li style="color:#999"> <b>Due Date: 11 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that will print out a conversion table for dollars and another
+		currency.  The currency you should use is based on the first letter of your first name:
+		<table style="color:#999">
+			<tr>
+				<th>If your name begins with...</th><th>Use the currency:</th><th>$1 is worth:</th>
+			</tr>
+			<tr>
+				<th>A</th><td>Afghan Afghani (AFN)</td><td>51.08</td>
+			</tr>
+			<tr>
+				<th>B</th><td>Bangladeshi Taka (BDT)</td><td>80.58</td>
+			</tr>
+			<tr>
+				<th>C</th><td>Costa Rican Colon (CRC)</td><td>499.38</td>
+			</tr>
+			<tr>
+				<th>D</th><td>Danish Krone (DKK)</td><td>5.67</td>
+			</tr>
+			<tr>
+				<th>E</th><td>Euro (EUR)</td><td>0.77</td>
+			</tr>
+			<tr>
+				<th>F</th><td>Falkland Island Pound (FKP) </td><td>0.62</td>
+			</tr>
+			<tr>								
+				<th>G</th><td>Guatemalan Quetzal (GTQ)</td><td>0.13</td>
+			</tr>
+			<tr>
+				<th>H</th><td>Hungarian Forint (HUF) </td><td>0.00456</td>
+			</tr>
+			<tr>
+				<th>I</th><td>Indonesian Rupiah (IDR)</td><td>9639.99</td>
+			</tr>
+			<tr>
+				<th>J</th><td>Japanese Yen (JPY)</td><td>83.85</td>
+			</tr>
+			<tr>				
+				<th>K</th><td>Kenyan Shilling (KES)</td><td>0.0116</td>
+			</tr>
+			<tr>				
+				<th>L</th><td>Lebanese Pound (LPP)</td><td>0.000664</td>	
+			</tr>
+			<tr>				
+				<th>M</th><td>Moroccan Dirham (MAD)</td><td>0.118</td>
+			</tr>
+			<tr>				
+				<th>N</th><td>Nepalese Rupee (NPR)</td><td>0.0115</td>
+			</tr>
+			<tr>
+				<th>O</th><td>Omani Rial (OMR)</td><td>0.384</td>
+			</tr>
+			<tr>				
+				<th>P</th><td>Polish Zloty</td><td>3.11</td>
+			</tr>
+			<tr>
+				<th>Q</th><td>Qatari Riyal (QAR)</td><td>0.275</td>
+			</tr>
+			<tr>
+				<th>R</th><td>Russian Ruble (RUB)</td><td>30.80</td>
+			</tr>
+			<tr>
+				<th>S</th><td>Somali Shilling (SOS)</td><td>0.000619</td>
+			</tr>
+			<tr>
+				<th>T</th><td>Thai Baht (THB)</td><td>30.59</td>
+			</tr>
+			<tr>
+				<th>U</th><td>Ukrainian Hryvna (UAH)</td><td>8.10</td>
+			</tr>
+			<tr>
+				<th>V</th><td>Venezuelan Bolivar (VEH)</td><td>4.30</td>
+			</tr>
+			<tr>				
+				<th>W</th><td>Samoan Tala (WST)</td><td>2.27</td>
+			</tr>
+			<tr>				
+				<th>X</th><td>East Caribbean Dollar (XCD)</td><td>2.70</td>
+			</tr>
+			<tr>				
+				<th>Y</th><td>Yemeni Rial (YER)</td><td>0.00477</td>
+			</tr>
+			<tr>
+				<th>Z</th><td>Zimbabwean Dollar (ZWD)</td><td>361.90</td>				
+			</t>
+		</table>
+		For example, if your first name is <tt>Eric</tt>, you would use <tt>Euros</tt>.  From
+		the table above, we have that one dollar is worth 0.77 euros.
+		You should begin the program by printing out your name.
+		On each line, your program should write the number of dollars and the corresponding
+		number of your currency.  For example:
+		<pre>
+Eric's converting program
+		
+Dollars:    Euros:
+1           0.77
+2           1.53
+3           2.3
+4           3.07
+5           3.84
+		</pre>
+		Your program should print the information for 1, 2, ..., 10 dollars.  You do 
+		not need to worry about formatting (we will talk about that more in Chapter 5), 
+		but you do need to calculate all 10 entries.  
+		Hint:  modify the program from the <a href="lab2.html">Lab 2</a>.
+		
+	<li style="color:#999"> <b>Due Date: 13 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for distance in feet and prints the number of 
+		yards and feet (assume that there are 3 feet to the yard).  
+		For example, if
+		the user entered, 10, your program would output, <tt>3 yards 1 feet</tt>.
+		Note that you should use "yards" and "feet" for all inputs (even
+		in the cases where it is grammatically incorrect). 
+
+		
+	<li style="color:#999"> <b>Due Date: 14 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for the number of roses they have ordered
+		for Valentine's Day, and prints the number of dozens of roses and single roses.
+		For example, if
+		the user entered, 26, your program would output, <tt>2 dozen and 2 roses</tt>.
+		Note that you should use "dozen" and "roses" for all inputs (even
+		in the cases where it is grammatically incorrect).  
+
+<a id="week3"></a>		
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 18 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for time in days and prints the number of 
+		years and days (assume that it is not a leap year and there are 365 days in a year).  
+		For example, if
+		the user entered, 400, your program would output, <tt>1 years 35 days</tt>.
+		Note that you should use "years" and "days" for all inputs (even
+		in the cases where it is grammatically incorrect).  
+
+
+	<li style="color:#999"> <b>Due Date: 19 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Built into python is a module for simple drawing, called Turtle graphics 
+		(see <a href="lab3.html">Lab 3</a>).  To 
+		use the Turtle graphics module, you must import it, just like with the math module.
+		Some basic turtle commands are:
+		<ul>
+			<li> <tt>left(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>right(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>forward(s):</tt> moves your turtle forward <tt>s</tt> steps
+			<li> <tt>backward(s):</tt> moves your turtle forward <tt>s</tt> steps
+		</ul>
+		
+		The following draws a 4-sided figure or square:
+		<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(4):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()		
+		</pre>
+		
+		Modify this program to draw a <b>6-sided figure or hexagon</b>.  Make sure to 
+		include the standard introductory comments at the beginning of your program
+		as well as to <b>change the name of the turtle to your name.</b>
+
+
+	<li style="color:#999"> <b>Due Date: 20 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Modify the turtle program to draw two squares to the screen.  
+		Make sure to 
+		include the standard introductory comments at the beginning of your program
+		as well as to <b>change the name of the turtle to your name.</b>
+	
+	<li style="color:#999"> <b>Due Date: 21 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program to calculate how much money you would have if saved $10 a month 
+		in your change jar.  Since you are not using a bank, no interest is paid on 
+		your savings.  Your program should ask the user for the number of days and display
+		the amount of money for each day.  The starting amount of money is $0.
+		Here is a sample interaction:
+		<pre>
+Please enter the number of days:  4
+Month 1:  $10
+Month 2:  $20
+Month 3:  $30
+Month 4:  $40
+		</pre>	
+
+<a id="week4"></a>		
+<hr>
+	<li style="color:#999"> <b>Due Date: 24 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program to calculate how much money you would have if your money doubled
+		every day.  Your program should ask the user for the number of days and display
+		the amount of money for each day.  The starting amount of money is $1.
+		Here is a sample interaction:
+		<pre>
+Please enter the number of days:  8
+Day 1:  $1
+Day 2:  $2
+Day 3:  $4
+Day 4:  $8
+Day 5:  $16
+Day 6:  $32
+Day 7:  $64
+Day 8:  $128
+		</pre>	
+
+	<li style="color:#999"> <b>Due Date: 25 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for an amount and calculates the total after
+		applying the New York City tax rate of 8.875 percent.  For example, if the user
+		enters 1000, your program should print $1088.75 (do not worry about formatting 
+		the number to have only two digits after the decimal-- we will discuss how to do
+		that in Chapter 5).
+
+		
+	<li style="color:#999"> <b>Due Date: 26 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Problem #5, p 76:  The Konditorei coffee shop sells coffee at $10.50 a pound 
+		plus the cost of shipping.  Each order ships for $0.86 per pound + $1.50 fixed
+		cost overhead.  Write a program that asks the user for the number of pounds of
+		coffee and calculate the cost of an order.
+		
+	<li style="color:#999"> <b>Due Date: 27 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that will calculate the cost per ride on an unlimited ride 
+		MetroCard.  Your program should ask the user for two numbers:  the cost of 
+		the card, and the number of rides.  The program should then print the cost
+		per each ride.  For example, if the user paid $30 for the card and took 25 
+		trips, your program should print out the cost per ride of $1.20.
+
+	
+
+<a id="week5"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 3 March</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that will calculate the average miles per hour for a trip.  
+		Your program should ask the user for two numbers:  the miles traveled, and 
+		the number of hours the trip took.  The program should then print the average
+		miles per hour.  For example, if the user traveled 10 miles in 2 hours, your
+		program should print out that they averaged 5 miles per hour.
+
+	<li style="color:#999"> <b>Due Date: 4 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Write a program that asks the user for a line of text and prints out the 
+		same line with every character in upper case.  For example:
+
+<pre style="color:#999">
+Please enter a line:  I love python
+I LOVE PYTHON
+</pre>
+
+	<li style="color:#999"> <b>Due Date: 5 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Write a program that asks the user for a line of text and prints the number
+		of characters entered:
+
+<pre style="color:#999">
+Please enter a line:  I love python
+You entered 13 characters.
+</pre>
+
+	<li style="color:#999"> 
+		<b>Due Date: 7 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Write a program that measures strings in terms of the length of your name.  For
+		example, if your first name is "Kate", you would use the length of the string 
+		"Kate" which is 4.  If your name is "Daniel", you would use the length 6.
+		
+		<p>Your program should print out <b>your name</b> to the screen and then ask the user
+		to enter a string.  You should then print out how long the string is in terms of
+		the length of your name (that is, the length of the user's string divided by
+		your length).  For example,
+		<pre>
+The measuring string is "Kate"
+Please enter a string:  Hello world
+Your string is 2.25 Kate's long.
+		</pre>
+	While, if your name was Daniel, your program would look like:
+		<pre>
+The measuring string is "Daniel"
+Please enter a string:  Hello world
+Your string is 1.8333 Daniel's long.
+		</pre>		
+
+
+<a id="week6"></a>
+<hr>
+			
+	<li style="color:#999"> <b>Due Date: 10 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Modify the <tt>encode.py</tt> program from <a href="lab5.html">Lab 5</a>
+		to use an offset entered by the user to encrypt the message.  The program in the
+		lab encrypts each character by the character 1 place ahead in the alphabet.  Your
+		program should ask the user for the offset and encrypt their string by replacing
+		each character by one that is <i>offset</i> places ahead in the alphabet.	
+
+
+
+	<li style="color:#999"> <b>Due Date: 11 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Problem #9, p 163:  Write a program that prints out the number of words in 
+		a sentence entered by the user. <br>
+		(Hint:  how can you tell when a word ends?  Count those and adjust slightly
+		to get a count on the number of words.)
+
+	<li style="color:#999"> <b>Due Date: 12 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Problem #10, p 163:  Write a program that prints out the average word length in 
+		a sentence entered by the user. 
+
+	<li style="color:#999"> <b>Due Date: 14 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for a list of prices of items purchased and 
+		prints out each price and the total, formatted nicely. Here is a 
+		sample run of the program:
+		<pre>
+Please enter the prices:  2.34, .99, 100, 81.05, 90
+		
+Your receipt:
+         2.34
+         0.99
+       100.00
+        81.05
+        90.00
+----------------
+Total: 274.38	
+		</pre>
+		(Hint:  use the <tt>format()</tt> statement discussed in Chapter 5.)
+
+
+<a id="week7"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 17 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for a name of a file and then prints to 
+		the screen the number of characters and lines in the file.
+		Hint:  see <a href="lab6.html">Lab 6.</a>
+
+	<li style="color:#999"> <b>Due Date: 19 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for the name of a file and a line length.
+		Your program should then "wrap" all lines that are longer than line length,
+		and print the result on the screen.
+		For example, if the file contains:
+		<pre>
+01234567890123456789012345
+This line has more than 20 characters.
+This one has less 
+And this one has lots, lots, lots, more than 20 characters!
+		</pre>
+		and the user entered the length of 20, all lines longer than 20 would 
+		be wrapped to the next line:
+		<pre>
+01234567890123456789
+012345	
+This line has more t
+han 20 characters.
+This one has less 
+And this one has lot
+s, lots, lots, more than 20 characters!
+		</pre>
+		Hint:  break the problem in to parts:  first write a program that will print lines
+		from a file to the screen (see <a href="lab6.html">Lab 6<a>).  Then modify 
+		your initial program to only print lines up to the length entered.  And, to finish
+		the program, then add in the code that prints lines that are longer than the length 
+		entered.
+		
+
+	<li style="color:#999"> <b>Due Date: 21 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks for a list of names and a list of cities, as well as
+		a file.  Your program should use the file as a template to generate letters 
+		customized with the names and cities entered.  You should 
+		generate a letter for each name/address pair on the inputted lists.
+		The customized letters should replace
+		every the <tt>**INSERT NAME HERE**</tt> with the name and <tt>**INSERT ADDRESS HERE**</tt>
+		with the address.
+
+		<p>
+		For example, if the file <tt>inputTemplate.txt</tt> contained:
+
+		<pre>
+						New York, New York
+						11 March 2013
+	
+**INSERT NAME HERE**
+**INSERT ADDRESS HERE**
+
+Dear **INSERT NAME HERE**,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in **INSERT ADDRESS HERE** appreciate it!
+
+Best wishes to **INSERT NAME HERE** and your family,
+
+	--CUNY
+		</pre>
+
+
+		<p>
+		A sample run of the program would be:
+		<pre>
+Please enter the name of the template file:  inputTemplate.txt
+Please enter names of recipients:  Herbert H. Lehman, Bernard M. Baruch, Fiorello H. LaGuardia
+Please list addresses:  Bronx NY, New York NY, Queens NY 
+		
+Your customized letters are below:
+		
+						New York, New York
+						11 March 2013
+	
+Herbert H. Lehman
+Bronx NY
+
+Dear Herbert H. Lehman,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in Bronx NY appreciate it!
+
+Best wishes to Herbert H. Lehman and your family,
+
+	--CUNY
+	
+	
+	
+
+						New York, New York
+						11 March 2013
+	
+Bernard M. Baruch
+New York NY
+
+Dear Bernard M. Baruch,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in New York NY appreciate it!
+
+Best wishes to Bernard M. Baruch and your family,
+
+	--CUNY
+	
+
+
+	
+						New York, New York
+						11 March 2013
+	
+Fiorello H. LaGuardia
+Queens NY
+
+Dear Fiorello H. LaGuardia,
+
+Thank you for your service to New York City, and,
+in particular, to the education of its residents.
+Those in Queens NY appreciate it!
+
+Best wishes to Fiorello H. LaGuardia and your family,
+
+	--CUNY	
+		
+		</pre>
+
+<a id="week8"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 24 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Modify the program from <a href="lab7.html">Lab 7</a> to include addresses in the file.
+		The database has an additional attribute, <tt>address</tt>, and information can be included 
+		using the following format:
+		<pre>
+insert into customer (first, last, address) values ('FirstName', 'LastName', 'Address')</pre>
+		A sample input file is <a href="mayorsAddresses.txt">mayorsAddresses.txt</a>.
+		
+	<li style="color:#999"> <b>Due Date: 25 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Modify the program from <a href="lab7.html">Lab 7</a> to input a comma separated value (CSV) 
+		file and output a file where all fields are separated by tabs.  That is, replace all 
+		commas in the file by TABs.
+		<br>(Hint:  See the list of string functions on p 140 of the textbook.)
+			
+
+	<li style="color:#999"> <b>Due Date: 26 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		Write a program that asks the user for a file containing a list of items to be completed
+		and a name for an output file.  Your program should then write the list, with item numbers
+		to the output file.  For example, if the input file is:
+<pre>
+Finish my python homework.
+Buy milk.
+Do laundry.
+Update webpage.
+</pre>
+		Then the output file would be:
+<pre>
+1.  Finish my python homework.
+2.  Buy milk.
+3.  Do laundry.
+4.  Update webpage.
+</pre>
+
+
+	<li style="color:#999"> <b>Due Date: 27 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	   <i>(From Chapter 6, #1, Page 196)</i> Write a program to print the lyrics of the song "Old MacDonald." Your 
+        program should print the lyrics for five different animals, similar to the example verse below. 
+        <pre>
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	   And on that farm he had a <span class="italicRed">cow</span>, Ee-igh, Ee-igh, Oh!
+	   Whith a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> here and a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> there.
+	   Here a <span class="italicPink">moo</span>, there a <span class="italicPink">moo</span>, everywhere a <span class="italicPink">moo</span>, <span class="italicPink">moo</span>.
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	</pre>
+	(Hint: use a function with two input parameters one for the animal and the other for the related sound)
+
+
+
+
+<a id="week9"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 31 March</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that takes as a parameter a list of strings and returns a list containing 
+	the lengths of each of the strings. That is, if the input parameter is <tt>["Daniel","Nashyl","Orla",
+        "Simone","Zakaria"]</tt>, your function should return <tt>[6, 6, 4, 6, 7]</tt>.
+	The file you submit should include a <tt>main()</tt> function that demonstrates that your
+	function works.
+	
+	<li style="color:#999"> <b>Due Date: 1 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that takes as a parameter a list of strings and returns a list containing 
+	the first letter of each of the strings. That is, if the input parameter is <tt>["Daniel","Nashyl","Orla",
+        "Simone","Zakaria"]</tt>, your function should return <tt>['D', 'N', 'O', 'S', 'Z']</tt>.
+	The file you submit should include a <tt>main()</tt> function that demonstrates that your
+	function works.
+	
+	<li style="color:#999"> <b>Due Date: 2 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that takes as a parameter a list of strings and returns a list containing 
+	the last letter of each of the strings. That is, if the input parameter is <tt>["Daniel","Nashyl","Orla",
+        "Simone","Zakaria"]</tt>, your function should return <tt>['l', 'l', 'a', 'e', 'a']</tt>.
+	The file you submit should include a <tt>main()</tt> function that demonstrates that your
+	function works.
+					
+	<li style="color:#999"> <b>Due Date: 3 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that uses turtle graphics to draw a petal.  Your function should take
+	a turtle as its input parameter and draw a single petal.  For example, <br>
+	
+	<img src="pedal.jpg">
+	
+	<p>
+	Draw a flower by repeatedly calling your function.   Your flower should have at least
+	10 petals.  For example, <br>
+	
+	<img src="flower.jpg">	
+	
+	<p>
+	(Note:  you can change the color that your turtle, using the function, <tt>color()</tt>.
+	For example, if you turtle is called <tt>flower</tt> to change it's color to purple,
+	write <tt>flower.color("purple")</tt>.)
+
+
+
+<a id="week10"></a>
+<hr>	
+
+	<li style="color:#999"> <b>Due Date: 7 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+		Following <a href="lab8.html">Lab 8</a>, fill in the missing function definitions for this program:
+		<pre>
+def main():
+	welcome()             #Prints "Hello, world" to the screen
+	x,y = userInput()     #Asks user for 2 inputs and returns numbers entered
+	d = calculate(x,y)    #Returns the difference of the parameters
+	displayResults(x,y,d) #Prints the two inputs, and d
+main()
+
+		</pre>
+		That is, write the functions <tt>welcome()</tt>, <tt>userInput()</tt>, <tt>calculate()</tt> 
+		and <tt>displayResults()</tt>.  Submit a .py file containing all four functions you wrote, 
+		in addition to the <tt>main()</tt> function above.
+
+
+	<li style="color:#999"> <b>Due Date: 8 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+		Following <a href="lab8.html">Lab 8</a>, fill in the missing function definitions for this program:
+		<pre>
+def main():
+    welcome()             #Prints "Welcome" to the screen
+    age = userInput()     #Ask the user for their age and return number entered
+    y = calculate(age)    #Using age, calculates year born
+    displayResults(age,y) #Prints age and birth year
+
+main()
+  		</pre>
+(That is, write the functions <tt>welcome()</tt>, <tt>userInput()</tt>, 
+<tt>calculate()</tt> and <tt>displayResults().</tt>)		
+Submit a .py file containing all four functions you wrote, in addition to the <tt>main()</tt> function above.
+
+	<li style="color:#999"> <b>Due Date: 9 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+		Following <a href="lab8.html">Lab 8</a>, fill in the missing function definitions for this program:
+		<pre>
+def main():
+    welcome()             #Prints "Welcome" to the screen
+    age = userInput()     #Ask the user for their age and return number entered
+    y = retire(age)       #Using age, calculates retirement year (year turns 65)
+    displayResults(age,y) #Prints age and retirement year
+
+main()
+  		</pre>
+(That is, write the functions <tt>welcome()</tt>, <tt>userInput()</tt>, 
+<tt>retire()</tt> and <tt>displayResults().</tt>)		
+Submit a .py file containing all four functions you wrote, in addition to the <tt>main()</tt> function above.
+
+	<li style="color:#999"> <b>Due Date: 10 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+		Write a program asks the user for their birthdate (MM/DD/YYYY format) and 
+		prints out if the user is older than 18 and also if the user is over 21 as
+		of April 20th, 2012.
+
+
+
+
+<a id="week11"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 24 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+		Write a <b>function</b> that takes as two parameters: the zone and the direction, and
+returns the Bay Area Rapid Transit (BART) fare. 
+<ul>
+	<li>If the zone is 2 or smaller, the fare is 1.75. 
+	<li>If the zone is 3 and the direction is "outbound," the fare is 2.15. 
+	<li>If the zone is 3 and the direction is "inbound," the fare is 2.45.
+	<li>If the zone is 4 and the direction is "outbound," the fare is 2.65.
+	<li>If the zone is 4 and the direction is "inbound,"the fare is 2.95.
+	<li>If the zone is greater than 4, return a negative number (since your
+calculator does not handle inputs that high).
+</ul>
+		<p> You should include in the file a <tt>main()</tt> that calls your function
+		several times to demonstrate that it works.
+		
+		
+
+	<li style="color:#999"> <b>Due Date: 25 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a <b>function</b> that takes as two parameters: the zone and the ticket type, and
+returns the Copenhagen Transit fare. 
+<ul>
+	<li>If the zone is 2 or smaller and the ticket type is "adult," the fare is 23. 
+	<li>If the zone is 2 or smaller and the ticket type is "child," the fare is 11.5. 
+	<li>If the zone is 3 and the ticket type is "adult," the fare is 34.5.
+	<li>If the zone is 3 or 4 and the ticket type is "child," the fare is 23.
+	<li>If the zone is 4 and the ticket type is "adult," the fare is 46.
+	<li>If the zone is greater than 4, return a negative number (since your
+calculator does not handle inputs that high).
+</ul>
+		<p> You should include in the file a <tt>main()</tt> that calls your function
+		several times to demonstrate that it works.
+
+
+<a id="week12"></a>
+<hr>
+
+	<li style="color:#999"> <b>Due Date: 28 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+	Write a function that takes number between 1 and 7 as a parameter and prints out 
+	the corresponding day as a string. For example, if the parameter is <tt>1</tt>, your 
+	function should print out <tt>Monday</tt>. If the parameter is <tt>2</tt>, your 
+	function should print out </tt>Tuesday</tt>, etc.  Include a <tt>main()</tt> 
+	function that demonstrates that your function works.
+	
+	
+	
+	<li style="color:#999"> <b>Due Date: 29 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+	Write a function that takes number between 1 and 12 as a parameter and prints out 
+	the corresponding month as a string. For example, if the parameter is <tt>1</tt>, your 
+	function should print out <tt>January</tt>. If the parameter is <tt>2</tt>, your 
+	function should print out </tt>February</tt>, etc.  Include a <tt>main()</tt> 
+	function that demonstrates that your function works.
+	
+
+	
+<a id="week13"></a>	
+<hr>	
+	<li style="color:#999"> <b>Due Date: 6 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	Write a program that asks the user to enter a number between -10 and 10. If 
+	they enter a number out of range, print a message that the number is out of range 
+	and prompt them again for a number between -10 and 10. When the user enters a 
+	number in range, print the number to the screen and end the program.
+
+	<li style="color:#999"> <b>Due Date: 7 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	Write a program that asks the user to enter a number between 1900 and 2012.  If they 
+	enter a number out of range, print a message that the number is out of range and prompt
+	them again for a number between 1900 and 2012.  When the user enters a number in range, print
+	the number to the screen and end the program.
+
+	<li> <b>Due Date: 9 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		Write a program that reads in a text file (name specified by the user) and 
+		prints out all the  lines in the file to the screen until it encounters a 
+		line with more than 80 characters. Once it finds a long line, 
+		the program stops and prints out a message that lines must be shorter than
+		80 characters to be displayed.
+
+
+<a id="week13"></a>	
+<hr>
+
+	<li> <b>Due Date: 13 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		Write a program that reads in a text file (name specified by the user) and 
+		prints out all the  lines in the file to the screen until it encounters a 
+		line with more than 80 characters. Once it finds a long line, 
+		the program stops and prints out a message that lines must be shorter than
+		80 characters to be displayed.
+
+
+		
+	<li> <b>Due Date: 14 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		Write a program that reads in a text file, infile.txt, and prints out all the 
+		lines in the file to the screen until it encounters a line with fewer than 5
+		characters. Once it finds a short line (one with fewer than 4 characters), 
+		the program stops.
+
+		<li> <b>Due Date: 15 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+		
+		Modify the selectionSort (from Chapter 13 of the book or Zelle's website)
+		to sort lists of numbers backwards.  For example, the list, 
+		<tt>[125,4,145,59,168,34,14,42]</tt>, should be sorted as:
+		<tt>[168,145,125,59,42,34,14,4]</tt>.
+		
+		<p>
+		In your submitted file, include a <tt>main()</tt> function that demonstrates
+		that the sort algorithm works.	
+
+
+<hr>
+	<li> <b>Due Date: 16 May</b>  <br>
+	
+	<b>This is the make-up problem for #28.  The score from the problem below can 
+	replace your grade for #28.</b>	
+	
+	<p>For this problem, you will read and graph values from a CSV file.  A CSV file is a "Comma-Separated File," in which the values on each line are separated from each other by commas.  Problem 28 used an example of a CSV file.  This kind of file is used to represent data from all sorts of activities, to be downloaded from the Web.
+
+	<p>Your file will contain labels for the x axis in the first row and labels for the y axis in the first column.  All other values will be numbers, which may or may not be contained in quotes.
+     
+	<p>Write a function that accepts a line from a CSV file and returns a list of numbers.    The numbers may or may not be contained in single or double quotes.  This function should work for any CSV file in which the first column contains labels and the rest contain only numbers.
+
+	<p>The sample file we are providing represents sectors of the gross domestic product from the first quarter of 2002 to the last quarter of 2012. Each line of the file represents one sector of the economy (Consumption, Investment, Net Exports, Government, and Residual).  The first row of the file contains labels for the time periods (I2002 for first quarter of 2002, II2002 for second quarter of 2002, etc.), the first column contains labels for the sectors.   
+
+	<p>Next, write a main program that uses the function to create several graphs, each 
+graph representing a single line of the CSV file.  Numeric values appear in row 2, column 2 through the last row and last column, but they may be enclosed in single quotes or double quotes.  
+
+	<p>For example, if you read the file:
+
+<pre>
+Time period,  I2002, II2002,III2002, IV2002,  I2003, II2003,III2003, IV2003
+GDP,11467.1,11528.1,11586.6,11590.6,11638.9,11737.5,11930.7,12038.6
+Consumption,7953.7,7994.1,8048.3,8076.9,8117.7,8198.1,8308.5,8353.7
+Investment,1781.9,1803.4,1808,1808.3,1810.4,1821.8,1888.4,1959.9
+Exports,-510.2,-534.6,-553.9,-595.2,-584.9,-612.4,-602.8,-614.6
+Government,2250.4,2272,2290.4,2305.7,2300.9,2335.1,2342,2343.7
+Residual,-27.9,-24,-16.8,-20.1,-18.8,-14.7,-11,-8.1
+</pre>
+
+You should display the graph:
+<p><img src="FinalProblem.jpg">		
+
+
+<p>
+You may include labels, but you do not have to.
+	
+
+
+
+</ol>
+
+
+</div>
+
+<div>
+Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of python:
+
+	<p>
+	<img src="http://imgs.xkcd.com/comics/python.png">
+</div>
+
+
+<div>
+<i style="float:right">(This file was last modified on 9 May 2014.)</i><br>

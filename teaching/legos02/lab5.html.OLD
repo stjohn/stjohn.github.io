@@ -1,0 +1,115 @@
+<title>Lab 5, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<!--
+Lab 5:
+can do in teams of two if you'd like, since building takes a while...
+lab on gearing, ratios, pulleys-- lift something really heavy?
+what to use as weights (lego bricks, wheels)?  Can you drag 
+your robot box?  How far?
+How fast can you make a car go?  
+Make a claw/arm (see lego book).  can you make it grasp an object?
+can it pick up a lego piece?
+
+
+-->
+
+
+<h1>Laboratory Exercise 5</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program, UC Davis<br>
+24 July 2001</h2>
+
+<hr>
+<h3>Gears, Arms, and Carrying Things</h3>
+
+Today's lab uses gears and arms to carry objects from
+the start to finish zones in the staging area.  Today will
+focus mostly on design and construction of the robots.  
+There will be time on both Wednesday and Thursday to finish
+the construction and design the accompanying programs.
+
+<p><b>Design requirements:</b>  This lab assumes that your
+robot can move forward and turn.  Your robot should be able
+to tell when it has reached the finish zone, either by using
+a touch sensor or light sensor.
+
+
+<h3>Design Options</h3>
+
+The design of the robot is completely up to you.  In the
+end, it must be able to carry and drop objects and move from
+the start to finish zones (guided by either the light or
+touch sensor).  Some possible designs for this include:
+<ul>
+    <li> The Minerva robot from Chapter 5 of the <b>Unofficial Guide</b>.
+	This is a very efficient robot that has already has a NQC program
+	that seeks out black lego pieces, picks them up, and returns to
+	where it started.  It is designed to use only two motors (which
+	is not necessary due to the extra motors we have), but the arm
+	design might be worth copying.
+    <li> There are several arms and claws at the end of the 
+	<b>Constructopedia</b> book in the Lego kit.  Many of those
+	could be used to grasp and transport objects.
+    <li> Instead of using an arm that grasps, you could build a robot
+	with a front loader basket to scoop under things or a dump 
+	truck that can tilt its loading platform to drop objects.	
+    <li> Another option is to build an inverted bumper that can push
+	objects to their destination.  Adding a touch sensor to the 
+	inside bend of the bumper, as well as the attachment to the car,	
+	would let you distinguish between bumping an object and bumping
+	a wall.
+</ul>
+ 
+After you have decided on your design, consult with the TA, to get
+any necessary parts.  You can start building your robot now, or work
+on the first program for a while, and come back to building the robot
+later.
+
+
+<h3>Start to Finish</h3>
+
+On the patio, there is a staging area (otherwise known as
+the children's swimming pool) with many small objects and a
+start and finish zone.  The first task for your robot is to move
+an object from the start to finish zone.  Upon entering the finish
+zone your robot should stop and celebrate (singing and dancing would
+be appropriate).
+
+<p>
+This program can be done with a robot of standard design with a light
+sensor attached.  You might consider modifying one of the earlier
+programs that follows a line or flashlight.  Before doing so, measure
+the background level of light in the staging area, as well as any
+tape lines you may follow or cross.  
+
+<h3>Carrying Objects</h3>
+
+Now, write a program that will carry an object from the start to
+finish zone and will drop the object after entering the finish
+zone.  Before doing this, you should complete your initial construction
+of your object-carrying-apparatus (claw, arm, front-loader, etc).
+Depending on the design of your robot, you can also try to deposit
+the object in the basket or through the hoop.
+
+<p>
+This program should have an extra function called <tt>drop()</tt>
+that makes your robot drop the object.  This will get used again
+for later programs, so, making this a function will same typing
+later.
+
+<h3>What's Next...</h3>
+
+You probably won't have time, but the next step is to return to 
+the start zone and pick up another object to take to the finish
+zone.  If you build a dump-truck styled carrying device, your 
+robot should "ask" for another object by singing when it returns
+to the start zone.  It should start it's journey back to the 
+finish zone after you signal the object is loaded by clicking 
+on a touch sensor.
+
+</body>
+</html>
+
+

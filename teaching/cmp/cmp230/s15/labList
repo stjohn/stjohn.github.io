@@ -1,0 +1,27 @@
+CMP Labs
+
+1	Hello world
+2	Converter + table
+3	Bouncing Ball-- click 
+4	Interactive graphics-- clicking to make a polygon, add into it a program that drags to make scribbles?
+5	Encryption + Python Challenge
+6	Double spacing files + Finding Errors
+7	Mapping functions (Mel Fitting's program)
+8	Top down design with turtles (herd of turtles demo-- change it to mapping polygons? 2048?)
+9	Archery scoring
+10	Mystery point game
+11	Sorting
+12	Random walk
+13	Billiards with turtles
+14	Dictionaries and tweets
+
+
+CIS Labs
+
+1	Hello world
+2	Converter + table
+
+
+Tic-tac-toe, with for-loop and strings,
+	allow 9 fill-ins, have students identify missing things (can overwrite existing entry, doesn't check for winners...)
+	Revisit later, adding in tests to see if someone has won, after design lab?

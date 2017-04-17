@@ -1,0 +1,57 @@
+<title>Notes for 13 February, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 13 February</h1>
+<h2> Computer Engineering, Fall 1997<br>
+Introduction to Computer Science</h2>
+
+<br>
+
+<hr>
+<b>hw.cpp:</b>
+<hr>
+
+<pre>
+#include &lt;iostream.h&gt
+
+// Reads in 10 homework scores into an array and prints out
+// the average of the scores.
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+
+
+main()
+{
+    int hw[10],        // a list of 10 whole numbers
+        count = 0;     // used to index the array
+        total = 0;     // homework total
+
+    while ( count &lt 10 ) 
+    {
+         cout &lt&lt "Please enter score for homework " 
+              &lt&lt count+1 &lt&lt ":";
+         cin &gt&gt hw[count]; 
+                       // Why "count+1"?
+         cout &lt&lt endl;
+         count++;
+    } 
+
+    count = 0;         // reset count to use for totaling
+
+    while ( count < 10 ) 
+    {
+         total = total + hw[count]; 
+         count++;
+    } 
+
+    cout << "Your average is " << total/10.0;
+
+}
+
+</pre>
+
+</body>

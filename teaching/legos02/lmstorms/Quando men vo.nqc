@@ -1,0 +1,41 @@
+#define SIXTH 12
+#define HALF 3*SIXTH
+#define BEAT 2*HALF
+#define GRACE 6
+
+task main() {
+  PlayTone(330, 2*BEAT);
+  Wait(2*BEAT + 2*SIXTH);
+  PlayTone(115, SIXTH);
+  PlayTone(208, SIXTH);
+  PlayTone(247, SIXTH);
+  PlayTone(330, SIXTH);
+  PlayTone(311, 2*BEAT);
+  Wait(4*SIXTH + 2*BEAT + 2*SIXTH);
+  PlayTone(115, SIXTH);
+  PlayTone(208, SIXTH);
+  PlayTone(247, SIXTH);
+  PlayTone(311, SIXTH);
+  PlayTone(277, 3*BEAT);
+  Wait(4*SIXTH + 3*BEAT + HALF);
+  PlayTone(277, HALF);
+  PlayTone(311, HALF);
+  PlayTone(370, GRACE);
+  PlayTone(330, HALF);
+  PlayTone(311, HALF); Wait (2*HALF);
+  PlayTone(277, HALF);
+  PlayTone(330, HALF);
+  PlayTone(220, HALF);
+  PlayTone(220, 2*BEAT);
+  Wait(GRACE + 5*HALF + 2*BEAT + HALF);
+  PlayTone(247, HALF);
+  PlayTone(277, HALF);
+  PlayTone(330, GRACE);
+  PlayTone(311, HALF);
+  PlayTone(277, HALF); Wait (2*HALF);
+  PlayTone(247, HALF);
+  PlayTone(311, HALF);
+  PlayTone(208, HALF);
+  PlayTone(208, 2*BEAT);
+  Wait(GRACE + 5*HALF + 2*BEAT + HALF);
+}

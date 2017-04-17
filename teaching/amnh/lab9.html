@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 9, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 9<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Modular Design, 
+Analyzing sorts by running time on varying data sets (sorted, almost sorted, and random data); 
+		Traversing Trees with Recursive Functions; 
+		
+</div>
+
+<div>
+<h3>Designing Modular Programs</h3>
+
+<p>Today's lab has several themes:  
+<ul>
+	<li> strengthening programming skills by implementing some canonical sorting algorithms, 
+	<li> empirically measuring running times of algorithms on different types of data, and
+	<li> designing programs in pieces ('modularly') for reuse.  
+</ul>
+
+<p>Let's start with designing a general sorting program that we can use as a framework.  The basic outline of our sorting program will be:
+<ol>
+	<li> Get list of items to sort.
+	<li> Sort list.
+	<li> Print sorted list.
+</ol>
+
+<p> We will translate this list into a "main" function, and then fill in the pieces.  As we fill in the pieces, if easier to test each part ('unit test') independently, then waiting to test at the end (since if there's a problem at the end, we have to search through all the code to find the problem).  Before we start our <tt>main</tt>, write down what the inputs and outputs for each part are:
+<ol>
+	<li> Get list of items to sort.
+		<i>
+		<br>Inputs:  nothing obvious
+		<br>Outputs:  the list to sort</i>
+	<li> Sort list.<i>
+		<br>Inputs:  the original list (sorts it in place)
+		<br>Outputs: nothing obvious</i>
+	<li> Print sorted list.<i>
+		<br>Inputs:  the sorted list
+		<br>Outputs: nothing obvious	</i>
+</ol>
+We start by creating a main function and including our "To Do" list as comments:
+<pre>
+def main():
+	print "Welcome to the sorting program!"
+	#Get list of items to sort.
+	#Sort list.
+	#Print sorted list
+
+if __name__ == "__main__":
+	main()
+</pre>
+
+<p>Next, we'll add in empty functions (or "stubs") for each item on our annotated To Do list.  We have included "dummy" variables corresponding to the inputs and outputs from the annotated list:
+
+<pre>
+def getInputList():
+	"""
+	No inputs
+	Returns the list to sort
+	"""
+	a = []
+	return a
+	
+def sortList(a):
+	"""
+	Takes a list and sorts it in place
+	"""
+
+	
+def printList(b):
+	"""
+	Prints sorted list.
+	No outputs
+	"""
+
+def main():
+	print "Welcome to the sorting program!"
+	#Get list of items to sort.
+	a = getInputList()
+	#Sort list.
+	sortList(a)
+	#Print sorted list
+	printList(a)
+
+if __name__ == "__main__":
+	main()
+</pre>
+<p> Make sure the program runs (you can also look at the completed program at <a href="sortingLab.py">sortingLab.py</a>) before continuing.  
+
+<p> Now, from the To Do list, let's write the easiest functions first.  For <tt>printList()</tt>, we will just use a simple <tt>print()</tt> (we can improve on it later):
+<pre>
+def printList(b):
+	"""
+	Prints sorted list.
+	No outputs
+	"""
+	print "The sorted list is:"
+	print b
+</pre>
+
+<p>The next easiest function is the <tt>getInputList</tt>.  To start, let's ask the user for a list, separated by spaces (again, we can improve this function later and have it read from a file for really large lists):
+<pre>
+def getInputList():
+	"""
+	No inputs
+	Returns the list to sort
+	"""
+	s = raw_input('Please enter a list, separated by spaces: ')
+	a = [int(w) for w in s.split()]
+	return a
+</pre>
+<p> (We're assuming that we're sorting numbers-- if not we can remove the "<tt>int()</tt> from the loop comprehension.)
+
+<p> For our sorting algorithm, we'll write a couple from pseudo-code.  Here's a popular one that we haven't discussed: selectionSort (but is in the <a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/TheSelectionSort.html">textbook</a>):
+<ol>
+	<li> Search the list for the largest element.  
+	<li> Move it to last position.
+	<li> Search the remaining list for the largest element.  
+	<li> Move to second to last position.
+	<li> Repeat until list is sorted.
+</ol>
+<p>Let's translate that to pseudocode:
+<ol>
+	<li> For each i, starting at len(aList)-1 and decrementing to 1.
+	<ol>
+	<li> Find the index of the largest element in the list aList[0:i+1]
+	<li> Swap the largest element with the element at position i.
+	</ol>
+</ol>
+<p>Try writing out each part (note finding the index of the largest element will take another loop).  Then try out your code (or look below at the solution from the book).
+<pre>
+def selectionSort(alist):
+   for fillslot in range(len(alist)-1,0,-1):
+       positionOfMax=0
+       for location in range(1,fillslot+1):
+           if alist[location]>alist[positionOfMax]:
+               positionOfMax = location
+
+       temp = alist[fillslot]
+       alist[fillslot] = alist[positionOfMax]
+       alist[positionOfMax] = temp
+</pre>
+
+<p>Try on several cases to make sure your program works.  When choosing test cases, try 'border cases' where the items are close to the edges of the arrays or the edges of the conditional tests (broadly interpreted).
+
+<h4>Challenges:</h4>
+<ul>
+	<li> Replace the <tt>sortList()</tt> function with a function that implements <a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/TheInsertionSort.html">InsertionSort</a>.  Keep your previous sorting function, since we will use it in the next section.
+	<li> Replace the <tt>sortList()</tt> function with a function that implements <a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/TheMergeSort.html">MergeSort</a>.
+	<li> Replace the <tt>getInputList()</tt> function with a function that generates the first n positive numbers.  Test your program with n = 100, 1000, and 10000
+	(we will use this for testing running times of sorts below).
+	<li> Replace the <tt>getInputList()</tt> function with a function that generates the first n positive numbers, in reverse order.  
+	Test your program with n = 100, 1000, and 10000
+	(we will use this for testing running times of sorts below).
+
+	<li> Replace the <tt>getInputList()</tt> function with a function that generates n random numbers.  Test your program with n = 100, 1000, and 10000
+	(we will use this for testing running times of sorts below).
+</ul>
+
+</div>
+
+
+
+<div>
+<h3>Timing Functions</h3>
+
+<p>In lecture, we analyzed running times theoretically.  We discussed worst-case time bounds for several of the algorithms.  But how does that work in practice?  We saw the <a href="http://www.sorting-algorithms.com">sorting algorithms demonstration</a> that showed that different types of input yield very different running times.  For example, while the worst case analysis says InsertionSort is O(n^2) and MergeSort is O(n log n), when the data is nearly sorted, then InsertionSort finishes more quickly.
+
+<p>Python provides several built-in methods for timing functions.  While there is a complete module for analyzing complete programs to determine which functions are using the most time (called ``profiling'' the code), we will use a simpler function, <a href="https://docs.python.org/2/library/timeit.html">timeit()</a> that times how long a single function takes.  In the simplest form, we can time how long a command will take:
+
+<p>
+<tt>timeit()</tt> runs in its own environment to give as accurate a measurement as possible.  The environment knows about built-in functions, but to use other functions, we need to "import" them into the environment.  For example, the <a href="timing.py">following</a> will time a simple function that compute the factorial:
+<pre>
+import timeit
+
+def factR(n):
+     if n <= 1:
+          return 1
+     else:
+          return n*factR(n-1)
+
+if __name__ == '__main__':
+    import timeit
+    print(timeit.timeit("factR(100)", setup="from __main__ import factR", number=10))
+</pre>
+The last parameter controls the number of times it runs the function to compute the average.  The default value is 1,000,000 runs.  The function returns the amount of time, in seconds, that it took to run through the code the specified number of times.
+
+
+<h4>Challenges</h4>
+<ul>
+	<li> How long does SelectionSort and MergeSort take on an ordered list of 100 items?  How about 10,000 items?
+	<li> How long does SelectionSort and MergeSort take on a <i>reversed</i> ordered list of 100 items?  How about 10,000 items?	
+	<li> And lastly, how long does SelectionSort and MergeSort take on a random list of 100 items?  How about 10,000 items?		
+</ul>
+</div>
+
+<div>
+<h3>Recursion vs. Iteration</h3>
+
+<p>
+Everything you can write with recursion, you can write with iteration (just loops).  Should you?  Each function call requires Python to set up a new frame that keeps track of the parameters passed and current state.  For small datasets, that a small portion of the overall running time, but what happens for larger computations?  
+
+<p>
+Let's use a very simple algorithm to test recursion versus iteration running times:
+<pre>
+def factR(n):
+    if n <= 1:
+        return 1
+    else:
+        return n*factR(n-1)
+</pre>
+
+and
+
+<pre>
+def factI(n):
+    prod = 1
+    for i in range(2,n):
+        prod = i*prod
+    return prod
+</pre>
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> How much does recursion add to the running time?  Test the two versions of the factorial function on n = 100, 200, 300, 400, and 500, and report the differences in time.
+</ul>
+<br>
+<br>
+<p>
+<i>
+Side Note:  In practice, after you have a program running, you profile the code to determine which functions are using the most time.  Then, you look at the most time-intensive function and see if there are ways to improve its efficiency.  Sometimes, this can be accomplished by simple changes to the code.  Other times, it might be necessary to rewrite the entire function.  For time-critical programs, this could mean rewriting code in a specialized language for the task or one that allows low-level manipulation to optimize efficiency (e.g. c or assembly language).</i>
+
+</div>
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  6 April 2016<br>
+Title:  Lab 9:  Sorting & Recursion<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

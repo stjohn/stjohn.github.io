@@ -1,0 +1,93 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>JSON, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>JSON</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+
+
+
+
+JSON Revisited 
+
+Overview:  The JavaScript Object Notation (JSON) provides a simple format for representing data.  We used the extension, GeoJSON, when we drew the map of the United States and the underlying map for our earthquake visualizations.  Today, we will go into more detail about JSON and the extension, GeoJSON.
+
+Our first GeoJSON file holds the coordinates for a simple square:
+
+{"type":"Feature", "id":"100","properties": {"name":"Simple Square"},"geometry": {"type":"Polygon", "coordinates":[[[-1,-1],[-1,1],[1,1],[1,-1],[-1,-1]]]}
+
+(it’s all on one line in the file, simpleSquare.json, but is wrapped here for readability).  Using this file, what does each part do (full program in filledStates.py):
+Python code:
+What does it do?
+import turtle				infile=open("simpleSquare.json", "r")
+line = infile.readline()  
+
+
+w = turtle.Screen()			
+w.setworldcoordinates(-3,-3,3,3)
+
+
+start = line.find("[[[")+1
+end = line.find("]]}")+1   
+coordString = line[start:end] 
+coordinates = eval(coordString)
+
+
+turtle.up()                   turtle.goto(coordinates[0][0], coordinates[0][1])
+turtle.down()
+
+
+turtle.begin_fill()          
+for point in coordinates:    
+     x = point[0]             
+     y = point[1]
+     turtle.goto(x,y)         
+turtle.end_fill()
+
+
+
+
+
+Filled States:  We can use the same approach to draw a map, with each state filled with a random color:
+Open JSON file for reading.
+For each line, find the coordinates and process to make a list of points.
+Set the fill color for the state.
+Use the coordinates to draw the state.
+Once done, go back to #2 for the next line of the file
+filledStates.py is our previous drawing program but augmented with commands to set the color and fill.  The color is chosen to be a random light bluish-green:
+     turtle.color("darkblue",(0,random.random()/2.0+.5,random.random()/2.0+.5))
+Note that the red value is set to 0, while the blue and green values are .5 plus a random number between 0 and .5.  This makes the blue and green range from 50% to 100%, yielding lighter colors. 
+
+Challenges:
+Modify filledStates.py to use shades of purple to color the states.
+Modify filledStates.py to print the name of the state to the Python shell as it is being drawn.  (Hint:  process the line as we did in the `Spot the Station’ from last session.)
+    
+Lyme Disease Spread by State:  Our next exercise will be to display the amount of Lyme disease occurring in each state.  Our recipe is:
+Create a dictionary with number of occurrences per state (i.e. disease[‘Alabama’] = 8).
+For each state, choose a color corresponding to number of occurrences.
+Draw each state and fill with chosen color.
+
+Challenges:
+From the statesSummary.csv file, create a dictionary with disease occurrences in 2003.  Print out your dictionary.
+Combine your above program with the filledStates.py program, using the following coloring scheme:   
+		d = disease[state]
+turtle.color("black",(1.0,1.0-float(d)/6000.0,1.0-float(d)/6000.0))
+Modify your program to display the disease occurrences for 2004.
+
+Harder Challenges:
+Modify your program to save the plot to a png file.  (Hint:  see the butterfly programs.)
+Display the occurrence of Lyme disease from 2003 to 2011, in one plot after another (when you close the first, the second pops up, etc.).
+Using the names2014.csv, color states by the most popular name in 2014.  That is, color all states for which Emma is most popular the same color.  All Sophia states another color, etc.

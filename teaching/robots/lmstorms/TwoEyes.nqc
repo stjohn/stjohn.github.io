@@ -1,0 +1,58 @@
+int state;
+
+// "ON" refers to whether the light
+//   sensor is on the line. If it is,
+//   the light sensor is seeing black.
+#define BOTH_ON 3
+#define LEFT_ON 1
+#define RIGHT_ON 2
+#define BOTH_OFF 0
+#define INDETERMINATE 255
+
+// Thresholds for light and dark.
+#define DARK2 35
+#define LIGHT2 40
+#define DARK3 40
+#define LIGHT3 45
+
+#define POWER 4
+
+task main() {
+  initialize();
+  while (true) {
+    if (state == BOTH_ON)
+      OnFwd(OUT_A + OUT_C);
+    else if (state == LEFT_ON) {
+      Off(OUT_A);
+      OnFwd(OUT_C);
+    }
+    else if (state == RIGHT_ON) {
+      Off(OUT_C);
+      OnFwd(OUT_A);
+    }
+  }
+}
+
+sub initialize() {
+  SetSensor(SENSOR_2, SENSOR_LIGHT);
+  SetSensor(SENSOR_3, SENSOR_LIGHT);
+  SetPower(OUT_A + OUT_C, POWER);
+  OnFwd(OUT_A + OUT_C);
+  start watcher;
+}
+
+task watcher() {
+  while (true) {
+    if (SENSOR_2 < DARK2) {
+      if (SENSOR_3 < DARK3) state = BOTH_ON;
+      else if (SENSOR_3 > LIGHT3) state = LEFT_ON;
+      else state = INDETERMINATE;
+    }
+    else if (SENSOR_2 > LIGHT2) {
+      if (SENSOR_3 < DARK3) state = RIGHT_ON;
+      else if (SENSOR_3 > LIGHT3) state = BOTH_OFF;
+      else state = INDETERMINATE;
+    }
+    else state = INDETERMINATE;
+  }
+}

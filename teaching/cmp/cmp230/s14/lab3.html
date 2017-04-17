@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 3, CMP 230,Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 3<br>
+CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on the python's mathematics library and the book's graphics library.
+
+</div>
+
+
+
+<div>
+<h3>Bouncing Ball</h3>
+
+<p>Included with the textbook is a <a href="http://mcsp.wartburg.edu/zelle/python/">simple graphics
+library</a>.  To use it, place the file <a href="http://mcsp.wartburg.edu/zelle/python/graphics.py">graphics.py</a>
+to the directory where you saved your python files.  There is a useful <a href="http://mcsp.wartburg.edu/zelle/python/graphics/graphics.pdf">cheat sheet</a>
+of the graphics functions.
+
+<p>
+Here is the first program (inspired from <a href="http://www.motionscript.com/mastering-expressions/simulation-basics-1.html">motionscript.com</a>):
+<pre>
+#Idea from:  http://www.motionscript.com/mastering-expressions/simulation-basics-1.html
+
+from math import *
+from graphics import *
+from time import *
+
+def goodSine():
+    veloc = .5  #horizontal velocity (pixels per second)
+    amp = 50    #sine wave amplitude (pixels)
+    freq = .01  #oscillations per second
+
+    #Set up a graphics window:
+    win = GraphWin("Good Sine Waves",400,200)
+    win.setCoords(0.0, -100.0, 200.0, 100.0)
+
+    #Draw a line for the x-axis:
+    p1 = Point(0,0)
+    p2 = Point(200,0)
+    xAxis = Line(p1,p2)
+    xAxis.draw(win)
+
+    #Draw a ball that follows a sine wave
+    for time in range(1000):
+        x = time*veloc
+        y = amp*sin(freq*time*2*pi)
+        ball = Circle(Point(x,y),2)
+        ball.draw(win)
+        sleep(0.1)  #Needed so that animation runs slowly enough to be seen
+
+
+    win.getMouse()
+    win.close()
+
+    
+goodSine()
+</pre>
+Save this file to your USB or MyDocuments folder (along with <tt>graphics.py</tt>) and run the 
+program.  Let's go through what each part does:
+<ul>
+	<li>	<pre>
+from math import *
+from graphics import *
+from time import *
+</pre>
+	The <tt>import</tt> statement asks python to include the functions from a given module, or 
+	collection of functions.  These three <tt>import</tt> statements ask for the functions from 
+	the math, graphics, and time modules.  The math and time modules are built-in to python; the 
+	graphics module was written by Zelle, the textbook's author.
+	<li>	<pre>
+    veloc = .5  #horizontal velocity (pixels per second)
+    amp = 50    #sine wave amplitude (pixels)
+    freq = .01  #oscillations per second
+</pre>
+	These three variables control the speed, height, and bounce of the ball.  Try changing them 
+	and see what happens to the animation.  Your goal is to have the ball touch the ceiling every
+	time.
+
+	<li>	<pre>
+    #Set up a graphics window:
+    win = GraphWin("Good Sine Waves",400,200)
+    win.setCoords(0.0, -100.0, 200.0, 100.0)
+</pre>
+	These lines set up the graphics window.  This window will have the title, "Good Sine Waves" and
+	width 400 pixels and height 200 pixel.  A pixel is just one tiny light bulb in your computer's
+	screen.  So, 400 pixels is 400 tiny lights in the screen.  You can assume that computers
+	have screens that are at least 800 by 600 pixels.  In the graphics module, there is a function
+	for changing the coordinates of a graphics window.  We did so here to make the math calculating
+	the height of the bouncing ball easier.
+
+	<li>	<pre>
+    #Draw a line for the x-axis:
+    p1 = Point(0,0)
+    p2 = Point(200,0)
+    xAxis = Line(p1,p2)
+    xAxis.draw(win)
+</pre>
+	The graphics module has several standard shapes (see <a href="http://mcsp.wartburg.edu/zelle/python/graphics/graphics/index.html">list
+	of graphics objects</a>).  We created two points, called <tt>p1</tt> and <tt>p2</tt>, that will
+	be the endpoints of a line called <tt>xAxis</tt>.  For our line to be seen, we need to draw
+	it to our window (which we called <tt>win</tt>).  Since it is possible to have multiple windows
+	in a given program, we need to include the name of our window as the input to the draw function.
+
+	<li>	<pre>
+    #Draw a ball that follows a sine wave
+    for time in range(1000):
+        x = time*veloc
+        y = amp*sin(freq*time*2*pi)
+        ball = Circle(Point(x,y),2)
+        ball.draw(win)
+        sleep(0.1)  #Needed so that animation runs slowly enough to be seen
+</pre>
+	This loop repeats the indented statements 1000 times.  First time through the variable <tt>time</tt>
+	is 0; the next time through it is 1; and it keeps going until <tt>time</tt> is 999.  Each repetition
+	of the loop sets the variable <tt>x</tt> to a multiple of <tt>time</tt> and sets the variable <tt>y</tt>
+	to the <tt>sine</tt> of a multiple of <tt>time</tt>.  It then makes a circle centered at <tt>(x,y)</tt>
+	and draws that circle (called <tt>ball</tt>) to the window.  Lastly, we have a call to the sleep
+	function so that the animation runs slowly enough so we can see it.
+	<li>	<pre>
+    win.getMouse()
+    win.close()
+</pre>
+	We add these lines at the end of our graphics programs to keep the window open.  The first 
+	command is waiting for a mouse click.  After the mouse is clicked in the window, the next 
+	statement is executed, <tt>win.close()</tt> which closes the window.
+	<li>	<pre>
+goodSine()
+</pre>
+	This is a call (or invocation) of the function <tt>goodSine()</tt> that we just wrote.  It is 
+	not necessary to have in your file, but if you do, you do not have to type <tt>goodSine()</tt>
+	in the Python shell to run your function.  Instead, it will be called when you use the F5 key.
+</ul>
+
+<p>
+To make the ball appear to bounce, we need for it to stay above the line representing the x-axis.
+Another way of saying that is its y-coordinate should always be positive.  A simple way to do 
+that is to take the absolute value of the expression for the y variable:
+<pre>
+        y = abs(amp*sin(freq*time*2*pi))
+</pre>
+Try running your program to see the bouncing ball!  
+
+
+</div>
+
+
+<div>
+
+
+<p> With the remaining time, work on the programming problems.
+
+</p>
+</div>

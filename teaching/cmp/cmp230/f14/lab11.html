@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 11,  CMP 230, & Lab 14, CIS 166 Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>CMP 230: Lab 11<br>
+CIS 167: Lab 14<br>
+Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab focuses on an application of nested loops: sorting lists of numbers.
+
+</div>
+
+
+<div>
+
+<h3>Nesting Loops and Conditionals</h3>
+
+In Chapters 7 and 8, we  discussed loops and decisions (also called conditionals)
+in detail.  Many applications can be programmed by simply combining these two 
+concepts.  In today's lab, we will look at two different ways to sort lists of 
+numbers (described in more detail in Chapter 13 of the textbook).  
+
+<p>The basic idea of a sorting algorithm is to take a list of items (we'll focus
+on whole numbers, but you can sort just about anything that you can measure) and
+return the list in order.  So, for example, if you were given as input the 
+list:
+<pre>
+[3, 8, 23, 2, 4, 9, 45, 1]
+</pre>
+the result of sorting the numbers (in increasing order) would be:
+<pre>
+[1, 2, 3, 4, 8, 9, 23, 45]
+</pre>
+
+
+<p>There are many different approaches to sorting.  Here's the idea 
+for the <b>selectionSort</b> algorithm:
+<ul>
+	<li> find the smallest number in the list and move to the front,
+	<li> repeat the first step on the last part of the list (i.e. lst[1:0])
+</ul>
+So, continuing our example, we would have:
+<pre>
+[3, 8, 23, 2, 4, 9, 45, 1]   <-- starting list
+[1, 3, 8, 23, 2, 4, 9, 45]   <-- selected 1 and moved it to the front
+[1, 2, 3, 8, 23, 4, 9, 45]   <-- selected 2 from remaining lst[1:] and moved it
+[1, 2, 3, 8, 23, 4, 9, 45]   <-- selected 3 from lst[2:] but already in place
+[1, 2, 3, 4, 8, 23, 9, 45]   <-- selected 4 from lst[3:] and moved it
+[1, 2, 3, 4, 8, 23, 9, 45]   <-- selected 8 from lst[4:] but already in place
+[1, 2, 3, 4, 8, 9, 23, 45]   <-- selected 9 from lst[5:] and moved it
+[1, 2, 3, 4, 8, 9, 23, 45]   <-- selected 23 from lst[6:] but already in place
+</pre>
+
+The python code (from the book's Chapter 13) is:
+<pre>
+def selSort(lst):
+    n = len(lst)
+    for bottom in range(n-1):
+        mp = bottom
+        for i in range(bottom+1,n):
+            if lst[i] < lst[mp]:
+                mp = i
+        lst[bottom], lst[mp] = lst[mp], lst[bottom]
+</pre>
+Note the nested loops:  
+<ul>
+	<li> the inner loop and decision statement find the smallest number (not 
+		already in place), and 
+	<li> the outer loop repeatedly goes through the remaining list until there
+		are no more to put in order.
+</ul>
+
+
+<h3>Sorting Visualization</h3>
+
+To make it easier to see the sorting, we have a visualization in 
+<a href="sortGUI2.py">sortGUI2.py</a> file to your machine and
+run it (if it doesn't load, the complete version is available at the bottom of
+this file).  Since it uses Zelle's graphics,  
+it will need the <tt>graphics.py</tt> file in the same directory.
+
+<p>
+The program generates 10 random numbers (and pauses, waiting for a mouse click)
+and first sorts the list with 
+the <b>selectionSort</b> algorithm from above.  The code has been modified 
+slightly from the book to update the graphics display as it runs.
+When the program runs, it repeatedly traverses the list.  On its first 
+traversal of the list, it finds the smallest number and then interchanges it
+with the first number in the list.  It then repeats looking for the next 
+smallest number and puts that in the second position in the list.
+It keeps going putting the next largest number in its place until the whole
+list is sorted.  Run the program several times, paying attention to the 
+first sort only.  Can you see the smallest number moving each time?
+
+
+
+<h3>BubbleSort</h3>
+
+Today, we are going to implement another sort, called <b>bubbleSort</b>.
+While bubbleSort is not the most efficient way to sort big lists (
+<a href = "http://www.youtube.com/watch?v=k4RRi_ntQc8">President 
+Obama on the subject</a>, 
+<a href="http://overstated.net/2008/02/11/obama-not-bubble-sort">comments</a>), it is easy 
+to understand.
+
+<p>Algorithms are often written in <b>pseudo-code,</b> which is an 
+informal, high-level description:
+<pre>
+func bubblesort( var a as array )
+    for i from 2 to N
+        for j from 0 to N - 2
+           if a[j] > a[j + 1]
+              swap( a[j], a[j + 1] )
+end func
+</pre>
+(from <a href="http://www.algorithmist.com/index.php/Bubble_sort">www.algorithmist.com/index.php/Bubble_sort</a>)
+
+<p>
+Let's translate this line-by-line into python:
+<ul>
+	<li>
+<pre>
+func bubblesort( var a as array )
+    for i from 2 to N
+        for j from 0 to N - 2
+           if a[j] > a[j + 1]
+              swap( a[j], a[j + 1] )
+end func
+</pre>	
+	<li>
+<pre>
+func bubblesort( var a as array )
+</pre>	
+This first lines says we have a function with an array variable called <tt>a</tt>.
+In python, we define functions with the <tt>def</tt> keyword:
+<pre>
+	def bubbleSort(a):
+</pre>
+	<li>
+<pre>
+    for i from 2 to N
+</pre>	
+This next line is a <tt>for</tt> loop, but what is <tt>N</tt>?  Usually, <tt>N</tt>
+or <tt>n</tt> refers to the length of the list, so, let's set that up as a variable
+first, then write out the for loop:
+<pre>
+	N = len(a)
+	for i in range(2, N+1):
+</pre>
+Note that their for loop goes from 0 upto and including N, so, we need to change
+the range accordingly.
+
+	<li>
+<pre>
+        for j from 0 to N - 2
+</pre>	
+Since we have <tt>N</tt> defined, we can easily write out this for-loop:
+<pre>	
+		for j in range(N-1):
+</pre>
+
+	<li>
+<pre>
+           if a[j] > a[j + 1]
+</pre>	
+We need one small addition to make this line proper python:
+<pre>
+		   if a[j] > a[j+1]:
+</pre>
+	<li>
+<pre>
+              swap( a[j], a[j + 1] )
+</pre>	
+Lastly, we need to swap the two values.  In python, we can do this in one line 
+with simultaneous assignment:
+<pre>
+			  a[j],a[j+1] = a[j+1],a[j]
+</pre>
+
+</ul>
+
+Putting this altogether, we have:
+<pre>
+	def bubbleSort(a):
+		N = len(a)
+		for i in range(2,N+1):
+			for j in range(N-1):
+				if a[j] > a[j+1]:
+					a[j],a[j+1] = a[j+1],a[j]
+</pre>
+
+
+To make this function show the graphics, we will add two calls to the <tt>drawBox()</tt>
+as well as to <tt>sleep()</tt> (to slow it down enough to see):
+<pre>
+def bubbleSort(lst,w):
+    #n = len(lst)
+    for j in range(n-1):
+        for i in range(n-1):
+            if lst[i] > lst[i+1]:
+                # draw the bars that are to be swapped            
+                drawMovingBars(lst, i, i+1, w)
+                # swap the bars
+                lst[i], lst[i+1] = lst[i+1], lst[i]
+                # draw the bars after they are swapped
+                drawMovingBars(lst, i, i+1, w)
+   
+</pre>
+Note that we need to add <tt>w</tt>, the graphics window variable,
+to the formal parameters of our function
+so that we can use it when calling our drawing function.
+
+
+<p>Add the <tt>bubbleSort()</tt> above to your program and try running it.
+Can you see the largest value "bubble" up to the top?  Try running the 
+program multiple times to see the effect.
+
+
+</div>
+<div>
+
+<h3>Sorting Program</h3>
+
+<pre>
+# Spring 2014, CMP230, Lab 11
+# This is a modified version of sortGUI.py which is available
+# on http://comet.lehman.cuny.edu/sfakhouri/teaching/cmp/cmp230/f12/sortGUI.py~
+# Modifications are made by Maryam Ghaffari Saadat
+
+from graphics import *
+from random import *
+
+n = 10
+
+def main():
+    #holds list of numbers to be sorted:
+    a = [0]*n 
+
+    #our display window:
+    w = GraphWin("Sorting Demo",500,500)
+    w.setCoords(-5,0,n*10,n*10)
+
+    #First, display the selection sort (code from book):
+    initializeList(a)
+    displayList(a,w)
+    selSort(a,w)
+
+    #Next, display the bubble sort
+    clearScreen(w)
+    initializeList(a)
+    displayList(a,w)
+    bubbleSort(a,w)
+
+    w.getMouse()
+    w.close()
+
+
+#Selection sort function from the textbook, with the addition
+#   of code to draw the change each time
+def selSort(lst,w):
+    n = len(lst)
+    for bottom in range(n-1):
+        mp = bottom
+        for i in range(bottom+1,n):
+            if lst[i] < lst[mp]:
+                mp = i
+        if mp != bottom:
+            # draw the bars that are to be swapped
+            drawMovingBars(lst, bottom, mp, w)
+            # swap the bars
+            lst[bottom], lst[mp] = lst[mp], lst[bottom]
+            # draw the bars after they are swapped
+            drawMovingBars(lst, bottom, mp, w)
+
+#Bubble sort from pseudocode:
+def bubbleSort(lst,w):
+    #n = len(lst)
+    for j in range(n-1):
+        for i in range(n-1):
+            if lst[i] > lst[i+1]:
+                # draw the bars that are to be swapped            
+                drawMovingBars(lst, i, i+1, w)
+                # swap the bars
+                lst[i], lst[i+1] = lst[i+1], lst[i]
+                # draw the bars after they are swapped
+                drawMovingBars(lst, i, i+1, w)
+    
+
+#Set up the initial list to have 40 random numbers:
+def initializeList(a):
+    for i in range(n):
+        a[i] = (n-1)*10*random()+10
+
+def drawMovingBars(lst, box_1_index, box_2_index, w):
+    # draw the boxes that are moving, with red outlines 
+    drawBox(lst, box_1_index, w, True)
+    drawBox(lst, box_2_index, w, True)
+
+    # get a mouse click
+    w.getMouse()
+
+    ## uncomment to: wait for .2 seconds (= 2 deciseconds)
+    #time.sleep(.2)
+
+    # redraw the boxes without red outlines 
+    drawBox(lst, box_1_index, w, False)
+    drawBox(lst, box_2_index, w, False)    
+
+
+#Draw a single box to the screen:
+def drawBox(a,i,w, isMoving):
+    # clear the space for bar i
+    barSpace = Rectangle(Point(i*10, 0), Point((i+1)*10, n*10))
+    barSpace.setFill("white")
+    barSpace.setOutline("white")
+    barSpace.draw(w)
+
+    # create a new bar with hight of a[i] 
+    bar = Rectangle(Point(i*10, 0), Point((i+1)*10, a[i]))
+    # set the colour of the bar to be a shade of blue
+    # the taller the bar, the lighter the blue.
+    bar.setFill(color_rgb(0,0,a[i]*(255/(n*10))))
+    
+    # set the thickness of the outline of the bar to 3 pixels
+    bar.setWidth(3)
+
+    # if the bar is moving, set the outline colour to red 
+    if isMoving:
+        bar.setOutline('red')
+    # otherwise set the outline colour to white
+    else:
+        bar.setOutline("white")
+
+    # draw the bar
+    bar.draw(w)
+
+
+#draw the portion of the list from start to stop:
+def displayList(a,w): 
+    for i in range(len(a)):        
+        drawBox(a,i,w,False)
+    
+#White out the window, so, we can start again:
+def clearScreen(w):
+    r = Rectangle(Point(0,0),Point(n*10,n*10))
+    r.setFill("white")
+    r.draw(w)    
+
+main()
+</pre>
+
+
+
+</div>
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+</div>

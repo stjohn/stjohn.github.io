@@ -1,0 +1,226 @@
+Organize the course around acquire, analyze, vis
+
+
+<ul>
+	<li>  Week 1:  Extracting data from CSV Files; Simple Visualizations; Demographics
+		<ul> 
+			<li> (0-30) Course overview; Introductions
+			<li> (30-40) Python refresher:  Python 2 vs. 3, lists			
+			<li> (40-50) Extracting Data from CSV Files;<br>
+			<a href="https://www.eia.gov/state/seds/data.cfm?incfile=/state/seds/sep_use/res/use_res_NY.html&sid=NY">NY energy usage</a>
+			<li> (50-1:00) Simple Visualizations with matplotlib; 
+			<li> (1:00-1:30) Classwork:  Simple graphing of NYC data
+			<li> (1:50-2:10) Intro to Demographics
+			<li> (2:10-2:25) Basic Statistical Tools: Tallies, Means, & Variance;
+			<li> (2:25-2:30) Wrap-up
+			<li> HW:  Growth in NYC Population; Plot neighborhood traits; Pick a neighborhood 
+		</ul>
+	<li>  Week 2:  Comparing Neighborhoods; More Simple Vis:  Plotting GIS Data, Histograms & Bubbleplots; Stats:  Correlation & Causation
+		<ul> 
+			<li> (0-5) Day Overview
+			<li> (5-35) Discuss HW 1's neighborhood demographics; When are two neighborhoods similar?  How do you measure similarity?
+			<li> (35-45) Viewing CSV Rows as vectors; Features of vectors
+			<li> (45-1:00) Simple Visualizations with matplotlib:  histograms & bubbleplots, Python Refresher:  tuples & dictionaries;			
+			<li> (1:00-1:45) Classwork:  Plot elevators or trashcans (something with GIS in CSV files).  Work through putting different features from excel file.
+			<li> Python Refresher: list comprehensions & zip (need this now or later?)			
+			<li> (2:25-2:30) Wrap-up
+			<li> HW:  Pick 10 neighborhoods that were similar to yours 1910.  What does your neighborhood look like?  How does it compare to your comparison group?  Plot elevators or trashcans (something with GIS in CSV files)
+		</ul>	
+	<li>  Week 3:  Regular expressions:  finding patterns in data;
+		<ul> 
+			<li> (0-5) Day Overview		
+			<li> Statistics: 
+			<li> Analysis: 
+			<li> Python refresher:  dictionaries, tuples, lists, 
+			<li> Classwork:  
+			<li> (2:25-2:30) Wrap-up
+			<li> HW:
+		</ul>	
+	<li>  Week 4:  Scraping data from websites;  regex and beautifulSoup; 
+
+	<li>  Week 5:  Introduce numpy, bokeh	
+	<li>  Week 6:  Mapping Formats:  ERSI, JSON, KML
+	<li>  Week 7:
+	<li>  Week 8:
+	<li>  Week 9:
+	<li>  Week 10:
+	<li>  Week 11:
+	<li>  Week 12:
+	<li>  Week 13:  Practice presentations
+	<li>  Week 14:	Class trip/Bonus Lecture
+</ul>
+
+Organize the course around 3 or 4 questions that motivate the tools:
+<ul>
+	<li> my neighborhood:  who lives there? where did they come from?  where do they work?  how do they commute?  weather data?  crime data?  311 data?  what does it look like today and how did it get that way?  
+	
+	<li> the future of my neighborhood:  who will live there (look at building permits, migration rates, birth rates)?  what will it look like in the future?
+
+	<li> the future of NYC:  where is the city growing (building permits, census data)?  where can more people live (transit, flood plains, current density)?	
+	
+	<li> shaping the future:  where should more housing be added?  commute times in the region?  utilities capacity?  transit/road capacity?  school capacity?  where should transit expand? what should happen with the L train? where should citibike expand? where should schools expand?     
+</ul>
+
+CS Topics:
+<ul>
+	<li> aquiring data:  start with cleansed data in spread sheets, move to scraping websites (beautifulSoup, json), and finish with a crash course in SQL
+	<li> analyzing data:  when is an observed pattern statistically meaningful and when is it a coincidence?
+	<li> visualizing data:  graphing statistical data, geographic maps (linked hover maps with bokeh), abstracting to trees and graphs
+	<li> side topics:  tools to share, github, webpages, etc.
+</ul>
+
+
+Homework Ideas:
+
+<ol>
+	<li> HW #1:  
+NYC Historical Data:  Start with graphing percentage by borough from 1790 to 2010.  Use the dataset of New York City's historical population to answer the following: Which borough's change in population is most closely correlated to the city's change in population? Justify your answer. Use the textbook's code to compute the correlations between each borough and the overall city populations. Include all correlations that you computed in your written answer. For the second part include a plot of the borough population that most closely 
+correlates and the city's population from 1790 to 2010. Make sure to include in 
+the title of your plot the date plotted. 
+
+<p>
+Look at median age across boroughs, unemployment rate, use NYCEDC data? or NYFedhttps://www.newyorkfed.org/research/data_indicators (NY Fed)
+
+<p>
+Pick a zip code/census track for which there's data in 1910 (most of NYC, not so much for other areas).  What are the indicators listed in 1910 census. 
+
+<p> A question that uses dictionaries to store info that's plotted...
+
+	<li> HW #2:  
+	
+traditional scatter plot 	
+<p>
+Plot lat/lon of all trash cans in city?  all elevators (start with matplotlib of random bubbles scatter plot) or wifi?	
+
+<p>	
+scatter plot accidents, noise complaints for a zip code<br>
+more scatter plot questions:  with one that leads into an essay<br>
+anscombe's quartet, koalas<br>
+
+<p>
+Pick a metric to compare (easy one is distance to Federal Hall, but could also choose, main occupation, density, etc) and pick the 10 other census tracts that are most similar to Federal Hall.  Make a CSV file with their indicators.  (Hint: sort the excel spread sheet on your key indicator).  Submit these plus yours.
+
+<p>
+what does my neighborhood look like?  what is the most similar neighborhood in another borough?  what was the most similar in 1900, 2000, and today?  
+how did you measure similarity:  ethnicity, transit, economic activity, growth, 
+
+
+	<li> HW #3:
+regex-- names across NYC<br>
+looking for patterns<br>
+analyzing nudge data sets for transit-- NYC or London? <br>
+
+
+
+	<li> HW #4:
+Scraping data:  weather data from web, beautiful soup (builds on beautiful soup)
+
+	<li> HW #5:
+
+googlemaps python api
+
+
+
+</ol>
+
+
+<p>
+From Queens 2016 seminar:
+Housing a Growing NYC Population
+The Future of Auto Transportation in the City
+Protecting the City Against the Next Superstorm
+Getting Rid of Our Waste
+The Future of My Neighborhood
+
+NYC Population Predictions:
+https://www1.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/projections_report_2010_2040.pdf
+
+
+
+
+
+http://www.tandfonline.com/doi/figure/10.1080/00045608.2015.1113118?scroll=top&needAccess=true
+
+
+
+For voronoi diagrams:
+
+http://stackoverflow.com/questions/27548363/from-voronoi-tessellation-to-shapely-polygons
+
+https://github.com/nlpenguin/py_geo_voronoi
+
+http://scipy.github.io/devdocs/generated/scipy.spatial.Voronoi.html
+
+https://mapzen.com/data/metro-extracts/metro/new-york_new-york/
+
+
+NYC Data Feeds:
+http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#Bikes
+
+https://www.citibikenyc.com/system-data
+
+
+
+Colors for icons:
+http://python-visualization.github.io/folium/module/map.html#folium.map.Icon
+
+
+US with pop by zip:
+https://blog.splitwise.com/2013/09/18/the-2010-us-census-population-by-zip-code-totally-free/
+
+NYC zip:
+http://catalog.opendata.city/dataset/nyc-zip-code-tabulation-areas
+		
+Populations by community districts:
+https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2/data
+
+Baruch:  community districts:  http://www.baruch.cuny.edu/nycdata/population-geography/maps-boroughdistricts.htm
+
+Can't find police stations or firehouses GIS already scraped:
+	<li> Police station locations
+</ul>
+Additionally, we will need the police districts as a geoJSON file:
+<ul>
+	<li> Police Districts (map-- download as JSON)-- scroll down the page
+	https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page
+	
+	
+http://www1.nyc.gov/site/planning/plans/zqa/zoning-for-quality-and-affordability-initial.page
+	
+New Zoning:
+
+http://www1.nyc.gov/assets/planning/download/pdf/plans-studies/zqa/contextual-vs-non-contextual.pdf
+	http://www1.nyc.gov/site/planning/plans/zqa/zoning-for-quality-and-affordability-3.page#diagram
+	
+	http://www1.nyc.gov/site/hpd/developers/inclusionary-housing.page
+	http://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page	
+
+
+
+US with pop by zip:
+https://blog.splitwise.com/2013/09/18/the-2010-us-census-population-by-zip-code-totally-free/
+
+NYC zip:
+http://catalog.opendata.city/dataset/nyc-zip-code-tabulation-areas
+		
+	
+<div>
+
+Use for weather data
+
+load into a csv and then graph with pandas
+
+
+Inside AirBnb
+
+http://data.beta.nyc/dataset/inside-airbnb-data
+
+Census data for housing:
+http://data.beta.nyc/dataset/nyc-2011-housing-and-vacancy-survey
+
+
+For transit discussion:
+http://www.wnyc.org/story/why-metrocards-are-paper-towels/
+
+</div>	
+	

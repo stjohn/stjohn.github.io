@@ -1,0 +1,94 @@
+<title>CS 410, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Computer Science 410</h1>
+<h2>Database Theory<br>
+Boise State University, Spring 1999</h2>
+
+<hr>
+<b>Instructor:</b> Dr. Katherine St. John<br>
+<b>E-mail:</b> <a href="mailto:stjohn@cs.idbsu.edu">stjohn@cs.idbsu.edu</a><br>
+<b>Phone:</b> 426-1086 <br>
+<b>Office:</b> MG 218A <br>
+<b>Office Hours:</b> Mondays and Wednesdays 10-11:30, Tuesdays 4-6 (when
+there's no departmental colloquium), 
+and by appointment.<br>
+<b>Lecture:</b> Mondays and Wednesdays 4-6pm in MG118<br>
+<hr>
+
+<h3>Announcements:</h3>
+<ul>
+    <li> <a href="hw6.html">Homework 6</a> is now available.  It
+    	relies on several chapters from Abiteboul, Hull, and 
+	Vianu, which are available from Halaulani, in the
+	department office.
+
+    <li> Some of the more bizarre system problems this semester:
+    <ul>
+    	<li> Passwords that are longer than 8 characters are allowed
+		on <font color="grey">onyx</font> but cause 
+		problems when propagated to the linux boxes.<br>
+		Solution: Use shorter passwords.
+	<li> The informix scripts count on undefined shell variables
+		being intepreted as null. <br>
+		Solution: Remove the line:
+		<pre>set -u</pre>
+		from your .profile.  This line is included in the 
+		default .profile that comes with your account.
+	<li> Running the database gives a read error when trying to
+		connect.<br>
+		Solution: This problem is related to the setup of
+		Informix on our system.  We're using NFS to share
+		onyx's disk between the linux boxes (and thus 
+		avoiding maintaining 5 separate copies of Informix).
+    </ul>
+
+    <li> There are some problems with Homework 4. Thanks to John for
+    	pointing them out!.  Most are small (but very annoying)
+	and involve idiosyncrasies with this version of Informix.
+	A <a href="hw4.html">new version</a> of the homework is 
+	now available.
+	My apologies for those
+	of you who have struggled through the problems!<br>
+	<font color="red">The deadline for the Homework will be extended until 
+	midnight, Friday, 9 April.</font>
+
+    <li> Informix SQL is now available on the linux machines
+    	in MG216.  Here's some <a href="isql.html">directions</a>
+	on how to use it.  I'm still writing up some extra
+	instructions on installing it on your own linux system
+	(the beginning of it is <a href="isql.html">here</a>).
+	
+</ul>
+
+<h3>Handouts:</h3>
+<ul>
+    <li> <a href="syllabus.html">Syllabus</a>
+    <li> <a href="hw1.html">Homework 1</a> (due 5 February) 
+    <li> <a href="hw2.html">Homework 2</a> (due 19 February) 
+    <li> <a href="hw3.html">Homework 3</a> (due 19 March) 
+    <li> <a href="hw4.html">Homework 4</a> (due 7 April) 
+    	<font color="red">Revised: 28 March 1999</font>
+    <li> <a href="hw5.html">Homework 5</a> (due 23 April) 
+    <li> <a href="hw6.html">Homework 6</a> (due 7 May) 
+</ul>
+
+<h3>Useful Links:</h3>
+<ul>
+    <li> <a href="http://www-db.stanford.edu/~ullman/fcdb.html">Textbook's
+    	page</a> (contains answers to starred exercises in the book)
+    <li> <a href="http://www.odmg.org">Object Data Management Group page</a>
+    	contains the standard for ODL.
+    <li> <a href="http://www.informix.com">Informix Webpage</a> includes
+    	free SQL for linux, FAQ's and other documentation.
+</ul>
+
+</body>
+</html>
+
+

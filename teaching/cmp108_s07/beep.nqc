@@ -1,0 +1,23 @@
+//beep.nqc-- Wait for a message, then beep that many times
+
+
+#define WAIT_TIME	50	//Time between clicks
+
+task main() 
+{
+
+    //Make sure there's no messages left over from earlier:
+    ClearMessage();	
+
+    //Wait until a new message is sent:
+    until( Message() != 0);
+
+    int i;
+    for (i = 0; i < Message(); i++)
+    {
+	PlaySound(SOUND_CLICK);
+	Wait(WAIT_TIME);
+    }
+}
+
+

@@ -1,0 +1,253 @@
+<title>Hints on Using Unix</title>
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+
+<h1>Hints on Using Unix</h1>
+
+<h2>Introduction</h2>
+
+This document is intended to familiarize a unix novice with
+department's
+computers (i.e. <font color="green">emerald</font> for CS 125
+and <font color="gold">topaz</font> for CS 117). 
+The student is assumed to be sitting in front of a terminal 
+in MG122 for CS 125 and in MG110 for CS 117.
+
+<p>
+The terminals will be reconfigured, so
+that you will be able to work in both rooms.  Terminals with
+the old configurations are "hard-wired" to either 
+<font color="green">emerald</font> 
+or <font color="gold">topaz</font>.  For these, you will see
+the name of the computer in the login window, and you can 
+follow the directions below.
+
+<p>
+For the terminals with the new configuration, you need to
+first select your "host" (<font color="green">emerald</font>
+for CS 125) from the list.  You may need to scroll down the
+list to find it.  Once selected, you can follow the directions
+below.
+
+
+<h2>Login</h2>
+
+If necessary, turn on your terminal and wait for it to warm
+up.
+<p>
+You should see a prompt asking for your login name and
+password. Type these carefully, or the computer won't
+recognize you. Don't forget to terminate your input with a
+carriage return, by pushing the <i>return</i> key. In
+general, after you type a command you have to push the
+return key.  Otherwise, the computer waits for you to type
+more characters.
+<p>
+(If you're on a graphics terminal or workstation,
+eventually, a window will appear. Point at it, with the
+mouse, then click the left mouse button to select the
+window.)
+
+<h2>The Shell Prompt</h2>
+
+Next, you should see a $, which is the
+<i>shell prompt</i>.  A shell is a program that
+executes unix commands for you.  You type a command at the
+prompt, the shell executes the command for you, and prompts
+you for another command. If your prompt is different, don't
+worry.
+
+<h2>Directories</h2>
+
+unix stores data in files, and it stores files in
+directories. The unix directory structure is like a
+tree, with branches and a trunk.  Each branch is named. A
+directory name is a slash-separated sequence of branch
+names. For example:
+<pre>
+    /home/faculty/stjohn
+</pre>
+is the name of the directory in which I store my files
+directories.
+<p>
+To determine the name of your directory, ask the shell to
+display (print) your working directory, with the command
+pwd (the $ is the prompt, so don't type it):
+<pre>
+    $ pwd
+</pre>
+<p>
+To make a new directory, you use the command mkdir
+followed by the name of your new directory.  Make a
+directory to hold the files for your first assignment
+by typing:
+<pre>
+    $ mkdir p1
+</pre>
+To change directories to the one named p1, you type
+<pre>
+    $ cd p1
+</pre>
+If you type cd by itself (not followed by a directory
+name), you will return to your home directory.
+
+<h2>Changing Your Password</h2>
+
+To change your password to something somewhat rememberable,
+type:
+<pre>
+    $ passwd
+</pre>
+You are then prompted to change your password.  Choose a
+password with the following characteristics:
+<ul>
+<li>  at least six characters long
+<li>  at least two letters
+<li>  at least one nonletter
+<li>  something you won't forget
+</ul>
+
+<h2>Manual Pages</h2>
+
+unix has hundreds of commands. To see the documentation for
+a command like ls, use the man command:
+<pre>
+    $ man ls
+</pre>
+Notice that man uses a pager like more,
+which is actually named less. Press the ``q'' key
+to quit.
+
+<h2>Text Editing</h2>
+
+When you write your own programs, you need to create
+your own source files. A source file is created and changed
+with a program called a text editor. There are several text
+editors to choose from. I like vi or gvim.  vi is available
+on every unix system.  gvim is a graphics version that 
+contains on-line help that extends vi.  
+To use gvim, type:
+<pre>
+    $ gvim test.file
+</pre>
+To use vi, type:
+<pre>
+    $ vi test.file
+</pre>
+To use vi, you need to type the letter ``i'' to insert text
+into your file.  When you are done inserting text, or want
+to stop to change something, you type the ESC key.  When
+you are not in ``inserting'' mode, you can use the arrow keys
+to move around the text you have just written.  To save your
+file, you type :w and to quit you type :q .  There are many
+more things you can do in vi, but these are the essentials
+to get you started.
+<p>
+Another editor is emacs.  It has 
+on-line help and a built-in tutorial. To edit files, execute
+the following command:
+<pre>
+    $ emacs &
+</pre>
+
+<h2>Printing Files</h2>
+
+To print the content of a file on a printer, you must know
+the printer's name.  There are 2 line printers <tt>pr1</tt>
+in MG 122 and <tt>pr2</tt> in MG 117.  There will also be a
+laser printer (yet to be named). 
+To print the content of test.file on
+pr1, type:
+<pre>
+    $ pr test.file | lpr -P pr1
+</pre>
+The program pr formats the content into pages, the
+| <i>pipes</i> the formatted content to
+lpr, and lpr prints it. -P
+option tells lpr which printer to use.
+The printer in MG 110 is named pr2.
+
+<p>
+To print from Netscape, you must use the laser printer. 
+Until the laser printer is installed, you can print Netscape
+documents in the Multipurpose
+Classroom Facility general computer
+lab or on your home machine.
+
+<h2>Electronic Mail</h2>
+
+The best way to contact me is via electronic mail. Practice
+by sending me a message now. Do not indent the message with
+spaces or tabs. 
+<pre>
+    $ mail stjohn
+    Subject: A test
+    Hello, I'm in your class and wanted
+    to try out the email program. 
+    Thanks.
+    .
+    Cc: <i>your-login-here</i>
+</pre>
+The command mail composes a message from the lines
+read from the keyboard, up to a line consisting of only a
+dot. It then mails the message to the user named on the
+command line, in this case user stjohn. 
+The Cc: line allows you to send copies
+of the message to other users, such as yourself.
+<p>
+When you receive mail (perhaps from me), execute
+mail to read your mail:
+<pre>
+    $ mail
+</pre>
+<p>
+You can also use the mail feature of Netscape (if you are
+at a graphics termimal or workstation).  To do so,
+you will need to alter the Mail Preferences.  If you have
+used Netscape mail on other machines, it works the same as 
+on other machines.  If you have not used it and would like to, 
+please ask for help in setting it up.
+
+<h2>Web Pages</h2>
+
+All handouts for this class are available on the World Wide
+Web.  If you are at a graphics terminal, execute the command:
+<pre>
+    $ netscape &
+</pre>
+to bring up Netscape, a graphical based web browser.  The
+home pages for my classes can be found at:
+<br>
+<a href="http://math-cs.idbsu.edu/~stjohn/teaching/">
+http://math-cs.idbsu.edu/~stjohn/teaching</a>.  You will 
+access this page to retrieve homework and annoucements for
+class, so, you should "bookmark" the page 
+by selecting "Add Bookmark" from the Bookmark menu.  To
+return to this page in the future, you can use the Bookmark
+menu, instead of typing in the URL above.
+
+<p>
+If you are at a text terminal, you can use the web browser,
+lynx.  To use lynx, you type the command:
+<pre>
+    $ lynx http://math-cs.idbsu.edu/~stjohn/teaching
+</pre>
+
+<h2>Log Out</h2>
+
+To log out on a text terminal (or of a window on a graphics terminal), use the exit command:
+<pre>
+    $ exit
+</pre>
+
+On a graphics terminal, to log out of the computer, 
+point at the root window (i.e.,
+the background), click the left mouse button, and select
+``Exit FVWM'' (the window manager).
+<b>Don't forget to log out when you are done.</b>
+
+<hr>
+<i>(This document was modified from one originally written
+by Jim Buffenbarger.)</i>
+</html>
+

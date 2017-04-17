@@ -1,0 +1,4 @@
+insert into customer (first, last) values ('Bill','De Blasio')
+insert into customer (first, last) values ('Mike','Bloomberg')
+insert into customer (first, last) values ('Rudy','Giuliani')
+insert into customer (first, last) values ('David','Dinkins')

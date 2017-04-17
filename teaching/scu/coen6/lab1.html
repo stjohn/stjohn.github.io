@@ -1,0 +1,266 @@
+<title>Lab 1 for Computer Engineering 6, Santa Clara University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1>Laboratory 1</h1>
+<h1>Computer Engineering 6</h1>
+<h2>Introduction to Computing</h2>
+<h2>Winter 1998</h2>
+<hr>
+<b>Getting Started with Unix and the Gnu C++ Compiler</b>
+<hr>
+
+<h3>Login and Password</h3>
+
+	As a student in the Engineering School, you have an account
+	for the machines in the Design Center.  Your login is usually
+	your first initial followed by the first 7 letters of your
+	last name.  Your initial password is usually set to your
+	student ID number or your social security number (not
+	including the dashes).  For example, if your name was Jean
+	Potatohead and your social security number was 123-45-6789,
+	then your login would be jpotatoh and your initial password
+	would be 123456789.
+
+	<p> As a student at Santa Clara University, you are entitled
+	to accounts on the Alpha mainframe ("scuacc") and on the
+	Novell Groupwise mail system ("mailer").  While the account
+	names on these machines will be similar to your account in
+	the Design Center, these are separate accounts.  Changing
+	your password on these accounts will not change the password
+	for your Design Center account.
+
+	<p> Find an empty HP computer in the Design Center, and type
+	your login and password at the prompts.  If this is the first
+	time you have used one of the HP computers running CDE
+	(Common Desktop Environment) in the lab, then you will first
+	see an introduction to the Design Center.  Read the message,
+	and dismiss the window by clicking on the button at the
+	bottom of the window.  Your screen should now have a strip of
+	icons along the bottom of the screen.  Towards the right end
+	of the strip, there is an icon with a picture of a computer
+	with a large "X" on the screen.  Click on that icon, and then
+	choose "Local XTerm".  This will bring up a Unix window, in
+	which you can enter the Unix commands described below.  If
+	you have problems, contact the TA or lab assistant.
+
+<h3>Changing Passwords</h3>
+
+	You should change your password on a regular basis.  Choose a
+	password you can easily remember, but which no one else can
+	guess.  Do not use names or words, and use at least one
+	non-alphabetic character.  To change your password, type:
+
+	<pre>   passwd</pre>
+
+	and press the return key.  The computer will ask you for your
+	old password and to type your new password twice.  On some
+	machines, the new password might not take affect until
+	midnight.
+
+<h3>Logging Out</h3>
+
+	When you finish today, you should "log off" the machine.  
+	Logging off closes all your windows and keeps others from
+	accessing your files.	
+	To do this on the HP Machines, you click on the "exit"
+	icon on the far right of the icon strip.  
+
+
+<h3>Using Unix</h3>
+
+	For this class, we will be using machines that run the Unix
+	operating system.  We'll begin with some basic Unix
+	commands.  Your account contains files and directories that
+	contain either files or other directories.  Directories, like
+	file folders, are used to organize files so they can be more
+	easily found.  They are not required (just like it's not
+	required that the stacks of papers on your desk be in file
+	folders), but they are very useful.  To list all the files in
+	the current directory, you type:
+
+	<pre>   ls</pre>
+
+	Try it now.  Even if you have not used this account before,
+	there should be some files put there by the system
+	adminstrators to get things started.
+
+	<p> You should keep all of your files for this class in a
+	subdirectory called coen6.  To create this new directory,
+	type:
+
+	<pre>   mkdir coen6</pre>
+
+	After doing this, list your current directory again (ls).
+	You should see in that list your new directory coen6.  To
+	work in that directory, we need to change directories, by
+	typing:
+
+	<pre>   cd coen6</pre>
+
+	You should also have a subdirectory for each lab and
+	homework.  Create a directory for today's lab, by typing:
+
+	<pre>   mkdir lab1</pre>
+
+	and change directories to lab1.
+
+	<p> To check which directory you are in, there is a Unix
+	command to print the working directory, called pwd.  Check to
+	see that you are in the lab1 directory with pwd.  It should
+	print something that ends with "/coen6/lab1".
+
+<h3>Using Gnu C++</h3>
+
+	Now were are ready to compile and run a C++ program.  We will
+	use the Gnu C++ Compiler, called g++, for this, and the HP
+	text editor to enter the information.  You can bring up the
+	editor by clicking on the icon towards the right of the icon
+	strip (with the picture of a calculator and other tools) 
+	and choosing "Text Editor".   To use the editor,
+	click on the window and start typing.  If you encounter
+	difficulties, ask the TA to show you how to use the editor.
+
+	<p> Our first program will be the "hello, world" we discussed
+	in lecture.  Each program should start with a comment
+	containing the assignment name (e.g. "lab 1, part 1" or "hw
+	1, problem 4"), the author, their e-mail address, and the honesty
+	pledge, as well as a brief description of what the program
+	does.  Using the editor, type in the following program,
+	replacing your name and e-mail address for Jean Potatohead's
+	name and address.
+
+<pre> #include &lt;iostream.h&gt
+
+// Laboratory Exercise 1, Part 1 ("hello world")
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+//
+// I, Jean Potatohead, pledge that this program in my own independent
+// work and conforms to the academic honor code.
+//
+// This program prints "hello world" to the screen.
+
+main()
+{
+    cout &lt&lt "hello world" &lt&lt endl;
+}
+</pre>
+
+	After typing this in, save it to a file, called hello.cpp, in
+	your lab1 directory.  To save the file, choose the "Save"
+	option from the "File" menu at the top of the window.  In the
+	dialog box, click on coen6 (to choose your coen6 directory)
+	and then click on update.  Next, click on lab1 (to choose
+	your lab1 directory) and then click on update.  In the box
+	for filename, type "hello.cpp" (without the quotes).  We add
+	the ".cpp" at the end of the file to indicate that it's a C++
+	program.  Other extensions used to indicate that a file is a
+	C++ program include ".C", ".cc", ".cxx", and ".g++".
+
+	<p> To compile your program, type (in the Unix Window):
+
+	<pre>   g++ -Wall hello.cpp -o hello</pre>
+
+	What does this line do?  The "g++" at the beginning of the
+	line asks the computer to run the Gnu C++ compiler.  The
+	"-Wall" is a switch to the compiler that asks it to list all
+	warning messages that the compiler generates.  Warning
+	messages often indicate programming errors.  In this class,
+	no program will be considered correct if it generates warning
+	messages.  In the middle of the line is the name of the file
+	("hello.cpp") that we are compiling.  At the end, is another
+	switch, "-o hello", that tells the compiler to put the
+	results (the object code) of the compilation in the file
+	"hello".  If we leave off this last switch, the compiler
+	places the results in a file called a.out.  Since we're going
+	to compile more than one program, it is much more useful to
+	put the object code in a file with a meaningful name.
+
+	<p> To compile another program, we just change the name of
+	the file and the location for the object code.  For example,
+	if we have a C++ program in the file, me.cc, then to compile,
+	you type:
+
+	<pre>   g++ -Wall me.cc -o me </pre>
+
+	<p> If there are errors in your program, the computer will
+	print them to the screen.  Before you can run your program,
+	you must fix all the errors.  If you encounter difficulties,
+	ask the TA for help.  If the g++ command returns without
+	messages, your compilation has been successful, and you can
+	run your program.
+
+	<p> To run a program, you type the filename of the object
+	code.  So, for our hello program, you would type:
+
+	<pre>   hello</pre>
+
+	The computer should then print "hello world" to the screen.
+
+<h3>Printing Files and Capturing Output</h3>
+
+	To print your program, hello.cpp, to the printer in the
+	Design Center, you type:
+
+	<pre>   lp hello.cpp</pre>
+
+	To print a copy of the interaction between you and the
+	computer when you run the program, you first need to capture
+	this interaction to a file.  To do this, you must type a
+	special command before running your program, and another
+	after.  For example, if you would like to capture the output
+	of hello.cpp to the file hello.out, you would type:  
+
+<pre> 	
+   script hello.out 
+   hello
+   exit    </pre>
+
+	<p> You can then print the file hello.out using the lp
+	command:
+
+	<pre>   lp hello.out    </pre>
+
+
+<h3>What to Turn In</h3>
+
+	Following the above directions, create a program that says
+	"goodbye world" and does nothing else.  Save the C++ program
+	in a file called bye.cpp.
+
+	<p> In the future, you will have to turn in an electronic
+	version of your work.  The second lab will cover how to do
+	this.  For now, you need only turn in a printed version of
+	the program and a captured program interaction.
+
+	<p> Before leaving the lab, you should give the TA:  
+
+	<ul>
+
+		<li> a printout of the file hello.cpp, with the
+			program header comment correctly filled in
+			(with your name and e-mail) and all syntax
+			errors removed.
+
+		<li> a printout of the interaction between you and
+			the computer when the hello program is run
+			(e.g. a printout of hello.out).
+
+		<li> a printout of the file bye.cpp, with the program
+			header comment correctly filled in (with your
+			name and e-mail) and all syntax errors
+			removed.
+
+		<li> a printout of the interaction between you and
+			the computer when the goodbye program is run
+			(e.g. a printout of bye.out).
+
+	</ul>
+
+	If you finish the lab early, you should use the rest of the
+	time to start the homework.
+

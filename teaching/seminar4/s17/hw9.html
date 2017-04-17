@@ -1,0 +1,107 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #9, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #9</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Voronoi Diagrams; Commuting Costs<br>
+<b>Deadline:</b>  Wednesday, 19 April 2017, 11:59pm 
+</div>
+
+
+
+
+
+<div>
+<h3>New York City Open Data</h3>
+
+We will use data from <a href="https://data.cityofnewyork.us/">OpenData NYC</a>.
+Download the files in CSV format:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49/data">NYC Subway Locations</a> (we have used this dataset previously in <a href="hw7.html">Homework 7</a>)</li>
+	<li> <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">Trash Basket Locations</a> (we have used this dataset previously in <a href="hw5.html">Homework 5</a>)</li>
+	<li> <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2/data">Community District Boundaries</a>:  scroll down and download the geoJSON file.</li>
+	<li> <a href="https://data.cityofnewyork.us/City-Government/New-York-City-Population-By-Community-Districts/xi7c-iiu2/data">CD Populations</a>:  included since it is used as a CSV in the sample program, but not part of a submitted program.</li>
+	
+</ul>
+
+<p>
+The <a href="http://data2go.nyc">Data2go</a> project has collected an impressive array of data about New York City.  We will use their data that has been aggregated by community districts.</p>
+<ul>
+	<li> <a href="http://data2go.nyc">Data2go</a>:  At their website, click on the "Download" menu.  Fill out the short form (for email, use one with a CUNY domain) and download all indicators from the first menu (the only option is .xslx file).  After downloading, use your favorite spreadsheet program to export the CD sheet as a CSV file.</li>
+</ul>
+
+</div>
+
+
+
+<div>
+<h3>Assignment</h3>
+
+<ul>
+
+	<li> The city follows the <a href="http://www1.nyc.gov/site/planning/plans/urban-design-principle/urban-design-principle.page">urban design principles</a> for planning the future of the city of New York (see presentation and bulleted principles on webpage).  Choose a public space in your favorite neighborhood.  Include an image of the space as it is now.  Using the principles discussed above, illustrate how you would redesign the space to improve the livability and urban experience in that space.  Justify your changes in terms of the principles above or the readings for this week.
+
+			<ul>
+			<li> #1:  Submit a <b>.pdf</b> file that includes the image of the space as it is now and a detailed description of your proposed changes.  
+			</ul>
+	<br>
+	</li>
+	<li> Make a Voronoi diagram of the <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49">NYC subway stations</a> (see <a href="hw7.html">Homework 7</a> for data and <a href="cw9.html">Classwork 9</a>) expected for April 2019 (i.e. no L train east of the East River).
+	<ul>
+			<li> #2:  Submit your program as a <b>.py</b> file.<br>
+			<li> #3:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>
+	<br>
+	</li>
+	
+	<li> Make a Voronoi diagram of at least 500 trash cans in the city (see <a href="hw5.html">Homework 5</a> for data and <a href="cw9.html">Classwork 9</a>).  Note that the running time of the Voronoi algorithm will make it difficult to compute this on the data set of all the trash cans in the city, so, we are restricting to 500-- you may choose them however you wish.
+	<ul>
+			<li> #4:  Submit your program as a <b>.py</b> file.<br>
+			<li> #5:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>
+	<br>
+	</li>
+	
+	<li> Make a choropleth map of New York City Community Districts, shaded by average life expendency. 
+	
+		<ul>
+			<li> #6:  Submit your program as a <b>.py</b> file.<br>
+			<li> #7:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>
+	<br>
+
+	<p> <i>Hint:  You may want to modify the program <a href="cd.py">cd.py</a> which relies on the city's geoJSON map of community district boundaries and community district populations.  As with the openNYC data, you will need to add extra rows for open space/parks since the geoJSON includes them, but almost all community district data files do not.  The sample program includes some useful functions for aligning data from different sources.</i>
+		
+	<p><i>The output of the sample program, <a href="cd.py">cd.py</a>, of population across community districts:</i>
+	<p>
+<iframe src="cd.html" style="width: 80%; height: 600px" name="internal"></iframe>
+
+	</li>
+
+	
+	
+
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Voronoi Diagrams Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  Voronoi Diagrams</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+
+<div>
+<h3>More on GeoJSON</h3>
+
+<p>In addition to directly reading in CSV files. Pandas has a built-in function for reading in JSON files.  Since many of the team projects will likely want to extract data from JSON files, this section has more on the format.  To illustrate the concepts, we will work through an example building a map of  CitiBike stations from their real-time data feed.
+
+<p>
+<iframe src="bikeLocations.html" style="width: 95%; height: 700px" name="internal"></iframe>
+
+<p>New York City's bike share program, CitiBike, provides extensive <a href="https://www.citibikenyc.com/system-data">data about their system</a>.  This includes a real-time feed of the status of stations in the system.  
+The feed is in JSON.  Here's the beginning of the file:
+
+<pre>{"executionTime":"2017-03-21 10:37:12 PM",
+"stationBeanList":[
+{"id":72,"stationName":"W 52 St & 11 Ave","availableDocks":18,"totalDocks":39,"latitude":40.76727216,"longitude":-73.99392888, "statusValue":"In Service",
+"statusKey":1,"availableBikes":19,"stAddress1":"W 52 St & 11 Ave","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:36:30 PM","landMark":""},
+{"id":79,"stationName":"Franklin St & W Broadway","availableDocks":31,"totalDocks":33,"latitude":40.71911552,"longitude":-74.00666661,"statusValue":"In Service",
+"statusKey":1,"availableBikes":0,"stAddress1":"Franklin St & W Broadway","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:33:23 PM","landMark":""},
+{"id":82,"stationName":"St James Pl & Pearl St","availableDocks":23,"totalDocks":27,"latitude":40.71117416,"longitude":-74.00016545,"statusValue":"In Service",
+"statusKey":1,"availableBikes":4,"stAddress1":"St James Pl & Pearl St","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:34:12 PM","landMark":""},
+</pre>
+
+<p>It begins with the time the file was created, followed by information about each station in a field marked <tt>stationBeanList</tt>.  Each entry is organized as dictionary with (key:value) pairs.  Let's look at the bean list entry for the first station:
+<pre>
+   {"id":72,
+   "stationName":"W 52 St & 11 Ave",
+   "availableDocks":18,
+   "totalDocks":39,
+   "latitude":40.76727216,
+   "longitude":-73.99392888, 
+   "statusValue":"In Service",
+   "statusKey":1,
+   "availableBikes":19,
+   "stAddress1":"W 52 St & 11 Ave",
+   "stAddress2":"",
+   "city":"",
+   "postalCode":"",
+   "location":"",
+   "altitude":"",
+   "testStation":false,
+   "lastCommunicationTime":"2017-03-21 10:36:30 PM",
+   "landMark":""}
+</pre>
+
+<p>
+Which ones are useful for making a map?  We need latitude and longitude.  For our popup message, it would also be good to give location as well as the number of bikes available and number of docks.  If we called the stationBeanList entry for a station, <tt>beanList</tt>, these entries would be:
+<pre>
+   beanList['latitude']
+   beanList['longitude']
+   beanList['name']
+   beanList['availableBikes']
+   beanList['totalDocks']
+</pre>
+
+
+<p>
+To build our map, we need to:
+<ol>
+	<li> Read in the json file.
+	<li> Create a map object (variable).
+	<li> Extract the location, name, and bike information for each dock.
+	<li> Add a marker for each dock to our map.
+	<li> Save our map.
+</ol>
+<p>
+
+<p>The new part is reading in a <tt>json</tt> file, but pandas has a built-in method to do that for us:  <tt>read_json()</tt>:
+<pre>stations = pd.read_json('https://feeds.citibikenyc.com/stations/stations.json')
+</pre>
+
+<p>The second step, creating a map object, is the same as before:
+<pre>
+mapBikes = folium.Map(location=[40.75, -73.99],tiles="Cartodb Positron",zoom_start=14)
+</pre>
+
+<p>Extracting the information from each row has an added level, since the information is stored in the dictionary, <tt>stationBeanList</tt>.  To make the lines more readable, we will save <tt>row['stationBeanList']</tt> as the variable <tt>beanList</tt>.  The rest of the <tt>for</tt> is the same as previous prorgrams:
+
+<pre>
+for i,row in stations.iterrows():
+    beanList = row['stationBeanList']
+    lat = beanList['latitude']
+    lon = beanList['longitude']
+    name = beanList['stationName'] + ": " + str(beanList['availableBikes']) + " bikes available of " + str(beanList['totalDocks']) + " total bikes"
+    print(name)
+    if beanList['statusValue'] == 'Not In Service':
+        name = beanList['stationName'] + ": Not In Service"
+        i = folium.Icon(color='lightgray')
+    else:
+        name = beanList['stationName'] + ": " + str(beanList['availableBikes']) + " bikes available of " + str(beanList['totalDocks']) + " total bikes"
+        if beanList['availableBikes'] < 2:
+            i = folium.Icon(color='red')
+        else:
+            i = folium.Icon(color='green')
+    folium.Marker([lat,lon],popup = name,icon = i).add_to(mapBikes)
+
+
+#Create the html file with the map:
+mapBikes.save(outfile='bikeLocations.html')
+
+</pre>
+
+<p>Putting this altogether gives the python program, <a href="cbStations.py">cbStations.py</a>.
+
+<p>Note:  You can directly read from a URL, as we did in this program, or if you would like to work off-line, you can download the JSON file, save it locally, and use it as before.
+
+<h4>Challenges</h4>
+	<ul>
+		<li> Modify the program to only show a red marker if there are 0 bikes available (currently, it shows it for < 2).
+		<li> Modify the popup message to give the percent full the station is
+		(i.e. the percentage of docks full at a station).
+	</ul>
+	
+
+</div>
+
+
+<div>
+<h3>Voronoi Diagrams</h3>
+
+A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping access to public resources and transit.
+
+<p>Our first Voronoi diagram will be for libraries across the city (using the
+library data set from <a href="hw6.html">Homework #6</a>).
+Our map highlights the regions closest to each library:
+
+<p>
+<iframe src="libVor.html" style="width: 95%; height: 700px" name="internal"></iframe>
+
+<p>To make our map, we 
+<ol>
+	<li> First take library locations and calculate the Voronoi diagram (using the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html">scipy</a> package).
+	<li> While going row by row to get the library locations, add markers to the map (we're adding them as separate markers, not a MarkerCluster, since we don't want them to collapse when zooming out).
+	<li> Show the plot in a matplotlib window to make sure its working (note:  if you have a separate matplotlib window you may need to close it, since the rest of the program is waiting until it's done to continue).
+	<li> Then write out the locations as a geojson file (using the <a href="https://pypi.python.org/pypi/geojson">geojson</a>).
+	<li> Load the regions in as a geoJSON layer in folium.
+
+</ol>
+
+<p>If you are using anaconda (either spyder, idle3, or jupyter), the scipy and matplotlib packages are included.  To install geojson, type at a terminal window:
+<pre>
+	pip install geojson
+</pre>
+
+<p> The program, <a href="makeVor.py">makeVor.py</a>, is a bit rambling, but contains all the steps above (a better design would be to split into separate functions or files for the different tasks).  Try running it on the library dataset.  
+
+<p>Note that it does very well in dense regions but has odd behavior on the edges of the map since we didn't include in the <tt>.json</tt> file any point at infinity and didn't clip the maps to the city boundaries.  
+
+
+<h3>Challenges</h3>
+<ul>
+	<li> Make a Voronoi diagram of the <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49">NYC subway stations</a> (see <a href="hw7.html">Homework 7</a>.  Download as CSV and extract latitude and longitude from <tt>the_geom</tt> attribute.  Despite the name of the file suggesting that it's from 2010, the file contains the new Second Avenue Subway stops).
+	<li> Make a Voronoi diagram of the trash cans in your borough (see <a href="hw5.html">Homework 5</a> for data).  Note that the full data taxa is quite large, so, choose 500 or so trash cans.
+
+</ul>
+</div>
+
+
+
+<div>
+<h3>Project Teams</h3>
+
+<p>Time is set aside this class for teams to meet, as well as a short presentation of each team to the class of the status of their project.  
+The informal presentation should include a check list of what you have done and what still needs to be done as well as one visualization.
+
+</div>

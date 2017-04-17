@@ -1,0 +1,78 @@
+<title>Lab 6 for CMP 230-2, Fall 1999, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Laboratory Exercise 6</h1>
+<h2>CMP 230-2: Programming Methods I<br>
+Lehman College, City University of New York<br>
+13 October 1999</h2>
+
+<hr>
+
+Today's lab is on decisions and loops.  Reading 
+Chapter 3 in the textbook will make this lab easier.
+
+<h3>Mystery Output</h3>
+
+What does the following code fragment do?
+<pre>
+int i, j;
+for ( i = 0; i < 5 ; i++ )
+{
+    for ( j = 0; j < 5 ; j++)
+    {
+        if ( (i+j)%2 == 0 )
+        {
+            System.out.print("*");
+        }
+        else
+        {
+            System.out.print("=");
+        }
+        System.out.println();
+    }
+}
+</pre>
+
+To figure this out, put the above code in a program, compile,
+and run it.  What does the <tt>%2</tt> do?  How would the 
+output differ if the test condition in the <tt>if</tt> statement
+was changed to:
+<pre>
+if ( j%2 == 0 )
+</pre>
+Try it and find out.
+
+<h3>Stars and Stripes</h3>
+
+Modify your program from above, to print out:
+<pre>
+*****
+=====
+*****
+=====
+*****
+</pre>
+What did you change, and why?
+
+
+<h3>Submitting Your Lab</h3>
+
+Make sure that your program are written in 
+good style and have good documentation (include your name
+and the honesty pledge).  After demonstrating
+your programs to Professor St. John <b>and explaining why your
+programs work</b>, mail her copies
+at <a href="mailto:stjohn@alpha.lehman.cuny.edu">stjohn@alpha.lehman.cuny.edu</a>.
+
+<p>
+If there is still time left in the lab, work on 
+<a href="hw6.html">Homework 6</a>.
+
+</body>
+</html>
+

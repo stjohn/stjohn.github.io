@@ -1,0 +1,10 @@
+int i;
+
+task main() {
+  i = 0;
+  while (i < 10) {
+    PlaySound(0);
+    Wait(5 * i);
+    i += 1;
+  }
+}

@@ -1,0 +1,154 @@
+This is pdfTeX, Version 3.14159-1.00b-pretest-20020211 (Web2C 7.3.7) (format=pdflatex 2002.5.31)  26 AUG 2002 16:34
+**quiz0key.tex
+(./quiz0key.tex{/usr/local/teTeX/share/texmf.local/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, d
+utch, nohyphenation, loaded.
+(/usr/local/teTeX/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX/share/texmf/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/teTeX/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/teTeX/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/local/teTeX/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2001/11/29 v0.03i graphics/color for pdftex
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/teTeX/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 1996/11/03 v2.2b
+
+(/usr/local/teTeX/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 1997/09/17 v2.2e
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 133.
+))
+\c@theorem=\count88
+\c@definition=\count89
+ (./quiz0key.aux)
+\openout1 = `quiz0key.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+ (/usr/local/teTeX/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count90
+\scratchcounter=\count91
+\scratchtoks=\toks16
+\scratchdimen=\dimen105
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen106
+\nextbox=\box27
+\nextdepth=\dimen107
+\everyline=\toks17
+\!!counta=\count92
+\!!countb=\count93
+\recursecounter=\count94
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count95
+\nofMParguments=\count96
+\everyMPtoPDFconversion=\toks18
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+ (/usr/local/teTeX/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 1995/01/05 v2.2e AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+
+(/usr/local/teTeX/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 1995/01/05 v2.2e AMS font definitions
+)
+Overfull \hbox (29.01247pt too wide) in paragraph at lines 40--45
+/cmtt10@10.95pt/This can be done in several different ways. One way to prove th
+is is by induction
+ []
+
+
+Overfull \hbox (26.6066pt too wide) in paragraph at lines 46--50
+/cmtt10@10.95pt/When $/cmmi10@10.95pt/n /cmr10@10.95pt/= 1$/cmtt10@10.95pt/, th
+e left hand side evaluates to 1 as does the right hand side ($[] /cmr10@10.95pt
+/=
+ []
+
+
+Overfull \hbox (7.3861pt too wide) in paragraph at lines 87--89
+[]/cmtt10@10.95pt/Again, there are many different answers to this question. One
+ possible way to sort
+ []
+
+[1
+
+{/usr/local/teTeX/share/texmf/dvips/config/pdftex.map}{/usr/local/teTeX/share/t
+exmf.os/dvips/config/Ttbbold.map}{/usr/local/teTeX/share/texmf.os/dvips/config/
+wolfram.map}] [2] (./quiz0key.aux) ) 
+Here is how much of TeX's memory you used:
+ 1169 strings out of 30382
+ 14022 string characters out of 438881
+ 60226 words of memory out of 1000001
+ 4194 multiletter control sequences out of 10000+30000
+ 8773 words of font info for 34 fonts, out of 400000 for 1000
+ 54 hyphenation exceptions out of 1000
+ 25i,6n,24p,205b,223s stack positions out of 300i,100n,500p,50000b,4000s
+ 37 PDF objects out of 65536
+ 0 named destinations out of 20000
+ 0 words of extra memory for PDF output out of 65536
+</usr/local/teTeX/share/texmf/fonts/type1/b
+luesky/cm/cmsy8.pfb></usr/local/teTeX/share/texmf/fonts/type1/bluesky/cm/cmsy10
+.pfb></usr/local/teTeX/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/loca
+l/teTeX/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/local/teTeX/share/tex
+mf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/local/teTeX/share/texmf/fonts/type1/
+bluesky/cm/cmr8.pfb></usr/local/teTeX/share/texmf/fonts/type1/bluesky/cm/cmex10
+.pfb></usr/local/teTeX/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local
+/teTeX/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/local/teTeX/share/te
+xmf/fonts/type1/bluesky/cm/cmr10.pfb>
+Output written on quiz0key.pdf (2 pages, 50152 bytes).

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 4 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 4</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers linked lists.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+
+
+
+<ol>
+
+
+<li><b>Linked Lists</b> (30 points)
+
+<p>
+Using the singly-linked list done "by hand" from 
+<a href="http://leepoint.net/notes-java/data/collections/lists/simple-linked-list.html">Java Notes</a>
+as your base,
+add the following methods:
+<ul>
+	<li> insert a new word at the end of the list
+	<li> print out the first word from the list and remove it from the list
+	<li> add a new word at index <tt>i</tt>
+</ul>
+<p>
+Your program should demonstrate that these methods work by printing out the list after each 
+of these operations have been performed.
+
+<p>To analyze the running time of each method, include the following:
+<ul>
+	<li> code to time each method, in milliseconds, in the <tt>main()</tt> method (see previous
+		problem sets for examples).
+	<li> to slow down the methods (so we don't have to use such huge data sets for testing), add
+		to each method, <tt>Thread.sleep(1)</tt> for every time you look at an element of the linked
+		list.  This call will cause the program to wait for 1 millisecond before continuing.
+</ul>
+</p>
+<p>Submit your answer as a <tt>.java</tt> file via Blackboard.</p>
+
+<li><b>Test Cases</b> (20 points)
+
+<p>
+Calculate how long the following situations take:
+<ul>
+	<li> a list of 10 Strings, adding a new word at index 2
+	<li> a list of 10 Strings, adding a new word at index 5	
+	<li> a list of 100 Strings, adding a new word at index 2
+	<li> a list of 100 Strings, adding a new word at index 50	
+	<li> a list of 1000 Strings, adding a new word at index 2
+	<li> a list of 1000 Strings, adding a new word at index 500
+</ul>
+
+<p>
+Run each test 10 times and make a table with your average as well
+as the standard deviation for each algorithm.  Submit your table 
+via Blackboard.</p>
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+Using the table you created, answer the following questions:
+</p>
+<ul>
+	<li> Did the size of the list affect the running time for 
+	the first two methods? Why or why not?
+	<li> What affected the running time of the third method?  If
+	size of the list is fixed, is the running time constant for
+	this method?  If the index is fixed, is the running time constant
+	for this method?
+</ul>
+<p>Submit your answer via Blackboard.</p>
+
+
+
+<li><b>Order of Growth</b> (30 points)
+
+<p>For <b>each of the three methods,</b> analyze their order of
+growth.  That is, calculate a tight upper bound on their growth,
+written in "big-Oh" notation.  Explain and justify your answer.
+<p>Submit your answer via Blackboard.</p>
+
+
+</ul>
+
+
+</div>
+</body>
+</html>

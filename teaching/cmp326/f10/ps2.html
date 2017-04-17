@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 2 for CMP 326, Lehman College, CUNY, Fall 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;		
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say 1;
+			content: "2." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol ul li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+
+		ol ol li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+    </style>
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 2</h2>
+<h3>CMP 326: Programming Methods II <br>
+Lehman College, City University of New York<br>
+Fall 2010<br><br>
+</h3>
+
+<p>
+This problem set covers review material from Chapters 4-6.
+</p>
+
+
+<p>You should complete <b>100 points</b> worth of programs
+(with an additional 10 points extra credit possible). 
+</p>
+</div>
+
+
+
+<div>
+<ol>
+
+<li><b>Happy Faces</b> (5 points)
+
+<p>
+Modify the program from Listing 4.9 (available from the
+textbook or on Blackboard as <tt>MultipleFaces</tt> in 
+the source code zip file) to show 5 rows of 5 faces.
+</p>
+</li>
+
+<li><b>Space Counter</b> (5 points)
+
+<p>
+Exercise 4.9 (p 229):  Write a program that counts the 
+number of spaces in a string entered by the user.
+</p>
+</li>
+
+<li><b>Reverse Words</b> (10 points)
+
+<p>Problem 4.9 (p 232):  For all the following words, if you move the
+first letter to the end of the word, and then spell it backwards, you
+will get the original word:
+<pre>
+banana dresser grammar potato revive uneven assess
+</pre>
+Write a program that reads a word and determines whether it has
+this property.  Continue reading and testing words until you 
+encounter the word <tt>quit</tt>.  Treat uppercase letters as
+lowercase letters.
+</p>
+</li>
+
+<li><b>Star Triangle</b> (10 points)
+
+<p>Problem 4.13 (p 233): 
+Write a program that asks the user to enter the size of a 
+triangle (an integer from 1 to 50).  Display the triangle by
+writing lines of asterisks.  The first line will have one
+asterisk, the next two, and so on, with each line having
+ome more asterisk than the previous line, up to the number entered by the 
+user.  On the next line write one fewer asterisk and continue by decreasing the 
+number of asterisk until only one is displayed.
+<i>Hint:</i>  Use nested <tt>for</tt> loops; the outside
+loop controls the number of lines to write, and the inside
+loop controls the number of astericsks to display on a line.
+For example, if the user enters 3, the output would be:
+<pre>
+*
+**
+***
+**
+*
+</pre>
+
+</p>
+</li>
+
+<li><b>Purchase</b> (10 points)
+
+<p> Problem 5.6 (p 333):  Write a program that uses the 
+<tt>Purchase</tt> class in Listing 5.11 (also available on Blackboard)
+to set the following prices:
+
+<pre>
+Oranges: 10 for $2.99
+Eggs: 12 for $1.69
+Apples: 3 for $1.00
+Watermelons: $4.39 each
+Bagels: 6 for $3.50
+</pre>
+Then calculate the cost of each of the following five items and
+the total bill:
+<pre>
+2 dozen oranges
+3 dozen eggs
+20 apples
+2 watermelons
+1 dozen bagels
+</pre>
+
+</p>
+</li>
+
+<li><b>Automobile Class</b> (10 points)
+
+<p> Implement the <tt>Automobile</tt> class discussed
+at the beginning of Chapter 5 and in the powerpoint
+presentation for that chapter.  Your class should have:
+<pre>
+Data (instance variables):
+  amount of fuel
+  speed
+  licence plate
+  
+Methods (actions):
+  accelerate
+    How: Press on gas pedal.
+  decelerate
+    How: Presee on brake pedal.
+</pre>
+Include a driver program that instantiates several 
+objects of type <tt>Automobile</tt> and demonstrates
+the class.
+</p>
+</li>
+
+
+<li><b>MotorBoat Class</b> (15 points)
+
+<p>Exercise 5.7 (p 329): Implement a class <tt>MotorBoat</tt>
+that represents motorboats.  A motorboat has attributes
+for:
+
+<ul>
+  <li>The capacity of the fuel tank</li>
+  <li>The amount of fuel in the tank</li>
+  <li>The maximum speed of the boat</li>
+  <li>The current speed of the boat</li>
+  <li>The efficiency of the boat's motor</li>
+  <li>The distance traveled</li>
+
+</ul>
+The class has methods to
+<ul>
+  <li>Change the speed of the boat</li>
+  <li>Operate the boat for an amount of time at the current speed</li>
+  <li>Refuel the boat with some amount of fuel</li>
+  <li>Return the amount of fuel in the tank</li>
+  <li>Return the distance traveled so far</li>
+</ul>
+
+If the boat has efficiency <i>e</i>, the amount of fuel used
+when traveling at a speed <i>s</i> for time <i>t</i> is 
+<i>e x s^2 x t</i>.  The distance traveled in that time is <i>s x t</i>.
+</p>
+<p>
+Include a driver program that instantiates several 
+objects of type <tt>MotorBoat</tt> and demonstrates
+the class.
+</p>
+</li>
+
+<li><b>PersonAddress Class</b> (15 points)
+
+<p>Exercise 5.8 (p 330):  Implement a class <tt>PersonAddress</tt>
+that represents an entry in an address book.  Its attributes are:
+<ul>
+  <li>The first name of the person</li>
+  <li>The last name of the person</li>
+  <li>The email address of the person</li>
+  <li>The telephone number of the person</li>
+</ul>
+It will have methods to
+<ul>
+  <li>Access each attribute</li>
+  <li>Change the email address</li>
+  <li>Change the telephone number</li>
+  <li>Test whether two instances are equal based solely on name</li>
+</ul>
+Include a driver program that instantiates several 
+objects of type <tt>PersonAddress</tt> and demonstrates
+the class.
+
+</p>
+</li>
+
+
+
+<li><b>Pet Class</b> (10 points)
+
+<p> Problem 6.5 (p 434):  Using the class <tt>Pet</tt>
+from Listing 6.1 (and also available on Blackboard), write
+a program to read data for five pets and display the 
+following data:  name of smallest pet, name of largest
+pet, name of oldest pet, name of youngest pet, average
+weight of the five pets, and average age of the five
+pets.
+</p>
+</li>
+
+<li><b>Species Class</b> (15 points)
+
+<p>
+Problem 6.2 (p 434): Modfify the definition of the class <tt>Species</tt> in
+Listing 5.17 (and also available on Blackboard) by removing
+the method<tt>setSpecies()</tt> and adding the following
+methods:
+<ul>
+	<li>Five constructors:  one for each instance variable,
+	one with three parameters for the three instance variables,
+	and a default constructor.  Be sure that each constructor
+	sets all of the instance variables.</li>
+	<li>Four methods named <tt>set</tt> that can reset values:
+	one is the same as the method <tt>setSpecies()</tt> in Listing
+	5.16, and the other three each rest one of the instance
+	variables.</li>
+</ul> Then write a test program to test all the methods you
+have added.  
+</p>
+</li>
+
+<li><b>Red, White and Blue</b> (10 points)
+
+<p>
+Problem 6.15 (p 438):  Write the code for an applet that
+has three buttons labeled, <tt>Red</tt>, <tt>White</tt>, and
+<tt>Blue</tt>.  When a button is clicked, the background of
+the applet changes to the color named on the button.</p>
+</li>
+
+<li><b>Light</b> (10 points)
+
+<p>
+Problem 6.16 (p 438):  Create an applet <tt>Light</tt> that
+simulates a simple light.  Create one button labeled <tt>On/Off</tt>.
+As you click this button, the background color will change between
+<tt>DARK_GRAY</tt> and <tt>YELLOW</tt>.
+</p>
+</li>
+
+
+
+<!--
+P19. Write a class called PuzzlePiece. A puzzle piece will have a label which will be a number between 1 and 15 and the location of the puzzle piece (which will be the coordinates of the upper left corner). Your class should contain three constructors:
+
+    * a default constructor that sets the coordinates to (0,0) and the label to 0,
+    * a constructor that has a single argument that is assigned to label and sets the coordinates to (0,0), and
+    * a constructor that takes three arguments: the label, the x-coordinate, and the y-coordinate (in that order) and sets the values. 
+
+PuzzlePiece should contain a move method:
+
+    public void move(int dx, int dy)
+
+that changes the position by dx units in the x direction and dy units in the y direction. Finally, you should have a draw method:
+
+    public void draw()
+
+that draws a square containing the label, using the object's coordinates for the upper left corner.
+
+Write a second class called Program19 that uses PuzzlePiece and demonstrates its features. Submit this as program 19 using the electronic submission. Please call the file (and the class) Program19. Include an HTML file in the directory called Program19.html that displays your applet.
+
+P20. P6.18, p 287. Submit this as program 20 using the electronic submission. Please call the file (and the class) Program20. Your program should calculate the result to six digits after the decimal point. 
+-->
+
+
+
+
+
+</ol>
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

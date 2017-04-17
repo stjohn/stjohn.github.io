@@ -1,0 +1,74 @@
+<title>Graduate Algorithms, City University of New York </title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Notes for Randomized Algorithms Lecture</h2>
+<h2>CSc 72700: Analysis of Algorithms<br>
+Gradute Center, City University of New York<br>
+4 December 2001</h2>
+
+<hr>
+
+The hiring problem from CLR, Chapter 5 (second edition or class handout).
+
+The algorithm analysed in the book:
+<pre>
+HIRE-ASSISTANT(n)
+1  best = 0    //candidate 0 is a least-qualified dummy candidate
+2  for i = 0 to n
+3    do interview candidate i
+4       if candidate i is better than candidate best
+5          then best = i
+6               hire candidate i
+</pre>
+
+We're analysing <i>cost</i>, instead of running time as before.  
+Assume that interviewing has low cost C<sub>i</sub> and hiring is 
+expensive, C<sub>h</sub>.
+<ul>
+    <li> The total cost is (nC<sub>i</sub> + mC<sub>h</sub>), 
+	where n is the total number
+	of candidates and m is the number hired.
+    <li> The <b>best-case analysis</b> is the best candidate is hired 
+	the first day, giving a cost is 
+	O(nC<sub>i</sub> + C<sub>h</sub>) = O(C<sub>h</sub>), 
+	assuming that C<sub>i</sub> << O(C<sub>h</sub>). 
+    <li> The <b>worst-case analysis</b> is that a better candidate shows
+	up each day and is hired.  This gives 
+	a cost of O(nC<sub>h</sub>). 
+    <li> The <b>average-case analysis</b>:<br>
+	Assume each ordering of candidates is equally likely, then 
+	the cost is O((ln n)C<sub>h</sub>). 
+</ul>
+
+<hr>
+
+Randomized version:
+<pre>
+RANDOM-HIRE-ASSISTANT(n)
+1  randomly permute the list of candidates
+2  best = 0    //candidate 0 is a least-qualified dummy candidate
+3  for i = 0 to n
+4    do interview candidate i
+5       if candidate i is better than candidate best
+6          then best = i
+7               hire candidate i
+</pre>
+
+<hr>
+
+An algorithm for an on-line version of the problem:
+<pre>
+ON-LINE-MAXIMUM(k,n)
+1  bestscore = - infinity
+2  for i = 1 to k
+3    do if score(i) > bestscore
+4          then bestscore = score(i)
+5  for i = k+1 to n
+6    do if score(i) > bestscore
+7          then return(i)
+8  return(n)
+</pre>
+
+</html>
+

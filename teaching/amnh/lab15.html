@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 15, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 15<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Searching for Optimal Trees
+</div>
+
+
+
+<div>
+<h3>Sampling Treespace</h3>
+
+<p>
+In today's lab, we will be a naive tree search program that takes as input a DNA sequences and will search for the most parsimonious tree.  There are many sophisticated programs to do this; our programs are very simple but have the same underlying concepts of the more complicated ones.  We will first score trees, sampled at random in the space, and then search the space using the NNI tree rearrangement operation.  For example, below are all 945 possible trees on 7 leaves scored by sequences from army ants.  The optimal tree is in the middle of the image:
+
+<p>
+<img src="landscapeArmyAnts.pdf" height=300>
+
+<p>
+We will first sample the space by computing the parsimony score for 1000 random trees.  Our basic approach is:
+<p>
+<tt>def treeSample(sequences):</tt>
+<ul>
+	<li> Input:  A set of n sequences of length k
+	<li> Output:  The best scoring tree we could find after sampling 1000 trees.
+</ul>
+<ol>
+	<li> For 1000 steps:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Choose randomly a tree.
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Score the tree.
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;If better score than <tt>bestScore</tt>, 
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choose it to be the current tree
+	<li> Return bestTree and score.
+</ol>
+
+<h4>Random Starting Trees</h4>
+
+<p>
+The first thing needed for our <tt>treeSample()</tt> (and later the <tt>treeSearch()</tt>) function is to construct a random starting tree from the sequences.  It will take a list of sequences and create a tree from it.  We will use the same structure for storing trees as in the previous lab.  Recall, for each node of the tree, we stored:
+<pre>
+		nodeName : [parentName, label, [child1,child2,...]]
+</pre>
+in a dictionary.  As before, we will assume that there's a node named <tt>"root"</tt> in our dictionary and that all leaves (tips) have an empty list for children (since they have no children).
+
+<p>To build up a random tree, we will make a list of nodes that are lacking parents (<tt>parentless</tt>).  While there are parent-less nodes, we will choose two at random to be children of a new node and place that new node in the list of parent-less nodes.  Each time we do this we reduce the number of parent-less nodes by one.  For example, assume we start with the list of species in our tree dictionary and nodes without parents as:
+<pre>
+	tree = {"ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]]}
+	parentless = ["ape", "baboon", "chimp", "dog", "elephant", "fox"]
+</pre>
+Our random build approach is to take two at random, say <tt>"dog"</tt> and <tt>"fox"</tt>, and make them children of a new node <tt>"i1"</tt>:
+<pre>
+	tree = {"i1" : ["", "", ["dog", "fox"]],
+	        "ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]] }
+</pre>
+Since <tt>"dog"</tt> and <tt>"fox"</tt> now have a parent, we remove them from the <tt>parentless</tt> list, and add in <tt>"i1"</tt> since it does not have a parent:
+<pre>
+	parentless = ["ape", "baboon", "chimp", "elephant", "i1"]
+</pre>
+
+<p>Since there are still nodes without parents, we repeat the process, choosing two more at random.  Say, we choose <tt>"baboon"</tt> and <tt>"i1"</tt>.  Then our tree dictionary and parent-less list would be:
+
+<pre>
+	tree = {"i2" : ["", "", ["baboon", "i1"]],
+	        "i1" : ["", "", ["dog", "fox"]],
+	        "ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]] }
+	parentless = ["ape", "chimp", "elephant", "i2"]
+</pre>
+
+<p>We continue since there are more nodes without parents.  Say, we choose at random:  <tt>"ape"</tt> and <tt>"chimp"</tt>, we then have:
+<pre>
+	tree = {"i3" : ["", "", ["ape", "chimp"]],
+	        "i2" : ["", "", ["baboon", "i1"]],
+	        "i1" : ["", "", ["dog", "fox"]],
+	        "ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]] }
+	parentless = ["elephant", "i2", "i3"]
+</pre>
+And again (with random choices <tt>"i2"</tt> and <tt>"i3"</tt>):
+<pre>
+	tree = {"i4" : ["", "", ["i2", "i3"]],
+	        "i3" : ["", "", ["ape", "chimp"]],
+	        "i2" : ["", "", ["baboon", "i1"]],
+	        "i1" : ["", "", ["dog", "fox"]],
+	        "ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]] }
+	parentless = ["elephant", "i4"]
+</pre>
+Now, since there's only two left, our "random" choice will be 
+<tt>"elephant"</tt> and <tt>"i4"</tt>.  Instead of giving it an arbitrary internal node name, we will call it "root" since it is not possible for it to have a parent:
+<pre>
+	tree = {"root" : ["", "", ["elephant", "i4"]],
+	        "i4" : ["", "", ["i2", "i3"]],
+	        "i3" : ["", "", ["ape", "chimp"]],
+	        "i2" : ["", "", ["baboon", "i1"]],
+	        "i1" : ["", "", ["dog", "fox"]],
+	        "ape" : ["","",[]], 
+	        "baboon" : ["","",[]], 
+	        "chimp" : ["","",[]], 
+	        "dog" : ["","",[]], 
+	        "elefant" : ["","",[]], 
+	        "fox" : ["","",[]] }
+</pre>
+
+<p>
+<tt>def buildRandomTree(sequenceList):</tt>
+<ul>
+	<li> Input:  A set of n sequences of length k.
+	<li> Output:  A tree dictionary with the sequences as the leaves.
+</ul>
+<p>
+<ol>
+	<li> Put all leaves into a dictionary. 
+	<li> Also create a "To Do" list, <tt>parentless</tt>, of nodes without parents.
+	<li> While <tt>len(parentless) > 2</tt>:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Make a new internal node and choose two from <tt> parentless</tt> to be its children.
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Remove children from <tt>parentless</tt>.
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Add new node to <tt>parentless</tt>.
+	<li> Join the remaining nodes in <tt>parentless</tt> to a new node called <tt> root</tt>.
+</ol>
+
+Let's implement this in Python.  Copy the outline to an editor, and make each of these lines into a comment.  Next, fill in the easiest parts (one possible way to do this in <a href="treeSearch.py">treeSearch.py</a>).  Here is a very simple list of sequences to use for testing your function:
+<p>
+<pre>
+seqList = [("ape","A A A A A"),
+           ("baboon","A A A A G"),
+           ("chimp","C A A A A"),
+           ("dog","T G G G G"),
+           ("elephant","T G A C A"),
+           ("fox","A A G G C")]
+</pre>
+
+<h4>Trees in Newick Format</h4>
+<p>
+To make sure everything is working, we will add a function that convert trees into Newick format, so, we see the tree format more easily.
+In <a href="parsimonyScore.py">parsimonyScore.py</a>, there is a <tt>convertNewick()</tt> that returns a string with the tree in Newick format.  It does so, by starting at the root, adding a left parenthesis, its left child, then a comma, followed by its right child, and a right parenthesis.  If the left or right child is not a leaf, it calls itself to compute the string:
+<pre>
+def convertNewick(t,n):
+</pre>
+<ul>
+	<li> Input:  A tree dictionary, t, and node, n.
+	<li> Output:  A string comtaining the subtree at node n in Newick format.
+</ul>
+<ol>
+	<li> If n is a leaf of t:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;return n
+	<li> Else:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;left = convertNewick(t, left child of n)
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;right = convertNewick(t, right child of n)	
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;<tt>s = "("+left+","+right+")"</tt>
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;return s
+</ol>
+
+<p>
+Try changing this pseudocde into Python (full code in 
+<a href="treeSearch.py">treeSearch.py</a>) and running on a tree created from your <tt>buildRandomTree()</tt> function.
+
+<h4>Scoring Trees</h4>
+
+<p>
+In the last lab, we built functions to compute the parsimony score of a tree with respect to sequences (available as <a href="parsimonyScore.py">parsimonyScore.py</a>).  We can use those functions by importing the file into our program for this lab.  
+<pre>
+import parsimonyScore as ps
+
+t = #Fill in with a tree#
+score = ps.scoreTree(t)
+</pre>
+
+<p>
+We'll use the scoring from previous lab, to figure out the scores of the new tree.  If they're better than the current best score, we'll update the best score and the best tree, <tt>bestSoFar</tt>. 
+
+
+<h4>Putting It Altogether</h4>
+<p>
+Now that we can build random trees and score them (from the previous lab), we can sample the treespace to find optimal trees.  Let's fill in the outline from above.  We start by making our outline into comments:
+<p>
+<pre>
+def treeSample(sequences):
+    #For 1000 steps:
+	    #Score the tree.
+	    #If better score than <tt>bestScore</tt>, 
+	         #choose it to be the current tree
+    #Return best tree and score.
+</pre>
+<p>
+We need to start off our best score and tree (so we have something to compare to in the loop).  We will use the parsimony scoring function from before, so, will import that file at the start:
+<p>
+<pre>
+import parsimonyScore as ps
+
+def treeSample(sequences):
+    bestTree = buildRandomTree(sequences)
+    bestScore = ps.scoreTree(bestTree)
+    #For 1000 steps:
+    for i in range(1000):
+        #Choose randomly a tree.
+        newTree = buildRandomTree(sequences)
+        #Score the tree.        
+        newScore = ps.scoreTree(newTree)
+        
+        #We'll add in a print to see what's going on:
+	print convertNewick(newTree, newScore)
+		
+	#If better score than <tt>bestScore</tt>, 
+	if newScore < bestScore:
+	    #choose it to be the current tree
+	    bestScore = newScore
+	    bestTree = newTree
+    #Return best tree and score.
+    return bestTree, bestScore
+</pre>
+
+<p>
+We can run this on our sample list of sequences to make sure it works:
+<pre>
+    #Sample list of (species, sequence) pairs:    
+    seqList = [("ape","A A A A A"),
+               ("baboon","A A A A G"),
+               ("chimp","C A A A A"),
+               ("dog","T G G G G"),
+               ("elephant","T G A C A"),
+               ("fox","A A G G C")]
+    
+    #Test the tree sampling function:
+    bestTree, bestScore = treeSample(seqList)
+    print "\nBest from sample:", convertNewick(bestTree,"root"),":", bestScore
+</pre>
+
+</div>
+
+<div>
+<h3>Searching Treespace</h3>
+
+<p>
+The idea for our search, is to start at a random tree.  We score that tree to get a starting value.  We then make a list of its neighbors, and choose the one that scores better than your current tree.  We continue until we have visited 1000 tree neighborhoods or until you're stuck (i.e. local optima).  
+
+
+<p>
+Recall from lecture that there are three common ways to explore treespace:
+<p>
+<table align="center">
+	<tr align="center">
+		<td width=225 align="center"> <img src="tree1.pdf" width=150></td>
+		<td width=225 align="center"><img src="treeNNI.pdf" width=150></td>
+		<td width=225 align="center"><img src="treeSPR.pdf" width=150></td>
+		<td width=225 align="center"><img src="treeTBR.pdf" width=150></td>
+	</tr>
+	<tr>
+		<th align="left" width=225>Original Tree</th>
+		<th align="center" width=225>Nearest Neighbor Interchange</th>
+		<th align="center" width=225>Subtree Prune & Regraph</th>
+		<th align="center" width=225>Tree Bisection & Reconnection</th>
+	</tr>	
+</table>
+<p>
+Since SPR and TBR neighborhoods are larger, they are the most commonly used to explore treespace.  We will use the NNI rearrangement since it is simpler to implement.
+
+
+<p>Here's our basic approach:
+<p>
+<tt>def treeSearch(sequences):</tt>
+<ul>
+	<li> Input:  A set of n sequences of length k
+	<li> Output:  The best scoring tree we could find after 1000 steps through the NNI search space.
+</ul>
+<ol>
+	<li> Choose randomly a tree to be <tt>bestSoFar</tt>.
+	<li> Score the tree, <tt>bestSoFar</tt>.
+	<li> For 1000 steps:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Make a list of all the NNI neighbors of bestSoFar
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;if any of the NNI neighbors of <tt>bestSoFar</tt> have better score, 
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choose it to be the current tree
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;else: 
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break (stuck in local minima)
+	<li> Print number of steps, tree, and score.
+</ol>
+
+Let's fill in the pieces (making functions that we can call for the tasks) and then we will return to put all this together to make a running search program.
+
+
+
+
+
+
+
+<h4>Neighbors of Trees</h4>
+
+<p>
+We're in the rooted case, so, we'll take each internal node, and exchange the place of its sibling with each of its children to give two new trees.
+
+<p>
+<tt>def nniNeighbor(t, node):</tt>
+<ul>
+	<li> Input: A tree, <tt>t</tt>, and an internal node, <tt>node</tt>.
+	<li> Output:  Two trees that result from switching the nodes' sibling with its children.
+</ul>
+<p>
+<ol>
+	<li> Let <tt>sib</tt> be the sibling of <tt>node</tt>. 
+	<li> Let <tt>kid1</tt>, <tt>kid2</tt> be the children of <tt>node</tt>. 
+	<li> Make two (deep) copies of <tt>t</tt>: <tt>tree1</tt> and <tt>tree2</tt>.
+	<li> Switch <tt>sib</tt> and <tt>kid1</tt> in <tt>tree1</tt>. 
+	<li> Switch <tt>sib</tt> and <tt>kid2</tt> in <tt>tree2</tt>. 
+	<li> Return <tt>tree1</tt> and <tt>tree2</tt>.	
+</ol>
+
+<p>
+While the idea is straightforward, the actual code to do this is quite tedious, as you have to keep track of who is the parent of whom and then update all the respective parents and children.  Similarly, the function that finds the optimal NNI neighbor is conceptually easy, but quite tedious to code.  Both have been written for you in <a href="treeSearch.py">treeSearch.py</a>:
+<ul>
+	<li> <tt>nniNeighbor(t,node)</tt>: returns the two trees that neighbor <tt>t</tt> around <tt>node</tt>.
+	<li> <tt>maxNeighbor(t)</tt>:  takes a tree and returns the best scoring tree among its NNI neighbors.
+</ul>
+ 
+
+<h4>Challenges</h4>
+<ul>
+	<li> Try the <tt>treeSample()</tt> program on the following data sets:
+		<ul>
+			<li> <a href="flat.py">flat.py</a>:  10 random builds of your on a set of identical sequences that has a flat landscape.  You can import the file (or copy over to your program).
+			<br>Note:  all trees will have the exact same score, so all are valid optima.
+			<li> <a href="comp.py">comp.py</a>:  a set of compatible sequences that has a very smooth landscape.
+			<li> <a href="rugged.py">rugged.py</a>: a set of sequences that has a more rugged landscape.
+		</ul>
+	<li> (Optional:) Implement the <tt>treeSearch()</tt> function from the outline above, using the functions written in this lab.
+	<li> (Optional:) Test your <tt>treeSearch()</tt> on the following datasets:
+		<ul>
+			<li> <a href="flat.py">flat.py</a>
+			<li> <a href="comp.py">comp.py</a>.
+				<br><i>Note:  the search should stop fairly quickly.  There is exactly one global optimum.  It has the possibility of being trapped on "plateaus" (since we're using NNI tree rearrangements) but more likely that most of the 10 runs will reach the global optima.</i>
+			<li> <a href="rugged.py">rugged.py</a>.
+				<br><i>Note:  there are several local optima, and it is likely that the 10 runs will reach the different optima.</i>				
+				
+		</ul>
+</ul>
+
+</div>
+
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  11 May 2016<br>
+Title:  Lab 15: Tree Search <br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

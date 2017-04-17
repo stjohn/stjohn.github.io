@@ -1,0 +1,274 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2003.3.29)  2 APR 2003 21:40
+**exam1key.tex
+(./exam1key.tex{/usr/local/teTeX/share/texmf.local/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, d
+utch, nohyphenation, loaded.
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/size12.clo
+File: size12.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(./exam1key.aux)
+\openout1 = `exam1key.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count88
+\scratchcounter=\count89
+\scratchtoks=\toks15
+\scratchdimen=\dimen105
+\scratchskip=\skip43
+\scratchmuskip=\muskip10
+\scratchbox=\box26
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen106
+\minusone=\count90
+\thousandpoint=\dimen107
+\emptytoks=\toks16
+\nextbox=\box27
+\nextdepth=\dimen108
+\everyline=\toks17
+\!!counta=\count91
+\!!countb=\count92
+\recursecounter=\count93
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPtoPDFconversion=\toks18
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 31.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 31.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 31.
+
+Overfull \hbox (47.6796pt too wide) in paragraph at lines 48--52
+/cmtt12/A set has at most one copy of every element, where a bag (or multiset
+ []
+
+
+Overfull \hbox (16.80458pt too wide) in paragraph at lines 53--55
+[]/cmtt12/(5 points total, partial credit (2 points) for relevant, but not
+ []
+
+
+Overfull \hbox (35.32959pt too wide) in paragraph at lines 55--63
+/cmtt12/A functional dependency says that if two tuples of a relation which
+ []
+
+
+Overfull \hbox (29.15459pt too wide) in paragraph at lines 55--63
+/cmtt12/agree on some particular set of attributes must also agree on some
+ []
+
+
+Overfull \hbox (29.15459pt too wide) in paragraph at lines 55--63
+/cmtt12/other particular attributes. A multivalued dependency is a weaker
+ []
+
+
+Overfull \hbox (47.6796pt too wide) in paragraph at lines 55--63
+/cmtt12/condition that says if two tuples of a relation agree on a particular
+ []
+
+
+Overfull \hbox (35.32959pt too wide) in paragraph at lines 55--63
+/cmtt12/set of attributes then all possible combinations of this particular
+ []
+
+
+Overfull \hbox (22.97958pt too wide) in paragraph at lines 55--63
+/cmtt12/set (the left hand side of the dependency) and another particular
+ []
+
+
+Overfull \hbox (16.80458pt too wide) in paragraph at lines 64--65
+[]/cmtt12/(5 points total, partial credit (2 points) for relevant, but not
+ []
+
+
+Overfull \hbox (28.00491pt too wide) in paragraph at lines 77--77
+ []   /cmtt12/{  System.out.println("Help, I''m caught inside a database exam!"
+);[] 
+ []
+
+
+Overfull \hbox (21.82991pt too wide) in paragraph at lines 80--87
+[]/cmtt12/(2 points for having a println() but missing the rest of the program,
+ 
+ []
+
+[1
+
+{/usr/local/teTeX/share/texmf.local/dvips/config/pdftex.map}{/usr/local/teTeX/s
+hare/texmf.gwtex/dvips/config/Ttbbold.map}{/usr/local/teTeX/share/texmf.tetex/d
+vips/misc/wolfram.map}]
+Overfull \hbox (4.45457pt too wide) in paragraph at lines 88--93
+/cmtt12/The 2 attributes could be in either order and the tuples could
+ []
+
+
+Overfull \hbox (28.6931pt too wide) in paragraph at lines 88--93
+/cmtt12/be in either order, so, there's $/cmr12/2 /cmsy10@12.0pt/^^B /cmr12/2 =
+ 4$ /cmtt12/possible ways to represent
+ []
+
+
+Overfull \hbox (29.15459pt too wide) in paragraph at lines 94--96
+[]/cmtt12/(5 points total. If no explanation, only 1 point partial credit.)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+
+Overfull \hbox (4.45457pt too wide) in paragraph at lines 97--105
+/cmtt12/With 3 attributes, any one of them could be listed first, then
+ []
+
+
+Overfull \hbox (7.13487pt too wide) in paragraph at lines 97--105
+/cmtt12/of the remaining two, either could be next. So, there's $/cmr12/3 /cmsy
+10@12.0pt/^^B /cmr12/2 =
+ []
+
+
+Overfull \hbox (4.15451pt too wide) in paragraph at lines 97--105
+/cmr12/6$ /cmtt12/possibilities for the ordering of the attributes. There's 2
+ []
+
+
+Overfull \hbox (22.21803pt too wide) in paragraph at lines 97--105
+/cmtt12/ways to order the tuples. So, overall, there's $/cmr12/2 /cmsy10@12.0pt
+/^^B /cmr12/6 = 12$ /cmtt12/possible
+ []
+
+
+Overfull \hbox (29.15459pt too wide) in paragraph at lines 106--108
+[]/cmtt12/(5 points total. If no explanation, only 1 point partial credit.)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--108
+
+ []
+
+<login_weakES.pdf, id=14, 100.375pt x 351.3125pt>
+File: login_weakES.pdf Graphic file (type pdf)
+ <use login_weakES.pdf>
+[2 <./login_weakES.pdf, page is rotated 90 degrees>]
+<married.pdf, id=31, 200.75pt x 301.125pt>
+File: married.pdf Graphic file (type pdf)
+ <use married.pdf>
+Overfull \hbox (41.5046pt too wide) in paragraph at lines 175--177
+[]/cmtt12/(7 points. See Example 3.1 on p 67 for relation schema and Examples
+ []
+
+
+Overfull \hbox (16.80458pt too wide) in paragraph at lines 215--220
+/cmtt12/there's no way to derive B from the functional dependencies that
+ []
+
+
+Overfull \hbox (4.45457pt too wide) in paragraph at lines 215--220
+/cmtt12/yield B. So, we only need to check the closure of subsets that
+ []
+
+[3 <./married.pdf, page is rotated 90 degrees>]
+Overfull \hbox (16.80458pt too wide) in paragraph at lines 227--230
+/cmtt12/This gives superkeys of AB, BC, BD, ABC, ABD, BCD, and ABCD, and
+ []
+
+
+Overfull \hbox (16.4546pt too wide) in paragraph at lines 252--254
+[]/cmtt12/Decomposing around the BCNF violation, C $/cmsy10@12.0pt/!$ /cmtt12/D
+, gives the smaller
+ []
+
+
+Overfull \hbox (23.97318pt too wide) in paragraph at lines 260--264
+/cmtt12/The key for $/cmmi12/R[]$ /cmtt12/is AB, so C $/cmsy10@12.0pt/!$ /cmtt1
+2/A is a BCNF violation. Decomposing
+ []
+
+[4] [5] (./exam1key.aux) ) 
+Here is how much of TeX's memory you used:
+ 902 strings out of 95391
+ 11105 string characters out of 1188349
+ 60095 words of memory out of 1000001
+ 3946 multiletter control sequences out of 10000+50000
+ 7199 words of font info for 26 fonts, out of 500000 for 1000
+ 54 hyphenation exceptions out of 1000
+ 25i,6n,19p,203b,347s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 53 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 10 words of extra memory for PDF output out of 65536
+{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/f7b6d
+320.enc}</usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr8.pfb>{/u
+sr/local/teTeX/share/texmf.tetex/dvips/tetex/74afc74c.enc}</usr/local/teTeX/sha
+re/texmf.tetex/fonts/type1/bluesky/cm/cmti12.pfb>{/usr/local/teTeX/share/texmf.
+tetex/dvips/tetex/aae443f0.enc}</usr/local/teTeX/share/texmf.tetex/fonts/type1/
+bluesky/cm/cmmi12.pfb>{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/bbad153f.
+enc}</usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy10.pfb></usr
+/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmbx12.pfb>{/usr/local/te
+TeX/share/texmf.tetex/dvips/tetex/09fbbfac.enc}</usr/local/teTeX/share/texmf.te
+tex/fonts/type1/bluesky/cm/cmtt12.pfb></usr/local/teTeX/share/texmf.tetex/fonts
+/type1/bluesky/cm/cmr12.pfb>
+Output written on exam1key.pdf (5 pages, 76003 bytes).

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 12, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 12<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Accessing Data: SQL
+</div>
+
+<div>
+<h3>Downloading software</h3>
+
+<p>
+Today's lab focuses the most common database language, the Strutured Query Language (SQL).  While we can access a database using only Python commands, it is useful to see the results in a graphical interface.  A simple implementation of SQL database is sqlitebrowser.  You can download it from:
+
+<blockquote>
+<a href="http://sqlitebrowser.org">http://sqlitebrowser.org</a>
+</blockquote>
+
+<p>
+After you download it, you should be able to launch it directly by clicking on the 3 stacked circles.  If you get a warning on a Mac, click on it while holding down the Control Key, and then choose "Open" from the menu. 
+
+<p>
+sqlite is accepts SQL queries and commands but does not support server access (i.e. remote access from other machines).  If you need this, a popular (and also free) option is <a href="http://mysql.org">mysql</a>.
+
+</div>
+
+<div>
+<h3>A Simple Database</h3>
+
+<p>
+Many databases are "relational databases", meaning that the information is arranged around "relations" (tables) of data.  This structure was introduced in 1970 by E.F. Codd at IBM, can be implemented very efficiently, and is very popular.  Almost all relational databases can be accessed via the Structured Query Language (SQL).
+
+<p>
+Let's set up a simple database to demonstrate relations.  Our first database will hold information about people and where they live.
+
+<ul>
+	<li> Open up sqlitebrowser (you may need to Ctrl-click and then choose Open from the menu).  
+	<li> Click on "New Database" in the upper left hand corner.  
+	<li> A dialog box will open and ask for a name for your database (I called mine <tt>cities</tt>).
+	<li> Another dialog box will open and ask for information for the table (relation) in your database:
+	<ul>
+		<li> Fill in the top text box with a name for the table (i.e. <tt>inhabits</tt>).
+		<li> Next, click on the "Add Field" button to fields or attributes for the table.  Let's first add a field "First Name" (doubleclick on Field1 to rename it) and make it type "TEXT" (use the pull down menu).
+		<li> Similarly, add in boxes for "Last Name" (TEXT), "Age" (INTEGER), "City" (TEXT),
+		"Population" (INTEGER), "Latitude" (REAL), "Longitude" (REAL).
+		<li> The bottom box shows the SQL commands that create the table in the database.
+		<li> Click on the OK button when you have entered all the fields.
+	</ul>
+</ul>
+
+<h4>Data Types</h4>
+
+SQL has some built-in data types:
+<ul>
+	<li> INTEGER: whole numbers
+	<li> REAL: floating point or decimal numbers
+	<li> TEXT: strings (sequences of words)
+	<li> NULL: the undefined value
+	<li> BLOB: Binary Large Objects, used to store images and large text strings
+</ul>
+When you create a column (attribute) for a table, you must specify what kind of data will be stored there.
+
+<h4>Adding Data</h4>
+Now, let's add some data to our table.  
+	<ul>
+		<li> Click on the "Browse Data" button (second row, middle).
+		<li> Click on the "New Record" button.
+		<li> A row will pop up with all NULL's (the default values).  
+		<li> Let's fill in the top row with:<br>
+			<tt>
+			Barack &nbsp;&nbsp;&nbsp; Obama &nbsp;&nbsp;&nbsp;Washington DC &nbsp;&nbsp;&nbsp;54 &nbsp;&nbsp;&nbsp; 658,000 &nbsp;&nbsp;&nbsp; 38.9072 &nbsp;&nbsp;&nbsp; -77.0369</tt>
+		<li> And another row:<br>
+		<tt>
+			Mike &nbsp;&nbsp;&nbsp; Bloomberg &nbsp;&nbsp;&nbsp; 74&nbsp;&nbsp;&nbsp;New York City &nbsp;&nbsp;&nbsp; 8,406,000 &nbsp;&nbsp;&nbsp; 40.7128 &nbsp;&nbsp;&nbsp; -74.0059	</tt>		
+		<li> And another row:<br>
+		<tt>
+			Ruth Bader &nbsp;&nbsp;&nbsp; Ginsburg &nbsp;&nbsp;&nbsp;83 &nbsp;&nbsp;&nbsp;Washington DC &nbsp;&nbsp;&nbsp; 658,000 &nbsp;&nbsp;&nbsp; 38.9072 &nbsp;&nbsp;&nbsp; -77.0369</tt>
+		<li> And another row:<br>
+		<tt>
+			Ellen &nbsp;&nbsp;&nbsp; Futter &nbsp;&nbsp;&nbsp; 66 &nbsp;&nbsp;&nbsp;New York City &nbsp;&nbsp;&nbsp; 8,406,000 &nbsp;&nbsp;&nbsp; 40.7128 &nbsp;&nbsp;&nbsp; -74.0059</tt>
+		<li> And another row:<br>
+			<tt> Sonia &nbsp;&nbsp;&nbsp; Sotomayor &nbsp;&nbsp;&nbsp; 61 &nbsp;&nbsp;&nbsp; Washington DC &nbsp;&nbsp;&nbsp; 658,000 &nbsp;&nbsp;&nbsp; 38.9072 &nbsp;&nbsp;&nbsp; -77.0369</tt>
+		<li> And another row:<br>
+			<tt> Lin-Manuel &nbsp;&nbsp;&nbsp; Miranda &nbsp;&nbsp;&nbsp; 36 &nbsp;&nbsp;&nbsp;New York City &nbsp;&nbsp;&nbsp; 8,406,000 &nbsp;&nbsp;&nbsp; 40.7128 &nbsp;&nbsp;&nbsp; -74.0059</tt>		
+	</ul>
+
+<p>
+After you have entered in the names, click on "Write Changes" to save your entries.
+
+<p>Note:  for larger amounts of data, there is an option to load in CSV files.
+
+
+<h4>Challenges</h4>
+<ul>
+	<li>  Add another resident of Washington DC to the table.
+	<li>  Choose someone who lives in a different city and add them to the table.
+</ul>
+</div>
+
+<div>
+<h3>Queries</h3>
+
+<p>Once information is stored in a database, SQL allows "queries" (formatted questions) that return data.  The simplest queries are of the form:
+<blockquote>
+<tt>
+SELECT * FROM inhabits;
+</tt>
+</blockquote>
+To run this in sqlitebrowser, click "Execute SQL" from the second row of buttons.  In the top text box, type the query above.  When complete, click on the blue triangular run button (third row).  In the lower box, you will see all elements ("*" is a wildcard that matches everything) from the table <tt>inhabits</tt>.
+
+<p>If you are only interested in certain attributes, say just the last names and cities, you can select only those:
+<blockquote>
+<tt>
+SELECT LastName, CityName FROM inhabits;
+</tt>
+</blockquote>
+How would you just print out names and ages of the inhabitants?
+
+
+<p>You can also put conditions on which records (rows) you return, using the WHERE clause.  For example, instead of printing out all inhabitants, let's print out the names of those under 70 years of age:
+<tt>
+SELECT LastName, FirstName FROM inhabits WHERE age < 70;
+</tt>
+</blockquote>
+SQL allows more complicated WHERE clauses.  Almost all comparison operations as Python except SQL uses a single = for equality and &lt; &gt; for not equals.
+
+
+<h4>Tables</h4>
+
+<p>So far, everything we've done so far can be done in Excel, so, why use a relational database?  The answer comes in the use of tables to efficiently store information.  
+
+<p>
+When we stored the information into our table <tt>inhabits</tt>, we ended up with much information duplicated.  For example, the populations and coordinates for each city occur multiple times.  If we needed to update the population of New York City, we would then need to do so in every single row for that city.  To avoid such redundancy, information is split into smaller tables and linked where needed.  For example, we could create a table with attributes:
+<blockquote>
+	<tt>Cities(CityName, Population, Latitude, Longitude)</tt>
+</blockquote>
+to hold the city-specific information.  
+
+<p>Another table could hold information about people:
+<blockquote>
+	<tt>People(FirstName, LastName, Age)</tt>
+</blockquote>
+
+<p>And our last table links the two together:
+<blockquote>
+	<tt>Inhabits(FirstName, LastName, CityName)</tt>
+</blockquote>
+
+<p>Now, the <tt>Inhabits</tt> table would have just 3 entries in each row (FirstName, LastName, City Name), and if we needed more information about the person or the city, we could look those up in the other two tables.
+
+<p>Let's create a new database to use three tables, instead of just one large one:
+<ul>
+	<li> Click on the "New Database" button, and name your new database "cities2".
+	<li> Since there will be multiple tables, let's use the Import option to load them in from CSV files (instead of typing the information in again).
+	We'll use <a href="people.csv">people.csv</a>, <a href="cities.csv">cities.csv</a>, and <a href="inhabits.csv">inhabits.csv</a>.
+	<li> Under the File menu, choose Import, and then "Table from CSV File". 
+	Choose people.csv as your file and click Open.
+	<li> By default, the table will be named the same as the file.  The attributes of the table are the column headers in the CSV vile.
+</ul>
+
+<h4>Keys</h4>
+
+<p>
+We now have three tables that stored the information of the first one. 
+This avoids the repetition of storing data (e.g. the latitude, longitude, and population) in the entry for every person.  Instead, we stored just enough information (in this case, the city's name) to be able to look up the additional data about a city, if needed.  Similarly, the inhabits table keeps just enough information (e.g. first and last names) to be able to locate the additional information about people.  An attribute that uniquely identifies a row in the table is called a <t>key</t>.  We can specify a key in sqlitebrowser by clicking the "PK" option when adding fields to the table (which is equivalent to the SQL command "PRIMARY KEY( fieldName )").
+
+
+<p>
+Databases are often presented as the table names and attributes.  Our small database has the <b>database schema</b>:
+<tt>
+<blockquote>
+cities(CityName, Population, Latitude, Longitude)<br>
+inhabits(FirstName, LastName, CityName)<br>
+people(FirstName, LastName, Age)
+</blockquote>
+</tt>
+
+<p>
+A simple way to link data across multiple tables is using the WHERE clause.
+In the clause, we align rows of the tables by common attributes.  For example:
+
+<tt>
+<blockquote>
+select Age, CityName from people, inhabits<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where people.FirstName = inhabits.FirstName; 
+</blockquote>
+</tt>
+
+<p>
+Above, since the same attribute name occurs in multiple tables, we specify which table to by using the table name as a prefix (e.g. people.FirstName).
+
+<p>
+What happens if you leave off the where clause?  Why?
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> Modify the <tt>cities</tt> table to store city populations rounded to the nearest 10,000 (currently rounds to nearest 1,000).
+	<li> Write a query that prints out the names of all over 60 years old.
+	<li> Write a query that prints out the names of all over 60 years old who also reside in Washington DC.
+</ul>
+
+
+</div>
+
+<div>
+<h3>Entity/Relationship (E/R) Diagrams</h3>
+
+<p>
+Entity/Relationship (E/R) diagrams are often used to represent visually the organization of the database.  The notation is:
+<ul>
+	<li> Boxes: entities 
+	<li> Circles: attributes 
+	<li> Diamonds: relationships 
+	<li> Underlining: Keys
+</ul>
+
+Here is an E/R diagram from Stanford's InfoLab representing episodes of a televion series.
+<p>
+<img src="episodeguide.jpg" width=600>
+
+<p>
+Note that each box corresponds to a table (Episodes, Series, etc).  When implementing this in a database all the diamonds (relationships) are also implemented by tables, much as we did with the inhabits table in our simple database above.
+
+<p>
+And a more complicated one for fossils.  It is machine generated by the database management system used and represents tables by boxes and includes attributes inside each box:
+<p>
+<img src="primo_erd_1.png" width=600>
+
+
+<h4>Challenges:</h4>
+
+<ul>
+	<li> Draw the E/R diagram for our inhabitants database with its 3 tables.
+	
+	<li> Draw an E/R diagram for the CSV file from <a href="lab5.html">Lab 5</a>.  Group similar information together to avoid storing data (other than keys) in multiple locations.  
+	<li> Translate your E/R diagram into a database schema (a list of the tables and their attributes).
+	<li> (Optional):  Break your CSV file (using Python or Excel) into files that correspond to the tables in the database you designed above and use those to populate your database.
+</ul>
+
+
+
+</div>
+
+
+
+<div>
+<h3>Using SQL</h3>
+
+<p>
+This lab is just a small introduction to using SQL.  There are many more features to the language that we cannot address here.  A nice introduction is available at <a href="http://www.khanacademy.org">Khan Academy</a>.
+
+
+<p>While we accessed the database directly via the sqlitebrowser, most access is indirect via programs that query and modify the database.
+Programs (in Python, JavaScript, or other language) are used to format the SQL commands and then query the database.  The responses are then processed in Python (or other language).  
+
+
+</div>
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  27 April 2016<br>
+Title:  Lab 12:  <br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

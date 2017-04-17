@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 4, CIS 166, Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 4<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab will focus on the python mathematics library.
+
+</div>
+
+
+<div>
+
+<h3>Pricing Options</h3>
+
+
+<p>An <b>option</b> in financial markets is a contract that allows you to buy (but does not 
+require you to buy) at a set price
+on a set date in the future.  For example, if you have an option to buy Apple stock at $700
+per share
+on December 1, then if Apple stock is at $720, then you can use the option and make $20 per
+share.  If the Apple stock is $680, then since the contract only gives you the option of 
+buying the shares, you can ignore it.
+
+<p>Companies work hard to price options to maximize their profits.  The program for today is
+to write a program that calculates some of what's needed to price options.  
+A common way to price options is to use the
+Black Scholes model (we won't go into how the model works, but if you are interested there
+are many sites that explain more about options and pricing models such as 
+<a href="http://en.wikipedia.org/wiki/Black%E2%80%93Scholes">this wiki page</a> 
+and <a href="http://richnewman.wordpress.com/2007/06/24/a-beginner%E2%80%99s-guide-to-the-black-scholes-option-pricing-formula-part-1/">beginner's guide</a>)
+
+The relevant formulas (from <a href="http://richnewman.wordpress.com/2007/06/24/a-beginner%E2%80%99s-guide-to-the-black-scholes-option-pricing-formula-part-1/">beginner's guide</a>)
+are:<br>
+<p>
+<img src="http://richnewman.files.wordpress.com/2007/06/d1d2.jpg" alt="Black-Scholes d1 d2" /><br />
+<img src="http://richnewman.files.wordpress.com/2007/06/call.jpg" alt="Black-Scholes Call on European Stock" /><br />
+
+<!--
+\begin{align}
+C(S,t) &amp;= N(d_1)~S-N(d_2)~K e^{-r(T-t)},\\
+d_1 &amp;= \frac{\ln\left(\frac{S}{K}\right)+\left(r+\frac{\sigma^{2}}{2}\right)(T-t)}{\sigma\sqrt{T-t}}\\
+d_2 &amp;= \frac{\ln\left(\frac{S}{K}\right)+\left(r-\frac{\sigma^{2}}{2}\right)(T-t)}{\sigma\sqrt{T-t}} = d_{1}-\sigma\sqrt{T-t}.
+\end{align}
+-->
+where C is the cost of the option that we are calculating.  S, T, and K are inputs that represent
+the current cost of the stock, the time until maturity, and the strike (the fixed price in the future)
+of the stock, respectively.  N() is the cumulative distribution function of the standard normal 
+distribution, r is the risk free rate, and &sigma; (sigma) is volatility of the underlying asset.
+
+<p>That's a lot of math!  Python has a built-in library that contains many commonly used math
+functions already defined for you.  We will use them to define d<sub>1</sub> and d<sub>2</sub>.  
+(the cost C can also be <a href="http://www.espenhaug.com/black_scholes.html">calculated</a> using 
+only the math library but requires some understanding of statistics,
+so, we won't do it here).
+
+<p>To use the math library, you need to include a line in your python file:
+<pre>
+import math
+</pre>
+which tells the python intepreter to include all the functions in the <a href="http://docs.python.org/release/3.0.1/library/math.html">math library</a>.
+(You can also use: <tt> from math import * </tt>.)  
+
+<p>Looking at the equations for d<sub>1</sub> and d<sub>2</sub>, we will need to 
+calculate logarithm and square roots.  For example to find the logarithm of S/K, we would write:
+<pre>	
+	math.log(S/K)
+</pre>
+and to find the square root of T, we would write:
+<pre>
+	math.sqrt(T)
+</pre>
+Let's put this altogether in a program to compute d_1:
+<pre>
+# Lab 3: calculating option pricing
+# Your name here
+
+def optionPricing():
+	S,T,K,r,sigma = eval(input("Enter values for the stock price, maturity time, strike price, risk free rate, and volatility (separated by commas):"))
+	d1 = (math.log(S/K) + (r + sigma*sigma/2 )*T ) / (sigma*math.sqrt(T))
+	print("d1 is", d1)
+
+
+# Run your program:
+optionPricing()
+</pre>
+Remember when writing mathematics in python to use * for multiplication and to use parenthesis to 
+group terms together.  Test your program with a stock price of 100, maturity time of 1, strike price
+of 200, risk free rate of 2.5, and volatility of .1 (10%) (your program should display 18.1185281944).
+
+<p>Now, extend your program to calculate and display d<sub>2</sub>.  For the test case above, you should 
+print out 18.0185281944 for d<sub>2</sub>. 
+
+
+
+
+<p> With the remaining time, work on the programming programs.
+
+</p>
+</div>

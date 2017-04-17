@@ -1,0 +1,315 @@
+\documentclass[12pt]{article}
+\pagestyle{empty}
+\topmargin= -25pt
+\textwidth=6 true in
+\textheight=9.5 true in
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\large
+\begin{center}
+%\mbox{ }
+%\vspace{.1in} \\
+    Answer Key for Exam I\\
+    Computer Programming 420 \\
+    Dr.~St.~John\\ 
+    Lehman College\\
+    City University of New York\\ 
+    11 October 2001
+\end{center}
+}
+
+
+\begin{enumerate}
+
+% 1 T or F
+    \item True or False: 
+    \begin{enumerate}
+        \item \underline{F} All database management systems
+		are relational.
+        \item \underline{F} Every set is a bag.
+        \item \underline{F} Relationships cannot have attributes
+		in E/R diagrams. 
+        \item \underline{T} Relationships in E/R diagrams 
+		connect one or more entity sets.
+        \item \underline{T} In ODL, every relationship must
+		have an inverse.
+        \item \underline{T} Every key is a superkey.
+        \item \underline{F} Every superkey is a key.
+        \item \underline{F} Attributes that are keys cannot 
+		appear in functional dependencies.
+        \item \underline{T} If $X$ is a key for the relation			
+		R, then there is functional dependency for R with 
+		$X \rightarrow \mbox{all attributes}$.
+        \item \underline{T} Every functional dependency is
+		a multivalued dependency.
+    \end{enumerate}
+
+%2 Short answer
+\item Answer in two sentences or less the following:
+\begin{enumerate}
+    \item Why are there no ``weak classes'' in ODL (but there are weak
+	entity sets in E/R diagrams)?
+
+	{\tt Because every object has an unique object id (OID), and
+	so, has a key.  Weak entity sets occur when a secondary 
+	entity set provides part of the key.}
+
+    \item What is an anomaly?  Give an example.
+
+	{\tt An anomaly is a problem usually caused when too much 
+	information is crammed into one relation.  For example, a 
+	redundacy anomaly can occur when information is stored in
+	duplicate times in the table.}
+\end{enumerate}
+
+%3 Given R and functional dependencies, give keys and superkeys
+\item Consider the relation $R(A,B,C,D,E)$ with the function
+dependencies: 
+$$
+	A\rightarrow B,
+	B\rightarrow C,
+	C \rightarrow A,
+	D \rightarrow E, \mbox{ and }
+	E\rightarrow D
+$$
+\begin{enumerate}
+    \item What are the keys of $R$?  
+
+	{\tt The keys are: $AD$, $AE$, $BD$, $BE$, $CD$, and $CE$.}
+
+    \item How many superkeys are there of $R$?  Justify your answer.
+
+	{\tt Recall that a superkey is key or a superset of a key.
+	So, every superkey must consist of at least one of $\{A,B,C\}$
+	and $\{D,E\}$ (since every key has at least one element of
+	each).  This gives that the number of superkeys is the number
+	of ways to choose 1, 2, or 3 attributes from $\{A,B,C\}$ times
+	the number of ways to choose 1 or 2 attributes from $\{D,E\}$, or:
+	$$
+	\begin{array}{c}
+		\left(
+		\left( \begin{array}{c} 3 \\ 1 \end{array} \right)
+		+ \left( \begin{array}{c} 3 \\ 2 \end{array} \right)
+		+ \left( \begin{array}{c} 3 \\ 3 \end{array} \right)
+		\right)
+		\cdot
+		\left(
+		\left( \begin{array}{c} 2 \\ 1 \end{array} \right)
+		\left( \begin{array}{c} 2 \\ 2 \end{array} \right)
+		\right)
+		
+		= (1+3+3)\cdot(1+2)
+		= 21
+	\end{array}
+	$$
+	
+	Another way to do this question is to list out all possible
+	superkeys and then count them:
+
+	For example, the superkeys of size 2 and 3 can be formed by:
+	$$
+	\begin{array}{c}
+	\mbox{the keys: } AD, AE, BD, BE, CD, CE\\
+	\mbox{adding A: } ABD, ABE, ACD, ACE\\
+	\mbox{adding B: } ABD, ABE, BCD, BCE\\
+	\mbox{adding C: } ACD, ACE, BCD, BCE\\
+	\mbox{adding D: } ADE, BDE, CDE\\
+	\mbox{adding E: } ADE, BDE, CDE\\
+	\end{array}
+	$$
+	Removing the duplicates leaves:
+	$$
+	\begin{array}{c}
+	AD, AE, BD, BE, CD, CE\\
+	ABD, ABE, ACD, ACE\\
+	BCD, BCE\\
+	ADE, BDE, CDE\\
+	\end{array}
+	$$
+	or 9 superkeys of size 2 and 6 superkeys of size 3.
+
+	To get the keys of size 4:
+	$$
+	\begin{array}{c}
+	\mbox{of size 3: } ABD, ABE, ACD, ACE, BCD, BCE, ADE, BDE, CDE\\
+	\mbox{adding A: } ABCD, ABCE, ABDE, ACDE\\
+	\mbox{adding B: } ABCD, ABCE, ABDE, BCDE\\
+	\mbox{adding C: } ABCD, ABCE, ACDE, BCDE\\
+	\mbox{adding D: } ABDE, ACDE, BCDE\\
+	\mbox{adding E: } ABDE, ACDE, BCDE\\
+	\end{array}
+	$$
+	and remove duplicates to yield
+	$$
+	\begin{array}{c}
+	ABCD, ABCE, ABDE, ACDE\\
+	BCDE\\
+	\end{array}
+	$$
+	and remove duplicates to yield 5 keys of size 4.
+
+	Since there's only one key with all 5 attributes, this gives
+	$6+9+5+1 = 21$ possible superkeys.
+
+
+	}
+
+\end{enumerate}
+
+\newpage
+%4 From an E/R diagram, give keys specified and translate into
+% database schema
+\item Draw an E/R diagram for the following situations. Indicate any
+keys, weak entity sets, or subclasses.
+\begin{enumerate}
+    \item Entity sets {\em Courses} and {\em Departments}.  A course
+	is given by a unique department, but its only attribute is its
+	number.  Different departments can offer courses with the same
+	number.  Each department has a unique name.
+
+    \item Entity sets {\em Computers}, {\em Laptops}, and {\em Owners}.
+	A computer has a manufacturer, CPU speed, and a unique name.
+	Laptops, have all the properties of computers, as well as their
+	weight and battery life.  Owners are identified by their names.
+	Every computer has at most one owner, but owners can have 
+	several computers.
+\end{enumerate}
+
+%5 From an ODL definition, give keys specified and translate into
+% database schema
+\item Give an ODL design for a database recording information about teams,
+players, and their fans, including:
+\begin{enumerate}
+    \item For each team, its name, its players, its team captain (one its
+	players), and the colors of its uniform.
+    \item For each player, his/her name.
+    \item For each fan, his/her name, favorite teams, favorite players,
+	and favorite color.
+\end{enumerate}
+
+\newpage
+%6 Many-one, one-one, many-many
+\item For each of the following types of relationships, give an
+	example and draws its E/R diagram:
+    \begin{enumerate}
+	\item one-one:
+	\item many-one:
+	\item many-many:
+    \end{enumerate}
+%8 Functional Dependencies and Multivalued Dependencies
+\item 
+  \begin{enumerate}
+    \item Consider a relation $R(A,B)$ with two tuples: $R=\{(4,1),(4,2)\}$.
+    \begin{enumerate}
+	\item Does $A\rightarrow B$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ \underline{NO}
+	    \bigskip
+	\item Does $A\rightarrow\!\hspace{-0.5em}\rightarrow B$ hold for 
+	    this instance of $R$?\\
+	    \smallskip
+	    Circle one: \underline{YES} \ \ NO
+	    \bigskip
+	    \bigskip
+    \end{enumerate}
+    \item Now consider a relation $R(A,B,C)$ with two tuples:
+    $R = \{(3,2,1), (4,2,6)\}$.
+    \begin{enumerate}
+	\item Does $A\rightarrow B$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: \underline{YES} \ \ NO
+	    \bigskip
+	\item Does $B\rightarrow C$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ \underline{NO}
+	    \bigskip
+	\item Does $A\rightarrow\!\hspace{-0.5em}\rightarrow C$ 
+	    hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ \underline{NO}
+	    \bigskip
+    \end{enumerate}
+   \end{enumerate}
+
+\newpage
+%6 odl --> relational database schema
+\item Convert the following ODL description of a schema to a relational
+database schema.  Remember that {\tt Course} objects have an ``object
+identity,'' and you may invent an attribute representing this OID, 
+e.g. {\tt CourseID}.  
+
+\begin{verbatim}
+interface Course {
+    attribute integer number;
+    attribute string room;
+    relationship Dept deptOf inverse Dept::coursesOf;
+};
+
+interface LabCourse : Course {
+    attribute integer computerAlloc;
+};
+
+interface Dept (key name) {
+    attribute string name;
+    attribute string chair;
+    relationship Set<Course> coursesOf
+         inverse Dept::deptOf;
+};
+\end{verbatim}
+
+\newpage
+
+
+\newpage
+%8 Compare/Contrast Normal Forms
+\item 
+    \begin{enumerate} 
+	\item Define Boyce-Codd Normal Form (BCNF):
+	    \vspace{1in}
+	\item Define Third Normal Form (3NF):
+	    \vspace{1in}
+	\item Define Fourth Normal Form (4NF):
+	    \vspace{1in}
+        \item Is every relation in Third Normal Form also in Boyce Codd
+	    Normal Form?  If yes, explain why.  If no, give an example
+	    that shows why this is not true.
+	    \vspace{1.75in}
+        \item Is every relation in Fourth Normal Form also in Boyce Codd
+	    Normal Form?  If yes, explain why.  If no, give an example
+	    that shows why this is not true.
+	    \vspace{1.5in}
+    \end{enumerate} 
+
+\newpage
+
+%10 BCNF and 4NF
+\item Given the relation schema $R(A,B,C,D)$ with the functional dependencies
+$$
+\begin{array}{c}
+	AB \rightarrow C\\
+	BC \rightarrow D\\
+	CD \rightarrow A\\
+	AD \rightarrow B\\
+\end{array}
+$$
+\begin{enumerate}
+    \item Indicate all the Boyce Codd Normal Form violations.  
+	Do not forget to consider
+	dependencies that are not in the given set, but follow from them.
+	However, it is not necessary to give violations that have more than
+	one attribute on the right side.
+	\vspace{2.5in}
+    \item Decompose the relations, as necessary, into a collection of 
+	relations that are in Boyce Codd Normal Form.
+	\vspace{2in}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
+

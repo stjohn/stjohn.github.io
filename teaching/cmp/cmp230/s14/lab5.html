@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 5, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 5<br>
+CIS 166 & CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab focuses on simple string manipulation from Chapter 5.
+
+</div>
+
+<div>
+<h3>Decoding Text</h3>
+
+In Chapter 5, Zelle converts text into its Unicode codes (<tt>text2numbers.py</tt>):
+<pre>
+# text2numbers.py
+#     A program to convert a textual message into a sequence of
+#         numbers, utilizing the underlying Unicode encoding.
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        print(ord(ch), end=" ")
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+
+We are going to modify his program to create a 
+<a href="http://en.wikipedia.org/wiki/Caesar_cipher">Caesar cipher</a> (or shift cipher) which 
+is a simple code where each letter is replaced by one some fixed distance down the alphabet.
+The simplest Caesar cipher is to shift all letters to the right by one.  So, <tt>ABC</tt> would
+be encoded as <tt>BCD</tt> and <tt>I LOVE PYTHON</tt> would be <tt>J MPWF QZUIPO</tt>.
+
+<p>
+To do this, we will modify the above program.  Let's start by printing out the index of each
+letter in the alphabet that's entered.  So, instead of printing out <tt>ord(ch)</tt>, we'll print
+out <tt>ord(ch)-ord('A')</tt>, or how far past 'A' the letter is in the alphabet:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        print(ord(ch)-ord('A'), end=" ")     # CHANGED ONLY THIS LINE
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p>
+Try running the new program with input <tt>ABCDE</tt>.  What is printed out?  Let's
+save that value in a variable called <tt>index</tt>:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        index = ord(ch) - ord('A')
+        print(ord('A')+index, index, end=" ")     
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p> This change to the program should produce the same output.  We are using 
+variables to make it easier to read.  What does the <tt>chr()</tt> function do?
+Modify your program as follows to find out:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        index = ord(ch) - ord('A')
+        print(chr(ord('A')+index), index, end=" ")     
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p> Note that <tt>chr()</tt> "undoes" the <tt>ord()</tt> function by taking
+the unicode number as input and returning the corresponding character.
+How can we use this to shift encode each character in our message?  If we 
+want to shift by 1, we can simply add 1 before printing:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        index = ord(ch) - ord('A')+1
+        print(chr(ord('A')+index), index, end=" ")    
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p>What happens if you enter a <tt>Z</tt>?  For a true Caesar ciper, <tt>Z</tt>
+should go to <tt>A</tt> or an index of 0, but ours has an index of 26.  To
+fix it, we will use modular arithmethic to make sure any number 26 or above
+is "wrapped" around to the beginning to the alphabet:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message:
+        index = (ord(ch)-ord('A')+1) % 26
+        print(chr(ord('A')+index), end=" ")    
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p>
+And lastly, we will convert all messages to upper case letters to simplify
+the encoding:
+<pre>
+# encode.py
+#     A program to convert a textual message into a Caesar cipher
+
+def main():
+    print("This program converts a textual message into a sequence")
+    print("of numbers representing the Unicode encoding of the message.\n")
+    
+    # Get the message to encode
+    message = input("Please enter the message to encode: ")
+
+    print("\nHere are the Unicode codes:")
+
+    # Loop through the message and print out the Unicode values
+    for ch in message.upper():
+        index = (ord(ch) - ord('A')+1) %26
+        print(chr(ord('A')+index), end=" ")    
+        
+    print() # blank line before prompt
+
+main()
+</pre>
+<p>
+Try encoding several messages to make sure your program works.  You can 
+use the same program to decode messages by changing the index.  Ours is
+currently set to <tt>+1</tt>, but you can "undo" this by setting it to <tt>-1</tt>.
+
+<p>
+Note that 
+our program is not designed to handle punctuation or non-letters (for example, it 
+replaces spaces by <tt>!</tt>).
+
+
+
+</div>
+
+
+<div>
+
+<h3>Python Challenge</h3>
+
+For today's lab, we are going to work through the first two problems of the
+<a href="http://www.pythonchallenge.com/pc/def/0.html">Python Challenge</a>,
+which is a series of programming exercises.  The solution to each provides the
+key to start the next one.  
+
+<p>Hint:  For the first challenge, you do not need to define a function, only use
+the python shell to evaluate the mathematical expression. Take the number 
+and use it as the URL to go to the next challenge.
+
+<p>Hint:  For the second challenge, the <tt>encode.py</tt> program from the first
+part of this lab.  See the challenge for a clue on the appropriate value for the 
+index.
+
+
+</div>

@@ -1,0 +1,276 @@
+<title>Notes for 23 January, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e">
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 23 January</h1>
+<h2> Computer Engineering, Winter 1998<br>
+Introduction to Computing</h2>
+
+<hr>
+Problem:  Write a program that takes the take-off and
+	landing times of a flight and prints out the
+	length of the flight.
+<hr>
+
+Algorithm (first draft):
+<hr>
+<ol>
+	<li> Get input from user.
+	<li> Calculate length of flight
+	<li> Print out results.
+</ol>
+
+<hr>
+
+Pseudocode:<br>
+(half way between English and C++):
+<hr>
+<pre>
+main()
+{
+    int thour, tmin,	// take-off hour and minute
+    	lhour, lmin,	// landing hour and minute
+    	fhour, fmin;	// length of flight, hour and minute
+    	
+    get_input ( thour, tmin, lhour, lmin );
+    calculate_length ( thour, tmin, lhour, lmin, fhour, fmin );
+    print_length ( fhour, fmin );
+}
+</pre>
+
+<hr>
+Refinement of pseudocode:<br>
+(Note the use of "stubs" for the functions.)
+<hr>
+<pre>
+#include &lt iostream.h &gt
+
+// Program that calculates length of flight
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+//
+// This program takes the take-off and landing 
+// times of a flight and prints the length of
+// the flight.
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin );
+// This function prompts the user for the flight times.
+// It reads in the hours and minutes into separate integer
+// variables and assumes hours are entered following the
+// 24 hour clock.  This assumption is to avoid dealing with
+// AM and PM.
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin );
+// This function takes the flight times and calculates the
+// length of the flight.  The length is then stored in 
+// fhour and fmin
+
+void print_length ( int fhour, int fmin );
+// This function prints the flight length stored in 
+// fhour and fmin.
+
+main()
+{
+    int thour, tmin,	// take-off hour and minute
+    	lhour, lmin,	// landing hour and minute
+    	fhour, fmin;	// length of flight, hour and minute
+    	
+    get_input ( thour, tmin, lhour, lmin );
+    calculate_length ( thour, tmin, lhour, lmin, fhour, fmin );
+    print_length ( fhour, fmin );
+}
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin )
+{
+    return;
+}
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin )
+{
+    return;
+}
+
+void print_length ( int fhour, int fmin )
+{
+    return;
+}
+
+</pre>
+
+<hr>
+Further Refinement of pseudocode:<br>
+<hr>
+<pre>
+#include &lt iostream.h &gt
+
+// Program that calculates length of flight
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+//
+// This program takes the take-off and landing 
+// times of a flight and prints the length of
+// the flight.
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin );
+// This function prompts the user for the flight times.
+// It reads in the hours and minutes into separate integer
+// variables and assumes hours are entered following the
+// 24 hour clock.  This assumption is to avoid dealing with
+// AM and PM.
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin );
+// This function takes the flight times and calculates the
+// length of the flight.  The length is then stored in 
+// fhour and fmin
+
+void print_length ( int fhour, int fmin );
+// This function prints the flight length stored in 
+// fhour and fmin.
+
+main()
+{
+    int thour, tmin,	// take-off hour and minute
+    	lhour, lmin,	// landing hour and minute
+    	fhour, fmin;	// length of flight, hour and minute
+    	
+    get_input ( thour, tmin, lhour, lmin );
+    calculate_length ( thour, tmin, lhour, lmin, fhour, fmin );
+    print_length ( fhour, fmin );
+}
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin )
+{
+    cout &lt&lt "Please enter the hour the flight departed\n"
+    	&lt&lt "(using the 24-hour clock): ";
+    cin &gt&gt thour;
+    cout &lt&lt "Please enter the minute the flight departed: ";
+    cin &gt&gt tmin;
+
+    cout &lt&lt "Please enter the hour the flight arrived\n"
+    	&lt&lt "(using the 24-hour clock): ";
+    cin &gt&gt lhour;
+    cout &lt&lt "Please enter the minute the flight arrived: ";
+    cin &gt&gt lmin;
+
+    return;
+}
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin )
+{
+    return;
+}
+
+void print_length ( int fhour, int fmin )
+{
+    cout &lt&lt "The length of the flight is "
+         &lt&lt fhour &lt&lt " hours and "
+         &lt&lt fmin &lt&lt " minutes.\n\n";
+    return;
+}
+
+</pre>
+
+
+<hr>
+Final Refinement of pseudocode:<br>
+(Note all the "stubs" have been replaced by the
+actual functions.)
+<hr>
+
+<pre>
+#include &lt iostream.h &gt
+
+// Program that calculates length of flight
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+//
+// This program takes the take-off and landing 
+// times of a flight and prints the length of
+// the flight.
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin );
+// This function prompts the user for the flight times.
+// It reads in the hours and minutes into separate integer
+// variables and assumes hours are entered following the
+// 24 hour clock.  This assumption is to avoid dealing with
+// AM and PM.
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin );
+// This function takes the flight times and calculates the
+// length of the flight.  The length is then stored in 
+// fhour and fmin
+
+void print_length ( int fhour, int fmin );
+// This function prints the flight length stored in 
+// fhour and fmin.
+
+main()
+{
+    int thour, tmin,	// take-off hour and minute
+    	lhour, lmin,	// landing hour and minute
+    	fhour, fmin;	// length of flight, hour and minute
+    	
+    get_input ( thour, tmin, lhour, lmin );
+    calculate_length ( thour, tmin, lhour, lmin, fhour, fmin );
+    print_length ( fhour, fmin );
+}
+
+void get_input ( int& thour, int& tmin, int& lhour, int& lmin )
+{
+    cout &lt&lt "Please enter the hour the flight departed\n"
+    	&lt&lt "(using the 24-hour clock): ";
+    cin &gt&gt thour;
+    cout &lt&lt "Please enter the minute the flight departed: ";
+    cin &gt&gt tmin;
+
+    cout &lt&lt "Please enter the hour the flight arrived\n"
+    	&lt&lt "(using the 24-hour clock): ";
+    cin &gt&gt lhour;
+    cout &lt&lt "Please enter the minute the flight arrived: ";
+    cin &gt&gt lmin;
+
+    return;
+}
+
+void calculate_length ( int thour, int tmin, int lhour, 
+	int lmin, int& fhour, int& fmin )
+{
+    int t_totalmin, l_totalmin, f_totalmin;
+    
+    if ( thour > lhour )	// Take-off and landing on different days
+    {
+    	lhour = lhour + 24;
+    }
+    // Convert to minutes to make subtraction easier:
+    t_totalmin = thour*60 + tmin;
+    l_totalmin = lhour*60 + lmin;
+    f_totalmin = l_totalmin - t_totalmin;
+	
+    // Convert back to hours and minutes:
+    fhour = f_totalmin / 60;
+    fmin = f_totalmin % 60;
+
+    return;
+}
+
+void print_length ( int fhour, int fmin )
+{
+    cout &lt&lt "The length of the flight is "
+         &lt&lt fhour &lt&lt " hours and "
+         &lt&lt fmin &lt&lt " minutes.\n\n";
+    return;
+}
+
+</pre>
+
+

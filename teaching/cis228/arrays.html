@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Array Examples</title>
+	<style>
+		body { 
+			font-family: sans-serif; 
+			background-color: #aaffff;
+		}
+		span { 
+			background-color: #55ffff;
+			padding: 10px;
+		}
+	</style>
+	<script>
+		function enterGrades() {
+			var i, ave, grades;
+			ave = 0;
+			grades = new Array;
+			
+			for (i = 0; i < 5; i++){
+				grades[i] = prompt("Please enter grade for assignment "+ i+":");
+				ave = ave + parseInt(grades[i]);
+			}
+			
+			ave = ave/5.0;
+			
+			document.write("Grades entered:<br>");
+			for (i = 0; i < 5; i++){
+				document.write("Assignment "+i+": " + grades[i] + ".<br>");
+			}
+			document.write("<br>Average is " + ave + ".");
+		}
+		
+		var colors = new Array;
+
+		function initColorTable() {
+			var i = 0;
+			while (i < 10) {
+				colors[i] = "aa" + i + i + i + i;
+				i++;
+			}
+		}			
+
+		function changeColorTable() {
+			var startRed = prompt("Enter starting value for red");
+			var i;
+			
+			for (i = 0; i < 10; i++) {
+				colors[i] = startRed + i + i + i + i;
+			}
+		}
+		
+	
+		function makeColorTable() {
+			document.write("<table>");
+
+			var i = 0;
+			while (i < 10) {
+				document.write("<tr><td bgColor='#"+colors[i]+"'>" + colors[i] + "</td></tr>");
+				i++;
+			}
+			document.write("</table>");
+		}
+		
+	</script>
+  </head>
+  <body onload="initColorTable()">
+  	<h1>Array Examples</h1>
+  	
+  	<p> Each button is linked to a JavaScript function, containing arrays:</p>
+  	
+  	<p>
+  		<span onclick="enterGrades()">Enter Grades</span>
+		<span onclick="changeColorTable()">Change Color Table</span>
+		<span onclick="makeColorTable()">Make Color Table</span>
+
+	</p>
+ </body>
+</html>
+

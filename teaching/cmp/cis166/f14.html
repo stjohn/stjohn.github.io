@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>CIS 166: Computer Programming for Information Processing I, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2><br>CIS 166: Computer Programming for Information Processing I<br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+CMP 230 and CIS 166 both cover introductory programming in Python.  The programming and assessments
+differ, but instructors are knowledgable in the content for both classes, and you are welcome and 
+encouraged to 
+attend any of office hours, tutoring hours, and review sessions (anouncements will be sent via Blackboard to students registered in the class).
+Note that the university has approved the renumbering of CMP 230 to CMP 167 in Spring 2014.  
+The course appears as CMP 167 in some official documents and will appear on transcripts and 
+CUNYFirst with the new number as of Spring 2015.
+
+<p>
+<table  border="1" >
+	<tr>
+		<th>Course(s): </th><th>Time:</th><th>Instructor:</th><th>E-mail:</th><th>Office Hours</th>
+	</tr>
+<!--	
+	<tr>
+		<td>CMP 230 (H401)</td><td>MW, 9am-10:40am</td><td>Dr. Eric Ford</td><td>eric.ford1</td>
+	</tr>
+-->
+	<tr>
+		<td>CMP 230 (I401)</td><td>MW, 11am-12:40pm</td><td>Dr. Eric Ford</td><td>eric.ford1</td><td>W 4-6 pm, Gillet 137I</td>
+	</tr>
+	<tr>
+		<td>CIS 166 (I401)</td><td>MW, 11am-12:40pm</td><td>Mr. Joshua Rogers</td><td>joshua.rogers.cuny@gmail.com</td><td>T, Th 11-12:30 in G101A</td>
+	</tr>	
+	<tr>
+		<td>CIS 166 (01)</td><td>MW, 1pm-2:40pm</td><td>Mr. Joshua Rogers</td><td>joshua.rogers.cuny@gmail.com</td>	<td>T, Th 11-12:30 in G101A</td>
+	</tr>
+<!--	
+	<tr>
+		<td>CMP 230 (ZH81)</td><td>MW, 7:50-9:30pm</td><td>Ms. Eva Sofianos</td><td></td>
+	</tr>
+-->	
+	<tr>
+		<td>CMP 230 (B401)</td><td>TTh, 9am-10:40am</td><td>Prof. Katherine St. John</td><td>stjohn</td><td>T,Th 10:40-noon (starts in lab, then G137)</td>
+	</tr>
+	<tr>
+		<td>CMP 230 (C401)</td><td>TTh, 11am-12:40pm</td><td>Prof. Nancy Griffeth</td><td>nancy.griffeth</td><td>T,Th 2-4pm</td>
+	</tr>
+	<tr>
+		<td>CMP 230 (01)</td><td>TTh, 1-2:40pm</td><td>Prof. Megan Owen</td><td>megan.owen</td><td>T,Th 2:40-4:10pm (starts in lab, then G137)</td>
+	</tr>	
+	<tr>
+		<td>CIS 166 (ZG81)</td><td>TTh, 6-7:45pm</td><td>Mr. Claudio Falcon</td><td>falcon.claudio@gmail.com</td><td>TBA</td>
+	</tr>	
+	<tr>
+		<td>CMP 230 (ZG81)</td><td>TTh, 6-7:45pm</td><td>Ms. Alexandra Scolaro</td><td>scolaroalexandra@gmail.com</td><td>TBA</td>
+	</tr>
+</table>
+Unless noted, all email addresses are @lehman.cuny.edu.
+</div>
+
+
+<div>
+<h3>Useful Links:</h3>
+<ul>  
+	<li> The <a href="http://mcsp.wartburg.edu/zelle/python/ppics2/index.html">book's webpage</a>
+		(includes sample programs and PowerPoint slides).
+<!--
+	<li> All <a href="officeHours.html">office hours, tutoring hours, and review sessions</a>.-->
+	<li> <a href = "f14/syl.html">Syllabus</a>
+	<li> <a href = "f14/ps.html">Programming Assignments</a>
+	<li> Information about the <a href="f14/final/final.html">final exam</a>, including exams from 
+		previous years.
+</ul>
+</div>
+
+<div>
+<h3>Outline:</h3>
+
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:</b></td>
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+		<td><b>Quiz Topics:</b></td>
+	</tr>
+	<tr>
+		<td><b>#1</b>
+		<br>28 August/3 September</td>
+		<td>Review of campus computer policy and academic integrity code,<br>
+			Overview of software and hardware, compilers and interpreters, printing and
+			simple functions
+		<td><a href="f14/syl.html">Syllabus</a>,<br>
+		<a href="f14/ps.html">Problem Sets</a>,<br>
+		<a href="../cmp230/f14/lab1.html">Lab 1</a></td>		
+		<td><a href="http://www.lehman.edu/academics/arts-humanities/documents/CUNYPolicyonAcademicIntegrity.pdf">Academic Integrity Policy</a>,<br>
+		Chapter 1</td>	
+		<td>
+		Academic Integrity</td>
+		</td>
+	</tr>
+
+	<tr>
+		<td>1 September</td>
+		<td colspan = 4><span class="announcement">Labor Day:  Campus Closed/No Classes</span></td>
+	</tr>		
+	
+	<tr>
+		<td><b>#2</b>
+		<br>2/8 September</td>
+		<td>Problem solving and the design process
+			variables, assignment statements, swapping values
+			</td>		
+		<td></td>		
+		<td>Chapter 2</td>	
+		<td>Chapter 1 
+		</td>
+	</tr>
+	
+	<tr>
+		<td><b>#3</b><br>
+		4/10 September</td>
+		<td>More on problem solving and the design process, variables, assignment statements, 
+			swapping valuesDefinite Loops (For loops)</td>		
+		<td><a href="../cmp230/f14/lab2.html">Lab 2</a></td>		
+		<td>Chapter 2</td>
+		<td><a href="../cmp230/f14/lab1.html">Lab 1</a> and Chapter 2
+		</td>
+		
+	</tr>		
+	<tr>
+		<td><b>#4</b><br>
+		 9/15 September</td>
+		<td>
+			Computing with numbers: data types, using the math library, </td>		
+		<td></td>		
+		<td>Chapter 3</td>
+		<td>Chapter 2</td>		
+	</tr>	
+	
+
+	<tr>
+		<td><b>#5</b>
+		<br>11/17 September</td>
+		<td>Type conversions, handling large numbers</td>		
+		<td><a href="f14/lab3.html">Lab 3</a></td>		
+		<td>Chapter 3</td>
+		<td><a href="../cmp230/f14/lab2.html">Lab 2</a> and Chapters 2 and 3 
+		</td>		
+	</tr>
+
+	<tr>
+		<td><b>#6</b><br>16/22 September</td>
+		<td>Using variables as accumulators</td>		
+		<td></td>		
+		<td>Chapter 3</td>
+		<td>Programming Quiz (on-line): <a href="f14/ps.html#set1">Programs 1-5</a>
+		</td>		
+	</tr>
+	
+	<tr>
+		<td><b>#7</b><br>
+		18/29 September</td>
+		<td>Computing with strings: simple string processing</td>
+			
+		<td><a href="f14/lab4.html">Lab 4</a></td>		
+		<td>Chapter 5</td>
+		<td><a href="f14/lab3.html">Lab 3</a> and Chapter 3
+		</td>		
+		
+	</tr>
+	
+	<tr>
+		<td>23 September</td>
+		<td colspan = 4><span class="announcement">Classes follows Friday Schedule</span></td>
+	</tr>	
+
+	<tr>
+		<td>24-26 September</td>
+		<td colspan = 4><span class="announcement">CUNY:  No classes</span></td>
+	</tr>	
+	
+	<tr>
+		<td><b>#8</b><br>
+		30 September/1 October</td>
+		<td>String Representation and Message Encoding</td>
+			
+		<td></td>		
+		<td>Chapter 5</td>
+		<td>
+		Programming Quiz (paper): <a href="f14/ps.html#set2">Programs 6-10</a>
+		</td>		
+		
+	</tr>	
+
+		
+
+	<tr>
+		<td><b>#9</b><br>
+		2/6 October</td>
+		<td>Methods for Strings and Lists</td>	
+		
+		<td><a href="../cmp230/f14/lab5.html">Lab 5</a></td>
+		<td>Chapter 5</td>
+		<td><a href="f14/lab4.html">Lab 4</a> and Chapter 5		
+		</td>		
+	</tr>
+	
+	<tr>
+		<td><b>#10</b><br>
+		7/8 October</td>
+		<td>Computing with strings: data conversion and formatting</td>	
+		<td></td>
+		<td>Chapter 5</td>
+		<td>Programming Quiz (on-line): <a href="f14/ps.html#set3">Programs 11-15</a>
+		</td>		
+	</tr>
+
+	<tr>
+		<td><b>#11</b><br>
+		9/15 October
+		</td>
+		<td>Computing with Strings: file processing</td>
+		<td><a href="../cmp230/f14/lab6.html">Lab 6</a></td>
+		<td>Chapter 5</td>
+		<td><a href="../cmp230/f14/lab5.html">Lab 5</a> and Chapter 5
+		</td>		
+	</tr>
+	
+	<tr>
+		<td>13 October</td>
+		<td colspan = 4><span class="announcement">No Classes: College Closed</span></td>
+	</tr>		
+	
+
+	<tr>
+		<td><b>#12</b><br>
+		14/20 October
+		</td>
+		<td>Computing with Strings: more on using files</td>
+		<td></td>
+		<td>Chapter 5</td>
+		<td>Programming Quiz (paper): <a href="f14/ps.html#set4">Programs 16-20</a></td>
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td><b>#13</b><br>
+		16/22 October
+		</td>
+		<td>Formatting and multi-line strings</td>
+		<td><a href="f14/lab7.html">Lab 7</a></td>
+		<td>Chapter 5</td>
+		<td><a href="../cmp230/f14/lab6.html">Lab 6</a> and Chapter 5
+		</td>		
+
+	</tr>
+	
+	<tr>
+		<td><b>#14</b><br>
+		21/27 October
+		</td>
+		<td>Defining Functions: functions and parameters</td>
+		<td></td>
+		<td>Chapter 6</td>
+		<td> Programming Quiz (on-line): <a href="f14/ps.html#set5">Programs 21-25</a>
+		</td>		
+
+	</tr>
+		
+	<tr>
+		<td><b>#15</b><br>
+		23/29 October</td>
+		<td>Defining Functions: return values, modifying input parameters
+			</td>		
+		<td><a href="../cmp230/f14/lab8.html">Lab 8</a></td>	
+		<td>Chapter 6</td>	
+		<td> <a href="f14/lab7.html">Lab 7</a> and Chapter 6
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td><b>#16</b><br>
+		28 October/3 November</td>
+		<td>Defining Functions:  designing programs with functions
+		</td>		
+		<td></td>	
+		<td>Chapter 6</td>	
+		<td> Chapter 6
+		</td>		
+		
+	</tr>
+
+	
+	<tr>
+		<td><b>#17</b><br>
+		30 October/5 November</td>
+		<td>Defining functions:  more on designing programs
+			</td>		
+		<td><a href="f14/lab9.html">Lab 9</a></td>		
+		<td>Chapter 6</td>	
+		<td> Chapter 6 and <a href="../cmp230/f14/lab8.html">Lab 8</a>
+		</td>		
+		
+	</tr>
+
+	<tr>
+		<td><b>#18</b><br>
+		4/10 November</td>
+		<td>Decisions
+			</td>		
+		<td></td>		
+		<td>Chapter 7 </td>	
+		<td>Programming Quiz (paper): <a href="f14/ps.html#set6">Programs 26-30</a>
+		</td>		
+		
+	</tr>
+	
+	<tr>
+		<td><b>#19</b><br>
+		6/12 November</td>
+		<td>Two-way Decisions</td>		
+		<td><a href="f14/lab10.html">Lab 10</a></td>		
+		<td>Chapter 7</td>
+		<td> Chapter 7 and <a href="../cmp230/f14/lab9.html">Lab 9</a> 
+		</td>		
+
+	</tr>
+	
+	<tr>
+		<td><b>#20</b><br>
+		11/17 November</td>
+		<td>Multi-way Decisions
+		</td>		
+		<td></td>		
+		<td>Chapter 7</td>
+		<td> Chapter 7 and <a href="../cmp230/f14/lab10.html">Lab 10</a> 
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td><b>#21</b><br>
+		13/19 November</td>
+		<td>More on Decisions; Exception Handling
+		</td>		
+		<td><a href="../cmp230/f14/lab12.html">Lab 11</a></td>			
+		<td>Chapter 7</td>
+		<td> Programming Quiz (on-line): <a href="f14/ps.html#set7">Programs 31-35</a>
+		</td>		
+
+	</tr>
+
+	<tr>
+		<td><b>#22</b><br>
+		18/24 November</td>
+		<td>Loops and Booleans:  indefinite loops, boolean variables and expressions</td>		
+		<td></td>		
+		<td>Chapter 8</td>
+		<td> Chapter 7
+		</td>		
+	</tr>
+	
+	<tr>
+		<td><b>#23</b><br>
+		20/26 November</td>
+		<td> Loops and Booleans:  more on boolean variables
+		</td>		
+		<td><a href="f14/lab12.html">Lab 12</a></td>		
+		<td>Chapter 8</td>
+		<td> Chapter 8 and <a href="../cmp230/f14/lab12.html">Lab 11</a>
+		</td>		
+	</tr>
+
+	<tr>
+		<td><b>#24</b><br>
+		25 November/1 December</td>
+		<td>Interactive loops, nesting loops
+		</td>		
+		<td></td>		
+		<td>Chapter 8</td>
+		<td> Programming Quiz (paper): <a href="f14/ps.html#set8">Programs 36-40</a>
+		</td>		
+
+	</tr>
+	
+	
+	<tr>
+		<td>27-28 November</td>
+		<td colspan = 4><span class="announcement">Thanksgiving Recess: College Closed</span></td>
+	</tr>	
+	
+
+	<tr>
+		<td><b>#25</b><br>
+		2/3 December</td>
+		<td>
+		Loops and Files		
+		</td>		
+		<td><a href="f14/lab13.html">Lab 13</a></td>		
+		<td>Chapter 8</td>	
+		<td> Chapter 8 and <a href="f14/lab12.html">Lab 12</a>
+		</td>		
+		
+		
+	</tr>
+
+	<tr>
+		<td><b>#26</b><br>
+		4/8 December</td>
+		<td>Linear and Binary Search
+		</td>		
+		<td></td>		
+		<td>Chapter 13</td>	
+		<td> Programming Quiz (on-line): <a href="f14/ps.html#set9">Programs 41-45</a>
+		</td>		
+		
+		
+	</tr>
+
+
+	<tr>
+		<td><b>#27</b><br>
+		9/10 December</td>
+		<td>Basic Sorting
+		</td>		
+		<td><a href="../cmp230/f14/lab11.html">Lab 14</a></td>		
+		<td>Chapter 13</td>
+		<td>Chapter 13 and <a href="f14/lab13.html">Lab 13</a>
+		</td>		
+		
+		
+	</tr>
+	
+	<tr>
+		<td><b>#28</b><br>
+		11/15 December</td>
+		<td>Review</td>		
+		<td></td>		
+		<td>Chapters 1-3, 5-8, 13</td>
+		<td>End-of-semester survey
+		</td>		
+		
+		
+	</tr>
+
+<!--	
+	<tr>
+		<td>16 May</td>
+		<td colspan = 4><span class="announcement">Reading Day</span>
+		</td>	
+	</tr>
+-->
+</table>
+<p>
+<span class="announcement">You may take the final during any of the following times:</span>
+<table border="1" >
+
+	<tr>
+		<td rowspan=2><b>Tuesday, 16 December<td colspan=4> <span class="announcement">11am-1pm 
+											</span></b></td>
+
+	</tr>
+	<tr>
+		<td colspan=4> <span class="announcement">6:15-8:15pm</span></b></td>
+
+	</tr>	
+	<tr>
+		<td rowspan=2><b>Wednesday, 17 December<td colspan=4> <span class="announcement">11am-1pm
+													</span></b></td>
+
+	</tr>
+	<tr>
+		<td colspan=4> <span class="announcement">
+													1:30-3:30pm
+													</span></b></td>
+
+
+	<tr>
+		<td rowspan=2><b>Thursday, 18 December<td colspan=4> <span class="announcement">8:30-10:30am</span></b></td>
+	
+
+	</tr>
+	<tr>
+		<td colspan=4> <span class="announcement">11am-1pm</span></b></td>
+	
+
+	</tr>
+<!--	
+	<tr>
+		<td><b>22 December<td colspan=4> <span class="announcement">8:30-10:30am</span></b></td>
+	
+
+	</tr>
+-->
+
+
+</table>
+
+
+
+<br>
+<br>
+<br>
+(Last updated: 4 September 2014)

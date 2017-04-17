@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Examples, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Examples<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+This page has examples used in lecture over the semester.
+
+</div>
+
+<div>
+<a id="lab1"></a>
+<h3>Turtle Example from Lab 1</h3>
+
+<p>
+<iframe src="https://trinket.io/embed/python/f79254b1f6" width="90%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+</div>
+
+<div>
+<a id="range"></a>
+<h3>Range Examples</h3>
+
+
+<p>
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=for%20x%20in%20range%2810,20%29%3A%0A%20%20%20%20print%28x%29%0A%20%20%20%20%0Afor%20y%20in%20range%281976,2025,4%29%3A%0A%20%20%20%20print%28%22Election%20year%3A%22,y%29%0A%20%20%20%20%0Afor%20num%20in%20range%280,-10,-2%29%3A%0A%20%20%20%20print%28num%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</div>
+
+<div>
+<a id="lab2"></a>
+<h3><tt>randrange()</tt> example from Lab 2</h3>
+
+<p>
+<iframe src="https://trinket.io/embed/python/ab6cddc880" width="90%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
+</div>
+
+<div>
+<a id="loopStrings"></a>
+<h3>Looping Through Strings</h3>
+
+
+<p>
+<iframe width="800" height="700" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=saying%20%3D%20%22a%20man%20a%20plan%20a%20canal%20panama%22%0A%0Aprint%28saying%29%0Aprint%28len%28saying%29%29%0Aprint%28saying%5B0%5D%29%0Aprint%28saying%5B1%5D%29%0Aprint%28saying%5B-1%5D%29%0Aprint%28%22----%22%29%0A%0Afor%20c%20in%20saying%3A%0A%20%20%20%20print%28c%29%0Aprint%28%22----%22%29%0A%0Afor%20i%20in%20range%28len%28saying%29%29%3A%0A%20%20%20%20print%28saying%5Bi%5D%29%0Aprint%28%22----%22%29%20%20%20%0A%20%0Afor%20i%20in%20range%28len%28saying%29-1,%20-1,-1%29%3A%0A%20%20%20%20print%28saying%5Bi%5D%29%0A%0A%0A%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</div>
+
+
+<div>
+<a id="loopFiles"></a>
+<h3>Looping Through Files</h3>
+
+
+<p>
+<iframe src="https://trinket.io/embed/python/013fcc3c8f" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+
+
+<div>
+<a id="runningTotal"></a>
+<h3>Running Total Example</h3>
+
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23Sample+accumulator+(running+sum)%0A++++%0Adef+main()%3A%0A++++print(%22A+program+that+calculate+total+of+5+numbers.%22)%0A++++sum+%3D+0%0A++++for+i+in+range(5)%3A%0A++++++++newNum+%3D+float(input('Enter+next+number%3A+'))%0A++++++++sum+%3D+sum+%2B+newNum%0A++++print(%22The+sum+is%22,+sum)%0A++++%0Amain()%0A++++&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%223%22,%224.5%22,%22-3.4%22,%220%22,%2255%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+<div>
+<a id="dictionary"></a>
+<h3>Dictionary example</h3>
+
+
+
+
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=eng2esp%3D%7B%7D%0Aprint%20%28eng2esp%29%0A%09%0Aeng2esp%5B'one'%5D%20%3D%20'uno'%0Aprint%20%28eng2esp%29%0A%7B'one'%3A%20'uno'%7D%0Aeng2esp%5B'two'%5D%20%3D%20'dos'%0Aprint%20%28eng2esp%29%0A%7B'two'%3A%20'dos',%20'one'%3A%20'uno'%7D%0Aprint%20%28eng2esp%5B'two'%5D%29%0A%09%0Acounts%20%3D%20%7B%7D%0Afor%20l%20in%20%22a%20man%20a%20plan%20a%20canal%20panama%22%3A%0A%20%20%20%20counts%5Bl%5D%20%3D%20counts.get%28l,0%29%20%2B%201%0A%0Afor%20k%20in%20counts.keys%28%29%3A%0A%20%20%20%20print%28k,%20counts%5Bk%5D%29%0A%20%20%20%20%0AsortedList%20%3D%20sorted%28counts.items%28%29%29%0A%0A%0A%09%0AsortByValue%20%3D%20%5B%28k,v%29%20for%20v,k%20in%20sorted%28%0A%09%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B%28v,k%29%20for%20k,v%20in%20counts.items%28%29%5D%0A%09%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%29%0A%09%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%09%20%20%20%20%20%20%20%20%20%20%20%20%0AsortReverseValue%20%3D%20sortByValue%5B%3A%3A-1%5D%20%20%20%20%20%20%20%20%20%0A%09%0Aprint%20%28%22Counts%3A%22,%20counts%29%0Aprint%20%28%22sortedList%3A%22,%20sortedList%29%0Aprint%20%28%22sorted%20by%20values%3A%22,%20sortByValue%29%0Aprint%20%28%22sorted%20by%20reverse%20order%20on%20values%22,%20sortReverseValue%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</div>
+
+
+<div>
+<a id="if"></a>
+<h3>If statements</h3>
+
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=message%20%3D%20input%28%22Enter%20a%20short%20message%22%29%0Aif%20len%28message%29%20%3E%2010%3A%0A%20%20%20%20print%28%22Your%20message%20is%20too%20long!%22%29%0A%0A%0Aword%20%3D%20input%28%22Please%20enter%20a%20number%3A%20%22%29%0Anum%20%3D%20int%28word%29%0A%0Aif%20num%20%3E%200%3A%0A%20%20%20%20print%28num,%20%22is%20positive%22%29%0Aelse%3A%0A%20%20%20%20print%28num,%20%22is%20negative%20or%200%22%29%0A%20%20%20%20%0A%0A%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=false&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22ddd%22,%22-40%22%5D&textReferences=false"> </iframe>
+
+</div>
+
+<div>
+<a id="functions"></a>
+<h3>
+<a name="happy">Happy Birthday example:</a></h3>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23+From+%22Teaching+with+Python%22+by+John+Zelle%0Adef+happy()%3A%0A++++print(%22Happy+Birthday+to+you!%22)%0A%0Adef+sing(P)%3A%0A++++happy()%0A++++happy()%0A++++print(%22Happy+Birthday+dear+%22+%2B+P+%2B+%22!%22)%0A++++happy()%0A%0A%23+main%0Asing(%22Fred%22)&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+<div>
+<h3>
+<a name="jam">Jam example:</a></h3>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+prob4()%3A%0A++++verse+%3D+%22jam+tomorrow+and+jam+yesterday,%22%0A++++print(%22The+rule+is,%22)%0A++++c+%3D+mystery(verse)%0A++++w+%3D+enigma(verse,c)%0A++++print(c,w)%0Adef+mystery(v)%3A%0A++++print(v)%0A++++c+%3D+v.count(%22jam%22)%0A++++return(c)%0Adef+enigma(v,c)%3A%0A++++print(%22but+never%22,+v%5B-1%5D)%0A++++for+i+in+range(c)%3A%0A++++++++print(%22jam%22)%0A++++return(%22day.%22)%0Aprob4()&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+<div>
+<h3>
+<a name="fall13Prob5">Decisions & Functions:</a></h3>
+
+<iframe width="800" height="800" frameborder="0" src="http://www.pythontutor.com/iframe-embed.html#code=%23Fall+2013+Final+Exam,+5%0A%0Adef+kuwae(+inLst+)%3A%0A++++tot+%3D+1%0A++++for+item+in+inLst%3A%0A++++++++tot+%3D+tot+*+item%0A++++return+tot%0A%0Adef+foo(+inLst+)%3A%0A++++if+(+inLst%5B-1%5D+%3E+inLst%5B0%5D+)%3A%0A++++++++return+kuwae(+inLst+)%0A++++else%3A%0A++++++++return+-1%0A++++++++%0Afoo(+%5B2,+4,+6,+8%5D+)%0A%0Afoo(+%5B4002,+328,+457,+1%5D+)%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+<div>
+<h4>
+<a name="spring15Prob3">Functions: Spring 2015 Final Exam, #3:</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/visualize.html#code=def%20prob4%28fred,%20george%29%3A%0A%20%20%20%20if%20fred%20%3C%202%3A%0A%20%20%20%20%20%20%20%20print%28%22Small%20case%22%29%0A%20%20%20%20%20%20%20%20harry%20%3D%20-1%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print%28%22Complex%20case%22%29%0A%20%20%20%20%20%20%20%20harry%20%3D%20helper%28fred,george%29%0A%20%20%20%20return%28harry%29%0A%20%20%20%20%0Adef%20helper%28isaac,jacob%29%3A%0A%20%20%20%20s%20%3D%20%22%22%0A%20%20%20%20for%20j%20in%20range%28isaac%29%3A%0A%20%20%20%20%20%20%20%20print%28j,%20%22%3A%20%22,%20jacob%5Bj%5D%29%0A%20%20%20%20%20%20%20%20if%20j%20%25%202%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20s%20%3D%20s%20%2B%20jacob%5Bj%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20print%28%22Building%20s%3A%22,%20s%29%0A%20%20%20%20return%28s%29%20%20%20%20%0A%0A%23Part%20a%29%0Ar%20%3D%20prob4%282,%22lehman%22%29%20%0Aprint%28%22Return%3A%20%22,%20r%29%0A%0A%23Part%20b%29%0Ar%20%3D%20prob4%284,%22college%22%29%20%0Aprint%28%22Return%3A%20%22,%20r%29%0A%0A%23Part%20c%29%0Ar%20%3D%20prob4%284,%22college%22%29%20%0Aprint%28%22Return%3A%20%22,%20r%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</div>
+
+
+<div>
+<h4>
+<a name="spring12Prob8">Indefinite Loops: Spring 2012 Final Exam, #8:</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://www.pythontutor.com/iframe-embed.html#code=%23Spring+2012+Final+Exam,+%238%0A%0Anums+%3D+%5B1,4,0,6,5,2,9,8,12%5D+%0Ai%3D0%0Awhile+i+%3C+len(nums)-1%3A%0A++++if+nums%5Bi%5D+%3C+nums%5Bi%2B1%5D%3A%0A++++++++nums%5Bi%5D,+nums%5Bi%2B1%5D+%3D+nums%5Bi%2B1%5D,+nums%5Bi%5D%0A++++i%3Di%2B1+%0A++++++++%0Aprint(nums)%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+</body>
+
+
+</html>

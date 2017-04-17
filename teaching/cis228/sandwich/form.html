@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>228 Sandwich Shop</title>
+  </head>
+  <body>
+    <form action="http://comet.lehman.cuny.edu/stjohn/teaching/cis228/sandwich/order.php" method="POST">
+      <p>Enter your name:<br />
+
+        First name: <input type="text" name="firstname" value="" /><br />
+        Last name:  <input type="text" name="lastname" value="" /><br />
+
+      </p>
+      
+      <p>What type of sandwich would you like?<br /><br />
+      
+      Bread:
+      Wheat:<input type="radio" name="bread" value="Wheat" />
+      White:<input type="radio" name="bread" value="White" />
+      Rye:<input type="radio" name="bread" value="Rye" />      
+      <br />
+      Toasted?
+      Yes:<input type="radio" name="cookingInst" value="toasted" />
+      Lightly:<input type="radio" name="cookingInst" value="lightly toasted" />
+      No:<input type="radio" name="cookingInst" value="not toasted" />      
+      <br />
+      
+      Filling:
+      	<select name="filling">
+      		<option value = "Chicken">Chicken</option>
+      		<option value = "Eggplant">Eggplant</option>
+      		<option value = "Ham">Ham</option>
+      		<option value = "Tofu">Tofu</option>
+      </select>
+
+      <fieldset>
+      	<legend>Extras:</legend>
+      	<table>
+      	<tr>
+      		<td>Mayo</td><td><input type="checkbox" name="extras[]" value="Mayo"/></td>
+      	</tr>
+      	<tr>
+      		<td>Mustard</td><td><input type="checkbox" name="extras[]" value="Mustard"/></td>
+      	</tr>
+      	<tr>
+      		<td>Cheese</td><td><input type="checkbox" name="extras[]" value="Cheese"/></td>
+      	</tr>
+      	<tr>
+      		<td>Tomatoes</td><td><input type="checkbox" name="extras[]" value="Tomatoes"/></td>
+      	</tr>
+      </table>
+      </fieldset>
+      <br />
+      Special Instructions:<br />
+      <textarea name="comments" rows="3" cols="50">(none)</textarea>
+
+
+      <br /><br/ >  <input type="submit" value="Order Now!"/>      
+      </p>
+    </form>
+  </body>
+</html>
+

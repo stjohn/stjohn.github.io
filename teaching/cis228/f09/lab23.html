@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 23 for CIS 228, Lehman College, CUNY, Fall 2009</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<img id="bookImage" alt="cover picture" src="../hfjs_cover.png"
+ width="100"><br>
+<h2>Lab 23</h2>
+<h3>CIS 228: The Internet <br>
+Lehman College, City University of New York<br>
+Fall 2009<br><br>
+</h3>
+</div>
+
+<div>
+<h3>General Information &amp; Getting Started<br>
+</h3>
+<p>See <a href="lab1.html">Lab 1</a> for more details on getting
+started and the rules for the
+lab.</p>
+<p>Today's focus is validating forms.
+</p>
+</div>
+
+
+<div>
+<div>
+<h3>Validating Forms</h3>
+<p>
+In lecture, we discussed how to validate if fields of a form were empty
+(see <a href="../formJS.html">formJS.html</a>). For this part of
+lab, we will extend that program to check if the state abbreviation and
+zip codes are of the proper length. Doing this program breaks into
+several parts:
+<ol>
+  <li>Write a function, validateState(), that tests if the input if of
+length 2.</li>
+  <li>Write a function, validateZip(), that tests if the input is a
+number and if of length 5.
+  </li>
+  <li>Connect each of these functions to the appropriate form fields,
+when the focus leaves these fields (hint: <tt>onblur</tt>).
+  </li>
+</ol>
+</div>
+
+
+<!--
+<h3>Blog Entries</h3>
+
+<p>We will use the blog developed in Chapter 9 of the book: 
+<blockquote>
+<a href="http://headfirstlabs.com/books/hfjs/ch09/youcube/youcube4.html">http://headfirstlabs.com/books/hfjs/ch09/youcube/youcube4.html</a>
+</blockquote>
+<p>
+The initial tasks are:</p>
+<ul>
+	<li> To familiarize yourself with the code, 
+your first task is to add three more blog entries to the existing blog.</li>
+	<li> Next, modify the <tt>Blog</tt> object to also include the <tt>author</tt>
+of the blog.  That is, change the constructor to take a third argument
+(the name of the author) and set it inside the constructor (in a similar
+fashion to that for the entry and date.  Change the existing blog entries to
+have authors (give at least three different authors).</li>
+	<li>Change the existing blog entries to include the author of each entry.</li>
+	<li>Change the <tt>showBlog()</tt> function to also show the author for each
+		entry</li>
+</ul>
+</div>
+
+<div>
+<h3>Sorting by Date and Author</h3>
+
+<p>The existing blog sorts the entry by date.  Since we now store the author,
+we'll give the user the choice of sorting by date or by author's name.</p>
+<ul>
+	<li>Add a button that allows the user to sort by date (hint: use the
+		existing sort function).</li>
+	<li>Add a button and associated function that allows the user to sort
+		by author <BR>
+		Hint: this is very similar to what you did for dates, except to 
+		compare strings use:
+		<pre>
+			return blog1.author > blog2.author
+		</pre>
+		</li>
+</ul>
+-->
+
+</div>
+
+
+
+<div>
+<h3>Submitting Your Lab</h3>
+Show your webpages to Professor St. John, before leaving the lab
+today.<br>
+<h3>Logging Out</h3>
+Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 1, CIS 166 & CMP 167,Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 1<br>
+CIS 166 & CMP 230 (CMP 167): Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on using the Blackboard system and simple programs
+in Python.  <br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+
+
+
+</div>
+
+<div>
+<h3>Using Blackboard</h3>
+
+<p>This course will use the on-line Blackboard system for submitting 
+work electronically. Blackboard should be accessible 
+through your CUNY portal account (<a href="http://portal.cuny.edu">http://portal.cuny.edu</a>). 
+If you have not used Blackboard in the past, information is available at the Computer Center
+(<a href="http://www.lehman.edu/itr/blackboard.php">http://www.lehman.edu/itr/blackboard.php</a>). 
+They can set up your account and have information sheets about using the system.
+<!--In addition:
+	<blockquote>
+	(From Information Technology Center mass email, 1/28/11:)
+	<p>
+  	During the first week of the semester, Monday (1/31) through Friday (2/4), 
+  	we will again provide Walk-In Blackboard Assistance, from 10:00-noon and 2:00-4:00 
+  	in Carman Hall B-38.  We will staff this room with our Blackboard team, and 
+  	students with login or other Blackboard difficulties can come by for help.
+<br>
+	After hearing from many of you that students need more assistance with 
+	learning Blackboard, the Office of Undergraduate Studies and Online Education 
+	has created a Student Blackboard Orientation which students (and faculty) can 
+	access by clicking on a new ONLINE INFO tab on the top header of Blackboard.
+<br>
+	This Blackboard Orientation contains useful information and helpful hints to 
+	introduce students to Blackboard's features, and it contains tutorials (like 
+	how to post in the discussion board right inside the orientation's discussion 
+	board!) along with links to useful sites, tech support information and necessary 
+	software.
+
+  	</blockquote>
+-->
+
+<p>We will be using Blackboard for in-class quizzes, submitting programs, and 
+posting grades.  Quizzes and submitting programs are done via the <tt>Content</tt>
+menu (left hand side of <tt>Home</tt> screen).  
+
+
+<p>
+<b>Timing Out:</b> If the system times out and locks your attempt (happens rarely 
+when the browser or PC crashes), send email to an instructor so they
+can clear the attempt so you can try again.
+</p>
+</div>
+
+<div>
+<h3>Using Python</h3>
+
+<p>We will be using the IDLE programming environment for Python.  On the desktop,
+there is an <tt>Idle</tt> icon.  Click the icon to launch idle.  In the shell
+window that pops up, try typing some of the commands that we did in lecture (also
+from the textbook):
+<pre>
+	print("Hello, world!")
+	print()
+	def greet(person):
+	   print("Hello", person)
+	greet("world")
+</pre>
+(Indentation does matter, so, remember to indent the <tt>print</tt> line, using TABs, 
+so that it is included in the <tt>greet()</tt> function.)
+
+<p>Next, let's write a program that will greet someone 5 times.  Instead of using
+the shell window (which lets us try things immediately), let's use a text window, where
+we can save our program for later.  The basic structure
+of the program will be:
+<pre>
+#Define our function
+	#Have a loop that repeats 5 times
+	#Inside that loop, greet that person 
+</pre>
+Copy the above lines into a new text window.  Save, using the name, <tt>greetLoop.py</tt>
+to your USB drive.  If you try to run your program, it will currently give an error since there's nothing for it to do, 
+since all the lines are proceeded by the `#' and treated as a comment.
+
+<p>
+Let's fill in a bit more of the program:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	#Inside that loop, greet that person 
+	print("Hello", person)
+</pre>
+Save your revised program and run it (using the "Run module" from the run menu or F5 key).  
+At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?  Why?
+
+<p>
+Let's add in the missing loop, to make it print out the multiple times:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	for i in range(5):
+	#Inside that loop, greet that person 
+	print("Hello", person)
+</pre>
+Save your revised program and run it (using the "Run module" from the run menu or F5 key).  
+At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?  What went wrong?  A loop only repeats
+statements indented below it.  Since our print statement wasn't indented, it decided
+we had an `empty loop' followed by a simple print statement.  To include the
+print statement in the loop, we add indentation:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	for i in range(5):
+		#Inside that loop, greet that person 
+		print("Hello", person)
+</pre>
+Save your revised program and run it (using the "Run module" from the run menu or F5 key).  
+At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?
+
+<p>Change your program so the message is printed 25 times.  
+
+<p>A common thing to include in your Python file is a call (or "invocation") to
+the function at the end of the file:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	for i in range(5):
+		#Inside that loop, greet that person 
+		print("Hello", person)
+
+greetLoop("Herbert")		
+</pre>
+When you run the program ("Run module" or F5), the program will be loaded and
+the function is called automatically.  In this case, it will call the function,
+<tt>greetLoop</tt> with the parameter <tt>"Herbert"</tt>.  If you would like 
+to call the function again, you type the name of the function with the desired
+parameters, at the shell prompt.
+
+
+
+<p> With the remaining time, work on the homework problems.
+</p>
+</div>
+
+<div>
+<h3>Using Python on Your Computer</h3>
+
+The Python programming language and IDLE environment are freely available
+for many platforms from <a href="http://www.python.org">python.org</a>.  
+For this class, we are using <b>Python 3</b>.  Many features of the language
+(including the syntax of <tt>print</tt> statements) changed between the second and third
+version, so, you must use the Python 3 for submitting programs.
+
+
+</div>
+
+</html>

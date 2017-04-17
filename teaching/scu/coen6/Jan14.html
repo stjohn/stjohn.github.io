@@ -1,0 +1,166 @@
+<title>Notes for 14 January, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 14 January</h1>
+<h2> Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h2>
+
+<br>
+
+
+
+</pre>
+<br>
+<hr>
+<b>Group work (from last lecture):</b>
+<hr>
+An employee is paid at the rate of $16.78 per hour for
+regular hours worked in a week.  Any hours over that are
+paid at the overtime rate of one and one half times that.
+From the worker's gross pay 6 percent is withheld for
+social security tax, 14 percent is withheld for federal
+income tax, 5 percent is withheld for state income tax, 
+and $10 withheld for union dues.  If the work has 3 or more
+dependents, then an additional $35 per week is withheld
+to cover the extra cost of health insurance.  Write a
+program that will read in the number of hours worked in
+a week and the number of dependents as input, and will
+then output the worker's gross pay, each withholding
+amount, and the net take-home pay.
+<br>
+<br>
+
+<hr>
+<b>An algorithm for this problem:</b>
+<hr>
+<ol>
+	<li> Ask user for number of hours worked and number 
+	of dependents.
+	<li> If the number of hours worked is less than 40,
+		multiply the number of hours by $16.78 to
+		get the gross pay.<br>
+	Else, the gross pay is the sum of 40 times $16.78
+		and the number of hours over 40 times 1.5
+		times $16.78.
+	<li> Print out the gross pay.
+	<li> Use the variable net_pay to keep track of the
+		amount after withholding.  To begin with,
+		set net_pay equal to the gross pay.
+	<li> Print out 6 percent of the gross pay for 
+		social security tax.  Subtract this amount
+		from net_pay.
+	<li> Print out 14 percent of the gross pay for 
+		federal income tax.  Subtract this amount
+		from net_pay.
+	<li> Print out 5 percent of the gross pay for 
+		state income tax.  Subtract this amount
+		from net_pay.
+	<li> Print out $10 for union dues.
+		Subtract this amount from net_pay.
+	<li> If the user has 3 or more dependents, print 
+		out $35 for health insurance and 
+		subtract this amount from net_pay.
+	<li> Print out net_pay, the user's take-home pay 
+		after withholding.
+</ol>
+
+
+<hr>
+<b>paystub.cxx:</b>
+<hr>
+
+
+<pre>
+#include &lt;iostream.h&gt
+
+
+// This program calculates the pay stub of a worker given
+// the number of hours worked and number of dependents.
+// John Nobili, 1 October 1997
+
+main()
+{
+    float hours, 		// number of hours worked this week
+    	dependents, 		// number of dependents
+	gross_pay,		// total pay for the week
+	net_pay,		// the pay with withholdings removed
+	pay_rate = 16.78;	// hourly pay rate
+
+    cout.setf(ios::fixed);	// "Magic fix" that only prints two
+    cout.setf(ios::showpoint);  // places after the decimal.  Using
+    cout.precision(2);		// since we want to look right for 
+				// dollars and cents.
+				
+
+    cout &lt&lt "Please enter the number of hours worked this week: ";
+    cin &gt&gt hours;	        // Ask user for number of hours worked 
+    cout &lt&lt endl;		// and number of dependents.
+    cout &lt&lt "Please enter the number of your dependents: ";
+    cin &gt&gt dependents;
+    cout &lt&lt endl &lt&lt endl;
+
+    if ( hours <= 40 ) 
+	gross_pay = hours * pay_rate; // If the number of hours worked 
+				// is less than 40, multiply the number 
+				// of hours by $16.78 to get the gross pay.
+    else
+	gross_pay = 40 * pay_rate + ( ( hours-40 ) * 1.5 * pay_rate );
+        			// Else the gross pay is the sum of 40 
+				// times $16.78 and the number of hours 
+				// over 40 times 1.5 times $16.78.
+
+    cout &lt&lt "Your gross pay is $" &lt&lt gross_pay &lt&lt ".\n";
+        			// Print out the gross pay.
+
+
+
+    net_pay = gross_pay; 	// Use the variable net_pay to keep track 
+				// of the amount after withholding.  To 
+				// begin with, set net_pay equal to the 
+				// gross pay.
+
+    cout &lt&lt "Your social security tax is $" 
+         &lt&lt .06 * gross_pay &lt&lt ".\n";
+        			// Print out 6 percent of the gross pay 
+				// for social security tax.  
+    net_pay = net_pay - .06 * gross_pay;
+				// Subtract this amount from net_pay.
+
+    cout &lt&lt "Your federal income tax is $" 
+         &lt&lt .14 * gross_pay &lt&lt ".\n";
+        			// Print out 14 percent of the gross pay 
+				// for federal income tax.  
+    net_pay = net_pay - .14 * gross_pay;
+				// Subtract this amount from net_pay.
+
+    cout &lt&lt "Your state income tax is $" 
+         &lt&lt .05 * gross_pay &lt&lt ".\n";
+                                // Print out 5 percent of the gross pay
+                                // for state income tax.
+    net_pay = net_pay - .05 * gross_pay;
+                                // Subtract this amount from net_pay.
+
+    cout &lt&lt "Your union dues are $10.\n" 
+        			// Print out $10 for union dues.
+    net_pay = net_pay - 10; 	// Subtract this amount from net_pay.
+
+
+    if ( dependents >= 3 )
+    {
+    	cout &lt&lt "Your extra health insurance premium is $35.\n\n"; 
+        			// If the user has more than 3 dependents, 
+				// print out $35 for health insurance. 
+    	net_pay = net_pay - 35; // Subtract this amount from net_pay.
+    }
+
+
+    cout &lt&lt "Your net pay is $" 
+         &lt&lt net_pay &lt&lt ".\n";
+    				// Print out net_pay, the user's take-home pay
+                		// after withholding.
+}
+</pre>
+</body>

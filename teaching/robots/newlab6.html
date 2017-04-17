@@ -1,0 +1,175 @@
+<title>Lab 5, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<!--
+Lab ideas: 
+
+sorting m&m's by color
+
+count lines until hit obstacle-- return home and 
+report (need to introduce timers)
+
+Lab 5:
+can do in teams of two if you'd like, since building takes a while...
+lab on gearing, ratios, pulleys-- lift something really heavy?
+what to use as weights (lego bricks, wheels)?  Can you drag 
+your robot box?  How far?
+How fast can you make a car go?  
+Make a claw/arm (see lego book).  can you make it grasp an object?
+can it pick up a lego piece?
+
+
+Lab 6: 
+
+	Need white sheets of paper, big markers, more lego pieces,
+	lego people?
+
+
+	Can do in teams of two if you'd like
+	Customize robots, so we can tell them apart as they (there's
+		spare parts in hallway)
+	try the robotag program from the webpage with a partner on
+		the test ovals from your lego box
+	Simple communication: beam a number to another robot (0-7)
+		and it should beep that many times and display it
+		as the value for output port b.
+		(random number generator?)
+	Next, have your robots run to the end of the course, get a
+		trophy (a lego person) and bring it back.
+		You may mark the start and finish line on the paper
+		in whatever color you would like.  You can also set
+		the trophies anywhere past the finish line that works
+		for your robot design.  And you can set up walls at
+		the end (but not along the sides).
+	After dropping the trophy, tell the next person in the team
+		that you're back so they can go.  Make sure you tell
+		the robot who comes immediately after you and don't
+		signal the wrong robot accidently. 	
+
+obstacle course
+
+staying on a table/avoiding stairs
+
+datalog
+
+-->
+
+
+<h1>Laboratory Exercise 4</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program, UC Davis<br>
+19 July 2001</h2>
+
+<hr>
+<h3>Finding Errors and Multitasking</h3>
+
+The first part of today's lab is on finding and fixing 
+errors in a program.  The sample program has both syntax
+(grammatical) errors and logical errors.  Fix both kinds
+of errors to make the program run.
+
+<p>
+The second half of the lab is on multitasking, or executing
+more than one task at once.  We will modify the 
+<a href="bumpbot1.nqc">bumpbot1.nqc</a>
+to do two tasks at once-- the driving/bumping from before and
+also playing music.
+
+<p>
+The next program will use a separate task to monitor the 
+light sensor.  If the robot encounters a bright light, it 
+will beep.  The main task (driving/bumping) will continue
+independently of the light sensor activity.
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  When using the light sensor, it is wired to 
+sensor port 2.  The touch sensor is wired to sensor port 1
+and is attached to a bumper).
+
+
+<h3>Finding Errors</h3>
+
+
+<h3>Musical Cars</h3>
+
+
+<h3>Extra Activities</h3>
+
+If you finish early, 
+
+<!--
+
+The first half of today's lab is to try out the light seeking and
+line following programs discussed in lecture.  First, download
+<a href="seek.nqc">seek.nqc</a>.  This program will seek out a
+bright light.  If it doesn't find a light, it will beep, turn
+for random distance, and go forward.  
+
+<p>
+If it's going forward and never beeping, check to see if the
+sensor is connected to input port 2.  Next, increase the 
+THRESHOLD constant in the program.  If the robot is beeping
+and turning all the time, decrease the THRESHOLD constant.  
+The values of the THRESHOLD constant will change depending on
+how close the light sensor is to the ground, the ground 
+surface, and the type of light.
+
+<p>
+While you have the light sensor on the robot, also try the 
+<a href="guidenqc/linebot1.nqc">linebot1.nqc</a> program.  This program
+will follow a black line on the ground.  Try it out on the 
+test track that comes with the robot kit.  Adjust this program 
+for the current light level (change the light threshold 
+constants as above).
+
+
+<h3>The touch sensor and bumpers</h3>
+
+One natural use for the touch sensor is as part of a bumper.
+Wire a bumper to input sensor 1 and try 
+<a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>.  Copy 
+this program to new file:
+<pre>
+cp bumpbot1.nqc limited_bumps.nqc
+</pre>
+Change the program in the following ways, and test between
+steps:
+<ol>
+    <li> First, change <tt>limited_bumps.nqc</tt> to beep 
+	everytime it hits an obstacle. 
+    <li> Next, declare a variable called <tt>num_obstacles</tt>
+	and set it to 0.  After the touch sensor is bumped,
+	increase the variable by 1 (one command that will do
+	this is: <tt>num_obstacles++;</tt>).
+    <li> Change the <tt>while(true)</tt> loop to stop after
+	5 obstacles are hit.
+</ol>
+
+Modify your program so that <b>only one</b> constant needs
+to be changed to change the number of obstacles you are
+allowed to hit before the program stops.
+
+<h3>Double Bumper</h3>
+
+Add a back bumper to your robot with a touch sensor wired to 
+input port 3.  Write a program (you can copy 
+<tt>bumpbot1.nqc</tt> as a starting point) that changes direction 
+and turns when one of the bumpers is hit.  Remember to 
+initialize the new sensor, as you did for the first one.
+
+<h3>Obstacle Course</h3>
+
+If there's time, try your robot on the obstacle course, using 
+<tt>bumpbot1.nqc</tt>.  How does it do?  Alter your program
+so that it does better through the course, using the 
+bumpers.
+
+-->
+
+</body>
+</html>
+
+

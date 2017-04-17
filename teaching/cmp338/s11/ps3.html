@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 3 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 3</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers two new sorts covering in class: 
+quicksort and radix sort.  See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+
+
+
+<ol>
+
+<li><b>QuickSort</b> (30 points)
+
+<p>Using the <tt>SortingStrings.java</tt> as your driver program, implement 
+the in-place <tt>QuickSort</tt> algorithm (ie the one at the 
+end of the "Complex version" section on the wikipedia page).  
+
+<p>Instead of an array of integers, have your quicksorts sort an
+<tt>array of Strings</tt> (that is, <tt>String[] A</tt>).  Note
+that to compare strings in Java, you should use <tt>string1.compareTo(string2)</tt>
+where <tt>string1</tt> and <tt>string2</tt> are the names of 
+your string variables.
+
+<p>Submit the java file containing the quicksort
+and a <tt>main</tt> that calls it to sort a
+list.
+
+<li><b>RadixSort</b> (30 points)
+
+<p>Implement a <a href="http://en.wikipedia.org/wiki/Radix_sort">radix sort</a>
+to sort arrays of strings of length 6.  Use the <tt>SortingString.java</tt>
+file as your driver.  Note that in that file, there is an implementation 
+of InsertionSort that can be used as the underlying stable sort for your
+radix sort.
+
+<p>Submit the java file containing the radix sort
+and a <tt>main</tt> that calls it to sort a list.  Note that you can include 
+both sorts in the same file.
+
+<li><b>Test Cases</b> (20 points)
+
+<p>
+For <b>both sorting algorithms,</b> 
+calculate how long each algorithm takes to sort the 
+following lists:
+<ul>
+	<li> a list of 100 random 6-character words
+	<li> a list of 200 random 6-character words
+	<li> a list of 300 random 6-character words
+	<li> a list of 400 random 6-character words
+	<li> a list of 500 random 6-character words
+</ul>
+
+<p>
+Run each test 10 times and make a table with your average as well
+as the standard deviation for each algorithm.  Submit your table 
+via Blackboard.</p>
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+Using the table you created, answer the following questions:
+</p>
+<ul>
+	<li> From your data, which sort did the best overall?  Why?
+	<li> We know that asymptotic running time of radix sort is O(n)
+		while the asymptotic running time of the quick sort is O(n lg n).
+		Did your data support this?  Why or why not?
+</ul>
+<p>Submit your answer via Blackboard.</p>
+
+
+
+</ul>
+
+
+</div>
+</body>
+</html>

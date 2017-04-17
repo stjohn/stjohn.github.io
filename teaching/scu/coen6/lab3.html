@@ -1,0 +1,162 @@
+<title>Lab 3 for Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Laboratory 3</h1>
+<h3>Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h3>
+<hr>
+<b>Permissions, Files, and Statistics Program</b>
+
+<hr>
+
+
+<h3>Permissions</h3>
+
+	On the Unix system, there are several different file types.
+	The two we have discussed already are directories and text files.
+	Each file has permissions associated with it.  The permissions
+	indicate who may access the file.  To see these permissions, you 
+	use the long form of the list command: 
+
+	<pre>	ls -l</pre>
+
+	For example, using this command on my lab1 directory gives:
+
+	<pre>
+	bash$ ls -l
+	total 1296
+	-rwx------   1 kstjohn    faculty     156321 Jan  7 18:29 bye
+	-rw-------   1 kstjohn    faculty         86 Jan  7 18:28 bye.cpp
+	-rw-------   1 kstjohn    faculty        127 Jan  7 18:29 bye.out
+	-rwx------   1 kstjohn    faculty     156321 Jan  5 15:35 hello
+	-rw-rw-r--   1 kstjohn    faculty         84 Jan  5 15:34 hello.cpp
+	-rw-------   1 kstjohn    faculty        128 Jan  5 15:35 hello.out
+	</pre>
+
+	The first minus sign indicates this is a file (rather than a 
+	directory).  The next three symbols on the first line (rwx)
+	indicate that the owner has permission to read, write, execute
+	this file.  The next 6 dashes indicate that no one else may
+	read, write, or execute this file.  "Everyone else" is divided
+	into 2 classes: those in your group (my group is faculty) and
+	the rest of the world.  The third column lists the owner of
+	the file (in this case, kstjohn), and the fourth column gives
+	the group.  The next column gives the size of the file.  The
+	next two give the day and time the file was last modified.  And
+	the last column on the line has the name of the file.
+
+	<p>
+	As a rule, you will only want your files to be modified and
+	executed by you.  Exceptions to this rule would be if you were
+	sharing files for a group project or if the file was part of
+	your website (which needs to be world readable if others are 
+	to be allowed to look at it).  We will talk about permissions
+	and how to change them in the next lab. 
+	
+
+<h3>Copying and Removing Files</h3>
+
+	<p>
+	At the beginning of every lab, you should make a subdirectory to 
+	hold your work for that lab.  Change directories to your coen6
+	subdirectory, create a new directory called "lab3", and change
+	directories to your new subdirectory, lab3.  Recall, 
+	to do this, you type (in a Unix Window):
+
+	<pre>	cd coen6
+	mkdir lab3
+	cd lab3</pre>
+
+	<p>
+	It is often useful to copy files you have previously created.
+	For example, to copy the file hello.cpp that we wrote in Lab 1
+	into our lab3 directory, you type:
+
+	<pre>	cd ../
+	cp lab1/hello.cpp  lab3/hello.cpp </pre>
+
+	This command says to change to the "parent directory" of our
+	current directory.  Since we were in the lab1 subdirectory of
+	the coen6 directory (often written: coen6/lab1), this moves us
+	to the coen6 directory.  The coen6 directory should have at least
+	three subdirectories: lab1, lab2, and lab3 
+	(and some for the homework).  
+	The second command, cp, copies the contents of the file 
+	hello.cpp in the lab1 directory to a
+	file with a same name in the lab2 directory.  
+
+	<p>
+	Change directories back to lab2 (e.g. cd lab2), and now let's
+	copy the hello.cpp to a file named stats.cpp.  Since both the
+	source file (hello.cpp) and the destination file (stats.cpp)
+	are located in the same subdirectory, we only need to specify
+	their names when we copy:
+
+	<pre>	cp hello.cpp stats.cpp</pre>
+
+	If you list the directory (ls), you should now see 2 files listed.
+	We will modify the file stats.cpp for this lab.
+
+	<p>
+	To remove a file, you use the rm command.  For example, if we
+	wanted to remove the object code bye from the lab 1 directory, 
+	we would type:
+	<pre>	rm bye	</pre>
+
+	You should be certain that you no longer want a file when you
+	remove it, since it is not possible to get the file back.
+
+
+<h3>Statistics Program</h3>
+
+	Write a program that asks the user to enter 4 numbers and
+	then returns the average, the standard deviatation, the 
+	minimum number, and the maximum number.  Your program should
+	use a function for each of these calculations.  Each of 
+	these functions should take the numbers the user entered
+	and return the desired answer.  For the standard deviation
+	function, you should also have the average as one of the
+	parameters for the function.	
+
+	<p>
+        You should write an algorithm, test your algorithm, then write
+        and test your program.
+
+<h3>Program Style and Comments</h3>
+
+        Your program should have include a comment header with your
+        name, e-mail, honesty pledge, and a short description of what
+        the program does (including any assumptions, or preconditions,
+        you have made).  The program should be properly indented following
+        the style discussed in class and illustrated in the text.
+        Besides the initial comments, you should include comments for
+        any aspect of your algorithm or implementatation that is not
+        self-evident.
+
+<h3>What to Turn In</h3>
+
+
+        Before leaving the lab, you should give the TA:
+        <ul>
+                <li> a printout of the C++ file
+                <li> a printout of at least <b>2</b> interactions between
+                        between you and the computer when the
+                        nim program is run.
+        </ul>
+
+        You should also mail a copy of your program only (no need to
+        mail the interactions) to
+        <pre>   coen006</pre>
+        with a subject of
+        <pre>   lab 3</pre>
+
+        <p>
+        If you finish the lab early, you should use the rest of the time
+        to start the homework.
+
+
+</body>
+

@@ -1,0 +1,187 @@
+<title>Lab 6 for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Laboratory Exercise 6</h1>
+<h2>Using SQL with Java</h2>
+<h2>CMP 420: Database Systems<br> 
+Lehman College, City University of New York<br>
+15 November 2001</h2>
+
+<hr>
+
+To embed SQL commands inside a Java program, we're using the JDBC 
+interface.  You can find the API's for JDBC at Sun's 
+<a href="http://java.sun.com/j2se/1.3/docs/guide/jdbc/index.html">webpage</a>.
+To use the JDBC interface, you first have to make sure that your
+java programs can find the java archive that contains the file
+(that is, set the path to find the .jar file).  Then, you need to 
+implicitly load the driver, before issuing SQL commands.
+
+<h3>Setting up your <tt>CLASSPATH</tt></h3>
+
+First, locate the java archive file for JDBC, by typing:
+<pre>
+    locate jdbc | grep jar
+</pre>
+What's the full name of the .jar file?  What is the complete path
+to the file?
+
+<p>
+Next, we need to include the .jar in the <tt>CLASSPATH</tt>,
+or places to look for the libraries or archives used by the program.
+To make sure that the <tt>CLASSPATH</tt> is set whenever you log on, 
+you can set it in the <tt>.bash_profile</tt>, which is executed 
+whenever you open a new terminal window. 
+To do this, edit the <tt>.bash_profile</tt> and add the lines:
+<pre>
+    CLASSPATH=/usr/lib/pgsql/jdbc6.5-1.2.jar:.
+    export CLASSPATH
+</pre>
+The `.' at the end of the CLASSPATH says to also look in the current
+directory for classes.  The <tt>export</tt> statement means that the
+environment variable will continue to exist after the file has finished
+executing.
+
+<p>
+To immediately put the changes in to effect that you entered in 
+your <tt>.bash_profile</tt>, type at the command line:
+<pre>
+    source .bash_profile
+</pre>
+To check that it was successful, print the environment variables,
+searching (or "grepping") for the ones that include the word PATH:
+<pre>
+    printenv | grep PATH
+</pre>
+You should see two different path variables-- one for locating 
+executable programs and one for loading classes into java.  
+
+
+<h3>Loading the <tt>driver</tt> class</h3>
+
+The file <a href="TestDB.java">TestDB.java</a> is
+a simple java program that includes the <tt>import</tt> statement
+and java command for loading the necessary driver.  Compile it,
+and make sure it runs (if it does, it will say "Test successful").
+
+<p>
+Whenever you use SQL statements in your java program, you will have
+to include these two commands.  Note that the <tt>forName</tt>
+method could throw a <tt>ClassNotFoundException</tt> and must be 
+caught and handled.
+
+<h3>Connecting to the Database</h3>
+
+Before you can issue query and update commands, you first must
+say which database you would like to use.  This is equivalent to
+giving the name of the database when you launch <tt>psql</tt>
+(for example, <tt>psql testDB</tt>).  To connect to a database, 
+you need to specify the name of the database (prefaced by the 
+interface names: "jdbc:postgresql:"), your username, and the
+password (since we have not yet used password protection on the
+databases, we use the word "pass" for this argument).  For example,
+to connect to the database <tt>myDB</tt>, as user <tt>testPerson</tt>,
+with no password, you would have the following command:
+<pre>
+    Connection db = DriverManager.getConnection("jdbc:postgresql:myDB", 
+                                                "testPerson", "pass");
+</pre>
+Note that this method, as well as the ones in the next section,
+can throw <tt>SQLExceptions</tt> that must be caught and handled.
+
+<p>
+Modify the java program from the previous section to connect to 
+the database you created for Lab 2.
+
+<h3>Query Statements in Java</h3>
+
+To query the database, you first need a <tt>Statement</tt> object
+(you can reuse it for later statements) and an object of type
+<tt>ResultSet</tt> to hold the results of your query.  For example,
+the following would print out the company names from your database:
+<pre>
+    Statement st = db.createStatement();
+    ResultSet rs = st.executeQuery("select co_name from companies");
+    System.out.println("Company Name");
+    while(rs.next()) {
+       System.out.println(rs.getString(1));
+    }
+    rs.close();
+    st.close();
+</pre>
+These statements could throw an <tt>SQLException</tt> that must be
+caught and handled.
+
+<p>
+Modify your java program to print out the company names from the
+database.
+
+<h3>Update Statements in Java</h3>
+
+To update the database (or execute any statement that doesn't return
+results), you use the <tt>executeUpdate()</tt> method of the 
+<tt>Statement</tt> class.  For example, if you wanted to create 
+a new table, <tt>t</tt> with two attributes, one an integer and
+one for time, you use the following statement:
+<pre>
+    st.executeUpdate("create table t(id int4, date timestamp);");
+</pre>
+For example, to insert new values into the table, you could
+use the following statements:
+<pre>
+   st.executeUpdate("insert into t values(3, now());");
+   st.executeUpdate("insert into t values(2, now());");
+</pre>
+These statements could throw an <tt>SQLException</tt> that must be
+caught and handled.
+
+<h3>Java Programs for this Lab</h3> 
+
+At the command line, create a database for this lab.  
+
+<p>
+Write a java program that creates 2 tables:
+<pre>
+     Courses(Dept, Number, Title, Credits, Hours);
+     Offerings(CourseID, Dept, Number, Days, Room, Building, Instructor);
+</pre>
+And adds at least 25 entries to the first table and 100 entries to the
+second.  Do not type these by hand, instead download part of
+the <a href="http://www.lehman.cuny.edu/registrar/fall2001/schedf01.html">Fall
+2001</a> schedule into a file.  Note that the schedule has a standardized
+form, so, you can write a program that filters the schedule and produces
+the SQL/Java statements you need.
+
+<p>
+Write another program that prints out the number of credit hours each
+instructor is teaching.
+
+<h3>Final Comments</h3>
+
+Before leaving the lab, you need to log out and shut down your
+computer.  First, you should quit all applications.  Then,
+go to the <tt>K</tt> menu in the bottom left hand corner and
+select <tt>Log Out</tt>.  Choose the <tt>Shut Down</tt> option,
+and shut off the monitor when you're done.
+
+<p>
+Remember to pick up any files you sent to the printer and to
+take any personal belongings.  It is difficult to get back
+into the lab later (since it's locked when not in use), so,
+it's worth making sure you haven't forgotten anything.
+
+<p>
+Also, remember to turn in Homework 8 and the first part of your
+project before leaving!
+
+<p>
+Next lab, we will focus on designing and compiling Java
+programs on an Unix platform.  If you haven't programmed in
+Java in sometime, you should review how to write a program that
+instantiates objects and has a graphical user interface (GUI).
+
+</body>
+</html>
+
+

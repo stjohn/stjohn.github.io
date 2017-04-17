@@ -1,0 +1,41 @@
+SEI Meeting
+7 January 2009
+
+Davis work:
+
+David has more time for this project.
+
+Deb: Working with Rob's template.
+Starting with TSP, treat template as a rubber
+thing that gets based on the data.  Doesn't 
+use landmarks.
+Establish correspondence between two different
+skulls, everywhere (every single point!), not 
+just at inputted landmarks.
+
+Improved landmark transfer process.
+Able to transfer a large set of landmarks from
+the atlas (about 400 points).
+Then iterate, using TPS, to more closely
+place the landmarks on the data.
+
+atlas = 400 landmarks
+template = all of the points from Rob's 
+guide tree
+
+Goals:
+Missing data
+Un-deform
+
+NY work:
+
+Daury (Lehman UG) has been successfully 
+building 3D prototypes
+
+Building trees project:
+
+
+
+
+
+IIIS Medium Proposals due in August

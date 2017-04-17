@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #4, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #4</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b> Distributions & Correlations<br>
+<b>Deadline:</b>  Thursday, 3 March 2016, 10:30am 
+</div>
+
+<div>
+<h3>Textbook's Code</h3>
+
+<p>This assignment uses the basic statistics functions developed by the textbook's author and available at:
+<blockquote>
+	<a href ="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/statistics.py">https://github.com/joelgrus/data-science-from-scratch/blob/master/code/statistics.py</a>
+</blockquote>
+</div>
+
+<div>
+<h3>Datasets</h3>
+
+This assignment uses the following datasets:
+<ul>
+	<li> The Lyme disease incident data for Connecticut, New Jersey, and New York from 2003 to 2011 (see <a href="lymeScaled.py">lymeScaled.py</a>).
+	<li> The historical population for New York City used in <a href="hw2.html">Homework #2</a>.
+	<li> (CMP Only):  The birthday collisions dataset you collected in 
+	<a href="hw3.html">Homework #3</a>.
+	
+</ul>
+
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+
+
+<tr>
+<th>#1</th>
+<td colspan=2>
+Examine the correlation between the change in incidence of Lyme Disease in Connecticut, New Jersey, and New York.  Compute the pairwise correlation-- that is &rho;(CT,NJ), &rho;(CT,NY), and &rho;(NJ,NY).  Use the textbook's code to compute the correlations between each pair of states.  Include all correlations that you computed in your written answer.  
+<br><br> 
+#1:  Submit a .txt or .pdf file with your answer.<br>
+<br> 
+</td>
+</tr>
+
+<tr>
+<th>#2-3</th>
+<td colspan=2>
+Use the dataset of New York City's historical population to answer the following:
+Which borough's change in population is most closely correlated to the city's change in population?  Justify your answer.  Use the textbook's code to compute the correlations between each borough and the overall city populations.  Include all correlations that you computed in your written answer.  For the second part include a plot of the borough population that most closely correlates and the city's population from 1790 to 2010.
+ 
+Make sure to include in the title of your plot the date plotted. <br><br>
+#2:  Submit a .txt or .pdf file with your answer.<br>
+#3:  Submit a screen shot of the graphics window containing the plot of the borough population that most closely correlated to the city, as well as the city's population.<br> 
+</td>
+</tr>
+
+
+<tr>
+<th>#4-6</th>
+<td>
+Could it be the case that drivers racing to get somewhere by the top of the hour, drive more recklessly and get in more accidents, then those who are driving just past the hour?  Using the birthday data set, display the number of collisions that occur in the your birthday binned by minute.  That is, for 0 (zero minutes after the hour), you should have as your y-value the fraction of: collisions that occurred on your birthday at 0 minutes after the hour over collisions.  The x-axis of your plot should be the minutes from 0 to 59 (minutes after the hour), and the y-axis should be the sum of the accidents that occur at each minute after the hour.  Include in your plot, a label containing the correlation, &rho;(minutes,accidents).  <br><br>
+
+#4:  Submit your Python program as a <b>.py</b> file.<br>
+#5:  Submit a screen shot of the graphics window containing the plot.<br>
+#6:  Do minutes after the hour correlation with more accidents in your zipcode?  Justify your answer.  Include a .txt or .pdf file with your answer.
+<br><br>
+Hint:  See <a href="hw3.html">Homework #3</a>, \#3-4.
+
+</td>
+<td>
+#4:  Create two lists of 10 numbers, <tt>x</tt> and <tt>y</tt> such that their correlation is bounded between: 0.7< &rho;(x,y) < 0.8.  Submit your lists in a .txt file as well as the process that you followed to discover lists with correlation in between the bounds.
+<br><br>
+#5:  Create two lists of 10 numbers, <tt>x</tt> and <tt>y</tt> such that their correlation is bounded between: -0.1< &rho;(x,y) < 0.1.  Submit your lists in a .txt file as well as the process that you followed to discover lists with correlation in between the bounds.
+<br> <br>
+#6:  Create two lists of 10 numbers, <tt>x</tt> and <tt>y</tt> such that their correlation is bounded between: -1< &rho;(x,y) < -0.9.  Submit your lists in a .txt file as well as the process that you followed to discover lists with correlation in between the bounds.
+<br> 
+</tr>
+
+
+</table>
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

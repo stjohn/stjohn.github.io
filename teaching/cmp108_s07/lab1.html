@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 1, CMP 108, Lehman College-- CUNY, Spring 2007</title>
+</head>
+<body bgcolor="#ffffff" link="#003399" vlink="#236b8e">
+<h1>Laboratory Exercise 1</h1>
+<h2>CMP 108: Programming for Non-Majors<br>
+Lehman College-- CUNY<br>
+9 February 2007</h2>
+<hr>
+<h3>NQC and Locomotion</h3>
+Today's lab starts with compiling and downloading simple NQC programs
+to the lego robot. The programs focus on locomotion
+and will work best with either the tracks or the feet you build for the
+robot last week. Sensors are not needed for the programs in this lab.
+<p><b>Design requirements:</b> This lab assumes that the
+two motors are wired to output ports A and C. Further, each
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).<br>
+</p>
+<p><span style="font-weight: bold;">Programs:</span> The base programs
+in this lab are from the Baum textbook, and have been linked here for
+convenience.&nbsp; <br>
+</p>
+<h3>General Information About the Lab</h3>
+The computers in Gillet 219
+are dual-boot machines, running the Linux operating system and Windows
+XP.&nbsp; When you turn the computer on, you will be given an option of
+which operating system you would like to use.&nbsp; Choose Windows, and
+when you reach the login screen, do not change the user name (it should
+be "student") and hit return to continue.&nbsp; The machine will boot
+up like a normal Windows machine after that.&nbsp; The software we will
+be using for the course, Bricx Command Center, will appear as an icon
+on the desktop.&nbsp; It provides a graphical front end to the NQC
+system.<br>
+<br>
+Food and drink are not allowed in the computer laboratories.&nbsp;
+There is a printer that may be used for class-related materials
+only.&nbsp; Before leaving the lab for the day, make sure that the
+computers and their monitors are shut down.<br>
+<br>
+Every machine has an accessible USB port for portable keychain
+drives.&nbsp; You might find it useful to bring one to store your
+programs, since files left on the laboratory machines are erased on a
+regular basis.<br>
+<h3>Getting Started</h3>
+First, log on the computer and bring up the
+class website.
+On the website, there's several programs that will be used for
+today's lab (including this lab).&nbsp; Open BricxCC from the icon on
+the desktop. BricxCC is a graphical front end to NQC.&nbsp; It will
+allow you to edit
+programs, compile and download them to your robot, as well as download
+firmware and control robot functions (such as sound and motion) from
+the computer.&nbsp; Take a few minutes to look at the menus and find
+the
+commands for downloading firmware and compiling/downloading programs.<br>
+<br>
+Next, take the IR tower (from the lego kit)
+and attach them to USB port 1 of your computer (for the front row of
+computers, it's on the front of the computer; for all other computers,
+it's on the back of the computers, under a door on the left
+side).&nbsp;&nbsp; To test that the tower is working, set
+the robot so that it's IR port is facing the IR tower.&nbsp; Turn on
+your robot, and choose the Piano option from the menu to play a few
+notes on your robot.&nbsp; Note that for some of the computers, you may
+have to reverse the order, and plug the tower in first and then open
+BricxCC.<br>
+<br>
+Before NQC programs can be loaded, the firmware
+must be installed. As long as the batteries are not removed for
+more than a minute, this only has to be done once. The firmware is
+located in the Student Data folder in the subfolder for our
+class.&nbsp; Use the menu option to download the firmware.&nbsp; If you
+were successful, the robot will
+make a series of beeps.&nbsp; It will take a bit for the firmware to
+completely load onto the robot, so, be patient.<br>
+<span style="font-family: monospace;"><br>
+</span>Note: The robot must be turned on to download the firmware or
+programs.
+<h3>Compiling and Loading NQC programs</h3>
+Now, we're ready to load programs onto the robot.
+For your first program, you can type the program in or cut-and-paste it
+from the webpage. Copy <a href="guidenqc/tankbot1.nqc">tankbot1.nqc</a>
+to the BricxCC window. &nbsp; Now, using the menu options compile and
+download the program to your robot.&nbsp; Take the robot out to the
+hallway, place it on the floor,
+and click on run. This simple program (loaded in Program 1)
+will go forward forever. After you make sure it works, stop
+the program and turn off the robot to conserve the batteries.
+<h3>Turning in Circles</h3>
+Next, modify your program to have the robot
+go in a large circle, instead of a straight line.&nbsp; After you have
+made the modification in the BricxCC window, compile and download the
+program to your robot as before.&nbsp; Follow
+the directions <br>
+above to download the program to the robot. Test
+the program to find out the diameter of the circle.<br>
+<h3>Turning in Place</h3>
+Next, write a program that will turn the robot <b>in place</b>. Take
+your previous program and use the "Save As" to make a new version for
+this exercise.&nbsp; Your
+robot should rotate a full 360 degrees before stopping. Note
+that the strength of the batteries and the floor surface will affect
+how long you need to wait before completing a full turn
+and turning off the engines.
+<p>Use a constant to store the amount of time needed for a complete
+turn since future programs will use this number a
+lot.
+</p>
+<h3>Tracing Shapes</h3>
+If there's time, draw the following shapes:
+<ul>
+  <li> <b>A "figure 8":</b> this is based on the <tt>circles.nqc</tt>
+program. </li>
+  <li> <b>A square:</b> this uses the same idea as <tt>turnInPlace.nqc</tt>
+to turn the corners. Use constants for turning time and straight time
+(see <a href="guidenqc/tankbot2.nqc">tankbot2.nqc</a>). </li>
+  <li> <b>A hexagon:</b> Figure out the turning time for 360 degrees
+and divide by 6 for the turns. </li>
+  <li> <b>The first letter of your first name</b>.</li>
+</ul>
+If,
+after demonstrating your programs, you still have time, you can go on
+to the lab for next week, or work on your robot (in the hallway, since
+no loose Lego pieces are allowed in the computer laboratory).<br>
+<h3>Finishing up for the Day<br>
+</h3>
+To get credit for this laboratory, you need to show and explain your
+programs to Prof. St. John, as well as demonstrate that they run using
+your robot.<br>
+<br>
+We must be out of the computer laboratory by 12:30am.&nbsp; As such, if
+you are not ready to demonstrate your work by 12:15am, you can do so in
+the next laboratory.&nbsp; Before leaving the room, make sure that all
+computers and monitors are turned off, that any paper and trash have
+been removed, and that all chairs are returned
+to their proper places.&nbsp; Also, make sure you pack up your IR tower
+in your shoe box, since they're difficult to replace.<br>
+</body>
+</html>

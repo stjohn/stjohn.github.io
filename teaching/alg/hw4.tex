@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+
+\begin{document}
+
+\title{Homework 4\\
+       CSc 72700: Analysis of Algoritms\\
+       CUNY Graduate Center, Fall 2001 }
+\date{Due Friday, 19 October}
+\author{}
+\maketitle
+
+See the guidelines on the webpage for details about submitting homework.
+(If turning your homework in electronically, you can mail it directly
+to the grader at: {\tt ivm3@columbia.edu}.)
+
+\section*{Practice Problems}
+
+The problems in this section {\bf are not to be submitted}.  They are to
+help you understand the material, and some will appear on exams.
+
+\begin{itemize}
+    \item Exercise 13.1-1 on p 246 (in the second edition: 12.1-1 on p 256).
+    \item Exercise 13.2-1 on p 249 (in the second edition: 12.2-1 on p 259).
+    \item Exercise 13.3-1 on p 253 (in the second edition: 12.3-1 on p 264).
+    \item Exercise 14.1-4 on p 265 (in the second edition: 13.1-6 on p 277).
+    \item Exercise 14.2-2 on p 267 (in the second edition: 13.2-2 on p 278).
+    \item An {\bf AVL} tree is a binary search tree in which the subtrees of
+	a node differ in height by at most one.  Insertions and deletions 
+	are performed as in binary search trees and then followed by  
+	rotations to preserve balance (see links on webpage for more details
+	or 13-3, p 296 in the second edition).
+	
+	Construct a binary search tree by introducing the following keys 
+	in the given order: 2, 6, 10, 8, 3, 4, 5.  Using the same sequence 
+	of keys, construct an AVL tree that uses rotations to keep balance
+	after every insertion.
+\end{itemize}
+
+\section*{Graded Problems}
+
+These problems will be graded and should be submitted, following the
+guidelines on the webpage.
+
+\begin{enumerate}
+    \item Average node depth in a randomly built binary search tree,
+	13-3 on p 260 (in the second edition, 12-3 on p 270).
+    \item Number of different binary trees,
+	13-4 on p 262 (in the second edition, 12-4 on p 271).
+
+	Note, there is a typo in the first edition.  In part b), the
+	formula should read:
+	$$
+		f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!} {(x-a)}^k
+	$$
+    \item AVL Trees (see webpage or 13-3, p 296 second edition for 
+	defintions)
+
+	\begin{enumerate}
+	    \item Trees of height $O(\lg n)$ are called {\bf balanced}.
+		Show AVL trees are balanced.
+	    \item What is the most number of rotations that must be 
+		performed when inserting to maintain balance?  
+		What is the most number 
+		of rotations that must be performed, when deleting?
+	    \item What is the running time of the operations: insert,
+		delete, and search for AVL trees?
+	\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}

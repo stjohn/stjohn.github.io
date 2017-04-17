@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 18 for CIS 228, Lehman College, CUNY, Fall 2009</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<img id="bookImage" alt="cover picture" src="../hfjs_cover.png"
+ width="100"><br>
+<h2>Lab 18</h2>
+<h3>CIS 228: The Internet <br>
+Lehman College, City University of New York<br>
+Fall 2009<br><br>
+</h3>
+</div>
+
+
+<div>
+<h3>General Information &amp; Getting Started<br>
+</h3>
+<p>See <a href="lab1.html">Lab 1</a> for more details on getting
+started and the rules for the
+lab.</p>
+<p>
+Today, we focus on cookies and finding bugs.
+</p>
+</div>
+
+
+
+
+
+
+<div>
+<h3>Finding Bugs</h3>
+
+<p>
+An important part of programming is to be able to locate and fix bugs.
+The goal of today's lab is to find (and fix!) all the bugs in the following
+file:
+</p>
+<blockquote>
+<a href="../donutBugs/donutsBugs.html">donutsBugs.html</a>
+</blockquote>
+<p>
+This page should prompt a user for their name and the donuts and 
+bagels they wish to purchase.  Currently, there are too many bugs
+in the file for it to do this.
+Using the error console in the Mozilla Firefox browser, find each
+bug and fix it.  
+</p>
+<p>
+Some useful things to remember when hunting for bugs:
+</p>
+<ul>
+	<li> If you would like the graphics to appear and the style to look
+		as before, save this file to the directory containing your donut
+		page from before.
+	<li> Bugs often occur the line above which the error console reports.
+		So, look both at the line reported and the line above.
+	<li> A single bug can cause multiple error messages.  So, fixing the
+		first one reported on the error console will often get rid of 
+		multiple error messages.
+	<li>  Use the "clear" button on the error console between multiple
+		runs of your program.  This will keep you from confusing old
+		errors with the current ones.
+</ul>
+</div>
+
+<div>
+<h3>Donuts and Cookies</h3>
+
+<p>The book develops the iRock and donut example in the first three chapters.  
+We will use the files from Chapter 2 and 3:</p>
+<blockquote>
+<a href="http://headfirstlabs.com/books/hfjs/ch03.php">http://headfirstlabs.com/books/hfjs/ch03.php</a>
+</blockquote>
+<p>
+Using the donut example as a base, modify the JavaScript to remember
+the user's name when they return.  The simplest way to do this is to
+mimic what was done for iRock.  Recall that the last version of the
+iRock asks the user their name and stores it in cookie.
+</p>
+The steps that need to be done here:
+<ul>
+	<li> When the name changes, store it in a cookie (how can you tell 
+		when a field changes?)
+	<li> When the page loads, if the name is known, put it in the input
+		field on the form (Hint: Look at the iRock example for checking
+		if the cookie exists.  You will want to make this change when
+		the onload event has been triggered-- use the &lt;body&gt; element.)
+</ul>
+</div>
+
+
+
+<div>
+<h3>Submitting Your Lab</h3>
+Show your webpages to Professor St. John, before leaving the lab
+today.<br>
+<h3>Logging Out</h3>
+Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</div>
+</body>
+</html>

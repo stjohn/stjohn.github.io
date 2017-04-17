@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #1, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #1</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Neighborhoods; Simple plots using matplotlib<br>
+<b>Deadline:</b>  Wednesday, 8 February 2017, 11:59pm 
+</div>
+
+<div>
+
+<h3>Getting Started with <tt>matplotlib</tt></h3>
+
+This homework uses <tt>matplotlib</tt> which is available with <a href="https://www.continuum.io/downloads">anaconda</a> or visit <a href="http://matplotlib.org">matplotlib</a> (we're using Python 3).
+	
+<p>	If you would prefer not to upgrade your Python installation (or would like to work through a browswer), there are several web-based services.  One that already has the libraries were are using is <a href="http://www.pythonanywhere.com">PythonAnywhere</a>.
+
+</div>
+
+<div>
+<h3> NYC Open Data</h3>
+
+<p>
+Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you can access data from almost every city agency.   We will use the following data set:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/Environment/Water-Consumption-In-The-New-York-City/ia2d-e54m/data">Water Consumption</a>:  download the data set as a CSV (no filtering, we will use all rows and all columns).
+</ul>
+
+<p>
+We will use this data set for later homework assignments.  Since scraping the data takes time, save this to use again for the future programs.
+</div>
+
+<div>
+<h3>NY Fed Data</h3>
+
+The <a href="https://www.newyorkfed.org">Federal Reserve Bank of New York</a> provides economical and financial data about the greater New York Region.  We will use the following data set:
+
+<ul>
+	<li> <a href="https://www.newyorkfed.org/research/college-labor-market/college-labor-market_compare-majors.html">Labor Market for Recent College Graduates</a>:  Scroll to the bottom of the page, and click on the "Download Data."  The file will be <tt>.xlsx</tt>, and the data is on the last sheet.  Open in your favorite spreadsheet program (for example, Google Drive or Microsoft Excel).  Before exporting, double check to see if there are commas in the salary numbers (if there are, highlight those cells, click on Format > Cells, and then uncheck the box for displaying thousands separators).  Export/download as a CSV file.
+</ul>
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+<ul>
+	<li> <b>Favorite Neighborhood:</b> Throughout the semester, we will focus on neighborhoods in New York City.  To start this off, pick a neighborhood (e.g. one you live in, have lived in, like visiting).  Create a single page summary of your neighborhood that includes:
+	<ul>
+		<li> Name of the neighborhood (include in the title),
+		<li> The zip code(s) of your neighborhood,
+		<li> The census tracts encompassing your neighborhood (see <a href="https://geomap.ffiec.gov/FFIECGeocMap/GeocodeMap1.aspx">Census Tract Finder</a>), 
+		<li> A map of New York City with your neighborhood highlighted, 
+		<li> An photo or image that captures your neighborhood, and
+		<li> The demographics of your neighborhood (see reading for this week).
+		<li> Distance of your neighborhood to Federal Hall and to Empire State Building.
+	</ul>
+	These will be used in our class discussion next week (projected on the screen), so, best if done "landscape" mode.
+		<ul>
+			<li> #1:  Submit a <b>.pdf</b> file containing your 1-page summary statistics of your chosen neighborhood.
+		</ul>
+
+	
+	<li> <b>Water Consumption:</b>  Using the water consumption data set, plot 
+	the daily consumption as well as the per capita usage from 1979 to 2007.
+	Make sure to include a title for your plot.
+		<ul>
+			<li> #2:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #3:  Submit a screen shot of the graphics window containing the plot.
+		</ul>
+	<br>
+	Hint:  For each line of the file (after the first one), you need to store the parts in three different lists:  one for the years, one for the overall consumption, and one for the per capita usage.  That is, the following
+	<pre>
+... assuming you have opened the file and thrown away the first line...
+years = []
+consumpt = []
+for line in infile:
+	words = line.split(',')
+	years.append(int(words[0]))
+	consumpt.append(float(words[1]))	
+	</pre>	
+	will create the first two lists (how do you create and populate the third?).  Once you have the data in lists, you can use the <tt>plt.plot()</tt> command to create the plots.
+	<br>
+	<li> <b>Labor Market:</b>  Using the NY Fed data, make a scatter plot of under-employment rate versus median wage (early career).
+	Make sure to include a title for your plot.	
+		<ul>
+			<li> #4:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #5:  Submit a screen shot of the graphics window containing the plot.
+		</ul>
+
+	
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

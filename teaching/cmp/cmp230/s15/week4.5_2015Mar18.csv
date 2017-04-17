@@ -1,0 +1,75 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type
+2015-03-18T11:59:05.670Z,62.7014,138.3248,10,4.9,mb,,45,4.083,1.47,us,us10001nel,2015-03-18T12:19:07.582Z,"43km WNW of Nezhdaninskoe, Russia",earthquake
+2015-03-18T05:39:16.930Z,-18.5619,-71.4133,23.4,4.8,mwr,,142,1.034,1.52,us,us10001ndn,2015-03-18T13:41:58.032Z,"102km S of Ilo, Peru",earthquake
+2015-03-18T03:21:46.190Z,13.1257,51.4177,10,4.6,mb,,159,2.577,0.7,us,us10001nd8,2015-03-18T11:24:14.726Z,"136km NW of Kilmia, Yemen",earthquake
+2015-03-18T01:22:18.770Z,-0.6954,122.331,40.73,4.9,mb,,54,0.559,1.2,us,us10001nc9,2015-03-18T09:24:51.758Z,"58km WNW of Luwuk, Indonesia",earthquake
+2015-03-17T22:12:28.980Z,1.6576,126.4902,45.75,6.2,mww,,18,1.241,0.94,us,us10001nab,2015-03-18T12:59:14.040Z,"137km NW of Kota Ternate, Indonesia",earthquake
+2015-03-17T20:16:18.270Z,-17.8036,-178.532,549.98,5.4,mb,,50,3.254,1.24,us,us10001n7n,2015-03-18T04:19:01.458Z,"269km SE of Lambasa, Fiji",earthquake
+2015-03-17T19:37:57.330Z,-7.4761,156.2449,71.09,4.9,mb,,65,4.149,0.58,us,us10001n77,2015-03-18T03:41:32.254Z,"95km NW of Gizo, Solomon Islands",earthquake
+2015-03-17T16:01:54.980Z,-4.7121,133.6209,34.15,4.5,mb,,143,2.246,1.02,us,us10001n5f,2015-03-18T00:04:33.630Z,"134km NNW of Dobo, Indonesia",earthquake
+2015-03-17T15:48:04.110Z,44.6234,146.8194,27.45,4.7,mb,,134,3.072,0.56,us,us10001n53,2015-03-17T23:50:47.689Z,"91km N of Shikotan, Russia",earthquake
+2015-03-17T10:31:43.290Z,-0.5908,122.4168,28.34,4.8,mb,,34,0.571,1.05,us,us10001n0c,2015-03-17T18:34:14.999Z,"57km NW of Luwuk, Indonesia",earthquake
+2015-03-16T22:06:36.230Z,-5.7135,151.1048,74.81,5.1,mb,,56,1.843,1.2,us,us10001mwt,2015-03-17T06:09:17.947Z,"108km E of Kimbe, Papua New Guinea",earthquake
+2015-03-16T15:49:49.050Z,45.6587,26.4354,115.7,4.5,mb,,56,0.22,0.76,us,us10001msg,2015-03-17T19:35:28.381Z,"17km SE of Comandau, Romania",earthquake
+2015-03-16T14:23:51.240Z,26.7906,128.2807,55.2,4.5,mb,,65,0.045,0.75,us,us10001ms2,2015-03-18T00:53:33.780Z,"37km NE of Nago, Japan",earthquake
+2015-03-16T13:54:49.270Z,28.0506,131.0746,19.63,4.6,mb,,68,2.225,0.69,us,us10001mru,2015-03-17T14:44:39.985Z,"160km ESE of Naze, Japan",earthquake
+2015-03-16T13:48:41.590Z,7.784,-71.918,49.04,4.5,mb,,59,1.675,0.55,us,us10001mrt,2015-03-16T21:51:18.413Z,"15km SSE of San Jose de Bolivar, Venezuela",earthquake
+2015-03-16T04:45:39.920Z,-17.7708,-178.594,559.89,4.5,mb,,72,3.195,0.91,us,us10001mpn,2015-03-16T12:48:09.980Z,"262km SE of Lambasa, Fiji",earthquake
+2015-03-16T03:21:43.900Z,-4.1176,151.9617,198.21,4.5,mb,,128,0.214,1.04,us,us10001mpc,2015-03-16T11:24:22.684Z,"24km WNW of Rabaul, Papua New Guinea",earthquake
+2015-03-16T03:00:06.370Z,-4.1005,152.0423,198.87,5.9,mwp,,20,0.15,0.96,us,us10001mp3,2015-03-17T04:54:18.000Z,"17km NW of Rabaul, Papua New Guinea",earthquake
+2015-03-15T23:17:17.200Z,-0.5154,122.3195,31.5,5.9,mwb,,16,0.691,1.16,us,us10001mm0,2015-03-17T04:43:51.000Z,"70km NW of Luwuk, Indonesia",earthquake
+2015-03-15T22:47:35.450Z,-26.1539,-11.4976,14.49,5.4,mb,,81,11.475,0.45,us,us10001mlp,2015-03-16T06:50:10.107Z,"Southern Mid-Atlantic Ridge",earthquake
+2015-03-15T21:29:58.140Z,-15.0892,166.7743,58.35,5.3,mb,,57,6.952,0.93,us,us10001ml5,2015-03-16T05:32:41.488Z,"29km W of Port-Olry, Vanuatu",earthquake
+2015-03-15T21:19:13.750Z,-9.7146,112.8514,40.33,4.5,mb,,89,1.782,1.12,us,us10001ml0,2015-03-16T05:21:57.067Z,"145km S of Krajan Tambakrejo, Indonesia",earthquake
+2015-03-15T18:42:45.870Z,-4.8884,101.6339,25.6,4.6,mb,,114,1.418,1.07,us,us10001mk0,2015-03-16T02:45:27.687Z,"139km SSW of Bengkulu, Indonesia",earthquake
+2015-03-15T17:22:04.430Z,11.8858,-89.063,44.06,4.5,mb,,175,1.797,0.74,us,us10001mjq,2015-03-16T01:24:30.921Z,"164km SSW of Puerto El Triunfo, El Salvador",earthquake
+2015-03-15T16:25:37.780Z,13.7343,-92.8376,51.71,5.1,mb,,92,1.358,0.7,us,us10001mjg,2015-03-16T00:28:23.789Z,"110km SW of Ocos, Guatemala",earthquake
+2015-03-15T16:24:31.580Z,38.9658,68.7859,28.38,4.5,mb,,115,2.317,0.94,us,us10001mjf,2015-03-16T00:27:01.623Z,"17km NW of Tagob, Tajikistan",earthquake
+2015-03-15T14:22:55.530Z,-5.7905,130.3558,46.93,5.2,mb,,33,2.37,0.96,us,us10001mj9,2015-03-15T22:25:39.218Z,"261km NNW of Saumlaki, Indonesia",earthquake
+2015-03-15T14:01:02.890Z,43.0819,76.9033,26.09,4.8,mb,,58,4.681,0.59,us,us10001mj7,2015-03-16T06:13:36.210Z,"19km SSW of Almaty, Kazakhstan",earthquake
+2015-03-15T11:22:14.200Z,35.6646,5.6814,10,4.7,mb,,93,2.983,0.98,us,us10001mic,2015-03-15T19:24:47.341Z,"3km ESE of Ras el Aioun, Algeria",earthquake
+2015-03-15T08:03:13.720Z,12.6818,119.9335,35,4.5,mb,,88,7.546,0.62,us,us10001mhu,2015-03-15T16:05:55.877Z,"50km N of Buluang, Philippines",earthquake
+2015-03-15T04:47:21.200Z,18.7214,146.4191,57.52,5.8,mwp,,57,5.315,0.73,us,us10001mh6,2015-03-17T04:01:15.000Z,"79km E of Agrihan, Northern Mariana Islands",earthquake
+2015-03-15T02:59:47.290Z,-21.9878,-68.8425,102.55,4.6,mb,,46,0.417,0.72,us,us10001mgq,2015-03-15T11:02:19.684Z,"53km N of Calama, Chile",earthquake
+2015-03-15T02:17:03.150Z,-22.2706,-176.3995,67.9,5.2,mb,,40,6.842,1.01,us,us10001mgf,2015-03-15T21:48:00.040Z,"171km SW of Vaini, Tonga",earthquake
+2015-03-14T23:32:54.810Z,-71.7919,-126.3183,10,5,mb,,79,17.474,0.77,us,us10001mft,2015-03-15T07:35:32.395Z,"186km N of Siple, Mount, Antarctica",earthquake
+2015-03-14T23:15:12.850Z,-5.6732,146.3768,68.14,4.9,mb,,74,3.738,0.78,us,us10001mfq,2015-03-14T23:34:21.818Z,"81km SE of Madang, Papua New Guinea",earthquake
+2015-03-14T22:41:14.500Z,-15.3627,-173.3948,10,4.6,mb,,88,2.13,0.6,us,us10001mfk,2015-03-15T06:43:49.443Z,"75km NNE of Hihifo, Tonga",earthquake
+2015-03-14T22:30:59.920Z,-5.729,146.4032,81.06,4.8,mb,,57,3.728,0.67,us,us10001mfe,2015-03-15T06:33:42.672Z,"85km NE of Kainantu, Papua New Guinea",earthquake
+2015-03-14T21:59:14.940Z,-2.173,141.4916,10,5.2,mb,,91,9.13,0.71,us,us10001mf9,2015-03-15T06:01:44.818Z,"59km NNE of Vanimo, Papua New Guinea",earthquake
+2015-03-14T20:21:32.540Z,-18.4079,-175.3665,208.04,4.9,mb,,56,5.196,1.01,us,us10001mes,2015-03-15T04:24:01.414Z,"148km W of Neiafu, Tonga",earthquake
+2015-03-14T18:39:53.510Z,4.055,126.906,50.17,4.6,mb,,93,3.293,0.67,us,us10001me7,2015-03-17T16:48:26.927Z,"218km SE of Sarangani, Philippines",earthquake
+2015-03-14T16:03:47.020Z,-27.802,-71.1155,34.88,5.1,mb,,129,0.388,1.16,us,us10001mda,2015-03-15T02:17:36.068Z,"91km WSW of Copiapo, Chile",earthquake
+2015-03-14T15:36:10.350Z,34.2892,141.7599,22.88,5.4,mb,,146,2,0.96,us,us10001md6,2015-03-14T23:38:45.728Z,"163km SE of Katsuura, Japan",earthquake
+2015-03-14T13:48:26.990Z,24.6008,125.4838,48.71,4.6,mb,,95,2.255,1.39,us,us10001mci,2015-03-14T15:49:13.083Z,"29km SE of Hirara, Japan",earthquake
+2015-03-14T08:05:57.230Z,6.748,-72.9986,158.54,4.5,mb,,120,2.303,0.91,us,us10001mbq,2015-03-14T16:08:29.552Z,"6km NNE of Aratoca, Colombia",earthquake
+2015-03-14T06:13:36.590Z,12.6717,-87.8852,65.88,4.7,mb,,141,0.439,1.16,us,us10001mbh,2015-03-14T14:16:03.401Z,"47km W of Jiquilillo, Nicaragua",earthquake
+2015-03-14T06:13:34.990Z,33.1789,115.7976,10,4.7,mb,,56,5.024,0.59,us,us10001mbl,2015-03-14T14:16:07.971Z,"13km E of Taihe Chengguanzhen, China",earthquake
+2015-03-14T06:13:18.160Z,-15.0407,166.8747,35.12,4.9,mb,,118,7.005,0.74,us,us10001mbj,2015-03-14T14:15:55.713Z,"18km W of Port-Olry, Vanuatu",earthquake
+2015-03-14T03:21:34.920Z,-17.5156,-14.1055,10,4.7,mb,,68,8.157,0.66,us,us10001mb2,2015-03-14T11:24:08.619Z,"Southern Mid-Atlantic Ridge",earthquake
+2015-03-14T00:18:44.150Z,-57.4706,-66.7368,10,4.7,mb,,157,4.977,0.76,us,us10001mae,2015-03-14T08:21:15.519Z,"Drake Passage",earthquake
+2015-03-13T21:18:46.260Z,-6.3617,146.1709,103.58,4.9,mb,,34,3.178,0.93,us,us10001m96,2015-03-14T05:21:18.081Z,"34km ESE of Kainantu, Papua New Guinea",earthquake
+2015-03-13T20:56:40.930Z,-18.6849,-177.817,578.76,4.7,mb,,121,4.035,0.69,us,us10001n4f,2015-03-17T16:40:21.017Z,"236km NNE of Ndoi Island, Fiji",earthquake
+2015-03-13T19:16:06.960Z,-44.5275,-72.9109,11.99,5,mb,,96,1.514,0.71,us,us10001m7j,2015-03-14T16:25:17.825Z,"29km NW of Puerto Cisnes, Chile",earthquake
+2015-03-13T18:19:46.190Z,0.6044,126.6714,66.55,4.7,mb,,54,0.714,0.96,us,us10001m73,2015-03-14T16:08:21.071Z,"79km WSW of Kota Ternate, Indonesia",earthquake
+2015-03-13T17:35:13.420Z,-15.9579,-69.571,233.52,4.8,mb,,88,1.422,1.35,us,us10001m6s,2015-03-14T15:46:07.498Z,"17km NE of Ilave, Peru",earthquake
+2015-03-13T16:15:25.850Z,26.3604,141.3255,102.8,4.8,mb,,101,1.061,1.39,us,us10001m5i,2015-03-14T00:23:51.791Z,"119km SW of Chichi-shima, Japan",earthquake
+2015-03-13T09:21:52.800Z,-6.9426,129.2905,149.62,4.6,mb,,63,2.243,1.23,us,us10001m2e,2015-03-13T17:24:32.750Z,"249km WNW of Saumlaki, Indonesia",earthquake
+2015-03-13T06:46:45.450Z,-55.1707,-128.8193,10,4.9,mb,,116,31.469,0.59,us,us10001m1z,2015-03-13T14:49:25.925Z,"Pacific-Antarctic Ridge",earthquake
+2015-03-13T06:46:17.030Z,51.9528,160.6302,33.8,4.7,mb,,119,1.617,0.87,us,us10001m1x,2015-03-13T14:49:00.999Z,"181km SE of Petropavlovsk-Kamchatskiy, Russia",earthquake
+2015-03-13T00:54:57.230Z,0.2647,98.5382,40,4.7,mb,,147,1.411,1.08,us,us10001m13,2015-03-13T08:57:30.621Z,"146km SSW of Padangsidempuan, Indonesia",earthquake
+2015-03-12T22:08:57.660Z,-22.4849,170.2283,15.53,4.6,mb,,102,3.529,1.1,us,us10001lzx,2015-03-13T06:11:39.528Z,"187km W of Ile Hunter, New Caledonia",earthquake
+2015-03-12T21:03:01.310Z,24.2974,123.7337,21.91,4.7,mb,,71,0.68,0.64,us,us10001lz9,2015-03-13T05:05:33.247Z,"43km W of Ishigaki, Japan",earthquake
+2015-03-12T19:47:14.470Z,52.858,-162.885,10,5.3,mb,,64,2.027,1.31,us,us10001lxx,2015-03-17T18:37:02.070Z,"224km S of False Pass, Alaska",earthquake
+2015-03-12T15:23:25.570Z,8.0586,-39.5483,8.33,5,mb,,75,14.266,0.75,us,us10001lvy,2015-03-13T17:00:45.850Z,"Central Mid-Atlantic Ridge",earthquake
+2015-03-12T11:02:40.350Z,37.3419,141.5514,40.27,5.1,mb,,127,0.801,0.9,us,us10001lvg,2015-03-13T09:10:18.802Z,"51km ESE of Namie, Japan",earthquake
+2015-03-12T07:50:03.110Z,13.1035,145.5271,42.83,5.2,mb,,45,0.802,0.63,us,us10001luu,2015-03-12T15:52:29.974Z,"83km SE of Yigo Mayor's Office, Guam",earthquake
+2015-03-12T07:20:55.500Z,13.1,145.231,43.78,4.7,mb,,105,0.6,0.86,us,us10001lur,2015-03-12T15:23:35.462Z,"55km ESE of Inarajan Village, Guam",earthquake
+2015-03-12T06:50:44.330Z,13.1449,145.2324,45.33,4.9,mb,,97,0.566,0.99,us,us10001luj,2015-03-12T14:53:24.114Z,"53km ESE of Inarajan Mayor's Office, Guam",earthquake
+2015-03-12T06:28:11.460Z,13.1353,145.4379,46.39,5,mb,,98,0.714,0.85,us,us10001lug,2015-03-12T06:56:29.789Z,"73km SE of Yigo Mayor's Office, Guam",earthquake
+2015-03-12T06:03:43.520Z,13.1503,145.415,40.06,5.1,mb,,94,0.688,0.9,us,us10001lue,2015-03-12T06:22:23.786Z,"70km SE of Yigo Mayor's Office, Guam",earthquake
+2015-03-12T00:42:33.760Z,38.4287,49.1377,45.17,4.5,mb,,56,3.819,0.86,us,us10001ltc,2015-03-12T09:32:23.588Z,"23km E of Astara, Iran",earthquake
+2015-03-11T19:14:37.290Z,36.4567,71.0811,89.53,4.5,mb,,80,0.781,0.94,us,us10001lne,2015-03-12T03:17:06.518Z,"47km WSW of Ashkasham, Afghanistan",earthquake
+2015-03-11T18:53:23.120Z,-30.3516,-177.2397,10,4.9,mb,,100,8.086,0.75,us,us10001ln5,2015-03-12T02:56:06.874Z,"136km SSE of Raoul Island, New Zealand",earthquake
+2015-03-11T18:02:15.740Z,-17.4643,-178.8191,529.8,4.8,mb,,71,2.996,0.87,us,us10001lmg,2015-03-12T02:04:41.639Z,"223km ESE of Lambasa, Fiji",earthquake
+2015-03-11T16:23:38.990Z,10.6027,-86.4631,20.91,5.4,mwr,,81,1.016,1.22,us,us10001lk3,2015-03-12T03:16:02.412Z,"89km W of Sardinal, Costa Rica",earthquake

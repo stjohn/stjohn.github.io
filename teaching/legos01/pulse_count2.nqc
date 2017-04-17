@@ -1,0 +1,34 @@
+// pulsecount2.nqc 
+//	counts the number of sensor touches until 
+//	second sensor is touched
+// UCD COSMOS, Cluster V, Summer 2001 
+
+// sensor and motors
+#define DONE	SENSOR_3
+#define COUNT	SENSOR_1
+#define COUNT_DISPLAY	1
+
+// waiting times
+#define REST	50
+
+task main()
+{
+    int i;
+
+    //Set the display to the sensor that's counting:
+    SelectDisplay(COUNT_DISPLAY);
+
+    //Initialize the counting sensor to pulse count mode
+    SetSensor(COUNT, SENSOR_PULSE);
+
+    //Initialize the "I'm done" sensor to touch mode
+    SetSensor(DONE, SENSOR_TOUCH);
+	
+    //When the DONE sensor is pushed, beep the COUNT:
+    until(DONE==1);
+    for (i=0; i<COUNT;i++)
+    {
+	PlaySound(SOUND_CLICK);
+	Wait(REST);
+    }
+}

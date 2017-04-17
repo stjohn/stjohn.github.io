@@ -1,0 +1,182 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #2, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #2</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b>  Data as vectors, more on <tt>matplotlib</tt> & Weather Underground data<br>
+<b>Deadline:</b>  Thursday, 18 February 2016, 10:30am 
+</div>
+
+
+
+<div>
+<h3>Weather Data  and <tt>matplotlib</tt></h3>
+
+<p>This assignment relies on data collected in <a href="hw1.html">Homework #1</a>.  See it for directions on getting started with <tt>matplotlib</tt>
+and scraping the Weather Underground website.
+<p>Built-in to Python are functions for downloading pages ('scraping data') directly from the web.  We will use the urllib2 library to plot historical weather data.
+
+
+		
+
+</div>
+
+<div>
+<h3>Messy Data</h3>
+
+<p>
+Real data can be a messy.  For example, on the weather data question below, you are asked to scale the size of the "bubbles" in the scatter plot to reflect the snow depth on the ground that day.  As you scrape this data, you will see many values of "0", but then a "T" pops up half-way through the month.  For example, here's part of the Weather Underground page for January 19, 2016: 
+<p>
+<img src="snowDepth.jpg">
+
+<p>
+The raw html file that produces the last 2 lines looks like:
+<pre>
+		&lt;td class="indent">&lt;span>Since 1 July snowfall&lt;/span>&lt;/td>
+		&lt;td>0.6&lt;/td>
+		&lt;td>10.0&lt;/td>
+		&lt;td>&nbsp;&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+		&lt;td class="indent">&lt;span>Snow Depth&lt;/span></td>
+		&lt;td>
+  &lt;span class="wx-data">&lt;span class="wx-value">T&lt;/span><span class="wx-unit">&nbsp;in&lt;/span>&lt;/span>
+&lt;/td>
+		&lt;td>&nbsp;</td>
+		&lt;td>&nbsp;</td>
+		&lt;/tr>
+</pre>
+<ul>
+	<li> <i>What does this mean? </i><br> The "T" refers to trace amount of snow on the ground.  For the purpose of our scatter plot, this is very similar to no snow on the ground.  Thinking of "T" as a value of 0 is a reasonable intepretation in this case.  (In other cases, it might not be.  For example, imagine if you're trying to measure snow cover affect on traffic collisions.  In this case, trace amounts of snow on the ground could play a role in slipperiness of the roadway and you may want to treat as a separate category.)
+	<li> <i>Do I need to understand HTML?</i> <br>
+	Actually, no.  We will talk more about this when we discussing getting data from files on 11 February.  If you want to start homework before this, here's the important parts:  we are looking for patterns that we can use to automate the extracting of data.  The important pattern here is 2 lines after the "Snow Depth" is where Weather Underground stores the value for snow depth.  
+	<li> <i>How do you handle this in an automated fashion?</i><br>  We could just go through by hand and set all the "T" to 0, but while this data set is relatively small, this just won't work for many data sets (for example, the next homework looks at collisions in NYC and has hundreds to thousands per day).  
+	<p>  A good approach is to run your program, and if you discover that there's non-numeric data where you expect numbers, is to go examine the data (which we did above) to decide if it's an error in coding or an unexpected value.  Let's look at the code from <a href="weather.py">weather.py</a>:
+	<pre>
+def getTempFromWeb(kind,url):
+    page = urllib2.urlopen(url)
+    lines = page.readlines()
+    for i in range(len(lines)):
+        if lines[i].find(kind+" Temperature") >= 0:
+            m = i
+    searchObj = re.search('\d+', lines[m+2])
+    return int(searchObj.group(0))
+	</pre>
+	What does this code do?  (Again, we will discuss it on 2/11, but here's notes for those working ahead or who missed it in class).  It opens up the <tt>url</tt> and reads through the lines until it finds <tt>kind+" Temperature"</tt> and then searches the 2 lines later for number (<tt>'\d+'</tt> is a way of writing you would like a number of 1 or more digits as a regular expression).  The <tt>re.search</tt> will return the search objects if found.  What does it do if there is no number on that line?  It will return Python's default I-don't-know-what-to-say value of <tt>None</tt>.  But the code above assumes that <tt>searchObj</tt> contains values and continues processing.  Instead, there should be a test here to make sure <tt>searchObj</tt> has a non-<tt>None</tt> value and process the data appropriately.
+	
+	<p>
+	How can we do with this?  Here's the pseudocode for a function that looks for the snow depth and returns the number given or 0 if trace amounts are reported:
+	<br><br>
+	<tt>def getSnowDepth(url):</tt></br>
+	<ol>
+	<li> Open up the url and store in lines.
+    <li> Go through line by line looking for the string "Snow Depth" and store line number in m.
+	<li> Use a regular expression to look for a number 2 lines later (i.e. on line m+2).
+	<li> If none is found (i.e. if searchObj == None:), return a value of 0.
+	<li> Otherwise return the first number found, as an integer 
+	<ol>
+
+</ul>
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+<tr>
+<th>#1-2</th>
+<td colspan=2>
+Using the data you collected for <a href="hw1.html">Homework #1</a>, #5, use <tt>matplotlib</tt> to produce a plot that shows the fluctuation of the month's temperature with respect to the month's average.  That is, first compute the average temperature of the 31 daily temperatures and then scale each daily temperature to reflect its percentage of the average temperature.  For an example, see <a href="lymeScaled.py">lymeScaled.py</a> which does a similar (but not identical) scaling to this problem   Make sure to change the title of your plot to reflect the information plotted. <br><br>
+#1:  Submit your Python program as a <b>.py</b> file.<br>
+#2:  Submit a screen shot of the graphics window containing the plot.  
+</td>
+</tr>
+
+<tr>
+<th>#3-4</th>
+<td>
+For the January minimum temperature data, compute and display the running average of the temperatures over the previous 5 days.  That is, you display the average temperature over the previous 5 days for each day (if all exist, if not use as many as do exist).
+<br>For example, if the temperatures were 10,20,10,20,15,35,30,... :
+<ul>
+	<li>  The first day has no previous values, so would be 10.
+	<li>  The second day is (10+20)/2 = 15.
+	<li>  The third day is (10+20+10)/3 = 13.
+	<li>  The fourth day is (10+20+10+20)/4 = 15.
+	<li>  The fifth day: we now have enough to do the running average of a full 5 days:  (10+20+10+20+15)/5 = 75/5 = 15.  
+	<li>  The sixth day uses the the previous 5 days: (20+10+20+15+35)/5 = 90/5 = 18...
+</ul>
+
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot. 
+</td>
+<td>
+#3.  Using the definitions of expectation and variance of a random variable:
+E[X] = &Sigma; Pr[X = i]*i and &sigma;^2 = Var(X) = E[(X-&mu;)^2], show that
+Var(X) = E[X^2] - (E[X])^2.  <br>Submit an image of your handwritten answer (.jpg or .pdf file) or a TeX'd file (.pdf file).
+<br><br>
+
+#4: Show that for constants a and b and random variable X that:
+E(aX+b) = aE(X) + b.
+<br>Submit an image of your handwritten answer (.jpg or .pdf file) or a TeX'd file (.pdf file).
+</td>
+</tr>
+
+<th>#5-6</th>
+<td colspan=2>
+Collect the snow depths for January 2016.  Display the January minimum temperatures (collected in <a href="hw1.html">Homework #1</a>) as a scatter plot (of day versus temperature) with the size of each `bubble' proportional to the snow depth on that day (see <a href="http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html">scatter_plot.py</a> for a sample of varying `bubble' sizes).<br><br>
+#5:  Submit your Python program as a <b>.py</b> file.<br>
+#6:  Submit a screen shot of the graphics window containing the plot.  <br> 
+</td>
+</tr>
+
+<th>#7-8</th>
+<td colspan=2>
+Plot the percentage of New York City's population that lives in each borough.  
+The raw <a href="https://en.wikipedia.org/wiki/Demographics_of_New_York_City">historical population data for New York city</a> from 1790 to 2010 is available 
+<a href="nycRawTotals.py">here</a>.  Your plot should not display the raw population numbers, but instead give the percentages.  For example, in 1790, 31,131 people lives in Manhattan out of the 49,447 that lived in New York City overall.  The displayed value for Manhattan in 1790 would be 31,131/49,447 * 100 = 63 percent.  
+<br><br>
+#7:  Submit your Python program as a <b>.py</b> file.<br>
+#8:  Submit a screen shot of the graphics window containing the plot.  <br> 
+</td>
+</tr>
+
+</table>
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

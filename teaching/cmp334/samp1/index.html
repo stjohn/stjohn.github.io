@@ -1,0 +1,508 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<BODY >
+<BIG>
+<DIV ALIGN="CENTER">
+Sample Exam 2
+<BR>
+Computer Programming 334 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+Fall 1999
+</DIV>
+</BIG>
+<P><BIG>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>
+<BR>
+<BR></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>NAME (Printed)</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>NAME (Signed)</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>E-mail</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+</TABLE></DIV>
+</BIG>
+<P><DL COMPACT>
+<DT>1.
+<DD>True or False: 
+<DL COMPACT>
+<DT>(a)
+<DD><U> </U> Operands are locations in
+memory or constants.
+        <DT>(b)
+<DD><U> </U> The <TT>SEG</TT> operator returns
+		the distance of a label or variable from the beginning of 
+		its segment.
+        <DT>(c)
+<DD><U> </U> The <TT>CMP</TT> instruction repeats
+		a block of statements and decrements the <TT>CX</TT> register,
+		until the <TT>CX</TT> register is 0.	
+        <DT>(d)
+<DD><U> </U> Only 8-bit values can be pushed
+		or popped from the stack.
+        <DT>(e)
+<DD><U> </U> A stack is a ``last in,
+		first out'' (LIFO) structure.
+        <DT>(f)
+<DD><U> </U> You can only have one <TT>JMP</TT>
+		instruction per program.
+        <DT>(g)
+<DD><U> </U> Subroutines can call other
+		subroutines.
+        <DT>(h)
+<DD><U> </U> Link libraries can be called from
+		the main procedure.
+        <DT>(i)
+<DD><U> </U> The <TT>.586</TT> directive 
+		enables the Pentium instructions for use in your program.	
+        <DT>(j)
+<DD><U> </U> The <TT>INT</TT> instruction calls
+		an operating system subroutine, indentified by a number in
+		the range, <TT>0-FFh</TT>.
+<P>    </DL>
+<P>    <DT>2.
+<DD>Assume your program has the following data segment and
+	the offset of <TT>var1</TT> is <TT>0120h</TT> and the offset
+	of <TT>var2</TT> is <TT>0124h</TT>:
+<PRE>
+.data
+var1 db 4 dup(20h)
+var2 dw 1234h, 5678h, 9ABCh
+var3 dw var2
+</PRE>
+	What are the contents of AX and BX after each of the following
+	instructions:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax,var2       ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bx,[ax+2]     ;AX =            BX =
+</PRE>
+	    <DT>(c)
+<DD><PRE>
+push bx           ;AX =            BX =
+</PRE>
+	    <DT>(d)
+<DD><PRE>
+pop ax            ;AX =            BX =
+</PRE>
+	    <DT>(e)
+<DD><PRE>
+mov bx,var3       ;AX =            BX =
+</PRE>
+	</DL>
+<P>    <DT>3.
+<DD>The following program contains numerous errors.  Write
+	a correction next to each erroneous statement and add any
+	new lines you deem necesarry:
+<PRE>
+1:        title  Find the Errors
+
+2:
+
+3:        .model small
+
+4:        .stack 100h
+
+5:        .data
+
+6:          mov ax
+
+7:          mov bx, value2
+
+8:          mov cx, -1
+
+9:          inc bx, 1
+
+10:      loop1:
+ 
+11:          int 21h
+
+12:          loop l1
+
+13:          mov 4C00h, ax
+
+14:       main endp
+
+15:
+
+16:       value1 0Ah
+
+17:       value2 value1
+
+18:       end main
+</PRE>
+<P>    <DT>4.
+<DD>Assume your program has the following data segment and
+	the offset of <TT>a1</TT> is <TT>0100h</TT>: 
+<PRE>
+.data
+ROWSIZE = 4
+a1     db 10h,20h,30h,40h,5h,4h,3h,2h
+       db 10h,20h,30h,40h,5h,4h,3h,2h
+       db 10h,20h,30h,40h,5h,4h,3h,2h
+LENGTH = ($ - a1)
+</PRE>
+	What are the contents of AX and BX after each of the following
+	instructions:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax, a1             ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bx,offset a1       ;AX =            BX =
+</PRE>
+<P>	    <DT>(c)
+<DD><PRE>
+mov al,[bx+ROWSIZE]    ;AX =            BX =
+</PRE>
+<P>	    <DT>(d)
+<DD><PRE>
+mov bx,offset a1+7     ;AX =            BX =
+</PRE>
+<P>	    <DT>(e)
+<DD><PRE>
+mov ax,[bx+ROWSIZE+al] ;AX =            BX =
+</PRE>
+<P>	</DL>
+<P><P>
+<P>
+<BR>
+<P>    <DT>5.
+<DD>Assume your program has the following data segment: 
+<PRE>
+.data
+message   db &quot;Rage, rage against the dying of the light.&quot;
+LENGTH = ($ - message)
+</PRE>
+	What is the output from each of the following code 
+	fragments?
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+    mov cx, LENGTH
+    mov ah, 2
+    mov si, offset message
+
+L1: mov dl, [si]
+    int 21h
+    inc si
+    loop L1
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	    <DT>(b)
+<DD><PRE>
+    mov cx, 5
+    mov si, offset message
+    add si, 10
+
+L1: push [si]
+    inc si
+    loop L1
+
+    mov cx, 4
+    mov ah, 2
+
+L2: pop dl
+    int 21h
+    loop L2
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	    <DT>(c)
+<DD><PRE>
+    mov ah, 2
+    mov cx, 3
+    mov si, offset message
+
+L1: 
+    push cx
+    mov cx, 4
+L2:
+    mov dl, [si]
+    int 21h
+    inc si
+    loop L2
+    
+    pop cx
+    loop L1
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE></DL>
+<P>   <DT>6.
+<DD>What is the output of this program?
+<PRE>
+title Mystery Program      (mystery.asm)
+; This program is a mystery....
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+    mov bx, 16             ;(For WriteInt: output will be hexadecimal)
+    mov cx, 1
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 2
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 3
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 4
+    call myst
+    call WriteInt          ; Output is:
+    mov ax,4C00h
+    int 21h
+main endp
+
+myst proc
+    push bx
+    push cx
+    mov ax, 1
+    cmp cx, 1
+    je end
+    dec cx
+    push ax
+    call myst
+    pop bx
+    add ax, bx
+end: pop cx
+    pop bx
+    ret
+myst endp
+end main
+</PRE>
+<P>    <DT>7.
+<DD>Fill in the program below.  The program should 
+	print the alphabet, backwards, and in lowercase letters: 
+<PRE>
+zyxwvutsrqponmlkjihgfedcba
+</PRE>
+	Do <B>NOT</B> add any other variables to the data 
+	segment.
+<P><PRE>
+title AlphabetLoop Program      (alphloop.asm)
+
+; This program prints out the alphabet, backwards
+.model small
+.stack 100h
+.data
+
+.code
+
+main proc
+    mov ax, @data
+    mov ds, ax
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>8.
+<DD>Fill in the program below.  The program should 
+	ask the user for their name and their age, and
+	then print both to the screen.
+	Do <B>NOT</B> add any other variables to the data 
+	segment.
+<P>
+Hint: Use the <TT>ReadString</TT> and <TT>WriteString</TT>
+	from the Irvine link library.
+<P><PRE>
+title PrintName Program      (name.asm)
+
+; This program prompts and then prints the user's name
+.model small
+.stack 100h
+.data
+namePrompt db &quot;What is your name? &quot;,0
+username   db 50 dup(0)
+
+.code
+extrn ReadString:proc, WriteString:proc
+
+main proc
+    mov ax, @data
+    mov ds, ax
+
+
+
+
+
+    
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>9.
+<DD>Write a program that prints out the first 10 squares:
+	The output from your program should be:
+<PRE>
+1 4 9 16 25 36 49 64 81 100
+</PRE>
+	Do <B>NOT</B> add any variables to the data 
+	segment.
+<P><PRE>
+title PrintSquares Program      (squares.asm)
+
+; This program prints the first 10 squares
+.model small
+.stack 100h
+.data
+
+.code
+main proc
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>10.
+<DD>Fill in the program below.  The program should 
+	ask the user for a phrase and print 
+	the phrase out in <B>reverse</B> order.
+	For example, if the user entered <TT>A man, a plan</TT>, your
+        program should print <TT>nalp a ,nam A</TT>.
+<P><PRE>
+title PrintEvens Program      (evens.asm)
+
+; This program prints the even numbers between 0 and 20
+.model small
+.stack 100h
+.data
+
+
+.code
+main proc
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P></DL>
+<BR><HR>
+<BR><I>11/23/1999</I>
+</ADDRESS>
+</BODY>
+</HTML>

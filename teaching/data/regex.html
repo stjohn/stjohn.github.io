@@ -1,0 +1,81 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Regular Expressions, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Regular Expressions</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+
+<div>
+
+
+Name Data:  The Social Security Administration keeps track of birth names by year and state.  Before we work directly with the data, try the Baby Name Voyager visualization tool:
+What is the most popular girls’ name now?  In 1990?  In 1960?
+When did the name `Eden’ break into the top 1000 names?
+What occurs more:  names starting with `C’ or with `J’?
+
+Using Regular Expressions for Name Data:
+Pattern
+What names will these match?
+Ed[ei]n
+
+
+Erin.*
+
+
+Stephan[(ie)y]
+
+
+Isabel{1,2}e*
+
+
+Ta[a-z]{4,10}
+
+
+[JY]asmine*
+
+
+[A-Z].*elle
+
+
+[A-Z][a-z]*[aey]
+
+
+
+Which of these patterns are easy to find using the name visualization?   Which are hard?  Why?
+
+
+
+Challenges:  To find these patterns, we will use the Social Security Administration’s raw data:
+Run the program, searchingNames.py.  What does it do?
+Are there more names ending in -elle or -ella?
+To count only girls’ names, you can filter lines by:
+		words = line.split(‘,’)
+		if words[1] == ‘F’:
+		     … process data ....
+	Is the name Taylor more common for girls or boys?
+Are there more boys named Daniel in 2000, 2005, or 2010?
+
+
+
+
+
+
+
+Harder Challenges:
+Graph the number of names ending with -elle versus names ending with -ella from 1990 to 2010 using matplotlib.
+Graph the number of names starting with ‘J’ from 1990 to 2010 using matplotlib.
+Choose a name (e.g.. Daniel) and use matplotlib to graph the number of babies call that name from 1990 to 2010.  
+Compare graphically the popularity of two names (e.g. Theodore versus Franklin) from 1990 to 2010.

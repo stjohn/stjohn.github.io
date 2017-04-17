@@ -1,0 +1,7 @@
+task main() {
+  SetSensor(SENSOR_1, SENSOR_PULSE);
+  until (SENSOR_1 == 4) {
+    PlaySound(SOUND_CLICK);
+    Wait(50);
+  }
+}

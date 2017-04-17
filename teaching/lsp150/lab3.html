@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 3, LSP 150, Lehman College-- CUNY, Fall 2004</title>
+</head>
+<body bgcolor="#ffffff" link="#003399" vlink="#236b8e">
+<h1>Laboratory Exercise 3</h1>
+<h2>LSP 150: Computers &amp; Society<br>
+Lehman College-- CUNY<br>
+30 September 2004</h2>
+<h2></h2>
+<hr>
+<h3>Obstacle Course and Touch Sensors</h3>
+The first half of the lab focuses on the touch sensor. We will
+use the touch sensor as part of a bumper, and count the number of
+obstacles that are hit. After a pre-set limit has been reached,
+the robot will stop and beep (that is, after too many accidents,
+the robot can't drive any more!).
+<p>In the second half of today's lab, we'll finish up the obstacle
+course from last week's lab.&nbsp; The goal is to design a program to
+navigate the obstable course.&nbsp; An optional component is to use the
+bumpers to navigate.<br>
+</p>
+<p><b>Design requirements:</b> This lab assumes that the
+two motors are wired to output ports A and C. Further, each motor is
+attached to a means of locomotion (legs, treads,
+feet, etc.).&nbsp; The touch sensor is wired to sensor port 1 and is
+connected to a bumper.&nbsp;
+</p>
+<p><b>Programs used:</b>
+Today's lab uses the touch sensors and
+the <a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a> from lecture.
+</p>
+<p><b>Lab Set-up:</b> This lab uses an obstacle course set up outside
+the lab.<br>
+</p>
+<h3>The Touch Sensor and Bumpers</h3>
+One natural use for the touch sensor is as part of a bumper.
+Wire a bumper to input sensor 1 and try <a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>.
+Copy this program to new file called <tt>limited_bumps.nqc</tt>.
+Change the program in the following ways, and test between
+steps:
+<ol>
+  <li> First, change <tt>limited_bumps.nqc</tt> to beep everytime it
+hits an obstacle. </li>
+  <li> Next, declare a variable called <tt>num_obstacles</tt> and set
+it to 0. After the touch sensor is bumped, increase the variable by 1
+(one command that will do this is: <tt>num_obstacles++;</tt>). </li>
+  <li> Change the <tt>while(true)</tt> loop to stop after 5 obstacles
+are hit.
+  </li>
+</ol>
+<div style="margin-left: 40px;">Modify your program so that <b>only one</b>
+constant needs
+to be changed to change the number of obstacles you are
+allowed to hit before the program stops.<span style="font-weight: bold;"></span><br>
+<span style="font-weight: bold;"></span></div>
+<h3>Obstacle Course</h3>
+There is a simple obstacle course set up outside the lab.
+The goal is to have your robot make as many laps
+around the course as possible. For future labs, we will use the touch
+sensors for the obstacle course. For this lab, you will need to go
+solely
+by the amount of time that has passed and calculate when to
+turn based on time.
+<p>First, make a program called <tt>lap.nqc</tt> that can make
+one lap around the track. Then, add a loop so that your robot will make
+3 laps around the track.
+</p>
+<h3>Finishing up for the Day<br>
+</h3>
+To get credit for this laboratory, you need to show and explain your
+programs to Prof. St. John, as well as demonstrate that they run using
+your robot.<br>
+<br>
+We must be out of the computer laboratory by 11:50am.&nbsp; As such, if
+you
+are not ready to demonstrate your work by 11:45am, you can do so in the
+next laboratory.&nbsp; Before leaving the room, make sure that all
+computers
+and monitors are turned off, that any paper and trash have been
+removed, and that all chairs are returned
+to their proper places.&nbsp; Also, make sure you pack up your IR tower
+in
+your shoe box, since they're difficult to replace.
+&nbsp;<!--
+<h3>If you finish early...</h3>
+
+We will be playing basketball in the next lab. The goal is to 
+a small object from the starting area, carry it to the basket,
+and drop it in.  One approach to this is to use a dump truck,
+like the one described in Chapter 9 of the textbook.   
+-->
+</body>
+</html>

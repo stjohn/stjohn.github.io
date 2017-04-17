@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 17 for CIS 228, Lehman College, CUNY, Fall 2008</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<img id="bookImage" alt="cover picture" src="../hfjs_cover.png"
+ width="100"><br>
+<h2>Lab 17</h2>
+<h3>CIS 228: The Internet <br>
+Lehman College, City University of New York<br>
+Fall 2008<br><br>
+</h3>
+</div>
+
+
+<div>
+<h3>General Information &amp; Getting Started<br>
+</h3>
+<p>See <a href="lab1.html">Lab 1</a> for more details on getting
+started and the rules for the
+lab.</p>
+<p>
+In today's lab, we will work with cookies, arithmetic, and 
+decisions.  
+
+</p>
+</div>
+
+<div>
+<h3>Donuts and Cookies</h3>
+
+<p>The book develops the iRock and donut example in the first three chapters.  
+We will use the files from Chapter 2 and 3:</p>
+<blockquote>
+<a href="http://headfirstlabs.com/books/hfjs/ch03.php">http://headfirstlabs.com/books/hfjs/ch03.php</a>
+</blockquote>
+<p>
+Using the donut example as a base, modify the JavaScript to remember
+the user's name when they return.  The simplest way to do this is to
+mimic what was done for iRock.  Recall that the last version of the
+iRock asks the user their name and stores it in cookie.
+</p>
+The steps that need to be done here:
+<ul>
+	<li> When the name changes, store it in a cookie (how can you tell 
+		when a field changes?)
+	<li> When the page loads, if the name is known, put it in the input
+		field on the form (Hint: Look at the iRock example for checking
+		if the cookie exists.  You will want to make this change when
+		the onload event has been triggered-- use the &lt;body&gt; element.)
+</ul>
+
+</div>
+
+<div>
+<h3>Arithmetic in JavaScript<br>
+</h3>
+<ol>
+</ol>
+In lecture, we wrote a calculator for determining the letter grade
+given the numerical score. In lab, we'll write a calculator that
+takes a decimal number and outputs its hexadecimal code. To make
+things simpler,
+we will only convert numbers that are &lt; 16. The basic outline
+of the program is:
+<ol>
+  <li>Prompt the user for a number.</li>
+  <li>If the number is &gt;= 16, display a message saying the number is
+too large for our calculator.</li>
+  <li>If the number &lt;=15, print out the single digit hexadecimal for
+that number<br>
+  </li>
+</ol>
+Since there's lots of steps to this, let's break it up into
+subproblems, detailed in the sections that follow:<br>
+<ul>
+  <li><span style="font-weight: bold;">Print and Display:</span>
+To start, first make a program that prompts the user for a number and
+just prints out that same number to the screen (this is to check that
+your variables are set up right).</li>
+  <li><span style="font-weight: bold;">Numbers That Are Too Big:</span>
+Next, add in a test if the number is bigger than 15.&nbsp; If so, print
+out a message saying so.</li>
+  <li><span style="font-weight: bold;">Small Numbers:</span> if
+the number is &lt;=9, then you can just print out the number (since
+numbers that small are the same in hexadecimal or decimal). Add
+in a test for this, and test to make sure it works.<br>
+  </li>
+  <li><span style="font-weight: bold;">Converting the Rest:</span>
+Next, if the number is 10, print out "A" (add a test for this).
+If the number is 11, print out "B" (add a test for this).  Repeat
+with the numbers upto 15. In the end, you'll have several tests,
+one for each of the numbers between 10 and 15. Test to make sure
+this works.</li>
+</ul>
+In a future lab, we'll use this work to convert larger hexadecimal
+numbers.
+</div>
+
+<!-- FUTURE: continue the stick-figure adventure -->
+
+<div>
+<h3>Submitting Your Lab</h3>
+Show your webpages to Professor St. John, before leaving the lab
+today.
+<h3>Logging Out</h3>
+Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on looping through data files to make maps. 
+<br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+</div>
+
+<div>
+<h3>World Maps</h3>
+
+<p>We can use the techniques from last lab to map and different scales.  Let's start by mapping cities of the world.  
+Locations in the world are usually indicated by their latitude and longitude.  
+<ul>
+	<li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
+	<li> <b>Longitude</b> measures the number of degrees east or west of the prime meridian.  When written as a number, it ranges from -180 to +180.
+</ul>
+
+We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's map some cities:
+
+<p> In the trinket below, map the following cities:
+<ul>
+	<li> New York City,
+	<li> Los Angeles,
+	<li> Paris, France,
+	<li> Tokyo, Japan,
+	<li> Sydney, Australia,
+	<li> Rio, Brazil, and 
+	<li> Cairo, Egypt
+</ul>
+<p>
+<iframe src="https://trinket.io/embed/python/7705126110?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+</div>
+
+<div>
+<h3>Pandas & Folium</h3>
+
+<p>  We introduced <a href="http://pandas.pydata.org">Pandas</a> in <a href="lab6.html">Lab 6</a>.  We'll use here to read in large CSV files and then make maps of the GIS data inside it.
+
+<p>
+<a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make beautiful interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding html file in a web browser to see your map.
+
+<p>
+Check to see if you have folium already:
+<pre>
+import folium
+</pre>
+
+If not, go to the terminal, and download it:
+<pre>
+pip install folium
+</pre>
+
+<h4>Our First Map</h4>
+
+<p>
+<img src="worldMap.png" height=400>
+
+<p>To make a map in folium, the process is:
+<ul>
+	<li> Write a program in Python, using folium.
+	<li> Run the program, which outputs an .html file.
+	<li> Open the .html file in a browser.
+</ul>
+
+<p> Here's our first program:
+<pre>
+#Import the folium package for making maps
+import folium
+
+#Create a map, centered (0,0) and zoomed out a bit:
+mapWorld = folium.Map(location=[0, 0],zoom_start=3)
+
+#Save the map:
+mapWorld.save(outfile='tempMap.html')
+</pre>
+
+<p>
+Save this file and run it.  It will create a file called <tt>tempMap.html</tt>.
+Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" and then choose the file <tt>tempMap.html</tt>.  You should see a map of the world.
+
+<h4>Map of New York City</h4>
+
+<p>
+<img src="lehmanMap.png" height=400>
+
+<p>
+Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
+<pre>
+import folium
+
+mapCUNY = folium.Map(location=[40.75, -74.125],zoom_start=10)
+</pre>
+
+<p> Let's add in a marker for Lehman College:
+<pre>
+folium.Marker(location = [40.873442, -73.889361], popup = "Lehman College").add_to(mapCUNY)
+</pre>
+
+<p>and create the .html file:
+<pre>
+mapCUNY.save(outfile='tempMap.html')
+</pre>
+
+
+</div>
+
+<div>
+<h3>Plotting from Files</h3>
+
+We can combine the mapping of folium with the tools we have used for CSV files.
+
+<p>Let's make an interactive map of the the CUNY campuses.  Instead of typing every location in by hand, we can use a file.   First, download a CSV file from data.ny.gov:
+<ul>
+	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
+</ul>
+(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
+
+<p>
+Let's use Pandas to read in the file.  We will need to import pandas and folium:
+<pre>import folium
+from folium.plugins import MarkerCluster
+import pandas as pd
+</pre>
+Note that we're explicitly importing MarkerCluster from the Folium plugins (we're going to use it to cluster markers together as the map zooms out).
+
+
+
+<p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
+<pre>
+cuny = pd.read_csv('cunyLocations.csv')
+print (cuny["Campus"])
+</pre>
+
+<p>Next, let's set up a map, centered on New York City:
+<pre>
+mapCUNY = folium.Map(location=[40.75, -74.125])
+</pre>
+
+
+
+
+
+
+<p>
+We need to add markers for each campus.  First, we'll create empty lists to hold the locations, the popup messages, and the icons:
+<pre>
+#Create lists to hold coordinates and popups:
+coords = []
+popups = []
+icons = []
+</pre>
+
+We're going to iterate through the rows of dataframe to create the markers:
+<pre>
+#For each row in the CSV file:
+for index,row in cuny.iterrows():
+    #Extract the data:
+    lat = row["Latitude"]
+    lon = row["Longitude"]
+    name = row["Campus"]
+    #Add the [lat,lon] to list of coordinates:
+    coords.append([lat,lon])
+    #Add the names to the popup list>
+    popups.append(name)
+    if row["College or Institution Type"] == "Senior Colleges":
+        icons.append(folium.Icon(icon='cloud'))
+    else:
+        icons.append(folium.Icon(color='green'))
+</pre>
+Note that we're putting in different icons, depending on whether its a senior college or not.
+
+<p>Once we have everything set up, let's add all the markers at once:
+<pre>
+#Add all the markers at once:
+mapCUNY.add_children(MarkerCluster(locations=coords, popups = popups, icons=icons))
+</pre>
+
+<p>Lastly, let's save our map:
+<pre>
+mapCUNY.save(outfile='cunyLocations.html')
+</pre>
+
+<p>
+To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
+
+
+</div>
+
+
+<div>
+<h3>github</h3>
+
+<a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
+The first part of today's classwork is to get started on github:
+
+<ol>
+	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.
+	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
+	<li> Work through the 
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
+	<li> Submit your github username for Problem #1 on Homework #3.  If you have more than one account, submit the username you plan to use for the programming and project for this course.
+</ol>
+
+</div>
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a quiz on functions.  The password to access the quiz will be given during lab.
+
+</div>
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 8 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "8." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 8</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 8 (Arrays and Lists in Java).
+</p>
+
+
+<p>You should complete <b>100 points</b> worth of programs
+(with an additional 10 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+
+
+<!-- For ps 8: sorting make an array of stickFigures, sort by height
+sorting when we get to arrays: bubbling max to the front of the list, say with random sized stick figures
+also do with numbers entered by the user: start with finding the max, then do bubble sort, 
+merge sort?
+
+
+
+something easy/fun with recursion
+-->
+
+
+
+
+
+<!--
+Postpone until CMP 326:
+<li><b>Puzzle Piece</b> (20 points)
+
+<p>Write a class called </tt>PuzzlePiece</tt>. A puzzle piece will have a label which will be a 
+number between 1 and 15 and the location of the puzzle piece (which will be the coordinates of the 
+upper left corner). Your class should contain three constructors:</p>
+
+<blockquote>
+a default constructor that sets the coordinates to (0,0) and the label to 0,
+a constructor that has a single argument that is assigned to label and sets the coordinates to (0,0), and
+a constructor that takes three arguments: the label, the x-coordinate, and the y-coordinate (in that order) and sets the values.
+</blockquote>
+
+<p>
+PuzzlePiece should contain a move method:
+</p>
+
+<blockquote>
+    public void move(int dx, int dy)
+that changes the position by dx units in the x direction and dy units in the y direction. Finally, you should have a draw method:
+    public void draw()
+that draws a square containing the label, using the object's coordinates for the upper left corner.
+</blockquote>
+
+Write a second class called Program19 that uses PuzzlePiece and demonstrates its features. Program19 should construct two PuzzlePieces (one using the default constructor and one using the other constructor), it should draw the puzzle pieces, and it should move at least one of the pieces.
+
+Submit this as program 19 using the electronic submission. Please call the file (and the class) Program19. Include an HTML	file in the directory called Program19.html that displays your applet.
+
+Drawing Playing Cards
+
+Add to the PlayingCard class (available on Blackboard), a method that will draw a playing card on the screen:
+
+  public void draw(x,y)
+
+where x and y are the coordinates of the upper left corner of the playing card.
+
+To demonstrate your new method, create a driver program that has a panel with several cards displayed on it.
+Sorting by Suit
+
+Change the SortCards.java program (available on Blackboard) so that it first sorts first by suit, then by rank. For example, the current sort program, if you entered:
+
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+
+would output:
+
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+
+Your modified program should group cards by their suit (clubs, diamonds, hearts, spades) first, then by their rank. So, your program would output for the above input:
+
+  5 clubs 8 clubs 3 diamonds 2 spades 7 spades
+
+Sorting Hands
+
+Fill in the missing parts of Bridge.java (available on Blackboard). That is, after the hands have been dealt and printed, sort the hands and print them again.
+(Hint: the file SortCards.java has code that might be useful.) 
+
+-->
+
+<!-- Save for 326
+
+<li><b>Merge Lists</b> (20 points)
+
+<p>
+text based program, merge two sorted lists
+(Sorted Merge) P9.6, p 416. Your program should (in the following order):
+Ask for the length of the first sorted list of integers.
+Read in the first list of integers.
+Ask for the length of the second sorted list of integers.
+Read in the second list of integers.
+You may assume that the lists are sorted, and you do not have to error check for this. Your program should then print out the sorted list of numbers. Submit this as program 21 using the electronic submission. Please call the file (and the class) Program21.
+</p>
+-->
+
+
+<li><b>Rocket Drawing</b> (10 points)
+
+<p>
+Modify the <tt>Rocket</tt> program (available from the book or Blackboard)
+so that there is another rocket, also drawn using arrays and polylines.
+</p>
+
+
+<li><b>Colored Dots</b> (10 points)
+
+<p>
+Modify the <tt>Dots</tt> program (available from the book or Blackboard)
+so that the first dot created is drawn in yellow, the newest dot is 
+drawn in red, and all other dots are drawn in green.
+</p>
+
+<li><b>Disappearing Dots</b> (10 points)
+
+<p>
+Modify the Dots program so that after 10 dots have been created, the oldest 
+one disappears whenever a new one is created.
+</p>
+
+
+<li><b>Number Counts</b> (15 points)
+
+<p>
+PP 8.4 (p 174): Create a program that reads an arbitrary number of integers that are in the 
+range 0 to 9, inclusive, and counts how many occurrences of each are entered. After all input 
+has been processed, print all of the values that were entered one or more times with the number 
+of occurrences of each.
+</p>
+
+
+<li><b>Numbers</b> (25 point)
+
+<p>
+Create a program that asks the user to read in 10 integers and prints the maximum, 
+the total and the average of the list of numbers to the screen.
+</p>
+
+<p>
+For example, if the user entered:
+<pre>
+10 12 16 13 4 5 21 2 6 1
+</pre>
+the maximum entered is 21, then total is 90 and the average 
+(total divided by number of items in list) is 9.
+</p>
+
+<li><b>Polyline</b> (20 points)
+
+<p>
+PP 8.9 (p 175): Create a program that allows the user to make a polyline shape dynamically 
+using mouse clicks. Each mouse click adds a new line segment from the previous point to the 
+location of the mouse click. Include a button below the drawing area to clear the current polyline 
+and begin another.
+</p>
+
+<p>
+Hint: start with the <tt>Dots</tt> program and have it draw lines between a point and the 
+previous one in the list.
+</p>
+
+<li><b>Person List</b> (20 point)
+
+<p>
+Using the <tt>Person.java</tt> class from the last problem set, create an <tt>array</tt>
+of 10 people.  Use a loop to ask for the first and last name of each person and then print
+out the list of people (using the <tt>toString()</tt> method).
+</p>
+
+<li><b>Select-A-Circle</b> (25 points)
+<p>
+(The idea of this program is similar to Problem 5.9 Select-A-Penguin.)
+</p>
+<p>
+Using the <tt>ImageFlicker</tt> program as a guide, create a new program that will 
+show 10 blue circles in a row (like the 10 penguins in a row in the Select-A-Penguin program).  
+When the user clicks on the <tt>0</tt> key, the first circle in the list should turn red.
+When the user clicks on the <tt>R</tt> key, the next circle in the array should turns red (and
+the previous one returns to being blue). Similarly, if the user clicks on the <tt>L</tt> key, 
+the previous circle in the array should turn red (and the rest should be blue). 
+</p>
+
+<p>
+For example, if the current circle is the third one in the list, and the user clicks on the 
+right arrow, the fourth circle in the list turns red. If the current circle is the last one 
+in the list, and the user clicks on the right arrow, the first circle in the list jumps up and 
+down. Similarly, If the current circle is the first one in the list, and the user clicks on the 
+left arrow, the last circle in the list turns red.
+</p>
+<p>
+Hint: Create a number variable called current that holds the index of the current circle. 
+Increment or decrement that variable depending on which key the user clicks.  The <tt>paintComponent()</tt>
+method then paints all circles blue, followed by painting the <tt>current</tt> circle red.
+</p>
+
+
+
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 100 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 10 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 3, CIS 166/CMP 167,Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 3<br>
+CIS 166/CMP 167: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on the python's mathematics library and the turtle graphics library.  An excellent overview of turtle graphics can be found at the 
+<a href = "http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/OurFirstTurtleProgram.html">How to think like a Computer Scientist.</a>
+
+</div>
+
+
+
+<div>
+<h3>Bouncing Ball</h3>
+
+<p>We will use the turtle graphics (built-in to python) to write a simulation of a bouncing ball.
+
+<p>
+Here is the first program (inspired from <a href="http://www.motionscript.com/mastering-expressions/simulation-basics-1.html">motionscript.com</a>):
+<pre>
+#Idea from:  http://www.motionscript.com/mastering-expressions/simulation-basics-1.html
+
+from turtle import *
+from math import *
+
+def main():
+    veloc = .5  #horizontal velocity (pixels per second)
+    amp = 75    #sine wave amplitude (pixels)
+    freq = .01  #oscillations per second
+
+    #Set up a graphics window and turtle:
+    win = Screen()
+    ball = Turtle()
+    ball.speed(10)
+    win.setworldcoordinates(0.0, -100.0, 500.0, 100.0)
+
+    #Draw a line for the x-axis:
+    ball.up()
+    goto(0,0)
+    ball.down()
+    ball.forward(500)
+    ball.up()
+    ball.backward(500)
+    ball.down()
+
+    #Draw a ball that follows a sine wave
+    for time in range(500):
+        #For each time step, move the turtle to (time, sin(time))
+        #       (with some scaling to make it fill screen)
+        ball.goto(time,int(amp*sin(freq*time*2*pi)))        
+
+    win.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+Save this file to your USB or MyDocuments folder and run the 
+program.  Let's go through what each part does:
+<ul>
+	<li>	<pre>
+from turtle import *
+from math import *
+</pre>
+	The <tt>import</tt> statement asks python to include the functions from a given module, or 
+	collection of functions.  These two <tt>import</tt> statements ask for the functions from 
+	the turtle and math modules, both of which are built-in to Python.
+	<li>	<pre>
+    veloc = .5  #horizontal velocity (pixels per second)
+    amp = 75    #sine wave amplitude (pixels)
+    freq = .01  #oscillations per second
+</pre>
+	These three variables control the speed, height, and bounce of the ball.  Try changing them 
+	and see what happens to the animation.  Your goal is to have the ball touch the ceiling every
+	time.
+
+	<li>	<pre>
+    #Set up a graphics window and turtle:
+    win = Screen()
+    ball = Turtle()
+    ball.speed(10)
+    win.setworldcoordinates(0.0, -100.0, 500.0, 100.0)
+</pre>
+	These lines set up the graphics window.  We are using a turtle to represent the bouncing ball (and is stored in the variable called <tt>ball</tt>).  To make the animation go faster, we have adjusted the speed of the turtle, <tt>ball</tt> to be maximum (i.e. 10).  In the turtle module, there is a function
+	for changing the coordinates of a graphics window.  We did so here to make the math calculating
+	the height of the bouncing ball easier.  Our new coodinates have the smallest x-value as 0, the smallest y-value as -100, the largest x-value is 500, and the largest y-value is 100.
+
+	<li>	<pre>
+    #Draw a line for the x-axis:
+    ball.up()
+    goto(0,0)
+    ball.down()
+    ball.forward(500)
+    ball.up()
+    ball.backward(500)
+    ball.down()
+</pre>
+	The <tt>up()</tt> command lifts the drawing pen up.  This is very useful if you want to start drawing from a certain point (and don't want extra lines to show up as you reach the point).  Similarly, <tt>down()</tt> puts down the pen for drawing.  The <tt>goto(x,y)</tt> moves the turtle to the coordinates <tt>(x,y)</tt>.  The commands <tt>forward()</tt> and <tt>backwards()</tt> move the turtle forward and backwards respectively.  The input parameter to these commands specifies how far the the turtle should move. 
+
+
+	<li>	<pre>
+    #Draw a ball that follows a sine wave
+    for time in range(500):
+        #For each time step, move the turtle to (time, sin(time))
+        #       (with some scaling to make it fill screen)
+        ball.goto(time,int(amp*sin(freq*time*2*pi)))        
+</pre>
+	This loop repeats the indented statements 500 times.  First time through the variable <tt>time</tt>
+	is 0; the next time through it is 1; and it keeps going until <tt>time</tt> is 499.  Each repetition
+	of the loop moves the turtle to a new point.  The x-coordinate of the point is the variable <tt>time</tt>, so, first it is 0, then 1, and keeps going until it reaches 499.  The y-coordinate is the sine of the x-coordinate (with a bunch of scaling that can be adjusted to make it fit the screen or increase oscillations).
+	<li>	<pre>
+    win.exitonclick()         #Close the window when clicked
+</pre>
+	We add this line at the end of our program to close the window when the user clicks.  
+	<li>	<pre>
+main()
+</pre>
+	This is a call (or invocation) of the function <tt>main()</tt> that we just wrote.  It is 
+	not necessary to have in your file, but if you do, you do not have to type <tt>main()</tt>
+	in the Python shell to run your function.  Instead, it will be called when you use the F5 key.
+</ul>
+
+<p>
+To make the ball appear to bounce, we need for it to stay above the line representing the x-axis.
+Another way of saying that is its y-coordinate should always be positive.  A simple way to do 
+that is to take the absolute value of the expression for the y-coordinate:
+<pre>
+        abs(amp*sin(freq*time*2*pi))
+</pre>
+Try adding this to your <tt>goto()</tt> statement, that is:
+<pre>
+        ball.goto(time,abs(int(amp*sin(freq*time*2*pi))))        
+
+</pre>
+
+Try running your program to see the bouncing ball!  
+
+
+Two more challenges to think about (ask your instructor for hints if you do not see how to do these, since questions about them will appear on quizzes and exams):
+<ul>
+	<li>  Modify your program to make the ball bounce higher each time.  Think about which coorinate controls the height of your turtle.
+	<li>  Modify your program to make the ball bounce less each time.  At the end, it should appear as if it is rolling along the x-axis.
+	
+</ul>
+
+
+</div>
+
+
+<div>
+
+
+<p> If you finish early, you may work on the programming problems.
+
+</p>
+</div>

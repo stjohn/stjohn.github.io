@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>While Loops</title>
+	<style>
+		body { 
+			font-family: sans-serif; 
+			background-color: #ffaaff;
+		}
+		span { 
+			background-color: #ff55ff;
+			padding: 10px;
+		}
+	</style>
+	<script>
+		function checkPassword() {
+			var password = 'hello';
+			var input = prompt("Please enter password");
+			
+			while (input != password){
+				input = prompt("Please enter password");
+			}
+			
+			alert("Congrats! You guessed the password!");
+		}
+		function makeTempTable() {
+			var celsius = 0;
+			
+			document.write("<table>");
+			document.write("<tr><td>CELSIUS</td><td>FAHRENHEIT</td></tr>");
+
+			while (celsius<=50)
+			{
+				document.write("<tr><td>"+celsius+"</td><td>"
+					+((celsius*9/5)+32)+"</td></tr>");
+				celsius++;
+			}
+			document.write("</table>");
+		}
+	
+		function makeColorTable() {
+			document.write("<table>");
+			var i = 0;
+			while (i < 100) {
+				var color = "aa" +"11" + i;
+				document.write("<tr><td bgColor='#"+color+"'>" + color + "</td></tr>");
+				i=i+10;
+			}
+			document.write("</table>");
+		}
+		
+	</script>
+  </head>
+  <body>
+  	<h1>While Loops</h1>
+  	
+  	<p> Each button is linked to a JavaScript function, containing while loops:</p>
+  	
+  	<p>
+  		<span onclick="makeTempTable()">Make Temperature Table</span>
+		<span onclick="makeColorTable()">Make Color Table</span>
+		<span onclick="checkPassword()">Guess Password</span>
+	</p>
+ </body>
+</html>
+

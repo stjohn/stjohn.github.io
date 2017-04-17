@@ -1,0 +1,134 @@
+<title>Lab 1, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Laboratory Exercise 1</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program, UC Davis<br>
+July 2002</h2>
+
+<hr>
+<h3>NQC and Locomotion</h3>
+
+Today's lab starts with compiling and downloading simple NQC 
+programs to the lego robot.  The programs focus on locomotion
+and will work best with either the tracks or the feet you 
+build for the robot yesterday.  Sensors are not needed for 
+the programs in this lab.
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  
+
+
+<h3>General Information About the Lab</h3>
+
+The labs are running the Linux operating system distributed
+by Red Hat (versions 6.2 and 7.1).  See 
+<a href="http://leopard.ucdavis.edu/rts/cosmos/cosmos.html">Dr. Scalettar's
+page</a> for information 
+about using the computers, linux, and vi.
+
+<h3>Getting Started</h3>
+
+First, log on the computer and bring up the class website.
+On the website, there's several programs that will be used for
+today's lab.  Before NQC programs can be loaded, the firmware
+must be installed.  As long as the batteries are not removed for
+more than a minute, this only has to be done once.  Right click
+on <a href="firm0309.lgo">firm0309.lgo</a> to download the firmware.
+Save it on your disk, using the same name.  
+
+<p>
+Next, take the gray serial cable and IR tower (from the lego kit)
+and attach them to serial port 1 of your computer (it's the left
+most connector as you face the computer's row of connectors).  Set
+the robot so that it's IR port is facing the IR tower.  Now, type:
+<pre>
+nqc -firmware firm0309.lgo
+</pre>
+in the terminal window.  If you were successful, the robot will
+make a series of beeps, and you will see in the terminal window:
+<pre>
+Downloading firmware:...................................................
+...............................
+Current Version: 00030001/00030009
+</pre>
+The robot must be turned on to download the firmware or programs.
+
+
+<h3>Compiling and Loading NQC programs</h3>
+
+Now, we're ready to load programs onto the robot.
+You may type the programs in by hand (tedious!), or
+you may download the programs to your directory (much easier!).
+Right click on <a href="guidenqc/tankbot1.nqc">tankbot1.nqc</a> to download 
+the program to your directory.  Save it on your disk, using the same name.  
+To compile and download the program, type:
+<pre>
+nqc -d tankbot1.nqc
+</pre>
+in the terminal window.  If you were successful, the robot will
+make a series of beeps and you will see in the terminal window:
+<pre>
+Downloading Program:....complete
+Battery Level = 8.1 V
+</pre>
+The battery level may differ, depending on how new the batteries
+are.  
+
+<p>
+Take the robot out to the hallway, place it on the floor,
+and click on run.  This simple program (loaded in Program 1)
+will go forward forever.  After you make sure it works, stop
+the program and turn off the robot to conserve the batteries.
+
+
+<h3>Turning in Circles</h3>
+
+Copy the tankbot1.nqc program to a new file, by typing:
+<pre>
+cp tankbot1.nqc circles.nqc
+</pre>
+Using the vi editor, modify the program <tt>circles.nqc</tt> so
+that it will go in a large circle, instead of straight.  Follow
+the directions above to download the program to the robot.  Test
+the program to find out the diameter of the circle.
+
+
+<h3>Turning in Place</h3>
+
+Copy the circles.nqc program to a new file, by typing:
+<pre>
+cp circles.nqc turnInPlace.nqc
+</pre>
+Write a program that will turn the robot <b>in place</b>.  Your
+robot should rotate a full 360 degrees before stopping.  Note
+that the strength of the batteries and the floor surface will 
+affect how long you need to wait before completing a full turn
+and turning off the engines.  
+
+<p>
+Use a constant to store the amount of time needed for a complete
+turn since future programs will use this number a
+lot.
+
+<h3>Tracing Shapes</h3>
+
+If there's time, draw the following shapes:
+<ul>
+    <li> <b>A "figure 8":</b> this is based on the <tt>circles.nqc</tt> program.
+    <li> <b>A square:</b> this uses the same idea as <tt>turnInPlace.nqc</tt> 
+	to turn the corners.  Use constants for turning time and straight
+	time (see <a href="guidenqc/tankbot2.nqc">tankbot2.nqc</a>).
+    <li> <b>A hexagon:</b> Figure out the turning time for 360 degrees and
+	divide by 6 for the turns.
+    <li> <b>The first letter of your first name</b>.
+</ul>
+
+
+</body>
+</html>
+
+

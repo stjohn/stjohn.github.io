@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 4 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "4." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 4</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 4: Events.
+</p>
+
+<p>You should complete <b>100 points</b> worth of programs
+(with an additional 10 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+<li><b>Event Tutorial</b> (5 points)
+
+<p>
+Open the Alice animation system and choose <tt>Open World</tt> from the 
+<tt>File Menu</tt> (this should automatically open when you open Alice).   
+Click on the <tt>Tutorial</tt> tab, and choose Tutorial 3 (penguin chorus).  
+Work through  the entire tutorial.  
+</p>
+
+<li><b>Jumping Frogs</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/frog.png">
+</p>
+
+<p>
+PP 4.2 (p 83):  Create an Alice world showing two frogs prepared
+to jump.  When the user clicks on one of the frogs using the 
+mouse, that frog should jump a random distance forward.
+</p>
+
+<li><b>Kitchen</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Kitchen/oven.png">
+</p>
+<p>
+PP 4.3 (p 83):  Create an Alice world showing a kitchen environment
+with various appliances (refrigerator, oven, microwave, toaster) and
+other appropriate items created from classes in the <tt>Kitchen</tt>
+gallery.  Allow the user to click on the appliances to open and
+close their doors and otherwise interact with the kitchen objects.
+</p>
+
+<li><b>Dragon</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Fantasy/dragon.png">
+</p>
+<p>
+Create an Alice world with a dragon in it.  When you type `<tt>F</tt>'
+the dragon should breathe fire.  When you type `<tt>S</tt>', a puff of
+smoke should appear.  Both the fire and smoke should disappear after 
+half a second.
+</p>
+
+
+
+<li><b>Kangaroo</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/kangaroo.png">
+</p>
+<p>
+Using the kangaroo (with the <tt>hop</tt> method with parameters from 
+<a href="lab3.html">Lab 3</a>), create a new world where the user 
+controls how far the kangaroo jumps.  When the user clicks on a number
+between 1 and 9, the kangaroo jumps forward that many meters.  For 
+example, if the user clicks on the '<tt>6</tt>' key, the kangaroo jumps forward
+6 meters.
+</p>
+
+
+<li><b>Horse</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Horse.png">
+</p>
+<p>
+Create an Alice world in which a horse is relaxing in a field.  Use
+the <tt>Horse</tt> class in the <tt>Animals</tt> gallery.  Define four
+different basic actions for the horse (sway its tail, dip its head, 
+whinny, etc.)  When the user clicks any key, have the horse perform
+one of the four actions, at random.
+</p>
+
+
+<li><b>Lighthouse</b> (15 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Beach/LightHouse.png">
+</p>
+<p>
+PP 4.4:  Create an Alice world in which a lighthouse stands on the
+edge of some water.  Add a light source to the lighthouse that 
+constantly turns.  Allow the user to click on the lighthouse with
+the mouse to turn off the light and to turn it back on again.
+Use the <tt>LightHouse</tt> class from the <tt>Beach</tt> gallery
+and the <tt>DirectionalLight</tt> from the <tt>Lights</tt> gallery.
+</p>
+
+
+<li><b>Helicopter Simulator</b> (15 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Helicopter.png">
+</p>
+
+<p>
+PP 4.5 (p 84): Create an Alice world in which a <tt>Helicopter</tt> from the 
+<tt>Vehicles</tt> hovers , blades constantly turning.  Allow the user to:</p>
+<blockquote>
+	move the helicopter up and down using the up and down arrow keys,<br>
+	turn the helicopter right or left using the right and left arrow keys, and<br>
+	move forward using the space bar
+</blockquote>
+<p>
+Build an interesting world to fly around to make it obvious the helicopter
+is moving.
+</p>
+
+
+<li><b>Motorboat Race</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Motorboat.png">
+</p>
+<p>
+PP 4.7:  Create an Alice world in which a motorboat is controlled using
+three arrow keys: the up arrow moves the boat forward and the right and 
+left arrows turns the boat.  Set up a series of obstacles and gates to 
+demonstrate the maneuverability of your boat.
+</p>
+
+<p>  Add a timer.
+It should track the time it takes for the boat to reach a finish line and
+display it as a stop watch on the screen.
+</p>
+
+
+<li><b>Ring Toss</b> (20 points)
+
+<p>
+PP 4.9:  Create a ring catching game using a <tt>torus</tt> and 
+<tt>cone</tt> created from the <tt>Shapes</tt> gallery.  The ring
+should fall from the sky while the user moves the cone along the 
+ground with the mouse.  The user's objective is to catch the ring
+with the cone.  Following each attempt, reset the ring's position.
+Stop when the user has caught 10 rings.
+</p>
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 100 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 10 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

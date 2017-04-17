@@ -1,0 +1,37 @@
+//message_array.nqc-- Store messages received in an array
+
+
+#define WAIT_TIME	50	//Time between clicks
+
+task main() 
+{
+
+    int msg[10];	//A list of 10 numbers
+    int i=0;		//A counter 
+
+    while ( i < 100)
+    {
+    	//Make sure there's no messages left over from earlier:
+    	ClearMessage();	
+
+    	//Wait until a new message is sent:
+    	until( Message() != 0);
+
+	//Increment the message heard by 1
+	int j = Message();
+	msg[j]++;
+
+	PlaySound(SOUND_CLICK);
+	Wait(WAIT_TIME);
+    }
+
+    //Put the message counts in the datalog:
+    CreateDatalog(0);
+    CreateDatalog(10);
+    for ( i = 0 ; i < 10; i++)
+    {
+	AddToDatalog(msg[i]);
+    }
+}
+
+

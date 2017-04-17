@@ -1,0 +1,21 @@
+Course Title:  Algorithmic Approaches for Biological Data
+
+The emphasis of this course is to develop analytic reasoning and computational thinking skills to address novel questions that arise from analyzing biological data. It assumes no previous programming knowledge, only that the students have a graduate-level analysis skills for biological data. The course is structured in two parts.  The first part is an intensive programming course in the Python programming language. For the first part, multiple small programming and laboratory exercises are required to reinforce skills.  The second part of the course is organized into an in-depth exploration of scientific topics and the algorithms needed to address them. For the second part, each topic starts with small programming exercises that culminate in a project addressing how to solve a biological problem using computer programming.  A final project, preferably using data from the student’s thesis project, is required.
+
+
+The specific topics are:  
+
+	•	Part 1: The basic programming concepts of loops, decisions, strings, lists, files, functions, data collections, common libraries, and recursion.
+	•	Part 2: Dynamic programming and sequence alignment, deBruijn graphs and genome assembly, and phylogenetic tree reconstruction.
+
+Text:
+	•	How to Think Like a Computer Scientist— Interactive Python (on-line edition) by Brad Miller and David Ranum.
+	•	Bioinformatics Algorithms:  An Active Learning Approach, 2nd Edition, Volumes 1 & 2 by Phillip Compeau and Pavel Pevzner.
+
+Grading:
+
+	•	120 hours of supplementary exercises are required, or roughly 8 hours per week.
+	•	Programming assignments:  Using the on-line Rosalind system.  About 4 hours per week.  50%
+	•	Lab write-ups:  2 hours per week.  25%
+	•	Final Project:  30 hours overall.  25%
+	

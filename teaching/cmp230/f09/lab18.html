@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 18 for CMP 230, Lehman College, CUNY, Fall 2009</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<h2>Lab 18</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Fall 2009<br><br>
+</h3>
+</div>
+
+<div>
+<h3>General Information About the Lab</h3>
+<p>
+For information about getting started, see <a href="lab1.html">Lab 1</a>.</p>
+
+<p>
+Today, we continue working on arrays, in particular, using arrays with functions.
+</p>
+</div>
+
+
+
+
+<div>
+
+<h3>Drawing Playing Cards</h3>
+
+<p>Add to the <tt>PlayingCard</tt> class (available on Blackboard),
+a method that will draw a playing card on the screen:
+</p>
+<pre>
+  public void draw(x,y)
+</pre>
+<p>
+where <tt>x</tt> and <tt>y</tt> are the coordinates of the upper
+left corner of the playing card.
+</p>
+
+<p>
+To demonstrate your new method, create a driver program that
+has a panel with several cards displayed on it.
+</p>
+
+
+<h3>Sorting by Suit</h3>
+
+<p>Change the <tt>SortCards.java</tt> program (available on Blackboard)
+so that it first sorts first by suit, then by rank.  For example, the
+current sort program, if you entered:</p>
+<pre>
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+</pre>
+would output:
+<pre>
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+</pre>
+<p>Your modified program should group cards by their suit (clubs, 
+diamonds, hearts, spades) first, then by their rank.  So, your program
+would output for the above input:</p>
+<pre>
+  5 clubs 8 clubs 3 diamonds 2 spades 7 spades
+</pre>
+
+<h3>Sorting Hands</h3>
+
+<p>Fill in the missing parts of <tt>Bridge.java</tt> (available on 
+Blackboard).  That is, after the hands have been dealt and printed,
+sort the hands and print them again.<br>
+(Hint:  the file <tt>SortCards.java</tt> has code that might be
+useful.)
+</p>
+
+
+
+
+<!--
+<h3>Puzzle Piece</h3>
+
+<p>
+Write a class called <tt>PuzzlePiece</tt>. A puzzle piece will have a label 
+which will be a number between 1 and 15 and the location of the puzzle piece 
+(which will be the coordinates of the upper left corner). Your class should 
+contain three constructors:</p>
+<ul>
+    <li> a default constructor that sets the coordinates to (0,0) and the label to 0,</li>
+    <li> a constructor that has a single argument that is assigned to label and sets 
+    the coordinates to (0,0), and</li>
+    <li>a constructor that takes three arguments: the label, the x-coordinate, and 
+    the y-coordinate (in that order) and sets the values. </li>
+</ul>
+<p>
+PuzzlePiece should contain a move method:</p>
+<pre>
+    public void move(int dx, int dy)
+</pre>
+<p>that changes the position by <tt>dx</tt> units in the x direction and 
+<tt>dy</tt> units in the y direction.</p>
+
+<p>Finally, you should have a draw method:</p>
+<pre>
+    public void draw()
+</pre>
+<p>that draws a square containing the label, using the object's coordinates for 
+the upper left corner.</p>
+
+<p>
+Write a second class called <tt>PuzzleDriver</tt> that uses 
+<tt>PuzzlePiece</tt> and demonstrates its features. PuzzleDriver 
+should construct two PuzzlePieces (one using the default constructor 
+and one using the other constructor), it should draw the puzzle pieces, 
+and it should move at least one of the pieces. </p>
+
+
+<h3>Puzzle</h3>
+
+<p>Write a class called <tt>PuzzleBoard</tt>. <tt>PuzzleBoard</tt> should 
+store 15 <tt>PuzzlePieces</tt> (see above) and include the following methods:</p>
+<ul>
+    <li> a default constructor that initializes the 15 pieces as in the 
+    demonstration below.</li>
+    <li>a method that draws the puzzle pieces and the "Scramble" box.</li>
+    <li>a move method that takes a point as its input. If the point is contained 
+    in the "Scramble" box, it calls a second (private) method with a randomly 
+    chosen position 1000 times. The purpose is to scramble the pieces, so the 
+    puzzle can be played. </li>
+</ul>
+<p>
+Your class should use the PuzzlePiece class written above. 
+<tt>PuzzleBoard</tt> will be called by <tt>PlayPuzzle.java</tt>. For more 
+information and hints, see here. </p> 
+
+-->
+</div>
+
+<div>
+<h3>Submitting Your Lab</h3>
+<p>Show your webpages to Professor St. John, before leaving the lab
+today. Also, print out the page with your name and give it to her
+before leaving.
+</p>
+
+<h3>Logging Out</h3>
+
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+
+</div>
+</body>
+</html>

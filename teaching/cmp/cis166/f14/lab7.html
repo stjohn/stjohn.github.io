@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 7, CIS 166, Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 7<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab will focus on formatting files.
+
+</div>
+
+
+<div>
+A standard use of scripting languages is to take data in one format and convert
+into a format accepted by another program.  For example, say your boss gives 
+you a <a href="mayors.txt">list</a> of new customers to be inserted into the 
+company's database.  He has 
+collected the list in a spreadsheet, and exported it as a CSV file (a text file,
+where all columns are separated by commas-- "comma separated values" file):
+<pre>
+De Blasio, Bill
+Bloomberg, Mike
+Giuliani, Rudy
+Dinkins, David
+</pre>
+
+
+<p>The company's database uses SQL commands and the format for new entries is:
+<pre>
+insert into customer (first, last) values ('FirstName','LastName')
+</pre>
+
+<p>
+If there's only a few names, we can easily convert the file to the desired 
+format, by hand:
+<pre>
+insert into customer (first, last) values ('Bill','De Blasio')
+insert into customer (first, last) values ('Mike','Bloomberg')
+insert into customer (first, last) values ('Rudy','Guiliani')
+insert into customer (first, last) values ('David','Dinkins')
+</pre>
+
+<p>
+If there's many names, or if you have to add entries every night, it is much
+easier to write a program.  Here's the basic outline of the program:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    #Open files to be used in the program    
+    #For each line,
+        #Separate out the first and last names
+        #Format the insert string and write it to the file		
+    #Close files
+	
+main()
+</pre>
+
+<p>
+In Lab 6, we opened and closed files, so, let's add those in here:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+To make sure there's no typing errors, try running the above program with the 
+<a href="mayors.txt">mayors.txt</a> as the input file.  Nothing will print yet, 
+since we have not included any <tt>print()</tt> statements.
+
+<p>
+Next, let's go through the input file, line by line.  To do this, we will 
+use the <tt>readlines()</tt> function, since it allows us to access each line
+(we've included a print statement in our <tt>for</tt> loop to test that the 
+program is working):
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+    for line in infile.readlines():
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+        print(line)
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+When you run the program, the output is doublespaced!  Let's remove the 
+extra newline like we did in the last program (i.e. <tt>line[:-1]</tt>) and
+then split it in parts using the comma as our delimiter:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+    for line in infile.readlines():
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+        last, first = line[:-1].split(',')
+        print(first, last)
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+Notice that we have the variables ordered:  <tt>last</tt>, <tt>first</tt> since 
+that's the order that our boss had them in the initial file.  Next, we need to 
+format the output using the SQL format he gave us:
+<pre>
+insert into customer (first, last) values ('FirstName','LastName')
+</pre>
+We want to take the string and insert the values of <tt>first</tt> and <tt>last</tt>
+into the positions marked by <tt>{0}</tt> and <tt>{1}</tt>:
+<pre>
+"insert into customer (first, last) values ('{0}','{1}')"
+</pre>
+which we can do using the <tt>format</tt> statement:
+<pre>
+"insert into customer (first, last) values ('{0}','{1}')".format(first,last)
+</pre>
+Let's start by printing that to the screen:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+    for line in infile.readlines():
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+        last, first = line[:-1].split(',')
+        s = "insert into customer (first, last) values ('{0}','{1}')".format(first,last)
+        print(s)
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+Try running this program.  Note that we have some extra spaces before the first
+names.  Those will cause problems with the database if we leave them, so, we'll
+use one of the useful string methods (p 140 in the textbook) to remove the leading whitespace
+on the first names:  <tt>first.lstrip()</tt>:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+    for line in infile.readlines():
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+        last, first = line[:-1].split(',')
+        s = "insert into customer (first, last) values ('{0}','{1}')".format(first.lstrip(),last)
+        print(s)
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+Lastly, we need to print this information to the file (we were only printing to the screen to make
+it easier for us to debug the program).  We'll print a message to screen to let the user know where
+we are in the processing:
+<pre>
+# Program to convert CSV file of customer data into SQL insert statements
+
+def main():
+    #Ask user for input and output file names
+    inName = input("Enter input filename: ")
+    outName = input("Enter output filename: ")
+
+    #Open files to be used in the program
+    infile = open(inName,"r")
+    outfile = open(outName,"w")
+    
+    #For each line,
+    for line in infile.readlines():
+        #Separate out the first and last names
+        #Format the insert string and write it to the file
+        last, first = line[:-1].split(',')
+        s = "insert into customer (first, last) values ('{0}','{1}')".format(first.lstrip(),last)
+        print(s, file = outfile)
+        print("\tWrote {0} to {1}.".format(last,outName))
+		
+    #Close files
+    infile.close()
+    outfile.close()
+	
+main()
+</pre>
+This basic structure works for processing most data files.  For example, say your boss started collecting
+addresses from customers.  How could you change it to add that information to your database?
+
+</div>
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+</html>

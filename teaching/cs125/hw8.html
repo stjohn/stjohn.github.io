@@ -1,0 +1,169 @@
+<title>Homework 8 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 8 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">This homework is due by 9 p.m., Friday,
+	23 April 1999.</font>  See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> CCJ: Exercise R9.4, p 413.
+	<li> CCJ: Exercise R9.7, p 413.
+	<li> CCJ: Exercise R9.8, p 414.
+	<li> CCJ: Exercise R9.9, p 414.
+	<li> CCJ: Exercise R9.13, p 413.
+	<li> CCJ: Exercise R9.14, p 413.
+	<li> CCJ: Exercise R9.15, p 414.
+	<li> CCJ: Exercise R10.1, p 445.
+	<li> CCJ: Exercise R10.12, p 446.
+	<li> CCJ: Exercise R10.13, p 446.
+	<li> CCJ: Exercise R11.3, p 472. 
+	<li> CCJ: Exercise R11.7, p 472. 
+	<li> CCJ: Exercise R11.16, p 473. 
+	<li> Ethics: Consider the Challenger Disaster
+		as presented 
+		<a href="http://ethics.tamu.edu/ethics/shuttle/shuttle1.htm">here</a> (by Texas A&M University Engineering Ethics).  
+		Who is responsible?  What should, or could,
+		the engineers have done differently?
+</ul>
+
+<h2>Graded Problems</h2>
+
+<font color="red">
+    You must comment your code (see book for examples).<br>
+    You must include comments for all functions, following the
+    <tt>javadoc</tt> format.  See CCJ, p 183-185 for more details.
+</font>
+
+<ol>
+	
+<p>
+    <dt><b>P23.</b> (NPR Puzzle) Write a program that takes the name
+        of a word file and a desired score.  These input parameters 
+	can be given at the command line:
+	<pre> > java Program23 wordFile 225 </pre>
+	where the first argument is the name of the file and the 
+	second is the desired score.  If the user does not provide
+	arguments when calling the program, that is, they invoke the
+	program with the command:
+	<pre> > java Program23 </pre>
+	prompt the user for the the name of the file, then for the
+	desired score.
+
+	<p>	
+    	The program then prints out
+	all words with that score from that given file.
+	To assign a score to word, first assign a number to each
+	letter: 1 to A, 2 to B, 3 to C, etc.  Then, the score of
+	the word is the product of the numbers assigned to the 
+	letters.  For example, the score of <tt>cab</tt> is 
+	3*1*2 = 6.  
+
+	<p>
+	For example, if the file <tt>wordy</tt> contains:
+
+	<table BORDER WIDTH="50%" NOSAVE >
+	<tr> <td> cab</td>
+	<tr> <td> bat</td>
+	<tr> <td> batty</td>
+	<tr> <td> cat</td>
+	<tr> <td> cats</td>
+	<tr> <td> mat</td>
+	<tr> <td> mate</td>
+	<tr> <td> gate</td>
+	<tr> <td> agate</td>
+	</table>
+
+	and the user types in the command:
+	<pre> > java Program23 wordy 700 </pre>
+	The program prints:
+	<pre> The following words have a score of 700:
+	gate
+	agate </pre>
+
+	<p>
+	Submit this as program 23 using the electronic submission. 
+	Please call the file (and the class) Program23.  
+
+	<p>
+	Hint:  To assign a number to each letter, use the method
+	<tt>indexOf</tt> on the string "*ABCDEFGHIJKLMNOPQRSTUVWXYZ".
+	For example,
+	<pre>
+	"*ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf("C")
+	</pre>
+	is 3.  See Section 11.6, p 468 for an example of using
+	<tt>indexOf</tt>.
+
+	<p>
+	(See <a href="http://www.npr.org/programs/wesun/puzzle.html">NPR's
+	Weekend Edition</a> for a related puzzler (28 March 1999)).
+	
+
+<p>
+    <dt><b>P24.</b> (GPA Calculator) In plain java, write a GPA calculator
+    	that allows the user to enter the grade and the credit hour of
+	their courses, and then calculates their GPA.  The calculator 
+	should include a <tt>clear</tt> button that clears all previously
+	entered scores, a choice button for the letter grade, a choice
+	for the number of credit hours, and a <tt>submit</tt> button
+	that records their entry, displays the current GPA, <b>and</b>
+	resets the choice buttons.  For example:
+	<br>
+	<applet code="GPACalculator.class"
+	        height = 300
+		width = 300></applet>
+	<p>
+	Follow the <a href="GPACalculator.html">javadoc comments</a> 
+	for this applet when setting up your program.
+
+	<p>
+	Submit this as program 24 using the electronic submission. 
+	Please call the file (and the class) Program24.  Include
+	an HTML file called Program24.html to display your applet.
+	
+	<p>
+	Hints:  
+	<ul>
+		<li> See the <a href="plain.html">plain java web page</a>
+		for some example programs that write to the screen.  
+		<li> Remember to change the color to "clear" the screen
+		and to write to the screen.
+		<li> The method, <tt>Integer.parseInt()</tt> takes a
+		string and returns the integer it represents.
+
+	</ul>
+
+<p>
+    <dt><b>P25.</b> (Merge sort, using <tt>sortedMerge</tt>)
+    	Write a program that: 
+	<ol>
+          <li> Asks the user for the number of integers in their list. 
+	  <li> Reads in those elements. 
+	  <li> Calls a function called sort that sorts the list. 
+	  <li> Prints out the list of numbers. 
+	</ol>
+	The sort function should split the list of numbers into two 
+	lists of about the same length, sort each of these lists, and 
+	then merge the lists together, using mergedSorted 
+	(P21 from <a href="hw7.html">Homework 7</a>). 
+
+	Submit this as program 25 using the electronic submission. 
+	Please call the file (and the class) Program25. 
+</body>

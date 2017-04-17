@@ -1,0 +1,498 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\topmargin= -25pt
+\textwidth=6 true in
+\textheight=9.5 true in
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\large
+\begin{center}
+%\mbox{ }
+%\vspace{.1in} \\
+    Exam II\\
+    Computer Programming 420 \\
+    Dr.~St.~John\\ 
+    Lehman College\\
+    City University of New York\\ 
+    20 November 2001
+\end{center}
+}
+
+
+{\small
+{\bf
+\begin{center}
+Exam Rules
+\end{center}
+\begin{itemize}
+\itemsep=0pt
+	\item Show all your work.  Your grade will be based on the work shown.          \item The exam is closed book and closed notes. 
+        \item When taking the exam, you may have with you pens or pencils,
+		and an 8 1/2" x 11" 
+		piece of paper filled with notes, programs, etc. 
+	\item You may not use a computer or calculator. 
+	\item All books and bags must be left at the front of the classroom 
+		during this exam. 
+	\item {\bf Do not open the exam until instructed to do so. }
+\end{itemize}
+}
+
+
+\begin{enumerate}
+
+% 1 (10pts) T or F
+    \item True or False: 
+    \begin{enumerate}
+        \item \underline{\bf F} Once created, database tables
+		and schemas cannot be modified.
+        \item \underline{\bf F} You cannot embed a query inside
+		another query (ie a subquery) in SQL.
+        \item \underline{\bf T} A superkey for a relation is a
+		set of attributes that functionally determine all the 
+		attributes of the relation.
+        \item \underline{\bf T} SQL regards relations as bags
+		of tuples, not sets of tuples.
+        \item \underline{\bf T} Every set is a bag.
+        \item \underline{\bf T} Every functional dependency is a 
+		multi-valued dependency.
+        \item \underline{\bf T} A view is a definition of how
+		one relation (the view) may be constructed from tables 
+		stored in the database.
+        \item \underline{\bf T} Views can be queried as if
+		they were tables.
+        \item \underline{\bf F} In SQL, the declarations
+		{\tt UNIQUE} and {\tt PRIMARY KEY} have the same effect.
+        \item \underline{\bf F} In SQL, the expression,
+		{\tt (NULL AND TRUE) OR FALSE} evaluates to {\tt FALSE}.
+    \end{enumerate}
+
+
+%2 (10pts) Simple Relational Algebra queries 
+%	2 parts, 5, 5 points
+\item Consider the following relational schema:
+\begin{verbatim}
+    Name(ID, name)   // ID is a key
+    GPA(ID, gpa)     // ID is a key
+\end{verbatim}
+\begin{enumerate}
+    \item Write a {\bf relational algebra} expression to find all 
+	students and their GPA.  (That is, your answer should be
+	a relation, with two attributes, one for the student name
+	and one for the GPA).
+
+{\tt
+$R := \pi_{name,gpa}(\mbox{Name} \bowtie \mbox{GPA});$
+
+}
+
+    \item Write a {\bf relational algebra} expression to find the 
+	names of all students with the highest GPA in the database:
+
+{\tt
+From Prof. Widom's Spring 2000 exam:
+
+The idea is to make tuples (Name, gpa, N, G) where $\mbox{gpa} < G$--
+that is, the second person in every tuple has the higher GPA (see $R_3$
+below).  Then,
+find all the names that occur only in the second position-- this means that
+no other GPA is higher (see $R_6$):  
+
+$$
+\begin{array}{l}
+R_1 := \rho_{R(N,G)}(R);\\
+R_2 := R \times R_1;\\
+R_3 := \sigma_{\mbox{gpa} < G}(R_2);\\
+R_4 := \rho_{R(\mbox{name})}(\phi_N(R_3));\\
+R_5 := \phi_{\mbox{name}}(R_3);\\
+R_6 := R_5 - R_4;\\
+\end{array}
+$$
+
+This part is hard, and credit was given for solutions that used 
+an aggregation operator (e.g. MAX).
+
+}
+\end{enumerate}
+
+%3 (10pts) Short answer
+\item Write a java program that prints "Hello, world" to the screen:
+
+{\tt From Lab 4:
+
+\begin{verbatim}
+public class Hello
+{  public static void main(String[] args)
+   {  String greeting = "Hello, World!\n";
+      System.out.print(greeting);
+   }
+}
+\end{verbatim}
+
+The common mistakes were leaving off the class definition (c-style
+program) or forgetting the main method.
+
+}
+
+%4  something straightforward about functional dependencies
+%	2 parts, 5 points each
+% Ullman's F99 exam
+\item Suppose we have a relation $R(A,B,C,D,E)$ with the following
+functional dependencies: $AB\rightarrow C$, $CD\rightarrow E$,
+$C \rightarrow A$, and $C \rightarrow D$.
+\begin{enumerate}
+  \item What are all the keys for $R$?
+
+{\tt
+From Ullman's Fall 1999 exam:
+
+	$AB$ and $BC$, since the closure of each yields all attributes, 
+	and no smaller set does.  Note that any key must include $B$
+	since it never occurs on the right hand side of any dependency.
+	Looking at the closures of all sets of 2 attributes that include
+	$B$, we have $AB^+ = ABCDE$, $BC^+ = ABCDE$, $BD^+ = BD$, 
+	$BE^+ = BE$.  You can check that the sets of 3 attributes that
+	include $B$ and are superkeys, also include the keys either 
+	$AB$ or $BC$.
+}
+
+  \item Give an example of a functional dependency that is a 
+	BCNF violation for R:
+  \item Into what two relations does this violation tell us to
+	decompose $R$?
+
+{\tt
+
+There were three possible answers for these parts. Any of them were fine: 
+
+     CD->E: R1(C,D,E), R2(A,B,C,D)
+
+     C->A: R1(A,C), R2(B,C,D,E)
+
+     E->D: R1(D,E), R2(A,B,C,E) 
+
+
+Note that $AB\rightarrow C$ is not a BCNF violation since 
+$AB^+ = ABCDE$.
+
+To decompose the relations, we follow the algorithm from 
+\S 3.7.4 Decomposition into BCNF.  The idea is that the attributes 
+on the left hand side of the BCNF violation will appear in both
+of the new relations.  One relation will also have the attributes
+that follow from the dependency.  The other will have the rest of the
+attributes.
+}
+
+\end{enumerate}
+
+%5  Bags vs. Sets (15 points)
+%	3 parts, 4 points for 1st 2, 7 points for last part
+\item Suppose $R$ and $S$ are relations.
+  \begin{enumerate}
+    \item Suppose relations $R$ and $S$ have 1 tuple and 2 tuples,
+	respectively.  
+
+	What is the minimum number of $R\cup S$ could have, under the
+	bag semantics?
+
+{\tt
+The bag will contain all elements of $R$ and $S$ (since duplicates
+are not eliminated).  So, the answer is 3.
+}
+
+	What is the minimum number of $R\cup S$ could have, under 
+	set semantics?
+
+{\tt
+Since duplicates are eliminated in sets, we could have that all 
+the elements in $R$ are contained in $S$.  
+So, the answer is 2.
+}
+
+    \item Suppose relations $R$ and $S$ have 2 tuples and 3 tuples,
+	respectively.  
+
+	What is the minimum number of $R\cup S$ could have, under the
+	bag semantics?
+
+{\tt
+The bag will contain all elements of $R$ and $S$ (since duplicates
+are not eliminated).  So, the answer is 5.
+}
+
+	What is the minimum number of $R\cup S$ could have, under 
+	set semantics?
+
+{\tt
+Since duplicates are eliminated in sets, we could have that all 
+the elements in $R$ are contained in $S$.  
+So, the answer is 3.
+}
+
+    \item Suppose relations $R$ and $S$ have $n$ tuples and $m$ tuples,
+
+	What is the minimum number of $R\cup S$ could have, under the
+	bag semantics?
+
+{\tt
+The bag will contain all elements of $R$ and $S$ (since duplicates
+are not eliminated).  So, the answer is $|R|+|S| = m + n$.
+}
+
+	What is the minimum number of $R\cup S$ could have, under 
+	set semantics?
+
+{\tt
+Since duplicates are eliminated in sets, we could have that all 
+the elements in $R$ are contained in $S$, or vice versa.  
+So, the answer is $\max(|S|,|R|) = \max(m,n)$.\\
+(In the above examples, $R$ has less elements than $S$, so, if you
+use that assumption, the answer is $n$).
+
+}
+  \end{enumerate}
+
+
+%6  Simple SQL queries (20 points)
+%	5 parts, 4 points each
+% Exercises from Labs 2-6
+\item Answer the questions below based on the following schema:
+\begin{verbatim}
+    companies(co_id, co_name, co_postcode, co_lastchg);
+    products(pr_code, pr_desc);
+    orders(ord_id, ord_company, ord_product, ord_qty, ord_placed, 
+           ord_delivered, ord_paid);
+    diary(dy_id, dy_company, dy_timestamp, dy_type, dy_notes);
+\end{verbatim}
+
+{\tt All of these are exercises from Lab.}
+
+\begin{enumerate}
+    \item Write a query that returns the product codes contained in the
+	database:
+
+\begin{verbatim}
+SELECT pr_code FROM products;
+\end{verbatim}
+
+    \item Write a query that returns the product codes and the average number
+	ordered of each per order:
+
+\begin{verbatim}
+SELECT pr_code, avg(ord_qty)
+FROM products,orders
+WHERE pr_code = ord_product
+GROUP BY pr_code;
+\end{verbatim}
+
+    \item Create a view that contains the name of each company and the 
+	total number of orders placed for that company: 
+
+
+\begin{verbatim}
+CREATE VIEW CompanyOrderTotals AS
+SELECT co_name, SUM(ord_qty)
+FROM products,orders
+WHERE co_id = ord_company
+GROUP BY co_id;
+\end{verbatim}
+
+    \item Create an index on {\tt ord\_company}:
+
+
+\begin{verbatim}
+CREATE INDEX order_co_index ON orders(ord_company);
+\end{verbatim}
+
+    \item Write a query that select all orders that were placed in a 
+	different month from when the product was delivered. For example, 
+	the order is placed on 06-29-2001, and the product is delivered 
+	on 07-06-2001. Include in the output, the order ID, the product code, 
+	the date the order was placed and the date is was delivered:
+
+\begin{verbatim}
+SELECT *
+FROM orders
+WHERE date_part('month', ord_placed) <> date_part('month', ord_delivered)
+\end{verbatim}
+
+\end{enumerate}
+
+% 7  Harder Relational Algebra Question
+\item Given two relations $R$ and $S$:
+  \begin{enumerate}
+    \item Give the definition of the natural join $R \bowtie S$:
+
+{\tt
+Let $A_1,A_2,\ldots,A_m$ be the attributes that occur in $R$, but
+not $S$.\\
+Let $B_1,B_2,\ldots,B_n$ be the attributes that occur in both $R$
+and $S$.\\
+Let $C_1,C_2,\ldots,C_l$ be the attributes that occur in $S$, but
+not $R$.\\
+
+Then, $R \bowtie S$ consists of all tuples $t$
+(on attributes
+$$A_1,A_2,\ldots,A_m, B_1,B_2,\ldots,B_n, C_1,C_2,\ldots,C_l)$$
+that are made by joining tuples from $R$ and $S$ that agree on 
+$B_1,B_2,\ldots,B_n$.  Note that the new joined tuples $t$ have
+only one copy of the attributes $B_1,B_2,\ldots,B_n$.
+}
+
+    \item Give the definition of the theta-join $R \bowtie_C S$:
+
+{\tt
+The theta-join $R \bowtie_C S$ is constructed by first taking
+the cross product of $R$ and $S$, $R \times S$, and then selecting
+the tuples for which condition $C$ is true.
+
+Note that the theta-join $R \bowtie_C S$ has attributes:\\
+$$A_1,A_2,\ldots,A_m, R.B_1,R.B_2,\ldots,R.B_n, 
+S.B_1,S.B_2,\ldots,S.B_n, C_1,C_2,\ldots,C_l$$
+(using the names of the attibutes for Part a)) 
+}
+
+    \item What is the difference between $R\bowtie S$ and 
+	$R \bowtie_C S$ where the condition $C$ is that $R.A = S.A$ 
+	for each attribute $A$ appearing in the schemas of both 
+	$R$ and $S$?
+
+{\tt
+From the practice problems of the homework.
+
+Each will have the same number of tuples, but $R\bowtie_C S$ will
+have two copies of the attributes the relations have in common.
+The natural join $R \bowtie S$ will consist of all the joined tuples
+of $R$ and $S$, with common attributes collapsed.
+$R \bowtie_C S$, with the condition given,
+will be the cross product of $R$ and $S$ with all common attributes
+identified, but two copies of each common attribute (e.g., $R.A$
+and $S.A$).  
+}
+
+  \end{enumerate}
+
+% hard SQL question
+\item
+  \begin{enumerate}
+    \item Rewrite the following SQL query {\bf without} using
+	the {\tt INTERSECT} or {\tt DIFFERENCE} operators:
+      % practice problem from HW, 5.3.5a, p 270
+\begin{verbatim}
+(SELECT name, address FROM MovieStar WHERE gender = 'F')
+        INTERSECT
+(SELECT name, address FROM MovieExec WHERE netWorth > 10000000);
+\end{verbatim}
+
+
+{\tt
+From the practice problems on the homework (5.3.5a, p 279).
+
+There are many ways to solve this one.  One possible answer is:
+}
+\begin{verbatim}
+    SELECT MovieStar.name, MovieStar.address
+    FROM MovieStar, MovieExec
+    WHERE MovieStar.name = MovieExec.name AND
+        MovieStar.address = MovieExec.address AND
+        gender = 'F' AND
+        netWorth > 10000000;
+\end{verbatim}
+
+    \item Show how to express the relational-algebra query
+      $$
+        \pi_L(\sigma_C(R_1 \times R_2)))
+      $$
+      in SQL, where $L$ is a list of attributes and $C$ is an arbritrary
+      condition:
+      % practice problem from HW, 5.2.4, p 263 
+
+{\tt From the practice problems on the homework (5.2.4, p 263).}
+\begin{verbatim}
+    SELECT L 
+    FROM R_1, R_2
+    WHERE C;
+\end{verbatim}
+
+  \end{enumerate}
+
+\end{enumerate}
+\end{document}
+
+
+%3 Given R and functional dependencies, give keys and superkeys
+\item Consider the relation $R(A,B,C,D,E)$ with the function
+dependencies: 
+$$
+	A\rightarrow B,
+	B\rightarrow C,
+	C \rightarrow A,
+	D \rightarrow E, \mbox{ and }
+	E\rightarrow D
+$$
+\begin{enumerate}
+    \item What are the keys of $R$?  
+	\vspace{1in}
+    \item How many superkeys are there of $R$?  Justify your answer.
+	\vspace{1in}
+\end{enumerate}
+
+
+%6 odl --> relational database schema
+\item Convert the following ODL description of a schema to a relational
+database schema.  Remember that {\tt Course} objects have an ``object
+identity,'' and you may invent an attribute representing this OID, 
+e.g. {\tt CourseID}.  
+
+\begin{verbatim}
+interface Course {
+    attribute integer number;
+    attribute string room;
+    relationship Dept deptOf inverse Dept::coursesOf;
+};
+
+interface LabCourse : Course {
+    attribute integer computerAlloc;
+};
+
+interface Dept (key name) {
+    attribute string name;
+    attribute string chair;
+    relationship Set<Course> coursesOf
+         inverse Dept::deptOf;
+};
+\end{verbatim}
+
+
+
+
+%10 BCNF and 4NF
+\item Given the relation schema $R(A,B,C,D)$ with the functional dependencies
+$$
+\begin{array}{c}
+	AB \rightarrow C\\
+	BC \rightarrow D\\
+	CD \rightarrow A\\
+	AD \rightarrow B\\
+\end{array}
+$$
+\begin{enumerate}
+    \item Indicate all the Boyce Codd Normal Form violations.  
+	Do not forget to consider
+	dependencies that are not in the given set, but follow from them.
+	However, it is not necessary to give violations that have more than
+	one attribute on the right side.
+	\vspace{2.5in}
+    \item Decompose the relations, as necessary, into a collection of 
+	relations that are in Boyce Codd Normal Form.
+	\vspace{2in}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
+

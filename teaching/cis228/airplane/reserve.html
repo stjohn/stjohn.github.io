@@ -1,0 +1,91 @@
+<html>
+<head>
+
+<style>
+	body {
+		font-family: sans-serif;
+		background-color: #ddddff;
+	}
+	#airplane {
+		background-color: #ffffff;
+		margin: 10px;
+		text-align: center;
+	}
+</style>
+<script>
+
+var seats = new Array;
+
+function initializeSeats() {
+	var max = 18, i;
+
+	for (i = 1; i <= max; i++) {
+		seats[i] = "empty";
+		document.getElementById("seat"+i).src = "coach.jpg";
+		document.getElementById("seat"+i).alt = "Coach seat";		
+	}
+
+}
+
+
+function seatSelect(i)
+{
+	if (seats[i] == "empty") {
+		document.getElementById("seat"+i).src = "full.jpg";
+		document.getElementById("seat"+i).alt = "Seat taken";
+		seats[i] = "taken";
+	}	
+	else {
+		alert("That seat is not available.");
+	}
+}
+</script>
+</head>
+
+<body onload = "initializeSeats()">
+<h1>CIS 228 Airline Seat Selector</h1>
+
+<p>
+Please click on the seat you would like:
+</p>
+
+<div id="airplane">
+<table>
+	<tr>
+		<td></td><th>A</th><th>B</th><th>C</th><td>Aisle</td><th>D</th><th>E</th><th>F</th>
+	</tr>
+	<tr>
+		<td>Row 1:</td>
+		<td><img id="seat1" src="" alt="" height="80" onclick="seatSelect(1)"></td>
+		<td><img id="seat2" src="" alt="" height="80" onclick="seatSelect(2)"></td>
+		<td><img id="seat3" src="" alt="" height="80" onclick="seatSelect(3)"></td>
+				<td></td>
+		<td><img id="seat4" src="" alt="" height="80" onclick="seatSelect(4)"></td>
+		<td><img id="seat5" src="" alt="" height="80" onclick="seatSelect(5)"></td>
+		<td><img id="seat6" src="" alt="" height="80" onclick="seatSelect(6)"></td>
+	</tr>
+	<tr>
+		<td>Row 2:</td>
+		<td><img id="seat7" src="" alt="" height="80" onclick="seatSelect(7)"></td>
+		<td><img id="seat8" src="" alt="" height="80" onclick="seatSelect(8)"></td>
+		<td><img id="seat9" src="" alt="" height="80" onclick="seatSelect(9)"></td>
+				<td></td>
+		<td><img id="seat10" src="" alt="" height="80" onclick="seatSelect(10)"></td>
+		<td><img id="seat11" src="" alt="" height="80" onclick="seatSelect(11)"></td>
+		<td><img id="seat12" src="" alt="" height="80" onclick="seatSelect(12)"></td>
+	</tr>
+		<tr>
+		<td>Row 3:</td>
+		<td><img id="seat13" src="" alt="" height="80" onclick="seatSelect(13)"></td>
+		<td><img id="seat14" src="" alt="" height="80" onclick="seatSelect(14)"></td>
+		<td><img id="seat15" src="" alt="" height="80" onclick="seatSelect(15)"></td>
+				<td></td>
+		<td><img id="seat16" src="" alt="" height="80" onclick="seatSelect(16)"></td>
+		<td><img id="seat17" src="" alt="" height="80" onclick="seatSelect(17)"></td>
+		<td><img id="seat18" src="" alt="" height="80" onclick="seatSelect(18)"></td>
+	</tr>
+</table>
+</div>
+
+</body>
+</html> 

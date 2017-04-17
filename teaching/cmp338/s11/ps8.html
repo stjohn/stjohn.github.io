@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 8 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 8</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers priority queues and heaps.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+In this assignment, you will implement a priority queue for student enrollment at Lehman.  
+<!--The necessary files are available 
+on Blackboard.-->
+
+
+<ol>
+
+
+<li><b>Student Class</b> (20 points)
+
+<p>
+At Lehman College, students are assigned registration appointments based
+on several factors.  Make a <tt>Student</tt> class that holds the following
+information:</p>
+<ul>
+	<li> <tt>name</tt>: the name of the student
+	<li> <tt>numCredits</tt>: the number of credits the student has earned (must
+			be a positive integer)
+	<li> <tt>priority</tt>: the student's priority for registration (must be a 
+			positive integer)
+	<li> <tt>athlete</tt>: true if the student is on a collge athletics team, false otherwise
+	<li> <tt>honors</tt>: true if the student is a member of the honors college, false otherwise
+</ul>
+
+<p>
+You should also have the following methods:
+</p>
+
+<ul>
+	<li> <tt>setPriority()</tt>:  Sets the <tt>priority</tt> based on the following:
+		<ul>
+			<li> <tt>numCredits <= 15</tt> (lower freshman), priority is set to 1
+			<li> <tt>15 < numCredits <= 30</tt> (upper freshman), priority is set to 2
+			<li> <tt>30 < numCredits <= 45</tt> (lower sophomore), priority is set to 3
+			<li> <tt>45 < numCredits <= 60</tt> (upper sophomore), priority is set to 4
+			<li> <tt>60 < numCredits <= 75</tt> (lower junior), priority is set to 5
+			<li> <tt>75 < numCredits <= 90</tt> (upper junior), priority is set to 6
+			<li> <tt>90 < numCredits <= 105</tt> (lower senior), priority is set to 7
+			<li> <tt>105 < numCredits <= 120</tt> (upper senior), priority is set to 8
+			<li> <tt>120 < numCredits</tt>, priority is set to 9
+		</ul>
+		If the student is an athelete or an honors student, the student receives an 
+		extra 10 points to their priority ranking.  For example, a starting freshman
+		who is an athlete, will have <tt>priority = 1 + 10 = 11</tt>.
+	<li> <tt>toString()</tt>: returns a string with instance variables.  For example, 
+		<tt>"Student12, 78 credits, athlete, not honors; priority: 16"</tt>
+</ul>
+<p>
+Submit your class as a .java file via Blackboard.
+</p>
+
+
+<li><b>Enrollment Priority System</b> (20 points)
+
+<p> 
+Write a program to simulate the enrollment priority system.  Your program 
+should generate 1000 students at random, and store the students in a priority
+queue (<em>implemented as an array based heap</em>), using the 
+<tt>priority</tt> variable as the key.  When generating the students, you should:
+<ul>
+	<li> assign the names "Student1", "Student2", etc, so they can be identified
+		later on,
+	<li> randomly generate the number of credits between 0 and 130,
+	<li> randomly assign students to the honor college with a probability of 1%
+		(i.e. we expect 1 out of every 100 students will be a member of the honor college)
+	<li> randomly assign student atheletes with a probability of 5%
+		(i.e. we expect 1 out of every 20 students will be an athelete)
+
+</ul>
+<p>
+Use the heapsort algorithm that will print out students, ordered
+by <tt>priority</tt>.
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+
+<li><b>Simulation</b> (20 points)
+
+<p> 
+The mathematics department has decided to offer a new course called, "Pi: The 
+Intersection of Mathematics and Cooking" that fulfils the mathematics requirement,
+science requirement, writing requirement, counts as an LEH 300 course, and 
+feeds the student at every class.  It is very popular, but there are only 20
+seats available in the class.  </p>
+
+<p>
+Extend your simulation program above.  After generating the students and 
+populating the priority queue, remove students from the priority queue 
+until the course fills.  You may assume that 10% of the students will sign up 
+for the course.  Continue removing students from the queue until the course
+fills.  Report the priority level and number of credits of the last student who 
+enrolls for the course.  For example, if <tt>student12</tt> from the 
+example above is the 20th student to enroll, your program 
+should report:
+<pre>
+Class full.  Last student to enroll had priority 16 and 78 credits.
+</pre>
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+
+<li><b>Test Cases</b> (20 points)
+
+<p>Run the following tests of your program
+<ul>
+
+   	<li> the original settings:  1% honors, 5% atheletes, 10% demand for Pi course.
+	<li> less atheletes: 1% honors, 2% atheletes, 10% demand for Pi course.
+	<li> more atheletes: 1% honors, 10% atheletes, 10% demand for Pi course.	
+	<li> less demand: 1% honors, 2% atheletes, 5% demand for Pi course.
+	<li> more deman: 1% honors, 2% atheletes, 20% demand for Pi course.		
+
+</ul>
+<p>
+Run the test 10 times and make a table with the average of the credits of the last student
+to be enrolled (and fraction with honors/athlete status) as well as the standard deviation 
+for each algorithm. Submit your table via Blackboard.
+
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+Using your data above, answer the following questions:
+<ul>
+
+	<li> Does the number of athletes in the simulation affect whether a senior can get into
+	the Pi class?
+	<li> Does the number of athletes in the simulation affect whether a sophomore can get into
+	the Pi class?
+	<li> Does the demand for the Pi course in the simulation affect whether a senior can get into
+	the Pi class?
+<li> Does the demand for the Pi course in the simulation affect whether a sophomore can get into
+	the Pi class?	
+
+</ul>
+</p>
+
+
+
+
+
+</ul>
+
+
+
+</div>
+</body>
+</html>

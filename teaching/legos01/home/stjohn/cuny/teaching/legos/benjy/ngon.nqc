@@ -1,0 +1,32 @@
+// square.nqc - robot traces out a square
+// Benjy Hass
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+#define SIDE_TIME 400
+#define TURN_TIME 880	//Amount of time to go 360 degrees
+#define NUM_SIDES 8
+
+task main()
+{
+    int i;  //Counter variable for loop
+
+    //Set power for motors:
+    SetPower(LEFT,3);
+    SetPower(RIGHT,3);
+
+    for (i = 0; i < NUM_SIDES; i++)
+    {
+	//Go straight (the sides of the n-gon)
+    	OnFwd(LEFT);
+    	OnFwd(RIGHT);
+    	Wait(SIDE_TIME);
+    	Off(LEFT+RIGHT);
+
+	//Turn in place for 360/n degrees    
+    	OnFwd(LEFT);
+    	OnRev(RIGHT);
+    	Wait(TURN_TIME/NUM_SIDES);
+    	Off(LEFT+RIGHT);
+    }
+}

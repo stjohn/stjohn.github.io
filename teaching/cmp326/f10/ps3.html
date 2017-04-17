@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 3 for CMP 326, Lehman College, CUNY, Fall 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;		
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say 1;
+			content: "3." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol ul li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+
+		ol ol li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+    </style>
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 3</h2>
+<h3>CMP 326: Programming Methods II <br>
+Lehman College, City University of New York<br>
+Fall 2010<br><br>
+</h3>
+
+<p>
+This problem set covers material (one dimensional arrays and
+sorting) from Chapter 7 (arrays).
+</p>
+
+
+<p>You should complete <b>70 points</b> worth of programs
+(with an additional 7 points extra credit possible). 
+</p>
+</div>
+
+
+
+<div>
+<ol>
+
+<li><b>Temperature</b> (10 points)
+
+<p>
+Exercise 7.1 (p 524):  Write a program in a class <tt>NumberAboveAverage</tt>
+that counts the number of days that the temperature is above average.  Read
+ten temperatures from the keyboard and place them in an array.  Compute the 
+average temperature and then count and display the number of days on which
+the temperature was above average.
+</p>
+</li>
+
+<li><b>Character Frequency</b> (10 points)
+
+<p>
+Exercise 7.5 (p 524):  Write a program in a class <tt>CharacterFrequency</tt>
+that counts the number of times a digit appears in a telephone number.  Your
+program should create an array of size 10 that will hold the count for each
+digit from 0 to 9.  Read a telephone number from the keyboard as a string.
+Examine each character in the phone number and increment the appropriate 
+count in the array.  Display the contents of the array.
+</p>
+</li>
+
+<li><b>Ledger</b> (15 points)
+
+<p>
+Exercises 7.6-7 (p 525):  Create a class <tt>Ledger</tt> that will record the
+sales for a store.  It will have the attributes:</p>
+<ul>
+	<li> <tt>sale</tt>: an array of <tt>double</tt> values that are the amounts
+		of all sales
+	<li> <tt>salesMade</tt>: the number of sales so far
+	<li> <tt>maxSales</tt>: the maximum number of sales that can be recorded
+</ul>
+and the following methods:
+<ul>
+	<li> <tt>Ledger(max)</tt>: a constructor that sets the maximum number of sales to <tt>max</tt>
+	<li> <tt>addSale(d)</tt>: adds a sale whose value is <tt>d</tt>
+	<li> <tt>getNumberOfSales()</tt>: returns the number of sales made
+	<li> <tt>getTotalSales()</tt>: returns the total value of sales
+	<li> <tt>getAverageSale()</tt>: returns the average value of all sales
+	<li> <tt>getCountAbove(v)</tt>:	returns the number of sales that exceeded <tt>v</tt> in value
+</ul>
+<p>Write a driver program that demonstrates these methods.
+</p>
+</li>
+
+<li><b>Strictly Increasing</b> (10 points)
+
+<p>
+Exercise 7.8 (p 525):  Write a static method <tt>isStrictlyIncreasing(double[] in)</tt>
+that returns true if each value in the given array is greater than the value before it, 
+or false otherwise.  Write a driver program that demonstrates this method.
+</p>
+</li>
+
+<li><b>Sorting Characters</b> (10 points)
+
+<p>
+Exercise 7.15 (p 526):  Write a static method for selection sort that will 
+sort an array of characters.  Write a driver program that demonstrates this method.
+</p>
+</li>
+
+
+<li><b>Sorting Subarrays</b> (10 points)
+
+<p>
+Exercise 7.16 (p 526):  Overload the method <tt>selectionSort</tt> that appears
+in Listing 7.10 so that it sorts an array whose indices range from <tt>first</tt>
+to <tt>last</tt>, where <tt>0 <= first <= last</tt> and <tt>last</tt> is less
+than the length of the array.
+</p>
+</li>
+
+<li><b>BubbleSort</b> (15 points)
+
+<p>Problem 7.4 (p 530): Add a method <tt>bubbleSort</tt> to the class
+<tt>ArraySorter</tt> (available from textbook or Blackboard) that performs
+a bubble sort of an array.  The buuble sort algorithm examines all
+adjacent pairs of elements in the array from the beginning to the end and
+interchanges an two elements that are out of order.  Each interchange makes
+the array more sorted than it was, until it is entirely sorted.  The algorithm
+in pseudocode follows:
+<pre>
+Bubble sort algorithm to sort an array a
+
+Repeat the following until the array a is sorted:
+for (index = 0; index < a.length - 1; index++)
+  if (a[index] > a[index+1])
+    Interchange the values of a[index] and a[index+1]
+</pre>
+The bubble sort usually requires more time than other sorting methods
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+P19. Write a class called PuzzlePiece. A puzzle piece will have a label which will be a number between 1 and 15 and the location of the puzzle piece (which will be the coordinates of the upper left corner). Your class should contain three constructors:
+
+    * a default constructor that sets the coordinates to (0,0) and the label to 0,
+    * a constructor that has a single argument that is assigned to label and sets the coordinates to (0,0), and
+    * a constructor that takes three arguments: the label, the x-coordinate, and the y-coordinate (in that order) and sets the values. 
+
+PuzzlePiece should contain a move method:
+
+    public void move(int dx, int dy)
+
+that changes the position by dx units in the x direction and dy units in the y direction. Finally, you should have a draw method:
+
+    public void draw()
+
+that draws a square containing the label, using the object's coordinates for the upper left corner.
+
+Write a second class called Program19 that uses PuzzlePiece and demonstrates its features. Submit this as program 19 using the electronic submission. Please call the file (and the class) Program19. Include an HTML file in the directory called Program19.html that displays your applet.
+
+P20. P6.18, p 287. Submit this as program 20 using the electronic submission. Please call the file (and the class) Program20. Your program should calculate the result to six digits after the decimal point. 
+-->
+
+
+
+
+
+</ol>
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

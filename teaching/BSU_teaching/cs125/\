@@ -1,0 +1,125 @@
+<title>Homework 4 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 4 for Computer Science 125</h1>
+<h2>Introduction to Computer Science </h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">CHANGE:
+Programs 9 and 10 are due by 9pm, Friday,
+	26 February 1999.<br>
+Programs 11 and 12 are due by 9pm, Friday,
+	5 March 1999.</font>  <br>
+	See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> CCJ: Exercise R4.21, p 171. 
+    	<li> CCJ: Exercise R5.4, p 222. 
+       	<li> CCJ: Exercise R5.14, p 223. 
+	<li> CCJ: Exercise R5.15, p 224. 
+	<li> Your new employer asks you to write the exact program you 
+		wrote for your last employer. Is this ethical? What
+		extra circumstances would make this ethical (or not
+		ethical)? Justify your arguments.  
+	<li> Most agree that copying a
+		term paper off the web is unethical, but that using an idea
+		discussed with a friend is not. Who owns an idea? Where do
+		you draw the line? Support your answer with examples.
+</ul>
+
+<h2>Graded Problems</h2>
+
+<p>
+    <dt><b>P9.</b> Exercise P4.8, p 174.  Submit this as program 9
+		using the electronic submission.  Please call the 
+		file (and the class) Program9.  Also, include an
+		html file called "Program9.html" which calls your
+		applet.  <font color = "red">(Due 26 February)</font>
+
+		<p>
+		Note: your program should terminate if the user
+		enters a negative radius.  
+
+		<p>
+		You need to consider the case where one circle is
+		completely contained inside the other, but the circles
+		do not intersect. For example, one such case to
+		consider is:
+		<br><img src="circles.jpg">
+
+
+<p>
+    <dt><b>P10.</b> Exercise P4.10, p 174.  Submit this as program 10
+		using the electronic submission.  Please call the 
+		file (and the class) Program10. <font color = "red">(Due 26 February)</font>
+
+
+<p>
+    <dt><b>P11.</b> Exercise P5.24, p 231.  Submit this as program 11 
+		using the electronic submission.  Please call the 
+		file (and the class) Program11.
+		<font color = "red">(Due 5 March)</font>
+
+		<p> Note: This program checks to see if
+		<tt>t</tt> is a substring of <tt>s</tt>.  Ask the user, 
+		<b>first</b> for the string <tt>s</tt> and then for the 
+		string <tt>t</tt>.
+
+
+<p>
+    <dt><b>P12.</b> Program 12 will draw a series of triangles
+    		that are nested inside of one another.  The 
+		program starts by the user clicking on three
+		non-collinear points that make the outer triangle.
+		For example:
+<p>
+		<applet code="descendingTri.class"
+			height=300
+			width=300>
+		</applet>
+
+<p>
+		The program then calls the recursive function 
+		<tt>descend</tt> which takes 3 points as parameters:
+		<pre>public void descend(Point p1, Point p2, Point p3)</pre>
+
+		<p>
+		The function <tt>descend</tt> checks if the distance between
+		the first two points is less than 0.5.  In which case, it
+		stops.  Otherwise, it draws a triangle connecting <tt>p1</tt>,
+		<tt>p2</tt>, and <tt>p3</tt>,
+		calculates the midpoints of the 
+		three sides of the triangle, and calls <tt>descend</tt>
+		again with the midpoints.  
+		
+		<p>
+		The function <tt>descend</tt> calls two helper functions
+		to calculate the midpoint of a line: 
+		<pre>public Point midpoint(Point a, Point b)	</pre>
+		and the distance between two points:
+		<pre>public double distance(Point a, Point b)	</pre>
+
+<p>
+  		Submit this as program 12 
+		using the electronic submission.  Please call the 
+		file (and the class) Program12.  Also, include an
+		html file called "Program12.html" which calls your
+		applet.  
+		<font color = "red">(Due 5 March)</font>
+<p>
+<hr>
+</body>

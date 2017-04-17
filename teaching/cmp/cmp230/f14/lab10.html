@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 10, CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10<br>
+CMP 230 (CMP 167): Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab looks at nested loops and indefinite loops from Chapter 8 and more on finding errors.
+
+</div>
+
+
+<div>
+
+<h3>Mystery Point Game</h3>
+
+<p>Today, we are going to write a simple game where the user tries to find our mystery
+point in the graphics window.  Lets first go through the <a href="mysteryPoint.py">program</a>
+section by section:
+
+<ul>
+	<li> Opening comments and importing modules:  In addition to <tt>math</tt> and <tt>graphics</tt>,
+		we will also need to generate random numbers (to put our point at a random location), so, 
+		we have also included that module:
+<pre>
+# Mystery point game for Lab 9
+# Lehman College, CUNY, Fall 2012
+
+from graphics import *
+from math import *
+from random import *
+</pre>
+
+	<li> We will reuse the distance function from the previous lab:
+<pre>
+# Reuse the distance function we wrote for Lab 8:
+def dist(p1,p2):
+    dist = sqrt((p1.getX()-p2.getX())**2 + (p1.getY() - p2.getY())**2)
+    return dist
+
+</pre>
+	<li> Set up the graphics window:
+<pre>
+def main():
+    w = GraphWin("Target Practice",500,500)
+    w.setCoords(-250,-250,250,250)
+</pre>
+	<li> We will use the built-in random number generator to give 
+	coordinates for our mystery points.  See Chapter 9 for more discussion 
+	on random numbers:
+<pre>
+    #Generate a mystery point (at a random location):
+    x = randrange(-200,200)
+    y = randrange(-200,200)
+    print("x and y are:",x,y)
+    mysteryPoint = Point(x,y)
+</pre>
+	<li> Set up a <tt>Text</tt> object to display messages to the user.  We changed the font size,
+	since the default one is small and hard to read.
+<pre>
+    #Text to tell the user what's happening:
+    t = Text(Point(0,-210), "Click on the mystery point")
+    t.setSize(16)
+    t.draw(w)
+</pre>
+	<li> Save the point that the user clicked in the variable <tt>p</tt>.  We display its distance
+	to our mystery point in the IDLE shell:
+<pre>
+    #Get the point:
+    p = w.getMouse()
+    p.draw(w)
+    d = dist(mysteryPoint, p)
+    print("distance from mystery point is:", d)
+</pre>
+	<li>  This loop repeats as long as the condition <tt>d > 20</tt> holds.  So, once the point
+	clicked is within 20 of the mystery point, the loop ends.  You can make the game harder
+	(or easier) by decreasing (or increasing) 20.  For example, if you change the 20 to 10, then 
+	the user has to click even closer to the mystery point to win.  If you change the 20 to 100, 
+	then the game becomes much easier since they only have to be within 100 to win.
+<pre>
+    #Keep going until they click close to the point:
+    while d > 20:
+        t.setText("Missed! Please click again!")
+        p = w.getMouse()
+        p.draw(w)
+        d = dist(mysteryPoint, p)
+        print("distance from mystery point is:", d)
+</pre>
+	<li> Congratulate the user for finding the point and end the program nicely:
+<pre>
+    t.setText("Congratulations!  You found the mystery point!")
+
+    #keep the window up until the user clicks
+    w.getMouse()
+    w.close()
+
+main()
+</pre>
+</ul>
+
+<p>Try running the program.  How easy is it to win?
+
+<h3>Giving Hints</h3>
+
+<p>Could you find the point without peeking at the IDLE shell?  To make
+the game a bit easier, we will add hints.  The first hint will be to tell
+the user if they need to click more to the left (or right) to find the 
+point.  Here is the pseudocode:
+<pre>
+	if point clicked is to the left of mystery point
+		give message "Too far left"
+	else 
+		give message "Too far right"
+</pre>
+How can you tell if the point clicked is to the left of the mystery point?
+The x-coordinate tells how far left or right a point is, so, we compare
+the x-coordinates of the two points:
+<pre>
+        if p.getX() < mysteryPoint.getX():
+            t.setText("Click again! You were too far left")
+        else:
+            t.setText("Click again! You were too far right")
+</pre>
+
+
+<p>Now, add in the code that will give a hint to move up (or down) 
+depending on where they clicked with respect to the mystery point.
+Your completed program should have a "left/right" hint and an "low/high"
+hint to make the game possible to do without looking at our diagonostics
+on the python shell.
+
+<p>
+Hint:  Before the loop, set up another <tt>Text</tt> object, <tt>t2</tt> to display
+the message about being too low or too high:
+<pre>
+    t2 = Text(Point(0,-230), "")
+    t2.setSize(16)
+    t2.draw(w)
+</pre>
+
+
+</ul>
+
+</div>
+
+<div>
+<h3>Finding Errors, II</h3>
+
+<p>In <a href="lab6.html">Lab 6</a>, we looked at some common syntax errors and how to fix them.  Most of those errors were missing punctuation (such at colons, quotes, or plus signs).  Let's look at a few more errors that occur when using conditionals, loops, and functions:
+
+<pre>
+# errors2.py-- modified from Zelle
+# recursions.py
+#   A collection of simple recursive functions from Zelle, 2nd Edition
+#   (Some also include looping counterparts).
+
+def fact(n)
+    # returns factorial of n
+    if n == 0:
+        return 1
+    else
+        return n * fact(n-1
+
+def reverse(s):
+    # returns reverse of string s
+    if s == "":
+        return s
+    elif:
+        return reverse(s[1:]) + s[0]
+
+def anagrams(s):
+    # returns a list of all anagrams of string s
+    if s == "":
+        return [s]
+    else:
+        ans = []
+        for w in anagrams(s[1:]):
+            for pos in range(len(w)+1):
+                    ans.append(w[:pos]+s[0]+w[pos:])
+        return ans
+
+def loopFib(n):
+    # returns the nth Fibonacci number
+    curr = 1
+        prev = 1
+    for i in range(n-2):
+        curr, prev = curr+prev, curr
+    return curr
+
+def main():
+    n = eval(input("Enter a number: "))
+    s = input("Enter a string: ")
+    print(n+"!= ", fact(n), "or, loopFig(n))
+    print(s, "reversed is: ", reverse(s))
+    print("\n anagrams: ", anagrams(s))
+
+main()
+
+</pre>
+
+<p>Load the program into IDLE and run the program.  A dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="errors2Window1.jpg">
+<br>
+<p>
+We have seen this one before, it's a missing colon (":") at the end of the function definition.  Add it in and run again.
+<br>
+<img src="errors2Window2.jpg">
+<br>
+<p>
+Again, we get an invalid syntax.  What's wrong here?  (Hint: same as the last one).  Fix the error, and let's run the program again:
+<br>
+<img src="errors2Window3.jpg">
+<br>
+<p>
+This one is different.  IDLE has highlighted the word <tt>def</tt>, and yet that seems to spelled correctly.  A general rule to follow: if you do not see an error on the current line, look above (usually for missing quotes or closing parenthesis).  On the previous line, the function call to <tt>fact()</tt> is missing the closing parenthesis.  Add it, and run the program again:
+<br>
+<img src="errors2Window4.jpg">
+<br>
+<p>
+This one is a bit harder-- all the keywords are spelled correctly and there's no missing colons, parenthesis, or quotes.  What's wrong?  Python expected the word <tt>else</tt> (<tt>elif</tt> is only used when you need multiple tests in multi-way decision).  Replace <tt>elif</tt> with <tt>else</tt> and try again:
+<br>
+<img src="errors2Window5.jpg">
+<br>
+<p>
+The message says:  <tt>unexpected indent</tt>.  The line does seem to be indented for no reason (i.e. it's not part of a block of code in a loop or decision construct).  Remove the extra indent and continue:
+<br>
+<img src="errors2Window6.jpg">
+<br>
+<p>
+This is a common error.  In plain English, it means that the end of the line ("EOL") was reached before the string finished.  In other words, the string is missing its ending quotes.  Add it in (right after the word <tt>or</tt>) and run the program again.  
+
+<p>It now compiles!  But we need to test it to make sure no run-time errors remain:
+<br>
+<img src="errors2Window7.jpg">
+<br>
+<p>
+When reading the traceback message (all the red text), go to the very last line and see what it says.  The message says we cannot use <tt>+</tt> for <tt>'int'</tt> and <tt>'string'</tt>.  We only used <tt>+</tt> once in the line to concatenate <tt>n</tt> to a string.  Since we want <tt>n</tt> to eventually be a string and printed to the screen, let's change it to a string (by using the <tt>str()</tt> function):
+<pre>
+print(str(n)+"!= ", fact(n), "or", loopFig(n))
+</pre>
+<p>
+Running it again, a new run-time errors appears:
+<br>
+<img src="errors2Window8.jpg">
+<br>
+<p>
+The message says that IDLE cannot find <tt>loopFig()</tt>.  Scanning through the file, it looks we misspelled it!  The function is called <tt>loopFib()</tt>.  Fix the misspelling in the <tt>main()</tt> and try again...
+<br>
+<img src="errors2Window9.jpg">
+<br>
+<p>
+Success!  The program accepted input, processed it, and outputted it to the screen.  Try with a couple of different inputs to test how it works.
+
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+</html>

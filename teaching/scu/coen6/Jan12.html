@@ -1,0 +1,63 @@
+<title>Notes for 12 January, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h1> Notes for lecture on 12 January</h1>
+<h2> Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h2>
+
+
+<hr>
+<b>while.cxx:</b>
+<hr>
+
+
+<pre>
+#include &lt;iostream.h&gt
+// Sample Program-- while loop
+//
+// Jean Potatohead
+// jpotatoh@scudc.scu.edu
+//
+// This program says hello to the world as 
+// many times as the user would like.
+
+main()
+{
+    int count;    // store the number of times to say hello
+
+    cout &lt&lt "How many times would you like a greeting?";
+                  //ask user for count
+    cin &gt&gt count; //store answer in count
+
+    while ( count > 0 ) //repeat greeting count number of times
+    {
+        cout &lt&lt "hello, world\n";
+        count = count - 1;
+    }
+}
+</pre>
+
+<br>
+<hr>
+<b>Group work:</b>
+<hr>
+An employee is paid at the rate of $16.78 per hour for
+regular hours worked in a week.  Any hours over that are
+paid at the overtime rate of one and one half times that.
+From the worker's gross pay 6 percent is withheld for
+social security tax, 14 percent is withheld for federal
+income tax, 5 percent is withheld for state income tax, 
+and $10 withheld for union dues.  If the work has 3 or more
+dependents, then an additional $35 per week is withheld
+to cover the extra cost of health insurance.  Write a
+program that will read in the number of hours worked in
+a week and the number of dependents as input, and will
+then output the worker's gross pay, each withholding
+amount, and the net take-home pay.
+<br>
+<br>
+
+</body>

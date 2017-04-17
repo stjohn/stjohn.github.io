@@ -1,0 +1,49 @@
+Ideas for assignments:
+
+The ACM SIGCSE Nifty Assignments:
+http://nifty.stanford.edu/
+
+Image puzzles: (use in lab?)
+http://nifty.stanford.edu/2011/parlante-image-puzzle/
+
+Fire simulation:
+http://nifty.stanford.edu/2007/shiflet-fire/
+
+Evil Hangman:
+http://nifty.stanford.edu/2011/schwarz-evil-hangman/
+
+
+For algorithms class:
+http://introcs.cs.princeton.edu/java/assignments/
+
+Star chart: (use as a lab?)
+http://nifty.stanford.edu/2009/reid-starmap/starmap.html
+
+Messages in hidden in images:
+http://nifty.stanford.edu/2009/heeringa-murtagh-secrets-in-images/
+
+Plagiarism:
+http://nifty.stanford.edu/2008/franke-catch-plagiarists/
+
+Huffman compression:
+http://nifty.stanford.edu/2008/mcguire-murtagh-huffman-image/
+
+Breakout: (lab or follow-up to bouncing ball?)
+http://nifty.stanford.edu/2006/roberts-Breakout/
+
+Name surfer: (probably a better lab?)
+http://nifty.stanford.edu/2005/NameSurfer/
+
+
+graphics:  make a house in day, then when clicked turn the sky to night
+
+fizzbuzz-- 1 to 100, if divisible by 3 write fizz after it; if divisible by 5 write buzz
+
+images-- blend two images together, make a collage, or andy warhol
+effect of the same image in 4 different colors (colby college 
+http://cs.colby.edu/courses/F11/cs151-labs/P05-BlendedCollages.php
+
+
+new ideas:  plagiarism detection:  how much of two files match
+turns into longest common substring, needs recursion and good
+	explanation of dynamic programming.

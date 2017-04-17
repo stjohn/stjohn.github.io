@@ -1,0 +1,174 @@
+<title>Homework 9 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 9 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Spring 1999</h2>
+
+<hr>
+<font color="red">This homework is due by 9 p.m., Friday,
+	30 April 1999.</font>  See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+        <li> CCJ: Exercise R11.13, p 473.
+        <li> CCJ: Exercise R11.15, p 473.
+        <li> CCJ: Exercise R12.2, p 503. 
+        <li> CCJ: Exercise R12.7, p 504.
+        <li> CCJ: Exercise R12.14, p 505.
+        <li> CCJ: Exercise R12.16, p 506.
+        <li> Ethics: Chapter 6:  Who has laws that better
+                protect a person's privacy: United Kingdom or
+                United States? <br>
+                What information can be kept about a person?
+                Who has access to it (under current US or UK
+                law)?  What does it take to change incorrect
+                information kept about you in a database?<br>
+                Who is the NSA?  What do they have to do with
+                privacy and encryption?<br>
+
+</ul>
+
+<h2>Graded Problems</h2>
+
+<font color="red">
+    You must comment your code (see book for examples).<br>
+    You must include comments for all functions, following the
+    <tt>javadoc</tt> format.  See CCJ, p 183-185 for more details.
+</font>
+
+<ol>
+	
+<p>
+    <dt><b>P26.</b> (Appointments) 
+	 Write a class to store appointments.  Your
+        <tt>Appointment</tt> class should store the beginning
+        and ending time of the appointment, and a short
+        description of the appointment (stored as a string).
+        The <tt>Appointment</tt> class should also contain the
+        following constructors:
+        <ul>
+            <li> the default constructor that sets the beginning
+                and ending time to noon and the description to
+                the empty string,
+            <li> a constructor that takes a string for the
+                description and sets the time to the current
+                time,
+            <li> a constructor whose first argument is a string
+                for the description and second and third arguments
+                are of type <tt>Time</tt> and store the beginning
+                and ending time, respectively, of the appointment.
+        </ul>
+        and the following accessor and mutator methods:
+        <ul>
+            <li> <tt>public String toString()</tt>
+            <li> <tt>public void setDescription(String s)</tt>
+            <li> <tt>public String getDescription()</tt>
+            <li> <tt>public void setBeginningTime(Time t)</tt>
+            <li> <tt>public Time getBeginningTime()</tt>
+            <li> <tt>public void setEndingTime(Time t)</tt>
+            <li> <tt>public Time getEndingTime()</tt>
+        </ul>
+
+        Write a program that demonstrates that your class works.
+        Have your program ask the user for an appointment, store
+        this in an <tt>Appointment</tt> object, and then print
+        out the appointment.  
+
+	<p>
+	<font color="blue">
+	Your program should:
+	<ol>
+	    <li> Ask the user for the beginning time of the appointment.
+	    	The time will be entered as 6 integers representing the
+		year, the month, the day, the hour, the minute, and the
+		second of the beginning time.
+	    <li> Ask the user for the ending time of the appointment.
+	    	The time will be entered as 6 integers representing the
+		year, the month, the day, the hour, the minute, and the
+		second of the ending time.
+	    <li> Ask the user for a short description of the appointment.
+	    	Note that this could consist of several words, so, you 
+		should read the entire line, instead of a single word.
+	</ol>
+	</font>
+	
+	<p>
+	You should include
+        comments for each of your functions that can be used by
+        <b>javadoc</b> to generate documentation (see notes from
+        class or Appendix A for more details about using
+        <b>javadoc</b>).
+        This class will be used later for a daily planner
+        program-- which will use the above methods. 
+        The current program should be console-based.
+        <p>
+        Submit this as program 26
+        using the electronic submission.  Please call the
+        file (and the class) Program26.
+
+<p>
+<font color="red">Program 27 is cancelled, due to system difficulties!</font>
+    <dt><b>P27.</b> (Animation)
+        Modify <a href="animate.java">animate.java</a> to
+        allow the user to control the length of time the
+        images are seen on the screen.  You should have a
+        choice button with the choices: "fast", "medium",
+        and "slow."
+        Include start and stop buttons that will start and
+        stop your animation. For example:
+        <br>
+        <applet code="animate2.class"
+                height=350
+                width=475
+                alt="Your browser isn't Java-enabled">
+            <param name="basename" value="../../images/flyingM/flyingM">
+            <param name="num_images" value="8">
+        </applet>
+
+        <p>
+        Submit this as program 27
+        using the electronic submission.  Please call the
+        file (and the class) Program27.
+        Include an HTML file in the directory called Program27.html
+        that displays your applet and any images your applet
+        uses.
+
+
+<p>
+    <dt><b>P28.</b> (Puzzle) 
+     	Write a class called <tt>PuzzleBoard</tt>.
+        <tt>PuzzleBoard</tt> should store 15 <tt>PuzzlePieces</tt>
+        (see <a href="hw7.html">Homework 7, P19</a>) and include the
+        following methods:
+        <ul>
+            <li> a default constructor that initializes the 15
+                pieces as in the demonstration below.
+            <li> a method that draws the puzzle pieces and the
+                "Scramble" box.
+            <li> a move method that takes a point as its input.
+                If the point is contained in the "Scramble" box,
+                it calls a second (private) method with a randomly
+                chosen position 1000 times.  The purpose is to
+                scramble the pieces, so the puzzle can be played.
+        </ul>
+        Your class should use the <tt>PuzzlePiece</tt> class written
+        for P19.
+        <p> <tt>PuzzleBoard</tt> will be called by
+        <a href="puzzle/Program28.java">Program28.java</a>.
+	For more information and hints, see <a href="puzzle-descript.html">here</a>.
+
+
+</body>

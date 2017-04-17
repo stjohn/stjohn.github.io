@@ -1,0 +1,322 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\textwidth=6 true in
+\textheight=9 true in
+\topmargin = 10pt
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\Large
+\begin{center}
+    Key for Exam 1 \\
+    Computer Science 125 \\
+    Boise State University\\
+    Friday, 19 February 1999
+\end{center}
+}
+
+\begin{enumerate}
+
+%1
+   \item TRUE or FALSE:
+        \begin{enumerate}
+            \item \underline{F} The {\em Cuckoo's Egg} is fiction.
+\smallskip
+            \item \underline{T} The logical expression
+                $!(A\&\&B)$ is equivalent to $!A||!B$.
+\smallskip
+            \item \underline{T} The logical expression
+                $A\&\&B$ evaluates $B$ only if $A$ is {\tt false}.
+\smallskip
+            \item \underline{T} Cliff Stoll created the
+            {\em Strategic Defense Initiative Network} as bait for the hacker.
+\smallskip
+            \item \underline{F} To execute an applet you type {\tt java} followed by the filename.
+\smallskip
+            \item \underline{F} David La Macchia was convicted of wire fraud.
+\smallskip
+            \item \underline{F} Objects should always be compared
+            with ==.
+\smallskip
+            \item \underline{F} The compiler will locate all of the errors in every program.
+\smallskip
+            \item \underline{F} Most computer crimes are
+            committed by professional computer programmers.
+\smallskip
+            \item \underline{T} It violates the BSU Math/CS
+            Departmental computer policy to let your friend use your account
+            to read their e--mail.
+\end{enumerate}
+
+%2
+    \item Give the Java code to construct the following objects:
+\begin{enumerate}
+            \item The time spring break officially begins this semester\\
+            (Hint: it starts March 19 at 5:00pm).
+\begin{verbatim}
+Time SpringBreak = new Time(1999,3,19,17,0,0);
+\end{verbatim}
+
+            \item An employee named Sam Smith whose salary is \$28,000.
+\begin{verbatim}
+Employee peon = new Employee("Sam Smith", 28000);
+\end{verbatim}
+
+
+            \item A line through $(0,0)$ which has slope $2$.
+\begin{verbatim}
+Line l = new Line(new Point(0,0),new Point(1,2));
+\end{verbatim}
+
+
+\end{enumerate}
+%3
+    \item What is the output for each of the following sections of code?
+    There are no intentional syntax errors.
+\begin{enumerate}
+\item
+
+\begin{verbatim}
+String s = "the fun begins";
+String t = "now";
+String m = "later";
+
+System.out.print(s + m+" or");
+System.out.println(t + s);
+
+\end{verbatim}
+
+       {\bf Output:}
+        \begin{tabular}{|c|}
+            \hline
+            the fun beginslater ornowthe fun begins\\
+            \hline
+        \end{tabular}
+
+\item
+\begin{verbatim}
+String s = "123,457";
+int n = s.length();
+System.out.println(s.substring(n-4,n);
+\end{verbatim}
+
+        {\bf Output:}
+        \begin{tabular}{|c|}
+            \hline
+            ,457\\
+            \hline
+        \end{tabular}
+
+\end{enumerate}
+
+    \item What is the output for the following sections of code?
+    There are no intentional syntax errors.
+\begin{verbatim}
+int choice = 3;
+boolean valid = true;
+if (choice == 1)
+{ System.out.println("You selected 1");
+  valid = true;
+}
+else if (choice == 2)
+{ System.out.println("You selected 2");
+  valid = true;
+}
+else
+{ System.out.println("Your choice is not valid");
+  valid = false;
+}
+
+\end{verbatim}
+
+        {\bf Output:}
+        \begin{tabular}{|c|}
+            \hline
+            Your choice is not valid\\
+           
+            \hline
+        \end{tabular}
+
+\smallskip
+
+
+
+%4
+\item
+    \begin{enumerate}\item What does this program produce as output?
+\begin{verbatim}
+import ccj.*;
+public class Exam
+{public static void main(String[] args)
+  {  int A = 105;
+     int B = A/60;
+     System.out.println(""+(A+B));
+  }
+}
+\end{verbatim}
+
+\smallskip
+\smallskip
+        {\bf Output:}
+        \begin{tabular}{|c|}
+            \hline
+            106\\
+            \hline
+        \end{tabular}
+
+\smallskip
+\smallskip
+
+\item What does this program produce as output?
+\begin{verbatim}
+import ccj.*;
+public class Example
+{ public static void main(String[] args)
+  { int x = 16;
+    if ((x % 2 == 0) && (x % 3 == 0))
+       System.out.println("The value of x is divisible by 6");
+    else
+       System.out.println("The value of x is not a multiple of 6");
+  }
+}
+\end{verbatim}
+
+        {\bf Output:}
+        \begin{tabular}{|c|}
+            \hline
+            The value of x is not a multiple of 6\\
+            \hline
+        \end{tabular}
+\end{enumerate}
+
+%5
+
+\item \begin{enumerate}
+\item What does this program produce as output?
+
+\begin{verbatim}
+import ccj.*;
+public class MysteryApplet1 extends GraphicsApplet
+{public void run()
+  {Point p1 = new Point(-3,4);
+   Point p2 = new Point(3,4);
+   Line line1 = new Line(p1,p2);
+   Circle c = new Circle(new Point(0,4),3);
+   c.draw();
+   line1.draw();
+  }
+}
+\end{verbatim}
+        {\bf Output:}
+%insert picture
+
+    \item What does this program produce as output?
+\begin{verbatim}
+import ccj.*;
+public class MysteryApplet extends GraphicsApplet
+{ public void run()
+    {  Point p1 = new Point(-5,-5);
+       Point p2 = new Point(5,5);
+       Line line1 = new Line(p1, p2);
+       line1.draw();
+       line1.move(3,3);
+       line1.draw();
+    }
+}
+\end{verbatim}
+        {\bf Output:}
+%insert picture here
+
+\end{enumerate}
+
+%6
+
+%7
+    \item Evaluate the following Java expressions.
+
+ \begin{enumerate}
+    \item $990 \% 100$ {\tt = 90}
+
+    \item $4.4 * 2/4 + 6$ {\tt = 8.2}
+
+    \item $8 \% 3 * 5 - 16/3 * 4$ {\tt = -10}
+
+    \item $3.4 <= 8 - 9/2$ {\tt = true}
+
+    \item $ x < 5 || x >= 5$ {\tt = true}
+
+\end{enumerate}
+%8
+    \item Which of the ethical approaches discussed in class, Utilitarian,
+    Rights, Fairness, Common--Good, or Virtue, comes closest to the
+    way you make decisions?
+
+\vspace{1cm}
+    Answer the following question based on the approach that you selected.
+    Justify your answer in terms of your chosen approach.
+
+    In the {\em Cuckoo's Egg} Bob Morris (Sr.) was the head of
+    the NSA and his son Robert T. Morris (Jr.) was responsible for
+    writing a virus that brought the internet to a standstill. Was
+    Bob Morris (Sr.) ethically bound to turn in his son?
+
+%9
+\item Below is an applet that will draw a cylinder. Modify the code
+so that it will draw a cylinder whose radius and height are both doubled.
+Cross out each of the statements that you are changing and write the new
+statement beside the one that is changed.
+
+\begin{verbatim}
+import ccj.*;
+public class Cylinder extends GraphicsApplet
+{public void run()
+ { Point origin = new Point(0,0);
+   int radius = 3; //CROSS OUT THIS and add: int radius = 6;
+   int height = 4; //CROSS OUT THIS and add: int height = 8;
+   Circle bottom = new Circle(origin,radius);
+   bottom.draw();
+   Point p1 = new Point(-radius,0);
+   Point p2 = new Point(radius,0);
+   Point p3 = (Point)p1.clone();
+   Point p4 = (Point)p2.clone();
+   p3.move(0,height);
+   p4.move(0,height);
+   Line l1 = new Line(p1,p3);
+   Line l2 = new Line(p2,p4);
+   l1.draw();
+   l2.draw();
+   bottom.move(0,height);
+   bottom.draw();
+ }
+}
+\end{verbatim}
+
+%10
+\item Write a {\bf complete} stand--alone(non applet) Java program which
+prompts a user to enter a 7 digit integer without commas and then
+prints the integer with the commas separating the millions and thousands
+and the thousands and hundreds.
+
+\begin{verbatim}
+import ccj.*
+
+public class Commas
+{
+  public static void main(String[] args)
+  {
+    System.out.print("Enter a 7 digit number:");
+    int inNum = Console.in.readWord();
+    String outNum = inNum.substring(0,1) + ","
+               + inNum.substring(1,4) + ","
+               + inNum.substring(4,7);
+    System.out.print(outNum);
+  }
+}
+
+//Can also be done using integers and % and /
+\end{verbatim}
+\end{enumerate}
+\end{document}

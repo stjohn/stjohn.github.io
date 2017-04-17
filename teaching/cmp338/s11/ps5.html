@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 5 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 5</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers queues.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+This assignment focuses on a simulation of a grocery store, 
+using queues.  The initial simulation uses a queue to store
+customers (with random arrival time and random number of 
+items purchased).  The files are available on Blackboard.
+
+
+<ol>
+
+
+<li><b>Adding Payment Types</b> (10 points)
+
+<p>
+The initial simulation allows customers to only pay cash.
+Alter the customer generation to allow the user to pay by
+cash, check, credit or debit.
+</p>
+
+<p>
+Payment type helps determine the transaction time of each
+customer.  Each item in their cart takes 1/4 of minute to 
+process.  If they pay cash, it takes an additional 2 
+minutes to complete the transaction.  Add in the following
+times for the different payment types:
+</p>
+<ul>
+	<li>CASH: 2 minutes
+	<li>CHECK: 3 minutes
+	<li>CREDIT: 1 minute
+	<li>DEBIT: 1 minute
+</ul>
+
+<p>
+Submit to Blackboard, both the <tt>Customer</tt> java file
+as well as the driver file that demonstrates these changes.
+
+<li><b>Testing Multiple Payment Types</b> (10 points)
+
+<p>Compare your program above to the original program, on 
+the following cases:
+<ul>
+	<li> 50 customers, at most 10 minutes apart and at most 25 items
+	<li> 500 customers, at most 10 minutes apart and at most 25 items	
+	<li> 50 customers, at most 5 minutes apart and at most 25 items
+	<li> 500 customers, at most 5 minutes apart and at most 25 items
+</ul>
+
+<p>
+Run each test 10 times and make a table with your average as well
+as the standard deviation for each algorithm.  Submit your table 
+via Blackboard.</p>
+
+<li><b>Analysis</b> (10 points)
+
+<p>
+Using the table you created, answer the following questions:
+</p>
+<ul>
+	<li> Did allowing different payment types affect the <b>wait
+	time</b> of the customers when customers arrived between 1 and
+	10 minutes apart? Why or why not?
+	<li> Did allowing different payment types affect the <b>wait
+	time</b> of the customers when customers arrived between 1 and
+	5 minutes apart? Why or why not?	
+	<li> What affect does the distribution of arrival times have
+	on wait times?
+</ul>
+<p>Submit your answer via Blackboard.</p>
+
+<li><b>Multiple Servers</b> (50 points)
+
+<p>
+The next step is to modify the current simulation to have more 
+than one check out line.  Modify your program to have:
+<ul>
+	<li><b>five</b> <tt>lines</tt> that customers can enter, representing
+	five different check out lines.
+	<li>when a new customer enters the store (that is, the
+	<tt>currentTime</tt> equals their <tt>arrivalTime</tt>), they
+	choose the line with the shortest time (calculate for each 
+	line how much time the customers will take, and then the new
+	person joins the one with the least time).
+</ul>
+
+<p>Since you will be repeatedly calculating the time for each line, 
+write a method that takes a line as input and calculates the time 
+it will take to process those customers.
+
+<p>
+Submit to Blackboard your main program (and the <tt>Customer</tt> java 
+file if you changed that) that demonstrates these changes.
+
+
+
+<li><b>Testing Multiple Servers</b> (10 points)
+
+<p>Compare your program above (with 5 servers) to the original program
+(with 1 server), on the following cases:
+<ul>
+	<li> 50 customers, at most 10 minutes apart and at most 25 items
+	<li> 500 customers, at most 10 minutes apart and at most 25 items	
+	<li> 50 customers, at most 5 minutes apart and at most 25 items
+	<li> 500 customers, at most 5 minutes apart and at most 25 items
+</ul>
+
+<p>
+Run each test 10 times and make a table with your average as well
+as the standard deviation for each algorithm.  Submit your table 
+via Blackboard.</p>
+
+
+<li><b>Analysis</b> (10 points)
+
+<p>
+Using the table you created, answer the following questions:
+</p>
+<ul>
+	<li> For which of the four situations tested, did the extra
+	servers make the most difference?
+	<li> Since your program had 5 times as many check-out lines
+	(aka servers), your program should have lower wait times 
+	for the customers.  Were they 5 times better?  Explain your
+	answer.
+</ul>
+<p>Submit your answer via Blackboard.</p>
+
+
+</div>
+</body>
+</html>

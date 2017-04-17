@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #3, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #3</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Parking in Neighborhoods; More matplotlib plots<br>
+<b>Deadline:</b>  Wednesday, 1 March 2017, 11:59pm 
+</div>
+
+<div>
+<h3>New York City 311 Data</h3>
+
+<p>
+This assignment uses 311 call data collected and made publicly by 
+<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+<blockquote>
+<a href="https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data">https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data</a>.
+</blockquote>
+
+<p>For this assignment, you will need to download:
+<ul>
+	<li> <b>311 calls for a zip code</b>:  Using the "Filter" option, choose your neighborhood's zipcode and "Export" (in CSV format) all calls for that zipcode.
+</ul>
+
+<p>
+We will use this data set for later homework assignments.  Since scraping the data takes time, save this to use again for the future programs.
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+<ul>
+	<li> What is your github login?
+		<ul>
+			<li> #1:  Submit your login name (if you have multiple ones, submit the one you plan to use for this course and the project).
+		</ul>
+	<br>
+	<li> All Seminar 4 sections are required to have an out-of-class trip.  Ours is to visit the Cooper-Hewitt Museum's temporary exhibition on <a href ="https://www.cooperhewitt.org/channel/by-the-people/">By The People:  Designing a Better America.</a>  Using the museum's website, figure out when you can visit.  Allow at least 1 hour to see the exhibit.  
+		<ul>
+			<li> #2:  Titles and URLs of 3 exhibits you found most relevant (URLs are stored on the visitor pen and can be retrieved on-line using the unique code on your entry ticket).
+			<li> #3:  A paragraph describing each of the three exhibits.  Include a description of the hypothesis of each exhibit, the planned or resulting design, and why it could be relevant to your neighborhood.
+			Submit as <b>.pdf</b> file.
+		</ul>	
+	<br>
+	<li> Using Pandas (see <a href="cw3.html">classwork from third class</a>), plot the New York City historical population we used the first day (<a href="nycHistPop.csv">nycHistPop.csv</a>) and compute the correlation of growth to answer: Which borough's population, over time, is mostly closely correlated with the total population.  
+		<ul>
+			<li> #4:  Submit your Python program as a <b>.py</b> file.
+			<li> #5:  Submit the correlation coefficients between boroughs and total city population (output from <tt>corr()</tt> is fine).
+			Submit as <b>.txt</b> or <b>.pdf</b> file.
+			<li> #6:  Submit an image of the population of the 5 boroughs and overall total over time.    Submit as <b>.pdf</b> file.
+		</ul>	
+	<br>
+	Hint:  If your data is stored in a data frame, <tt>pop</tt>, you can plot over time by <tt>pop.plot(x="Year")</tt>.
+	<br><br>
+	
+	<li> What is the most common complaint type in your neighborhood?  In your answer, include the Python program that scraped the data and prints the top 10:
+			<ul>
+			<li> #7:  Submit your Python program as a <b>.py</b> file.<br>
+			<li> #8:  Submit a list of the top 10 complaints for your neighborhood, as well as the number of complaints of each type.
+			Submit as <b>.txt</b> or <b>.pdf</b> file.
+		</ul>
+	<br>	
+	Hint:  You can use the same approach as <a href="hw2.html">Homework 2</a>.  If you would like to use Pandas, you can select the column you would like to count, and then use <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html">value_counts()</a> (e.g. <tt>callData["Complaint Type"].value_counts()</tt>)
+			
+	
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

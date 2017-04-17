@@ -1,0 +1,34 @@
+// globalvar.nqc:  A program that demonstrates the use of 
+//	global variables
+// COSMOS 2002, UC Davis
+
+int x=0;
+
+task main() {
+ 
+  int i;
+ 
+  x++;
+  wiggle();
+  Wait(200);
+  wiggle();
+ 
+  for (i=0; i<x;i++)
+  {
+    PlaySound(SOUND_CLICK);
+    Wait(10);
+  }
+}
+
+void wiggle() 
+{
+  OnFwd(OUT_A);
+  OnRev(OUT_C);
+  Wait(20);
+  OnFwd(OUT_C);
+  OnRev(OUT_A);
+  Wait(20);
+  x++;
+  Off(OUT_A + OUT_C);
+}
+

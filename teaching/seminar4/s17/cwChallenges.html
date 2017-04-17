@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>City Data Challenges, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  City Data Challenges</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+Answer the following challenges:
+
+<ol>
+	<li> What is most correlated with life expentency?  Use data set from <a href="cw9.html">Classwork 9</a>.  
+	<li> How many factors have R > 0.75?
+	<li> What the greatest distance between subway stops?  Report the highest distance (and associated stops) that your group found.
+	<li> What is the loneliest trash can in NYC (i.e.~farthest from any other trash can)?  Report the highest distane and give a map of it and associated trash cans.  Use data from <a href="hw5.html">Homework 5</a>.
+	<li> Something with flood plains?
+	<li> What location in the city is farthest from the Empire State Building 
+	(as the crow flies)?  Report location and distance.
+	<li> What location in the city is farthest from the Empire State Building 
+	(measured as time it takes at 5pm weekday on public transit)?  Report location and distance.
+</ol>
+
+
+</div>
+<div>
+
+<h3>Useful String Methods</h3>
+
+<p>Here are some very useful methods for strings:
+<ul>
+	<li> <tt>s.count(<i>pattern</i>)</tt>:  returns the number of times the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.find(<i>pattern</i>)</tt>:  returns the location (index) of the first place the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.replace(<i>old</i>,<i>new</i>)</tt>:	replaces all occurrences of the <i>old</i> string with the <i>new</i> string.
+	<li> <tt>indices</tt>: <tt>s[i]</tt> is the ith element of the string <tt>s</tt>	
+	<li> <tt>slicing</tt>: <tt>s[<i>start</i>, <i>stop</i>, <i>step</i>]</tt> is the substring of <tt>s</tt> beginning at index <i>start</i> and going up by <i>step</i> upto but not including stop.  <br>
+	<tt>s[-1::-1]</tt> or <tt>s[::-1]</tt> returns the reverse of the string.
+</ul>
+</div>
+
+
+<div>
+<h3>Regular Expressions</h3>
+
+<p> need to add in a regex cheat sheet, and few more challenges
+
+<p> MHC email directory:  https://macaulay.cuny.edu/directory/
+machine generated, so, easy to parse
+
+<p> MHC events page:  https://macaulay.cuny.edu/news-and-events/calendar-of-events/
+
+<p>
+Regular expresssions are extremely powerful in finding patterns that vary in length.  For example, to find the first AT repeat of longer than 4 repeats, we can use a regular expression:
+<pre>
+import re
+dna = "ACTGCATTATATCGTACGAAAGCTGCTTATACGCGCG" 
+runs = re.findall("[AT]{4,100}", dna) 
+print runs
+</pre>
+To find the location of a pattern in a string, we can use:
+<pre>
+if re.search(r"GC[ATGC]GC", dna):
+    print "restriction site found!"
+</pre>
+(more examples from <a href="http://pythonforbiologists.com/index.php/introduction-to-python-for-biologists/regular-expressions/">Python for Biologists</a>).
+
+<p>
+The <tt>re</tt> library is distributed with Python.  We will use two useful functions in the library:
+<ul>
+	<li> <tt>re.search(<i>pattern</i>, <i>string</i>)</tt> returns information if the <i>pattern</i> occurs in the <i>string</i> (otherwise returns None-- so can be used in an if statement).  Often use a "r" before the pattern to indicate that you want the "raw" string (i.e. don't translate the (e.g.'\n'), but keep them as their raw characters).  
+	<li> <tt>re.findall(<i>pattern</i>, <i>string</i>)</tt> finds all occurrences of <i>pattern</i> in the <i>string</i>.  It returns a list of the matching patterns.
+</ul>
+
+<p>
+We often want more information than just if a pattern occurred or in what way.  To find out the starting (and stopping) location, we can use the match object that <tt>re.search()</tt> returns.  It's most useful functions are:
+<ul>
+	<li> <tt>group()</tt>:  returns the string matched by the regular expression
+	<li> <tt>start()</tt>:  returns the starting position of the match
+	<li> <tt>end()</tt>:  returns the ending position of the match
+		
+</ul>
+(see <a href="https://docs.python.org/2/howto/regex.html">Python regex tutorial</a> for more details).
+
+<p>
+From our example above, we could store the match object:
+<pre>
+m = re.search(r"GC[ATGC]GC, dna)
+print "The matching string is", m.group()
+print "Match starts at", m.start()
+print "Match ends at", m.end()
+</pre>
+
+
+<p>These are more general (and more powerful) tools than the string methods above.  In many cases, either can be used.  For finding approximate matches or matches of varying lengths, using regular expressions is much easier.  Today's lab has some simple uses of regular expressions.  
+</div>
+
+<div>
+<h3>Scraping Webpages</h3>
+
+<p>
+Webpages are formatted using the HyperText Markup Language (HTML) which is a series of commands on how the pages should be formatted, along with links and embedded calls to programs. For example, if you would like a word to show up in <b>bold</b>, you surround it by "tags" that say what to do:
+<pre>
+&ltb&gtbold&lt/b&gt
+</pre>
+The opening tag starts the bold text and the closing tag (indicated by the '/') ends the bold text.  Most HTML commands follow this same style:  there's an opening tag, paired with a closing text that includes a '/' and the same name.
+
+
+<p>
+We can access files stored on webpages inside Python.  The built-in 
+<tt>urllib</tt> module has functions to mimic the file I/O we have seen before.  
+
+<p>Let's say we want to make a list of all the RGGS seminars for the term.  We can `scrap the data' on the comparative biology seminar page into our Python program.  We can then search for strings that look like dates and print out the subsequent lines.  The interface is very similarly to opening files:
+<ol>
+	<li> Use <tt>urllib.open()</tt> to open file.
+	<li> Then can use <tt>read()</tt>, <tt>readline()</tt> or <tt>readlines()</tt> to traverse file.
+</ol>
+(If you are going to be parsing lots and lots of HTML files, you should consider the <a href="">beautifulSoup</a> that does a great job handling badly formatted files).
+
+<p>
+The museum's webpage is machine generated (you can look at the raw code by saving the HTML file and then opening it with TextEdit, TextWrangler, or some other editor meant for text files).  The code is very clean with no missing ending tags (unlike the HTML for the page you're currently reading...).
+
+<p>
+Here are the first couple of lines with the seminar dates:
+<p>
+<img src="seminarRawFile.png" width=800>
+
+<p>
+We can search the file for dates, and then print out the subsequent lines with the speaker and title.  We can do this in several different ways.  Here's one approach:
+<ol>
+	<li> Open the URL ('URL' stands for Uniform Record Locator and is the location of the file.  It usually starts out <tt>http://www...</tt>).
+	<li> Read the file into a list of strings, called <tt>lines</tt>.
+	<li> For each line in <tt>lines</tt>, check if it contains the date.
+	<li>	If so, print out the date and the subsequent lines with name, affiliation, and title.
+	<li> Close file.
+</ol>
+
+<p>We are just missing the tools to open webpages.  There are several options (both built-in and modules you can download).  The simplest is <tt>urllib</tt> (and its related <tt>urllib2</tt> and <tt>requests</tt>).  Let's work with <tt>urllib2</tt> since it's very common.  First we need to import the module:
+<pre>
+import urllib2
+</pre>
+<p>
+To open a webpage:
+<pre>
+webpage = urllib2.urlopen("http://www.amnh.org/our-research/richard-gilder-graduate-school/academics-and-research/seminars-and-conferences")
+</pre>
+which will now functions like a file handler for files stored locally.  (This will take a bit depending on network connectivity.)
+
+<p>
+We can use it in with our standard reading functions: <tt>read()</tt>, <tt>readline()</tt> and <tt>readlines()</tt>.  For example, 
+<pre>
+lines = webpage.readlines()
+</pre>
+<p>
+Now, each line of the webpage is in the variable <tt>lines</tt>, and we can loop through it.  Here's an outline: it traverses the list by line number since we'll want to refer to the lines after it (where the name and titles are stored):
+<pre>
+for i in range(len(lines)):
+	#Check if the lines[i] has a date in it (can use find() or regular expressions)
+	#If it does print it, 
+	#	as well as the subsequent lines[i+2] (has name) and 
+	#	lines[i+4] (has title)
+</pre>
+
+<p>Test and debug your program and then figure out how to print just the date, name, affiliation, and title (without the HTML formatting statements).
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> Modify your program to just print out the dates, using full names for the months and the full year:  i.e. <tt>25 January 2016</tt> for <tt>25-Jan-16</tt>.
+	<li> Modify your program to also count the number of seminars, as well as the number of internal seminar (i.e. those with AMNH listed as the affiliation).
+</ul>
+
+</div>
+
+<div>
+<h3>Beautiful Soup</h3>
+
+
+<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>:
+<blockquote>
+You didn't write that awful page. You're just trying to get some data out of it. Beautiful Soup is here to help. Since 2004, it's been saving programmers hours or days of work on quick-turnaround screen scraping projects.
+</blockquote>
+
+<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">soup quick start</a>:  had the Alice example
+
+Use for weather data
+
+load into a csv and then graph with pandas
+
+</div>
+
+<div>
+
+Inside AirBnb
+
+http://data.beta.nyc/dataset/inside-airbnb-data
+
+Census data for housing:
+http://data.beta.nyc/dataset/nyc-2011-housing-and-vacancy-survey
+
+
+For transit discussion:
+http://www.wnyc.org/story/why-metrocards-are-paper-towels/
+
+</div>
+
+
+<div>
+<h3>Additional Challenges</h3>
+<ul>
+	<li> 
+</ul>
+</div>
+
+
+
+<div>
+<h3>Project Teams</h3>
+
+
+</div>

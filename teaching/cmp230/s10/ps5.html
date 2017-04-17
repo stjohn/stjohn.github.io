@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 5 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "5." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 5</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 5: Lists and Arrays.
+</p>
+
+<p>You should complete <b>100 points</b> worth of programs
+(with an additional 10 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+<li><b>School Of Fish</b> (5 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Ocean/Shark.png">
+</p>
+<p>
+Modify the <tt>SchoolOfFish</tt> world so that after swimming a bit,
+a shark is added to the front of the <tt>school</tt> list and begins 
+to swim with the school.
+</p>
+
+<li><b>Ballet</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/PinkBallerina.png">
+</p>
+<p>
+PP 5.1 (p 96):  Create an Alice world in which a group of ballerinas
+dance in unison, making appropriate poses and turns.
+</p>
+
+
+
+<li><b>Rockettes</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/rockette.png">
+</p>
+<p> 
+PP 5.2: Create an Alice world in which a line of Rockettes performs
+various kicks and turns in unison.  Also include some moves that are
+executed in sequence down the line.
+</p>
+
+
+<li><b>Dominoes</b> (5 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Shapes/box.png">
+</p>
+<p>
+Create a world with at least ten objects arranged like dominoes
+(for example, you could use the <tt>Box</tt> class from the <tt>Shapes</tt>
+gallery.  These items should all be in a list.  When the user clicks
+anything in the world, the first item should fall over and strike the
+second item, which should fall over and strike the third item, and
+so on.</p>
+
+<li><b>Even Rockettes</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/rockette.png">
+</p>
+<p> 
+Create an Alice world in which contains a line of Rockettes.  Have
+<tt>every other</tt> rockette kick, 
+executed in sequence down the line.
+</p>
+
+<li><b>Shortest-to-Tallest</b> (15 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/AliceLiddell.png">
+</p>
+
+<p>Modify the Alice world, <tt>SortingDemo.a2w</tt> (available on 
+Blackboard), to have an array of ten different people (it currently
+has 8).  In the world, the program should sort the people, shortest
+to tallest (instead of the tallest to shortest in the program).
+
+<li><b>Soldiers</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/ToySoldier.png">
+</p>
+<p> 
+Create an Alice world in which a group of 12 soldiers march in three
+rows of four soldiers each.  After marching forward a certain distance,
+have the soldiers halt and salute.  Use the <tt>ToySoldier</tt> class
+from the <tt>People</tt> gallery.
+</p>
+
+<li><b>Airport</b> (10 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Boeing707.png">
+</p>
+<p>
+Create a world that simulates an airport with a control tower and
+a runway.  A group of airplanes should be lined up, ready for 
+take-off.  Store the airplane objects in a list.  One at a time, the 
+airplanes should take off and fly away into the distance.
+</p>
+
+<li><b>Select-A-Penguin</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Penguin.png">
+</p>
+<p>
+Create an Alice world with 10 penguins in it and store the penguin
+objects in an array.  When the user clicks on the <tt>0</tt> key, 
+the first penguin in the list should jump up and down.  When the
+user clicks on the <tt>right arrow</tt> key, the next penguin in 
+the array should jump up and down.  Similarly, if the user clicks 
+on the <tt>left arrow</tt> key, the previous penguin in the array 
+should jump up and down.  
+</p>
+<p>For example, if the current penguin is the third one in the list,
+and the user clicks on the right arrow, the fourth penguin in the list
+jumps up and down.  If the current penguin is the last one in the list,
+and the user clicks on the right arrow, the first penguin in the list
+jumps up and down.  Similarly, If the current penguin is the first one 
+in the list, and the user clicks on the left arrow, the last penguin 
+in the list jumps up and down. 
+</p>
+<p>
+Hint: Create a number variable called <tt>current</tt> that holds
+the index of the current penguin.  Increment or decrement that 
+variable depending on which key the user clicks.
+</p>
+
+
+<li><b>Bank Teller</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/City/CityHall.png">
+</p>
+<p>
+PP 5.4: Create an Alice world that simulates people waiting in line
+at a bank teller window.  Randomly determine the amount of time it
+takes to serve each customer.  When a customer leaves, each person
+in line should move forward one space.  Display the wait time for 
+each customer when the customer is finally served.
+</p>
+
+
+<li><b>Tank</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Tank.png">
+</p>
+<p>
+PP 5.9: Create an Alice world that plays a game in which a tank 
+shoots at planes that are crossing in the distance.  Use the <tt>Tank</tt>
+class in the <tt>Vehicles</tt> gallery.  Allow the user to rotate
+the turret right and left and change the angle of the barrel up 
+or down using the arrow keys.  Use the space bar to "fire" a ball.
+Store various types of planes in an array to use as the targets, 
+moving them across the sky at various heights and distances.  Keep
+track of the number of hits.
+</p>
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 100 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 10 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>geoJSON Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  geoJSON</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+
+</div>
+
+<div>
+<h3>Standard Formats for GIS Data</h3>
+
+Integral to this course is analyzing and visualizing GIS data.  There are several standard formats:
+<ul>
+	<li> <a href="https://en.wikipedia.org/wiki/Shapefile">Shapefiles</a> (<a href="http://www.esri.com/arcgis/about-arcgis">ERSI's ArcGIS</a>)
+	<li> <a href="https://developers.google.com/kml/">Keynote Markup Languange</a> (KML)
+	<li><a href="http://geojson.org">geoJSON</a>
+</ul>
+Here's an <a href="http://apprentice.craic.com/tutorials/28">excellent summary & comparison</a> of these formats.
+
+
+<h3>geoJSON</h3>
+
+We will be primarily using geoJSON files for this course.
+Use the <a href="http://geojson.io/#map=2/20.0/0.0">geojson's mapper</a>, locate your home campus.  Mark the point (select from the menu on the right of the map).  
+<ul>
+	<li>On the right hand side, the corresponding geoJSON will be created.  
+	<li> Save the file and upload to github.  
+	<li> Commit the file and preview.  <br>
+	You should see the a map pop up in the preview window.
+	<br>
+	(Here's a <a href="
+	https://help.github.com/articles/mapping-geojson-files-on-github/">helpful example</a>.)
+</ul>
+
+<p>Here's a nice description of <a href="http://www.macwright.org/2015/03/23/geojson-second-bite.html">basic concepts of geoJSON</a>:
+<ul>
+	<li> Read/skim the description of different types. 
+	<li> What types are in the geoJSON file you created above?
+	<li> Using the mapper, add a polygon outlining 3 block around your home campus.  What was created in the corresponding geoJSON file?
+	<li> Create an additional marker for MHC and add a line marking how you 
+	would travel between your home campus and MHC.  What was created in the corresponding geoJSON file?
+</ul>
+
+
+</div>
+
+<div>
+
+<h3>geoJSON and folium</h3>
+
+Folium provides a simple interface to leaflet.js for mapping geoJSON data.
+Work through example from tutorial that uses a geoJSON layer for
+<a href="https://libraries.io/pypi/folium">folium</a>.
+
+
+<p>
+<i>These have moved since this classwork was written, a similar version is
+at <a href=""></a>.  Note that the rewrite of the examples assumes that you are using jupyter and displays in-line.  To save an .html file to diplay, you need to save it (<tt>mapName.save(outfile='htmlFile.html')</tt>)</i>
+
+<p>
+Using your the geoJSON file that you created.  What do the different 
+tile options do?  That is, how do the following options change your
+map:
+
+<ul>
+	<li> <tt>tiles='Stamen Terrain'</tt>
+	<li> <tt>tiles='stamenwatercolor'</tt>
+	<li> <tt>tiles='Mapbox Bright'</tt>
+	<li> <tt>tiles='Stamen Toner'</tt>
+	<li> <tt>tiles='Cartodb Positron'</tt>
+</ul>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+<div>
+<h3>Additional Challenges</h3>
+
+Through the <a href="http://opendata.cityofnewyork.us">open data project</a>, there are many geoJSON layers available.  Download some of the following and use folium to create different webpages displaying these <a href="http://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">political and administrative districts</a>:
+<ul>
+	<li> NYC Boroughs
+	<li> NYC zip codes
+	<li> NY Congressional Districts
+</ul>
+For each, choose an appropriate background map. Note that you can combine these with your own datasets (i.e. overlap your 311 complaints on top of zip codes or congressional districts).
+
+
+</div>
+
+
+<div>
+<h3>Limits to Growth</h3>
+
+The reading for today addressed limits to growth at a global level.  What limits are there to the number of individuals that could live in New York City?  
+
+<p>
+With your group, identify the following quantities:
+<ul>
+	<li> How much water does the average New York resident need daily?
+	<li> How much electricity does the average New York resident use daily?  Does this differ seasonally?
+	<li> How much garbage does the average New York resident generate daily?
+	<li> How many acres are there in New York City?
+	<li> What is the current population of New York City?
+	<li> What is the average number of persons per acre in New York City?
+</ul>
+
+<p>  What factors could limit growth?  Using the <a href="https://www1.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/projections_report_2010_2040.pdf">population predictions</a> from the reading,
+
+<ul>
+	<li> What is the current population of New York City?  How many more people are expected by 2030?
+	<li> How much more water is needed?  What is the current capacity?  Is this a limit to growth?
+	<li> How much more electricity is needed?  What is the current capacity?  Is this a limit to growth?
+	<li> How much more garbage is generated?  What is the current capacity?  Is this a limit to growth?
+	<li> What other limits to growth did your group find?
+</ul>
+
+</div>
+

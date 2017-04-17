@@ -1,0 +1,291 @@
+<HTML>
+<HEAD>
+<TITLE>CS145 Midterm Solutions, 2000</TITLE>
+</HEAD>
+<BODY LANG="EN" BGCOLOR="DDDDCC">
+<H1 ALIGN = CENTER>CS145 Midterm Solutions</H1>
+
+<P>
+If, after reading the solutions and error keys, you want to discuss the
+grading, you should give your exam, with a note, to the relevant person.
+Ms. Bharwada can deliver these notes and exams if you like.
+<P>
+<TABLE BORDER>
+<CAPTION>Index and Graders</CAPTION>
+<TR>
+    <TH>Problem</TH><TH>Grader</TH>
+</TR>
+<TR>
+    <TD><A HREF="#1a">Part 1(a)</A></TD><TD>Mayank</TD>
+</TR>
+<TR>
+    <TD><A HREF="#1bc">Parts 1(b) & 1(c)</A></TD><TD>Calvin</TD>
+</TR>
+<TR>
+    <TD><A HREF="#2ab">Parts 2(a) & 2(b)</A></TD><TD>Karen</TD>
+</TR>
+<TR>
+    <TD><A HREF="#2cd">Parts 2(c) & 2(d)</A></TD><TD>Grace</TD>
+</TR>
+<TR>
+    <TD><A HREF="#3">Problem 3</A></TD><TD>Jeff</TD>
+</TR>
+</TABLE>
+
+<H3>Problem 1</H3>
+
+  <DL COMPACT>
+    <DT><STRONG><A NAME="1a">(a)</A></STRONG>
+    <DD>No, it is not possible to represent the fact that Steinway makes
+two different models of baby-grand piano. This is because PianoModel has
+as its key (Manf.name, PianoType.name). Thus, there can be only one entity
+with key as (Steinway, baby-grand piano). 
+<P>
+The following are acceptable ways of modifying the ER diagram to make it
+possible:
+<ul>
+<li>Add an attribute "modelNumber" to the entity set PianoModel, and make
+it part of the key.
+<li>Assume that "price" for a model is unique across pianos of the same type
+and by the same manufacturer, and make it part of the key. 
+</ul>
+<P>
+The following were some of the common errors, and the penalties thereof:
+<ul>
+<li>Making price a part of the key without stating the assumption: 
+<i>-1 point</i> 
+<li>Introducing "modelNumber" as an attribute of the 
+PianoType entity set, and making it part of the key of the PianoType entity
+set. However, by doing so, the other attributes of the piano type would 
+have to be duplicated for each different model of the same type:
+<i>-2 points</i>
+<li>Introducing a 3-way relationship between Manf, PianoType, PianoModel:
+<i>-3 points</i>
+<li>Introducing a 2-way relationship between Manf and PianoType:
+<i>-3 points</i>
+<li>Making some other attribute of PianoType a part of its key:
+<i>-3 points</i>
+</ul>
+<P>
+  </DL>
+  <DL COMPACT>
+    <DT><STRONG><A NAME="1bc">(b)</A></STRONG>
+    <DD>Manf(<u>name</u>, addr)</DD>
+    <DD>PianoType(<u>name</u>, height, length, width)</DD>
+    <DD>PianoModel(<u>ManfName</u>, <u>TypeName</u>, price)</DD>
+    <DD>Electronic(<u>ManfName</u>, <u>TypeName</u>, power, processor)</DD>
+    <DD>Traditional(<u>ManfName</u>, <u>TypeName</u>, wood)</DD>
+  </DL>
+  <BR>
+  <DL COMPACT>
+    <DT><STRONG>(c)</STRONG>
+    <DD>Manf(<u>name</u>, addr)</DD>
+    <DD>PianoType(<u>name</u>, height, length, width)</DD>
+    <DD>PianoModel(<u>ManfName</u>, <u>TypeName</u>, price)</DD>
+    <DD>Electronic(<u>ManfName</u>, <u>TypeName</u>, price,
+            power, processor)</DD>
+    <DD>Traditional(<u>ManfName</u>, <u>TypeName</u>, price, wood)</DD>
+    <DD>ElectronicTraditional(<u>ManfName</u>, <u>TypeName</u>, price,
+            power, processor, wood)</DD>
+<P>
+The following are keys to the error codes, as indicated on the corrected
+answer sheets:
+<ul>
+<li>A1: missing ElectronicTraditional class (to represent pianos that are
+both electronic and traditional (OO approach): <i>-2 points</i>
+<li>A2: missing "price" attribute in subclasses (OO approach): <i>-2 points</i>
+<li>A3: missing keys, or incorrect keys: <i>-1 for each occurance, -2 maximum</i>
+<li>A4: redundant attributes: <i>-1 for each occurance, -2 maximum</i>
+<li>A5: missing relations: <i>-1 for each occurance, -2 maximum</i>
+<li>A6: missing attributes: <i>-1 for each occurance, -2 maximum</i>
+<li>A7: redundant relations: <i>-1 for each occurance, -2 maximum</i>
+</ul>
+  </DL>
+
+<H3>Problem 2</H3>
+  <DL COMPACT>
+    <DT><STRONG><A NAME="2ab">(a)</A></STRONG>
+    <DD>The keys are  <i>{A,D}, {A,E}, {B,D}, {B,E}, {C,D}, {C,E}.</i>
+    </DD>
+    </DT>
+    <BR>
+    <BR>
+    <DT><STRONG>(b)</STRONG>
+    <DD>There are <i>21</i> superkeys.<BR>
+        <B>Justification:</B> <BR> 
+        Each superkey has <i>at least one</i> attribute from <i>{A,B,C}</i>
+        (2^3-1 = 7 ways), and <i>at least one</i> attribute from <i>{D,E}</i> 
+        (2^2-1 = 3 ways).  Thus there are 7 x 3 superkeys. Note that keys are 
+        also superkeys.
+        <P>
+        Thus, enumerating the superkeys, we have:<BR>
+        <i>{A,D}, {A,E}, {B,D}, {B,E}, {C,D}, {C,E}, <BR>
+        {A,B,D}, {A,C,D}, {A,D,E}, {A,B,E}, {A,C,E}, {B,D,E}, {B,C,D}, {C,D,E}, {B,C,E}, <BR>
+        {A,B,C,D}, {A,B,D,E}, {A,C,D,E}, {A,B,C,E}, {B,C,D,E}, <BR>
+        {A,B,C,D,E}.</i>
+    </DD>
+    </DT>
+    <BR>
+    <BR>
+    <DT><STRONG><A NAME="2cd">(c)</A></STRONG>
+    <DD>The basis for decomposed relations is:<BR>
+        <TABLE BORDER>
+        <TR>
+           <TH>Relation</TH><TH>Basis</TH>
+        </TR>
+        <TR>
+           <TD>R1(A, B)</TD> <TD><i>{B->A, A->B}</i></TD>
+        </TR>
+        <TR>
+           <TD>R2(A, C, D, E)</TD><TD><i>{A->C, C->A, D->E, E->D}</i></TD>
+        </TR>
+        </TABLE>
+    </DD>
+    </DT>
+    <BR>
+    <DT><STRONG>(d)</STRONG>
+    <DD>A legal counterexample <i>must</i> follow all the functional 
+        dependencies of R, and violate AB->->CD. A counterexample could 
+        be the following instance of R:
+        <TABLE BORDER>
+        <TR>
+            <TH>A</TH> <TH>B</TH> <TH>C</TH> <TH>D</TH> <TH>E</TH>
+        </TR>
+        <TR>
+            <TD>1</TD> <TD>1</TD> <TD>1</TD> <TD>1</TD> <TD>1</TD>
+        </TR>
+        <TR>
+            <TD>1</TD> <TD>1</TD> <TD>1</TD> <TD>0</TD> <TD>0</TD>
+        </TR>
+        </TABLE>
+    </DD>
+    </DT>
+  </DL>
+
+<H3><A NAME="3">Problem 3</A></H3>
+<H4>Error Codes</H4>
+
+In general, syntax errors (e.g., missing parentheses) were worth -1;
+logic errors were worth a deduction of 2 or more, and if the query
+really didn't work for reasons that could not be explained by a single
+mistake, you got no credit.
+If you produced something slightly more complicated than needed, you
+lost 1 point, and the abbreviation MTC (-3) stands for ``much too
+complicated.''
+Here are the other codes used:
+<P>
+A1: Checking all pairs, rather than just the inserted tuple against
+those previously in the relation (-3).
+<P>
+A2: Using an assertion rather than a tuple-based check (-5).
+<P>
+B1: Missing join term (-3).
+<P>
+C1: Forgetting that renaming requires atttributes as well as a new
+relation name (-1).
+<P>
+C2: Including <TT>Articles</TT> in the join (-1).
+<P>
+E1: No <TT>HAVING</TT> clause (-2).
+<P>
+E2: Failing to group by both <TT>author</TT> and <TT>keyword</TT> (-2).
+<P>
+E3: Putting an attribute that isn't in the <TT>GROUP BY</TT> into the
+<TT>SELECT</TT> list (-2).
+<P>
+F1: same as C1.
+<P>
+G1: Using <TT> = NULL</TT> instead of <TT>IS NULL</TT> (-1).
+<P>
+G2: Using <TT>ALTER</TT> instead of <TT>UPDATE</TT> (-3).
+<P>
+G3: Using a trigger (-5).
+
+<H4>Part (a)</H4>
+
+Because <TT>ID</TT> is a key for <TT>Articles</TT>, it is sufficient to
+check that the relation before the insertion or update does not have a
+tuple with the same dateline and author as the new tuple.
+Here is one way to do it.
+
+<PRE>
+     CHECK(NOT EXISTS(
+         SELECT *
+         FROM Articles aa
+         WHERE dateline = aa.dateline AND author = aa.author
+     ))
+</PRE>
+
+<H4>Part (b)</H4>
+
+<PRE>
+     SELECT headline
+     FROM Articles, Keywords
+     WHERE Articles.ID = Keywords.ID AND keyword = 'Arafat';
+</PRE>
+
+<H4>Part (c)</H4>
+<PRE>
+     R1(ID,k1) := Keywords;
+     R2(ID,k2) := Keywords;
+     R3(ID,k3) := Keywords;
+     R4(ID,k1,k2,k3) := R1 NATURALJOIN R2 NATURALJOIN R3;
+     R5(ID,k1,k2,k3) := SIGMA_{k1!=k2 AND k2!=k3 AND k1!=k3}(R4);
+     Answer(ID) := PROJ_ID(R5);
+</PRE>
+
+<H4>Part (d)</H4>
+
+<PRE>
+     SELECT ID
+     FROM Articles
+     WHERE text LIKE '%Pol Pot%';
+</PRE>
+
+<H4>Part (e)</H4>
+This question, although it appeared difficult, is actually a direct
+application of the definition of grouping and ``having.''
+
+<PRE>
+     SELECT author, keyword, MIN(dateline)
+     FROM Articles, Keywords
+     WHERE Articles.ID = Keywords.ID
+     GROUP BY author, keyword
+     HAVING COUNT(*) >= 3;
+</PRE>
+
+<H4>Part (f)</H4>
+
+<PRE>
+     R1(ID) = PROJ_{ID}(SIGMA_{keyword="Milosevic"}(Keywords);
+     MiloAuthors(author) = PROJ_{author}(R1 NATURALJOIN Articles);
+     AllAuthors(author) = PROJ_{author}(Articles);
+     Answer(author) = AllAuthors - MiloAuthors;
+</PRE>
+<P>
+Notice how important it is that you subtract sets of authors.
+If you subtract before projecting onto authors, you get only authors
+whose every article had only keyword ``Milosevic'' or something like
+that.
+
+<H4>Part (g)</H4>
+
+Modification in SQL refers only to insertion, deletion, and update, not
+to altering the schema.
+In this case, you had to use an update.
+<PRE>
+     UPDATE Articles
+     SET text = headline
+     WHERE text IS NULL;
+</PRE>
+<P>
+One of the saddest things was people who came up with some really clever
+ways to detect that a tuple had <TT>NULL</TT> text, and lost significant
+amounts of credit for violating the requirement that their solutions be
+as simple as possible.
+The fact is that there is a straightforward way, given above, for
+testing whether a value is <TT>NULL</TT>.
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 9 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "9." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 9</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 9 (Inheritance and Polymorphism).
+</p>
+
+
+<p>You should complete <b>50 points</b> worth of programs
+(with an additional 5 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+
+
+<!-- For ps 8: sorting make an array of stickFigures, sort by height
+sorting when we get to arrays: bubbling max to the front of the list, say with random sized stick figures
+also do with numbers entered by the user: start with finding the max, then do bubble sort, 
+merge sort?
+
+
+
+something easy/fun with recursion
+-->
+
+
+
+
+
+<!--
+Postpone until CMP 326:
+<li><b>Puzzle Piece</b> (20 points)
+
+<p>Write a class called </tt>PuzzlePiece</tt>. A puzzle piece will have a label which will be a 
+number between 1 and 15 and the location of the puzzle piece (which will be the coordinates of the 
+upper left corner). Your class should contain three constructors:</p>
+
+<blockquote>
+a default constructor that sets the coordinates to (0,0) and the label to 0,
+a constructor that has a single argument that is assigned to label and sets the coordinates to (0,0), and
+a constructor that takes three arguments: the label, the x-coordinate, and the y-coordinate (in that order) and sets the values.
+</blockquote>
+
+<p>
+PuzzlePiece should contain a move method:
+</p>
+
+<blockquote>
+    public void move(int dx, int dy)
+that changes the position by dx units in the x direction and dy units in the y direction. Finally, you should have a draw method:
+    public void draw()
+that draws a square containing the label, using the object's coordinates for the upper left corner.
+</blockquote>
+
+Write a second class called Program19 that uses PuzzlePiece and demonstrates its features. Program19 should construct two PuzzlePieces (one using the default constructor and one using the other constructor), it should draw the puzzle pieces, and it should move at least one of the pieces.
+
+Submit this as program 19 using the electronic submission. Please call the file (and the class) Program19. Include an HTML	file in the directory called Program19.html that displays your applet.
+
+Drawing Playing Cards
+
+Add to the PlayingCard class (available on Blackboard), a method that will draw a playing card on the screen:
+
+  public void draw(x,y)
+
+where x and y are the coordinates of the upper left corner of the playing card.
+
+To demonstrate your new method, create a driver program that has a panel with several cards displayed on it.
+Sorting by Suit
+
+Change the SortCards.java program (available on Blackboard) so that it first sorts first by suit, then by rank. For example, the current sort program, if you entered:
+
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+
+would output:
+
+  2 spades 3 diamonds 5 clubs 7 spades 8 clubs 
+
+Your modified program should group cards by their suit (clubs, diamonds, hearts, spades) first, then by their rank. So, your program would output for the above input:
+
+  5 clubs 8 clubs 3 diamonds 2 spades 7 spades
+
+Sorting Hands
+
+Fill in the missing parts of Bridge.java (available on Blackboard). That is, after the hands have been dealt and printed, sort the hands and print them again.
+(Hint: the file SortCards.java has code that might be useful.) 
+
+-->
+
+<!-- Save for 326
+
+<li><b>Merge Lists</b> (20 points)
+
+<p>
+text based program, merge two sorted lists
+(Sorted Merge) P9.6, p 416. Your program should (in the following order):
+Ask for the length of the first sorted list of integers.
+Read in the first list of integers.
+Ask for the length of the second sorted list of integers.
+Read in the second list of integers.
+You may assume that the lists are sorted, and you do not have to error check for this. Your program should then print out the sorted list of numbers. Submit this as program 21 using the electronic submission. Please call the file (and the class) Program21.
+</p>
+-->
+
+
+<li><b>ShapeMaker</b> (20 points)
+
+<p>Add the <tt>Oval</tt> and the <tt>Circle</tt> classes to the 
+<tt>ShapeMaker</tt> program (available on Blackboard) and modify 
+the controls that allow them to be drawn.
+</p>
+
+<!--
+<p>Next, add a button to the control panel in the <tt>ShapeMaker</tt>
+program to clear the drawing surface.
+</p>
+-->
+
+
+<li><b>Monetary Coin</b> (20 points)
+
+<p>PP 9.2 (p 203): Create a class called <tt>MonetaryCoin</tt> that is 
+derived from the <tt>Coin</tt> class presented in Chapter 6
+(available on Blackboard).  Store a value in the monetary coin that
+represents its value and add a method that returns its value.  Create
+a driver class whose <tt>main</tt> method instantiates several 
+<tt>MonetaryCoin</tt> objects and computes their total value.  
+Demonstrate that the monetary coin inherits its parent's ability to
+be flipped.
+</p>
+
+<li><b>Happy Face</b> (20 points)
+
+<p>Make a new class, called <tt>HappyFace</tt> that extends the 
+<tt>Oval</tt> (or <tt>Circle</tt>) class from Chapter 9 (available 
+on Blackboard).  Your class should have methods that allow the user 
+to draw a happy face on the screen.  To demonstrate your class,
+add it to the <tt>ShapeMaker</tt> program and modify the controls
+so that it also can be drawn.
+</p>
+
+
+<li><b>Cross</b> (25 points)
+
+
+<p>Derive a new class, <tt>Cross</tt>, from the <tt>BoundedShape</tt> class
+from Chapter 9 (available in Blackboard).  Your class should draw a cross
+(i.e. an "X") inside the bounding box.  Demonstrate your new class with a
+program that draws several crosses.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

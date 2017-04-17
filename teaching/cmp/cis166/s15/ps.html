@@ -1,0 +1,1074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Programming Problem List, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	7px ; 	
+  }
+  </style>
+</head>
+<body>
+
+<div id="header">
+
+<h2>Programming Problem List<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br>
+</h2>
+</div>
+
+
+<div>
+
+<h3>General Notes</h3>
+
+
+<ul>
+	<li> Every program should begin with a comment that includes your name and a brief description,
+		contain a <tt>main()</tt> function and an invocation of the main at the end of the file:
+		For example:
+	<pre>
+#Name: Herbert H. Lehman
+#Date: February 4, 2013
+#This program prints: hello world
+
+def main():
+	print("Hello world")
+	
+main()
+	</pre>
+	<li> You are encouraged to submit your assignments early.  Below lists the 
+		last date on which each assignment will be accepted.
+		Assignments must be 
+		<b>submitted before midnight</b> on the date due. 
+	<li> <b>No credit will be given for an assignment submitted late. </b>
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+	<li>For more information on using Blackboard, see the <a href="../../cmp230/s15/lab1.html">first 
+lab</a>.
+	<li> While you are encouraged to work with others, <b>all work submitted must be your own.</b>  As 
+	a rule of thumb, <b>you must do your own typing</b>.  If it is not from the book or class webpage and
+	you did not type it, it is plagiarism.  
+	For the first incident, your grade will be a 0 for the assignment (even for cases 
+	where you typed the program but others submitted it as their own).  For the second incident of 
+	cheating or plagiarism, your grade will be a 0 for the homework component of the grade (15%
+	of your overall grade).  For the third incident, you will fail the class.  We report all 
+	incidents to the Office of Student Affairs.
+
+	<li> Learning programming is like learning a foreign language:  you will learn more (with 
+	less work) if you practice every day.  Some of the programs below are easy; some will take
+	more time.  Set aside a block of time every day to work on programming.  If you complete the
+	program for that day, go on to the next with your remaining time.
+<ul>
+</div>
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+
+<ol>
+<a id="set1"></a>
+	<li > <b>Due Date: 5 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Write a program that prints your name to the screen 20 times.
+	<li > <b>Due Date: 9 February</b>  <b style="float:right">Reading: Chapters 1 & 2</b><br>
+		Choose a (printable) character from the keyboard.
+		Write a program that prints an opening statement and then 
+		asks the user for a number and prints your character that many times.
+		
+		<p>For example:
+<pre>
+The fault is in our stars...
+Please enter a number:  2
+*
+*
+</pre>
+		<p>Another sample run:
+<pre>
+The fault is in our stars...
+Please enter a number:  5
+*
+*
+*
+*
+*
+</pre>
+		<p>Note:  your program should have a statement you like (different from the sample and
+		unique to you, so that the cheat-checking program does not flag it as someone's work)
+		and print a character you choose (again, different from the character chosen above).
+		
+	<li > <b>Due Date: 10 February</b>  <b style="float:right">Reading: Chapter 2</b><br>
+		Write a program that implements the <a href="http://en.wikipedia.org/wiki/Pseudocode">pseudocode</a> ("informal high-level description of the operating principle of a computer program or other algorithm") below:
+<pre>
+1.  Ask the user for the size of their apartment in square meters (size)
+2.  Convert the size to square feet using the formula:  convertedSize = size * 10.764
+3.  Print out the converted size.
+</pre>
+		
+	<li > <b>Due Date: 11 February</b>  <b style="float:right">Reading: Chapter 2</b><br>
+	
+		Write a program that asks the user for the diameter of a circular table and prints out the circumference.  For example, if the user enters <tt>10</tt>, your program should print out <tt>31.4159265359</tt>.
+		<br><i>Hint:  The circumference of a circle is <tt>Pi*d</tt> where <tt>d</tt> is the diameter of the circle. </i>	
+
+	<li > <b>Due Date: 13 February</b>  <b style="float:right">Reading: Chapter 3</b><br>	
+		
+		Write a program that will print out a conversion table for dollars and another
+		currency.  The currency you should use is based on the first letter of your first name:
+		<table >
+			<tr>
+				<th>If your name begins with...</th><th>Use the currency:</th><th>$1 is worth:</th>
+			</tr>
+			<tr>
+				<th>A</th><td>Afghan Afghani (AFN)</td><td>51.08</td>
+			</tr>
+			<tr>
+				<th>B</th><td>Bangladeshi Taka (BDT)</td><td>80.58</td>
+			</tr>
+			<tr>
+				<th>C</th><td>Costa Rican Colon (CRC)</td><td>499.38</td>
+			</tr>
+			<tr>
+				<th>D</th><td>Danish Krone (DKK)</td><td>5.67</td>
+			</tr>
+			<tr>
+				<th>E</th><td>Euro (EUR)</td><td>0.77</td>
+			</tr>
+			<tr>
+				<th>F</th><td>Falkland Island Pound (FKP) </td><td>0.62</td>
+			</tr>
+			<tr>								
+				<th>G</th><td>Guatemalan Quetzal (GTQ)</td><td>0.13</td>
+			</tr>
+			<tr>
+				<th>H</th><td>Hungarian Forint (HUF) </td><td>0.00456</td>
+			</tr>
+			<tr>
+				<th>I</th><td>Indonesian Rupiah (IDR)</td><td>9639.99</td>
+			</tr>
+			<tr>
+				<th>J</th><td>Japanese Yen (JPY)</td><td>83.85</td>
+			</tr>
+			<tr>				
+				<th>K</th><td>Kenyan Shilling (KES)</td><td>0.0116</td>
+			</tr>
+			<tr>				
+				<th>L</th><td>Lebanese Pound (LPP)</td><td>0.000664</td>	
+			</tr>
+			<tr>				
+				<th>M</th><td>Moroccan Dirham (MAD)</td><td>0.118</td>
+			</tr>
+			<tr>				
+				<th>N</th><td>Nepalese Rupee (NPR)</td><td>0.0115</td>
+			</tr>
+			<tr>
+				<th>O</th><td>Omani Rial (OMR)</td><td>0.384</td>
+			</tr>
+			<tr>				
+				<th>P</th><td>Polish Zloty</td><td>3.11</td>
+			</tr>
+			<tr>
+				<th>Q</th><td>Qatari Riyal (QAR)</td><td>0.275</td>
+			</tr>
+			<tr>
+				<th>R</th><td>Russian Ruble (RUB)</td><td>30.80</td>
+			</tr>
+			<tr>
+				<th>S</th><td>Somali Shilling (SOS)</td><td>0.000619</td>
+			</tr>
+			<tr>
+				<th>T</th><td>Thai Baht (THB)</td><td>30.59</td>
+			</tr>
+			<tr>
+				<th>U</th><td>Ukrainian Hryvna (UAH)</td><td>8.10</td>
+			</tr>
+			<tr>
+				<th>V</th><td>Venezuelan Bolivar (VEH)</td><td>4.30</td>
+			</tr>
+			<tr>				
+				<th>W</th><td>Samoan Tala (WST)</td><td>2.27</td>
+			</tr>
+			<tr>				
+				<th>X</th><td>East Caribbean Dollar (XCD)</td><td>2.70</td>
+			</tr>
+			<tr>				
+				<th>Y</th><td>Yemeni Rial (YER)</td><td>0.00477</td>
+			</tr>
+			<tr>
+				<th>Z</th><td>Zimbabwean Dollar (ZWD)</td><td>361.90</td>				
+			</t>
+		</table>
+		For example, if your first name is <tt>Eric</tt>, you would use <tt>Euros</tt>.  From
+		the table above, we have that one dollar is worth 0.77 euros.
+		You should begin the program by printing out your name.
+		On each line, your program should write the number of dollars and the corresponding
+		number of your currency.  For example:
+		<pre>
+Eric's converting program
+		
+Dollars:    Euros:
+1           0.77
+2           1.53
+3           2.3
+4           3.07
+5           3.84
+		</pre>
+		Your program should print the information for 1, 2, ..., 5 dollars.  You do not need to worry about formatting (we will talk about that more in Chapter 5), but you do need to calculate all 5 entries.  <br>
+		<i>Hint:  modify the second program from the <a href="../../cmp230/s15/lab2.html">Lab 2</a>.</i>
+
+
+		
+
+<a id="set2"></a>			
+<hr>
+	<li > <b>Due Date: 18 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that implements the pseudocode below:
+<pre>
+1.  Ask the user for the number of days until finals.
+2.  Print out the weeks until finals (weeks = days // 7)
+3.  Print out the leftover days (leftover = days % 7)
+</pre>	
+
+
+	<li > <b>Due Date: 19 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for time in days and prints the number of years and days (assume that there are 365 days in a year).  
+		For example, if	the user entered, 1000, your program would output, 
+		<tt>2 years 270 days</tt>.
+		Note that you should use "years" and "days" for all inputs (even
+		in the cases where it is grammatically incorrect). 
+
+
+
+	<li > <b>Due Date: 20 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+		Write a program that asks the user for 10 numbers and prints out the total.  
+		
+		<p>Here is a sample run of the program:
+		<pre>
+Please enter a number: 5
+Please enter a number: 2015
+Please enter a number: -100
+Please enter a number: 3
+Please enter a number: -999
+Please enter a number: 8
+Please enter a number: 67
+Please enter a number: 19
+Please enter a number: 17
+Please enter a number: -1234
+
+The total is -199		
+		</pre>
+
+		
+	<li > <b>Due Date: 23 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+		Write a program that asks the user for 15 letters, accumulates them into a single string variable, and prints the string.
+		<p>Here is a sample run of the program:
+		<pre>
+Please enter a letter: I
+Please enter a letter: l
+Please enter a letter: o
+Please enter a letter: v
+Please enter a letter: e
+Please enter a letter: P
+Please enter a letter: y
+Please enter a letter: t
+Please enter a letter: h
+Please enter a letter: o
+Please enter a letter: n
+Please enter a letter: !
+Please enter a letter: !
+Please enter a letter: !
+Please enter a letter: !
+
+The string is: IlovePython!!!!		
+		</pre>
+		<br>
+		<i>
+		Hint:  As for running totals where we initialize the variable to 0, for variables that "accumulate" strings, we initialize the variable to the empty string ("").  Here's a summary of the basic approach for the accummulating design pattern, broken down by the type of the accummulator variable:
+<table border="1">
+	<tr><td></td><th>Running sums:</th><th>Running products:</th><th>Accumulating Strings:</th><th>Accumulating Lists:</th></tr>
+	
+	<tr><td>Initialization:</td><td>sum = 0</td><td>prod = 1</td><td>s = ""</td><td rowspan=2>To be explained <br> after Chapter 5... </td></tr>
+	<tr><td>Update Action:</td>
+		<td>for ...<br>
+    		&nbsp;&nbsp;sum = sum + newValue</td>
+    	<td>for ...<br>
+    		&nbsp;&nbsp; prod = prod * newValue</td><td>for ...<br>&nbsp;&nbsp;s = s + newValue</td>
+    		</tr>	
+</table>
+		</i>
+		<br>
+
+
+	<li > <b>Due Date: 24 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+
+
+		Modify the book's factorial program to calculate the <i>double factorial</i>.  
+		The double factorial is similar to the factorial, except you multiply every other 
+		number.  For example, <tt>5!! = 5 * 3 * 1</tt> and <tt>8!! = 8 * 6 * 4 * 2</tt>.
+		Formally, <tt>n!! = n*(n-2)*(n-4)*...*(1)</tt>.<br>
+		<i>Hint:  you only need to change the <tt>range</tt> statement.</i>	
+
+<a id="set3"></a>
+<hr>	
+	<li > <b>Due Date: 25 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+		Implement the following piece of pseudocode as a complete program using turtle graphics:
+<pre>
+    Repeat 45 times:
+        Walk forward 100 steps
+        Turn right 92 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="../../cmp230/s15/spiral.jpg">
+	
+		<br><i>Hint:  See <a href="../../cmp230/s15/lab3.html">Lab 3</a>.</i>
+		<br>
+				<i>Note:  Choose a name for your file that is <b>not</b> <tt>turtle.py</tt>. 
+		When executing the "import turtle" statement, the computer first looks in the folder where the file is saved for the turtle module and then in the libraries (and other places on the path).  So, it thinks the module is itself, causing all kinds of errors.  To avoid this, name your program something like "myTurtle.py" or "program8.py".
+		</i>
+
+	
+	<li > <b>Due Date: 26 February</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+	
+		Modify the bouncing ball example from <a href="../../cmp230/s15/lab3.html">Lab 3</a> so that the ball 
+		bounces a little bit <b>more</b> each time.  At the end, each bounce should go off the top of the screen.
+		<br>
+		<i>Hint:  the only change needed is to the height of the ball.  How can
+		you make the height get larger as time increases?</i>
+
+
+	<li > <b>Due Date: 2 March</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+		Using turtle graphics, draw a grid:  
+		<br><br>
+		<img src="../../cmp230/s15/grid.jpg" height=300>
+
+		<p>You may use any combination of turtle commands, but your image should have 9 by 9 grid shown above.
+		<br>
+		<i>Hint: Resize the drawing canvas to give coordinates that are easier to use (see <a href="lab4.html">Lab 4</a>). </i>
+	
+
+	<li > <b>Due Date: 3 March</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+		Use turtle graphics to write your name to the screen, surrounded by a box or polygon.  You may write your name in "cursive" by moving the turtle, or may use the <tt>write()</tt> command to have it printed to the graphics screen.
+		<br>
+		<i>Hint: See <a href="../../cmp230/s15/lab4.html">Lab 4</a> for an example of the <tt>write()</tt> method for turtles.</i>		
+				
+	<li > <b>Due Date: 5 March</b>  <b style="float:right">Reading: Chapter 3</b><br>
+	
+		Write a program that draws a 4 x 4 grid and places a turtle at a location specified by the user.  When the user hits enter, move the turtle to the left side of the screen (but keep the same "height" as it moves).  To make things easier, assume that the coordinates range from 0 to 3 for both the x and y values.  
+		
+		<p>
+		For example, if the user enters the following at the Python shell:
+		<pre>
+Please enter coordinates: 2,1
+Please hit the enter key to continue:
+		</pre>
+		We draw the turtle at 2,1 (for reasons that will become apparent later, we're representing our turtle by the number "2"):
+		<br><br>
+		<img src="../../cmp230/s15/game2048grid.jpg" height=300>		
+		<p>After the user hits the enter key, we have:
+		<br><br>
+		<img src="../../cmp230/s15/game2048move1.jpg" height=300>		
+
+		<br>
+		<i>Hint: break the problem down into pieces:
+		<ol>
+			<li> First, draw the grid.
+			<li> Then ask the user for the coorinates.  
+			<li> Move the turtle to those coordinates.
+			<li> Write to the screen.
+			<li> Then ask the user to hit the enter key.
+			<li> Next, move the turtle to the left.
+			<li> Write to the screen.
+		</ol>
+		See <a href="../../cmp230/s15/lab4.html">Lab 4</a> for an example of a multi-part program with turtles.</i>		
+		
+		
+	
+<a id="set4"></a>
+<hr>
+
+
+	<!--This set focuses on simple string manipulation:-->
+
+	<li > <b>Due Date: 9 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+	Write a program that asks the user for a string and then prints it out in all upper case and then all lower case.  
+	Here is a sample run of the program: 
+	<pre>Please enter a string:  Look behind, look here, look ahead
+You entered (shouting):  LOOK BEHIND, LOOK HERE, LOOK AHEAD
+But better (whispering): look behind, look here, look ahead
+</pre>			
+
+		
+	<li > <b>Due Date: 10 March</b>  <b style="float:right">Reading: Chapter 5</b><br>		
+
+		Modify the <tt>encode.py</tt> program from <a href="lab5.html">Lab 5</a>
+		to use an offset entered by the user to encrypt the message.  The program in the lab encrypts each character by shifting 1 place ahead in the alphabet.  Your program should ask the user for the offset and encrypt their string by replacing each character by one that is <i>offset</i> places ahead in the alphabet.	
+		<p>
+		A sample of Caesar cipher disk (from <a href="http://en.wikipedia.org/wiki/Caesar_cipher">en.wikipedia.org/wiki/Caesar_cipher</a>) with an offset of 13 (that is, every letter in plain text goes to one 13 letters to its right):<br>
+		<img src="../../cmp230/f14/Ciphrdsk.gif"> 	
+	
+	
+	<li > <b>Due Date: 11 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+		Implement the following piece of pseudocode as a complete program:
+		
+		<pre>
+    1.  Prompt the user to enter a string and call it s.
+    2.  Let l be the length of s.
+    3.  For i from 0 upto l-1:
+    4.     print s[0:i]
+    5.  For i from 0 upto l-1:
+    6.     print s[i:l]
+    5.  Print a closing statement
+		</pre>
+		Here is a sample run of the program:
+		<pre>Enter string: a man a plan a canal panama
+		
+a 
+a
+a m
+a ma
+a man
+a man 
+a man a
+a man a 
+a man a p
+a man a pl
+a man a pla
+a man a plan
+a man a plan 
+a man a plan a
+a man a plan a 
+a man a plan a c
+a man a plan a ca
+a man a plan a can
+a man a plan a cana
+a man a plan a canal
+a man a plan a canal 
+a man a plan a canal p
+a man a plan a canal pa
+a man a plan a canal pan
+a man a plan a canal pana
+a man a plan a canal panam
+a man a plan a canal panama
+ man a plan a canal panama
+man a plan a canal panama
+an a plan a canal panama
+n a plan a canal panama
+ a plan a canal panama
+a plan a canal panama
+ plan a canal panama
+plan a canal panama
+lan a canal panama
+an a canal panama
+n a canal panama
+ a canal panama
+a canal panama
+ canal panama
+canal panama
+anal panama
+nal panama
+al panama
+l panama
+ panama
+panama
+anama
+nama
+ama
+ma
+a		
+
+Thank you for using my program!</pre>
+
+
+
+
+
+	<li > <b>Due Date: 12 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+		Write a program that prompts the user to enter 5 lines of text and then outputs the total number of characters that they entered.
+		
+		<p>
+		Here is a sample interaction:
+		<pre>Enter line: Sing me no song, read me no rhyme
+line character count is 33
+Enter line: Don't waste my time, show me!
+line character count is 29
+Enter line: Don't talk of June, don't talk of fall
+line character count is 38
+Enter line: Don't talk at all!
+line character count is 18
+Enter line: Show me!
+line character count is 8
+The number of characters entered is: 126
+		</pre>	
+
+	
+	<li > <b>Due Date: 16 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that prompts the user to enter a list of names.  Each person's name is separated from the next by a semi-colon (`;') and the names are entered <tt>lastName, firstName</tt>.  Your program should then print out the names, one per line, with the first names first followed by the last names.
+		
+		Here is a sample interaction:
+		<pre>Please enter your list of names:  Falcon, Claudio; Ford, Eric; Owen, Megan; Rogers, Josh; St. John, Katherine
+		
+You entered:
+
+Claudio Falcon
+Eric Ford
+Megan Owen
+Josh Rogers
+Katherine St. John
+		
+Thank you for using my name organizer! 
+		</pre>	
+
+		<br>
+		<i>Hint:  Do this problem in parts:  first, split the list by person (what should the delimiter be?).  Then, split each of person's name into first and last name (what should the delimiter be here?).
+		</i>
+		
+		
+
+
+<a id="set5"></a>
+<hr>
+
+	 <!-- This set focuses on files and accumulators: -->
+
+	<li > <b>Due Date: 17 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+		
+		Write a program that asks the user for the name of a text file, and then prints to the screen each of the lines in the file in upper case letters.
+	
+		<p>For example, if your text file contained:
+<pre>
+Input:  first, get the input
+Process:  then do the calculations
+Output:  and last, print the results
+!!!
+</pre>
+		<p>Then a sample run of your program would look like:
+<pre>
+Please enter your file name:  myFile.txt
+
+Your file in upper case letters is:
+INPUT:  FIRST, GET THE INPUT
+PROCESS:  THEN DO THE CALCULATIONS
+OUTPUT:  AND LAST, PRINT THE RESULTS
+!!!
+</pre>
+	
+	
+		<br>
+		<i>Hint:  see the note about accumulators after Problem #9, Problem #19 and <a href="../../cmp230/s15/lab6.html">Lab 6</a>.</i>	
+	
+
+
+	<li > <b>Due Date: 18 March</b>  <b style="float:right">Reading: Chapter 5</b><br>		
+		
+
+	
+		Write a program that asks the user for the name of a text file, and then prints to the screen the lengths of each of the lines.
+		
+		<p>For example, if your text file contained:
+				
+<pre>Sing me no song, read me no rhyme
+Don't waste my time, show me!
+Don't talk of June, don't talk of fall
+Don't talk at all!
+Show me!
+		</pre>	
+<p>Then a sample run of your program would look like:
+				<pre>Enter file name: song.txt
+				
+Line character count is 33
+Line character count is 29
+Line character count is 38
+Line character count is 18
+Line character count is 8
+		</pre>	
+
+		
+		
+		<br>
+		<i>Hint:  what kind of value are you accumulating?  See Problem #19 and <a href="../../cmp230/s15/lab6.html">Lab 6</a>.</i>
+
+	
+
+	
+	<li > <b>Due Date: 19 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+		Write a program that asks the user for the name of a text file, and then prints to the screen the first character in each line.
+		
+		<p>For example, if your text file contained:
+<pre>
+Input:  first, get the input
+Process:  then do the calculations
+Output:  and last, print the results
+!!!
+</pre>
+		<p>Then a sample run of your program would look like:
+<pre>
+Please enter your file name:  myFile.txt
+
+The first letters of the lines in your file are:
+I
+P
+O
+!
+</pre>
+
+
+
+	<li > <b>Due Date: 20 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+
+		Write a program that asks the user for the name of a file.  You may assume that every line of the contains a single floating point number.
+		Your program should print out the sum of the numbers in the file.
+
+		<p>For example, if your file contained:
+<pre>
+8.0
+-2.5
+100.0
+6.5
+</pre>
+		<p>Then a sample run of your program would look like:
+<pre>
+Please enter your file name:  nums.txt
+The sum of your numbers is 112.0.
+</pre>
+
+		<br>
+		<i>Hint:  see Problem #8 and <a href="../../cmp230/s15/lab6.html">Lab 6</a>.</i>
+
+
+
+
+	<li > <b>Due Date: 23 March</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+
+		
+
+		Write a program that asks the user for the name of a file.  You may assume that every line of the contains floating point numbers separated by commas.
+		Your program should print out the sum of the numbers in the file.
+
+		<p>For example, if your file contained:
+<pre>
+-2.5, 2.0
+8.0
+100.0, 3.0, 5.1, 3.6
+6.5
+</pre>
+		<p>Then a sample run of your program would look like:
+<pre>
+Please enter your file name:  nums.txt
+The sum of your numbers is 125.7.
+</pre>
+
+		<br>
+		<i>Hint:  first sum up a single line, and then extend to an entire file.  See <a href="../../cmp230/s15/lab6.html">Lab 6</a>.</i>
+
+
+<a id="set6"></a>				
+<hr>	
+
+
+	<li > <b>Due Date: 24 March</b>  <b style="float:right">Reading: Chapter 5</b><br>
+	
+		Write a program that asks the user for a list of prices of items purchased and 
+		prints out each price and the total, formatted nicely. Here is a 
+		sample run of the program:
+		<pre>
+Please enter the prices:  2.34, .99, 100, 81.05, 90
+		
+Your receipt:
+         2.34
+         0.99
+       100.00
+        81.05
+        90.00
+----------------
+Total: 274.38	</pre>
+		<i>Hint:  use the <tt>format()</tt> statement discussed in Chapter 5.</i>
+	
+	
+	<li > <b>Due Date: 25 March</b>  <b style="float:right">Reading: Chapter 5</b><br>		
+	
+		Write a program that asks the user for a name of a file and then prints to 
+		the screen the number of characters and lines in the file.
+		Hint:  see <a href="../../cmp230/s15/lab6.html">Lab 6.</a>
+
+
+	<li > <b>Due Date: 26 March</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+
+		Write a program that asks the user for the name of a file and a line length.
+		Your program should then "wrap" all lines that are longer than line length,
+		and print the result on the screen.
+		For example, if the file contains:
+		<pre>
+01234567890123456789012345
+This line has more than 20 characters.
+This one has less 
+And this one has lots, lots, lots, more than 20 characters!
+		</pre>
+		and the user entered the length of 20, all lines longer than 20 would 
+		be wrapped to the next line:
+		<pre>
+01234567890123456789
+012345	
+This line has more t
+han 20 characters.
+This one has less 
+And this one has lot
+s, lots, lots, more than 20 characters!
+		</pre>
+		Hint:  break the problem in to parts:  first write a program that will print lines
+		from a file to the screen (see <a href="../../cmp230/f14/lab6.html">Lab 6<a>).  Then modify 
+		your initial program to only print lines up to the length entered.  And, to finish
+		the program, then add in the code that prints lines that are longer than the length 
+		entered.
+
+
+	<li > <b>Due Date: 30 March</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+	
+		Write a program that asks the user for the name of file of addresses and a name of an output file.  Your program should replace all occurrences of "NY" with "New York", all occurrences of "NJ" with "New Jersey", and all occurrences of "CT" with "Connecticut" and write the results to the output file.
+		For example, if the input file contains:
+		<pre>
+from wikipedia:
+NY-NJ-CT Tri-State Area
+The NY metropolitan area includes the most populous city in the United States
+(NY City); counties comprising Long Island and the Mid- and Lower Hudson Valley
+in the state of New York; the five largest cities in NJ and their vicinities;
+six of the seven largest cities in CT and their vicinities; and five counties in
+Northeast Pennsylvania.
+		</pre>
+		Then the output file should be:
+		<pre>
+from wikipedia:
+New York-New Jersey-Connecticut Tri-State Area
+The New York metropolitan area includes the most populous city in the United States
+(New York City); counties comprising Long Island and the Mid- and Lower Hudson Valley
+in the state of New York; the five largest cities in New Jersey and their vicinities; 
+six of the seven largest cities in Connecticut and their vicinities; and five counties in 
+Northeast Pennsylvania.
+		</pre>
+		<i>Hint:  do each replacement one-by-one, that is, first get your program to replace all the "NY"s with "New York"s and then go on to the next states.
+		</i>	
+
+
+
+	<li > <b>Due Date: 31 March</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+		Write a program that asks the user for a file containing a list of items to be completed
+		and a name for an output file.  Your program should then write the list, with item numbers
+		to the output file.  For example, if the input file is:
+<pre>
+Finish my python homework.
+Buy milk.
+Do laundry.
+Update webpage.
+</pre>
+		Then the output file would be:
+<pre>
+1.  Finish my python homework.
+2.  Buy milk.
+3.  Do laundry.
+4.  Update webpage.
+</pre>
+
+
+<a id="set7"></a>
+<hr>
+
+	<li > <b>Due Date: 1 April</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+
+		Modify the program from <a href="lab7.html">Lab 7</a> to include addresses in the file.
+		The database has an additional attribute, <tt>address</tt>, and information can be included 
+		using the following format:
+		<pre>
+insert into customer (first, last, address) values ('FirstName', 'LastName', 'Address')</pre>
+		A sample input file is <a href="../f14/mayorsAddresses.txt">mayorsAddresses.txt</a>.
+
+	<li > <b>Due Date: 2 April</b>  <b style="float:right">Reading: Chapter 5</b><br>	
+		Modify the program from <a href="lab7.html">Lab 7</a> to input a comma separated value (CSV) 
+		file and output a file where all fields are separated by tabs.  That is, replace all 
+		commas in the file by TABs.
+		<br>(Hint:  See the list of string functions on p 140 of the textbook.)
+
+
+
+	<li > <b>Due Date: 13 April</b>  <b style="float:right">Reading: Chapter 5</b><br>
+
+	   <i>(From Chapter 6, #1, Page 196)</i> Write a program to print the lyrics of the song "Old MacDonald." Your 
+        program should print the lyrics for five different animals, similar to the example verse below. 
+        <pre>
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	   And on that farm he had a <span class="italicRed">cow</span>, Ee-igh, Ee-igh, Oh!
+	   Whith a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> here and a <span class="italicPink">moo</span>, <span class="italicPink">moo</span> there.
+	   Here a <span class="italicPink">moo</span>, there a <span class="italicPink">moo</span>, everywhere a <span class="italicPink">moo</span>, <span class="italicPink">moo</span>.
+	   Old MacDonald had a farm, Ei-igh, Ee-igh, Oh!
+	</pre>
+	<i>Hint: use a function with two input parameters one for the animal and the other for the related sound.
+	</i>
+
+
+	<li > <b>Due Date: 14 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+
+	
+	<a href="lab8.html">Lab 8</a> focuses on top-down design; that is, beginning with an outline for the <tt>main()</tt> and filling in the  function definitions.
+	Fill in the missing function definitions for this program:
+	<pre>
+from turtle import *
+def main():
+	myWin = turtle.Screen()     		#The graphics window
+	tristan = turtle.Turtle()		#Tristan will be our turtle for this program
+	drawStem(tristan)			#Draw a green stem 	
+	for i in range(20):
+		drawPetal(tristan,"blue")	#Draws a blue petal for our flower
+		drawPetal(tristan,"purple")	#Draws a purple petal for our flower
+	myWin.exitonclick()         		#Close the window when clicked	
+	</pre>
+	That is, write the functions <tt>drawStem()</tt> and <tt>drawPetal()</tt>.  Include all functions, including the <tt>main()</tt> above in the file you submit.
+	Sample output of the program:<br>
+	<img src="../../cmp230/f14/flower.jpg">	
+	<p >
+	(Note:  you can change the color that your turtle, using the function, <tt>color()</tt>.
+	For example, if you turtle is called <tt>tess</tt> to change it's color in <tt>stringColor</tt>,
+	write <tt>tess.color(stringColor)</tt>.)
+
+
+	<li > <b>Due Date: 15 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+
+		Following <a href="../../cmp230/s15/lab7.html">Lab 8</a>, fill in the missing function definitions for this program:
+<pre>
+def main():
+    welcome()             #Prints "Welcome" to the screen
+    age = userInput()     #Ask the user for their age and return number entered
+    y = calculate(age)    #Using age, calculates year born
+    displayResults(age,y) #Prints age and birth year
+
+main()
+</pre>
+  		
+(That is, write the functions <tt>welcome()</tt>, <tt>userInput()</tt>, <tt>calculate()</tt> and <tt>displayResults()</tt>.) Submit a .py file containing all four functions you wrote, in addition to the main() function above.	
+
+
+
+<a id="set8"></a>
+<hr>      
+     
+	<li > <b>Due Date: 16 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+	Write a function that takes as a parameter a list of strings and returns a list containing 
+	the lengths of each of the strings. That is, if the input parameter is <tt>["apple pie", "brownies","chocolate","dulce de leche","eclairs"]</tt>, your function should return <tt>[9, 8, 9, 14, 7]</tt>.
+	The file you submit should include a <tt>main()</tt> function that demonstrates that your
+	function works.
+
+	<p>
+	<i>Hint:  This problem can be approached as an "accumulator", where we accumulate lists:
+
+<table border="1">
+	<tr><td></td><th>Running sums:</th><th>Running products:</th><th>Accumulating Strings:</th><th>Accumulating Lists:</th></tr>
+	
+	<tr><td>Initialization:</td><td>sum = 0</td><td>prod = 1</td><td>s = ""</td><td>li = [] </td></tr>
+	<tr><td>Update Action:</td>
+		<td>for ...<br>
+    		&nbsp;&nbsp;sum = sum + newValue</td>
+    	<td>for ...<br>
+    		&nbsp;&nbsp; prod = prod * newValue</td><td>for ...<br>&nbsp;&nbsp;s = s + newValue</td>
+    		<td>for ...<br>&nbsp;&nbsp;li.append(newValue)</td>
+    		</tr>	
+</table>
+		</i>
+		<br>	
+	
+	
+	<li > <b>Due Date: 17 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+	
+		Write a function that takes as a parameter a list of strings and returns a list containing the each string capitalized as a title. That is, if the input parameter is <tt>["apple pie", "brownies","chocolate","dulce de leche","eclairs"]</tt>, your function should return <tt>["Apple Pie", "Brownies","Chocolate","Dulce De Leche","Eclairs"]</tt>.  The file you submit should include a <tt>main()</tt> function that demonstrates that your function works.
+		
+				
+		<p><i>Hint:  See problem above.</i>	
+
+	<li > <b>Due Date: 20 April</b>  <b style="float:right">Reading: Chapter 6</b><br>
+
+		Write a function that takes as a parameter a list of numbers and returns a list containing each number squared.  That is, if the input parameter is <tt>[3,-1,0,2,10]</tt>, your function should return <tt>[9,1,0,4,100]</tt>.  The file you submit should include a <tt>main()</tt> function that demonstrates that your function works.
+
+
+	<li > <b>Due Date: 21 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		The program <a href="../../cmp230/f14/turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="http://learn.code.org/s/1/level/23">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
+		<ul>
+			<li> 'F':  moves the turtle forward
+			<li> 'L':  turns the turtle 90 degrees to the left
+			<li> 'R':  turns the turtle 90 degrees to the right
+			<li> '^':  lifts the pen
+			<li> 'v':  lowers the pen
+		</ul>
+		For example, if the user enters the string "FLFLFLFL^FFFvFLFLFLFL", the turtle would move forward and then turn left.  It repeats this 4 times, drawing a square.  Next, it lifts the pen and move forward 3, puts the pen back down and draw another square.
+		
+		<p>
+		Modify this program to allow the user also to specify with the following symbols:
+		<ul>
+			<li> 'B':  moves the turtle backwards
+			<li> 'r':  change the pen color to red			
+			<li> 'g':  change the pen color to green
+			<li> 'b':  change the pen color to blue
+		</ul>		
+
+		<p>Submit your modified program (including a comment at the top of the program with your name).
+
+	
+	
+	
+	<li > <b>Due Date: 22 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Define a Python function named <tt>calculate_tax()</tt> which accepts one parameter, <tt>income</tt>, and returns the income tax.  Income is taxed according to the following rule:  the first $250,000 is taxed at 40% and any remaining income is taxed at 80%.
+		For example, <tt>calculate_tax(100000)</tt> should return $100,000 * 0.40 = $40,000, while <tt>calculate_tax(300000)</tt> should return 
+		$250,000 * 0.40 + 50,000 * 0.80 = $140,000.
+	
+		<p> In your file, you should include a <tt>main()</tt> that calls your function several times to demonstrate that it works.
+	
+
+
+
+<a id="set9"></a>
+<hr>
+
+	<li > <b>Due Date: 23 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+	
+		Write a <b>function</b> that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare. 
+		<ul>
+			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23. 
+			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
+			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
+			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23. 
+			<li> If the zone is 4 and the ticket type is "adult", the fare is 46. 
+			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+
+		<p> You should include in the file a <tt>main()</tt> that calls your function
+		several times to demonstrate that it works.
+
+	<li > <b>Due Date: 24 April</b>  <b style="float:right">Reading: Chapter 7</b><br>
+
+		Write a function that takes number between 1 and 7 as a parameter and prints out the corresponding number as a string.  For example, if the parameter is 1, your function should print out <tt>one</tt>.  If the parameter is 2, your function should print out <tt>two</tt>, etc.
+
+		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.	
+	
+
+
+	<li > <b>Due Date: 27 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		The program <a href="../../cmp230/f14/lotsOfErrors.py">lotsOfErrors.py</a> has lots of errors.  Fix the errors and sumbit the modified program.
+		<br><i>Hint:  see end of <a href="../../cmp230/s15/lab9.html">Lab 10</a>.</i>
+
+
+	<li > <b>Due Date: 29 April</b>  <b style="float:right">Reading: Chapter 8</b><br>
+
+		Write a program that asks the user to enter a number between 0 and 1000, inclusive (that is, including the end points 0 and 1000). If they enter a number out of range, print a message that the number is out of range and prompt them again for a number between 0 and 1000, inclusive. When the user enters a number in range, print the number to the screen and end the program.
+
+
+
+	
+		
+	<li > <b>Due Date: 30 April</b>  <b style="float:right">Reading: Chapter 8</b><br>	
+
+
+		Write a program that reads in a text file, <tt>infile.txt</tt>, and prints out all the lines in the file to the screen until it encounters a line with fewer than 5 characters. Once it finds a short line (one with fewer than 4 characters), the program stops.		
+	
+
+		
+<a id="set10"></a>
+<hr>
+
+
+	<li > <b>Due Date: 4 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+		Modify the  program from <a href="../../cmp230/s15/lab9.html">Lab 10</a> that plays tic-tac-toe to check that the user chooses an empty square.  Your program should ask the user for coordinates of where to play.  While their choice of square if filled, you should continue to ask them until they choose an empty square.  When the choose an empty square, the program continues as before.	
+
+
+	<li > <b>Due Date: 5 May</b>  <b style="float:right">Reading: Chapter 8</b><br>
+	
+		Modify the  program from <a href="../../cmp230/s15/lab12.html">Lab 11</a> to stop when the turtle wanders more than distance 100 from the starting point.  The current program uses a definite loop to always move 500 steps.  Change the program to use an indefinite loop that tests how far the turtle is from the origin.  When that distance exceeds 100, your program should stop.
+		<br>
+		<i>Hint:  You only need to change the <tt>main()</tt> function of the exisiting program.</i>	
+		
+	<li> <b>Due Date: 7 May</b>  <b style="float:right">Reading: Chapter 8</b><br>	
+	
+		Modify the  program from <a href="lab12.html">Lab 12</a> to ask the user for the number of chains (turtles) that your simulation should show.  
+		If the use user enters a negative number, your program should repeatedly ask the user for a positive number of turtles.  Once they have entered the number of turtles, your program should then show that many chains (turtles) on the drawing screen.
+		
+		<br>
+		<i>Hint:  You only need to change the <tt>main()</tt> function of the exisiting program.</i>
+		
+	
+
+
+	<li> <b>Due Date: 11 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+
+		Modify the  program from <a href="lab13.html">Lab 13</a> that processes name files from the Social Security Admininstration.  Your program should ask the user for a file name and a minimum name length and then
+		print out the first name that is at least that length and then stop.
+		
+		<p>For example, the input file <a href="../f14/NY.TXT">NY.TXT</a> starts out:
+		<pre>
+ NYF1910Mary,1922
+ NYF1910Helen,1290
+ NYF1910Rose,990
+ NYF1910Anna,951
+ NYF1910Margaret,926
+ NYF1910Dorothy,897
+ NYF1910Ruth,712
+ NYF1910Lillian,648
+ NYF1910Florence,604
+ NYF1910Frances,589
+ NYF1910Elizabeth,579
+ NYF1910Mildred,562
+		</pre>
+		Here a two sample runs of the program:
+		<pre>
+Please enter the file name: NY.txt
+Please enter the minimum length: 5
+The first name with length 5 or more is:  Helen
+Thank you for using my name length searching program!
+		</pre>
+		and
+		<pre>
+Please enter the file name: NY.txt
+Please enter the minimum length: 9
+The first name with length 9 or more is:  Elizabeth
+Thank you for using my name length searching program!		
+		</pre>		
+		
+		<p><i>Hint:  The program from the lab looks at every line of the file, but this program is a bit different in that it stops after it finds a long enough name.  To do this, you need to change the loop to an indefinite loop (i.e. a <tt>while</tt> loop) or figure out how to <tt>break</tt> out of a definite loop (i.e. the <tt>for</tt> loop).</i>
+
+	<li> <b>Due Date: 12 May</b>  <b style="float:right">Reading: Chapter 13</b><br>
+		
+		Modify the selectionSort (from Chapter 13 of the book or Zelle's website) to sort lists of numbers backwards. For example, the list, [125,4,145,59,168,34,14,42], should be sorted as: [168,145,125,59,42,34,14,4].
+		In your submitted file, include a main() function that demonstrates that the sort algorithm works.
+
+		<i>Hint: See <a href="../../cmp230/s15/lab11.html">Lab 14.</a></i>
+	
+
+</ol>
+
+
+</div>
+
+<div>
+Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
+
+	<p>
+	<img src="http://imgs.xkcd.com/comics/python.png">
+</div>
+
+
+<div>
+<i style="float:right">(This file was last modified on 5 May 2015.)</i><br>

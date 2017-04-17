@@ -1,0 +1,139 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #3, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #3</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b>  Binning Data & Measuring Dispersion; NYC Collision Data<br>
+<b>Deadline:</b>  Thursday, 25 February 2016, 10:30am 
+</div>
+
+
+
+<div>
+<h3>New York City Collision Data</h3>
+
+<p>
+This assignment uses collision data collected and made publicly by 
+<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+<blockquote>
+<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+</blockquote>
+
+<p>For this assignment, you will need to download two different data sets:
+<ol>
+	<li> <b>Collisions on your birthday</b>:  Using the "Filter" option, choose your birthday in 2015 and "Export" (in CSV format) all collisions for that day.
+	<li> <b>Collisions for a zip code</b>:  Pick a zip code for somewhere in New York City (if you cannot think of one, you can use "10468" which is the zip code for the area including Lehman College).  Filter with this zip code and export this file also as a CSV file.
+</ol>
+
+<p>
+We will use these data sets for later homework assignments.  Since scraping the data takes time, save these data sets to use again for the future programs.
+</div>
+
+<div>
+<h3>CSV Data Files</h3>
+
+CSV files store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
+<pre>
+02/01/2016,0:09,BRONX,10465,40.8341548,-73.8174815,"(40.8341548, -73.8174815)",BARKLEY AVENUE,DEAN AVENUE,,0,0,0,0,0,0,0,0,Driver Inattention/Distraction,Driver Inattention/Distraction,,,,3381301,PASSENGER VEHICLE,PASSENGER VEHICLE,,,
+</pre>
+<p>
+All lines are formatted similarly: they start with the date, then time, the borough, zip code, latitude and longitude, and also include cross streets, types of vehicles involved, number of injuries/fatalities, and possible cause.  The first line of the file gives the entries in the order they occur in the rows. 
+
+<p>
+The sample entry above gives details for a crash that occurred just past midnight at the corner of Barkley and Dean Avenues.  There were no injuries and two passenger vehicles were involved.  The probable cause was driver inattention on the part of both drivers.  Each entry also includes a unique key that can be used to look up the report of the incident.
+
+<p>
+The textbook has a nice explanation (p 107 & <a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/getting_data.py">sample code, line 161</a>) of using the CSV module.  You should use that as a basis for the programs below that take CSV files as input.
+
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+ 
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+
+
+<tr>
+<th>#1-2</th>
+<td colspan=2>
+Using the birthday data set (see above), display a histogram of the number of collisions that occur each hour.  That is, your x-axis will have the hours from 0 to 23 and the y-axis will be the number of collisions.   
+Make sure to include in the title of your plot the date plotted. <br><br>
+#1:  Submit your Python program as a <b>.py</b> file.<br>
+#2:  Submit a screen shot of the graphics window containing the plot.<br> 
+<br><br>
+Hint:  In this file, times of collisions are stored as "HH:MM".  To get the hour to use a key for your dictionary, you can slice up the time string.  If times are stored in the list <tt>time</tt>, <tt>time[i][:2]</tt> will give the first two characters (i.e. those that store the hour part of time) of the ith entry.
+</td>
+</tr>
+
+<tr>
+<th>#3-4</th>
+<td>
+Using the birthday data set, display the fraction of collisions that occur in the Bronx each hour.  That is, for 0 (midnight to just before 1am), you should have as your y-value the fraction of: collisions that occurred in the Bronx at hour 0 over collisions across the whole city that occurred at hour 0.<br><br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot.
+<br><br>
+Hint:  To extract parts of a field, for example to find out the hour of a time written as "H:MM" or "HH:MM", you can first find the location of the ":" in the string and then use it.  For example, if <tt>timeString</tt> holds the string, 
+then <tt>c = timeString.find(":")</tt> finds the location, and <tt>hour = int(timeString[:c])</tt> will give the hour as an integer.
+
+</td>
+<td>Using the binned data from #1, compute the mean and variance of hour that collisions occur.
+<br><br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit the output of your python program as a text file or screen shot of the shell output.<br> 
+
+</tr>
+
+<th>#5-6</th>
+<td colspan=2>
+Using the zip code data set (see above), display a histogram of the number of collisions that occur each month.  That is, your x-axis will have the numbers from 1 to 12 representing the months of the year and the y-axis will be the number of collisions.
+Make sure to include in the title of your plot the zip code plotted. <br><br>
+#5:  Submit your Python program as a <b>.py</b> file.<br>
+#6:  Submit a screen shot of the graphics window containing the plot.  
+<br><br>
+Hint:  Since all dates occur in the same format:  "MM/DD/YYYY", you can extract the month from <tt>dateString</tt> by <tt>monthNum = int(dateString[:2])</tt>.
+</td>
+</tr>
+
+
+
+
+</table>
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

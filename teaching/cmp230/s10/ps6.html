@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 6 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "6." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol li {
+			margin-top: 25px;
+		}
+		ul li:before {
+			content: ""; 
+		}
+		ul li {
+			margin-top: 5px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 6</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 6: Transistion to Java.
+</p>
+
+<p>We will be using the <a href="http://eclipse.org">Eclipse</a> IDE to program 
+in Java.  A good reference on using 
+<a href="http://comet.lehman.cuny.edu/jung/cmp230/IntroEclipse.pdf">Eclipse</a>
+by Daniel Liang.
+Remember before starting a project to go to <tt>File -> Switch Workspace</tt>
+and change the workspace to your USB drive, so, that your work is saved on 
+your drive instead of the machine's hard drive.
+</p>
+
+<p>You should complete <b>200 points</b> worth of programs
+(with an additional 20 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+
+
+<li><b>Tutorial</b> (5 points)
+
+<p>
+To start today, open up Eclipse and work through the first tutorial,
+"Create a  Hello World Application".  It is on the terse side, but 
+you should end up with a program that says "Hello World" in the console.
+</p>
+</li>
+
+<li><b>Circles</b> (10 points)
+
+<p>If you haven't already done so, switch workspaces to be your USB
+drive.  Create a new project, <tt>Circles</tt>, which will be used for
+several projects.
+Next, import (<tt>File -> Import</tt>) the <tt>Circles</tt> files 
+from the book (available off the CD or off Blackboard).  Run the 
+program (you should see a new window with 3 colored circles) to make
+sure it was imported correctly.
+Modify your program to have 4 different <em>unfilled</em> circles.
+
+<li><b>Face</b> (15 points)
+
+<p>
+In the Circles project, copy the <tt>DrawCircles.java</tt> and 
+<tt>CirclePanel.java</tt> to new files called <tt>DrawFace.java</tt>
+and <tt>FacePanel.java</tt>.
+</p>
+
+<p>Use these new files to create a program that will display a 
+snowman.  Some useful things to keep in mind:
+<blockquote>
+	&bull The names of the file must match the names of the class contained
+		in them.<br>
+	&bull Other than changing the name (of file and class), you will not
+		have to change <tt>DrawFace.java</tt>.<br>
+	&bull Your face should be made up of at least 3 circles for eyes,
+		mouth, and outline.	
+</blockquote>
+
+<li><b>Bullseye</b> (10 points)
+
+<p>Modify the <tt>Bullseye</tt> program from the book (available from the
+CD or on Blackboard) so that:
+<blockquote>
+	&bull  the largest ring is white and the others alternatve accordingly, and</br>
+	&bull there are approximately twice as many rings that are each half as thin.</br>
+</blockquote>
+
+<li><b>Coins</b> (10 points)
+
+<p>Modify the <tt>CoinFlip</tt> program (available from the book or Blackboard)
+so that it allows up to 10,000 flips.
+
+<li><b>Random Circle</b> (10 points)
+
+<p>In your Circles project,  copy the <tt>DrawCircles.java</tt> and 
+<tt>CirclePanel.java</tt> to new files called <tt>DrawRandom.java</tt>
+and <tt>RandomPanel.java</tt>.
+Use these new files to create a program that will draw a single circle
+at a random location each time.  </p>
+
+<p>Hint:
+ Use the random number generator to generate the x and y coordinates
+		for your circle (an example of using random numbers can be found in
+		the Coin programs and the LineUp (StickFigure) programs.</p>
+		
+
+<li><b>Tails</b> (10 points)
+
+<p>Modify the <tt>CoinFlip</tt> program (available from the book or Blackboard)
+so that the <tt>Coin</tt> class uses an <tt>isTails</tt> method instead of
+<tt>isHeads</tt>.
+
+
+<li><b>Verify</b> (15 points)
+
+<p>Ex 6.1 (p 120):  Write a Java program containing a while loop that
+verifies that the user has entered a positive integer value.
+</p></li>
+
+<li><b>Odd Numbers</b> (15 points)
+
+<p>Ex 6.3 (p 120):  Write a Java program that uses a <tt>for</tt> loop
+to print out the odd numberes from 1 to 99, inclusive.
+</p></li>
+
+
+<li><b>Stick Figures</b> (10 points)
+
+<p>Using the <tt>StickFigure</tt> program from the book (available
+on Blackboard), do the following:</p>
+<blockquote>
+	&bull there are two rows of people, and</br>
+	&bull the tallest person is half of what it was before.</br>
+</blockquote>
+
+
+
+<li><b>Highest Number</b> (15 points)
+
+<p>Ex 6.4 (p 120):  Write a Java program that reads in 10 integer 
+values from the user and then prints the highest value entered.
+</p></li>
+
+
+
+<li><b>100 Circles</b> (15 points)
+
+<p>PP 6.1 (p 121): Using the <tt>LineUp</tt> and <tt>Circles</tt> classes from the book (available 
+from the CD or on Blackboard), create a Java program that draws 100 circles
+of random size, color, and location.  Ensure that in each case the entire
+circle appears in the visible area of the panel.</p>
+
+<li><b>3 Heads</b> (15 points)
+
+<p>PP 6.2 (p 121): Using the <tt>Coin</tt> class from this chapter, create
+a Java program that flips two coins until one of them comes up heads three
+times in a row. 
+
+<li><b>Parallel Lines</b> (10 points)
+
+<p>PP 6.3 (p 121):  Write a Java program that displays 20 horizontal,
+evenly spaced lines of random length.
+</p></li>
+
+<li> <b>Star</b> (15 points)
+
+<p>PP 6.6:  Create a class called <tt>Star</tt> that represents a five-pointed
+star of a particular size and color.  Then write a program that creates 
+and draws four stars of various sizes at different locations.
+</p>
+
+<li><b>Account</b> (25 points)
+
+<p>PP 6.7 (p 121): Create a class called <tt>Account</tt> that represents a 
+basic bank account, keeping track of the account balance and providing 
+methods to process deposits and withdrawls.  Print an error message if an
+attempt is made to withdraw more than the current balance.  Include a
+<tt>toString</tt> method that summarizes the state of the account.  Create
+a driver program that creates two <tt>Account</tt> objects and processes
+various transactions.
+<p></li>
+
+
+<li><b>Dice</b> (20 points)
+
+<p>PP 6.8 (p 121): Create a class called <tt>Die</tt> that represents a single
+six-sided die (as in the the singular of dice).  Then write a program that creates
+and rolls two <tt>Die</tt> objects 500 times, and counts how many times snake eyes
+(both dice showing 1) comes up.
+<p></li>
+
+
+
+
+
+
+
+
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 200 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 20 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

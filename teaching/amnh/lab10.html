@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 10, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Representing networks and trees; Adjacency Matrices and Adjacency Lists
+</div>
+
+<div>
+<h3>Adjacency Matrices</h3>
+
+<p>
+Can you get here from there?  Say you an airlines that flies:
+
+<ul>
+	<li> New York to/from Chicago
+	<li> New York to/from Houston
+	<li> Chicago to/from San Francisco
+	<li> Houston to/from San Fransisco
+</ul>
+Can you fly from New York to San Francisco?  Well, not directly, but it is possible if you change plans in Chicago or Houston.  We can represent this in a matrix with entries of 1 if there is a flight and 0 if there is not:
+<table border="1px">
+<tr>
+	<th></th><th>New York</th> <th>Chicago</th> <th>Houston</th> <th>San Jose</th>
+</tr>
+<tr>
+	<th>New York</th><td>1</td><td>1</td><td>1</td><td>0</td>
+</tr>
+<tr>
+	<th>Chicago</th><td>1</td><td>1</td><td>0</td><td>1</td>
+</tr>
+<tr>
+	<th>Houston</th><td>1</td><td>0</td><td>1</td><td>1</td>
+</tr>
+<tr>
+	<th>San Jose</th><td>0</td><td>1</td><td>1</td><td>1</td>
+</tr>
+</table>
+We're making the assumption that if you start in a city, you can stay in the city (i.e. there is a `self-loop' from New York to New York).  You can also model this without self-loops, depending on the application.
+
+<p>Let's use a dictionary so, we don't have to remember which index corresponds to which city:
+<pre>
+cityNum = {}
+cityNum["New York"] = 0
+cityNum["Chicago"] = 1
+cityNum["Houston"] = 2
+cityNum["San Jose"] = 3
+</pre>
+<p>
+Using <tt>numpy</tt>, the matrix (without labels):
+<pre>
+import numpy as np
+flights = np.zeros( (4,4) )
+
+flights[cityNum["NYC"],cityNum["Chicago"]] = 1
+flights[cityNum["NYC"],cityNum["Houston"]] = 1
+flights[cityNum["Chicago"],cityNum["NYC"]] = 1
+flights[cityNum["Chicago"],cityNum["NYC"]] = 1
+flights[cityNum["Houston"],cityNum["NYC"]] = 1
+flights[cityNum["Houston"],cityNum["San Jose"]] = 1
+flights[cityNum["San Jose"],cityNum["Chicago"]] = 1
+flights[cityNum["San Jose"],cityNum["Houston"]] = 1
+
+#Create the self-loops:
+for i in range(4): flights[i,i] = 1
+</pre>
+(complete program in <a href="flights.py">flights.py</a>).
+
+<p>We can reach San Francisco from New York by taking flights to an intermediary city (in this case, Chicago or Houston) and then continuing on.  That is:
+<blockquote>
+	There are flights: (NYC -> Chicago and Chicago -> San Jose) or (NYC -> Houston and Houston -> San Jose)
+</blockquote>
+
+In the matrix, we have existing flights as 1 and no flight as 0, so instead of the <tt>and</tt>, we can multiply and just check that sum is greater than 0 (the sum is non-zero only when one of the terms is, which happens exactly when there's flights via the intermediary cities):
+<blockquote>
+	(NYC -> Chicago * Chicago -> San Jose) + (NYC -> Houston * Houston -> San Jose) > 0
+</blockquote>
+
+<p>
+In terms of math, we are taking a vector of the outgoing flights from a city and combining it with a vector of the incoming flights to the next city.  This combination is called the <tt>dot product</tt>:
+<pre>
+	v dot w = v1*w1 + v2*w2 + ... vN*wN
+</pre>
+where the vectors are v = (v1, v2, ... vN) and w = (w1, w2,... wN).
+
+<p>
+In <tt>numpy</tt>, there is a built-in function for taking the dot product of matrices (often called `multiplying matrices', though the numpy matrix multiplication does something very different).
+
+<p>
+This is a lovely feature of using adjacency matrices to reprensent graphs.  If there is an edge from a to b and an edge from b to c, then a to c is non-zero in the matrix A.dot(A).  Why?  The i,jth element of the A.dot(A) is the dot product of the row indexed by i by the column index by j, which is:
+<blockquote>
+	A[i,0]*A[0,j] + A[i,1]*A[1,j] + A[i,2]*A[2,j] + ... + A[i,n-1]*A[n-1,j] 
+</blockquote>
+This entry is not zero, only when one of the terms of the sum is not zero (there's no cancelling since all distances are positive).  
+
+<p>
+The result of A.dot(A) is:
+<table border="1px">
+<tr>
+	<th></th><th>New York</th> <th>Chicago</th> <th>Houston</th> <th>San Francisco</th>
+</tr>
+<tr>
+	<th>New York</th><td>3</td><td>2</td><td>2</td><td>2</td>
+</tr>
+<tr>
+	<th>Chicago</th><td>2</td><td>3</td><td>2</td><td>2</td>
+</tr>
+<tr>
+	<th>Houston</th><td>2</td><td>2</td><td>3</td><td>2</td>
+</tr>
+<tr>
+	<th>San Francisco</th><td>2</td><td>2</td><td>2</td><td>3</td>
+</tr>
+</table>
+That is, we can get from every city to every other city (the values indicate the number of different ways to do so, including taking the 'self-loops' or empty flights).
+
+<p>
+Before continuing, let's draw the cities we have.  To do, we'll use <tt>basemap</tt> focused on the US (complete program in 
+<a href="flights.py">flights.py</a>).  In github, there is already a dictionary set up with entries for cities and there longitude and latitudes
+<a href="https://gist.github.com/ecarter/413343">major_us_city_dma_codes</a>.
+Instead of typing the coordinates in by hand, we will access the dictionary entries for each city we're mapping.
+
+<ol>
+	<li> Set up a dictionary with city names and coordinates from file.
+	<li> Set up a basemap with state boundaries.
+	<li> Include our flight table as a numpy array.
+	<li> Draw a marker on each city in the flights table.
+	<li> For each edge in the table, draw a great circle between the cities.
+	<li> <i>TO DO: Compute the cities that can be reached in two flights.</i>
+	<li> <i>TO DO: Draw the cities and great circles for those flights.</i>
+</ol>
+
+<p>
+Try the program and see how it works.
+<!--Convenient to set up functions for getting coordinates given a list of cities, as well for drawing the city markers and great circles.-->
+
+<p>
+
+
+<h4>Challenges</h4>
+
+<ul>
+	<li>  Add three additional cities to the <tt>flights</tt> table.  Not all cities appear in the <a href="https://gist.github.com/ecarter/413343">major_us_city_dma_codes</a> file, so, make sure to choose cities that do.  Add in extra flights between the cities (only modifying the <tt>flights</tt> and <tt>cityNum</tt> data structures) and display.
+	<li>  Change your program so it displays all cities that can be reached in 3 or fewer flights (i.e. use <tt>flights.dot(flights).dot(flights)</tt> instead of <tt>flights</tt> for your edges between cities).
+	<li>  You have frequent flier miles that allow you to fly on many, but not all flights on a certain airlines.  Can you fly from New York to Portland using only flights from the listed in <a href="cityPairs.txt">cityPairs.txt</a>?  Use your program from above to answer the question.
+	<br>
+	<i>Hint:  If you find entering all the city-pairs by hand into the <tt>flights</tt> table tedious, assign numbers to each city (either by reading in the file and using those or setting by hand), then read in the file line-by-line and set <tt>flights[c1,c2] = 1</tt> if <tt>c1</tt> and <tt>c2</tt> occur together on the line.</i>
+</ul>
+</div>
+
+<div>
+<h3>Adjacency Lists</h3>
+
+<p>
+A good use of adjacency lists is for storing sparsely populated graphs, such as trees.  In this part of the lab, we will write a function that prints out all the leaves in a clade of a tree.
+
+<p>
+It is not hard, but a bit tedious, to parse a tree in Newick format (since you need to worry about extra spaces, names of more than one character, etc.).  The file <a href="adjTrees.py">adjTrees.py</a> has a tree already stored as an adjacency list in the dictionary <tt>tree</tt>.  Pictorally, the tree is:
+<br>
+<p>
+<img src= "vertEvolTree.png">
+<br>
+(<a href="http://paleobiology.si.edu/dinosaurs/interactives/tree_life/tree.html">Image from Smithsonian Institute</a>)
+<p>
+The entries in our dictionary have the following structure:
+<pre>
+	(parentName,[child1,child2,...])
+</pre>
+If there are no children, the last part of the tuple is an empty list.
+
+<p>
+The goal of this part of the lab is to write a function that given a vertex name, <tt>v</tt>, to print out all leaves below it.  Let's break this into parts:
+
+<pre>
+printLeaves(v):
+    If v is a leaf, print out v
+    Else, for each child of v, printLeaves(child)
+</pre>
+
+Let's translate that into Python:
+<pre>
+def printLeaves(v):
+    if len(adjList[v][1]) == 0:
+    	print v
+	else:
+	    for child in adjList[v][1]:
+	        printLeaves(child)
+</pre>
+
+<p>Try running the program <a href="adjTrees.py">adjTrees.py</a>.
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> Using the program as a template, write a function that returns the <b>number</b> of leaves beneath a vertex.  
+	<li> Using the program as a template, write a function that returns the <b>height</b> of vertex (i.e. how many levels of the tree are above it, or the length of the path to the leave farthest away).
+	<br>
+	<i>Hint:  First think about what level a leave is at, and then what level a parent is, given the height of its children.</i>
+</ul>
+
+</div>
+
+
+
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  13 April 2016<br>
+Title:  Lab 10:  Representing Networks and Trees<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

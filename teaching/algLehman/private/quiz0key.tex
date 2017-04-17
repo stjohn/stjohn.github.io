@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{center}
+	{Answer Key for Quiz 0}\\
+	{CMP 761: Analysis of Algorithms}\\
+	{3 September 2002}
+\end{center}
+
+
+
+Name: \underline{\hspace{ 3 in}}
+
+Student ID (Social Security Number): \underline{\hspace{1in}}
+
+\bigskip
+Write your answer to each on a separate piece of paper.  Staple your
+answer sheets to this sheet when you turn in the quiz.
+\bigskip
+\begin{enumerate}
+  \item Prove for all natural numbers $n$ that:
+	\[
+		\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+	\]
+\bigskip
+{\tt
+  This can be done in several different ways.  One way to prove this is by 
+  induction on $n$:
+
+  \underline{Base Case:} $n=1$.\\
+     When $n =1$, the left hand side 
+     evaluates to 1 as does the right hand side ($\frac{1(1+1)}{2} = 1$).
+     So, the equation holds for $n=1$.
+
+  \underline{Inductive Step:} $n > 1$.\\
+     Assume true for $n$, and then show true for $n+1$.
+     Starting with the left hand side:
+	$$
+	\begin{array}{rcll}
+		\sum_{i=1}^{n+1} i & = & (n+1) + \sum_{i=1}^{n} i &\\
+			& = & (n+1)  + \frac{n(n+1)}{2} & \mbox{(by IH)}\\
+			& = & \frac{2(n+1)}{2} + \frac{n(n+1)}{2} & \\
+			& = & \frac{2(n+1)+n(n+1)}{2} & \\
+			& = & \frac{2n+2+n^2+n)}{2} & \\
+			& = & \frac{n^2 + 3n + 2}{2} & \\
+			& = & \frac{(n+1)(n+2)}{2} & \\
+			& = & \frac{(n+1)((n+1)+1)}{2} & \\
+	\end{array}
+	$$
+  So, the equation holds for $n+1$, assuming it holds for $n$.
+
+  Thus, by the principle of induction, for all natural numbers $n$,
+	\[
+		\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+	\]
+}
+
+\bigskip
+	
+  \item Write (in pseudo-code) an algorithm that sorts a list of $n$
+	numbers.
+	
+	\bigskip
+	(More formally, design an algorithm for the following:\\
+	{\bf Input:} A sequence of $n$ numbers $\{A[1],A[2],\ldots,A[n]\}$.\\
+	{\bf Output:} A reordering $\{A'[1],A'[2],\ldots,A'[n]\}$
+		of the input sequence such that
+		$A'[1] \leq A'[2] \leq \cdots \leq A'[n]$.)
+\end{enumerate}
+
+{\tt Again, there are many different answers to this question.  One possible
+way to sort the list would be a bubble sort:
+
+\begin{verbatim}
+  for (i = 0; i < n; i++)
+  {
+    for (j=0; j < n-1; j++)
+    {
+      if (A[j] > A[j+1])
+      {
+         /* Swap the two elements */
+        tmp = A[j];
+        A[j] = A[j+1];
+        A[j+1] = tmp;
+      }
+    }
+  }
+\end{verbatim}
+
+}
+
+ \end{document}

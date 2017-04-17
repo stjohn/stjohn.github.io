@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+{\bf
+\begin{tabular}{c}
+	Name: \underline{\hspace{2.5in}}\\ \\
+	{\large Exam 2}\\
+        	CSc 75010: Theoretical Computer Science\\
+        	Graduate Center of CUNY\\
+	22 November 2002\\
+        	(Pink Version)
+\end{tabular}
+}
+\hfill
+\begin{tabular}{|l|c|}
+\hline
+Question 1 & \mbox{\hspace{.5in}}\\
+\hline        	
+Question 2 & \\
+\hline
+Question 3 & \\
+\hline
+        	Question 4 & \\
+\hline
+        	Question 5 & \\
+\hline
+        	Question 6 & \\
+\hline\hline
+         Total & \\
+\hline
+\end{tabular}
+
+Do five of the following six problems.  Write each answer on a separate
+piece of paper.
+
+
+\begin{enumerate}
+%1.  a)  Give a TM definition that doubles a number, subtracts one in unary, etc.
+%	b) Define computable function and give an example of a non-computable function.
+\item
+\begin{enumerate}
+	\item Define {\em decidable set} and give an example of a set that is not decidable.
+	\item Assume that the alphabet and tape alphabet are: 
+		$\Sigma = \Gamma = \{0,1\}$.
+		Give an implementation level description of a Turing machine that
+		decides the language: 
+		$$
+			\{w\mid \mbox{$w$ contains an equal number of 0's and 1's}\}
+		$$
+\end{enumerate}
+
+%2.  Show something countable, and related item uncountable: $\sigma^*$ and all strings;
+%	rationals and reals;
+\item 
+\begin{enumerate}
+	\item Show that for any finite set $\Sigma$, the set of all finite strings of $\Sigma$, 
+		$\Sigma^*$ is countable.
+	\item Let $\Sigma = \{0,1\}$.  Show that the set of all infinite strings over $\Sigma$ is 		uncountable.
+\end{enumerate}
+%3.  a) Use the diagonalization method to show K is undecidable.
+%	b) Use this to show Tot, Min, Empty, Const is decidable.
+\item 
+\begin{enumerate}
+	\item Show that the Halting Problem is undecidable, using the diagonalization method.
+	\item Show that the set of all constant computable functions is not decidable.
+\end{enumerate}
+%4.  a) Show that the set of Turing-recognizable/decidable languages is closed under union,
+%	concatenation, star, intersection.
+%	b) Show if A and $\bar{A} are Turing-recognizable, then A is decidable.
+\item
+\begin{enumerate}
+	\item Show that the set of decidable languages is closed under union.
+	\item Show that if $A$ and $\bar{A}$ are Turing-recognizable, then A is decidable.
+\end{enumerate} 
+%5.  a) State PCP, 
+%	b) show decidable over $\Sigma = \{1\}$.
+%	or: State and prove Rice's Theorem.
+\item 
+\begin{enumerate}
+	\item State Rice's Theorem.
+	\item Prove Rice's Theorem.
+\end{enumerate}
+
+%6.  $\leq_m$ questions: 5.3: if $A\leq_m B$ and $B$ regular does that imple A is regular?
+%	5.6: $\leq_m$ is transitive, 5.7:  A r.e. and $A \leq_m \bar{A}, then A is decidable,
+%	fact:  $A \leq_m B$ implies $\bar{A} \leq_m \bar{B}$.
+%	b) Turing Reducibility: 6.1: $A\leq_T B$ and $B\leq_T C$ implies $A\leq_T C$,
+%	6.7: Show $\forall A, B \exists J$ such that $A\leq_T J$ and $B\leq_T J$,
+\item 
+\begin{enumerate}
+	\item Show that for all $A$ and $B$,  $A \leq_m B$ implies $\bar{A} \leq_m \bar{B}$.
+	\item Show for all $A$, $B$, there exists a set  $J$ such that 
+		$A\leq_T J$ and $B\leq_T J$.	
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

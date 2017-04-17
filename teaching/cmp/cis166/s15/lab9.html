@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 9, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 9<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab will continue our focus on designing program and introduces pseudocode. 
+It also briefly introduces decisions.
+</div>
+
+
+<div>
+A standard way to represent an algorithm (a `recipe' or set of step-by-step
+directions for solving a program) is to use <b>pseudocode</b>.  Pseudocde is
+English, structured similarly to a program.  Well written pseudocode is precise
+but omits the syntax details specific to any given formal programming language.
+
+<p>
+For example, say you need to display text messages for your company, and you
+are designing the basic template.  To do so, you would like to the average 
+length of a line in the file, as well as the maximum line length.
+Here's a simple algorithm:
+<pre>
+1.  total, maximum = 0
+2.  n = number of lines in the file
+3.  For each line in the file:
+4.     l = length of the line
+5.     total = total + l
+6.     if l > max
+7.        maximum = l
+8.  average = total / n
+</pre>
+The algorithm finds the length of each line in the file.  Then, following the 
+accumulator design pattern (introduced at the end of Chapter 3), it adds the
+length of the current line to the variable total.  The variable total `accumulates'
+the line lengths.  Next (lines 6 and 7), the pseudocode uses a new programming
+construct (defined formally in the next chapter) called an <tt>if</tt> statement.
+An <tt>if</tt>-statement allows you to make decisions in a program.  We will use
+it to test if our current line is longer than max:
+<pre>
+6.     if l > maximum
+7.        maximum = l
+</pre>
+If it is, we update the maximum variable to be l.  When the algorithm starts, max
+is set to 0, and each time a longer line is seen, maximum is updated to that length.
+
+<p>
+A simple way to translate pseudocode into a program is to cut-and-paste it into
+a python file as comments:
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+#1.  total, maximum = 0
+#2.  n = number of lines in the file
+#3.  For each line in the file:
+#4.     l = length of the line
+#5.     total = total + l
+#6.     if l > maximum
+#7.        maximum = l
+#8.  average = total / n
+
+main()
+</pre>
+Save this and try running it.  Note that the only thing it does is print an
+introductory message.
+
+<p>
+Now, let's fill in the pieces of suggested in the pseudocode.  Let's start with
+setting up our variables and opening the file:
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+#1.  total, maximum = 0
+#2.  n = number of lines in the file
+#3.  For each line in the file:
+#4.     l = length of the line
+#5.     total = total + l
+#6.     if l > maximum
+#7.        maximum = l
+#8.  average = total / n
+
+main()
+</pre>
+Next, we can fill in the pseudocode.  Line #1 is straightforward:  it says to set up 
+two variables total and maximum to have value 0:
+<pre># CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+    total = 0
+    maximum = 0
+    
+#2.  n = number of lines in the file
+#3.  For each line in the file:
+#4.     l = length of the line
+#5.     total = total + l
+#6.     if l > maximum
+#7.        maximum = l
+#8.  average = total / n
+
+main()
+</pre>
+We have several choices for reading data from a file.  
+Since we are going through the file line-by-line, we will use <tt>readlines()</tt> 
+since it will return a list of the lines.  Since each line is stored as a separate
+entry in the list, the length of the the list is the number of lines in the file:
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+    total = 0
+    maximum = 0
+
+    lines = infile.readlines()
+    n = len(lines)
+    
+#3.  For each line in the file:
+#4.     l = length of the line
+#5.     total = total + l
+#6.     if l > maximum
+#7.        maximum = l
+#8.  average = total / n
+
+main()
+</pre>
+The next three lines of the pseudocode (lines #3-5) we have seen before.  We
+also added in two <tt>print</tt>  statements to check that things are working correctly (they 
+are just 
+temporary and will be removed for the final version):
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+    total = 0
+    maximum = 0
+
+    lines = infile.readlines()
+    n = len(lines)
+
+    for line in lines:
+        l = len(line)
+        print(l, line[:-1])  #Temporary, to check that things are working
+        total = total + l
+#6.     if l > maximum
+#7.        maximum = l
+#8. average = total / n
+    print("num lines =", n,"total =", total)
+
+main()
+
+</pre>
+If statements are formatted very similarly to for loops (we will cover them in detail
+in a later chapter).  Here is the translation into python (with a bit more also added to 
+the file print statement):
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+    total = 0
+    maximum = 0
+
+    lines = infile.readlines()
+    n = len(lines)
+
+    for line in lines:
+        l = len(line)
+        print(l, line[:-1])  #Temporary, to check that things are working
+        total = total + l
+        if l > maximum:
+            maximum = l
+#8. average = total / n
+    print("num lines =", n,"total =", total, "max =", maximum)
+
+main()
+
+</pre>
+Lastly, let's calculate the average and print it (and remove the extra prints that we
+were using for testing):
+<pre>
+# CIS 166 Lab 9
+# A program to calculate average and maximum line lengths for a file
+
+def main():
+    print("This program will calculate the average and maximum line lengths for a file")
+    fname = input("Enter file name: ")
+    infile = open(fname, "r")
+    
+    total = 0
+    maximum = 0
+
+    lines = infile.readlines()
+    n = len(lines)
+
+    for line in lines:
+        l = len(line)
+        total = total + l
+        if l > maximum:
+            maximum = l
+    average = total / n
+    print("max =", maximum, "\taverage line length =", average)
+
+main()
+</pre>
+
+<p>
+Since pseudocode is a standard way to convey algorithms, we will work more with 
+pseudocode as the semester progresses.
+
+
+</div>
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+</html>

@@ -1,0 +1,57 @@
+/* seek.nqc
+ *
+ * Drive towards a bright light.  As long as the light
+ * sensor sees a bright light, drive forward.  Otherwise
+ * try to find the light first by spinning in place.
+ * After 3 seconds of spinning, try driving forward
+ * to a new location and then continue spinning.
+ */
+  
+// motors and sensors
+#define LEFT    OUT_A
+#define RIGHT   OUT_C
+#define EYE     SENSOR_2
+
+// timing
+#define SEEK_MAX_TIMER      30  // 3 seconds
+#define SEEK_FWD_TIME       100 // 1 second
+
+// threshold for light sensor
+#define THRESHOLD   65
+
+task main()
+{
+	// setup sensor and start driving
+	SetSensor(EYE, SENSOR_LIGHT);
+	OnFwd(LEFT+RIGHT);
+	
+	while(true)
+	{
+		// wait until too dark
+		until(EYE < THRESHOLD);
+		
+		// start spinning and reset timer
+		PlayTone(440, 10);
+		Rev(LEFT);
+		ClearTimer(0);
+		
+		while(EYE < THRESHOLD)
+		{
+			if (Timer(0) > SEEK_MAX_TIMER)
+			{
+				// spent too long spinning...
+				// move forward a bit
+				Fwd(LEFT);
+				Wait(SEEK_FWD_TIME);
+				
+				// continue spinning and reset timer
+				Rev(LEFT);
+				ClearTimer(0);
+			}
+		}
+		
+		// found the light, resume
+		PlayTone(880, 10);
+		Fwd(LEFT);
+	}
+}

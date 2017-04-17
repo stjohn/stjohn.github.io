@@ -1,0 +1,578 @@
+<html>
+<body bgcolor=white>
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+1">
+Final Exam <BR>
+Computer Programming 334 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+17 December 1999
+</FONT></DIV>
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="-1"><B>
+Exam Rules
+</B></FONT></DIV>
+<P>
+<UL>
+<LI>Show all your work.  Your grade will be based on the work shown.
+<LI>The exam is closed book and closed notes.
+<LI>When taking the exam, you may have with you pens or pencils,
+                and an 8 1/2" x 11"
+                piece of paper filled with notes, programs, etc.
+<LI>You may use a calculator.
+<LI>All books and bags must be left at the front of the classroom
+                during this exam.
+<LI><B>Do not open this exams until instructed to do so. </B>
+</UL>
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="-1"><FONT SIZE="+1">
+ 
+<P>
+<P><DL COMPACT>
+<DT>1.
+<DD>True or False: 
+<DL COMPACT>
+<DT>(a)
+<DD> <TT>26h</TT> is the same
+as <TT>00100010b</TT>.
+        <DT>(b)
+<DD> The twos complement of <TT>0FFh</TT>
+		is <TT>0FFh</TT>.
+        <DT>(c)
+<DD> Every mnemonic in the Intel 
+		Instruction set has a unique op code assigned to it. 
+        <DT>(d)
+<DD> The .386 directive enables
+		Pentium instructions for use in your program.
+        <DT>(e)
+<DD> All registers can be used as
+		an operand for any instruction.
+        <DT>(f)
+<DD> When the <TT>DL</TT> register is
+		modified, the value in <TT>DX</TT> changes.
+        <DT>(g)
+<DD> When you assembly a program
+		with the command: <TT>tasm test</TT>,
+		the resulting object code is placed in the file
+		<TT>test.exe</TT>.
+        <DT>(h)
+<DD> Only 8-bit values can be
+		pushed or popped from the stack.
+        <DT>(i)
+<DD> The instruction, <TT>JP</TT>, 
+		jumps to the given instruction if the previous 
+		operation gave a positive result, when using signed
+		arithmetic.
+        <DT>(j)
+<DD> The result of the following
+		statement is always <TT>0</TT>: 
+<PRE>
+        AND al, 0
+</PRE>
+		no matter what the value of the <TT>AL</TT> register.
+
+<P>
+</DL>
+
+<P>
+<BR>
+<BR>
+<BR>
+
+<P>
+<DT>2.
+<DD>Assume your program has the following data segment and
+        the offset of <TT>var1</TT> is <TT>0120h</TT> and the offset
+        of <TT>var2</TT> is <TT>0124h</TT>:
+<PRE>
+.data
+var1 db 10h, 01h, 20h, 02h
+var2 dw 4 dup(0FFF0h)
+var3 dw var2
+</PRE>
+        What are the contents of AX and BX after each of the following
+        instructions:
+        <DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax,var3       ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bx,[ax+1]     ;AX =            BX =
+</PRE>
+            <DT>(c)
+<DD><PRE>
+inc bx            ;AX =            BX =
+</PRE>
+            <DT>(d)
+<DD><PRE>
+add bx, [var2]    ;AX =            BX =
+</PRE>
+            <DT>(e)
+<DD><PRE>
+mul 2             ;AX =            BX =
+</PRE></DL>
+
+<P>
+
+    <DT>3.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>For each number given below, give its representation
+in the other bases:
+
+<P>
+
+<P><P>
+<BR>
+
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Binary</TD>
+<TD ALIGN="CENTER">Octal</TD>
+<TD ALIGN="CENTER">Decimal</TD>
+<TD ALIGN="CENTER">Hexadecimal</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">10101111b</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">16q</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+    <DT>(b)
+<DD>Convert the following segment-offset addresses to
+		absolute addresses:
+<BR>
+		    <TT>08EE:0210</TT>
+			<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+    <DT>(c)
+<DD>Define the following memory variables in the code segment:
+	<DL COMPACT>
+<DT>i.
+<DD>a string variable, called <TT>message</TT> that holds
+the string <TT>"Hi mom"</TT>:
+		<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+	    <DT>ii.
+<DD>a list called <TT>listOfHex</TT> that holds
+		the string <TT>1000h,2000h,3000h,4000h</TT>:
+		<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+	</DL></DL>
+
+<P>
+<DT>4.
+<DD>What are the contents of AX and the carry flag
+        after each of the following
+        instructions:
+        <DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax,F0F1h       ;AX =            CF =
+</PRE>
+<DT>(b)
+<DD><PRE>
+shr ax, 1          ;AX =            CF =
+</PRE>
+            <DT>(c)
+<DD><PRE>
+rol ax, 1          ;AX =            CF =
+</PRE>
+            <DT>(d)
+<DD><PRE>
+and ax, 0FFh       ;AX =            CF =
+</PRE>
+            <DT>(e)
+<DD><PRE>
+xor ax, ax         ;AX =            CF =
+</PRE></DL>
+
+<P>
+
+    <DT>5.
+<DD>Assume your program has the following data segment: 
+<PRE>
+.data
+message   db "I like to think that I, though young it's true,", 0Ah, 0dh
+          db "Know what I'm doing...", 0Ah, 0Dh, 0
+LENGTH = ($ - message)
+</PRE>
+	What is the output from each of the following code 
+	fragments?
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+    mov cx, LENGTH
+    mov dl, 0
+    mov ah, 2
+    mov si, offset message
+
+L1: 
+    mov al, [si]
+    cmp al, 'I'
+    je next
+    cmp al, 'i'
+    je next
+    jmp end
+next:
+    inc dl
+end:
+    inc si
+    loop L1
+
+    add dl, 30h
+    int 21h
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(b)
+<DD><PRE>
+    mov si, offset message
+    mov cx, LENGTH
+
+L1: mov dl, [si]
+    inc si
+    cmp dl, Odh
+    loope L1
+
+    mov ax, si
+    call WriteString
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+	    <DT>(c)
+<DD><PRE>
+    mov ah, 2
+    mov si, offset message
+    mov cx, 10
+    mov bl, 'a'
+    sub bl, 'A'
+
+L1: 
+    mov dl, [si]
+    or dl, bl
+    int 21h
+    inc si
+    loop L1
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+</DL>
+
+<P>
+
+    <DT>6.
+<DD>The following program that copies the <TT>source</TT> array
+	to the <TT>dest</TT> array contains numerous errors.  Write
+        a correction next to each erroneous statement and add any
+        new lines you deem necesarry:
+<PRE>
+1:        title  Copy word arrays
+
+2:
+
+3:        .model small
+
+4:        .stack 100h
+
+5:        .code
+
+6:          mov si, source
+
+7:          mov di, dest
+
+8:          inc bx, 1
+
+9:          mov cx, 8
+
+10:     l1: mov si, di
+
+11:         add si, 2
+
+12:         loop l1
+
+13:         int 21h
+
+14:         mov 4C00h, ax
+
+15:       main endp
+
+16:
+
+17:       source dw 1000h, 2000h, 3000h, 4000h
+
+18:       dest dup(0)
+
+19:       end main
+</PRE>
+
+<P>
+
+   <DT>7.
+<DD>What is the output of this program?
+<PRE>
+title Mystery Program      (mystery.asm)
+; This program is a mystery....
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+    mov bx, 16             ;(For WriteInt: output will be hexadecimal)
+    mov cx, 1
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 2
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 3
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 4
+    call myst
+    call WriteInt          ; Output is:
+    mov ax,4C00h
+    int 21h
+main endp
+
+myst proc
+    push bx
+    push cx
+    mov ax, 1
+    cmp cx, 1
+    je end
+    push cx
+    dec cx
+    call myst
+    pop cx
+    mul ax, cx
+end:
+    pop cx
+    pop bx
+    ret
+myst endp
+end main
+</PRE>
+
+<P>
+
+    <DT>8.
+<DD>Write a program that prints the message,
+	<TT>Hello!</TT> and then asks the user if they
+	would like another greeting.  If they answer
+	<TT>'y'</TT> <B>or</B> <TT>'Y'</TT>, you should
+	print the greeting again and ask again.
+	If they answer any other character, you
+	should print the message <TT>Goodbye!</TT>
+	and terminate the program.
+	
+<PRE>
+title Greetings Program      (greet.asm)
+
+; This program greets the user as many times as they like
+.model small
+.stack 100h
+.data
+
+
+extrn ReadString:proc, WriteString:proc
+.code
+main proc
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+
+<P>
+
+<P>
+<DT>9.
+<DD>Write a <B>procedure</B> that will read in a decimal
+	number of length upto 8 digits.  Your procedure should
+	store the number in <TT>AX</TT>.  All other registers should
+        be unmodified by the procedure.
+	
+	<B>Do not use any routines, such as ReadInt, from
+	the Irvine link library.</B>
+
+<P>
+
+    <DT>10.
+<DD>Write a complete program that will encrypt the input
+	using the following algorithm:
+      <DL COMPACT>
+<DT>(a)
+<DD>If the input ASCII's code is greater than <TT>0Fh</TT>,
+<TT>XOR</TT> it with <TT>139d</TT> to get the encrypted
+	      character.
+        <DT>(b)
+<DD>Otherwise, for characters with ASCII's codes less
+	      than or equal to <TT>0Fh</TT>, double the value and
+              <TT>XOR</TT> it with <TT>215d</TT>.	
+      </DL>
+<PRE>
+title SuperEncrypt Program      (super.asm)
+
+; This program encrypts files.
+.model small
+.stack 100h
+.data
+
+
+
+.code
+
+main proc
+    mov ax, @data
+    mov ds, ax
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+
+<P>
+</DL>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html3"
+ HREF="node1.html">About this document ... </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1"
+ HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif_gr.gif">   
+<BR>
+<B> Next:</B> <A NAME="tex2html2"
+ HREF="node1.html">About this document ...</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Katherine St. John</I>
+<BR><I>2000-05-07</I>
+</ADDRESS>
+</BODY>
+</HTML>

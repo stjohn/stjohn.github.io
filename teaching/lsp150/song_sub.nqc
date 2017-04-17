@@ -1,0 +1,135 @@
+// song_sub.nqc-- modified version of sing.nqc that 
+//	subroutines 
+//	UC Davis COSMOS, Cluster V, Summer 2001
+// contributed by cyberia@erols.com for nqcc 0.5 b1
+// Fixed by Ed Mack to work in Current NQC
+
+/* This program plays the carnival calliope tune with which we are all familiar */
+/* I don't know the name...  There was a problem with the RCX processor if you	*/
+/* try to play too many notes in succession. It looks like a flow control or	*/
+/* queue management problem of some kind, I had to make the CPU Wait while the */
+/* audio note is actually being produced, so as not to stuff too many notes into*/
+/* the queue before they get played. Maybe someone can come up with a more	*/
+/* sophisticated means of managing this problem.				*/
+
+#define C	523	/* Middle C	*/
+#define CS	554	/* C Sharp	*/
+#define D	587	/* D		*/
+#define DS	622	/* D Sharp	*/
+#define E	660	/* E		*/
+#define F	699	/* F		*/
+#define FS	741	/* F Sharp	*/
+#define G	785	/* G		*/
+#define GS	832	/* G Sharp	*/
+#define A	880	/* A		*/
+#define AS	932	/* A Sharp	*/
+#define B	988	/* B		*/
+#define C2	1046	/* C (octave)	*/
+
+#define L	20	/* Long note duration	*/
+#define S	10	/* Short note duration	*/
+#define L2	24	/* Long wait duration	*/
+#define S2	12	/* Short wait duration	*/
+
+
+task main() 
+{
+    play_song();
+    Wait(100);
+    play_song();
+    Wait(200);
+}
+
+
+//A subroutine that plays the carnival song:
+sub play_song()
+{
+    PlayTone(C2, L);
+    Wait(L2);
+    PlayTone(B, L);
+    Wait(L2);
+    PlayTone(AS, S);
+    Wait(S2);
+    PlayTone(B, S);
+    Wait(S2);
+    PlayTone(AS, S);
+    Wait(S2);
+    PlayTone(A, S);
+    Wait(S2);
+    PlayTone(GS, L);
+    Wait(L2);
+    PlayTone(G, L);
+    Wait(L2);
+    PlayTone(FS, L);
+    Wait(L2);
+    PlayTone(G, L);
+    Wait(L2);
+    PlayTone(A, L);
+    Wait(L2);
+    PlayTone(GS, L);
+    Wait(L2);
+    PlayTone(G, S);
+    Wait(S2);
+    PlayTone(GS, S);
+    Wait(S2);
+    PlayTone(G, S);
+    Wait(S2);
+    PlayTone(FS, S);
+    Wait(S2);
+    PlayTone(F, L);
+    Wait(L2);
+    PlayTone(E, L);
+    Wait(L2);
+    PlayTone(DS, L);
+    Wait(L2);
+    PlayTone(E, L);
+    Wait(L2);
+    PlayTone(G, L);
+    Wait(L2);
+    PlayTone(D, S);
+    Wait(S2);
+    PlayTone(D, S);
+    Wait(S2);
+    PlayTone(CS, L);
+    Wait(L2);
+    PlayTone(D, L);
+    Wait(L2);
+    PlayTone(G, L);
+    Wait(L2);
+    PlayTone(D, L);
+    Wait(L2);
+    PlayTone(CS, L);
+    Wait(L2);
+    PlayTone(D, L);
+    Wait(L2);
+    PlayTone(C, S);
+    Wait(S2);
+    PlayTone(CS, S);
+    Wait(S2);
+    PlayTone(D, S);
+    Wait(S2);
+    PlayTone(DS, S);
+    Wait(S2);
+    PlayTone(E, S);
+    Wait(S2);
+    PlayTone(F, S);
+    Wait(S2);
+    PlayTone(FS, S);
+    Wait(S2);
+    PlayTone(G, S);
+    Wait(S2);
+    PlayTone(GS, S);
+    Wait(S2);
+    PlayTone(A, S);
+    Wait(S2);
+    PlayTone(AS, S);
+    Wait(S2);
+    PlayTone(B, S);
+    Wait(S2);
+    PlayTone(A, L);
+    Wait(L2);
+    PlayTone(G, L);
+    Wait(L2);
+}
+
+

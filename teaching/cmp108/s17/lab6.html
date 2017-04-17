@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 6, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 6<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on looping through data files and using decisions. 
+<br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+</div>
+
+
+
+<div>
+<h3>Pandas & Reading Data</h3>
+
+<p>
+To make reading files easier, we will use the pandas library that lets you read in CSV files very efficiently.  <a href="http://pandas.pydata.org">Pandas</a>, Python Data Analysis Library, is an elegant, open-source package for extracting, manipulating, and analyzing data, especially those stored in 2D arrays (like spreadsheets).  It incorporates most of the Python constructs and libraries that we have seen thus far.
+
+<p>Pandas should be installed on all the lab machines.  If you are using your own machine, you should check that it is there by typing at the Python shell (in spyder, idle, or your favorite Python interface):
+<pre>
+	import pandas as pd
+</pre>
+
+<p>If you get an error that the library is not found.  Open up a terminal, and use conda to install it:
+<pre>
+	conda install pandas
+</pre>
+
+In Pandas, the basic structure is a <tt>DataFrame</tt>
+which stored data in rectangular grids.
+Let's use this to visualize the change in New York City's population.  First, start your file with an import statements for pandas:
+
+<pre>
+import pandas as pd
+</pre>
+
+The <tt>as pd</tt> allows us to use pandas commands without writing out <tt>pandas</tt> everytime-- instead we just write <tt>pd.</tt>
+
+<p>
+Next, save the <a href="nycHistPop.csv">NYC historical population data</a> to the same directory as your program.  Open the file in your favorite spreadsheet program (such as Excel) to see what it looks like.  Note that it has 5 extra lines at the top before the column names occur.  The pandas function for reading in CSV files is <tt>read_csv()</tt>.  It has an option to skip rows which we will use here:
+
+<pre>
+pop = pd.read_csv('nycHistPop.csv',skiprows=5)
+</pre>
+
+<p>
+Before going on, let's print out the variable <tt>pop</tt>.  <tt>pop</tt> is a dataframe, described in the reading above:
+<pre>
+print(pop)
+</pre>
+
+The last line of our first pandas program is:
+<pre>
+pop.plot(x="Year")
+</pre>
+
+which makes a graphical display of all of the data series in the variable <tt>pop</tt> with the series corresponding to the column "Year" as the x-axis.  Your output should look something like:
+<p>
+<img src="nycHist.png" height = 400>
+
+<p>
+To recap:  the 3-line program:
+<pre>
+import pandas as pd
+pop = pd.read_csv('nycHistPop.csv',skiprows=5)
+pop.plot(x="Year")
+</pre>
+
+<p>
+If you are using IDLE, you will need two more lines to make plots pop up automatically:
+<pre>
+import matplotlib.pyplot as plt
+
+import pandas as pd
+pop = pd.read_csv('nycHistPop.csv',skiprows=5)
+pop.plot(x="Year")
+
+plt.show()
+</pre>
+
+
+did the following:
+<ul>
+	<li> Imported the pandas library that contains structures and functions for organizing and visualizing data.  (The additional line explicitly imports the pyplot library which pandas uses to create figures.)
+	<li> It read in a CSV file, containing NYC population historical data.
+	<li> It displayed the data as a visual plot of years versus borough populations.
+	<li> The last line in the version for IDLE shows the figure you created (spyder automatically displays it; in IDLE, you need to request that the plot you created be shown).
+</ul>
+
+There are useful built-in statistics functions for the dataframes in pandas.  For example, if you would like to know the maximum value for the series "Bronx", you apply the <tt>max()</tt> function to that series:
+
+<pre>
+print("The largest number living in the Bronx is", pop["Bronx"].max()) 
+</pre>
+
+Similarly the average (mean) population for Queens can be computed:
+<pre>
+print("The average number living in the Queens is", pop["Queens"].mean()) 
+</pre>
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> What happens if you leave off the <tt>x = "Years"</tt>?  Why?
+	<li> What happens if you add in <tt>x = "Years", y = "Bronx"</tt>?
+	<li> What does the series functions:  <tt>.min()</tt>, <tt>.std()</tt>, and 
+	<tt>.count()</tt> do?  
+</ul>
+
+
+</div>
+
+<div>
+<h3>Manipulating Columns</h3>
+
+<p>
+Each column in the original spreadsheet is a column, or <tt>series</tt>.  We can look at the column for the Bronx with:
+
+<pre>
+print(pop['Bronx'])
+</pre>
+
+How would you look at the one for Brooklyn?
+
+<p>
+A nice thing about series is that you can do basic arithmetic with them.  For example, 
+<pre>
+print(pop['Bronx']*2)
+</pre>
+prints out double the values in the column.
+
+<p>You can also use multiple columns in a calculation:
+<pre>
+print(pop['Bronx']/pop['Total'])
+</pre>
+prints out the fraction of the total population that lives in the Bronx.
+<p>
+We can save that series by creating a new column for it:
+<pre>
+pop['FractionBronx'] = pop['Bronx']/pop['Total']
+</pre>
+and then can use it to create a new graph:
+<pre>
+pop.plot(x = 'Years', y = 'FractionBronx')
+</pre>
+shown in the following plot:
+<p>
+<img src="percentBronx.png" height = 400>
+
+</div>
+
+<div>
+<h3>Using NYC OpenData</h3>
+
+<p>
+Much of the data collected by city agencies is publicly available at 
+<a href="http://opendata.cityofnewyork.us">NYC Open Data</a>.  Let's use pandas to plot some data from NYC OpenData.
+
+<p> We'll start with data that has the daily number of families and individuals residing in the Department of Homeless Services (DHS) shelter system:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m">https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m</a>
+</ul>
+
+<p>
+Click on the "View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2015.  To do this:
+<ul>
+	<li> Click on the "Filter" button.
+	<li> On the menu that pops us, click on "Add a New Filter Condition".
+	<li> Choose "Date of Census" but change the "is" to be "is after".
+	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2015.
+	<li> Click the check box to the left of the data.  
+	<li> It will take a few seconds (it's a large file) but the rows on the left 
+	will be filtered to be all counts after January 1, 2015.
+</ul>
+To download the file, 
+<ul>
+	<li> Click on the "Export" button.
+	<li> Under "Download", choose "CSV".
+	<li> The download will begin automatically (files are usually stored in "Downloads" folder).
+</ul>
+
+<p>
+Move your CSV file to the directory you save your programs.  Open with Excel (or your favorite spreadsheet program) to make sure it downloaded correctly.  Look at the names of the columns since those will correspond to series we can plot.
+
+<p> Now, we can write a (short) program to display daily counts:
+<pre>
+import pandas as pd
+
+homeless = pd.read_csv("DHS_Daily_Report.csv")
+homeless.plot(x = "Date of Census", y = "Total Individuals in Shelter")
+</pre>
+
+Save your program and try on your dataset.
+
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> What happens if you leave off the <tt>y = "Total Individuals in Shelter"</tt>?
+	<li> Display a plot that shows the fraction of the total population that is familes, over time.  Is it increasing or decreasing?
+</ul>
+
+</div>
+
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a quiz on files and simple decisions.  The password to access the quiz will be given during lab.
+
+</div>
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+
+</html>

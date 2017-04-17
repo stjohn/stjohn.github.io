@@ -1,0 +1,644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<!--<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">-->
+<body>
+
+
+<div>
+
+<h1>
+RGGS 670: Algoritmic Approaches to Biological Data</h1>
+
+<h3>Spring 2016</h3>
+
+<b>Lecture:</b>  Mondays: 2:30-5:30pm, Wednesdays: 1-2pm<br>
+<b>Lab:</b>  Wednesdays: 3-5pm<br>
+<b>Instructor:</b> Dr. <a href="http://comet.lehman.cuny.edu/stjohn">Katherine St. John<a>
+</h2>
+
+</div>
+
+
+<div>
+<h3>Announcements:</h3>
+<ul>  
+
+	<li> Via special arrangement, this course is being taught at the 
+	<a href="http://www.amnh.org/our-research/richard-gilder-graduate-school">Richard Gilder Graduate School</a> (RGGS) of the <a href="http://amnh.org">American Museum of Natural History</a> (AMNH).  If you are interested in enrolling in the course, contact RGGS as well as your department advisor.  Enrollment for non-RGGS students is via the NYC Inter-University Doctoral Consortium (which allows graduate students to cross-register for courses at participating institutions).
+	
+	<li> You will need a laptop (or other device capable of running Python 2) for the Wednesday lab sessions.  You will also find it useful to use it during many of the lecture sessions. 
+	
+	<li> This course follows a slighly unusual schedule due to constraints with timing of other courses and holidays.  Please see the outline below for class dates and times.
+	
+</ul>
+</div>
+
+
+<div>
+<h3>Useful Links:</h3>
+<ul>  
+	<li> <a href="syl.html">Syllabus</a>
+	<li> <a href="http://rosalind.info">Rosalind<a> problem solving platform
+	<li> Textbooks:
+		<ul>
+			<li><a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">How to Think Like a Computer Scientist</a> (older version of the book but allows Python 2.7 syntax)
+			<li> <a href="http://interactivepython.org/runestone/static/pythonds/index.html">Problem Solving with Algorithms</a>
+			<li> <a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>
+		</ul>
+</ul>
+</div>
+
+<div>
+<h3>Summary:</h3>
+
+The emphasis of this course is to develop analytic reasoning and computational thinking skills to address novel questions that arise from analyzing biological data.  It assumes no previous programming knowledge, only that the students have a graduate-level analysis skills for biological data. The course is structured in two parts. The first part is an intensive programming course in the Python  programming language. For the first part, multiple small programming and laboratory exercises are required to reinforce skills.  The second part of the course is organized into an in-depth exploration of scientific topics and the algorithms needed to address them. For the second part, each topic starts with small programming exercises that culminate in a project addressing how to solve a biological problem using computer programming.  A final project, preferably using data from the student's thesis project, is required.
+
+<p>
+The specific topics are:
+<ul>
+	<li> Part 1: The basic programming concepts of loops, decisions, strings, lists, files, functions, data collections, common libraries, and recursion.
+	<li> Part 2: Dynamic programming and sequence alignment, deBruijn graphs and genome assembly, and phylogenetic tree reconstruction.
+</ul>
+
+</div>
+
+<div>
+<h3>Outline:</h3>
+
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td>
+		<td><b>Time:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td>
+
+		
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+		<td><b>Target Dates:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td>
+	</tr>
+	
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		20 January</td>
+		<td>
+		Lecture 1,<br>
+		1-2pm</td>
+		<td>Course Overview,
+Introduction to Python programs: printing and simple functions, definite loops, problem solving and the design process
+</td>
+		<td><a href="syl.html">Syllabus</a>,
+		<a href="amnhAlg20160120.pdf">Slides</a></td>		
+		<td><i>Think Like CS</i>, 
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/GeneralIntro/intro-TheWayoftheProgram.html">Introduction</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/intro-VariablesExpressionsandStatements.html">Data</a> chapters 
+		<!--Computers are from Mars, organisms are from Venus by Junhyung Kim, IEEE Computer, 2002--></td>	
+		<td></td>
+	</tr>
+	<tr>
+
+		<td>Lab 1,<br>
+		3-5pm</td>
+		<td>Brownian motion: Simulating simple 1D and 2D motion;
+Simple graphics & object oriented programming introduction: using the built-in turtle and random libraries
+</td>
+		<td><a href=lab1.html>Lab 1</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/intro-HowtobeaSuccessfulProgrammer.html">Debugging Interlude 1</a>, 
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/intro-HelloLittleTurtles.html">Turtle Graphics</a>, and
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/PythonModules/modules.html">Python Modules & Getting Help</a> chapters</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		25 January</td>
+		<td>
+		Lecture 2, <br>
+		2:30-5:30pm</td>
+		<td>Simple Python data; Using Python Modules: math & random libraries; 
+		Input-Process-Output (IPO) design pattern; <br>
+		Accumulator Design Pattern: Using variables as accumulators. 
+		Introduction to Functions 
+		</td>
+		<td><a href="amnhAlg20160125.pdf">Slides</a>,
+		<a href="http://www.pythontutor.com/visualize.html#code=x%3D5%0Ax%3Dx%2B1%0Ay+%3D+2*x%0Ax,y+%3D+y,x%0A%0AfirstName+%3D+%22Teddy%22%0Atwo+%3D+firstName+%2B+firstName%0A%0Atotal+%3D+x+%2B+y%0Aave+%3D+total/+10.0&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">variables example</a>, 
+		<a href="http://www.pythontutor.com/visualize.html#code=for+x+in+range(4%29%3A%0A++++print+x,+2*x%0A++++%0Afor+x+in+%5B-1,2,-3,4%5D%3A%0A++++print+x,+x**2%0A++++%0Afor+i+in+range(3,10,2%29%3A%0A++++for+j+in+range(i%29%3A%0A++++++++print+%22%3A%29%22,%0A++++print&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">for & range example</a></td>		
+		<td>
+		<i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/intro-VariablesExpressionsandStatements.html">Data</a> and	<a href="http://interactivepython.org/runestone/static/thinkcspy/PythonModules/modules.html">Python Modules & Getting Help</a> chapters, and 
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/functions.html">Functions</a> chapter through accumulator pattern</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		27 January</td>
+		<td>
+		Lecture 3,<br>
+		1-2pm</td>
+		<td>Simple Input, More on Functions, using parameters and return values, Program Design: top-down design and stepwise refinement</td>
+		<td><a href="amnhAlg20160127.pdf">Slides</a>, <a href=http://www.pythontutor.com/visualize.html#code=def+double(x%29%3A%0A++++d+%3D+2*x%0A++++return+d%0A++++%0AinNum+%3D+7%0AoutNum+%3D+double(inNum%29%0Aprint+%22The+input+is%22,+inNum%0Aprint+%22The+result+is%22,+outNum&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">simple function example</a>,
+		<a href="http://www.pythontutor.com/visualize.html#code=def+prob4(%29%3A%0A++++verse+%3D+%22jam+today+and+jam+tomorrow%22%0A++++print+%22The+rule+is,%22%0A++++c+%3D+mystery(verse%29%0A++++w+%3D+enigma(verse,c%29%0A++++print+c,w%0A++++%0Adef+mystery(v%29%3A%0A++++print(v%29%0A++++c+%3D+len(v%29+%25+4%0A++++return(c%29%0A++++%0Adef+enigma(v,c%29%3A%0A++++print+%22but+never%22,+%0A++++for+i+in+range(c%29%3A%0A++++++++print+%22jam%22%0A++++return+%22day.%22%0A%0Aprob4(%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">harder function example</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/functions.html">Functions</a> chapter</td>	
+		<td>HW #1</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 2,<br>3-5pm</td>
+		<td>Python-as-Calculator: using the built-in math library & loops to compute values and make simple tables; 
+Debugging: common parse errors
+</td>
+		<td><a href=lab2.html>Lab 2</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/intro-HowtobeaSuccessfulProgrammer.html">Debugging Interlude 1</a>, and <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/functions.html">Functions</a> chapters</td>	
+		<td></td>
+	</tr>
+
+
+	<tr>
+		<td>Monday,<br>
+		1 February</td>
+		<td>
+		Lecture 4,<br>
+		2:30-5:30pm</td>
+		<td>Boolean Values & Expressions, Logical Operators, Simple Decisions, <br>Nested Decisions, Exception Handling, Boolean Functions</td>
+		<td><a href="amnhAlg20160201.pdf">Slides</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/BooleanValuesandBooleanExpressions.html">Selection</a> chapter</td>	
+		<td><a href=lab1.html>Lab 1</a> report </td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		3 February</td>
+		<td>
+		Lecture 5,<br>
+		1-2pm</td>
+		<td>More on Iteration, Indefinite (while) Loops</td>
+		<td><a href="amnhAlg20160203.pdf">Slides</a>, <a href="http://www.pythontutor.com/visualize.html#code=def+findNegative(inputs%29%3A%0A++++found+%3D+-1%0A++++index+%3D+0%0A%0A++++while+found+%3C+0+and+index+%3C+len(inputs%29%3A%0A++++++++if+inputs%5Bindex%5D+%3C+0%3A%0A++++++++++++found+%3D+index+++%23Found+a+negative+number!%0A++++++++else%3A%0A++++++++++++index+%3D+index%2B1%0A++++%0A++++return+found%0A%0A%0Anums+%3D+%5B13,2,-15,20,1,6%5D%0Aprint+%22For+nums,+findNegatives+is%22,+findNegative(nums%29%0A%0Anums2+%3D+%5B0,1,10,11,100,101,110%5D%0Aprint+%22For+nums2,+findNegatives+is%22,+findNegative(nums2%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">loop example</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/BooleanValuesandBooleanExpressions.html">Selection</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/intro-IterationRevisited.html">Iteration Revisited</a> chapters</td>	
+		<td>HW #2</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 3,<br>3-5pm</td>
+		<td>Newick tree format: parsing and (simple) visualization of trees; Looping through strings; Using decisions</td>
+		<td><a href=lab3.html>Lab 3</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/StringsRevisited.html">Strings</a> chapter</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		8 February</td>
+		<td>
+		Lecture 6,<br>2:30-5:30pm</td>
+		<td>Computing with strings: string variables, simple string processing,<br>
+		Strings as Lists, Lists as Strings,
+		Using Files</td>
+		<td><a href="amnhAlg20160208.pdf">Slides</a>, 
+		<a href="http://www.pythontutor.com/visualize.html#code=s+%3D+%22mississippi%22%0Aprint+s.upper(%29%0AiDel+%3D+s.split(%22i%22%29%0AsDel+%3D+s.split(%22s%22%29%0AnewS+%3D+%22S%22.join(sDel%29%0Aprint+%22s+occurs%22,+s.count(%22s%22%29%0A%0A%0Aspecimen+%3D+%22DOT+84+FLUID+11383,+Ceyx+lepidus+collectoris,+Solomon+Islands,+New+Georgia+Group,+Vella+Lavella+Island,+Oula+River+camp,+,+,+07+47+30+S,%09156+37+30+E,+Paul+R.+Sweet,+7-May-04,,PRS-2672,+Tissue+Fluid%22%0Afields+%3D+specimen.split(%22,%22%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">splits & joins</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/StringsRevisited.html">Strings</a>,
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/intro-Lists.html">Lists</a>, and <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapters</td>	
+		<td><a href=lab2.html>Lab 2</a> report</td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		10 February</td>
+		<td>
+		Lecture 7,<br>1-2pm</td>
+		<td>
+		More on Files,
+		Finding Patterns</td>
+		<td><a href="amnhAlg20160210.pdf">Slides</a>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/Theinandnotinoperators.html">textbook on in & not in</a>, <a href="http://pythonforbiologists.com/index.php/introduction-to-python-for-biologists/regular-expressions/">regular expressions for biologists</a>, <a href="https://github.com/tartley/python-regex-cheatsheet/releases/download/v0.3.3/cheatsheet.pdf">regex cheat sheet</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/StringsRevisited.html">Strings</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapters</td>	
+		<td>HW #3</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 4,<br>3-5pm</td>
+		<td>Counting Bases, Finding motifs in sequences,<br> 
+		More on program design and debugging</td>
+		<td><a href=lab4.html>Lab 4</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/StringsRevisited.html">Strings</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapters</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		15 February</td>
+		<td colspan=5><span class="announcement">Holiday:  No Class</span></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		17 February</td>
+		<td>
+		Lecture 8,<br>1-2pm</td>
+		<td>More on Pattern Finding:  Regular Expressions,<br>
+		Processing CSV files</td>
+		<td><a href="amnhAlg20160217.pdf">Slides</a>,
+		<a href="email.txt">email.txt</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/StringsRevisited.html">Strings</a> and
+		<a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/intro-Lists.html">Lists</a> chapters</td>	
+		<td><a href=lab3.html>Lab 3</a> report, HW #4-6</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 5,<br>3-5pm</td>
+		<td>Parsing CSV files; introducing <tt>matplotlib</tt> and <tt>basemap</tt></td>
+		<td><a href="lab5.html">Lab 5</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/intro-Lists.html">Lists</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapters</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		22 February</td>
+		<td>
+		Lecture 9,<br>2:30-5:30pm</td>
+		<td>
+		More on Lists:  built-in functions, as parameters, nestings, comprehensions
+		</td>
+		<td><a href="amnhAlg20160222.pdf">Slides</a>, <a href="http://www.pythontutor.com/visualize.html#code=def+double(x%29%3A%0A++++x+%3D+2*x%0A%0Adef+doubleStuff(aList%29%3A%0A++++for+position+in+range(len(aList%29%29%3A%0A++++++++aList%5Bposition%5D+%3D+2+*+aList%5Bposition%5D%0A%0Athing1+%3D+8%0Aprint+thing1%0Adouble(thing1%29%0Aprint+thing1+%0A%0Athings+%3D+%5B2,+5,+9%5D%0Aprint+things+%0AdoubleStuff(things%29%0Aprint+things%0A%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">function demo</a>, <a href="http://www.pythontutor.com/visualize.html#code=import+math%0A%0A%23Accummulating+list+example%0Aleaps+%3D+%5B%5D%0Afor+year+in+range(1980,2020,4%29%3A%0A++++if+year%25100+!%3D0+or+year%25400+%3D%3D+0%3A+%0A++++++++leaps.append(year%29%0A%23Does+the+same+thing,+using+list+comprehensions++++%0Aleaps2+%3D+%5By+for+y+in+range(1980,2020,4%29+if+(y%25100+!%3D0+or+y%25400+%3D%3D+0%29%5D%0A%0A%23Example+for+computing+averages+and+standard+deviations%0Atemps+%3D+%5B21,25,39,41,35,26,20%5D%0A%23PythonTutor+doesn't+support+from+__future__,+so,+cast+to+get+floating+division%3A%0Aave+%3D+float(sum(temps%29%29/len(temps%29%0A%0A%23Computing+standard+deviation%0Adiffs+%3D+%5B%5D%0Afor+t+in+temps%3A%0A++++diffs.append((t-ave%29**2%29%0Avariance+%3D+sum(diffs%29/(len(diffs%29+-1%29%0Astd+%3D+math.sqrt(variance%29%0A%0A%23Can+rewrite+a+bit+shorter+with+list+comprehensions%3A%0Avar2+%3D+%5B(t-ave%29**2+for+t+in+temps%5D%0Astd2+%3D+math.sqrt(sum(diffs%29/(len(diffs%29-1%29%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">list comprehensions demo</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/intro-Lists.html">Lists</a> chapter</td>	
+		<td><a href=lab4.html>Lab 4</a> write-up
+		</td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		24 February</td>
+		<td>
+		Lecture 10,<br>1-2pm</td>
+		<td>Formatting data; Strings & Lists;
+		2D Arrays and <tt>numpy</tt>
+		</td>
+		<td><a href="amnhAlg20160224.pdf">Slides</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapter</td>	
+		<td>HW #7-9</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 6,<br>3-5pm</td>
+		<td>Numerical analysis and plotting with <tt>numpy</tt> and <tt>matplotlib</tt></td>
+		<td><a href="lab6.html">Lab 6</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Files/intro-WorkingwithDataFiles.html">Files</a> chapter</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		29 February</td>
+		<td>
+		Lecture 11,<br>2:30-5:30pm</td>
+		<td>Dictionaries, built-in methods, lists versus dictionaries;
+		Hashing; Program design: using dictionaries and traversing multi-dimensional arrays efficiently</td>
+		</td>
+		<td><a href="amnhAlg20160229.pdf">Slides</a>, <a href="http://www.pythontutor.com/visualize.html#code=data+%3D+%22GATGGAACTTGACTACGTAAATT%22%0A%0Acounts+%3D+%7B%7D%0Afor+bp+in+data%3A%0A++++if+bp+in+counts%3A%0A++++++++counts%5Bbp%5D+%2B%3D+1%0A++++else%3A%0A++++++++counts%5Bbp%5D+%3D+1%0A%0Aprint+%22keys%3A+%22,+counts.keys(%29%0Aprint+%22values%3A+%22,+counts.values(%29%0Aprint+%22sorted+items%3A+%22,+sorted(counts.items(%29%29%0A++++++++%0Acounts2+%3D+%7B%7D%0Afor+bp+in+data%3A%0A++++counts2%5Bbp%5D+%3D+counts2.get(bp,0%29+%2B+1%0A++++%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">dictionary demo</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/intro-Dictionaries.html">Dictionaries</a> chapter</td>	
+		<td><a href=lab5.html>Lab 5</a> report</td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		2 March</td>
+		<td>
+		Lecture 12,<br>1-2pm</td>
+		<td>Using Files; Accessing Data from image files 	</td>	
+		<td><a href="amnhAlg20160302.pdf">Slides</a>,<br>
+		butterfly images:  <a href="bf1.png">bf1.png</a>,
+		<a href="bf2.png">bf2.png</a>,
+		<a href="bfly.png">bfly.png</a>,
+		<a href="bflyBlue.png">bflyBlue.png</a>,
+		<a href="bflyGreen.png">bflyGreen.png</a>,
+		<a href="bflySwarm.png">bflySwarm.png</a>,</td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/intro-Dictionaries.html">Dictionaries</a> chapter</td>	
+		<td>HW #10-12</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 7,<br>3-5pm</td>
+		<td>Multi-dimensional arrays and image files
+		</td>
+		<td><a href="lab7.html">Lab 7</a></td>		
+		<td>
+		<a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 1, <i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/intro-Dictionaries.html">Dictionaries</a> chapter, 
+		</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		7 March</td>
+		<td>
+		Lecture 13,<br>2:30-5:30pm</td>
+		<td>
+		Insertion, Bubble, and Merge Sorts,
+		Analyzing sorts by running time on varying data sets (sorted, almost sorted, and random data);<br>
+		Recursion: functions that call themselves</td>
+		<td><a href="amnhAlg20160307.pdf">Slides</a>,<br>
+		<a href="http://www.pythontutor.com/visualize.html#code=def+bubbleSort(a%29%3A%0A++++for+j+in+range(1,len(a%29%29%3A%0A++++++++for+i+in+range(1,len(a%29%29%3A%0A++++++++++++if+a%5Bi-1%5D+%3E+a%5Bi%5D%3A%0A++++++++++++++++a%5Bi-1%5D,+a%5Bi%5D+%3D+a%5Bi%5D,+a%5Bi-1%5D%0A%0A%0Aa+%3D+%5B11,34,1,20,18,6,5,3%5D%0AbubbleSort(a%29%0A%0Adef+insertionSort(a%29%3A%0A++++for+i+in+range(1,len(a%29%29%3A%0A++++++++j+%3D+i%0A++++++++while+j+%3E+0+and+a%5Bj-1%5D+%3E+a%5Bj%5D%3A%0A++++++++++++a%5Bj%5D,+a%5Bj-1%5D+%3D+a%5Bj-1%5D,+a%5Bj%5D%0A++++++++++++j+%3D+j-1%0A%0Aa+%3D+%5B11,34,1,20,18,6,5,3%5D%0AinsertionSort(a%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0
+		<a href="sort1.py">sorting examples</a>, 
+		<a href="https://en.wikipedia.org/wiki/Insertion_sort">wiki insertion sort</a>,
+		<a href="http://www.sorting-algorithms.com">sorting demos</a>,
+		<a href="nested.py">nested.py</a></td>		
+		<td><i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Recursion/WhatIsRecursion.html">Recursion</a> chapter, <i>Problem Solving with Algorithms</i>, 
+		<a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/sorting.html">sorting</a> and <a href="http://interactivepython.org/runestone/static/pythonds/AlgorithmAnalysis/Objectives.html">analysis</a> chapters</td>	
+		<td><a href=lab6.html>Lab 6</a> report</td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		9 March</td>
+		<td>
+		Lecture 14,<br>1-2pm</td>
+		<td>
+		Parsing Structured Data: genbank & html;
+		Counting Revisited: Using Dictionaries to accumulate pattern counts;
+		Scraping data from the web
+		</td>
+		<td><a href="amnhAlg20160309.pdf">Slides</a></td>		
+		<td><a href="http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/intro-Dictionaries.html">Dictionaries</a> chapter</td>	
+		<td>HW #13-15</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 8,<br>3-5pm</td>
+		<td>
+		Counting Revisited:  Using Dictionaries to accumulate pattern counts.
+		<br>
+		Parsing structured data:  genbank and html files.
+		</td>
+		<td><a href=lab8.html>Lab 8</a></td>		
+		<td><a href="http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/intro-Dictionaries.html">Dictionaries</a> chapter</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		14 March</td>
+		<td colspan=5><span class="announcement">Spring Break:  No Class</span></td>
+	</tr>
+
+	<tr>
+		<td>Wednesday,<br>
+		16 March</td>
+		<td colspan=5><span class="announcement">Spring Break:  No Class</span></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		21 March</td>
+		<td colspan=5><span class="announcement">No Class</span></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		23 March</td>
+		<td>
+		Lecture 15,<br>1-2pm</td>
+		<td>Review; Sorting by Keys and Partially Sorted Data; Recursion </td>
+		<td><a href="amnhAlg20160323.pdf">slides</a>, <a href="moreSorting.py">moreSorting.py</a></td>		
+		<td><i>Problem Solving with Algorithms</i>, 
+		<a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/sorting.html">sorting</a> chapter</td>	
+		<td>HW #16-18,<br>
+		<a href=lab7.html>Lab 7</a> report<br>
+		</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 9,<br>3-5pm</td>
+		<td>
+		Analyzing sorts by running time on varying data sets (sorted, almost sorted, and random data); 
+		Traversing Trees with Recursive Functions; 
+		Modular Design
+		 </td>
+		<td><a href=lab9.html>Lab 9</a></td>		
+		<td><i>Problem Solving with Algorithms</i>, 
+		<a href="http://interactivepython.org/runestone/static/pythonds/SortSearch/sorting.html">sorting</a> chapter, <i>Think Like CS</i>, <a href="http://interactivepython.org/runestone/static/thinkcspy/Recursion/WhatIsRecursion.html">Recursion</a> chapter</td>	
+		<td>Project Abstract</td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		28 March</td>
+		<td colspan=5><span class="announcement">No Class</span></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		30 March</td>
+		<td>
+		Lecture 16,<br>1-2pm</td>
+		<td>
+		Program Design: reframing biological problems into computational terms; Representing graphs: adjacency matrices, adjacency lists</td>
+		<td><a href="amnhAlg20160330.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 3</td>	
+		<td>HW #19-21<br>
+		<a href=lab8.html>Lab 8</a> report</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 10,<br>3-5pm</td>
+		<td>Representing Networks & Trees:  Adjacency Matrices and Adjacency Lists</td>
+		<td><a href=lab10.html>Lab 10</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 3</td>	
+		<td>Project Checklist</td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		4 April</td>
+		<td colspan=5><span class="announcement">No Class</span></td>
+	</tr>
+
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		6 April</td>
+		<td>
+		Lecture 17,<br>1-2pm</td>
+		<td>Paths in Graphs: Hamiltonian & Eulerian Paths; Overlap Graphs and de Bruijn Graphs
+		</td>
+		<td><a href="http://www.pythontutor.com/visualize.html#code=adjList+%3D+%7B%7D%0A%23Add+in+leaves+first%3A%0AadjList%5B%22birds%22%5D+%3D+(%22archsaurs%22,%5B%5D%29%0AadjList%5B%22crodolilians%22%5D+%3D+(%22archsaurs%22,%5B%5D%29%0AadjList%5B%22lepidosaurs%22%5D+%3D+(%22unnamed1%22,%5B%5D%29%0AadjList%5B%22marineReptiles%22%5D+%3D+(%22unnamed1%22,%5B%5D%29%0AadjList%5B%22turtles%22%5D+%3D+(%22reptiles%22,%5B%5D%29%0AadjList%5B%22mammals%22%5D+%3D+(%22amniotes%22,%5B%5D%29%0AadjList%5B%22amphibians%22%5D+%3D+(%22tetrapods%22,%5B%5D%29%0AadjList%5B%22lungfish%22%5D+%3D+(%22tetrapods%22,%5B%5D%29%0AadjList%5B%22coelacanths%22%5D+%3D+(%22lobeFinnedFishes%22,%5B%5D%29%0AadjList%5B%22rayFinnedFish%22%5D+%3D+(%22bonyFishes%22,%5B%5D%29%0AadjList%5B%22cartilanginousFishes%22%5D+%3D+(%22jawedFishes%22,%5B%5D%29%0AadjList%5B%22lampreys%22%5D+%3D+(%22vertebrates%22,%5B%5D%29%0AadjList%5B%22conodonts%22%5D+%3D+(%22diapsids%22,%5B%5D%29%0AadjList%5B%22hagfishes%22%5D+%3D+(%22craniates%22,%5B%5D%29%0A%0A%23Next+the+internal+nodes%3A%0AadjList%5B%22archsaurs%22%5D+%3D+(%22diapsids%22,%5B%22birds%22,+%22crodolilians%22%5D%29%0AadjList%5B%22unnamed1%22%5D+%3D+(%22diapsids%22,%5B%22lepidosaurs%22,+%22marineReptiles%22%5D%29%0AadjList%5B%22diapsids%22%5D+%3D+(%22reptiles%22,%5B%22unnamed1%22,+%22archsaurs%22%5D%29%0AadjList%5B%22reptiles%22%5D+%3D+(%22amniotes%22,%5B%22turtles%22,+%22diapsids%22%5D%29%0AadjList%5B%22amniotes%22%5D+%3D+(%22tetrapods%22,%5B%22mammals%22,+%22reptiles%22%5D%29%0AadjList%5B%22tetrapods%22%5D+%3D+(%22lobeFinnedFishes%22,%5B%22amniotes%22,+%22amphibians%22%5D%29%0AadjList%5B%22lobeFinnedFishes%22%5D+%3D+(%22bonyFishes%22,%5B%22coelacanths%22,+%22tetrapods%22%5D%29%0AadjList%5B%22bonyFishes%22%5D+%3D+(%22jawedFishes%22,%5B%22rayFinnedFish%22,+%22lobeFinnedFishes%22%5D%29%0AadjList%5B%22jawedFishes%22%5D+%3D+(%22vertebrates%22,%5B%22bonyFishes%22,+%22cartilanginousFishes%22%5D%29%0AadjList%5B%22vertebrates%22%5D+%3D+(%22craniates%22,%5B%22lampreys%22,+%22jawedFishes%22%5D%29%0AadjList%5B%22craniates%22%5D+%3D+(%22%22,%5B%22hagfishes%22,+%22vertebrates%22%5D%29%0A%0A%22%22%22%0AGiven+a+vertex+in+the+tree,+prints+out+all+leaves+below+it+(its+clade%29%3A%0A%22%22%22%0Adef+printLeaves(v%29%3A%0A+++++if+len(adjList%5Bv%5D%5B1%5D%29+%3D%3D+0%3A%0A++++++++++print+v%0A+++++else%3A%0A++++++++++for+child+in+adjList%5Bv%5D%5B1%5D%3A%0A+++++++++++++++printLeaves(child%29%0A%0A%0AprintLeaves(%22bonyFishes%22%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">recursion demo</a>, 
+		<a href="amnhAlg20160406.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 3,<br>
+		<a href="http://www.nature.com/nbt/journal/v29/n11/full/nbt.2023.html">Compeau, Pevzner, & Tesler 2011</a></td>	
+		<td>
+		<a href=lab9.html>Lab 9</a>, report<br>
+		HW #22-25</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 11,<br>3-5pm</td>
+		<td>Assembling short reads: de Bruijn graphs</td>
+		<td><a href="lab11.html">Lab 11</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 3</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		11 April</td>
+		<td colspan=5><span class="announcement">No Class</span></td>
+	</tr>
+
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		13 April</td>
+		<td>
+		Lecture 18,<br>1-2pm</td>
+		<td>Sequence Alignment and the Longest Common Substring; Dynamic Programming Example: Manhattan Tourist Problem</td>
+		<td><a href="amnhAlg20160413.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 5</td>	
+		<td><a href="lab10.html">Lab 10</a> report</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 12,<br>3-5pm</td>
+		<td>More on Accessing Structured Data:  SQL
+		<!--Visualizing with scikit: Dimensionality Reduction Techniques: PCA, MDS, and friends--></td>
+		<td><a href="lab12.html">Lab 12</a></td>		
+		<td></td>	
+		<td>Project Progress Report</td>
+	</tr>
+
+	<tr>
+		<td>Monday,<br>
+		18 April</td>
+		<td>
+		Lecture 19,<br>2:30-5:30pm</td>
+		<td>Dynamic Programming for pairs of sequences; Scoring Matrices<br>
+		More graph techniques: minimal spanning trees<br>
+		</td>
+		<td><a href="amnhAlg20160418.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 5</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		20 April</td>
+		<td>
+		Lecture 20,<br>1-2pm</td>
+		<td>Using Dynamic Programming; Variations on the theme: Gap Penalties and other scoring functions; <br>
+		Breadth first and depth first searching</td>
+		<td><a href="amnhAlg20160420.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 5</td>	
+		<td><a href="lab11.html">Lab 11</a> report</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 13,<br>3-5pm</td>
+		<td>Pairwise Alignment of Sequences</td>
+		<td><a href="lab13.html">Lab 13</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 1, Chapter 5</td>	
+		<td></td>
+	</tr>
+	<tr>
+		<td>Monday,<br>
+		25 April</td>
+		<td>
+		Lecture 21,<br>2:30-5:30pm</td>
+		<td>Searching Graphs:  More on Breadth First and Depth First Searching, Local Search Paradigms; <br>
+		Optimality Criteria & Complexity, 
+		Parsimony Example:  scoring trees in linear time
+		</td>
+		<td><a href="amnhAlg20160425.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td>Project Progress Report</td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		27 April</td>
+		<td>
+		Lecture 22,<br>1-2pm</td>
+		<td>
+		<!-- Designing algorithms that minimize time and space: linear space alignment algorithms; Efficient representation of graphs and trees;-->
+		More on Fitch's Algorithm, Wagner Builds, Distance Matrices, UPGMA, Neighbor Joining</td>
+		<td><a href="amnhAlg20160427.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td><a href="lab12.html">Lab 12</a> report</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 14,<br>3-5pm</td>
+		<td>Implementing Fitch's Algorithm for the Small Parsimony Problem</td>
+		<td><a href="lab14.html">Lab 14</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td></td>
+	</tr>
+	<tr>
+		<td>Monday,<br>
+		2 May</td>
+		<td>
+		Lecture 23,<br>2:30-5:30pm</td>
+		<td>Complexity revisited: NP-hardness, heuristic search, approximation algorithms, Tree Rearangements & Edit Distances</td>
+		<td><a href="amnhAlg20160502.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td></td>
+	</tr>
+
+	<tr>
+		<td rowspan = 2>Wednesday,<br>
+		4 May</td>
+		<td>
+		Lecture 24,<br>1-2pm</td>
+		<td>Approximation algorithms for starting trees: understanding strengths & limitations of Wagner Builds and Neighbor Joining</td>
+		<td><a href="amnhAlg20160504.pdf">slides</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td><a href="lab13.html">Lab 13</a> report</td>
+	</tr>
+	<tr>
+
+		<td>
+		Lab 15,<br>3-5pm</td>
+		<td>Tree Algorithms</td>
+		<td><a href="lab15.html">Lab 15</a></td>		
+		<td><a href="http://bioinformaticsalgorithms.com">Bioinformatics Algorithms</a>, Volume 2, Chapter 1</td>	
+		<td></td>
+	</tr>
+	<tr>
+		<td>Monday,<br>
+		9 May</td>
+		<td>
+		Project Presentations,<br>2:30-5:30pm</td>
+		<td>Project Presentations; Open Lab</td>
+		<td></td>		
+		<td></td>	
+		<td>Final Project</td>
+	</tr>
+	<tr>
+		<td><br>
+		? May</td>
+		<td>
+		</td>
+		<td>Last Day to Submit Lab Reports and Rosalind</td>
+		<td></td>		
+		<td></td>	
+		<td><a href="lab14.html">Lab 14</a> & <a href="lab15.html">Lab 15</a> reports</td>
+	</tr>
+
+</table>
+
+
+<br>
+<br>
+<br>
+<i>(Last updated: 4 May 2016)</i>

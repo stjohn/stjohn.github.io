@@ -1,0 +1,161 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (X11; U; Linux 2.2.12-20 i686) [Netscape]">
+</head>
+<body text="#000066" bgcolor="#FFFFFF" link="#0000EF" vlink="#3333FF" alink="#006600">
+&nbsp;
+<table COLS=1 WIDTH="100%" NOSAVE >
+<tr>
+<td>
+<center><table COLS=1 WIDTH="100%" BGCOLOR="#000066" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>
+<center><font color="#CCFFFF"><font size=+4>Programming Contests</font></font></center>
+</td>
+</tr>
+</table></center>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#000066"><font size=+3>General Information</font></font></td>
+</tr>
+</table>
+
+<p><font size=+1>Each year, the </font><a href="http://www.acm.org">ACM</a>
+<font size=+1>holds a series of Programming Contests.&nbsp; The regional
+contests are held in November of each year.&nbsp; The winner of the regional
+contest goes on to the International Contest.&nbsp; There are prizes at
+both levels that include computer hardware and software, scholarships,
+and just plain cash.&nbsp; Here's some general information about the contests:</font>
+<ul>
+<li>
+<font size=+1>This year's regional contest will be held at&nbsp; Kean College
+in Union, New Jersy on Sunday, 5 November 2000.&nbsp; For more information,
+see&nbsp; <a href="http://www.cs.cornell.edu/acm">http://www.cs.cornell.edu/acm
+.</a></font></li>
+
+<li>
+<font size=+1>Students enter in teams of three.&nbsp; They compete, at
+the regional level, in three different categories:&nbsp; teams consisting
+solely of freshmen and sophomore students, undergraduate teams with at
+least one upperclassman, and teams with a graduate student on them.&nbsp;
+Prizes are awarded to the top teams in each category.</font></li>
+
+<li>
+<font size=+1>Contestants have 5 hours to solve 6 or more posed programming
+problems.</font></li>
+</ul>
+
+<table COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#000066"><font size=+3>Sample Problems</font></font></td>
+</tr>
+</table>
+
+<p><font size=+1>Here's some sources of sample problems:</font>
+<ul>
+<li>
+<font size=+1>The problems for 1993-2000 International Contests can be
+found at <a href="http://acm.baylor.edu/past/">http://acm.baylor.edu/past/.</a></font></li>
+
+<li>
+<font size=+1>You can find thousands of old contest problems on the web.
+One great place to look is <a href="http://acm.fi.uva.es/problemset">http://acm.fi.uva.es/problemset.
+</a>They
+have over 700 problems there, and an automated judging system.</font></li>
+
+<li>
+<font size=+1>Regional contest web sites also have old problems. Start
+at&nbsp; <a href="http://acm.baylor.edu/acmicpc/Regionals/InfoNorthAmerica.html">http://acm.baylor.edu/acmicpc/Regionals/InfoNorthAmerica.html.</a></font></li>
+
+<li>
+<font size=+1>There's an ACM Crossroads article with advice at&nbsp;&nbsp;<a href="http://www.acm.org/crossroads/xrds3-2/progcon.html">
+http://www.acm.org/crossroads/xrds3-2/progcon.html</a> .</font></li>
+</ul>
+
+<table COLS=1 WIDTH="100%" BGCOLOR="#CCFFFF" NOSAVE >
+<tr>
+<td><font color="#000066"><font size=+3>Hints</font></font></td>
+</tr>
+</table>
+
+<ul>
+<li>
+<font size=+1>At the Math &amp; Computer Science Club meeting on 23 March,
+we discussed the first problem from the 1999 International Finals (see
+<a href="http://acm.baylor.edu/past/.">the
+past exam site for the complete exam</a> ).&nbsp; The question asked for
+you to find the distance between any two cells of a "honeycomb," where
+the cells are numbered clockwise from the center:</font></li>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>
+<center>
+<p><img SRC="honeycomb.gif" NOSAVE height=293 width=339></center>
+
+<p><font size=+1>We started by trying to figure out the distance between
+the cell numbered "1" and a cell entered by the user, which we will call
+"a."</font>
+<p><font size=+1>First, at the meeting, we started looking at the 4 o'clock,
+8 o'clock, 10 o'clock, 12 o'clock, and 2 o'clock branches that extend from
+the center.&nbsp; We didn't give enough conditions for those branches:</font>
+<ul>
+<li>
+<font size=+1>Notice that if a is on the 4 o'clock branch extending out
+from 1, then (a-1)/6 == 0.&nbsp; But that's not quite enough, since (25-1)/6
+== 0, but 25 is not on that branch.&nbsp; So, we need more conditions than
+what we had on the board.&nbsp; We noticed that the differences between
+the cells on the 4 o'clock branch was 7-1 = 6, 19-7=12,&nbsp; 37-19=18,
+61-37=24.&nbsp;&nbsp; So, we can write: 61 = 24+18+12+6+1 = 4*6+3*6+2*6+1*6+1
+= (4+3+2+1)*6+1.&nbsp; We can figure out similar formula for if a is on
+any of the other branches.</font></li>
+
+<li>
+<font size=+1>We can write a simple loop to give the distance for cells
+on the 4 o'clock branch:</font></li>
+
+<pre>int dist = 0, i, sum = 0;
+for ( i = 0 ; i &lt; a/6 ; i++ )
+{
+&nbsp; sum += i;
+&nbsp; if ( a == (sum*6+1) )
+&nbsp; {
+&nbsp;&nbsp;&nbsp; dist = i;
+&nbsp;&nbsp;&nbsp; break;
+&nbsp; }
+}</pre>
+
+<li>
+<font size=+1>The above loop checks if a is equal to the sum (1+2+3+...+i).&nbsp;
+What if you check whether a is less than sum*6+1?&nbsp; When i = 1, this
+gives all the elements within distance 1 from the center.&nbsp; When i=2,
+we have sum*6+1= 19, or all elements within 2 from the center.&nbsp; In
+general, if a is less than or equal to (1+2+...+i)*6+1, then a is within
+distance i from the center.&nbsp; So, by changing the equality sign to
+a less than or equal sign above, we have the distance from a to the center.</font></li>
+</ul>
+
+<p><br><font size=+1>Now, for the general case, when you need to find the
+distance between two cells a and b.&nbsp; One way to approach this is if
+b=1, then we're done.&nbsp; Otherwise, think about shifting the whole honeycomb
+over (including where a and b are) until b is now numbered 1.&nbsp; Then,
+use the loop above to calculate the distance.</font></ul>
+
+<center><table COLS=1 WIDTH="100%" BGCOLOR="#000066" NOSAVE >
+<tr NOSAVE>
+<td ALIGN=RIGHT NOSAVE><font size=-1><font color="#CCFFFF">Last Updated:&nbsp;
+24 March 2000</font><font color="#000066">.</font></font></td>
+</tr>
+</table></center>
+
+<br>&nbsp;
+</body>
+</html>

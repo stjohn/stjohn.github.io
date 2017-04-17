@@ -1,0 +1,130 @@
+<title>Lab 10 for Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Laboratory 10</h2>
+<h3>Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h3>
+<hr>
+<b>Reversing a Linked List</b>
+<hr>
+
+In this lab, you need to write a <b>void</b>-function that 
+takes a linked list of integers and reverses the order of 
+its nodes.  The function will have one call-by-reference 
+parameter that is a pointer to the head of the list.  After
+the function is called a pointer will point to the head of
+a linked list that has the same nodes as the original list,
+but in the reverse order  they had in the original list.
+Note that your function will neither create nor destroy 
+any nodes.  It will simply rearrange the nodes.
+
+<p>
+You should use the following definitions for the nodes
+and pointers to nodes:
+<pre>
+struct Node
+{
+    int data;
+    Node *link;
+};
+
+typedef Node* NodePtr;
+</pre>
+
+Your linked list should follow the style that we discussed
+in class and that is illustrated in the book: e.g. there
+is a head node that contains no data and the ending node's
+link is set to NULL. 
+
+<p> 
+Your program should prompt the user to enter as many integers
+as the user wishes, it should then store the numbers in a
+linked list, print out the linked list, call the reversing
+function, and print out the linked list again (this time 
+in reversed order).
+
+<h3>Hints</h3>
+
+The following functions might be useful in your implementation.
+The first function takes the head of the list and returns a pointer
+to the end node of the list.
+<pre>
+NodePtr endptr( NodePtr Head )
+{
+    NodePtr here = head;
+
+    if ( here == NULL ) // Empty list case
+    {
+        return (NULL);
+    }
+    else 
+    {
+        while ( here->link != NULL)
+            here = here->link;
+        return( here );
+    }
+}
+</pre>
+
+This funcion prints out the linked list, from beginning to
+end:
+<pre>
+void print( NodePtr Head )
+{
+    NodePtr here = head;
+
+    if ( here == NULL ) // Empty list case
+    {
+        cout &lt&lt "\nList empty.\n\n";
+    }
+    else 
+    {
+        cout &lt&lt endl;
+        do 
+        {
+            cout &lt&lt here->data &lt&lt " ";
+            here = here->link;
+        } while ( here != NULL)
+        cout &lt&lt endl;
+    }
+
+
+}
+</pre>
+
+<h3>Testing </h3>
+
+To test this program, you should run it on several
+lists of integers that demonstrate that your program
+reverses the linked list.
+
+<h3>Program Style</h3>
+
+Your program should have include a comment header with your
+name, e-mail, honesty pledge, and a short description of what
+the program does (including any assumptions, or preconditions,
+you have made). The program should be properly indented
+following the style discussed in class and illustrated in the
+text. Besides the initial comments, you should include comments
+for any aspect of your algorithm or implementatation that is not
+self-evident. 
+
+<h3>What to Turn In</h3>
+        
+Before leaving the lab, you should give the TA:
+<ul>
+    <li> a printout of your program, 
+    <li> a printout of the interaction between you and the computer 
+         when the program is run (see note on Testing above).
+    <li> and you should mail a copy of your webpage program to 
+         the class account (coen006) with the subject: "lab 10".
+</ul>
+
+If you finish the lab early, you should use the rest of the 
+time to start the homework.
+        
+</body>
+</html>

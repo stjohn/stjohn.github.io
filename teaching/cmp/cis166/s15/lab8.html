@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8,  CIS 166,Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8, CIS 166<br>
+Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on designing programs using functions.
+
+</div>
+
+
+<div>
+Functions are used to design programs and provide an elegant 
+way to divide work among several programmers.  A standard technique,
+called <b>top-down design</b>, consists of breaking a program into multiple
+function calls (covered in more detail in Chapter 8).  
+Each function is written separately and then tested, before
+the next function is written.  
+
+<p>In today's lab, we will write a program to draw images using turtles.  Many of the functions we write today will be reused in future programs.  Here's a basic outline of our program:
+
+<pre>
+#Intro Programming Lab:  A program with a herd of turtles
+
+import turtle
+
+def main():
+    welcomeMessage()            #Writes a welcome message to the shell
+    numTurtles = getInput()     #Ask for number of turles
+    w = setUpScreen()           #Set up a green turtle window
+    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
+    for i in range(10):
+        moveForward(turtleList) #Move each turtle in the list forward
+        stamp(turtleList)       #Stamp where the turtle stopped
+    
+
+main()
+</pre>
+We will fill in each function, one-by-one, using the comments as guidance.
+The first function should welcome the user to the program:
+<pre>
+def welcomeMessage():
+    print()
+    print("Welcome to our herd of turtles demonstration!")
+    print()
+</pre>
+Add it to the program above and run it to make sure there are no typos or
+errors.  
+
+<p>Next, let's ask the user for the number of turtles.  Since the function call 
+is on the right hand side of an equals sign, it returns a value (namely, the number
+of turtles) that we will use later in the program.  So, our function will ask
+the user for the number and then use a <tt>return</tt> statement to send that
+value back to the calling function:
+<pre>
+def getInput():
+    n = eval(input("Please enter the number of turtles: "))
+    return n
+</pre>
+When we add these in, we now have the program:
+<pre>
+#Intro Programming Lab:  A program with herd of turtles
+
+import turtle
+
+
+def welcomeMessage():
+    print()
+    print("Welcome to our herd of turtles demonstration!")
+    print()
+
+def getInput():
+    n = eval(input("Please enter the number of turtles: "))
+    return n
+
+def main():
+    welcomeMessage()            #Writes a welcome message to the shell
+    numTurtles = getInput()     #Ask for number of turles
+    w = setUpScreen()           #Set up a green turtle window
+    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
+    for i in range(10):
+        moveForward(turtleList) #Move each turtle in the list forward
+        stamp(turtleList)       #Stamp where the turtle stopped
+    
+
+main()
+</pre>
+
+We still need to set up the turtle window and make it green.  The
+turtle command to change the background color is <tt>bgcolor</tt> and
+colors can be referred by their names or the percentage of red, green,
+and blue ('RGB') in the color.  Let's use the name to change the window
+color:
+<pre>
+def setUpScreen():
+    w = turtle.Screen()
+    w.bgcolor("green")
+    return w
+</pre>
+Next, we need to set up a list of turtles.  From the function invocation in the
+<tt>main()</tt> we know it has the outline:
+<pre>
+def setUpTurtles(n):
+    #Create a list of turtles
+    #Make each turtle appear turtle-shaped
+    #Change the color and default direction (so they don't run over each other)
+    return tList
+</pre>
+To set up our list, we will follow our outline from the strings and lists chapter:
+<ol>
+	<li> Create an empty list
+	<li> Make a new item
+
+</ol>
+For our turtles, this looks like:
+<pre>
+def setUpTurtles(n):
+    tList = []
+    #Create turtles:
+    for i in range(n):
+        t = turtle.Turtle()
+        t.shape("turtle")       #Make the turtle appear turtle-shaped
+        tList.append(t)
+        
+    return tList
+</pre>
+Lastly for this function, we need to change the color and direction.  We will use
+the `red-blue-green' (`RGB') values to give each turtle a different color.  To keep 
+the turtle color from clashing with the green background, we will set the red and
+green parts of the color to 0, and just allow the blue to change from 50% to 100%.
+To spread the turtles out, we'll divide the circle into even angles:
+<pre>
+def setUpTurtles(n):
+    tList = []
+    #Create turtles:
+    for i in range(n):
+        t = turtle.Turtle()
+        t.shape("turtle")       #Make the turtle appear turtle-shaped
+        tList.append(t)
+        
+    #Change their color from the blue default and default direction
+    for i in range(n):
+        tList[i].color(0,0,i/(2*n)+.5)
+        tList[i].right(i*360/n)
+     
+    return tList
+</pre>
+If you run your program, you will see the turtles arranged pointing outwards from 
+a center point, in different shapes of blue.
+
+<p>The next functions of the program are straightforward.  We will move each turtle
+forward using a for-loop.  We chose 30 by experimenting with window size.  If it does
+not fit well on your screen, change the forward distance to something that does.  To
+make a stamp of where the turtle has been, we use the Turtle graphics function, <tt>stamp()</tt>
+<pre>
+def moveForward(tList):
+    for t in tList:
+        t.forward(30)
+
+def stamp(tList):
+    for t in tList:
+        t.stamp()
+</pre>
+
+Putting all the pieces together, we get:
+<pre>
+#Intro Programming Lab:  A program with herd of turtles
+
+import turtle
+
+
+def welcomeMessage():
+    print()
+    print("Welcome to our herd of turtles demonstration!")
+    print()
+
+def getInput():
+    n = eval(input("Please enter the number of turtles: "))
+    return n
+
+          
+def setUpScreen():
+    w = turtle.Screen()
+    w.bgcolor("green")
+    return w
+
+def setUpTurtles(n):
+    tList = []
+    #Create turtles:
+    for i in range(n):
+        t = turtle.Turtle()
+        t.shape("turtle")       #Make the turtle appear turtle-shaped
+        tList.append(t)
+        
+    #Change their color from the blue default and default direction
+    for i in range(n):
+        tList[i].color(0,0,i/(2*n)+.5)
+        tList[i].right(i*360/n)
+     
+    return tList
+
+def moveForward(tList):
+    for t in tList:
+        t.forward(30)
+
+def stamp(tList):
+    for t in tList:
+        t.stamp()
+
+def main():
+    welcomeMessage()            #Writes a welcome message to the shell
+    numTurtles = getInput()     #Ask for number of turles
+    w = setUpScreen()           #Set up a green turtle window
+    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
+    for i in range(10):
+        moveForward(turtleList) #Move each turtle in the list forward
+        stamp(turtleList)       #Stamp where the turtle stopped
+    
+
+main()
+</pre>
+Try running your program.  What happens?  How could you modify it to make green 
+turtles on a blue background?  What would you need to modify to make the turtles
+make a circle each time?
+
+
+
+</div>
+</html>

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #6, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #6</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Choropleth maps; Zoning<br>
+<b>Deadline:</b>  Wednesday, 22 March 2017, 11:59pm 
+</div>
+
+
+<div>
+<h3>Data</h3>
+We will use two different data sets from <a href="https://data.cityofnewyork.us/">OpenData NYC</a> and one from the NYC DOE.  The first two were used in 
+<a href="cw6.html">Classwork #6</a>.  The third you will need to download:
+
+<ul>
+	<li> <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">Open Data NYC Planning</a><p>
+	(scroll down to "School, Police, Health & Fire" and export as geoJSON, called <tt>schoolDistricts.json</tt>).
+	<li> <a href="http://schools.nyc.gov/Accountability/data/TestResults/ELAandMathTestResults">NYC Department of Education Test Results</a>
+	(see <a href="cw6.html">Classwork #6</a> for filtering the data to a CSV file).
+	<li> <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">NYC Library Locations</a> (download as CSV file).
+</ul>
+
+</div>
+
+
+<div>
+<h3>Assignment</h3>
+
+
+<ul>	
+	<li> In the <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.953.5608&rep=rep1&type=pdf">Hirt 2013</a> article, the author argues that American zoning differs from European zoning policies early on.
+	She concludes with:
+	<blockquote>
+	One way or another, compared to Europe, today's America is not a "nation of homeowners," but, if I might end on a semi-serious note, it may well be a "nation of homezoners."
+	</blockquote>
+	Why does she mean by this?  What is unique about US land-use regulation, compared to the practices of the countries she cites in comparison (Germany and England)?  Your paragraph should be well-reasoned and include citations to the text.
+	<ul>
+			<li> #1:  Submit your paragraph as a <b>.pdf</b> file.
+	</ul>
+	<br>
+	<li> The NY Times <a href="https://www.nytimes.com/interactive/2016/05/19/upshot/forty-percent-of-manhattans-buildings-could-not-be-built-today.html?_r=0">upshot</a> article analyzes the number of buildings in Manhattan that could not be built under current zoning regulations.  Using the <a href=" http://www1.nyc.gov/site/planning/zoning/index-map.page">zoning map</a>, can 
+	<a href="https://aging.ny.gov/LivableNY/ResourceManual/Housing/III1i.pdf">accessory apartments</a> be built in your neighborhood?  Why or why not?
+	Your paragraph should support your answer with references to your neighborhood's zoning.
+			<ul>
+			<li> #2:  Submit your paragraph as a <b>.pdf</b> file.
+			</ul>
+	<br>
+	
+	<li> Create a choropleth map using folium (see <a href="cw6.html">Classwork #6</a>).  Your map should shade the school district regions by the percentage of students reaching proficiency (a score of 3 or 4 and stored as a separate column in the spread sheet), across grades 3 to 8 (all grades), in mathematics.  
+		<ul>
+			<li> #3:  Submit your program as a <b>.py</b> file.
+			<li> #4:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>	
+	<br>
+	<li> Make a map that shows the school district boundaries overlaid with markers for the public libraries.  Note that there is no shading for the school districts regions (so no need to link a data file when creating the choropleth layer) and setting the opacity to a low number will make the background map features more easily visible.  Each library marker should have a popup with its name.
+		<ul>
+			<li> #5:  Submit your program as a <b>.py</b> file.
+			<li> #6:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>			
+
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

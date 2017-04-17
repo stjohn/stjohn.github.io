@@ -1,0 +1,877 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 10, CMP 167<br>
+  	Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10, CMP 167<br>
+Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will write a simple implementation of the popular <a href="http://gabrielecirulli.github.io/2048/">2048 game</a> by 
+by Gabriele Cirulli.  
+
+<br>
+<img src="2048.jpg">
+
+<p>
+Our game is implemented with turtle graphics, so, it is easy to understand, but very, very slow.
+</div>
+
+
+
+<div>
+
+<h3>The 2048 Game</h3>
+
+<p>Before starting our lab, try the real implementation of 
+<a href="http://gabrielecirulli.github.io/2048/">2048 game</a> to understand the basic rules.  Note:  we are not going to do scoring, just moving of tiles.
+
+<p>As in the Tic-Tac-Toe game in <a href="lab9.html">Lab 9</a>, we need to keep track of the previous moves.  Our game board here is slightly larger, 4 x 4 squares instead of the 3 x 3 used in Tic-Tac-Toe, but the list of lists still works well to store the board.  As in Tic-Tac-Toe, we will set the empty squares to the empty list:
+<pre>
+grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+</pre>
+
+<p>How do we play the game?  While there are empty squares, we ask the user for their move and then play the move.  When there are no more empty squares, we conclude the game.  This makes for a very simple main function: 
+
+<pre>
+def main():
+    grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+    welcome()
+    win,t = setUp(4,4)
+    drawGrid(t,4,4)     
+
+    while squaresFilled(grid) < 16: #While there are empty squares, keep playing:
+        generateNewSquare(t,grid)
+        makeMove(t,grid)
+
+    conclusion(win,t)    
+    
+main()
+</pre>
+
+<p>
+Let's fill in each of these functions.  We need to include both the turtle and random libraries.  We use the turtles for drawing and the random library to randomly generate a new square each round.
+
+<p>The first three functions called from the <tt>main()</tt> are very similar to those from Tic-Tac-Toe or our lab that drew colors from a file:
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+A summing game based on 2048
+by Gabriele Cirulli (http://gabrielecirulli.github.io/2048/)
+"""
+
+from turtle import *
+from random import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("Welcome to a summing game")
+    print("For each move pick a direction")
+    print("([L]eft, [R]ight, [U]p, or [D]own).")    
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUp(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    t = Turtle()
+    t.speed(10)
+    t.hideturtle()
+    return win,t
+
+""" Draws a grid to the graphics window"""
+def drawGrid(tic,xMax,yMax):
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+</pre>        
+
+""" Fills in the square (x,y) with color and write value"""
+def fillSquareWithValue(t,x,y,color,value):
+    t.up()
+    t.goto(x+.1,y+.1)
+    t.fillcolor(color)
+    t.begin_fill()
+    for i in range(4):
+        t.forward(.8)
+        t.right(90)
+    t.end_fill()
+    t.goto(x+.50,y+.85)
+    t.write(value,align="center",font=('Arial', 70, 'normal'))    
+
+def drawBoard(t,grid):
+    for i in range(4):
+        for j in range(4):
+            fillSquareWithValue(t,i,j,"white",grid[i][j])
+
+def generateNewSquare(t,grid):
+    x = randrange(4)
+    y = randrange(4)
+    while grid[x][y] != "":
+        x = randrange(4)
+        y = randrange(4)
+    grid[x][y] = "2"
+    fillSquareWithValue(t,x,y,"white","2")
+
+def slideGridDown(grid):
+    for i in range(4):
+        for j in range(3,0,-1):
+            if grid[i][j] == "" and grid[i][j-1] != "":
+                grid[i][j] = grid[i][j-1]
+                grid[i][j-1] = ""
+
+
+def slideGridUp(grid):
+    for i in range(4):
+        for j in range(3):
+            if grid[i][j] == "" and grid[i][j+1] != "":
+                grid[i][j] = grid[i][j+1]
+                grid[i][j+1] = ""
+
+
+def combineRows(grid,source,target):
+    for i in range(4):
+        if grid[i][target] != "" and grid[i][target] == grid[i][source]:
+            grid[i][target] = str(int(grid[i][target])+int(grid[i][source]))
+            grid[i][source] = ""
+           
+
+def slideGridRight(grid):
+    for j in range(4):
+        for i in range(3,0,-1):
+            if grid[i][j] == "" and grid[i-1][j] != "":
+                grid[i][j] = grid[i-1][j]
+                grid[i-1][j] = ""
+
+
+def slideGridLeft(grid):
+    for j in range(4):
+        for i in range(3):
+            if grid[i][j] == "" and grid[i+1][j] != "":
+                grid[i][j] = grid[i+1][j]
+                grid[i+1][j] = ""
+
+
+def combineColumns(grid,source,target):
+    for i in range(4):
+        if grid[target][i] != "" and grid[target][i] == grid[source][i]:
+            grid[target][i] = str(int(grid[target][i])+int(grid[source][i]))
+            grid[source][i] = ""
+           
+                
+def moveLeft(grid):
+    score = 0
+    for i in range(3):
+        slideGridLeft(grid)
+    for i in range(3):
+        combineColumns(grid,i+1,i)
+    slideGridLeft(grid)   
+
+
+def moveRight(grid):
+    score = 0
+    for i in range(3):
+        slideGridRight(grid)
+    for i in range(3,0,-1):
+        combineColumns(grid,i-1,i)
+    slideGridRight(grid)     
+
+
+def moveUp(grid):
+    for i in range(3):
+        slideGridUp(grid)
+    for i in range(3):
+        combineRows(grid,i+1,i)
+    slideGridUp(grid)     
+
+def moveDown(grid):
+    for i in range(3):
+        slideGridDown(grid)
+    for i in range(3,0,-1):
+        combineRows(grid,i-1,i)
+    slideGridDown(grid) 
+    
+"""Asks user for move, makes move and returns the number of squares freed"""
+def makeMove(t,grid):
+    move = input("Enter move([L]eft, [R]ight, [U]p, or [D]own):")
+    if move == "L" or move == "l":
+        moveLeft(grid)
+    if move == "R" or move == "r":
+        moveRight(grid)
+    if move == "U" or move == "u":
+        moveUp(grid)
+    if move == "D" or move == "d":
+        moveDown(grid)
+    drawBoard(t,grid)
+
+"""Return the number of squares that are filled"""
+def squaresFilled(grid):
+    filled = 0
+    for i in range(4):
+        for j in range(4):
+            if grid[i][j] != "":
+                filled = filled + 1
+    return(filled)
+
+""" Write thank you message and close window on click"""
+def conclusion(win,t):
+    t.up()
+    t.goto(2,4.25)
+    t.write("Thank you for playing!",align="center",font=('Arial', 20, 'normal'))    
+
+    win.exitonclick()
+
+
+         
+def main():
+    grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+    welcome()
+    win,t = setUp(4,4)
+    drawGrid(t,4,4)     
+
+    while squaresFilled(grid) < 16: #While there are empty squares, keep playing:
+        generateNewSquare(t,grid)
+        makeMove(t,grid)
+
+    conclusion(win,t)    
+    
+main()
+
+</pre>
+
+
+<p>
+Our first program allowed the user to specify moves. Below is the program organized into functions:
+
+<pre>
+#Introductory Program, Spring 2015
+#Lehman College, City University of New York
+#First Version of Tic-Tac-Toe
+#   This version does NO checking of anything (it doesn't 
+#   check who wins, doesn't check for legal entries, etc).
+#   We will add that later in the semester
+
+from turtle import *
+
+def setUp():
+    #Set up the screen and turtle
+    win = Screen()
+    tic = Turtle()
+    tic.speed(10)
+    #Change the coordinates to make it easier to tranlate moves to screen coordinates:
+    win.setworldcoordinates(-0.5,-0.5,3.5, 3.5)
+
+    #Draw the vertical bars of the game board:
+    for i in range(1,3):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(3)
+
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(1,3):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(3)
+
+    tic.up()        #Don't need to draw any more lines, so, keep pen up
+    return(win,tic)
+
+def playGame(tic):
+    #Ask the user for the first 8 moves, alternating between the players X and O:
+    for i in range(4):
+        x,y = eval(input("Enter x, y coordinates for X's move: "))
+        tic.goto(x+.25,y+.25)
+        tic.write("X",font=('Arial', 90, 'normal'))
+        x,y = eval(input("Enter x, y coordinates for O's move: "))                 
+        tic.goto(x+.25,y+.25)
+        tic.write("O",font=('Arial', 90, 'normal'))
+        
+    # The ninth move:
+    x,y = eval(input("Enter x, y coordinates for X's move: "))
+    tic.goto(x+.25,y+.25)
+    tic.write("X",font=('Arial', 90, 'normal'))
+
+def cleanUp(tic,win):
+    #Display an ending message: 
+    tic.goto(-0.25,-0.25)
+    tic.write("Thank you for playing!",font=('Arial', 20, 'normal'))
+    
+    win.exitonclick()#Closes the graphics window when mouse is clicked
+
+
+def main()
+    win,tic = setUp()   #Set up the window and game board
+    playGame(tic)       #Ask the user for the moves and display
+    #print("\nThe winner is", checkWinner(board))  #Check for winner
+    cleanUp(tic,win)    #Display end message and close window
+
+
+main()
+</pre>
+
+We would like to print if there is a winner for our game (the line in the main that is commented out).  Our current program asks the user for the move, draws it to the graphics windown, but does not save the move.  If we are going to check for winners, we will need to save the moves.  We can do this using a lists:
+<pre>
+	board = [["","",""],["","",""],["","",""]]
+</pre>
+Each position corresponds to a position on the screen and all are currently set to empty strings.  But, each time someone makes a move, we can add in the move to the list <tt>board</tt> so that we can check at the end who has one.  Every time you draw a move on the graphics window, also save it in the game board.  For example, if user "X" chooses (x,y), then we can store that move by:
+<pre>
+	board[x][y] = "X"
+</pre>
+
+<img src="ticCoords.jpg" height= 400>
+
+<p>
+Modify the end of <tt>setUp()</tt> include setting up the game board and returning it:
+<pre>
+    #Set up board:
+    board = [["","",""],["","",""],["","",""]]
+    
+    return(win,tic,board)
+</pre>
+
+Modify the <tt>playGame()</tt> function to stores moves:
+<pre>
+def playGame(tic,board):
+    #Ask the user for the first 8 moves, alternating between the players X and O:
+    for i in range(4):
+        x,y = eval(input("Enter x, y coordinates for X's move: "))
+        tic.goto(x+.25,y+.25)
+        tic.write("X",font=('Arial', 90, 'normal'))
+        board[x][y] = "X"
+        
+        x,y = eval(input("Enter x, y coordinates for O's move: "))                 
+        tic.goto(x+.25,y+.25)
+        tic.write("O",font=('Arial', 90, 'normal'))
+        board[x][y] = "O"
+        
+    # The ninth move:
+    x,y = eval(input("Enter x, y coordinates for X's move: "))
+    tic.goto(x+.25,y+.25)
+    tic.write("X",font=('Arial', 90, 'normal'))
+    board[x][y] = "X"
+</pre>
+
+Add in the new function:
+<pre>
+def checkWinner(board):
+    return("No winner")
+</pre>
+
+(we will add more to this).
+
+<p>
+Lastly, change your <tt>main()</tt> function to keep track of board moves:
+<pre>
+def main():
+    win,tic,board = setUp()   #Set up the window and game board
+    playGame(tic,board)       #Ask the user for the moves and display
+    print("The winner is", checkWinner(board))  #Check for winner
+    cleanUp(tic,win)    #Display end message and close window
+</pre>
+
+
+Try your program.  What happens at the end?  Who is the winner?  Is it always the same?  Why?
+
+<p>
+Our current program does no checking but just returns "No Winner" no matter what is played.  We will add in checks to see who has won.  Let's start with the row
+(0,0), (1,0), and (2,0).  What does it mean for someone to win on that row?  The entries have to be non-empty and all the same:
+
+<pre>
+def checkWinner(board):
+    if board[0][0] != "" and (board[0][0]== board[0][1] == board[0][2]):
+        return(board[0][0])  #we have a non-empty row that's identical
+    return("No winner")
+</pre>
+Note that if the row is identical and non-empty, then the conditional test is true, and the return command is performed, leaving the function immediately.
+
+<p>
+Since the same pattern holds for the rows where x=1 and x=2, we can put the if-statement into a loop:
+<pre>
+def checkWinner(board):
+    for x in range(3):
+        if board[x][0] != "" and (board[x][0]== board[x][1] == board[x][2]):
+            return(board[x][0])  #we have a non-empty row that's identical
+    return("No winner")
+</pre>
+
+Try adding in the same check for the columns without peeking below.  Here's the answer if you get stuck:
+<pre>
+def checkWinner(board):
+    for x in range(3):
+        if board[x][0] != "" and (board[x][0]== board[x][1] == board[x][2]):
+            return(board[x][0])  #we have a non-empty row that's identical
+    for y in range(3):
+        if board[0][y] != "" and (board[0][y]== board[1][y] == board[2][y]):
+            return(board[0][y])  #we have a non-empty row that's identical    
+    return("No winner")
+</pre>
+
+Lastly, we need to check for winners on the diagonal.  That is, the moves at (0,0), (1,1), and (2,2) are identical (and non-empty) or (0,2), (1,1), and (2,0) are identical (and non-empty).  Try writing this before looking at the answer below:
+<pre>
+def checkWinner(board):
+    for x in range(3):
+        if board[x][0] != "" and (board[x][0] == board[x][1] == board[x][2]):
+            return(board[x][0])  #we have a non-empty row that's identical
+    for y in range(3):
+        if board[0][y] != "" and (board[0][y] == board[1][y] == board[2][y]):
+            return(board[0][y])  #we have a non-empty column that's identical
+    if board[0][0] != "" and (board[0][0] == board[1][1] == board[2][2]):
+        return(board[0][0])
+    if board[2][0] != "" and (board[2][0] == board[1][1] == board[2][0]):
+        return(board[2][0])   
+    return("No winner")
+</pre>
+
+Try playing the game several times.  What happens if there is no winner?  What happens if there is more than one?  What happens if both players chose the same move?  Whose move is counted when computing the winner?  Why?
+</div>
+
+<div>
+<h4>The complete program:</h4>
+
+<pre>
+#Introductory Program, Spring 2015
+#Lehman College, City University of New York
+#First Version of Tic-Tac-Toe
+#   This version does NO checking of anything (it doesn't 
+#   check who wins, doesn't check for legal entries, etc).
+#   We will add that later in the semester
+
+from turtle import *
+
+def setUp():
+    #Set up the screen and turtle
+    win = Screen()
+    tic = Turtle()
+    tic.speed(10)
+    #Change the coordinates to make it easier to tranlate moves to screen coordinates:
+    win.setworldcoordinates(-0.5,-0.5,3.5, 3.5)
+
+    #Draw the vertical bars of the game board:
+    for i in range(1,3):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(3)
+
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(1,3):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(3)
+
+    tic.up()        #Don't need to draw any more lines, so, keep pen up
+
+    #Set up board:
+    board = [["","",""],["","",""],["","",""]]
+    
+    return(win,tic,board)
+
+def playGame(tic,board):
+    #Ask the user for the first 8 moves, alternating between the players X and O:
+    for i in range(4):
+        x,y = eval(input("Enter x, y coordinates for X's move: "))
+        tic.goto(x+.25,y+.25)
+        tic.write("X",font=('Arial', 90, 'normal'))
+        board[x][y] = "X"
+        
+        x,y = eval(input("Enter x, y coordinates for O's move: "))                 
+        tic.goto(x+.25,y+.25)
+        tic.write("O",font=('Arial', 90, 'normal'))
+        board[x][y] = "O"
+        
+    # The ninth move:
+    x,y = eval(input("Enter x, y coordinates for X's move: "))
+    tic.goto(x+.25,y+.25)
+    tic.write("X",font=('Arial', 90, 'normal'))
+    board[x][y] = "X"
+
+def checkWinner(board):
+    for x in range(3):
+        if board[x][0] != "" and (board[x][0] == board[x][1] == board[x][2]):
+            return(board[x][0])  #we have a non-empty row that's identical
+    for y in range(3):
+        if board[0][y] != "" and (board[0][y] == board[1][y] == board[2][y]):
+            return(board[0][y])  #we have a non-empty column that's identical
+    if board[0][0] != "" and (board[0][0] == board[1][1] == board[2][2]):
+        return(board[0][0])
+    if board[2][0] != "" and (board[2][0] == board[1][1] == board[2][0]):
+        return(board[2][0])   
+    return("No winner")
+
+def cleanUp(tic,win):
+    #Display an ending message: 
+    tic.goto(-0.25,-0.25)
+    tic.write("Thank you for playing!",font=('Arial', 20, 'normal'))
+    
+    win.exitonclick()#Closes the graphics window when mouse is clicked
+
+
+def main():
+    win,tic,board = setUp()   #Set up the window and game board
+    playGame(tic,board)       #Ask the user for the moves and display
+    print("\nThe winner is", checkWinner(board))  #Check for winner
+    cleanUp(tic,win)    #Display end message and close window
+
+
+main()
+</pre>
+
+
+
+
+
+</div>
+
+<div>
+<h3>Finding Errors, II</h3>
+
+<p>In <a href="lab6.html">Lab 6</a>, we looked at some common syntax errors and how to fix them.  Most of those errors were missing punctuation (such at colons, quotes, or plus signs).  Let's look at a few more errors that occur when using conditionals, loops, and functions.
+
+<p>Load the following file into IDLE, and then try to solve as many of these errors on your own.  If you get stuck, refer to images and explanations below:
+
+<pre>
+# errors2.py-- modified from Zelle
+# recursions.py
+#   A collection of simple recursive functions from Zelle, 2nd Edition
+#   (Some also include looping counterparts).
+
+def fact(n)
+    # returns factorial of n
+    if n == 0:
+        return 1
+    else
+        return n * fact(n-1
+
+def reverse(s):
+    # returns reverse of string s
+    if s == "":
+        return s
+    elif:
+        return reverse(s[1:]) + s[0]
+
+def anagrams(s):
+    # returns a list of all anagrams of string s
+    if s == "":
+        return [s]
+    else:
+        ans = []
+        for w in anagrams(s[1:]):
+            for pos in range(len(w)+1):
+                    ans.append(w[:pos]+s[0]+w[pos:])
+        return ans
+
+def loopFib(n):
+    # returns the nth Fibonacci number
+    curr = 1
+        prev = 1
+    for i in range(n-2):
+        curr, prev = curr+prev, curr
+    return curr
+
+def main():
+    n = eval(input("Enter a number: "))
+    s = input("Enter a string: ")
+    print(n+"!= ", fact(n), "or, loopFig(n))
+    print(s, "reversed is: ", reverse(s))
+    print("\n anagrams: ", anagrams(s))
+
+main()
+
+</pre>
+
+<p>Load the program into IDLE and run the program.  A dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="../f14/errors2Window1.jpg">
+<br>
+<p>
+We have seen this one before, it's a missing colon (":") at the end of the function definition.  Add it in and run again.
+<br>
+<img src="../f14/errors2Window2.jpg">
+<br>
+<p>
+Again, we get an invalid syntax.  What's wrong here?  (Hint: same as the last one).  Fix the error, and let's run the program again:
+<br>
+<img src="../f14/errors2Window3.jpg">
+<br>
+<p>
+This one is different.  IDLE has highlighted the word <tt>def</tt>, and yet that seems to spelled correctly.  A general rule to follow: if you do not see an error on the current line, look above (usually for missing quotes or closing parenthesis).  On the previous line, the function call to <tt>fact()</tt> is missing the closing parenthesis.  Add it, and run the program again:
+<br>
+<img src="../f14/errors2Window4.jpg">
+<br>
+<p>
+This one is a bit harder-- all the keywords are spelled correctly and there's no missing colons, parenthesis, or quotes.  What's wrong?  Python expected the word <tt>else</tt> (<tt>elif</tt> is only used when you need multiple tests in multi-way decision).  Replace <tt>elif</tt> with <tt>else</tt> and try again:
+<br>
+<img src="../f14/errors2Window5.jpg">
+<br>
+<p>
+The message says:  <tt>unexpected indent</tt>.  The line does seem to be indented for no reason (i.e. it's not part of a block of code in a loop or decision construct).  Remove the extra indent and continue:
+<br>
+<img src="../f14/errors2Window6.jpg">
+<br>
+<p>
+This is a common error.  In plain English, it means that the end of the line ("EOL") was reached before the string finished.  In other words, the string is missing its ending quotes.  Add it in (right after the word <tt>or</tt>) and run the program again.  
+
+<p>It now compiles!  But we need to test it to make sure no run-time errors remain:
+<br>
+<img src="../f14/errors2Window7.jpg">
+<br>
+<p>
+When reading the traceback message (all the red text), go to the very last line and see what it says.  The message says we cannot use <tt>+</tt> for <tt>'int'</tt> and <tt>'string'</tt>.  We only used <tt>+</tt> once in the line to concatenate <tt>n</tt> to a string.  Since we want <tt>n</tt> to eventually be a string and printed to the screen, let's change it to a string (by using the <tt>str()</tt> function):
+<pre>
+print(str(n)+"!= ", fact(n), "or", loopFig(n))
+</pre>
+<p>
+Running it again, a new run-time errors appears:
+<br>
+<img src="../f14/errors2Window8.jpg">
+<br>
+<p>
+The message says that IDLE cannot find <tt>loopFig()</tt>.  Scanning through the file, it looks we misspelled it!  The function is called <tt>loopFib()</tt>.  Fix the misspelling in the <tt>main()</tt> and try again...
+<br>
+<img src="../f14/errors2Window9.jpg">
+<br>
+<p>
+Success!  The program accepted input, processed it, and outputted it to the screen.  Try with a couple of different inputs to test how it works.
+
+
+</div>
+
+<div>
+<h3>The Complete Program</h3>
+
+<a href="2048.py">2048.py</a>
+
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+A summing game based on 2048
+by Gabriele Cirulli (http://gabrielecirulli.github.io/2048/)
+"""
+
+from turtle import *
+from random import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("Welcome to a summing game")
+    print("For each move pick a direction")
+    print("([L]eft, [R]ight, [U]p, or [D]own).")    
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUp(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    t = Turtle()
+    t.speed(10)
+    t.hideturtle()
+    return win,t
+
+""" Draws a grid to the graphics window"""
+def drawGrid(tic,xMax,yMax):
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+
+""" Fills in the square (x,y) with color and write value"""
+def fillSquareWithValue(t,x,y,color,value):
+    t.up()
+    t.goto(x+.1,y+.1)
+    t.fillcolor(color)
+    t.begin_fill()
+    for i in range(4):
+        t.forward(.8)
+        t.right(90)
+    t.end_fill()
+    t.goto(x+.50,y+.85)
+    t.write(value,align="center",font=('Arial', 70, 'normal'))    
+
+def drawBoard(t,grid):
+    for i in range(4):
+        for j in range(4):
+            fillSquareWithValue(t,i,j,"white",grid[i][j])
+
+def generateNewSquare(t,grid):
+    x = randrange(4)
+    y = randrange(4)
+    while grid[x][y] != "":
+        x = randrange(4)
+        y = randrange(4)
+    grid[x][y] = "2"
+    fillSquareWithValue(t,x,y,"white","2")
+
+def slideGridDown(grid):
+    for i in range(4):
+        for j in range(3,0,-1):
+            if grid[i][j] == "" and grid[i][j-1] != "":
+                grid[i][j] = grid[i][j-1]
+                grid[i][j-1] = ""
+
+
+def slideGridUp(grid):
+    for i in range(4):
+        for j in range(3):
+            if grid[i][j] == "" and grid[i][j+1] != "":
+                grid[i][j] = grid[i][j+1]
+                grid[i][j+1] = ""
+
+
+def combineRows(grid,source,target):
+    for i in range(4):
+        if grid[i][target] != "" and grid[i][target] == grid[i][source]:
+            grid[i][target] = str(int(grid[i][target])+int(grid[i][source]))
+            grid[i][source] = ""
+           
+
+def slideGridRight(grid):
+    for j in range(4):
+        for i in range(3,0,-1):
+            if grid[i][j] == "" and grid[i-1][j] != "":
+                grid[i][j] = grid[i-1][j]
+                grid[i-1][j] = ""
+
+
+def slideGridLeft(grid):
+    for j in range(4):
+        for i in range(3):
+            if grid[i][j] == "" and grid[i+1][j] != "":
+                grid[i][j] = grid[i+1][j]
+                grid[i+1][j] = ""
+
+
+def combineColumns(grid,source,target):
+    for i in range(4):
+        if grid[target][i] != "" and grid[target][i] == grid[source][i]:
+            grid[target][i] = str(int(grid[target][i])+int(grid[source][i]))
+            grid[source][i] = ""
+           
+                
+def moveLeft(grid):
+    score = 0
+    for i in range(3):
+        slideGridLeft(grid)
+    for i in range(3):
+        combineColumns(grid,i+1,i)
+    slideGridLeft(grid)   
+
+
+def moveRight(grid):
+    score = 0
+    for i in range(3):
+        slideGridRight(grid)
+    for i in range(3,0,-1):
+        combineColumns(grid,i-1,i)
+    slideGridRight(grid)     
+
+
+def moveUp(grid):
+    for i in range(3):
+        slideGridUp(grid)
+    for i in range(3):
+        combineRows(grid,i+1,i)
+    slideGridUp(grid)     
+
+def moveDown(grid):
+    for i in range(3):
+        slideGridDown(grid)
+    for i in range(3,0,-1):
+        combineRows(grid,i-1,i)
+    slideGridDown(grid) 
+    
+"""Asks user for move, makes move and returns the number of squares freed"""
+def makeMove(t,grid):
+    move = input("Enter move([L]eft, [R]ight, [U]p, or [D]own):")
+    if move == "L" or move == "l":
+        moveLeft(grid)
+    if move == "R" or move == "r":
+        moveRight(grid)
+    if move == "U" or move == "u":
+        moveUp(grid)
+    if move == "D" or move == "d":
+        moveDown(grid)
+    drawBoard(t,grid)
+
+"""Return the number of squares that are filled"""
+def squaresFilled(grid):
+    filled = 0
+    for i in range(4):
+        for j in range(4):
+            if grid[i][j] != "":
+                filled = filled + 1
+    return(filled)
+
+""" Write thank you message and close window on click"""
+def conclusion(win,t):
+    t.up()
+    t.goto(2,4.25)
+    t.write("Thank you for playing!",align="center",font=('Arial', 20, 'normal'))    
+
+    win.exitonclick()
+
+
+         
+def main():
+    grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+    welcome()
+    win,t = setUp(4,4)
+    drawGrid(t,4,4)     
+
+    while squaresFilled(grid) < 16: #While there are empty squares, keep playing:
+        generateNewSquare(t,grid)
+        makeMove(t,grid)
+
+    conclusion(win,t)    
+    
+main()
+</pre>
+
+</div>
+
+
+
+<div>
+
+
+<p> If you finish early, you may work on the programming problems.
+
+</p>
+</div>

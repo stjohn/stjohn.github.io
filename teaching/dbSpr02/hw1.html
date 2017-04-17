@@ -1,0 +1,84 @@
+<title>HW 1 for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Homework 1</h1>
+<h2>CMP 420: Database Systems<br>
+Lehman College, City University of New York<br>
+Fall 2001</h2>
+
+<hr>
+<font color=red>The due date for the graded problems is 11am, 
+Thursday, 6 September.</font><br>
+
+For more details about
+submitting homework, see the 
+<a href="hw-guidelines.html">guidelines</a>.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not to be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> Exercise 2.2.1 on p 48.
+	<li> Exercise 2.2.7 on p 50.
+</ul>
+
+<h2>Graded Problems</h2>
+
+<p>
+<dt><b>W1.</b> Exercise 2.2.3 on p 49.
+
+<p>
+<dt><b>W2.</b> (from Ullman's DB course, Fall 2000):
+	In this exercise, you will model the database of an ``eTailer,'' 
+	such as Amazon. Here are the kinds of information that the eTailer 
+	wishes to maintain: 
+	<ul>
+            <li> Their suppliers, including supplier names, addresses, 
+	    and a logo to display. 
+
+            <li> The items made by each supplier (e.g., HP),
+            including the type of item (e.g., printer), the model
+            number (e.g., 693C), and the retail price. Note that
+            different suppliers may use the same model number for
+            different items, even if those items are of the same type
+            and price. However, one supplier will not use the same
+            model number for two different items.
+
+            <li> Customers, including their name, address, and email. 
+
+            <li> Credit cards, including the company (e.g., Visa),
+            number, and expiration date. Each customer may
+            have several credit cards on file, but each credit card
+            belongs to only one customer.
+
+            <li> Orders. Each order has a unique ID, has a single
+            customer who placed the order. One of the
+            customer's credit cards was used to pay for the order,
+            and the order must tell which. A customer can place several
+            orders and use different credit cards for each. An order is
+            for some set of items, and their is an associated quantity
+            for each. There are several ways to represent orders,
+            but try to use a design that does not allow an order to be
+            placed for a customer who does not own the credit card used
+            to pay for the order.
+	</ul>
+
+    	Give an E/R design for this database. Briefly explain your
+    	reasoning, including the intuitive meaning of any relationships
+    	you use and any entity sets you use other than suppliers, items,
+    	customers, and orders.  
+
+<!-- To be done later, after keys and weak entity sets are explained:
+	Do not forget to indicate keys, many-one
+    	relationships, and weak entity sets in the appropriate ways.
+-->
+
+
+</ul>
+
+</body>
+

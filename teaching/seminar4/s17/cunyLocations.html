@@ -1,0 +1,983 @@
+
+        <!DOCTYPE html>
+        <head>
+            
+        
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        
+            
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+        
+        
+        
+            
+        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        
+        
+        
+            
+        
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        
+        
+        
+            
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
+        
+        
+        
+            
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+        
+        
+        
+            
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://raw.githubusercontent.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+        
+        
+        
+            
+            <style>
+
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                }
+
+            #map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+            
+        
+            
+            <style> #map_254622dca9404542a904c80f0c874a3f {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+        
+            
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+        
+        
+        
+            
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+        
+        
+        
+        
+        </head>
+        <body>
+            
+        
+            
+            <div class="folium-map" id="map_254622dca9404542a904c80f0c874a3f" ></div>
+        
+        
+        
+        </body>
+        <script>
+            
+        
+            
+
+            var southWest = L.latLng(-90, -180);
+            var northEast = L.latLng(90, 180);
+            var bounds = L.latLngBounds(southWest, northEast);
+
+            var map_254622dca9404542a904c80f0c874a3f = L.map('map_254622dca9404542a904c80f0c874a3f', {
+                                           center:[40.75,-74.125],
+                                           zoom: 10,
+                                           maxBounds: bounds,
+                                           layers: [],
+                                           crs: L.CRS.EPSG3857
+                                         });
+            
+        
+        
+            
+            var tile_layer_1413f6aa74434d5ea26780dd48b763c9 = L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    maxZoom: 18,
+                    minZoom: 1,
+                    attribution: 'Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+                    detectRetina: false
+                    }
+                ).addTo(map_254622dca9404542a904c80f0c874a3f);
+
+        
+        
+            
+                var marker_cluster_f388db29a59c4f85a74ed280f5717838 = L.markerClusterGroup();
+                map_254622dca9404542a904c80f0c874a3f.addLayer(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+            var marker_9ed81b2011244bcfb07dba811a654dde = L.marker(
+                [40.740977,-73.984252],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_b5ca04f4fbac4663bf7b2c9a095a50d2 = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_9ed81b2011244bcfb07dba811a654dde.setIcon(icon_b5ca04f4fbac4663bf7b2c9a095a50d2);
+            
+        
+            
+            var popup_ad36170fec754917966027dcb0788c7b = L.popup({maxWidth: '300'});
+
+            
+                var html_5aeee119308b44529f3990ba7baef953 = $('         <div id="html_5aeee119308b44529f3990ba7baef953"                 style="width: 100.0%; height: 100.0%;">                 Baruch College</div>                 ')[0];
+                popup_ad36170fec754917966027dcb0788c7b.setContent(html_5aeee119308b44529f3990ba7baef953);
+            
+
+            marker_9ed81b2011244bcfb07dba811a654dde.bindPopup(popup_ad36170fec754917966027dcb0788c7b);
+
+            
+        
+        
+            
+
+            var marker_3cded42f9fb94a94a01b86122dd4cc5c = L.marker(
+                [40.630276,-73.955545],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_35859c49cb8f494bba54a43c231d2b26 = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_3cded42f9fb94a94a01b86122dd4cc5c.setIcon(icon_35859c49cb8f494bba54a43c231d2b26);
+            
+        
+            
+            var popup_f788e1ac091540e1a9b41f3a94c53ef9 = L.popup({maxWidth: '300'});
+
+            
+                var html_1ba9ab4f08534491833f32fae14264db = $('         <div id="html_1ba9ab4f08534491833f32fae14264db"                 style="width: 100.0%; height: 100.0%;">                 Brooklyn College</div>                 ')[0];
+                popup_f788e1ac091540e1a9b41f3a94c53ef9.setContent(html_1ba9ab4f08534491833f32fae14264db);
+            
+
+            marker_3cded42f9fb94a94a01b86122dd4cc5c.bindPopup(popup_f788e1ac091540e1a9b41f3a94c53ef9);
+
+            
+        
+        
+            
+
+            var marker_ad28c9261fc44142b78c6ea0029547cc = L.marker(
+                [40.717366999999996,-74.012178],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_0262dd617b614a9690d4350976b35222 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_ad28c9261fc44142b78c6ea0029547cc.setIcon(icon_0262dd617b614a9690d4350976b35222);
+            
+        
+            
+            var popup_a6e0b35019cd425c83e5a6da17990d23 = L.popup({maxWidth: '300'});
+
+            
+                var html_efc8b6df28c74d7499eaa12c0451c3f0 = $('         <div id="html_efc8b6df28c74d7499eaa12c0451c3f0"                 style="width: 100.0%; height: 100.0%;">                 Borough of Manhattan Community College</div>                 ')[0];
+                popup_a6e0b35019cd425c83e5a6da17990d23.setContent(html_efc8b6df28c74d7499eaa12c0451c3f0);
+            
+
+            marker_ad28c9261fc44142b78c6ea0029547cc.bindPopup(popup_a6e0b35019cd425c83e5a6da17990d23);
+
+            
+        
+        
+            
+
+            var marker_2312a0422d8b4b2eb57d568f02040751 = L.marker(
+                [40.856673,-73.910127],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_00d2c6c786ce42ed9b704b85c15e2805 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_2312a0422d8b4b2eb57d568f02040751.setIcon(icon_00d2c6c786ce42ed9b704b85c15e2805);
+            
+        
+            
+            var popup_b80ed1a8441241f3b6484e408cfa8351 = L.popup({maxWidth: '300'});
+
+            
+                var html_8b0658ed8d9345b0a3374e5d14941836 = $('         <div id="html_8b0658ed8d9345b0a3374e5d14941836"                 style="width: 100.0%; height: 100.0%;">                 Bronx Community College</div>                 ')[0];
+                popup_b80ed1a8441241f3b6484e408cfa8351.setContent(html_8b0658ed8d9345b0a3374e5d14941836);
+            
+
+            marker_2312a0422d8b4b2eb57d568f02040751.bindPopup(popup_b80ed1a8441241f3b6484e408cfa8351);
+
+            
+        
+        
+            
+
+            var marker_705f561acb7446b591b32a4d682f53e5 = L.marker(
+                [40.819548,-73.94951800000001],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_8bfcfdbd642549029770b40aab21f058 = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_705f561acb7446b591b32a4d682f53e5.setIcon(icon_8bfcfdbd642549029770b40aab21f058);
+            
+        
+            
+            var popup_f406a4ec77d141fbb3fc4165a932dc1e = L.popup({maxWidth: '300'});
+
+            
+                var html_924fe7514a6a464b907efebac4a68ff1 = $('         <div id="html_924fe7514a6a464b907efebac4a68ff1"                 style="width: 100.0%; height: 100.0%;">                 The City College of New York</div>                 ')[0];
+                popup_f406a4ec77d141fbb3fc4165a932dc1e.setContent(html_924fe7514a6a464b907efebac4a68ff1);
+            
+
+            marker_705f561acb7446b591b32a4d682f53e5.bindPopup(popup_f406a4ec77d141fbb3fc4165a932dc1e);
+
+            
+        
+        
+            
+
+            var marker_146ed526275f40cba4ff90aade5f28cf = L.marker(
+                [40.747639,-73.943676],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_fdae53275aa240d9968c584150ad4529 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_146ed526275f40cba4ff90aade5f28cf.setIcon(icon_fdae53275aa240d9968c584150ad4529);
+            
+        
+            
+            var popup_9a9ec25b7874485a85d185c7b116e915 = L.popup({maxWidth: '300'});
+
+            
+                var html_5106225b42cf4007af8a2f8e0c74caf3 = $('         <div id="html_5106225b42cf4007af8a2f8e0c74caf3"                 style="width: 100.0%; height: 100.0%;">                 CUNY School of Law</div>                 ')[0];
+                popup_9a9ec25b7874485a85d185c7b116e915.setContent(html_5106225b42cf4007af8a2f8e0c74caf3);
+            
+
+            marker_146ed526275f40cba4ff90aade5f28cf.bindPopup(popup_9a9ec25b7874485a85d185c7b116e915);
+
+            
+        
+        
+            
+
+            var marker_32534114872949279c8350c71a09802a = L.marker(
+                [40.748723999999996,-73.984205],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_445899b8d7504b7cb1f90ed001bf24fb = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_32534114872949279c8350c71a09802a.setIcon(icon_445899b8d7504b7cb1f90ed001bf24fb);
+            
+        
+            
+            var popup_9f04d5ed9a714598a70cf0050d69ecde = L.popup({maxWidth: '300'});
+
+            
+                var html_5a7bd52d7cd84d9f9e71ae4055b9f7bc = $('         <div id="html_5a7bd52d7cd84d9f9e71ae4055b9f7bc"                 style="width: 100.0%; height: 100.0%;">                 The Graduate School and University Center</div>                 ')[0];
+                popup_9f04d5ed9a714598a70cf0050d69ecde.setContent(html_5a7bd52d7cd84d9f9e71ae4055b9f7bc);
+            
+
+            marker_32534114872949279c8350c71a09802a.bindPopup(popup_9f04d5ed9a714598a70cf0050d69ecde);
+
+            
+        
+        
+            
+
+            var marker_ecc7cb96e0874843944c9fe6ed8dd883 = L.marker(
+                [40.768731,-73.964915],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_5528c2caa5664b92918e9986f00bb4a6 = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_ecc7cb96e0874843944c9fe6ed8dd883.setIcon(icon_5528c2caa5664b92918e9986f00bb4a6);
+            
+        
+            
+            var popup_f31bc53915ed47fe84efaa3455d8e17b = L.popup({maxWidth: '300'});
+
+            
+                var html_8fc0b7f4f5914897a6299785491f4d98 = $('         <div id="html_8fc0b7f4f5914897a6299785491f4d98"                 style="width: 100.0%; height: 100.0%;">                 Hunter College</div>                 ')[0];
+                popup_f31bc53915ed47fe84efaa3455d8e17b.setContent(html_8fc0b7f4f5914897a6299785491f4d98);
+            
+
+            marker_ecc7cb96e0874843944c9fe6ed8dd883.bindPopup(popup_f31bc53915ed47fe84efaa3455d8e17b);
+
+            
+        
+        
+            
+
+            var marker_70750db78e6843c498da980948e54e03 = L.marker(
+                [40.817828000000006,-73.926862],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_e6859c51768f49c5a4f5f6faa6f3ba71 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_70750db78e6843c498da980948e54e03.setIcon(icon_e6859c51768f49c5a4f5f6faa6f3ba71);
+            
+        
+            
+            var popup_ff323b30f1dd4c66b831e6f1a90932fb = L.popup({maxWidth: '300'});
+
+            
+                var html_31bcb19231ff4158a2c9cfad885a3d91 = $('         <div id="html_31bcb19231ff4158a2c9cfad885a3d91"                 style="width: 100.0%; height: 100.0%;">                 Hostos Community College</div>                 ')[0];
+                popup_ff323b30f1dd4c66b831e6f1a90932fb.setContent(html_31bcb19231ff4158a2c9cfad885a3d91);
+            
+
+            marker_70750db78e6843c498da980948e54e03.bindPopup(popup_ff323b30f1dd4c66b831e6f1a90932fb);
+
+            
+        
+        
+            
+
+            var marker_86ad223ec0af4923b17772b2a8e45130 = L.marker(
+                [40.769939,-73.986469],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_bfdd1a703aeb40ebbb9f3ed51048b7db = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_86ad223ec0af4923b17772b2a8e45130.setIcon(icon_bfdd1a703aeb40ebbb9f3ed51048b7db);
+            
+        
+            
+            var popup_641d2900f3f847a39959208948138ee6 = L.popup({maxWidth: '300'});
+
+            
+                var html_e197d14cb94240e789f9921ba95b7833 = $('         <div id="html_e197d14cb94240e789f9921ba95b7833"                 style="width: 100.0%; height: 100.0%;">                 John Jay College of Criminal Justice</div>                 ')[0];
+                popup_641d2900f3f847a39959208948138ee6.setContent(html_e197d14cb94240e789f9921ba95b7833);
+            
+
+            marker_86ad223ec0af4923b17772b2a8e45130.bindPopup(popup_641d2900f3f847a39959208948138ee6);
+
+            
+        
+        
+            
+
+            var marker_cf239a3938d04fa697712ddb3bb85a9b = L.marker(
+                [40.578348999999996,-73.934465],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_9934b648ff9446fa86a1215df74481e5 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_cf239a3938d04fa697712ddb3bb85a9b.setIcon(icon_9934b648ff9446fa86a1215df74481e5);
+            
+        
+            
+            var popup_1eaa04ade8264d5dbe2a7c8e40fed88c = L.popup({maxWidth: '300'});
+
+            
+                var html_21d39756209743f5b841ff5de7a01150 = $('         <div id="html_21d39756209743f5b841ff5de7a01150"                 style="width: 100.0%; height: 100.0%;">                 Kingsborough Community College</div>                 ')[0];
+                popup_1eaa04ade8264d5dbe2a7c8e40fed88c.setContent(html_21d39756209743f5b841ff5de7a01150);
+            
+
+            marker_cf239a3938d04fa697712ddb3bb85a9b.bindPopup(popup_1eaa04ade8264d5dbe2a7c8e40fed88c);
+
+            
+        
+        
+            
+
+            var marker_04b43325f8a443bf8970a2cd1e7e2f16 = L.marker(
+                [40.873442,-73.889361],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_64f64736575f419d91f34fdd627c2f3b = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_04b43325f8a443bf8970a2cd1e7e2f16.setIcon(icon_64f64736575f419d91f34fdd627c2f3b);
+            
+        
+            
+            var popup_eddf3b656fb64309a9d0e5a3e7c5d4c1 = L.popup({maxWidth: '300'});
+
+            
+                var html_979470e8fe47496bb87796be63419b3a = $('         <div id="html_979470e8fe47496bb87796be63419b3a"                 style="width: 100.0%; height: 100.0%;">                 Lehman College</div>                 ')[0];
+                popup_eddf3b656fb64309a9d0e5a3e7c5d4c1.setContent(html_979470e8fe47496bb87796be63419b3a);
+            
+
+            marker_04b43325f8a443bf8970a2cd1e7e2f16.bindPopup(popup_eddf3b656fb64309a9d0e5a3e7c5d4c1);
+
+            
+        
+        
+            
+
+            var marker_016ab23436c5455cba2a7c6d2035152e = L.marker(
+                [40.743951,-73.935154],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_1d7ff82815de4c3c90385f84133ce707 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_016ab23436c5455cba2a7c6d2035152e.setIcon(icon_1d7ff82815de4c3c90385f84133ce707);
+            
+        
+            
+            var popup_319eb430954f4569a856c734cd8111fb = L.popup({maxWidth: '300'});
+
+            
+                var html_483cda77bf8342cba9576f2910f6c210 = $('         <div id="html_483cda77bf8342cba9576f2910f6c210"                 style="width: 100.0%; height: 100.0%;">                 LaGuardia Community College</div>                 ')[0];
+                popup_319eb430954f4569a856c734cd8111fb.setContent(html_483cda77bf8342cba9576f2910f6c210);
+            
+
+            marker_016ab23436c5455cba2a7c6d2035152e.bindPopup(popup_319eb430954f4569a856c734cd8111fb);
+
+            
+        
+        
+            
+
+            var marker_cfbf3772a05b48a08a0c441f0698d3ad = L.marker(
+                [40.66624,-73.957349],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_5e7e0d0b85a449f58eb0f625008188df = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_cfbf3772a05b48a08a0c441f0698d3ad.setIcon(icon_5e7e0d0b85a449f58eb0f625008188df);
+            
+        
+            
+            var popup_60fee66d175345108cbe1393eb905329 = L.popup({maxWidth: '300'});
+
+            
+                var html_d610bce8299948ad8a2f01a8a3130af5 = $('         <div id="html_d610bce8299948ad8a2f01a8a3130af5"                 style="width: 100.0%; height: 100.0%;">                 Medgar Evers College</div>                 ')[0];
+                popup_60fee66d175345108cbe1393eb905329.setContent(html_d610bce8299948ad8a2f01a8a3130af5);
+            
+
+            marker_cfbf3772a05b48a08a0c441f0698d3ad.bindPopup(popup_60fee66d175345108cbe1393eb905329);
+
+            
+        
+        
+            
+
+            var marker_02bef3d97e044d03b571cb79127af7e6 = L.marker(
+                [40.695507,-73.987882],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_bb4308df5a5f41f0a2daebd9575126d8 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_02bef3d97e044d03b571cb79127af7e6.setIcon(icon_bb4308df5a5f41f0a2daebd9575126d8);
+            
+        
+            
+            var popup_f33d932e514741f0a7d834fa45dae3a8 = L.popup({maxWidth: '300'});
+
+            
+                var html_aada75387d8145f4a5c97fc6eac32c6c = $('         <div id="html_aada75387d8145f4a5c97fc6eac32c6c"                 style="width: 100.0%; height: 100.0%;">                 New York City College of Technology</div>                 ')[0];
+                popup_f33d932e514741f0a7d834fa45dae3a8.setContent(html_aada75387d8145f4a5c97fc6eac32c6c);
+            
+
+            marker_02bef3d97e044d03b571cb79127af7e6.bindPopup(popup_f33d932e514741f0a7d834fa45dae3a8);
+
+            
+        
+        
+            
+
+            var marker_eaae55448cb148e792740f8b45c8747e = L.marker(
+                [40.744988,-73.81644399999999],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_e83d96aaf5f04deb9498142db02e9715 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_eaae55448cb148e792740f8b45c8747e.setIcon(icon_e83d96aaf5f04deb9498142db02e9715);
+            
+        
+            
+            var popup_295b6df7481a493f9342af9833724dc9 = L.popup({maxWidth: '300'});
+
+            
+                var html_1ab77c7ce75e4517a43717e6fe75c90e = $('         <div id="html_1ab77c7ce75e4517a43717e6fe75c90e"                 style="width: 100.0%; height: 100.0%;">                 Queensborough Community College</div>                 ')[0];
+                popup_295b6df7481a493f9342af9833724dc9.setContent(html_1ab77c7ce75e4517a43717e6fe75c90e);
+            
+
+            marker_eaae55448cb148e792740f8b45c8747e.bindPopup(popup_295b6df7481a493f9342af9833724dc9);
+
+            
+        
+        
+            
+
+            var marker_75bac1176ec040f2992b4b83e1181569 = L.marker(
+                [40.736315999999995,-73.820035],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_ea7021cee18345cf850c973b42d1002b = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_75bac1176ec040f2992b4b83e1181569.setIcon(icon_ea7021cee18345cf850c973b42d1002b);
+            
+        
+            
+            var popup_1176c9e38f04453caacdabca5595dfcb = L.popup({maxWidth: '300'});
+
+            
+                var html_4e4440484e9547a9bebabe2a6a65e898 = $('         <div id="html_4e4440484e9547a9bebabe2a6a65e898"                 style="width: 100.0%; height: 100.0%;">                 Queens College</div>                 ')[0];
+                popup_1176c9e38f04453caacdabca5595dfcb.setContent(html_4e4440484e9547a9bebabe2a6a65e898);
+            
+
+            marker_75bac1176ec040f2992b4b83e1181569.bindPopup(popup_1176c9e38f04453caacdabca5595dfcb);
+
+            
+        
+        
+            
+
+            var marker_3514b250c34d48449633325f2b495f41 = L.marker(
+                [40.608647999999995,-74.153563],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_0826b895587b4668adb9bf2542c507ee = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_3514b250c34d48449633325f2b495f41.setIcon(icon_0826b895587b4668adb9bf2542c507ee);
+            
+        
+            
+            var popup_babfc560f1b841fb88d419d9bfaeb4a7 = L.popup({maxWidth: '300'});
+
+            
+                var html_0740b683020e40a99be030c541a7c05b = $('         <div id="html_0740b683020e40a99be030c541a7c05b"                 style="width: 100.0%; height: 100.0%;">                 College of Staten Island</div>                 ')[0];
+                popup_babfc560f1b841fb88d419d9bfaeb4a7.setContent(html_0740b683020e40a99be030c541a7c05b);
+            
+
+            marker_3514b250c34d48449633325f2b495f41.bindPopup(popup_babfc560f1b841fb88d419d9bfaeb4a7);
+
+            
+        
+        
+            
+
+            var marker_f49dd8e1d7c843c0add21a2207efaced = L.marker(
+                [40.702821,-73.795776],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_957ce3cda40246aa996242526d2e965f = L.AwesomeMarkers.icon({
+                    icon: 'cloud',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_f49dd8e1d7c843c0add21a2207efaced.setIcon(icon_957ce3cda40246aa996242526d2e965f);
+            
+        
+            
+            var popup_b45e8af24a594141b92dc667d32155ac = L.popup({maxWidth: '300'});
+
+            
+                var html_239896f5a7714e3295b9fc6f6cab54da = $('         <div id="html_239896f5a7714e3295b9fc6f6cab54da"                 style="width: 100.0%; height: 100.0%;">                 York College</div>                 ')[0];
+                popup_b45e8af24a594141b92dc667d32155ac.setContent(html_239896f5a7714e3295b9fc6f6cab54da);
+            
+
+            marker_f49dd8e1d7c843c0add21a2207efaced.bindPopup(popup_b45e8af24a594141b92dc667d32155ac);
+
+            
+        
+        
+            
+
+            var marker_f5591772900c4cd8ac403a4df5924dd3 = L.marker(
+                [40.752846000000005,-73.984133],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_12835d2dfa2145938341241de23ee35f = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_f5591772900c4cd8ac403a4df5924dd3.setIcon(icon_12835d2dfa2145938341241de23ee35f);
+            
+        
+            
+            var popup_5e7e8b24086346958aaac9e043b180f1 = L.popup({maxWidth: '300'});
+
+            
+                var html_3dd578bcb1cc432886163d1f359a33d8 = $('         <div id="html_3dd578bcb1cc432886163d1f359a33d8"                 style="width: 100.0%; height: 100.0%;">                 Guttman Community College</div>                 ')[0];
+                popup_5e7e8b24086346958aaac9e043b180f1.setContent(html_3dd578bcb1cc432886163d1f359a33d8);
+            
+
+            marker_f5591772900c4cd8ac403a4df5924dd3.bindPopup(popup_5e7e8b24086346958aaac9e043b180f1);
+
+            
+        
+        
+            
+
+            var marker_baea0f89a1014deebfdd5c07e973a397 = L.marker(
+                [40.748151,-73.989723],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_30e8d20b6e7b46e9996e2548c798f295 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_baea0f89a1014deebfdd5c07e973a397.setIcon(icon_30e8d20b6e7b46e9996e2548c798f295);
+            
+        
+            
+            var popup_50492cc68db14437bed3a75dacc98097 = L.popup({maxWidth: '300'});
+
+            
+                var html_07d7c32d5d58490cb5192013db907e53 = $('         <div id="html_07d7c32d5d58490cb5192013db907e53"                 style="width: 100.0%; height: 100.0%;">                 School of Professional Studies</div>                 ')[0];
+                popup_50492cc68db14437bed3a75dacc98097.setContent(html_07d7c32d5d58490cb5192013db907e53);
+            
+
+            marker_baea0f89a1014deebfdd5c07e973a397.bindPopup(popup_50492cc68db14437bed3a75dacc98097);
+
+            
+        
+        
+            
+
+            var marker_1f91765241524ca9a8b2c97f05e3619b = L.marker(
+                [40.755342999999996,-73.988846],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_f388db29a59c4f85a74ed280f5717838);
+            
+        
+            
+
+                var icon_4ec4dd5d166b4d0e8ca37a6de03324fa = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'green',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_1f91765241524ca9a8b2c97f05e3619b.setIcon(icon_4ec4dd5d166b4d0e8ca37a6de03324fa);
+            
+        
+            
+            var popup_b3fe19272e174282a09d28dc12deb334 = L.popup({maxWidth: '300'});
+
+            
+                var html_e0a185c53907488cb6fb0ce28f17dd07 = $('         <div id="html_e0a185c53907488cb6fb0ce28f17dd07"                 style="width: 100.0%; height: 100.0%;">                 School of Journalism</div>                 ')[0];
+                popup_b3fe19272e174282a09d28dc12deb334.setContent(html_e0a185c53907488cb6fb0ce28f17dd07);
+            
+
+            marker_1f91765241524ca9a8b2c97f05e3619b.bindPopup(popup_b3fe19272e174282a09d28dc12deb334);
+
+            
+        
+        
+        
+        </script>
+        

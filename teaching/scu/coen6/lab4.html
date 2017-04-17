@@ -1,0 +1,202 @@
+<title>Lab 4 for Computer Engineering 6, SCU</title>
+
+<html>
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Laboratory 4</h2>
+<h3>Computer Engineering 6, Winter 1998<br>
+Introduction to Computing</h3>
+<hr>
+<b>Basic HTML and Call-by-reference Functions</b>
+
+<hr>
+
+<h3>Basic HTML</h3>
+
+	Part of today's lab is to create your own web page.
+	Most web pages are written using the language, HTML,
+	which stands for Hyper Text Markup Language.  There are many
+	similarities between C++ and HTML.  For example, in C++,
+	curly braces "{" and "}" come in pairs and mark the beginning
+	and end of functions or blocks of code.  For HTML, the beginning
+	and end of the title (which appears at the top of the window)
+	is indicated by "&lt;title&gt" and "&lt;/title&gt", and the
+	beginning and end of a string written in a boldface font by
+	"&lt b &gt" and "&lt /b &gt".  The title of this file is 
+	written as:
+	<pre>
+	&lt;title&gt Lab 4 for Computer Engineering 6, SCU &lt;/title&gt
+	</pre>
+	
+	<p>
+	Every web page should begin with it's title, followed by the 
+	body statement.  Like with the title, there's a beginning of 
+	the body ("&lt;body&gt") and an end of the body ("&lt;body&gt").
+	In between these two, you should put the body, or main part,
+	of your webpage.  The body statement for this page has some
+	extra "adjectives" which also specify the color of the page 
+	and the links:
+
+	<pre>
+	&lt;body bgcolor="ffffff" link="003399" vlink="236b8e"&gt
+	</pre>
+	
+	These extra descriptions occur only in the beginning body 
+	statement, not the ending one.  "bgcolor" specifies the 
+	background color of the page ("ffffff" is the hexadecimal
+	representation for white), "link" gives the color of links,
+	and "vlinks" gives the colors links turn after you have looked
+	at them at least once.
+	
+	The end of body statement
+	is just:
+	
+	<pre>
+	&lt;/body&gt
+	</pre>
+	
+	Comments in HTML are indicated by surrounding your comment
+	with "&lt;!--" and "--&gt;".
+
+<h3>Viewing the Source</h3>
+
+	You can view the source for any webpage.  To do this, choose
+	the "Page Source" option under the View Menu.  This will bring
+	up a window with the HTML source code for the page you are 
+	currently looking at (Note:  Different versions of Netscape
+	put the "View Source" under different menus.  If you are not
+	using Netscape 4.04, try also under the "Edit" menu.).
+	
+	For today's lab, a template, or sample, page has already been
+	written.  You need to get a copy of it, save it in your directory,
+	and modify it (one easy way to do this is to view the source and
+	cut-and-paste it into
+	an open text-edit window) .  
+	The template file is 
+	<a href="http://www.cse.scu.edu/~kstjohn/coen6/template.html">
+	http://www.cse.scu.edu/~kstjohn/coen6/template.html</a>
+	Note that the name of the file ends in ".html".  This indicates
+	that it is a HTML file.
+	You need to save the source file, not just the page, since saving
+	just the page will not give you the HTML commands.
+	
+	
+<h3>Creating your Page</h3>
+	
+	In the text editor, change the title, your name, 
+	your e-mail address, and the background color
+	(The next section includes representations for some
+	colors.). 
+
+	<p>
+	Save your file as "sample.html."  To look at your file, 
+	choose "Open" from the File menu.  In the dialog box, click
+	the "File" option at the far right.  From there, choose your
+	file from the folders.  
+	 
+	<p>
+	If you change something in your file, save it, and then click
+	on the "Reload" button.  This will bring up the latest version
+	of your file.
+
+<h3>Colors in HTML</h3>
+
+	Colors are represented by a 6-digit hexadecimal number.  A hexadecimal
+	number ranges from 0 to 15 (10 through 15 are represented by 
+	A through F), much like a binary digit ranges from 0 to 1, or
+	a decimal digit ranges from 0 to 9..  
+
+	<p>
+	"ffffff" represents the color white, while "000000" represents
+	the color black.  Try changing the background color of your 
+	page to get blue, red, and green.  You can do this by trial-and-error,
+	looking at the source for other pages that use those colors, or
+	by using a webpage editor such as Composer.
+
+
+<h3>Make Your Page Visible to the Outside World</h3>
+
+	Right now, your page is not viewable by anyone but you.  To make
+	it visible, you need to change the permissions to allow others
+	to read it (permissions were discussed in the last lab).  
+	If you would like others to find your
+	page easily, it's a good idea to link it to the 
+	student homepage list maintained by the Design Center.  
+	<p>
+	This is not required for this class, but if you are interested
+	in making your page visible to others, read the Design Center's
+	Information page about what to do 
+	<a href="http://www.scudc.scu.edu/info">
+	http://www.scudc.scu.edu/info</a>.
+	
+	 	
+<h3>Computing Change Program</h3>
+
+        Write a program that tells what coins to give out for
+        any amount of change from 1 cent to 99 cents.  For example,
+        if the amount is 86 cents, the output would be something
+        like the following:
+<pre>
+        86 cents can be given as
+        3 quarter(s) 1 dime(s) and 1 penny(pennies)
+</pre>
+        Use coin denominations of 25 cents (quarters), 10 cents
+        (dimes), and 1 cent (pennies).  Do not use nickel and
+        half-dollar coins.  Your program will use the follwing
+        function (among others):
+<pre>
+void compute_coin(int coin_value, int& number, int& amount_left);
+// Assumes: 0 < coin_value < 100; 0 <= amount_left < 100.
+// The function sets number equal to the maximum number of coins
+// of coin_value cents that can be obtained from amount_left cents.
+// amount_left is decreased by the value of the coins
+// (i.e. number*coin_value).
+</pre>
+
+
+        Include a loop that lets the user repeat this computation
+        for new input values until the user says he or she wants
+        to end the program.  Hint: use integer division and the
+        % operator to implement the above function.
+
+
+<h3>Program style and what to turn in from lab3</h3>
+
+	Your program should have include a comment header with your
+	name, e-mail, honesty pledge, and a short description of what
+	the program does (including any assumptions, or preconditions,
+	you have made). The program should be properly indented
+	following the style discussed in class and illustrated in the
+	text. Besides the initial comments, you should include comments
+	for any aspect of your algorithm or implementatation that is not
+	self-evident.  
+
+<!-- sample comment -->
+
+<h3>What to Turn In</h3>
+
+	Before leaving the lab, you should give the TA:
+	<ul>
+		<li> a printout of your webpage as viewed from Netscape 
+			(see <a href="lab2.html">Lab 2</a>.
+			for directions on printing pages in Netscape).
+		<li> a printout of the source (the HTML file) of your webpage.
+		<li> a printout of your change computing program, 
+			with the program header comment
+			correctly filled in (with your name and e-mail) 
+			and all syntax errors removed.
+		<li> a printout of the interaction between you and the computer 
+			when the change computing program is run 
+			(e.g. a printout of hello.out).
+		<li> and you should mail a copy of your C++ program 
+			<b>only</b> to 
+			the class account (coen006) with the subject: "lab 4".
+	</ul>
+
+	If you finish the lab early, you should use the rest of the 
+	time to start the homework.
+	
+</body>
+</html>

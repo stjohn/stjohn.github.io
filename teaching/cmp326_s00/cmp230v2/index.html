@@ -1,0 +1,796 @@
+<HTML>
+<HEAD>
+<TITLE>CMP 230-1 Final Exam, version 2, Fall 1999 </TITLE>
+</HEAD>
+<BODY bgcolor = white>
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+1">
+Final Exam <BR>
+Computer Programming 230 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+20 December 1999
+</FONT></DIV>
+
+<P>
+<FONT SIZE="+1"><FONT SIZE="+1"></FONT></FONT>
+<DIV ALIGN="CENTER"><FONT SIZE="+1"><FONT SIZE="+1"><FONT SIZE="-1"><B>
+Exam Rules
+</B></FONT></FONT></FONT></DIV><FONT SIZE="+1"><FONT SIZE="+1"></FONT></FONT><UL>
+<LI>Show all your work.  Your grade will be based on the work shown.
+<LI>The exam is closed book and closed notes.
+<LI>When taking the exam, you may have with you pens or pencils,
+		and an 8 1/2" x 11" 
+		piece of paper filled with notes, programs, etc.
+<LI>You may not use a computer or calculator.
+<LI>All books and bags must be left at the front of the classroom 
+		during this exam.
+<LI><B>Do not open this exams until instructed to do so. </B>
+</UL><FONT SIZE="+1"><FONT SIZE="+1"></FONT></FONT>
+<P>
+<FONT SIZE="+1"><FONT SIZE="+1"></FONT></FONT>
+<DIV ALIGN="CENTER"><FONT SIZE="+1"><FONT SIZE="+1"><FONT SIZE="-1"><FONT SIZE="+1">
+ 
+<P>
+<FONT SIZE="+1"><FONT SIZE="+1"><FONT SIZE="-1"><FONT SIZE="+1"><FONT SIZE="-1">v. 2</FONT>
+</FONT></FONT></FONT></FONT></DIV><FONT SIZE="+1"><FONT SIZE="+1"></FONT></FONT>
+<P>
+<FONT SIZE="+1"></FONT>
+<P>
+<FONT SIZE="+1"></FONT><DL COMPACT>
+<DD><P>
+<DT>1.
+<DD>True or False: 
+    <DL COMPACT>
+<DT>(a)
+<DD> A variable could be
+named <TT>switch</TT>.
+        <DT>(b)
+<DD> Algorithms can only be
+		expressed using a programing language.
+        <DT>(c)
+<DD> You need to use the
+		reserved word <TT>call</TT> to invoke a method.
+        <DT>(d)
+<DD> The class <TT>Math</TT>
+		is part of the Java language.
+        <DT>(e)
+<DD> <TT>double</TT> is a 
+		primitive type
+        <DT>(f)
+<DD> It is possible for
+		the body of a <TT>for</TT>-loop to be executed
+		0 times.
+        <DT>(g)
+<DD> All Java variables must
+		be created using the <TT>new</TT> operator.
+        <DT>(h)
+<DD> Any Java class may
+		have a method <TT>main</TT>.
+        <DT>(i)
+<DD> Overloaded methods have
+		the same name, but different formal parameter
+		lists.
+        <DT>(j)
+<DD> A constructor can call 
+                the constructor of its base class by using the
+                keyword <TT>super</TT>.
+    </DL>
+
+<P>
+<DT>2.
+<DD>To the right of each lines of code, indicate the values
+        stored in the variables immediately after those lines have
+        been executed.  If a variable is uninitialized, enter <TT>?</TT>
+        in the box for that variable.
+        <DL COMPACT>
+<DT>(a)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> int x, y, z;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> double a, b;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> z = 5;</TT></TD>
+</TR>
+</TABLE>
+
+              <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+            <DT>(b)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> y = z/5;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> a = y/2;</TT></TD>
+</TR>
+</TABLE>
+        	
+        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+            <DT>(c)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> b = y/2.0;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> z = z*z+1;</TT></TD>
+</TR>
+</TABLE>
+       		 
+       		<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+            <DT>(d)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> a = a - y;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> b = 3.145;</TT></TD>
+</TR>
+</TABLE>
+        	
+        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+            <DT>(e)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> x = (int) b + 1;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> a = z / (double) x;</TT></TD>
+</TR>
+</TABLE>
+       		 
+        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+            <DT>(f)
+<DD><TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT> b = x;</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> a = Math.sqrt(z-1);</TT></TD>
+</TR>
+</TABLE>
+        	
+        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER"><TT> x</TT></TD>
+<TD ALIGN="CENTER"><TT> y</TT></TD>
+<TD ALIGN="CENTER"><TT> z</TT></TD>
+<TD ALIGN="CENTER"><TT> a</TT></TD>
+<TD ALIGN="CENTER"><TT> b</TT></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE></DL>
+
+<P>
+
+<P>
+
+    <DT>3.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Consider the following code fragment:
+<PRE>
+   int x=SavitchIn.readLineInt();
+   if (x &gt;= 0)
+     System.out.println("The input is ") ;
+   System.out.println(x);
+</PRE>
+Which of the following statements is true?
+	  <DL COMPACT>
+<DT>i.
+<DD>The value of x gets printed out only when the input 
+is positive or zero.
+             <DT>ii.
+<DD>The value of x always gets printed out.
+             <DT>iii.
+<DD>The value of x gets printed out only when the input 
+		is positive.
+             <DT>iv.
+<DD>The code fragment will not compile because there is no else.
+             <DT>v.
+<DD>The value of x gets printed out only when the input is 
+		negative.
+             <DT>vi.
+<DD>The value of x never gets printed out.
+	  </DL>
+
+<P>
+<DT>(b)
+<DD>Consider the following code fragment:
+<PRE>
+   int a = 9;
+   while (a != 0)
+   {  a = a - 2;
+      System.out.println(a); }
+</PRE>
+          Which of the following statements is correct?
+	<DL COMPACT>
+<DT>i.
+<DD>The loop is infinite.
+<DT>ii.
+<DD>(a != 0) is an invalid control expression.
+             <DT>iii.
+<DD>The loop will printout the odd numbers from 9 down to 1 and
+          	stop.
+             <DT>iv.
+<DD>The loop will printout the even number from 8 down to 
+		zero and stop.
+             <DT>v.
+<DD>The loop will printout the odd number from 7 down to 
+		1 and stop.
+	</DL>
+
+<P>
+<DT>(c)
+<DD>Consider the following code fragments:
+<PRE>
+//Fragment (A)
+   if (a &gt; 100)
+   {  System.out.println("a is large"); }
+   else if (a &gt; 0)
+   {  System.out.println("a is positive"); }
+   else
+   {  System.out.println("a is negative or zero"); }
+//Fragment (B)
+   if (a &gt; 100)
+   {  System.out.println("a is large"); }
+   if (a &gt; 0)
+   {  System.out.println("a is positive"); }
+   else
+   {  System.out.println("a is negative or zero"); }
+</PRE>
+          Which of the following statements is true?
+	<DL COMPACT>
+<DT>i.
+<DD>Fragment (B) will not compile
+<DT>ii.
+<DD>The two fragments always produce the same output if <I>a</I> &gt; 0
+             <DT>iii.
+<DD>Fragment (B) always produces two lines of output if <I>a</I> &gt; 100
+             <DT>iv.
+<DD>Both fragments produce the same output
+             <DT>v.
+<DD>The two fragments always produce the same output if <I>a</I> &gt; 100</DL>
+
+<P>
+</DL>
+
+<P>
+
+    <DT>4.
+<DD>What is the output of the following code fragments:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+int numtimes = 0;
+do
+{   
+    System.out.print("B");
+    numtimes++;
+}
+while ( numtimes &gt; 2 )
+System.out.print("Bye!");
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+	    <DT>(b)
+<DD><PRE>
+boolean done = false;
+int total = 1;
+while ( !done )
+{   
+    total = total*2; 
+    if ( total &gt; 20 )
+    {
+        done = true;
+    }
+}
+System.out.println(total);
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+	    <DT>(c)
+<DD><PRE>
+int[] a = new int[5];
+a[0] = 5; a[1] = 3; a[2] = 1; a[3] = 4; a[4] = 10; 
+for ( i = 0 ; i &lt; 4 ; i++)
+{   
+    for ( j = 0 ; j &lt; 4 ; j++)
+    {   
+        if ( a[j] &lt; a[j+1] )
+        {
+           int tmp = a[j];
+           a[j] = a[j+1];
+           a[j+1] = tmp;
+    }
+}
+for ( j = 0 ; j &lt; 5 ; j++)
+    System.out.print( a[j] + " ");
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE></DL>
+
+<P>
+
+    <DT>5.
+<DD><DL COMPACT>
+<DT>(a)
+<DD><PRE>
+if ( ( 5 &lt;= 6) || ( 1 &gt; 1 ) )
+    System.out.println("Yes");
+else
+    System.out.println("No");
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(b)
+<DD><PRE>
+string answer = "Y";
+if ( answer.compareTo("y".toUpperCase()) ) 
+    System.out.println("Yes");
+else
+    System.out.println("No");
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(c)
+<DD><PRE>
+int x = 2, y = 3, z = 4;
+if ( (x &gt; y/3) &amp;&amp; ( (z &lt; y) || (z == 2*x) ) )
+    System.out.println("Yes");
+else
+    System.out.println("No");
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(d)
+<DD><PRE>
+double number = 16;
+boolean issquare = (Math.sqrt(number)*Math.sqrt(number) == number);
+boolean iseven = ( number % 2 == 0 );
+if ( ispositive &amp;&amp; issquare )
+    System.out.println("Yes");
+else
+    System.out.println("No");
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<DT>(e)
+<DD><PRE>
+int year = 2020;
+if (( year%4 == 0 &amp;&amp; year%100 != 0 ) || ( year%400 == 0 ))
+    System.out.println("Yes");
+else
+    System.out.println("No");
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+</DL>
+
+    <DT>6.
+<DD>Consider the following class.
+        <DL COMPACT>
+<DT>(a)
+<DD>Mark the constructors
+with a ``C'', the accessor functions with a ``A'',
+                and the mutator functions with a ``M'':
+<PRE>
+class Boro
+{
+    public void manhattan(String s) { t = s; }           
+    public Boro() { n = 0; t = "";}                   
+    public int statenisland() { return n; }                 
+    public Boro(int a, String s) { n = a; t = s; }  
+    public void queens() { System.out.println(t); } 
+    public void manhattan(int m) { n = m; }           
+    public String brooklyn() { return t; }              
+    public Boro(int a) { n = a;t = "";}           
+    public void bronx() { n++; }                        
+    public String brooklyn() { return t+t; }              
+
+    private int n;
+    private String t;
+}
+</PRE>
+
+<P>
+<DT>(b)
+<DD>Using the class from above, determine what the following
+                        program prints:
+<PRE>
+public class Mystery
+
+  public static void main(String[] arg)
+  {
+     Boro mine = new Boro();
+     Boro yours = new Boro(5, "precious");
+     mine.manhattan("industrial");
+
+     mine.queens();
+     System.out.println("\n" + yours.brooklyn());
+     yours.manhattan(mine.statenisland());
+     yours.queens();
+  }
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+</DL>
+
+<P>
+
+    <DT>7.
+<DD>Write a <B>complete program</B> which uses a 
+	loop to print out the following:
+<PRE>
+zyxwvutsrqponmlkjihgfedcba
+</PRE>
+
+<P>
+
+    <DT>8.
+<DD>Write a <B>complete program</B> which reads in
+	a person's full name (you may assume that they
+	enter a first, middle and last name, separated
+	by spaces), and prints out their initials.  A
+	sample run of the program follows:
+
+<P>
+<TT>
+Please enter your name: <B>William Jefferson Clinton</B>
+<BR>
+<B>Your initials are WJC.</B>
+</TT>
+
+<P>
+
+    <DT>9.
+<DD>Using the class <TT>DeckOfCards</TT> (included on the
+        next page), write the code that will set up a deck
+        of cards, shuffle the deck, and then print out the
+        shuffled deck.
+
+<P>
+
+<PRE>
+public class DeckOfCards
+{
+    public PlayingCard[] deck = new PlayingCard[52];    
+    public DeckOfCards()
+    {    int i;
+        for ( i = 0 ; i &lt; 52 ; i++)
+        {
+            deck[i] = new PlayingCard();
+        }
+        for ( i = 0 ; i &lt; 52 ; i++ )
+        {
+            int div = i / 13; //Divide into groups of 4 (52/4 = 13)
+            switch (div)
+            {
+                case 0: deck[i].suit = "clubs"; break;
+                case 1: deck[i].suit = "diamonds"; break;
+                case 2: deck[i].suit = "hearts"; break;
+                case 3: deck[i].suit = "spades"; break;
+            }       
+        }
+        for ( i = 0 ; i &lt; 52 ; i++ )
+        {   deck[i].rank = i % 13 + 2; }
+    }
+    public void print()
+    {   int i;
+        for ( i = 0 ; i &lt; 52 ; i++ )
+        {
+            deck[i].print();
+            if (  (i+1)%5 == 0 )
+                System.out.println();
+        }
+    }
+    public void print(int indexToPrint)
+    {   deck[indexToPrint].print(); }
+    public void shuffle()
+    {   int i;
+        for ( i = 0 ; i &lt; 1000 ; i++ )
+        {   int c1, c2;
+            c1 = (int) Math.round(Math.random()*52)%52;
+            c2 = (int) Math.round(Math.random()*52)%52;
+            PlayingCard tmp = deck[c1];
+            deck[c1] = deck[c2];
+            deck[c2] = tmp;
+        }
+    }
+}
+</PRE>
+
+<PRE>
+public class PlayingCard
+{
+    public int rank;    //the rank of the card
+    public String suit; //the suit of the card
+    public void read()
+    {   do {
+            System.out.println("Please enter the rank (2-14):");
+            rank = SavitchIn.readLineInt();
+        } while ( rank &lt; 2 || rank &gt; 14 );
+        do {
+            System.out.println("Please enter the suit "
+                  + "(clubs, diamonds, hearts, spades):");
+            suit = SavitchIn.readLine().toLowerCase();
+        } while ( !suit.equals("clubs") &amp;&amp; !suit.equals("diamonds") &amp;&amp;
+                  !suit.equals("hearts") &amp;&amp; !suit.equals("spades") );
+    }
+    public void print()
+    {   if ( rank &lt; 11 )
+            System.out.print(rank + " ");
+        else //it's a face card:
+        {
+            switch (rank)
+            {
+                case 11: System.out.print("Jack "); break;
+                case 12: System.out.print("Queen "); break;
+                case 13: System.out.print("King "); break;
+                case 14: System.out.print("Ace "); break;
+            }
+        }
+        System.out.print(suit+" ");
+    }
+}
+</PRE>
+
+<P>
+
+    <DT>10.
+<DD>Extend the <TT>Figure</TT> class from the book
+        (included on the next page) to a new class,
+        <TT>HorizontalLines</TT> which holds two parallel
+        horizontal lines.  Your class should keep track of
+        the length of the lines and their distance apart.
+        You should also include methods to construct 
+        the vertical lines and print them. 
+
+<P>
+For example, if the length of the lines were <TT>5</TT>,
+        the distance apart <TT>2</TT> and the offset <TT>3</TT>, you
+        would print: 
+<PRE>
+   *****
+
+
+   *****
+</PRE>
+
+<P>
+
+<PRE>
+public class Figure
+{
+    public Figure()
+    {
+        offset = 0; 
+    }
+    
+    public Figure(int theOffset)
+    {
+        offset = theOffset;
+    }
+   
+    public void resetOffset(int newOffset)
+    {
+        offset = newOffset;
+    }
+   
+    public int offsetValue()
+    {
+        return offset;
+    }
+    public void drawAt(int lineNumber)
+    {
+        int count;
+        for (count = 0; count &lt; lineNumber; count++)
+            System.out.println(); 
+        drawHere();
+    } 
+    public void drawHere()
+    {
+        int count;
+        for (count = 0; count &lt; offset; count++)
+            System.out.print(' ');
+        System.out.println('*');
+    }
+    private int offset; 
+}
+</PRE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 6, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 6<br>
+CIS 166 & CMP 230 (CMP 167): Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab focuses on formatting and file processing as well as finding (and fixing!) errors.
+
+</div>
+
+
+<div>
+
+<h3>Working With Files</h3>
+
+
+<p>Python has many built-in functions for working with strings and files 
+(<a href="http://docs.python.org/release/3.1.5/library/stdtypes.html#string-methods">string
+methods</a>).  In this lab, we will manipulate files using various string methods.
+
+<p>
+Let's start with the program <tt>printfile.py</tt> from the book's website.  Try 
+running it.  When it asks for a file, type in printfile.py.  What does it print out?
+
+<p> Next, let's try it on the file <a href="allcaps.txt">allcaps.txt</a>.
+Let's change the print line to 
+<pre>
+	print(data.lower())
+</pre>
+What happens?  Why?
+
+<p>
+To print to a file (instead of to the screen) is very easy:
+<ul>
+	<li> Open a file for writing
+	<li> Add <tt>file=outFileName</tt> to your print statements.
+</ul>
+
+<p>Let's do that for the <tt>printfile.py</tt> program:
+<pre>
+def main():
+    fname = input("Enter filename: ")
+    infile = open(fname,"r")
+    outfile = open("out.txt","w")
+    data = infile.read()
+    print(data, file=outfile)
+</pre>
+Run the program.  Where did it send the output?  Modify this program so that all
+the output is in <i>lowercase</i> and test it on the text file above.
+
+<p>
+In python, there's often many different ways to write the same program.  Let's 
+write a program that prints the lines of a file using a for loop:
+<pre>
+def main():
+    print("This program prints a file.")
+
+    # get the input file name
+    infileName = input("Please enter name of input file: ")
+
+    # open the files:
+    infile = open(infileName, "r")
+
+    # read each line of the input file and print it to outfile
+    #   
+    for line in infile:
+        print(line)
+
+main()
+</pre>
+
+What happens when you run this program?  Why is it doublespacing the output?  
+When you read a line from a file, it ends with an enter or `newline' character
+(often represented as <tt>`\n'</tt>.  We can solve this in several different
+ways.  One way to keep the last character of a line
+from being printed, we can use the slice operator to truncate the string:
+<pre>
+	print(line[:-1], file = outfile)
+</pre>
+The slice, <tt>line[:-1]</tt> says that you would like the string that consists
+of all the characters in <tt>line</tt> up to but not including the last character
+(since the -1 index always refers to the last character of a string, no matter
+how long the string is).
+
+<p>Modify this second program to print out the file all lowercase and
+singlespaced, and test it.
+
+
+</div>
+
+<div>
+<h3>Finding Errors</h3>
+
+Finding, and fixing errors, in your programs is a very useful skill.  Let's look at a program with lots of errors and work through how to identify the issues and fix them.  The program, <a href="errors.py">errors.py</a>, when loaded into IDLE does not run:
+<pre># errors.py is based on dateconvert2.py from Chapter 5 of the Zelle textbook
+#     Converts day month and year numbers into two date formats
+
+def main()
+    # get the day month and year
+    day, month year = eval(input("Please enter day, month, and year numbers: ")
+
+    date1 = str(month)"/"+str(day)+"/"+str(year)
+
+    months = ["January", "February", "March", "April", 
+              "May", "June", "July", "August", 
+              "September", "October", "November", "December"]
+    monthStr = months[month+1]
+    date2 = monthStr+" " + str(day) + ",  + str(year)
+
+    print("The date is" date1, "or", date2+".")
+
+main()
+</pre>
+Instead, a dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="errorWindow1.jpg">
+<br>
+
+<p>The red line indicates where the intepreter has found an error.  Can you tell what it is?  Syntax is another word for grammar, so, it most likely missing `punctuation' or a misspelling of some sort.  We have spelled <tt>def</tt> correctly and have the right number of parenthesis, so, what else is missing?
+
+<p>The answer is after the parenthesis on a function definition, a colon is required.  Add that in:
+<pre>
+    def main():
+</pre>
+and try to run the program again.
+
+<p>Again, we get a dialog box:<br><br>
+<img src="errorWindow2.jpg"><br>
+<br>Instead of the whole line being highlighted, only the word <tt>year</tt> is.  The Python intepreter was not expecting <tt>year</tt> and says there is a grammatical mistake.  Since <tt>year</tt> does not include any grammatical constructs, we need to look <i>before</i> the message to see where the error is.  
+Do you see it?
+
+<p>The answer is lists of variables need commas in between them to distinguish one from the next.  Add the comma in:
+<pre>
+    day, month, year = ...
+</pre>
+and try to run the program again.
+
+<p>
+Once more we get a dialog box:<br><br>
+<img src="errorWindow3.jpg"><br>
+
+<p>It has highlighted the first item, <tt>date1</tt> on the line.  That is a name and looks fine.  So, as above, let's look before the highlighted error to see if there's a problem.  The line above it is:
+<pre>
+    day, month, year = eval(input("Please enter day, month, and year numbers: ")
+</pre>
+It did not highlight this line, so, the problem must be at the end.  Do you see it?  
+
+<p>The answer is we are missing a closing parenthesis.  The line has two left parenthesis but only one right parenthesis.  Add the right parenthesis in:
+<pre>
+    ... and year numbers: "))
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box:<br><br>
+<img src="errorWindow4.jpg"><br>
+
+<p>The intepreter does not understand the second " on the line.  Why?  What is this line doing?  It's constructing a string and storing it in the variable <tt>date1</tt>.  How do you build a string out of smaller strings?
+
+<p>The answer is to put smaller strings together (called concatenation) we need to use the plus sign (+).  The line is missing a plus sign right before the quotes.  Add the plus sign in:
+<pre>
+    date1 = str(month) + "/" ...
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box, but this one has a different message:<br><br>
+<img src="errorWindow5.jpg"><br>
+
+<p><tt>EOL</tt> means "End of the line", so, the message says that the end of the line was reached before you finished defining the string.  How can you fix this?
+
+<p>The answer is to end the string, using quotation marks.  The line is missing a quotation mark at the very end.  Add the quotation mark :
+<pre>
+    ...+ ",  + str(year)"
+</pre>
+and try to run the program again.
+
+<p>
+Our familiar dialog box returns:<br><br>
+<img src="errorWindow6.jpg"><br>
+
+<p>We have seen this type of error before.  How do you fix it?
+
+<p>The answer is lists of arguments need commas in between them to distinguish one from the next.  Add the comma in:
+<pre>
+    ... date is", date1 ...
+</pre>
+and try to run the program again.
+
+<p>It runs!  Now let's make sure it works.  Type in at the prompt:
+<pre>
+Please enter day, month, and year numbers: 31, 12, 2014
+</pre>
+Uh oh, instead of output, we get the following messages:
+<pre style = "color: red">
+Traceback (most recent call last):
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 18, in <module>
+    main()
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 13, in main
+    monthStr = months[month+1]
+IndexError: list index out of range
+</pre>
+<p>When you see messages like this, go to the very last line:
+<pre style = "color: red">
+IndexError: list index out of range
+</pre>
+It says that the index for our list is out of range.  An index is the item of the list that we're accessing.  For example, <tt>months[1]</tt> has index <tt>1</tt> and will give us <tt>February</tt>.  The range of the index for a list is <tt>0</tt> to one less than the length of the list.  In the case of <tt>months</tt>, the range is <tt>[0,1,2,...,11]</tt>.  What went wrong when we entered <tt>12</tt> for our month?  
+
+
+<p>The answer is we used <tt>month+1 = 12 + 1 = 13</tt> as the index:
+<pre>
+    monthStr = months[month+1]
+</pre>
+which is out of range.  What do we want instead?  Instead of adding <tt>1</tt>, we should subtract <tt>1</tt>.  Change it in the program:
+<pre>
+    monthStr = months[month-1]
+</pre>
+and try to run the program again.
+
+<p>It still runs, but does it work?  Let's try the same input again:
+<pre>
+Please enter day, month, and year numbers: 31, 12, 2014
+The date is 12/31/14 or December 31,  + str(year).
+</pre>
+
+<p>Something odd is happening at the end-- <tt>str(year)</tt> does not look right.  Let's look at the print statement:
+<pre>
+date2 = monthStr+" " + str(day) + ",  + str(year)"
+</pre>
+The intepreter is treating <tt>",  + str(year)"</tt> as a string (instead of evaluating <tt>str(year)</tt>), so, we must have put the quotation mark in the wrong place before.  Let's move it:
+<pre>
+date2 = monthStr+" " + str(day) + ","  + str(year)
+</pre>
+and try to run the program again.
+
+<p>Success!  But try a few other inputs, just to make sure.  It is always good to try cases that are near the `boundary' of what's allowed, since those are the places we are most likely to make mistakes:
+<pre>
+Please enter day, month, and year numbers: 1,1,2015
+The date is 1/1/2015 or January 1,2015.
+
+Please enter day, month, and year numbers: 1, 2, 2003
+The date is 2/1/03 or February 1,2003.
+
+Please enter day, month, and year numbers: 4, 7, 1976
+The date is 7/4/1976 or July 4,1976.
+</pre>
+
+<p>We have removed all the errors, and the program now runs correctly!
+
+</div>    
+    
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>

@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #10, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #10</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b> Nearest Neighbors<br>
+<b>Deadline:</b>  Thursday, 14 April 2016, 10:30am 
+</div>
+
+<div>
+<h3>Textbook's Code</h3>
+
+<p>
+For this assignment, the following code from the textbook will be useful:
+
+<ul>
+	<li> <a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/machine_learning.py">machine_learning.py</a>:  has useful functions for splitting data into training and testing sets</a>
+	<li> <a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/nearest_neighbors.py">nearest_neighbor.py</a>:  contains k-nearest neighbors classifer (note it depends on several other modules he wrote-- all available on his repo).
+</ul>
+
+</div>
+
+<div>
+<h3>Data</h3>
+
+<p>For this assignment, you will need to download two different data sets:
+<ol>
+	<li> <b>Bachelors Degrees Awarded</b>:  The bokeh sample data repository includes a CSV file with the percentage of bachelors degrees awarded to women, by major, by year:
+		<blockquote>
+		<a href="https://github.com/bokeh/bokeh/blob/master/bokeh/sampledata/percent-bachelors-degrees-women-usa.csv">https://github.com/bokeh/bokeh/blob/master/bokeh/sampledata/percent-bachelors-degrees-women-usa.csv</a>
+		</blockquote>
+	<li> <b>NYC Trash Cans</b>: The NYC open data project keeps an inventory of all public litter basket locations in the city:
+		<blockquote>
+		<a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>
+		</blockquote>
+</ol>
+
+<p>
+We will use these data sets for later homework assignments.  Since scraping the data takes time, save these data sets to use again for the future programs.
+</div>
+
+
+
+<div>
+<h3>Assignment</h3>
+
+
+
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+
+
+<tr>
+<th>#1-2</th>
+<td colspan=2>
+Using the <a href="https://github.com/bokeh/bokeh/blob/master/bokeh/sampledata/percent-bachelors-degrees-women-usa.csv">bokeh data set</a> on percentage of bachelors degrees awarded to women, create a single display with the data for computer science and for mathematics/statistics majors from 1970 to 2011.  
+
+<br><br>
+#1:  Submit your Python program as a <b>.py</b> file.<br>
+#2:  Submit the <b>.html</b> file produced by your program.<br> 
+<br>
+Hint:  	Use the <a href="http://bokeh.pydata.org/en/0.10.0/docs/gallery/stocks.html">stock example</a> covered in class as a template.  There is no need to include in your plot the running average, since there's not enough data points to warrant it.
+
+<br>Note:  The link for the stocks example above is the one used in class.  A newer version is available <a href="http://bokeh.pydata.org/en/latest/docs/gallery/stocks.html">here</a>.
+ </td>
+</tr>
+
+<tr>
+<th>#3-4</th>
+<td colspan=2>
+The <a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/nearest_neighbors.py">nearest_neighbor.py</a> plots the favorite programming languages by city, but does not draw the state or country borders.  Modify his
+program to include the state and country borders.
+<br>
+<br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot.
+<br><br>
+Hint:  You may use packages such as <tt>basemap</tt>.  Other than <tt>import</tt> statements, you only modify the <tt>plot_state_borders()</tt> function.
+</td>
+</tr>
+
+<th>#5-6</th>
+<td>
+The OpenData project keeps track of the <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">public trash can locations</a>.  Where are the 10 loneliest trash cans in New York City?  For each trash can location in the file, compute and store the distance to its nearest neighbor (i.e. store the location of each trash can, and then loop through that list for each trash can to build up a second list of minimum distances).  Sort your list and 
+plot the 10 trash cans with the largest distance to their nearest neighbor.
+<br><br>
+
+Make sure to include in the title in your plot. <br>
+#5:  Submit your Python program as a <b>.py</b> file.<br>
+#6:  Submit a screen shot of the graphics window containing the plot.  
+</td>
+<td>
+A <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)">metric</a> 
+on a set X is a function (called the distance function or simply distance),
+d: X x X &#8594; R+, 
+where R+ is the set of non-negative real numbers (because distance can't be negative so we can't use R), and for all x, y, z in X, the following conditions are satisfied:
+<ol>
+	<li> d(x,y) >= 0
+	<li> d(x,y) = 0 if and only if x=y
+	<li> d(x,y) = d(y,x)
+	<li> d(x,z) <= d(x,y) + d(y,z)
+</ol>
+<br>
+#5:  The <a href="https://en.wikipedia.org/wiki/L-infinity">L-infinity distance</a> 
+(maximum distance) is a metric, is the following:
+<br><br>
+d_m(p,q) = min{|p_1-q_1|,|p_2-q_2|,...|p_n-q_n|}
+<br><br>
+Why or why not?  If yes, show that it satisfies the 4 properties above.  If not, give a counter-example to one of the 4 properties.<br>
+Submit a <b>.png</b> or <b>.pdf</b> file of your typeset or neatly handwritten answer.
+<br><br>
+#6:  Show that the unit cube under the L-1 norm is contained in the L-2.  That is, any point that is distance 1 from the origin under the L-1 norm, is also distance 1 under the L-2 norm.<br>
+Submit a <b>.png</b> or <b>.pdf</b> file of your typeset or neatly handwritten answer.  
+</td>
+</tr>
+
+
+
+
+</table>
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

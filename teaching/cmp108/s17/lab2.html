@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 2, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div>
+<img align="right" id="bookImage" alt="mapping quake data" src="../images/mappingQuakeData5.png" width="120">
+
+<h2>Lab 2<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on loops and the <tt>random</tt> library in Python.  <br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+
+
+
+</div>
+
+<div>
+<h3>More on Turtles</h3>
+
+<p>
+Last lab, we wrote a program using Turtle graphics:
+
+<p>
+<iframe src="https://trinket.io/embed/python/f79254b1f6" width="80%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>
+Click on the &#9658; to run the program.
+<ul>
+	<li> Each iteration of the loop, <tt>tia</tt>, our turtle, moves forward 150 steps and then turns right 90 degrees.  
+	<li> Change the program so that a smaller square is drawn by changing the  steps moved forward to 100.  Run your program to test the change.
+	<li> Change the program so that the turtles turns 88 degrees right.  Run your program to test the change.  Run your program to test the change.
+	<li> What happens if you change the <tt>range()</tt> to be 10?
+	<li> What happens if you change the <tt>range()</tt> to be 100?
+</ul>
+
+<p>
+The <tt>range()</tt> function generates a sequence of numbers.  For example, 
+<tt>range(4)</tt> gives the sequence <tt>0,1,2,3</tt>.  While <tt>range(10)</tt>
+gives <tt>0,1,2,3,4,5,6,7,8,9</tt>.  In general, <tt>range(n)</tt> will give the sequence <tt>0,1,2,...,n-1</tt>.  We will discuss this more over the next couple of sections.
+
+</div>
+
+<div>
+<h3>More on Iteration</h3>  
+
+Let's explore a bit more about how <tt>for</tt> loops repeat, or iterate, a set of commands:
+
+<ol>
+	<li> <p> Work through <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/IterationSimplifiesourTurtleProgram.html">4.6 Iteration Simplifies our Turtle Program</a>.
+	<li>  Let's use the programs with <tt>alex</tt> the turtle to draw a hexagon with different color sides.  The program from the books drew a square:
+	<pre>
+import turtle            # set up alex
+wn = turtle.Screen()
+alex = turtle.Turtle()
+
+for aColor in ["yellow", "red", "purple", "blue"]:
+   alex.color(aColor)
+   alex.forward(50)
+   alex.left(90)
+
+wn.exitonclick()	
+	</pre>
+	<li> To draw a colorful hexagon:
+	<ol>
+		<li> Open up <tt>idle3</tt> and start a new file ("File > New File" or "&#8984;N").
+		<li> Copy in the program above from the textbook.
+		<li> Add two more colors to the list in the <tt>for</tt> statement.
+		<li> Change the angle that <tt>alex</tt> turns left to be 60.
+		<li> Test your program to make sure it works.
+		<li> Add your name and a short description to the top and submit at Problem #6.
+	</ol>
+	
+</div>
+
+<div>
+<h3>More on <tt>range()</tt></h3>
+
+Our previous use of the <tt>range()</tt> statement generated sequences that always start with 0, but there are many more sequences that can be generated.
+
+<p> First, work through the textbook's section on the <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/TherangeFunction.html">4.7:  The <tt>range</tt> Function</a>.
+
+<p> Next, let's write a program that will print out:
+<pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Blast off!
+</pre>
+
+<p>If we were asked to print the numbers in the other direction, we could do this with the simplest range:
+<pre>
+for i in range(11):
+    print(i)
+</pre>
+followed by a <tt>print("Blast off!")</tt>.  But we want to print out the numbers, 10, 9, 8, ... , 1.  In the textbook section, they had a very useful command:
+<pre>
+print(range(10, 0, -1))
+</pre>
+which printed <tt>[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</tt>.
+
+<p>Let's use that with a <tt>for</tt> loop to print out our countdown:
+<pre>
+for i in range(10,0,-1):
+    print(i)
+</pre>
+
+<p>That gives all the pieces for our program!  Now let's put them together and test it:
+	<ol>
+		<li> Open up <tt>idle3</tt> and start a new file ("File > New File" or "&#8984;N").
+		<li> Copy in the <tt>for</tt> loop above.
+		<li> Add in the <tt>print</tt> statement that prints "Blast off!"
+		<li> Test your program to make sure it works.
+		<li> Add your name and a short description to the top and submit at Problem #7.
+	</ol>
+
+Here's another example of the <tt>range</tt> function in action.  Try to guess what it will do before clicking on the run (&#9658;) button:
+
+
+</div>
+
+<div>
+<h3>Random Range</h3>
+
+Python has a built-in library for generating random numbers.  To use it, you include at the top of your file:
+<pre>
+import random
+</pre>
+
+The <tt>random</tt> library includes a function that's similar to <tt>range</tt>, called <tt>randrange</tt>.  As with <tt>range</tt>, you can specify the starting, stopping, and step values, and the function <tt>randrange</tt> chooses a number at random in that range.  Some examples:
+<ul>
+	<li> <tt>random.randrange(5)</tt> returns one of 0,1,2,3,4
+	<li> <tt>random.randrange(1,10,2)</tt> returns one of 1,3,5,7,9
+	<li> <tt>random.randrange(360)</tt> returns one of 0,1,2,...,359
+</ul>
+
+Let's use that last example to have our turtle make a random walk:
+<iframe src="https://trinket.io/embed/python/ab6cddc880" width="80%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>
+Notice that our turtle turns <tt>a</tt> degrees, where <tt>a</tt> is chosen at random between 0 and 359 degrees.  What if your turtle was in a city and had to stay on a grid of streets (and not ramble through buildings)?  How can you change the <tt>randrange()</tt> to choose only from the numbers:  <tt>0,90,180,270</tt> (submit your answer as Problem #10).
+
+</div>
+
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a quiz on the <tt>for</tt> loops and turtles.  The password to access the quiz will be given during lab.
+
+</div>
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+
+</html>

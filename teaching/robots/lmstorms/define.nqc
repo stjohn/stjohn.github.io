@@ -1,0 +1,6 @@
+#define POWER 5
+
+task main() {
+  SetPower(OUT_A + OUT_C, POWER);
+  On(OUT_A + OUT_C);
+}

@@ -1,0 +1,34 @@
+Ideas for labs:
+
+CIS
+X  Lab 10:  even/odd polygons
+X  Lab 11:  random walk-- Lab 12 CIS
+X  Lab 12:  random walk for stock prices, using booleans in the decisions
+Lab 13:  file loops-- 
+Lab 14:  basic sorting (nested loops, without graphics) similar to Lab 11 CMP
+
+
+CMP 
+X  Lab 10:  Mystery point game
+X  Lab 11:  sorting (nested loops, using Zelle's graphics)
+X  Lab 12:  random walk-- Lab 11 CIS
+Lab 13:  billiard balls?  make each an object, with color and number displayed (in init)
+	have a method called heading and steps, have it bounce off walls
+Lab 14:  dictionaries-- hashing tweets?
+
+
+
+
+CMP Lab 9:   Archery Shooting (if statements)
+CMP Lab 10:  Mystery Point Game
+CMP Lab 11:  Searching files using nested loops/file loops-- bank balance or name data?
+CMP Lab 12:  Monte Carlo Simulation-- focus on simulation
+CMP Lab 13:  Defining Classes
+CMP Lab 14:  Dictionaries
+
+CIS Lab 9:	 more on functions
+CIS Lab 10:  archery, using turtles
+CIS Lab 11:  random walk, monte carlo-- focus on if statements
+CIS Lab 12:  mystery point, using turtles
+CIS Lab 13:  Searching files using loops-- name data?
+CIS Lab 14:  Sorting

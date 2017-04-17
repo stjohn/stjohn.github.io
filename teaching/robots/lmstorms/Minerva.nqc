@@ -1,0 +1,84 @@
+
+#define TURNAROUND_TIME 425
+
+int i;
+
+task main() {
+  // Arm limit sensor and grabber light sensor.
+  SetSensor(SENSOR_3, SENSOR_LIGHT);
+  SetPower(OUT_A + OUT_C, OUT_FULL);   
+
+  calibrate();  
+  i = 0;
+  while (i < 5) {
+    retrieve();
+    i += 1;
+  }
+  Off(OUT_A + OUT_C);
+}
+
+#define NUMBER_OF_SAMPLES 10
+int runningTotal;
+int threshold;
+
+sub calibrate() {
+  // Take an average light reading.
+  i = 0;
+  runningTotal = 0;
+  while (i < NUMBER_OF_SAMPLES) {
+    runningTotal += SENSOR_3;
+    Wait(10);
+    i += 1;
+  }
+  threshold = runningTotal / NUMBER_OF_SAMPLES;
+}
+
+void grab() {
+  // Run the motor until we hit the limit switch.
+  OnFwd(OUT_A);
+  until (SENSOR_3 == 100);
+  // Back off from the switch.
+  OnRev(OUT_A);
+  until (SENSOR_3 != 100);
+  Off(OUT_A);
+}
+
+void release() {
+  // Run the motor until we hit the limit switch.
+  OnRev(OUT_A);
+  until (SENSOR_3 == 100);
+  // Back off from the switch.
+  OnFwd(OUT_A);
+  until (SENSOR_3 != 100);
+  Off(OUT_A);
+}
+
+int returnTime;
+
+sub retrieve() {
+  // Drive forward until we see something.
+  OnFwd(OUT_C);
+  ClearTimer(0);
+  until (SENSOR_3 < threshold - 3);
+  Wait(20); // Move up on it a little.
+  returnTime = Timer(0);
+  Off(OUT_C);
+
+  grab();
+ 
+  // Turn around (roughly).
+  OnRev(OUT_C);
+  Wait(TURNAROUND_TIME);
+  
+  // Drive back.
+  OnFwd(OUT_C);
+  ClearTimer(0);
+  until (Timer(0) >= returnTime);
+  Off(OUT_C);
+  
+  release();
+
+  // Turn around.
+  OnRev(OUT_C);
+  Wait(TURNAROUND_TIME);
+}

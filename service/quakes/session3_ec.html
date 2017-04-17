@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Additional Challenges</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session4.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="session3_3.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+		<h1>Additional Challenges</h1>
+		<hr>
+
+	
+		<i>These are engaging exercises that are not needed for the flow of the course but for students who finished the first parts early.</i>	
+		
+		<p>The USGS data also includes the location of the earthquake in the column after the 13th comma:
+		<p>
+		<tt>
+		obsData = '2017-01-17T11:48:48.530Z,5.4319,94.6079,54.55,5.6,mb,,67,2.338,1,us,us10007tps,2017-01-17T12:14:46.732Z,<span style="color:red">"80km W of Banda Aceh, Indonesia"</span>,earthquake,7.4,5.8,0.045,173,reviewed,us,us'
+		</tt>
+		
+		We can locate that in a similar way to getting latitude and longitude.  Since we want words (and not numbers as we did for latitude and longitude), it is a bit easier:
+		<pre>
+			columns = line.split(',')
+			location = columns[13]
+		</pre>
+		
+		<p class=challenge><br><br><b>Challenge:</b>  Mark the three earthquakes with their locations, using the <tt>write()</tt> command:
+		<br>
+		<br>
+			<tt>&nbsp; &nbsp; &nbsp; &nbsp; thea.write(location,  None, None, "16pt bold")</tt>
+		<br><br>
+		</p>
+		<p>
+		<iframe src="https://trinket.io/embed/python/733f2a6be5?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></p>
+
+	</div>
+
+</body>
+</html>

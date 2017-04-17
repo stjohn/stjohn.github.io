@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 3, CIS 166, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 3<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Today's lab will focus on turtle graphics.  
+An excellent overview of turtle graphics can be found at the 
+<a href="How to think like a Computer Scientist">http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/helloturtle.html</a>.
+
+</div>
+
+
+<div>
+
+<h3>Turtles</h3>
+
+Turtle graphics was originally introduced in 1966 as part of the Logo programming language 
+and is available as a <a href="python module">http://docs.python.org/3.2/library/turtle.html</a>.
+The turtle module allows you to draw graphics to the screen.  
+
+<p>
+Let's start with a simple program:
+		<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(4):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()		
+		</pre>
+
+The first line:
+		<pre>
+import turtle
+		</pre>
+loads the turtle graphics module.  Like the math library, the turtle graphics library is
+a standard part of python but needs to be imported to be used in your program.
+
+<p>We next define the <tt>main()</tt> function and set up two turtle graphics objects:
+		<pre>
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+		</pre>
+
+The first line creates a turtle, named daniel.  The next line creates a new window,
+where the graphics will appear.
+
+<p>  The <tt>main()</tt> function has a loop that has two commands:
+<ul>
+	<li> move forward (<tt>daniel.forward(100)</tt>)
+	<li> turn 90 degrees to the right (<tt>daniel.right(90)</tt>)
+</ul>
+The last line in our <tt>main()</tt> program closes the graphics window when the
+user clicks the mouse on the window.
+
+
+<p>What happens when these commands are repeated 4 times?  Try running the program
+to see what is drawn.
+
+<p> Let's make two small changes to our program:
+<ul>
+	<li> have the loop repeat 50 times 
+	<li> have the turtle move forward <tt>i</tt> steps (instead of 100)
+</ul>
+
+Your program should now look like:
+		<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(50):
+        daniel.forward(i)       #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()		
+		</pre>
+
+<p>Run you program (choose "Run Module" from the "Run" menu, or F5).
+What is drawn?  How can you make it fill the entire window?
+
+<p>What happens if we had left the steps forward never changing (but a bit
+shorter (10 instead of 100) so it appears on the screen), but instead
+changed the right turn from 90 degrees to <tt>i</tt> degrees:
+		<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(50):
+        daniel.forward(10)      #Move forward 10 steps
+        daniel.right(i)         #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()		
+		</pre>
+
+
+</div>
+<div>
+
+<p> Some basic turtle commands are:
+		<ul>
+			<li> <tt>left(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>right(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>forward(s):</tt> moves your turtle forward <tt>s</tt> steps
+			<li> <tt>backward(s):</tt> moves your turtle forward <tt>s</tt> steps
+			<li> <tt>color(s):</tt> changes the drawing color to <tt>s</tt>
+					(e.g. <tt>daniel.color("green")</tt>
+		</ul>
+		
+
+</div>
+
+<div>
+
+<p> With the remaining time, work on the homework programs.
+
+</p>
+</div>

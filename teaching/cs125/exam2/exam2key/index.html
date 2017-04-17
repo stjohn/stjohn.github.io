@@ -1,0 +1,591 @@
+<body bgcolor="white">
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+2">
+ 
+<BR>
+<BR> <BR>
+Exam 2 <BR>
+Computer Science 125 <BR>
+Boise State University
+<BR>
+Friday, 19 March 1999
+</FONT></DIV>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>1.
+<DD><DL COMPACT>
+<DT>(a)
+<DD><U>T</U> In Java, functions can never change number parameters.
+<DT>(b)
+<DD><U>T</U> Every <TT>for</TT>-loop can be rewritten using a <TT>while</TT>-loop.
+	    <DT>(c)
+<DD><U>T</U> <TT>if</TT>-statements can be nested.
+	    <DT>(d)
+<DD><U>T</U> Loops can be nested.
+	    <DT>(e)
+<DD><U>F</U> A class can have at most one constructor.
+	    <DT>(f)
+<DD><U>T</U> A function can have at most one return value.
+	    <DT>(g)
+<DD><U>F</U> The following is an infinite loop:
+<PRE>
+    int i = 0; 
+    while ( i &gt; 0 )  i--;
+</PRE>
+<P>
+<DT>(h)
+<DD><U>F</U> The following is an infinite loop:
+<PRE>
+     for ( int i = 0; i &gt;= 0; i--) 
+         System.out.println();
+</PRE>
+<P>
+<DT>(i)
+<DD><U>T</U> The following code fragment contains a scoping error:
+<PRE>
+    int j = 0; 
+    for ( int i = 0; i &gt;= 0; i--) 
+    {  int j = i; }
+</PRE>	    
+
+<P>
+<DT>(j)
+<DD><U>F</U> The output of <TT>mystery(1234)</TT>
+is <TT>4321</TT>.
+<PRE>
+    public void mystery(int n)
+    {   if ( n &lt; 10 ) System.out.print(n);
+        else {   mystery(n/10); System.out.print(n%10); } }
+</PRE></DL>
+<P>
+<DT>2.
+<DD>What is the output of the following:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+for (int i=5 ; i &gt; 0 ; i--)
+{
+    Circle c = new Circle(new Point(i,0),i);
+    c.draw();
+}
+</PRE>
+<P>
+<img src="for1.jpg">
+<P>
+<DT>(b)
+<DD><PRE>
+for (int i=2 ; i &lt; 6; i= i+2)
+{
+    Line l = new Line(new Point(-i,i), new Point(i,i));
+    l.draw();
+}
+</PRE>
+<P>
+<img src="for2.jpg">
+
+<P>
+<DT>(c)
+<DD><PRE>
+int i=0; 
+while (i &lt; 4)
+{
+    for (int j=0; j &lt;= i ; j++)
+    {
+        if ( (i+j)%2 == 0 )
+           System.out.print(i+j);
+        else
+           System.out.print("*");
+    } 
+    System.out.println();
+    i++;
+}
+</PRE>        <B>Output:</B>
+<PRE>
+    0
+    *2
+    2*4
+    *4*6
+</PRE></DL>
+<P>
+<DT>3.
+<DD>Consider the following class.  
+	<DL COMPACT>
+<DT>(a)
+<DD>Mark the constructors
+with a ``C'', the accessor functions with a ``A'',
+		and the mutator functions with a ``M'':
+<PRE>
+class Gems
+{
+    public void agate() { n++; }                        M
+
+    public void emerald(String s) { t = s; }            M
+    
+    public Gems() { n = 0; t = "";}                     C
+    
+    public int topaz() { return n; }                    A
+
+    public Gems(int a, String s) { n = a; t = s; }      C
+
+    public void diamond() { System.out.println(t); }    A
+    
+    public String ruby() { return t; }                  A
+    
+    public Gems(int a) { n = a;t = "";}                 C
+    
+    private int n;
+    private String t;
+}
+</PRE>
+<P>
+<DT>(b)
+<DD>Using the class from above, determine what the following
+			program prints:
+<PRE>
+public class Mystery
+{
+  public static void main(String[] arg)
+  {
+     Gems mine = new Gems();
+     Gems yours = new Gems(5, "precious");
+     mine.emerald("industrial");
+     mine.diamond();
+     System.out.println("\n" + yours.topaz());
+     yours.emerald(mine.ruby());
+     yours.diamond();
+  }
+}
+</PRE>        <B>Output:</B>
+<PRE>
+    industrial
+
+    5
+    industrial
+</PRE>	
+		<DT>(c)
+<DD>Write a method <TT>turquois()</TT> for the class above that
+		divides <TT>n</TT> by 2 if <TT>t</TT> has length less than 10 and 
+		replaces <TT>n</TT> with <TT>3 * n + 1</TT> if <TT>t</TT> is has 10 or 
+		more characters.
+	
+<PRE>
+    public void turquois()
+    {
+      if ( t.length() &lt; 10 )
+        n = n/2;
+      else 
+        n = 3*n + 1;
+    }
+</PRE>
+<P>
+</DL>
+<P>
+<DT>4.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Explain the differences between a Trojan
+horse, a logic bomb, and a virus.
+<PRE>
+A Trojan horse is a program that allows access to an already-penetrated
+system-- for example by establishing a new account with superuser privileges.
+
+A logic bomb is a program that is triggered to act upon detecting a certain
+sequence of events-- for example a program written by a disgruntled employee
+that destroys system files when the employee is removed from the system.
+
+A virus is a a self-replicating program that causes damage and infects
+other programs, floppy disks, or hard disks.
+</PRE>			<DT>(b)
+<DD>Assume you discover that you can view another
+				student's java homework, because they have
+				set their permissions incorrectly.  
+
+<P>
+Would it be ethical to look at the files?
+				Should you notify the owner, the instructor,
+				the system adminstrator?
+				What is the ethical thing to do, with
+				respect to your ethical view?  Please state
+				the ethical framework and justify your 
+				answer.  
+		</DL>
+<P>
+<DT>5.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Write a function that takes a single letter:
+<TT>A, B, C, D, F</TT>
+				as input and returns the corresponding
+				numeric grade <TT>4, 3, 2, 1, 0</TT>.
+				The function should return <TT>-1</TT>
+				if a longer string is passed to it or
+				the input is not that of a valid grade.
+
+<P>
+Match the <TT>javadoc</TT> comments below:
+<PRE>
+ 
+/**
+ * calculates the numeric grade, given the letter grade.  
+ * @param grade the letter grade 
+ * @return the numeric grade or -1 if the input is invalid 
+ */
+public int convert(String grade) 
+{
+  if ( grade.length() != 1 )
+    return -1;
+  else if ( grade.equals("A") )
+    return 4;
+  else if ( grade.equals("B") )
+    return 3;
+  else if ( grade.equals("C") )
+    return 2;
+  else if ( grade.equals("D") )
+    return 1;
+  else if ( grade.equals("F") )
+    return 0;
+  else
+    return -1;
+}
+</PRE>
+<P>
+<DT>(b)
+<DD>Assume you have written the function that
+				converts grades above.	Use it in a
+				<B>complete</B> program that asks the
+				user for a letter grade, calls the
+				function <TT>convert</TT>, and prints out
+				the numeric grade.  For full credit,
+				you must include comments and use the
+				function <TT>convert</TT>.
+<PRE>
+// This program converts letter grades to numeric grades.
+
+#import ccj.*
+
+public class GradeConvert
+{
+  public static void main(String[] arg)
+  {
+    // Ask user for letter grade:
+    System.out.print("Please enter letter grade: ");
+    String letterGrade = Console.in.readWord();
+
+    // Print out number grade:
+    System.out.println("\nThe number grade is " + convert(letterGrade));
+  }
+}
+</PRE></DL>
+<P>
+<DT>6.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Write a function that takes two points as
+input and draws a box with
+				those points as the upper left and lower
+				right corners.	Include the <TT>javadoc</TT>
+				comments for the function:
+
+<P>
+<PRE>
+/**
+ * Draws a box given the upper left and lower right corner
+ * @param ul the upper left corner
+ * @param lr the lower right corner
+ */
+public void drawBox(Point ul, Point lr)
+{
+  Point ur = new Point(lr.getX(), ul.getY());
+  Point ll = new Point(ul.getX(), lr.getY());
+  
+  new Line(ll,ul).draw();
+  new Line(ul,ur).draw();
+  new Line(ur,lr).draw();
+  new Line(lr,ll).draw();
+}
+</PRE>			<DT>(b)
+<DD>Assume you have written the function that
+			draws boxes above.
+				Use it to write a <B>complete</B> applet
+				that asks the user for the number of
+				bars in a bar chart, and then prompts
+				the user for the height of each box, and
+				calls the above function to draw the bar.
+<PRE>
+import ccj.*
+
+public class BarChart extends GraphicsApplet
+{
+  public void run()
+  {
+    int numBars = readInt("Enter number of bars:");
+    setCoord(0,100,numBars,0);
+    
+    for (int i = 0 ; i &lt; numBars ; i++)
+    {
+        int height = readInt("Enter height:");
+        drawBox(new Point(i, height), new Point(i+1,0));
+    }
+  }
+}
+</PRE>
+<P>
+<DT>(c)
+<DD>Write a <TT>HTML</TT> file that will display
+			your applet:
+<PRE>
+&lt;applet code="BarChart.class"
+        height=300
+        width=300
+&gt;
+&lt;/applet&gt;
+</PRE>
+<P>
+</DL>
+<P>
+<DT>7.
+<DD>Below is the class <TT>Rectangle</TT> that works like the
+		other graphics classes such as <TT>Circle</TT> and <TT>		Line</TT>.	A rectangle is constructed from two opposite corner points.
+		Fill in the missing definitions below:
+
+<P>
+<PRE>
+import ccj.*; 
+public class Rectangle {
+  /**
+   * Constructs a square of length 2 centered at (0,0).  
+   */
+  public Rectangle() {
+
+     ul = new Point(-1,1);
+     lr = new Point(1,-1);
+
+  }
+
+  /** 
+   * Constructs a rectangle given two opposite corners..
+   * @param p1 upper left corner
+   * @param p2 lower right corner
+   */
+  public Rectangle(Point p1,Point p2)
+  { 
+
+      ul = p1;
+      lr = p2;
+
+  }
+  
+  /** 
+   * Draws rectangle on the graphics window.
+   */
+  public void draw()
+  { 
+
+      Point ll = new Point(ul.getX(), lr.getY());
+      Point ur = new Point(lr.getX(), ul.getY());
+
+      new Line(ll,ul).draw();
+      new Line(ul,ur).draw();
+      new Line(ur,lr).draw();
+      new Line(lr,ll).draw();
+
+  }
+
+
+  /**
+   * Moves rectangle x units in the horizontal direction and
+   * y units in the vertical direction.
+   * @param x horizontal change
+   * @param y vertical change
+   */
+  public void move(double x, double y)
+  { 
+
+      ul.move(x,y);
+      lr.move(x,y);
+
+  }
+  
+  /* Include variables to hold the data: */
+
+     Point ul;
+     Point lr;
+
+}
+</PRE>
+<P>
+<DT>8.
+<DD>Given the functions:
+<PRE>
+  public void again(Point p1, Point p2, boolean change)
+  { if ( distance(p1, p2) &lt; 1 )
+      return;
+    Point q1 = new Point ( p1.getX(), p2.getY() );
+    Point q2 = new Point ( p2.getX(), p1.getY() );
+    new Line(p1,q1).draw();
+    new Line(q1,p2).draw();
+    new Line(p2,q2).draw();
+    new Line(q2,p1).draw();
+    if ( change )
+    { Point m1 = midpoint(p1,q1);
+      Point m2 = midpoint(p2,q2);
+      new Line(m1,m2).draw();
+      again(m1, p2, !change);
+    }
+    else
+    { Point m1 = midpoint(p1,q2);
+      Point m2 = midpoint(p2,q1);
+      new Line(m1,m2).draw();
+      again(p1, m2, !change);
+    }
+  }
+
+  public double distance(Point a, Point b)
+  {
+    return ( Math.sqrt( 
+        (a.getX() - b.getX())*(a.getX() - b.getX()) +
+        (a.getY() - b.getY())*(a.getY() - b.getY())));
+  }
+
+  public Point midpoint(Point a, Point b)
+  {
+    double x = (a.getX() + b.getX())/2;
+    double y = (a.getY() + b.getY())/2;
+    return new Point(x,y);
+  }
+</PRE>
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>What is the output of 
+<PRE>
+   again(new Point(0,0), new Point(1,-1), true)
+</PRE>        <B>Output:</B>
+<img src="spiral1.jpg">
+    
+	    <DT>(b)
+<DD>What is the output of 
+<PRE>
+    again(new Point(0,2), new Point(4,0), false)
+</PRE>        <B>Output:</B>
+        
+<img src="spiral2.jpg">
+        
+	</DL>
+<P>
+<DT>9.
+<DD>Write a <B>recursive</B> function that takes a <TT>Circle</TT> as
+	input and, <B>if</B> the radius of the circle is greater than 1, 
+	draws two circles inside the given circle (see picture below)
+	and calls the function on <B>each</B> of these two smaller circles.
+
+<P>
+
+<PRE>
+public void nestedCircles(Circle c)
+{
+  double rad = c.getRadius();
+  if ( rad &lt;= 1 )
+    return;
+    
+  Point p = c.getCenter();
+  
+  // Set up and draw left circle:
+  Point lp = new Point(p.getX() - rad/2, p.getY());
+  nestedCircles(new Circle(lp, rad/2);
+  
+  // Set up and draw right circle:
+  Point rp = new Point(p.getX() + rad/2, p.getY());
+  nestedCircles(new Circle(rp, rad/2);
+  
+}
+</PRE>
+<P>
+<DT>10.
+<DD>You have been hired by <I>Downward Bound Snowboard Shop</I>,
+		a store that rents snowboards, to write a program to
+		keep track of their rentals.  <I>Downward Bound</I> 
+		stocks several different kinds of snowboards.  For each 
+		kind of snowboard, they keep track of the manufacturer of 
+		the board, the number of these boards that they 
+		own, and the number of these boards that are currently
+		rented.  
+
+<P>
+When a customer rents or returns a snowboard, the shop 
+		updates the number of boards of that kind that are rented.  The
+		shop also occasionally retires old snowboards or buys new
+		ones, so, the shop needs to be able to update the number
+		of boards of each kind it owns. 
+
+<P>
+Assume that the shop has three different kinds of snowboards:
+		those made by Burton, those made by Ride, and those made
+		by Oxygen. Initially, they have 10 of each. 
+		<DL COMPACT>
+<DT>(a)
+<DD>What classes would you use in your design? Why?
+<PRE>
+I would use two classes: Snowboad and Shop.  
+Snowboard would keep track of the manufacturer, the total number
+of board owned, and the number of boards currently rented.
+Shop would have 3 member variables for each of the different kind
+of snowboards: Burton, Ride, and Oxygen.
+</PRE>			<DT>(b)
+<DD>For the classes in your design, what methods
+would you have?  Give a <B>brief</B> explanation
+				of why you chose these methods:
+<PRE>
+Snowboard:
+  I would have 3 accessor funtions to get the number rented, the
+  total stock, and the kind:
+  
+    getNumRented()
+    getTotalStock()
+    getKind()
+    
+  I would also have 3 mutator functions to change the values of
+  the member variables:
+  
+    setNumRented()
+    setTotalStock()
+    setKind()
+    
+  There would also be 2 constructors: the default, and one that
+  takes a string and 2 integers:
+  
+    Snowboard(String newKind, int newTotal, int newNumRented)
+    
+Shop:
+   I would have two accessor functions that takes the kind of the
+   board.  The first returns the total stock of that kind.  The
+   second returns the number rented of that kind:
+   
+     getTotal()
+     getRented()
+     
+   There would be two mutator functions-- one that updates the
+   number of boards rented (given the kind) and the other
+   updates the total number of boards:
+   
+     updateRented()
+     updateTotal()
+     
+   There would also be a default constructor.
+</PRE>			<DT>(c)
+<DD>What should be included in the test suite for 
+				this program?  Why?
+<PRE>
+First, there should be simple tests that make sure the information is
+entered correctly.
+Next, you should write tests to make sure the number of boards owned
+or rented is not negative.  
+You should also test that you do not rent more boards than 
+you own, and that you do not retire (that is, remove from the system)
+boards that are currently rented to a customer.
+</PRE></DL></DL>
+<BR><HR>
+</ADDRESS>
+</BODY>

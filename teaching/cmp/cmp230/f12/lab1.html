@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 1, CIS 166 & CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 1<br>
+CIS 166 & CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Lab Dates:  Wednesday-Thursday, 29-30 August 2012</span></p>
+
+<p>
+Today's lab will focus on using the Blackboard system and simple programs
+in python.  <br>Software tools needed:  web browser and python idle programming 
+environment.
+
+
+
+
+</div>
+
+<div>
+<h3>Using Blackboard</h3>
+
+<p>This course will use the on-line Blackboard system for submitting 
+work electronically. Blackboard should be accessible 
+through your CUNY portal account (<a href="http://portal.cuny.edu">http://portal.cuny.edu</a>). 
+If you have not used Blackboard in the past, information is available at the Computer Center
+(<a href="http://www.lehman.edu/itr/blackboard.php">http://www.lehman.edu/itr/blackboard.php</a>). 
+They can set up your account and have information sheets about using the system.
+<!--In addition:
+	<blockquote>
+	(From Information Technology Center mass email, 1/28/11:)
+	<p>
+  	During the first week of the semester, Monday (1/31) through Friday (2/4), 
+  	we will again provide Walk-In Blackboard Assistance, from 10:00-noon and 2:00-4:00 
+  	in Carman Hall B-38.  We will staff this room with our Blackboard team, and 
+  	students with login or other Blackboard difficulties can come by for help.
+<br>
+	After hearing from many of you that students need more assistance with 
+	learning Blackboard, the Office of Undergraduate Studies and Online Education 
+	has created a Student Blackboard Orientation which students (and faculty) can 
+	access by clicking on a new ONLINE INFO tab on the top header of Blackboard.
+<br>
+	This Blackboard Orientation contains useful information and helpful hints to 
+	introduce students to Blackboard's features, and it contains tutorials (like 
+	how to post in the discussion board right inside the orientation's discussion 
+	board!) along with links to useful sites, tech support information and necessary 
+	software.
+
+  	</blockquote>
+-->
+
+<p>After logging into the class webpage on Blackboard, go to <tt>Assignments</tt>
+and click on the link for the first laboratory exercise: <tt>Lab 1, Part 1</tt>.  
+A short set of questions will 
+appear on the screen.  Answer the questions, and a grade will appear on the 
+screen.  You may repeat the problem set as many times as you wish before the
+end of the lab.
+
+
+<p>
+<b>Timing Out:</b> If the system times out and locks your attempt (happens rarely 
+when the browser or PC crashes), send email to an instructor so they
+can clear the attempt so you can try again.
+</p>
+</div>
+
+<div>
+<h3>Using Python</h3>
+
+<p>We will be using the Idle programming environment for python.  On the desktop,
+there is an <tt>Idle</tt> icon.  Click the icon to launch idle.  In the shell
+window that pops up, try typing some of the commands that we did in lecture (also
+from the textbook):
+<pre>
+	print("Hello, world!")
+	print()
+	def greet(person):
+	   print("Hello", person)
+	greet("world")
+</pre>
+(Indentation does matter, so, remember to indent the <tt>print</tt> line so that
+it is included in the <tt>greet()</tt> function.)
+
+<p>Next, let's write a program that will greet someone 5 times.  Instead of using
+the shell window (which lets us try things immediately), lets use a text window, where
+we can save our program for later.  The basic structure
+of the program will be:
+<pre>
+#Define our function
+	#Have a loop that repeats 5 times
+	#Inside that loop, greet that person 
+</pre>
+Copy the above lines into a new text window.  Save, using the name, <tt>greetLoop.py</tt>
+to your USB drive.  If you try to run your program, it will currently do nothing, 
+since all the lines are proceeded by the `#' and treated as a comment.
+
+<p>
+Let's fill in a bit more of the program:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	#Inside that loop, greet that person 
+	print("Hello", person)
+</pre>
+Save your revised program and load it (using the menu).  At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?  Why?
+
+<p>
+Let's add in the missing loop, to make it print out the multiple times:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	for i in range(5):
+	#Inside that loop, greet that person 
+	print("Hello", person)
+</pre>
+Save your revised program and load it (using the menu).  At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?  What went wrong?  A loop only repeats
+statements indented below it.  Since our print statement wasn't indented, it decided
+we had an `empty loop' followed by a simple print statement.  To include the
+print statement in the loop, we add indentation:
+<pre>
+#Define our function
+def greetLoop(person):
+	#Have a loop that repeats 5 times
+	for i in range(5):
+		#Inside that loop, greet that person 
+		print("Hello", person)
+</pre>
+Save your revised program and load it (using the menu).  At the shell, if you type:
+<pre>
+greetLoop("World")
+</pre>
+how many times does the message get printed?
+
+<p>Change your program so the message is printed 25 times.  
+
+
+<p>After completing your program, go to <tt>Labs</tt> tab in Blackboard
+and click on the link: <tt>Lab 1, Part 2</tt>.  Use the file upload interface
+to upload your program.  Remember to click the <tt>Submit</tt> button before
+closing the lab exercise.
+
+
+
+<p> With the remaining time, start <a href="ps1.html">Problem Set 1</a>.
+
+</p>
+</div>

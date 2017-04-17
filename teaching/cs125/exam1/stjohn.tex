@@ -1,0 +1,187 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\textwidth=6 true in
+\textheight=9 true in
+\topmargin = 10pt
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\Large
+\begin{center}
+\mbox{ }
+    Exam 1 \\
+    Computer Science 125 \\ 
+    Boise State University\\ 
+    Thursday, 24 September 1998
+\end{center}
+}
+
+\begin{enumerate}
+
+%1
+   \item TRUE or FALSE:
+	\begin{enumerate}
+	    \item \underline{\hspace{.25in}} The type {\tt double}
+		is an example of an object.
+	    \item \underline{\hspace{.25in}} The logical expression
+		$!(A\&\&B)$ is equivalent to $!A\&\&!B$.
+	    \item \underline{\hspace{.25in}} The logical expression
+		$A\&\&B$ evaluates $B$ first, then $A$.
+	    \item \underline{\hspace{.25in}} A function has exactly
+		one return value.
+	    \item \underline{\hspace{.25in}} A function has at most
+		one return value.
+	    \item \underline{\hspace{.25in}} A function with no
+		parameters must have a {\tt void} return type.
+	    \item \underline{\hspace{.25in}} Object variables hold
+		references, not values.
+	    \item \underline{\hspace{.25in}} Every object belongs
+		to a class.
+	    \item \underline{\hspace{.25in}} If an action is 
+		legal, than it's ethical.
+	    \item \underline{\hspace{.25in}} Those caught committing
+		software crime are most often low-level employees.
+	\end{enumerate}
+
+%2
+    \item Give the Java code to construct the following objects:
+	\begin{enumerate}
+	    \item The current time:
+	    \item Your next birthday:
+	    \item The president as an employee (use \$200,000 as
+		the salary):
+	    \item A circle with center $(-1,-1)$ and radius $3$:
+	    \item A line running from $(-10,-10)$ to $(10,10)$:
+	\end{enumerate}
+
+%3
+    \item What is the output? 
+	\begin{enumerate}
+	    \item 
+\begin{verbatim}
+String s = "exam";
+boolean okay = false;
+
+if ( s.substring(1,2).equals("e") )
+   okay = true;
+
+if ( okay )
+   System.out.println("Okay!");
+else
+   System.out.println("Not Okay!");
+\end{verbatim}
+
+	    \item 
+\begin{verbatim}
+int year = 1900;
+boolean leap = (year % 4 == 0) && !(year % 100 == 0);
+leap = leap || (year % 400 == 0);
+
+if ( leap )
+   System.out.println("Leap!");
+else
+   System.out.println("Not Leap!");
+\end{verbatim}
+    \end{enumerate}
+
+
+
+
+%4
+    \item What does this program produce as output?
+\begin{verbatim}
+import ccj.*;
+public class Mystery
+{ public static void main(String[] args)
+    { int x = 12345;
+       if ( myst(x) % 3 == 0 )
+          System.out.println("Divisible!");
+       else
+          System.out.println("Indivisible!");
+    }
+    public static int myst(int x)
+    { if ( x < 10 )
+          return x;
+       return ( (x%10) + myst(x/10) );
+    }
+}
+\end{verbatim}
+
+
+%5
+    \item What does this program produce as output?
+\begin{verbatim}
+import ccj.*;
+public class MysteryApplet extends GraphicsApplet
+{ public void run()
+    {  Point p1 = new Point(-5,-5);
+       Circle c1 = new Circle(p1, 4);
+       c1.draw();
+       p1.move(7,7);
+       p1.draw(); 
+       Line l1 = new Line(p1, new Point(0,0));
+       l1.draw();
+    }
+}
+\end{verbatim}
+
+%6
+    \item Write a function that takes 2 points as input and
+	returns the distance between the points.
+	{\it (Recall that the distance between $(x_1,y_1)$
+	and $(x_2,y_2)$ is $\sqrt{{(x_1-x_2)}^2 + {(y_1 - y_2)}^2}$.)}
+
+
+%7
+    \item Write a recursive function that takes a string and
+	returns true if the string is a palindrome (the same
+	written backwards as forwards).
+
+%8
+    \item A friend gives you a nice Java package that helps
+	you finish your project for your new boss.  You
+	later find out that this nice Java package is 
+	copyrighted by the competitor.  No one is likely
+	to find out that you are using this package (it
+	has been compiled into bytecode).  However, if they
+	do, you will be fired and your company sued.
+	What should you do? 
+
+	\begin{enumerate}
+	    \item Who has something at stake in this dilemma?
+	    \item What should you do?  Briefly explain why:  
+	    \item Is what you did legal?  Briefly explain why:  
+	    \item What added knowledge would help you make
+		this decision?  Or cause you to change your
+		decision?  Briefly explain why:
+	\end{enumerate}
+%9
+    \item Given the following function definitions:
+\begin{verbatim}
+public static double hare(double x) { return 2 * hatter(x/2); }
+public static double hatter(double x) { return x * alice(x); }
+public static double alice (double x) { return mouse(x) - 1 ; }
+public static double mouse(double x) { return x*x - x; }
+\end{verbatim}
+
+    \begin{enumerate}
+	\item {\tt alice(5) = } \underline{\hspace{2in}}
+	\item {\tt hare(4) = } \underline{\hspace{2in}}
+    \end{enumerate}
+	
+%10
+    \item Write a recursive function that takes an integer
+	and breaks it into a sequence of individual digits.
+	For example, 16384 would be displayed as
+\begin{verbatim}
+1 6 3 8 4
+\end{verbatim}
+	{\it (Hint: Use recursion.)}
+
+\end{enumerate}
+\end{document}
+
+

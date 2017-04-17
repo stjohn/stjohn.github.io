@@ -1,0 +1,93 @@
+#define FORWARD_MESSAGE 16
+#define SPIN_MESSAGE 17
+#define STOP_MESSAGE 18
+#define GRAB_MESSAGE 19
+#define RELEASE_MESSAGE 20
+#define HEARTBEAT_MESSAGE 21
+
+#define HEARTBEAT_TIME 20
+
+int message;
+int armLock;
+int missedBeats;
+
+task main() {
+  SetSensor(SENSOR_3, SENSOR_LIGHT);
+  armLock = 0;
+  missedBeats = 0;
+  
+  start messageWatcher;
+  start heartbeatWatcher;
+}
+
+task messageWatcher() {
+  while (true) {
+    message = Message();
+    if (message == FORWARD_MESSAGE) {
+      OnFwd(OUT_C);
+      ClearMessage();
+    }
+    else if (message == SPIN_MESSAGE) {
+      OnRev(OUT_C);
+      ClearMessage();
+    }
+    else if (message == STOP_MESSAGE) {
+      Off(OUT_C);
+      ClearMessage();
+    }
+    else if (message == GRAB_MESSAGE) {
+      start grab;
+      ClearMessage();
+    }
+    else if (message == RELEASE_MESSAGE) {
+      start release;
+      ClearMessage();
+    }
+    else if (message == HEARTBEAT_MESSAGE) {
+      missedBeats = missedBeats - 1;
+      ClearMessage();
+    }
+  }
+}
+
+task grab() {
+  until (armLock == 0);
+  stop release;
+  OnFwd(OUT_A);
+  until (SENSOR_3 == 100);
+  armLock = 1;
+  OnRev(OUT_A);
+  until (SENSOR_3 != 100);
+  armLock = 0;
+  Off(OUT_A);
+}
+
+task release() {
+  until (armLock == 0);
+  stop grab;
+  OnRev(OUT_A);
+  until (SENSOR_3 == 100);
+  armLock = 1;
+  OnFwd(OUT_A);
+  until (SENSOR_3 != 100);
+  armLock = 0;
+  Off(OUT_A);
+}
+
+task heartbeatWatcher() {
+  while (true) {
+    if (missedBeats > 1) {
+      PlaySound(SOUND_DOWN);
+      stop messageWatcher;
+      Off(OUT_C);
+      until (armLock == 0);
+      Off(OUT_A);
+      until (Message() == HEARTBEAT_MESSAGE);
+      PlaySound(SOUND_UP);
+      missedBeats = 0;
+      start messageWatcher;
+    }
+    missedBeats = missedBeats + 1;
+    Wait(HEARTBEAT_TIME);
+  }
+}

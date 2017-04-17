@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Arrays and Images, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div id="header">
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Multidimensional Arrays & Image Files</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science</h2>
+<h3>
+Spring 2016</h3>
+</div>
+
+
+<div>
+<h3>Image files</h3>
+
+<img src="../amnh/sic-imageplanes.png" height= 200 align="right">
+There are many different formats to store images.  Some store the information about the color of every <i>pixel</i> ("picture element" or dot on the screen).  Others store end points of lines or boundaries of regions and the colors of each.  We focus on the former, and in particular, use the <tt>png</tt> (portable network graphics) file format, which is popular for storing images captured from cameras and is `lossless' (every pixel captured is stored, so, can also be quite large).  Each pixel is represented by its the percentage of red, green, and blue ("RGB") values. Images are stored as a grid of red values, a grid of green values, and a grid of blue
+values (an optional fourth grid can hold the alpha or opacity channel). 
+
+<p>
+For example, if we stored our image in the variable, <tt>img</tt>, we could access the red
+value by:
+<pre>
+	print "Upper left has red:", img[0,0,0]
+</pre>
+and the amount of green:
+<pre>
+	print "Upper left has green:", img[0,0,1]
+</pre>
+and the amount of blue:
+<pre>
+	print "Upper left has blue:", img[0,0,2]
+</pre>
+Any point can be accessed via its coordinates <tt>(i,j)</tt> and the color channel (0 for red, 1 for green, and 2 for blue).
+
+<p>
+What does this code do?   Work through it first, and then try on your computer.  This program assumes that you have a file called <a href="../amnh/bf1.png">bf1.png</a> in the same directory.  You can use that file, or substitute one of your own.
+	<pre> 	
+import matplotlib.pyplot as plt  
+import numpy as np               
+img = plt.imread('bf1.png')	#Read in image from bf1.png
+plt.imshow(img)			#Load image into matplotlib
+plt.show()
+height = img.shape[0]
+width = img.shape[1]
+newImage = np.zeros((height,width,3))
+for i in range(height):
+	print "processing row", i 
+	for j in range(width): 
+		newImage[i,j,0] = img[i,j,0] 
+		newImage[i,j,1] = 0 
+		newImage[i,j,2] = 0		
+plt.imshow(newImage)		#Open window to show image (close to continue)
+plt.show() 
+plt.imsave('face2.png',newImage)
+</pre>
+
+<h4>Challenges:</h4>
+<ul>
+	<li> How can you display only the green channel? How can you display the blue
+channel?
+	<li> Write a program that displays the image in black and white. Each color value of the pixels in the new image are an average of the red, green, and blue in the original. That is, 
+	<pre>
+newR = (r+g+b)/3
+newG = (r+g+b)/3
+newB = (r+g+b)/3
+</pre>
+	<li> Write a program that shows only the pixels that are white (or very close-- that is, red, blue, and green values above 90%).	
+	<li> Write a program that shows only pixels that differ between these two butterfly images, <a href="../amnh/bf1.png">bf1.png</a> and <a href="../amnh/bf2.png">bf2.png</a>.  Modify your program to show the pixels in the first image that are similar (within 20%) of the second image.
+</ul>
+</div>
+
+<div>
+<h4>Landsat Satellite Data</h4>
+
+<p>
+Landsat Satellite Program is a joint program of USGS and NASA that has provided continuous images of the earth since 1972. The data is publicly available through the USGS-EROS site and has been invaluable in mapping changes in the earth. Today, we will use data images from the USGS remote sensing gallery:
+<blockquote>
+<a href="http://remotesensing.usgs.gov/gallery/">http://remotesensing.usgs.gov/gallery/</a>
+</blockquote>
+
+<p>
+The gallery consists usually of pairs of images demonstrating change over time.
+Our challenges for today are:
+<ul>
+	<li> California drought: how much change has their been in the Sierra Nevada snowpack during the current drought?
+	there are three images of the Sierra Nevada mountains. Count the amount of snow cover (pixels that are nearly white) in the image from 
+	<a href="../amnh/CaliforniaDrought_02232011_md.png">February 2011</a>. Then count the snow cover in 
+	<a href="../amnh/CaliforniaDrought_02122013_md.png">February 2013</a> and in 
+	<a href="../amnh/CaliforniaDrought_02232014_md.png">February 2014</a>. What is the percentage coverage (using 2011 as a baseline)?  
+	<li> Korean Coastline: how much has the coastline of Incheon, South Korean grown over the last 30 years? In the last 32 years, the land region around Incheon, South Korea has grown significantly. Using <a href=
+	http://remotesensing.usgs.gov/gallery/gallery.php?cat=3#353
+	>the images</a> in the gallery from <a href="../amnh/Incheon_09051981_sm.png">1981</a> and <a href="../amnh/Incheon_09162013_sm.png">2013</a>, highlight in red the additional land mass.<br> (Hint: subtract the two images to find the regions that are different. Next, add in an if-statement inside your loop to color only those regions red.)
+	<li> Choose an image set from the gallery, develop a hypothesis, and design a program to analyse your image. <br>
+	Note: Some images are stored in JPG format-- use Preview to convert to PNG.  
+</ul>
+
+</div>

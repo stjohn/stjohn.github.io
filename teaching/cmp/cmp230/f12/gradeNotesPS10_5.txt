@@ -1,0 +1,90 @@
+
+
+
+2/2    Comment with name and description
+4/4    Koch function
+1/1    Set up turtle
+3/3    Main function with calls to Koch function
+2/0    Extra Credit for submitting early
+12/10  Total
+
+Excellent job!
+
+
+
+2/2    Comment with name and description
+4/4    Koch function
+1/1    Set up turtle
+3/3    Main function with calls to Koch function
+0/0    Extra Credit for submitting early
+10/10  Total
+
+
+Gustavo Camilo-Martinez, Jhairo Colon, Noel Fernandez, Mario McKay, Gabriela Prado, Hans Valdiviezo:
+(the "FRFRF" version)
+
+Submitted program does not answer the question (draw Koch's snowflake from pseudocode in book) and was plagiarized from:
+http://commons.wikimedia.org/wiki/Koch_snowflake    
+
+
+Sandra Rivera, Sandra Mamani
+
+Submitted program was plagiarised from:
+http://www.daniweb.com/software-development/python/threads/226241/help-koch-snowflake-from-python-2.5-turtle
+
+
+Jahanzeb Fareed
+
+Submitted program was plagiarized in its entirety from:
+http://www.daniweb.com/software-development/python/threads/113274/koch-curve-in-python
+
+
+Submitted a program identical (except for name) to 7 other students.
+Submitted identical programs, down to the line spacing: (the "drawTri(t,l,d)" version):
+
+Danny Benalcazar
+Christian Chandi 	(added one extra line:  # This program achieves the Kotch snowflake)
+Bertha Gallo
+Jason Hollingsworth
+Al Mamun
+Dariana Reyes
+Joseph Rojas
+Mujiba Shaila
+
+
+Richard Roeung and Rezarta Veliu submitted identical programs, except for comments,
+that drew stars.  
+
+"Submitted a program identical (except for comments) to another student.  Program drew
+star, not fractal snowflake."
+
+Similar also to Brett K.  (no name, but file problemset10question5.py)
+
+
+
+
+Suspicious:
+
+Similar, but hard to prove (the "drawTriangle(t,l,x)" version):
+
+Clester Bailey
+Brandan Buddy 	(added in extra blank lines)
+Anthony Merino
+Evadne Smith-McLilley
+
+Alberto Espinal & Carol Gonzalez:
+
+Turned in a identical programs where the first part is level 3 and the next 
+two sides are at level 2.  Some spacing added, but identical almost everywhere.
+
+Spacing similar to Bhandari.
+
+
+
+
+Odd:
+
+Sela A.,  Christian Fadul, and Brett Krutiansky submitted spiral program for #5
+
+Veliu, Richard Roeung, Brett Krutiansky
+Submitted very similar stars

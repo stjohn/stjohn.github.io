@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>PythonTutor Examples for CIS 166 and CMP 167, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<!--<img id="bookImage" alt="cover picture" src="../hfhtml_cover.gif"
+ width="110">
+ 
+ <img id="bookImageRight" alt="cover picture" src="../hfjs_cover.png"
+ width="110"> 
+ -->
+<h2><br>PythonTutor Examples <br></h2>
+<h3>
+CMP 167 (CMP 230): Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h3>
+</div>
+
+<div>
+These examples of Python 3 code are displayed using 
+<a href="http://pythontutor.com">pythontutor.com</a>.  To step through an example, line-by-line, click on the <tt>Forward</tt> button towards the bottom of the frame:
+</div>
+
+
+
+<div>
+<h4>
+<a name="greet">Greet example (from textbook, Chapter 1 and <a href="lab1.html">Lab 1</a>):</a></h4>
+
+<p>
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23Greet+loop+example+(from+book+and+Lab+1)%0A%0Adef+greetLoop(person)%3A%0A++++for+i+in+range(5)%3A%0A++++++++print(%22Hello%22,+person)%0A++++++++%0AgreetLoop(%22Herbert%22)&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+<div>
+<h4>
+<a name="chaos">Chaos example (from textbook, Chapter 1):</a></h4>
+
+<p>
+<p>
+Note that <tt>eval()</tt> does not work well in pythonTutor, so, the code below has the <tt>eval()</tt> call replaced with <tt>float()</tt> which returns an floating point (decimal) number when given a string.
+
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23+chaos.py+from+Zelle,+Chapter+1%0A%0Adef+main()%3A%0A++++print(%22This+program+illustrates+a+chaotic+function%22)%0A++++%23Using+float()+since+eval()+doesn't+work+in+pythontutor%3A%0A++++x+%3D+float(input(%22Enter+a+number+between+0+and+1%3A+%22))%0A++++for+i+in+range(10)%3A%0A++++++++x+%3D+3.9+*+x+*+(1+-+x)%0A++++++++print(x)%0A++++++++%0Amain()&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%220.5%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+<div>
+<h4>
+<a name="convert">Convert example (from textbook, Chapter 2):</a></h4>
+
+<p>
+Note that <tt>eval()</tt> does not work well in pythonTutor, so, the code below has the <tt>eval()</tt> call replaced with <tt>int()</tt> which returns an integer (whole number) when given a string.
+</p>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23+From+%22Teaching+with+Python%22+by+John+Zelle%0A%23+convert.py%0A%23+++++A+program+to+convert+Celsius+temps+to+Fahrenheit%0A%23+by%3A+Susan+Computewell%0A%0Adef+main()%3A%0A++++celsius+%3D+int(input(%22What+is+the+Celsius+temperature%3F+%22))%0A++++fahrenheit+%3D+9/5+*+celsius+%2B+32%0A++++print(%22The+temperature+is%22,+fahrenheit,+%22degrees+Fahrenheit.%22)%0A%0Amain()&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%22-10%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+<div>
+<h4>
+<a name="runningTotal">Running Total example</a></h4>
+
+<p>
+
+</p>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23Sample+accumulator+(running+sum)%0A++++%0Adef+main()%3A%0A++++print(%22A+program+that+calculate+total+of+5+numbers.%22)%0A++++sum+%3D+0%0A++++for+i+in+range(5)%3A%0A++++++++newNum+%3D+float(input('Enter+next+number%3A+'))%0A++++++++sum+%3D+sum+%2B+newNum%0A++++print(%22The+sum+is%22,+sum)%0A++++%0Amain()%0A++++&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%223%22,%224.5%22,%22-3.4%22,%220%22,%2255%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+<div>
+<h4>
+<a name="factorial">Factorial example (from textbook, Chapter 3):</a></h4>
+
+<p>
+Note that <tt>eval()</tt> does not work well in pythonTutor, so, the code below has the <tt>eval()</tt> call replaced with <tt>int()</tt> which returns an integer (whole number) when given a string.
+</p>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23+factorial.py+from+Zelle,+Chapter+3%0D%0A%23++++Program+to+compute+the+factorial+of+a+number%0D%0A%23++++Illustrates+for+loop+with+an+accumulator%0D%0A%0D%0Adef+main()%3A%0D%0A++++%23Using+int()+since+pythonTutor+doesn't+like+eval()%3A%0D%0A++++n+%3D+int(input(%22Please+enter+a+whole+number%3A+%22))%0D%0A++++fact+%3D+1%0D%0A++++for+factor+in+range(n,1,-1)%3A%0D%0A++++++++fact+%3D+fact+*+factor%0D%0A++++print(%22The+factorial+of%22,+n,+%22is%22,+fact)%0D%0A%0D%0Amain()&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%225%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+
+<div>
+<h4>
+<a name="accumString">Accumulating string example</a></h4>
+
+<p>
+
+</p>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23Sample+string+accumulator+%0A++++%0Adef+main()%3A%0A++++print(%22A+program+that+prints+out+a+string+with+stars%22)%0A++++s+%3D+%22%22%0A++++for+i+in+range(5)%3A%0A++++++++newCh+%3D+input('Enter+next+character%3A+')%0A++++++++s+%3D+s+%2B+%22*%22+%2B+newCh%0A++++print(%22The+string+with+stars+is%22,+s)%0A++++%0Amain()%0A++++&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%22h%22,%22e%22,%22r%22,%22b%22,%22y%22%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+</div>
+
+<div>
+<h4>
+<a name="happy">Happy Birthday example (from textbook, Chapter 6):</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=%23+From+%22Teaching+with+Python%22+by+John+Zelle%0Adef+happy()%3A%0A++++print(%22Happy+Birthday+to+you!%22)%0A%0Adef+sing(P)%3A%0A++++happy()%0A++++happy()%0A++++print(%22Happy+Birthday+dear+%22+%2B+P+%2B+%22!%22)%0A++++happy()%0A%0A%23+main%0Asing(%22Fred%22)&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+<div>
+<h4>
+<a name="jam">Jam example (from Fall 2011 Final Exam):</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+prob4()%3A%0A++++verse+%3D+%22jam+tomorrow+and+jam+yesterday,%22%0A++++print(%22The+rule+is,%22)%0A++++c+%3D+mystery(verse)%0A++++w+%3D+enigma(verse,c)%0A++++print(c,w)%0Adef+mystery(v)%3A%0A++++print(v)%0A++++c+%3D+v.count(%22jam%22)%0A++++return(c)%0Adef+enigma(v,c)%3A%0A++++print(%22but+never%22,+v%5B-1%5D)%0A++++for+i+in+range(c)%3A%0A++++++++print(%22jam%22)%0A++++return(%22day.%22)%0Aprob4()&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+<div>
+<h4>
+<a name="fall13Prob5">Decisions & Functions:  Fall 2013 Final Exam, #5:</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://www.pythontutor.com/iframe-embed.html#code=%23Fall+2013+Final+Exam,+5%0A%0Adef+kuwae(+inLst+)%3A%0A++++tot+%3D+1%0A++++for+item+in+inLst%3A%0A++++++++tot+%3D+tot+*+item%0A++++return+tot%0A%0Adef+foo(+inLst+)%3A%0A++++if+(+inLst%5B-1%5D+%3E+inLst%5B0%5D+)%3A%0A++++++++return+kuwae(+inLst+)%0A++++else%3A%0A++++++++return+-1%0A++++++++%0Afoo(+%5B2,+4,+6,+8%5D+)%0A%0Afoo(+%5B4002,+328,+457,+1%5D+)%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+<div>
+<h4>
+<a name="spring12Prob8">Indefinite Loops: Spring 2012 Final Exam, #8:</a></h4>
+
+<iframe width="800" height="800" frameborder="0" src="http://www.pythontutor.com/iframe-embed.html#code=%23Spring+2012+Final+Exam,+%238%0A%0Anums+%3D+%5B1,4,0,6,5,2,9,8,12%5D+%0Ai%3D0%0Awhile+i+%3C+len(nums)-1%3A%0A++++if+nums%5Bi%5D+%3C+nums%5Bi%2B1%5D%3A%0A++++++++nums%5Bi%5D,+nums%5Bi%2B1%5D+%3D+nums%5Bi%2B1%5D,+nums%5Bi%5D%0A++++i%3Di%2B1+%0A++++++++%0Aprint(nums)%0A&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+</div>
+
+
+
+
+</body>
+</html>

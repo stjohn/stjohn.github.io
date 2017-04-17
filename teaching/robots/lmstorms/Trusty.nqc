@@ -1,0 +1,49 @@
+int state;
+
+#define LEFT 0
+#define RIGHT 1
+
+#define DARK2 35
+#define LIGHT2 40
+
+#define POWER 7
+
+#define TIMEOUT 50
+
+task main() {
+  state = LEFT;
+  SetSensor(SENSOR_2, SENSOR_LIGHT);
+  SetPower(OUT_A + OUT_C, POWER);
+  start lightWatcher;
+
+  while (true) {
+    if (SENSOR_2 < DARK2)
+      OnFwd(OUT_A + OUT_C);
+  }
+}
+
+task lightWatcher() {
+  while (true) {
+    if (SENSOR_2 > LIGHT2) {
+      toggle();
+      Wait(TIMEOUT);
+      if (SENSOR_2 > LIGHT2) {
+        toggle();
+        Wait(TIMEOUT * 2);
+      }
+    }
+  }
+}
+
+sub toggle() {
+  if (state == LEFT) {
+    OnRev(OUT_A);
+    OnFwd(OUT_C);
+    state = RIGHT;
+  }
+  else {
+    OnFwd(OUT_A);
+    OnRev(OUT_C);
+    state = LEFT;
+  }
+}

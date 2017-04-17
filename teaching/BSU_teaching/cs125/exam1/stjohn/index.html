@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+<META NAME="description" CONTENT="No Title">
+<META NAME="keywords" CONTENT="stjohn">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="stjohn.css">
+</HEAD>
+<BODY bgcolor="white">
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+2">
+ 
+    Exam 1 <BR>
+Computer Science 125 <BR>
+Lecture 3 (St. John) <br>
+Boise State University
+<BR>
+Thursday, 24 September 1998
+</FONT></DIV>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>1.
+<DD>TRUE or FALSE:
+	<DL COMPACT>
+<DT>(a)
+<DD> The type <TT>double</TT>
+is an example of an object.
+	    <DT>(b)
+<DD> The logical expression
+		<IMG
+ WIDTH="83" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$!(A\&\&B)$">
+is equivalent to <IMG
+ WIDTH="73" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$!A\&\&!B$">.
+	    <DT>(c)
+<DD> The logical expression
+		<IMG
+ WIDTH="63" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.gif"
+ ALT="$A\&\&B$">
+evaluates <I>B</I> first, then <I>A</I>.
+	    <DT>(d)
+<DD> A function has exactly
+		one return value.
+	    <DT>(e)
+<DD> A function has at most
+		one return value.
+	    <DT>(f)
+<DD> A function with no
+		parameters must have a <TT>void</TT> return type.
+	    <DT>(g)
+<DD> Object variables hold
+		references, not values.
+	    <DT>(h)
+<DD> Every object belongs
+		to a class.
+	    <DT>(i)
+<DD> If an action is 
+		legal, than it's ethical.
+	    <DT>(j)
+<DD> Those caught committing
+		software crime are most often low-level employees.
+	</DL>
+<P>
+<DT>2.
+<DD>Give the Java code to construct the following objects:
+	<DL COMPACT>
+<DT>(a)
+<DD>The current time:
+<DT>(b)
+<DD>Your next birthday:
+	    <DT>(c)
+<DD>The president as an employee (use $200,000 as
+		the salary):
+	    <DT>(d)
+<DD>A circle with center (-1,-1) and radius 3:
+	    <DT>(e)
+<DD>A line running from (-10,-10) to (10,10):
+	</DL>
+<P>
+<DT>3.
+<DD>What is the output? 
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+String s = "exam";
+boolean okay = false;
+
+if ( s.substring(1,2).equals("e") )
+   okay = true;
+
+if ( okay )
+   System.out.println("Okay!");
+else
+   System.out.println("Not Okay!");
+</PRE>
+<P>
+<DT>(b)
+<DD><PRE>
+int year = 1900;
+boolean leap = (year % 4 == 0) &amp;&amp; !(year % 100 == 0);
+leap = leap || (year % 400 == 0);
+
+if ( leap )
+   System.out.println("Leap!");
+else
+   System.out.println("Not Leap!");
+</PRE></DL>
+<P>
+<DT>4.
+<DD>What does this program produce as output?
+<PRE>
+import ccj.*;
+public class Mystery
+{ public static void main(String[] args)
+    { int x = 12345;
+       if ( myst(x) % 3 == 0 )
+          System.out.println("Divisible!");
+       else
+          System.out.println("Indivisible!");
+    }
+    public static int myst(int x)
+    { if ( x &lt; 10 )
+          return x;
+       return ( (x%10) + myst(x/10) );
+    }
+}
+</PRE>
+<P>
+<DT>5.
+<DD>What does this program produce as output?
+<PRE>
+import ccj.*;
+public class MysteryApplet extends GraphicsApplet
+{ public void run()
+    {  Point p1 = new Point(-5,-5);
+       Circle c1 = new Circle(p1, 4);
+       c1.draw();
+       p1.move(7,7);
+       p1.draw(); 
+       Line l1 = new Line(p1, new Point(0,0));
+       l1.draw();
+    }
+}
+</PRE>
+<P>
+<DT>6.
+<DD>Write a function that takes 2 points as input and
+	returns the distance between the points.
+	<I>(Recall that the distance between </I>(<I>x</I><SUB>1</SUB>,<I>y</I><SUB>1</SUB>)<I>	and </I>(<I>x</I><SUB>2</SUB>,<I>y</I><SUB>2</SUB>)<I> is </I>
+<!-- MATH: $\sqrt{{(x_1-x_2)}^2 + {(y_1 - y_2)}^2}$ -->
+<IMG
+ WIDTH="204" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$\sqrt{{(x_1-x_2)}^2 + {(y_1 - y_2)}^2}$"><I>.)</I>
+
+<P>
+<DT>7.
+<DD>Write a recursive function that takes a string and
+	returns true if the string is a palindrome (the same
+	written backwards as forwards).
+
+<P>
+<DT>8.
+<DD>A friend gives you a nice Java package that helps
+	you finish your project for your new boss.  You
+	later find out that this nice Java package is 
+	copyrighted by the competitor.  No one is likely
+	to find out that you are using this package (it
+	has been compiled into bytecode).  However, if they
+	do, you will be fired and your company sued.
+	What should you do? 
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>Who has something at stake in this dilemma?
+<DT>(b)
+<DD>What should you do?  Briefly explain why:  
+	    <DT>(c)
+<DD>Is what you did legal?  Briefly explain why:  
+	    <DT>(d)
+<DD>What added knowledge would help you make
+		this decision?  Or cause you to change your
+		decision?  Briefly explain why:
+	</DL>    <DT>9.
+<DD>Given the following function definitions:
+<PRE>
+public static double hare(double x) { return 2 * hatter(x/2); }
+public static double hatter(double x) { return x * alice(x); }
+public static double alice (double x) { return mouse(x) - 1 ; }
+public static double mouse(double x) { return x*x - x; }
+</PRE>
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD><TT>alice(5) = </TT> 
+<DT>(b)
+<DD><TT>hare(4) = </TT> 
+    </DL>	
+    <DT>10.
+<DD>Write a recursive function that takes an integer
+	and breaks it into a sequence of individual digits.
+	For example, 16384 would be displayed as
+<PRE>
+1 6 3 8 4
+</PRE>	<I>(Hint: Use recursion.)</I>
+
+</BODY>
+</HTML>

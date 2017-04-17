@@ -1,0 +1,154 @@
+<body bgcolor="white">
+<P>
+Computer Science 125 - 002   November 3, 1998   Second Exam
+<BR>
+
+<P>
+1. In the following, you are to define a portion of a <TT>Circle</TT>
+class (that does not invlolve any graphics).
+Include the following items:
+<UL>
+<LI>data members for the x and y coordinates
+of the center and the radius.
+<LI>default constructor which creates a circle with
+center at the origin and unit radius.
+<LI>a constructor which takes a supplied x and y coordiantes
+for the center and a radius.
+<LI>a method which computes and returns the area.
+</UL>[24 points]
+
+<P>
+2. The following technique was used by a software
+company:
+
+<P>
+Users who installed a product from the company
+were invited to run a supplied program to
+generate a mailing label 
+for product registration.  The
+software scanned the user's disk for all products which
+were produced by the company 
+and included the encoded inventory information
+on the label (users were not informed of its exact behavior).  
+The company then used the
+information to trace and pursue people who 
+had illegally installed its software.
+
+<P>
+Do you think that the above practice was a violation of
+privacy rights?  Support your position.  [12 points]
+
+<P>
+3. The following function does a linear search of
+in integer array through a specified number of
+elements for a value which is passed as a parameter and
+returns the index where found or -1 if not found.
+
+<P>
+<PRE>
+    public int LSearch(int[] a, int count, int value)
+    {
+        int index = 0;
+        while (index &lt; count)
+        {
+            if (a[i] == value)
+                return index;
+            else
+                index++;
+        }
+        return -1;
+    }
+</PRE>
+<P>
+If the arrary <TT>a</TT> is in ascending order, then
+the above can be improved slightly so that 
+unsuccessful searches are generally somewhat better.
+Make the required changes (DO NOT turn it into
+a binary search). [10 points]
+
+<P>
+4. Given the following problem statement, circle the words
+(or phrases) which are candidates for the major classes
+in the problem.  Also underline items which
+are good candidates for methods and for each such item,
+draw an arrow to the class in which it should be placed.
+Problem statement: [14 points]
+
+<P>
+<BLOCKQUOTE>
+<P>
+Design a program which performs additions and multiplications
+with polynomials.  A polynomial will consist of one or
+more terms where a term consists of a nonzero coefficient
+and a nonnegative integer exponent.
+
+<P>
+</BLOCKQUOTE>
+<P>
+5. Testing is an important activity in system development [8 points each].
+
+<P>
+(a) Differentiate between black-box and white-box unit testing.
+
+<P>
+(b)  Each of the methods in (a) tend to expose different
+kinds of errors.  For one of the techniques, indicate a 
+(type of) problem which it 
+may be more effective at exposing than the other.  
+
+<P>
+6. Write a function named <TT>Transpose</TT> which takes a two-dimensional
+double array
+parameter, creates,  and returns the transpose of its
+parameter.  The <EM>transpose</EM> of an MxN array is
+an NxM array for which an entry in the (i,j) position comes
+from the (j,i) position from the other matrix.  For example,
+the transpose of
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\left (
+\begin{array}{cc}
+1 & 2\\
+3 & 4\\
+5 & 6\\
+\end{array}
+\right )
+\ \ \ is\ \ \
+\left (
+ \begin{array}{ccc}
+ 1 & 3 & 5\\
+ 2 & 4 & 6\\
+ \end{array}
+ \right )
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="223" HEIGHT="73"
+ SRC="img2.gif"
+ ALT="\begin{displaymath}\left (
+\begin{array}{cc}
+1 & 2\\
+3 & 4\\
+5 & 6\\
+\end{arr...
+...{array}{ccc}
+1 & 3 & 5\\
+2 & 4 & 6\\
+\end{array} \right ) \end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+
+<P>
+[14 points]
+
+<P>
+7.  Draw a picture showing all of the storage cells associated with
+ the statement: [10 points]
+
+<P>
+<TT>int[][][] a = new int[2][3][2];</TT>
+ 
+<BR><HR>

@@ -1,0 +1,114 @@
+<title>Homework 4, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+<h2>Homework 4</h2>
+<h2>Computer Engineering 6, Winter 1998<br> 
+Introduction to Computing</h2>
+
+
+<hr>
+<b>Due by noon, Thursday, 5 February.</b><br>
+The starred problems include programming and should be submitted
+both electronically and on paper.  In the paper portion of the
+starred problems, you should include output of several test runs
+that demonstrates what your program does.
+The electronic portion
+should be sent to coen006@scudc.scu.edu (with subjects
+"hw 4.4" and "hw 4.5", respectively).
+The paper portion should
+be placed in Dr. St. John's box in the Engineering Center. 
+<hr>
+
+<!--
+use AM/PM in place of the compute_coin program
+add line numbers?
+program that indents for style?
+-->
+
+<ol>
+	<li>
+		<ol>	
+			<li type=a> Write a <b>void</b> function definition 
+				that takes 3 integers as
+				input and outputs the product of these 3 
+				numbers to the screen.
+
+			<li type =a> Write a <b>void</b> function 
+				definition for a fucntion called
+				<b>zero_both</b> that takes two arguments, 
+				both of which are type of <b>double</b>, and 
+				sets the values of both variables to 0.
+
+		</ol>
+
+	<li> What is the output of the following program?
+<pre>
+#include &lt;iostream.h&gt
+void figure_me_out(int& x, int y, int& z);
+int main()
+{
+    int a,b,c;
+
+    a = 10;
+    b = 20;
+    c = 30;
+
+    figure_me_out(a, b, c);
+    cout &lt&lt a &lt&lt " " &lt&lt b &lt&lt " " &lt&lt c;
+
+    return 0;
+}
+
+void figure_me_out(int& x, int y, int& z)
+{
+    cout &lt&lt x &lt&lt " " &lt&lt y &lt&lt " " &lt&lt z &lt&lt endl;
+    x = 1;
+    y = 2;
+    z = 3;
+    cout &lt&lt x &lt&lt " " &lt&lt y &lt&lt " " &lt&lt z &lt&lt endl;
+}
+</pre>
+	<li> Which are illegal statements in C++?  Give reasons for any
+		statement which is not legal:	
+		<ol>
+			<li type = a> <pre> cout.setf(ios::showpoint); </pre>
+			<li type = a> <pre> cin &gt&gt answer;</pre>
+			<li type = a> <pre> cin &lt&lt x &lt&lt y;</pre>
+			<li type = a> <pre> if ( x == pow(2,10)/2 ) 
+	cout &lt&lt "OK";</pre>
+			<li type = a> <pre> ifstream infile;
+  infile.open(); </pre>
+			<li type = a> <pre> print_output(x;y;z);</pre>
+			<li type = a> <pre> cout &lt&lt abs(4-sqrt(x));</pre>
+			<li type = a> <pre> 2++;</pre>
+		</ol>	
+
+
+	<li>*  Write a program that converts from twenty-four hour
+		notation to twelve-hour notation.  For example, it should
+		convert 14:25 to 2:25 PM.  The input is given as two
+		integers.  There should be at least three functions,
+		one for input, one to do the conversion, and one for
+		output.  Record the AM/PM information as a value of type
+		<b>char</b>, 'A' for AM and 'P' for PM.  Thus the
+		function for doing the conversions will have a 
+		call-by-reference formal parameter of type <b>char</b>
+		to record whether it is AM or PM.  (The function will
+		have other parameters as well.)  Include a loop that 
+		will lets the user repeat this computation for new
+		input values again and again until the user says he
+		or she wants to end the program. 
+
+	<li>* Write a program that will read in 20 numbers from the
+		file "numbers.in" and will output the average and 
+		standard deviation of those numbers.  (Note that this
+		is very similar to Lab 3, except we are reading the
+		numbers from a file, not the keyboard).  
+		Do not use a variable for each of the twenty numbers.
+		Instead, sum the numbers as you read them in from the
+		file, calculate the average, close the file, and
+		reopen the file to calculate the standard deviation.
+</ol>
+</body>

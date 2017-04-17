@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 14, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 14<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+Topics:  Implementing Fitch's Algorithm for the Small Parsimony Problem
+</div>
+
+<!--
+<div>
+<h3>Downloading packages</h3>
+
+<p>biopython or dendropy?</p>
+
+<p>
+We will be using some packages that are not part of the default Python installation.  To check if your Python has them, type the following at the Python shell:
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.basemap import Basemap
+</pre>
+
+<p>
+If there are no errors, then you already have these packages.  If not, you will need them.  The easiest way is to get the popular packages for scientific computing is to download <a href="https://www.continuum.io/downloads">anaconda</a> distribution of Python.  It will install a second copy of Python on your computer (you can still use the old).  You can also install <a href="http://matplotlib.org">matplotlib</a>
+and <a href="http://www.numpy.org">numpy</a> separately.
+
+<p>
+<a href="">basemap</a> is an extra package for drawing geographic maps.  It is not part of many installations and needs to be added.  In the anaconda Python, if you type:
+<pre>
+from mpl_toolkits.basemap import Basemap
+</pre>
+it will give you the exact command to download basemap.  You can also download 
+<a href="http://matplotlib.org/basemap/users/installing.html">basemap</a> directly:
+<pre>
+conda install -c https://conda.anaconda.org/anaconda basemap
+</pre>
+
+<p>
+The downloads will take about 15-30 minutes, depending on the internet speed.  You might want to start the downloads and go on to the next part of the lab (which does not depend on either).
+
+</div>
+-->
+
+<div>
+<h3>Fitch's Algorithm</h3>
+
+We will implement Fitch's algorithm for scoring trees.  To simplify our implementation, we will assume that the tree is already stored in an adjacency list, following the format we used previously of each key has a value of a list of the parent, the label, and the children (if any).  
+
+<p>Our algorithm will:
+<ul>
+	<li> <b>Input:</b>  tree implemented with an adjacency list and parents, keep labels at the node.
+	<li> <b>Output:</b>  the parsimony score of the tree.
+</ul>
+
+<p>
+Our algorithm operates in two passes:
+<ul>
+	<li> <b>First Pass:</b>  Starting at the leaves, label the internal leaves (with possible multiple labels).
+						
+	<li> <b>Second Pass:</b>  Starting at the root, choose a labeling, then work towards the leaves minimizing the conflicts.
+</ul>
+
+<p>
+Trees will be stored as an adjacency list where the underlying structure is a dictionary.  Entries of the dictionary are of the form:
+<pre>
+		nodeName : [parentName, label, [child1,child2,...]]
+</pre>
+
+<p>If our tree is called, t, then we can access the value stored for the "root" by:
+<pre>
+		print t["root"]
+</pre>
+which will print out a list with the parent's name (an empty string in the case of the root), its label (will start out as an empty string for non-leaf nodes), and its children.  A possible output would be:
+<pre>
+		["","", ["i1", "a"]]
+</pre>
+where "i1" and "a" are names of other nodes in the tree.
+
+The file <a href="smallPars.py">smallPars.py</a> contains a tree (as well as the code developed in this lab):
+<pre>
+tree = {"root" : ["","",["i1","i2"]],
+        "i1": ["root","", ["a", "i3"]], 
+        "i2": ["root","", ["b", "c"]],
+        "i3": ["i1","", ["d","e"]],
+        "a": ["i1","T A A A A", []],
+        "b": ["i2","A A A A G", []],
+        "c": ["i2","C A A A T", []],
+        "d": ["i3","A A A A A", []],
+        "e": ["i3","T A A A A", []]}
+</pre>
+
+<p>
+Note that we're separating the labels for each basepair by space.  This is to make it easier to tell which label is which when we have multiple possibilties during the passes of the algorithm.
+
+<p>
+Try printing out different nodes in the tree to make sure that there's no typos.
+
+<p>
+We're going to build up the program piece-by-piece.  The first piece that needs to be built is a function that takes the labels of two siblings and returns a possible labeling for their parent.  
+Since we will repeat this with every pair of siblings in the trees, we will take the code that labels the parent from a child and make a function.  As a function, we can test it separately to make sure it works.
+For example, if the labels of siblings are:
+<tt>A T A T G</tt> and <tt>A A T T G</tt>, then the function should compare position by position and return <tt>A AT AT T G</tt>.
+
+<p>Let's start by creating a function that takes two inputs and returns a test message  (we will alternate between testing and adding to the function):
+
+<pre>
+def newLabel(l1,l2):
+	 """
+	 Takes two labels and returns the label of their parent.
+	 """
+	 
+	 return "testing newLabel()"
+</pre>	 
+
+<p>Try calling the function several times with different inputs to make sure there are no typographical errors.
+
+<p>Next we need to split up the labels into separate positions and store in a list.  Let's also create a new list to store the labels as we create them
+<pre>
+     #Split up the labels into separate positions:
+     b1 = l1.split(" ")
+     b2 = l2.split(" ")
+     #Create a new list to store the parent labels:
+     newL = []
+</pre>
+<p>
+To make sure that this works, change the return statement to be
+<pre>     return b1
+</pre>
+Also try with <tt>b2</tt>.  Once you've removed all the errors, go on to building the labels for the parents.  
+
+<p>We want to compare the labels for each position, so, we'll use a <tt>for</tt> loop.  If the two sequences agree at a position, then we'll add it directly to <tt>newL</tt>. 
+<pre>	
+     for i in range(len(b1)):
+          if b1[i] == b2[i]:
+               newL.append(b1[i])
+</pre>
+But what if they don't?  Then the <tt>else</tt> clause takes the intersection of the corresponding sets.  If the intersection is empty, the union is the label stored in <tt>newL</tt>.  If the intersection is not empty, store it as the label in <tt>newL</tt>:
+<pre>	
+          else:
+               s1 = set(b1[i])
+               s2 = set(b2[i])
+               print "s1:", s1
+               print "s2:", s2
+               intersect = s1.intersection(s2)
+               if len(intersect) == 0:
+                    union = s1.union(s2)
+                    newL.append("".join(union))
+               else:
+                    newL.append("".join(intersect))
+</pre>
+The function returns the label for the parent as a string:
+<pre>
+     return " ".join(newL)
+</pre>
+
+<p>Try running this function on several pairs to verify that it gives the correct label for the parent.
+
+<h4>First Pass</h4>
+
+<p>Now that we have a function that will produce labels for the parents of pairs of nodes, we can use it to make a first pass through the tree.  Again, let's break it into pieces.  This time, we'll have cases based on whether the node is a leaf or not:
+
+<tt>firstPass(t,n)
+<ol>
+	<li> If n is a leaf of t:  return it's label.
+	<li> Else: run firstPass on its kids
+	<li> Use <tt>newLabel</tt> to compute a new label for the parent and return it.
+</ol>
+</tt>
+
+Think about how to write this, and then look at the code below:
+<pre>
+def firstPass(t, n):
+     #Assumes all leaves have labels
+     #Check if there's a label for the node
+     if t[n][1] != "":
+          return t[n][1]
+     else:
+          #If not, get the label of it's kids:
+          #Assumes binary trees
+          kid1 = t[n][2][0]
+          kid2 = t[n][2][1]
+          newL = newLabel(firstPass(t,kid1),firstPass(t,kid2))
+          t[n][1] = newL
+          return newL
+
+</pre>
+
+
+
+<h4>Second Pass</h4>
+
+The pseudocode for the second pass is similar to the first pass, but we start at the root and work towards the leaves:
+<tt>secondPass(t,n)
+<ol> 
+	<li> If n is the root of t:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;choose a label for each basepair from the current labeling. 
+	<li> Else:
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Force a labeling on each kid (minimizing conflict with the parent).
+	<li> &nbsp;&nbsp;&nbsp;&nbsp;Run secondPass on its kids
+</ol>
+</tt>
+
+<p>Let's write the function that takes a parent (with a proper labeling) and a child, and chooses a new labeling for the child that minimizes conflict.  We will call this function, <tt>forceLabels(t, labels, kid)</tt> where <tt>labels</tt> is the labeling of the parent:
+
+<pre>
+def forceLabels(t, labels, kid):
+     kLabels = t[kid][1].split(" ")
+     for i in range(len(labels)):
+          if kLabels[i] != labels[i]:
+               s1 = set(kLabels[i])
+               s2 = set(labels[i])
+               intersect = s1.intersection(s2)
+               if len(intersect) == 0:
+                    #No overlap, so, just choose one
+                    kLabels[i] = kLabels[i][:1]
+               else:
+                    #Overlap, choose one to use as label:
+                    kLabels[i] = intersect.pop()
+     t[kid][1] = " ".join(kLabels)
+</pre>
+
+Now, we can use that in computing the second pass:
+<pre>
+def secondPass(t, n):
+     #Assumes all leaves have labels
+     #Check if there's a label for the node
+     score = 0
+     labels = t[n][1].split(" ")
+     if n == "root":
+          for i in range(len(labels)):
+               #For root, if more than one label, use just the first one:
+               labels[i] = labels[i][:1]
+          t[n][1] = " ".join(labels)
+     if len(t[n][2]) > 0:
+          #There's children, so, not a leaf
+          #Assumes binary trees
+          kid1 = t[n][2][0]
+          kid2 = t[n][2][1]          
+          #Force the labels for the kids:
+          x1 = forceLabels(t, labels, kid1)
+          x2 = forceLabels(t, labels, kid2)
+          print "# mismatches between parent & kids:", x1,x2
+          #Repeat for the kids
+          secondPass(t, kid1)
+          secondPass(t, kid2)
+</pre>
+
+
+
+<h4>Challenge</h4>
+
+	<li> The current program labels the internal nodes in a minimal fashion, but does not compute the final score of the tree.  Extend your program to print out the parsimony score of the tree.
+	<br><br>
+	<i>(Hint: Keep a running total of the score as you compute it in <tt>forceLabeling</tt> and in <tt>secondPass</tt> and return that number.)</i>
+</div>
+
+
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  11 May 2016<br>
+Title:  Lab 14:  Parsimony Scores<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and intepretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>

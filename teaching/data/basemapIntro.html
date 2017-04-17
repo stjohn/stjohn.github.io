@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Introduction to basemap, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div id="header">
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Introducing the <tt>basemap</tt></h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science</h2>
+<h3>
+Spring 2016</h3>
+</div>
+
+
+<div>
+<h3>Downloading packages</h3>
+
+<p>
+We will be using some packages that are not part of the default Python installation.  To check if your Python has them, type the following at the Python shell:
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.basemap import Basemap
+</pre>
+
+<p>
+If there are no errors, then you already have these packages.  If not, you will need them.  The easiest way is to get the popular packages for scientific computing is to download <a href="https://www.continuum.io/downloads">anaconda</a> distribution of Python.  It will install a second copy of Python on your computer (you can still use the old).  You can also install <a href="http://matplotlib.org">matplotlib</a>
+and <a href="http://www.numpy.org">numpy</a> separately.
+
+<p>
+<a href="">basemap</a> is an extra package for drawing geographic maps.  It is not part of many installations and needs to be added.  In the anaconda Python, if you type:
+<pre>
+from mpl_toolkits.basemap import Basemap
+</pre>
+it will give you the exact command to download basemap.  You can also download 
+<a href="http://matplotlib.org/basemap/users/installing.html">basemap</a> directly:
+<pre>
+conda install -c https://conda.anaconda.org/anaconda basemap
+</pre>
+
+<p>
+The downloads will take about 15-30 minutes, depending on the internet speed.  You might want to start the downloads and read ahead while it installs.
+
+</div>
+
+
+<div>
+<h3><tt>basemap</tt> in <tt>matplotlib</tt></h3>
+
+<p>Today, we will use one small part, <tt>basemap</tt>, of the <tt>matplotlib</tt> library.  It is a very popular for presenting results in 2D plots to be used in papers and presentations.  
+The <tt>basemap</tt> package of <tt>matplotlib</tt> allows you to customize maps and then plot them using the standard <tt>matplotlib</tt> library.  Let's first draw some maps, using the build-in projections, and then add points to represent the GIS coordinates of the specimen information from the database.
+
+
+<h4>Drawing Maps</h4>
+
+<p>
+The <tt>basemap</tt> package follows a familiar format:  it stores information in an object and provides functions for manipulating that object.  For <tt>basemap</tt>, the objects are maps (from the <tt>Basemap</tt> class).  The <tt>Basemap</tt> functions include the ability to change projections, regions, borders, and colors. 
+
+<p>To get started, let's draw a simple map of the world.  It takes a bit for it to run (you will get a warning telling you this):
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.basemap import Basemap
+
+m = Basemap()
+m.drawcoastlines()
+plt.show()
+</pre>
+To continue, close the map window.
+
+<p>
+To make the map more interesting, let's add some color.  We can do this by using the <tt>fillcontinents()</tt> function: 
+<pre>
+m.fillcontinents(color='darkgreen',lake_color='darkblue')
+</pre>
+To also fill in the oceans:
+<pre>
+m.drawmapboundary(fill_color='darkblue')
+</pre>
+<p>(Feel free to alter the colors to make a more attractive map.)
+
+<p>If you would like to use satelite data (NASA 'Blue Marble' imagery), there is a function, <tt>bluemarble()</tt>
+<pre>
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+m = Basemap()
+m.bluemarble()
+plt.show()
+</pre>
+As well as an option to show the map with shaded relief (<tt>shadedrelief()</tt>)
+and etopo relief (<tt>etopo()</tt>).  Try these various `backgrounds'
+(see <a href="http://matplotlib.org/basemap/users/geography.html">map background</a> for more options).
+
+<h4>Changing Projections and Regions</h4>
+<p>
+There are also options to change the region of the map displayed as well as the projection.  The function that constructs the map object has many, many options that control the region projected, the type of projection, and the resolution of coastlines and other features.  
+
+<p>
+For example, 
+<pre>
+map = Basemap(projection='ortho',lat_0=45,lon_0=-100,resolution='l')
+</pre>
+sets up an orthographic map projection with perspective of satellite looking down at 50N, 100W.  It uses low resolution coastlines.
+
+<p>
+Some common projections and useful parameters:
+<ul>
+	<li> Orthographic:  displays the earth as a satellite (in an orbit infinitely high above the earth) would see it.<br>
+	Example:  <tt>map = Basemap(projection='ortho',lat_0=45,lon_0=-100)</tt>
+	<br>(where <tt>lat_0</tt> and <tt>lon_0</tt> are the coordinates above which the satellite would be).
+	<li> Mercator:  a cylindrical, conformal projection. Very large distortion at high latitudes, cannot fully reach the polar regions.<br>
+	Example:  <tt>m = Basemap(projection='merc',llcrnrlat=-80,urcrnrlat=80,
+            llcrnrlon=-180,urcrnrlon=180,lat_ts=20,resolution='c')</tt>
+    <br> (where <tt>llcrnrlat,llcrnrlon,urcrnrlat,urcrnrlon</tt> are the lat/lon values of the lower left and upper right corners of the map.
+	<tt>lat_ts</tt> is the latitude of true scale.
+	<tt>resolution = 'c'</tt> means use crude resolution coastlines.)
+</ul>
+See <a href="http://matplotlib.org/basemap/users/mapsetup.html">projections</a> for many, many more.
+
+<p>Some useful things to add to your map:
+<ul>
+	<li> <tt>coastlines()</tt>
+	<li> <tt>drawparallels(np.arange(-90.,120.,30.))</tt>
+	<li> <tt>drawmeridians(np.arange(0.,360.,60.))</tt>
+</ul>
+
+<h4>Plotting Points</h4>
+
+<p>
+We'll first plot a single point, the location of New York City, and then move on to the specimen data.
+
+<p>The coordinates for New York City are:  40.7127 N, 74.0059 W.  To use in this package, we use the following conversion:
+<ul>
+	<li> Longitudes are the <tt>y-coordinates</tt>.
+	<li> Latitudes are the <tt>x-coordinates</tt>.	
+	<li> <tt>N</tt> is a positive number (above the equator).
+	<li> <tt>S</tt> is a negative number (below the equator).
+	<li> <tt>E</tt> is a positive number (to the right of the prime meridian).
+	<li> <tt>W</tt> is a negative number (to the left of the prime meridian).
+</ul>
+So, 40.7127 N, 74.0059 W becomes <tt>(-74,40.7)</tt>.  To plot it to our map, we first convert it to the map's coordinates, and then plot it:
+<pre>
+x,y = m(-74,40)
+m.plot(x,y,'ro',markersize=10)
+</pre>
+The <tt>'ro'</tt> is a <tt>matplotlib</tt> option to plot red circles and <tt>markersize</tt> controls how large the plotted point appears.
+
+</div>
+
+<div>
+
+<h4>Challenges</h4>
+
+<ul>
+	<li>  Plot 5 more US cities.
+	<li>  Display with a different backgrounds.
+	<li>  Draw lines (or great circles) between your cities (see <tt>basemap</tt> tutorials).
+</ul>
+
+</div>
+

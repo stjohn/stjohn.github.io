@@ -1,0 +1,974 @@
+<HTML>
+<BODY bgcolor = "white">
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+2">
+Answer Key for Exam 3 <BR>
+Computer Science 125 <BR>
+Boise State University
+<BR>
+Friday, 16 April 1999
+</FONT></DIV>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>1.
+<DD>True or False:
+        <DL COMPACT>
+<DT>(a)
+<DD><U>F</U> In Java, files can be opened
+for reading, or writing, but not both.
+
+<P>
+<DT>(b)
+<DD><U>T</U> Classes can have data fields that
+                are arrays of values.
+
+<P>
+<DT>(c)
+<DD><U>F</U> Two dimensional arrays always 
+		have the same number of rows and columns.
+
+<P>
+<DT>(d)
+<DD><U>T</U> All elements of an array are 
+		of the same type.
+
+<P>
+<DT>(e)
+<DD><U>T</U> A Java source file can contain
+                any number of classes with package access.
+
+<P>
+<DT>(f)
+<DD><U>F</U> Data fields can only be declared
+                as <TT>private</TT>.
+
+<P>
+<DT>(g)
+<DD><U>T</U> <TT>System.out</TT> is a static
+                public variable.
+
+<P>
+<DT>(h)
+<DD><U>T</U> <TT>Math.PI</TT> is a static public variable.
+
+<P>
+<DT>(i)
+<DD><U>T</U> After the following code is 
+		executed <TT>b[2]</TT> has the value 3.
+<PRE>
+     int[] a = {1, 2, 3, 4, 5};
+     int[] b = a;
+     a[2] = 5;
+</PRE>
+<P>
+<DT>(j)
+<DD><U>T</U> The following code copies array <TT>a</TT>
+                into array <TT>b</TT>, in reverse order:
+<PRE>
+    for (int i = 0; i &lt; a.length; i++)
+        b[i] = a[i];
+</PRE>
+<P>
+</DL>
+<P>
+<DT>2.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Write code that sets up an array <TT>cheese</TT> to hold 
+10 strings.
+		    
+<PRE>
+String [] cheese = new String[10];
+</PRE>		    
+            	   
+            	<DT>(b)
+<DD>Write code that fills each element of the array 
+                    <TT>cheese</TT> with the string <TT>"cheddar"</TT>.
+		    
+<PRE>
+for (int i=0; i &lt; 10; i++)
+  cheese[i] = "cheddar";
+</PRE>
+
+            	<DT>(c)
+<DD>Write code that opens, for reading, a text 
+		    file with the name, <TT>input.dat</TT>.
+		    
+<PRE>
+TextInputStream ins = new TextInputStream("input.dat");
+</PRE>
+
+<P>
+<DT>(d)
+<DD>Write code that opens a text file with the name, 
+                    <TT>output.dat</TT>, for writing, and writes 
+                    <TT>"Hello, world"</TT> to the file <TT>output.dat</TT>.
+		    
+<PRE>
+TextOutputStream outs = new TextOutputStream("output.dat");
+outs.println("Hello, world");
+</PRE></DL>
+<P>
+<DT>3.
+<DD>Consider the function:
+<PRE>
+public void rosie(int n)
+{
+   Point oldPt = new Point(5,0);
+   Point newPt;
+
+   for (int i = 0 ; i &lt; 100 ; i++)
+   {
+      double theta = i*n*Math.PI/100;
+      double r = 5*Math.cos(5*theta);
+      newPt = new Point(r*Math.cos(theta), r*Math.sin(theta));
+      new Line(oldPt, newPt).draw();
+      oldPt = newPt; 
+   }
+}
+</PRE>
+<P>
+<B>There is a typo in the above function.  The intended function
+was:
+</B><PRE>
+public void rosie(int n)
+{
+   Point oldPt = new Point(5,0);
+   Point newPt;
+
+   for (int i = 0 ; i &lt; 100 ; i++)
+   {
+      double theta = i*n*2*Math.PI/100;
+      double r = 5*Math.cos(theta);
+      newPt = new Point(r*Math.cos(theta), r*Math.sin(theta));
+      new Line(oldPt, newPt).draw();
+      oldPt = newPt; 
+   }
+}
+</PRE>
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>What is the output of <TT>rosie(2)</TT>?
+<BR>	       	
+<B>Output:</B>
+        	
+<img src="rose1.jpg">
+
+<P>
+<B>Output of intended function:</B>
+        	
+<img src="rose2.jpg">
+        	
+            <DT>(b)
+<DD>What is the output of <TT>rosie(5)</TT>?
+<BR>
+        	<B>Output:</B>
+        	
+<img src="rose3.jpg">
+
+<P>
+<B>Output of intended function:</B>
+        	
+<img src="rose4.jpg">
+
+                </DL>
+<P>
+<DT>4.
+<DD>Given the input file, <TT>winnie.hum</TT>:
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">LINES WRITTEN BY A BEAR OF VERY LITTLE BRAIN</TD>
+</TR>
+<TR><TD ALIGN="LEFT">On Monday, when the sun is hot</TD>
+</TR>
+<TR><TD ALIGN="LEFT">I wonder to myself a lot:</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"Now is it true, or is it not,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"That what is which and which is what?"</TD>
+</TR>
+</TABLE>
+<P>
+<EM>(From work of A.&nbsp;A.&nbsp;Milne)</EM>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>(a)
+<DD>What is the output of the following program:
+<PRE>
+import ccj.*;
+public class partA
+{ public static void main(String[] args)
+  { TextInputStream in = new TextInputStream("winnie.hum");
+    TextOutputStream out = new TextOutputStream("humming");
+    boolean alt = false;
+    while (!in.fail()) {  
+      String s = in.readLine();
+      if (!in.fail()) {
+        if ( alt ) {
+          out.println(s);
+          alt = !alt;
+        }
+        else {
+          System.out.println(s);
+          alt = !alt;
+        }
+      }
+    }
+  }
+}
+</PRE>        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Screen Output:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">LINES WRITTEN BY A BEAR OF VERY LITTLE BRAIN</TD>
+</TR>
+<TR><TD ALIGN="LEFT">I wonder to myself a lot:</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"That what is which and which is what?"</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Contents of </B><B><TT> humming</TT>:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">On Monday, when the sun is hot</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"Now is it true, or is it not,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+<DT>(b)
+<DD>What is the output of the following program:
+<PRE>
+import ccj.*;
+public class partB
+{ public static void main(String[] args)
+   { TextInputStream in = new TextInputStream("winnie.hum");
+     TextOutputStream out = new TextOutputStream("humming");
+     int count = 0;
+     while (!in.fail()) {  
+       String s = in.readLine();
+       if (!in.fail()) {
+         out.println(s+"\n");
+         count++;
+       }
+     }
+     System.out.println("Count is " + count);
+  }
+}
+</PRE>        	<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Screen Output:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Count is 5</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT"><B> Contents of </B><B><TT> humming</TT>:</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">On Monday, when the sun is hot</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">I wonder to myself a lot:</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"Now is it true, or is it not,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">"That what is which and which is what?"</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+</DL>
+<P>
+<DT>5.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>Label each method and member 
+variable in the class 
+		<TT>Faces</TT> with <B>C</B> if it
+            	is a class method or variable, or <B>I</B> if it is an 
+                instance method or variable.
+<PRE>
+public class Faces {
+  Faces() {                                     // INSTANCE
+    center = new Point(0,0); 
+    radius = 5;
+    numFaces++;
+  }
+  Faces(Point p, int r) {                      // INSTANCE
+    center = p.clone(); 
+    radius = r;
+    numFaces++;
+  }
+  public void move(double dx, double dy) {     // INSTANCE
+    center.move(dx,dy);
+  }
+  public void draw() {                         // INSTANCE
+    new Circle(center, r).draw();
+    new Point(center.getX() - radius/2, 
+              center.getY() + radius/2).draw();
+    new Point(center.getX() + radius/2, 
+              center.getY() + radius/2).draw();
+    new Circle(new Point(center.getX(), 
+                         center.getY() - radius/2), 
+               radius/4).draw();
+  }
+  private Point center;                       // INSTANCE
+  private Point radius;                       // INSTANCE
+  private static int numFaces;                // CLASS
+}
+</PRE>
+<P>
+<DT>(b)
+<DD>After the following code is run:
+<PRE>
+    Faces me = new Faces();
+    Faces you = new Faces(new Point(3,3), 2);
+    Faces him = new Faces();
+</PRE>		
+		    How many copies are there of the variable <TT>center</TT>? 
+		    <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">3</TD>
+</TR>
+</TABLE>		    
+		    How many copies are there of the variable <TT>numFaces</TT>?
+		    <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">1</TD>
+</TR>
+</TABLE>		    
+		    What is value of the variable <TT>numFaces</TT>?
+		    <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">3</TD>
+</TR>
+</TABLE></DL>
+<P>
+<DT>6.
+<DD>You are working as a programmer for a large company which 
+		is shipping a new version 
+        of its operating system next week.  While looking over the 
+		code you have written 
+        you suddenly notice that a section of the code which 
+		handles error checking is "commented out". 
+        Frantically you look over the test suits for the code, 
+		which were created by an outside consultant, 
+        and realize that none of them would have created the error 
+		that the code was 
+        supposed to handle.  The company has 10,000 boxes ready to ship.
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>What is the ethical dilemma that you face?
+<P>
+<DT>(b)
+<DD>What are <B>three</B> possible ways of 
+				dealing with the situation and 
+				what are possible ramifications of each?
+
+<P>
+</DL>
+<P>
+<DT>7.
+<DD>Write a <B>complete applet</B> that plots the national budget
+	   surplus/deficit for the last thirty years.  
+	   The budget deficit numbers
+           are stored in a file called <TT>budget.in</TT>: 
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">1969 3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1970 -3</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1971 -23</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1972 -23</TD>
+</TR>
+<TR><TD ALIGN="LEFT">1973 -15</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+The first number on each line is the year, the second is the 
+           budget surplus or deficit in billions of dollars.  You may 
+           assume that the surplus/deficit is between than -300 to 100
+           billion dollars.
+
+<P>
+The output of your program should be a line graph of 
+           the data from 
+           the file <TT>budget.in</TT>, where the x-axis is the year and
+           the y-axis is the amount of the surplus/deficit. 
+
+<P>
+<PRE>
+import ccj.*;
+
+public class budget extends GraphicsApplet
+{
+  public void run()
+  {
+    setcoord(1969,100,1999,300);   //Resize to fit budget data
+    
+    TextInputStream in = new TextInputStream("budget.in");
+                                   //Open data file for reading
+    int year = 1969;               //The year in the data file
+    int surp_def = in.readInt();   //Get first surplus/deficit
+    Point newPoint = new Point(year,surp_def);//to set up initial point
+    Point oldPoint;                //Used to save previous point
+    
+    while ( !in.fail() )
+    {
+      year++;            
+      oldPoint = newPoint;
+      surp_def = in.readInt();
+      if ( !in.fail() )
+      {
+        newPoint = new Point(year, surp_def);
+        new Line(oldPoint, newPoint).draw();
+      }
+    }
+  }
+}
+</PRE>          
+
+<P>
+<DT>8.
+<DD>The card game, Topdrops, is played on a deck of <I>n</I>           cards with the cards numbered 
+<!-- MATH: $1,2,\ldots,n$ -->
+<IMG
+ WIDTH="85" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$1,2,\ldots,n$">.
+For example,
+           if <I>n</I>=5, the cards are 1,2,3,4,5.  The cards are laid
+           face up on the table.  For example:
+	   <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">3</TD>
+</TR>
+</TABLE>
+<P>
+To play a round, you look at the number on the first card 
+           (in this case: 4) and reverse that number of cards from
+           left to right.  So, we reverse the first 4 cards to get:
+	   <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">3</TD>
+</TR>
+</TABLE>
+<P>
+The game stops when the card with 1 reaches the far
+           left.
+
+<P>
+(The rest of the example game is:
+<BR>
+	   <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+</TR>
+</TABLE>	
+<!-- MATH: $\rightarrow$ -->
+<IMG
+ WIDTH="24" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$\rightarrow$">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+</TR>
+</TABLE>	
+<!-- MATH: $\rightarrow$ -->
+<IMG
+ WIDTH="24" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$\rightarrow$">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+</TR>
+</TABLE>	
+<!-- MATH: $\rightarrow$ -->
+<IMG
+ WIDTH="24" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$\rightarrow$">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">5</TD>
+</TR>
+</TABLE>.)
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>Write a recursive function that takes a hand 
+(an array of integers),
+           prints the hand, and if the first card is not 1, 
+           plays a round and calls itself with the new hand.
+<PRE>
+public static void play(int[] hand)
+{
+  if ( hand.length() != 0)
+  {
+    //Print the hand:
+    for ( int i=0 ; i &lt; hand.length() ; i++)
+      System.out.print(hand[i]+ " ");
+    System.out.println();
+    
+    if ( hand[0] != 1 )
+    {
+      int j;
+      int cardsToReverse = hand[0];  //Storage space to do reverse
+      int[] temp = new int(CardsToReverse);
+      
+      //Reverse the cards:
+      for ( j=0 ; j &lt; CardsToReverse ; j++ )
+        temp[i] = hand[i];
+      for ( j=0 ; j &lt; CardsToReverse ; j++ )
+        hand[i] = temp[CardsToReverse - i - 1];
+      
+      //Call the function again:
+      play(hand);      
+    }
+  }
+}
+</PRE>
+<P>
+<DT>(b)
+<DD>Write a program that prompts the user for the number
+           of cards and the initial hand, and then calls your
+           recursive function.
+
+<P>
+<PRE>
+import ccj.*;
+
+public class CardGame
+{
+  public static void main(String[] args)
+  {
+    System.out.print("Enter number of cards:");
+    int numCards = Console.in.readInt();
+    int[] hand = new int[numCards];
+     
+    for (int i = 0 ; i &lt; numCards ; i++)
+    {
+      System.out.print("Enter card "+(i+1) + ": ");
+      hand[i] = Console.in.readInt();
+    }
+    
+    play(hand);
+  }
+}
+</PRE>
+<P>
+</DL>
+<P>
+<DT>9.
+<DD>Clearly mark all changes:
+                <DL COMPACT>
+<DT>(a)
+<DD>Add two buttons to the program below.  The
+first button should have the label <TT>Black</TT>
+                            and change the drawing color to black.  The
+	                    second button should have the label <TT>Purple</TT>
+                            and change the drawing color to purple.
+<PRE>
+// This example is modified from the book "Java in a Nutshell" 
+// David Flanagan, O'Reilly &amp; Associates, 1996.
+
+import java.applet.*;	//Load in the applet class
+import java.awt.*;	//Load in buttons and friends 
+
+public class OneColorDraw extends Applet {
+  private int last_x = 0;	//Keep track of x and y coordinate
+  private int last_y = 0;	//When the mouse is clicked
+  private Color current_color = Color.black;	//Current color
+  private Button clear_button;	//Declare space for the clear button
+  
+  
+//ADDED to store buttons:
+private Button black_button;
+private Button purple_button;
+    
+  // This function is called initially, when the program begins
+  // executing.  It initializes the graphics window.
+    
+  public void init() {
+    this.setBackground(Color.white);   //Set the background color
+  
+    // Create a button and add it to the graphics window
+    clear_button = new Button("Clear");//Make label say "Clear"
+    clear_button.setForeground(Color.black);
+    clear_button.setBackground(Color.lightGray);
+    this.add(clear_button);	//Necessary to use the button
+    
+//ADDED:
+black_button = new Button("Black");//Make label say "Black"
+black_button.setForeground(Color.black);
+black_button.setBackground(Color.lightGray);
+this.add(black_button);	//Necessary to use the button
+purple_button = new Button("Purple");//Make label say "Purple"
+purple_button.setForeground(Color.black);
+purple_button.setBackground(Color.lightGray);
+this.add(purple_button);	//Necessary to use the button
+    
+       
+  }
+    
+  // Called when the user clicks the mouse to start a scribble
+  // Sets the values of variables last_x and last_y to mark the
+  // point of the click.
+    
+  public boolean mouseDown(Event e, int x, int y)
+  {
+    last_x = x; last_y = y;//Store coordinates when mouse clicked
+    return true;	//and don't do anything else (that is, the
+        		//"event handled" is true)
+  }
+    
+// Continued on the next page --&gt;
+</PRE>
+<P>
+<PRE>
+  // Called when the user draws with the mouse button down
+  // Draws a line between the points (last_x, last_y) and (x, y)
+    
+  public boolean mouseDrag(Event event, int x, int y)
+  {
+    Graphics g = this.getGraphics(); //Necessary to draw 
+    g.setColor(current_color);	 //Line will be current_color
+    g.drawLine(last_x, last_y, x, y);//Draws the line
+    last_x = x;	//Saves (x,y) in last (last_x, last_y), so that
+    last_y = y;	//the next line drawn will start from these points
+    return true;	//and don't do anything else ("event handled").
+  }
+
+  // Called when the user clicks the Clear button, and 
+  // clears the graphics window.
+    
+  public boolean action(Event event, Object arg) {
+    //If Clear button was clicked, clear graphics window
+    if (event.target == clear_button) {
+      Graphics g = this.getGraphics();
+      Rectangle r = this.bounds();
+      g.setColor(this.getBackground());
+      g.fillRect(r.x, r.y, r.width, r.height);
+      return true;
+    }
+    
+//ADDED:
+else if (event.target == black_button)
+{
+  current_color = Color.black;
+  return true;
+}
+else if (event.target == purple_button)
+{
+  current_color = Color.purple;
+  return true;
+}
+    
+    // Otherwise, let the superclass handle it.
+    else return super.action(event, arg);
+  }
+}
+</PRE>
+<P>
+<DT>(b)
+<DD>Add square root, <TT>sqrt</TT>, 
+			    to the <TT>expr</TT> package
+			    below.  <TT>sqrt</TT> returns
+			    the square root of its argument.
+<PRE>
+package expr;
+import ccj.*;
+
+public class Expression
+{ public Expression(String expr)
+  { parser = new Parser(expr);
+    opstack = new java.util.Stack();
+    numstack = new java.util.Stack();
+  }
+  public double eval()
+  { while (true)
+    { int type = parser.nextTokenType();
+      String s = parser.nextToken();
+      if (type == Parser.OPERATOR)
+      { if (opstack.empty())
+          opstack.push(s);
+        else
+        { String old = (String)opstack.pop();
+          if (Parser.precedence(s) &gt; Parser.precedence(old))
+            opstack.push(old);
+          else
+            evalOperator(old);
+          opstack.push(s);
+        }
+      }
+      else if (type == Parser.LEFT_PAREN)
+        opstack.push(s);
+      else if (type == Parser.RIGHT_PAREN)
+      { boolean more = true;
+          while (more)
+          { if (opstack.empty())
+              throw new IllegalArgumentException("Too many )");
+            String old = (String)opstack.pop();
+            if (old.equals("(")) more = false;
+            else evalOperator(old);
+          }
+      }
+      else if (type == Parser.END_OF_STRING)
+      { while (!opstack.empty())
+          { String old = (String)opstack.pop();
+            if (old.equals("("))
+              throw new IllegalArgumentException("Too many (");
+            else evalOperator(old);
+          }
+          if (numstack.empty())
+            throw new IllegalArgumentException("Syntax error");
+          double x = Numeric.parseDouble((String)numstack.pop());
+         
+          if (!numstack.empty())
+            throw new IllegalArgumentException("Syntax error");
+          return x;
+      }
+      else if (type == Parser.NUMBER)
+        numstack.push(s);
+      else
+        throw new IllegalArgumentException("Bad token");
+    }
+  }
+
+  private void evalOperator(String op)
+  { if (numstack.empty())
+      throw new IllegalArgumentException("Syntax error");
+    double y = Numeric.parseDouble((String)numstack.pop());
+    if (numstack.empty())
+      throw new IllegalArgumentException("Syntax error");
+      
+      
+//ADDED:
+if (op.equals("sqrt") 
+{
+  if (x &lt; 0)
+    throw new IllegalArgumentException("Negative square root");
+  z = Math.sqrt(x);
+  numstack.push("" + z);
+  return;
+}
+    
+    double x = Numeric.parseDouble((String)numstack.pop());
+
+    double z;
+    if (op.equals("^")) z = Math.pow(x, y);
+    else if (op.equals("*")) z = x * y;
+    else if (op.equals("/"))
+    { if (y == 0)
+        throw new IllegalArgumentException("Divide by 0");
+      else z = x / y;
+    }
+    else if (op.equals("+")) z = x + y;
+    else if (op.equals("-")) z = x - y;
+    else
+      throw new IllegalArgumentException("Bad token");
+    numstack.push("" + z);
+  }
+
+  private java.util.Stack opstack;
+  private java.util.Stack numstack;
+  private Parser parser;
+}
+</PRE>
+<P>
+<PRE>
+class Parser
+{ Parser(String toParse)
+  { input = toParse;
+    pos = 0;
+  }
+
+  public int nextTokenType()
+  { skipWhiteSpace();
+    if (pos &gt;= input.length()) return END_OF_STRING;
+    String ch = input.substring(pos, pos + 1);
+    if (ch.equals("(")) return LEFT_PAREN;
+    if (ch.equals(")")) return RIGHT_PAREN;
+    if ("+-*/^".indexOf(ch) != -1) return OPERATOR;
+    if ("1234567890".indexOf(ch) != -1) return NUMBER;
+    
+//ADDED:
+if (ch.equals("sqrt")) return OPERATOR;
+    
+    return BAD_TOKEN;
+  }
+
+  public String nextToken()
+  { int i = nextTokenType();
+    if (i == END_OF_STRING || i == BAD_TOKEN) return "";
+    if (i == NUMBER)
+    { int end = pos + 1;
+      boolean more = true;
+      while (more &amp;&amp; end &lt; input.length())
+        { String ch = input.substring(end, end + 1);
+          if (ch.equals(".") || "1234567890".indexOf(ch) != -1)
+             end++;
+          else
+             more = false;
+        }
+      String r = input.substring(pos, end);
+      pos = end;
+      return r;
+    }
+    else
+    { 
+
+//ADDED:
+if ( input.substring(pos,pos+4).equals("sqrt") )
+{
+  String r = input.substring(pos, pos + 4);
+  pos = pos + 4;
+  return r;
+}
+
+      String r = input.substring(pos, pos + 1);
+      pos++;
+      return r;
+    }
+  }
+</PRE>
+<P>
+<PRE>
+   
+  public static int precedence(String operator)
+  { if (operator.equals("+") || operator.equals("-")) 
+      return 1;
+    if (operator.equals("*") || operator.equals("/")) 
+      return 2;
+    if (operator.equals("^")) return 3;
+    
+//ADDED:
+if (operator.equals("sqrt") return 4;
+    
+    return 0; 
+  }
+
+  public static final int OPERATOR = 1;
+  public static final int NUMBER = 2;
+  public static final int LEFT_PAREN = 3;
+  public static final int RIGHT_PAREN = 4;
+  public static final int END_OF_STRING = 5;
+  public static final int BAD_TOKEN = 6;
+
+  private void skipWhiteSpace()
+  { while (pos &lt; input.length() 
+      &amp;&amp; input.substring(pos, pos + 1).equals(" "))
+        pos++;
+  }
+
+  private String input;
+  private int pos;
+}
+</PRE></DL>            
+
+<P>
+<DT>10.
+<DD>Design a class <TT>GradeBook</TT>.  The <TT>GradeBook</TT> must 
+		keep track of student names (first, middle and last),
+		student ID numbers (9 digits), and for each student
+		up to 10 quiz scores, up to 30 program scores, and
+		4 exam scores.	Also keep the current grade where
+		quizzes are 20%, programs are 40% and exams are
+		40% of the total grade.
+
+<P>
+Your design needs to include the definitions of
+		the data for the class, the javadoc comments and
+		definitions for the methods including constructors.
+		<B>Do NOT write the code for any of the methods!</B>
+		
+<PRE>
+The definitions for the data:
+
+  private String first;
+  private String middle;
+  private Strirng last;
+  private int[] quizes;
+  private int[] programs;
+  private int[] exams;
+
+A constructor with javadoc comment:
+/**
+ * The default constructor which allocates space for 10 quizzes,
+ * 30 programs, and 4 exams.  Sets all strings to null and all 
+ * numbers to 0
+ **/
+public GradeBook()
+
+A method with javadoc comment:
+
+/**
+ * Calculates and returns the grade using the following 
+ * formula: .2*(quiz total) + .4*(program total) + .4*(exam total).
+ * Each total is calculated by summing up the values in the array
+ * and dividing by the length. 
+ *
+ * @return the overall grade (which ranges from 0 to 100)
+ **/
+public double CalculateGrade()
+
+<hr>
+</BODY>
+</HTML>

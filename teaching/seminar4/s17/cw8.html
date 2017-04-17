@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Zoning & Pandas Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  More on Zoning & Pandas</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+
+<div>
+
+<h3>Making a Zoning Map</h3>
+
+<p>Last class, we used the beautiful <a href=""http://gothamzoning.org"">Gotham zoning map</a>.  This class, we are going to create our own.
+
+<p>
+The raw JSON file for NYC is available at:
+<ul>
+	<li> <a href="http://data.beta.nyc/dataset/nyc-zoning-districts/resource/6d635f4d-d225-48ad-b0e4-9820ed54c66f?view_id=e0d5313b-cfa1-420f-b53a-0f93003448bd">NYC Zoning Districts</a>
+</ul>
+
+<p>Here's what the first couple of lines look like:
+<pre>
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+
+"features": [
+{ "type": "Feature", "properties": { "ZONEDIST": "R5", "@id": "http:\/\/nyc.pediacities.com\/Resource\/Zone\/R5" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -74.087069670748178, 40.647798798039275 ], [ -74.086784537484675, 40.647973136725902 ], [ -74.086368754621319, 40.648183911144805 ], [ -74.086210495055454, 40.648238444622429 ], [ -74.086046685264122, 40.648295047324716 ], [ -74.085753244177823, 40.648371750422065 ], [ -74.085742425750425, 40.648373323538635 ], [ -74.085556499800489, 40.648400361539295 ], [ -74.085293949154604, 40.648402626208174 ], [ -74.085165970870563, 40.64838919129263 ], [ -74.084992911153321, 40.648371052360226 ], [ -74.084745436733769, 40.648318144234551 ], [ -74.084668057210422, 40.648294735526449 ], [ -74.084588677851258, 40.648270722622016 ], [ -74.084546829140649, 40.648257568072928 ], [ -74.084493540027154, 40.648240803636114 ], [ -74.084515766427756, 40.648189265955914 ], [ -74.084716476121713, 40.647523919107563 ], [ -74.084730444192758, 40.647477230375927 ], [ -74.084753843497452, 40.647480346082432 ], [ -74.084829231740486, 40.64749038525806 ], [ -74.085025791674255, 40.647503404149191 ], [ -74.085409327120104, 40.647516723589248 ], [ -74.085660838426023, 40.647501788327176 ], [ -74.085902254248225, 40.64746497732736 ], [ -74.086079281336609, 40.647418229674926 ], [ -74.086165500726992, 40.647395526154952 ], [ -74.086232012569923, 40.647370929200534 ], [ -74.086404093574771, 40.647307459221189 ], [ -74.086572976856516, 40.647226503769367 ], [ -74.086598508994967, 40.647214210408833 ], [ -74.086660390547124, 40.647288442042402 ], [ -74.08674434836459, 40.647389111739976 ], [ -74.08689207017234, 40.647598482274987 ], [ -74.0869854918068, 40.647721785437341 ], [ -74.087069670748178, 40.647798798039275 ] ] ] } },
+{ "type": "Feature", "properties": { "ZONEDIST": "R6", "@id": "http:\/\/nyc.pediacities.com\/Resource\/Zone\/R6" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -74.081435210296107, 40.646031688335619 ], [ -74.081402468273851, 40.646088057024421 ], [ -74.081130355214299, 40.646556687111129 ], [ -74.081103277826799, 40.646603320323713 ], [ -74.081093779246501, 40.646619734755703 ], [ -74.08105719327817, 40.646683478643332 ], [ -74.08068794507976, 40.64732681070064 ], [ -74.080439644014803, 40.647263216800631 ], [ -74.08027273995863, 40.647204298589635 ], [ -74.080093406365961, 40.647140969561612 ], [ -74.079714629959298, 40.64695691831588 ], [ -74.079645726441797, 40.646918703069673 ], [ -74.079468181422754, 40.646820234417291 ], [ -74.079359816541867, 40.646758714076306 ], [ -74.079112769183681, 40.646618460969435 ], [ -74.078934323717604, 40.646515308350544 ], [ -74.07858868539023, 40.646315509435709 ], [ -74.078534486464235, 40.646284272925485 ], [ -74.078525989351135, 40.646279376511195 ], [ -74.07825689144326, 40.646124518587584 ], [ -74.078092487899127, 40.64602486113715 ], [ -74.078037753093881, 40.645979975544918 ], [ -74.077968272287492, 40.645922997503767 ], [ -74.077876567554156, 40.64581380949457 ], [ -74.077664668749762, 40.645533871054852 ], [ -74.077971807743992, 40.645399131851399 ], [ -74.078235166010558, 40.645283518352443 ], [ -74.078369372587815, 40.645224603379567 ], [ -74.07842298134446, 40.645210172119668 ], [ -74.078492945180528, 40.645194200305454 ], [ -74.079357303524134, 40.644996881610503 ], [ -74.080136572823406, 40.644829866182548 ], [ -74.080282279686998, 40.644798636929501 ], [ -74.080650872657785, 40.645267514128662 ], [ -74.080827377757089, 40.645491372888067 ], [ -74.080837744367486, 40.645504564162152 ], [ -74.080847760291917, 40.645517306203025 ], [ -74.08089850515924, 40.645581631760599 ], [ -74.080931767609883, 40.645623795200848 ], [ -74.080938702265783, 40.645632607174527 ], [ -74.080961517219833, 40.645659086574945 ], [ -74.080984192995842, 40.645685406749244 ], [ -74.081103101533529, 40.645823384643641 ], [ -74.081153508634287, 40.645869829177514 ], [ -74.081182655684827, 40.645896686197197 ], [ -74.081240180949592, 40.645937403901407 ], [ -74.08126552341956, 40.645955343536102 ], [ -74.081351920090341, 40.646002484592046 ], [ -74.081435210296107, 40.646031688335619 ] ] ] } },
+{ "type": "Feature", "properties": { "ZONEDIST": "R4", "@id": "http:\/\/nyc.pediacities.com\/Resource\/Zone\/R4" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -74.081435210296107, 40.646031688335619 ], [ -74.081351920090341, 40.646002484592046 ], [ -74.08126552341956, 40.645955343536102 ], [ -74.081240180949592, 40.645937403901407 ], [ -74.081182655684827, 40.645896686197197 ], [ -74.081153508634287, 40.645869829177514 ], [ -74.081103101533529, 40.645823384643641 ], [ -74.080984192995842, 40.645685406749244 ], [ -74.080961517219833, 40.645659086574945 ], [ -74.080938702265783, 40.645632607174527 ], [ -74.080931767609883, 40.645623795200848 ], [ -74.08089850515924, 40.645581631760599 ], [ -74.080847760291917, 40.645517306203025 ], [ -74.080837744367486, 40.645504564162152 ], [ -74.080827377757089, 40.645491372888067 ], [ -74.080650872657785, 40.645267514128662 ], [ -74.080282279686998, 40.644798636929501 ], [ -74.081023945464139, 40.644747101670013 ], [ -74.081578359508399, 40.644708554935782 ], [ -74.082372677590072, 40.644653325178091 ], [ -74.082598121640714, 40.644718342261761 ], [ -74.082700090616655, 40.64474775029958 ], [ -74.083610258337927, 40.645035937518088 ], [ -74.083695463400574, 40.645062911112163 ], [ -74.083772143576951, 40.645087172871818 ], [ -74.083802163152896, 40.645096672144369 ], [ -74.083902909507586, 40.645133435342977 ], [ -74.084468330429061, 40.645339835631916 ], [ -74.084965326935134, 40.645521258816345 ], [ -74.084729139971557, 40.645944515609173 ], [ -74.08468549303673, 40.646022784545437 ], [ -74.084590507482304, 40.646192875210943 ], [ -74.084545078401703, 40.646274220721821 ], [ -74.084509914691608, 40.646337204925771 ], [ -74.084487756713003, 40.646377158309761 ], [ -74.084343725057551, 40.646635140044232 ], [ -74.084311319401763, 40.646693162650323 ], [ -74.084277164966039, 40.646754365212708 ], [ -74.084237492902531, 40.646744473413271 ], [ -74.084044148737291, 40.646696346249144 ], [ -74.0837810660489, 40.646630781462477 ], [ -74.083274447702991, 40.64650453295404 ], [ -74.081940423736199, 40.646172191896625 ], [ -74.081525253185731, 40.646063358611357 ], [ -74.081435210296107, 40.646031688335619 ] ] ] } },
+</pre>
+
+<p> Each line contains the zoning district followed by the outline of the district (a polygon indicated by coordinates).  The zoning json file does not have a unique id for each region.  Let's use Python to add one and make a second file with the ID and zoning type.  We can then use pandas and folium to make shaded maps based on the different residential density zoning.
+
+</div>
+
+
+<div>
+<h4>Adding IDs</h4>
+
+Assigning unique ids is a very standard approach:  creating a unique (albeit arbitrary ID) to objects facilitates cross-referencing between different sources of information.  For example, the CUNY Blackboard system assigns every student an ID that starts with the year they were enrolled in the system, followed by an arbitrary, but unique, number.  This gives an easy way to identify every user (by a single number, instead of a combination of attributes, such as name, college, and address, that may change over time and also may not be unique).
+
+<p> Let's create a new file that is identical to the original zoning file, except that it has a unique ID for each region.  At the same time, we'll make a CSV file with the unique IDs and corresponding zoning designation.  Here's the steps:
+
+<ol>
+	<li> Open zoning file as <tt>inZone</tt> for reading.
+	<li> Open another file <tt>outZone</tt> for writing out the zoning file with IDs, called <tt>zoningIDs.json</tt>.
+	<li> Open another file <tt>outCSV</tt> for writing out the IDs and zoning districts, called <tt>zoneDist.csv</tt>
+	<li> For each line in <tt>inZone</tt>:
+		<ol>
+			<li> Look for the word "ZONE" (begining of "ZONEDIST")
+			<li> If it's there:
+				<ul>
+					<li> Create a new line with the arbitrary ID.
+					<li> Write the line to the new zoning file
+					<li> Write the arbitrary ID and the zoning district type to the new CSV file.
+				</ul>
+			<li> Else (it's not a line with zoning district information)
+				<ul>
+					<li> Copy the original line to the new file.
+				</ul>
+		</ol>
+</ol>	
+
+How does that translate into code?  Think about how you would translate each line, then read the answer:
+
+<ol>
+	<li> Open zoning file as <tt>inZone</tt> for reading.
+	
+		<p>Since we're just using these as text files, we can use the standard file I/O:
+<pre>
+inZone = open('zoning.json', 'r')
+</pre>
+	
+	<li> Open another file <tt>outZone</tt> for writing out the zoning file with IDs, called <tt>zoningIDs.json</tt>.
+
+	<p> Same for this file, but note that we want to open it for writing:
+<pre>
+outZone = open('zoningIDS.json', 'w')
+</pre>	
+	<li> Open another file <tt>outCSV</tt> for writing out the IDs and zoning districts, called <tt>zoneDist.csv</tt>.
+	
+	<p> Same for this file, but note that we want to open it for writing:
+<pre>
+outCSV = open('zoneDist.csv', 'w')
+</pre>	
+	
+	<p>Before starting our loop, we need to set up the counter for the arbitrary ID:
+<pre>
+#Counter for creating ID numbers:
+countID = 1
+</pre>
+	<p>and the columns for the CSV file, so, we can use pandas functions when we open it with future programs:
+<pre>
+#Create columns for CSV file:
+outCSV.write("arbID,Zoning District\n")
+</pre>
+
+	<li> For each line in <tt>inZone</tt>:
+		
+		<p> As before:
+<pre>
+#For each line in the original file:
+for line in inZone:
+</pre>
+	
+	<ol>
+			<li> Look for the word "ZONE" (begining of "ZONEDIST")
+<pre>
+    #find where the zone district is:
+    z = line.find(' "ZONE')
+</pre>
+
+			<li> If it's there:
+<pre>
+    if z > -1:
+</pre>
+
+
+						
+				<ul>
+					<li> Create a new line with the arbitrary ID.
+<pre>
+        #If the line contains zone district, add in an arbitrary ID just before it:
+        newLine = line[:z] + '"arbID": ' + str(countID) + ", " + line[z:]
+</pre>
+					<li> Write the line to the new zoning file
+<pre>
+        #Write to the new json outfile:
+        outZone.write(newLine)
+</pre>
+					<li> Write the arbitrary ID and the zoning district type to the new CSV file.
+<pre>
+        #Find the zoning district
+        zz = line[z+14:].find('"')
+        #Write the arbitrary ID and it to the new CSV file:
+        outCSV.write(str(countID)+", " + line[z+14:z+14+zz]+"\n")
+</pre>
+	<p> We also need to update the counter (otherwise, all the ID will be stuck at 1 and the same):
+<pre>
+        #Increment the counter:
+        countID += 1
+</pre>
+				</ul>
+			<li> Else (it's not a line with zoning district information)
+				<ul>
+					<li> Copy the original line to the new file.
+				</ul>
+<pre>
+    else: #ZONEDIST isn't in the line, so, we should copy it over unchanged:
+        outZone.write(line)
+</pre>
+		</ol>
+		
+	<p>When we're done with the files, we close them:
+<pre>
+#Close the files when finished:
+inZone.close()
+outZone.close()
+outCSV.close()
+</pre>
+</ol>	
+
+
+<p>
+The complete file is <a href="addIDs.py">addIDs.py</a>.  Run it on your downloaded <tt>.json</tt> file to generate a new <tt>.json</tt> file with IDs and a corresponding <tt>.csv</tt> file.
+
+
+</div>
+
+<div>
+<h3>Series & DataFrames</h3>
+
+<p>
+Let's use these new files to create a zoning map.  We'll start with just shading based on the general zoning designations:  "residential", "commercial", and "manufacturing", in a similar fashion to the <a href="http://gothamzoning.org">Gotham Zoning</a> map.
+
+<p>
+The CSV file we created has a column with the zoning district.  Let's create a new column with:
+<ul>
+	<li> 0 if the zoning district contains residential,
+	<li> 10 if the zoning district contains commercial (but no residential, and
+	<li> 20 if the zoning district does not contain residential or commercial (most likely manufacturing or a special district of some sort).
+</ul>
+
+We will want to apply this to the 5000+ zoning districts, so, while possible to create a new column by hand, it will be tedious.  Fortunately, pandas provides nice operations to create new columns from previous ones.  
+
+<p>
+Our first step is to write a function that we can apply to every item in the series (what Pandas calls sequences-- basically the rows or columns of our original file).  Here's a function that does the filtering we outlined above:
+<pre>
+#Define a function that will filter zone districts into categories:
+def filterDist(dist):
+    #If has a residential designation:
+    if "R" in dist:
+        return 0
+    #If it's not residential but has a commercial designation:
+    elif "C" in dist:
+        return 10
+    else:  #everything else, most likely manufacturing
+        return 20
+</pre>
+
+<p>The magical part of pandas is that we can apply this to an entire series in one fell swoop.  For example, if we have loaded the .csv file into a dataFrame called <tt>zones</tt>, then we can create a new column with just the line:
+<pre>
+zones['District Type'] = zones['Zoning District'].apply(filterDist)
+</pre>
+
+<p> The <tt>apply()</tt> function takes as input a function (in this case, the function we wrote above, <tt>filterDist</tt>) and then applies it to each item in the series corresponding to the 'Zoning District' column and creates a new one.
+
+<p>
+Once we have this new series, we can use it to build a choropleth map as before:
+<pre>
+mapZones = folium.Map(location=[40.71, -74.00], 
+                      zoom_start=11, 
+                      tiles = 'Cartodb Positron')
+mapZones.geo_json(geo_path='zoningIDs.json', 
+                  data=zones,
+                  columns=['arbID', 'District Type'],
+                  key_on='feature.properties.arbID',
+                  fill_color='YlOrRd', fill_opacity=0.7, line_opacity=0.3
+                  )
+</pre>
+
+<p>
+<iframe src="zoning.html" style="width: 95%; height: 700px" name="internal"></iframe>
+
+<p>
+The complete file is <a href="zoneMap.py">zoneMap.py</a>.  Run it on your .json and .csv file, before going on the challenges below.
+
+
+</div>
+
+<div>
+<h3>Additional Challenges</h3>
+
+<ul>
+	<li>  What happens if you change your filter function to first look for commercial zones, and then residential zones (i.e. switch the "R" and "C" in the if-else statement)?  Why do you get a different shading of your map?
+	
+	<li>  Create a map where the commercial districts are shaded one color, and all other districts are shaded another.
+</ul>
+</div>
+
+
+
+
+
+<div>
+<h3>Project Teams</h3>
+
+<p>Time is set aside this class for teams to meet, with particular focus on dividing tasks and developing a timeline to complete the project. 
+
+
+</div>

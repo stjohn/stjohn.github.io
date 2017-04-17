@@ -1,0 +1,289 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\topmargin= -25pt
+\textwidth=6 true in
+\textheight=9.5 true in
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\large
+\begin{center}
+%\mbox{ }
+%\vspace{.1in} \\
+    Exam I\\
+    Computer Science 420 \\
+    Dr.~St.~John\\ 
+    Lehman College\\
+    City University of New York\\ 
+    11 October 2001
+\end{center}
+}
+
+{\large
+\begin{center}
+\begin{tabular}{ll}
+\mbox{ }
+\vspace{.1in} \\
+NAME (Printed) & \ul{\hspace{3in}}\\ 
+NAME (Signed) & \ul{\hspace{3in}} \\
+E-mail & \ul{\hspace{3in}}\\
+\end{tabular}
+\end{center}
+
+
+{\small
+{\bf
+\begin{center}
+Exam Rules
+\end{center}
+\begin{itemize}
+	\item Show all your work.  Your grade will be based on the work shown.          \item The exam is closed book and closed notes. 
+        \item When taking the exam, you may have with you pens or pencils,
+		and an 8 1/2" x 11" 
+		piece of paper filled with notes, programs, etc. 
+	\item You may not use a computer or calculator. 
+	\item All books and bags must be left at the front of the classroom 
+		during this exam. 
+	\item {\bf Do not open this exams until instructed to do so. }
+\end{itemize}
+}
+
+{\large
+\begin{center}
+\mbox{ }
+\vspace{.25in} \\
+\begin{tabular}{|c|l|}
+\hline \hline
+\hspace{.05in} Question 1 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 2 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 3 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 4 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 5 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline 
+\hspace{.05in} Question 6 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 7 \hspace{.05in} & \hspace{.5in} \mbox{ }  \\ \hline
+\hspace{.05in} Question 8 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 9 \hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+\hspace{.05in} Question 10\hspace{.05in} & \hspace{.5in} \mbox{ } \\ \hline
+
+\hspace{.05in} TOTAL \hspace{.05in} & \hspace{1in} \mbox{ }  \\ \hline \hline
+\end{tabular}
+\end{center}
+}
+
+\newpage
+
+
+
+\begin{enumerate}
+
+% 1 T or F
+    \item True or False: 
+    \begin{enumerate}
+        \item \underline{\hspace{.25in}} All database management systems
+		are relational.
+        \item \underline{\hspace{.25in}} Every set is a bag.
+        \item \underline{\hspace{.25in}} Relationships cannot have attributes
+		in E/R diagrams. 
+        \item \underline{\hspace{.25in}} Relationships in E/R diagrams 
+		connect one or more entity sets.
+        \item \underline{\hspace{.25in}} In ODL, every relationship must
+		have an inverse.
+        \item \underline{\hspace{.25in}} Every key is a superkey.
+        \item \underline{\hspace{.25in}} Every superkey is a key.
+        \item \underline{\hspace{.25in}} Attributes that are keys cannot 
+		appear in functional dependencies.
+        \item \underline{\hspace{.25in}} If $X$ is a key for the relation			R, then there is functional dependency for R with 
+		$X \rightarrow \mbox{all attributes}$.
+        \item \underline{\hspace{.25in}} Every functional dependency is
+		a multivalued dependency.
+    \end{enumerate}
+
+%2 Short answer
+\item Answer in two sentences or less the following:
+\begin{enumerate}
+    \item Why are there no ``weak classes'' in ODL (but there are weak
+	entity sets in E/R diagrams)?
+	\vspace{.75in}
+    \item What is an anomaly?  Give an example.
+	\vspace{.75in}
+\end{enumerate}
+
+%3 Given R and functional dependencies, give keys and superkeys
+\item Consider the relation $R(A,B,C,D,E)$ with the function
+dependencies: 
+$$
+	A\rightarrow B,
+	B\rightarrow C,
+	C \rightarrow A,
+	D \rightarrow E, \mbox{ and }
+	E\rightarrow D
+$$
+\begin{enumerate}
+    \item What are the keys of $R$?  
+	\vspace{1in}
+    \item How many superkeys are there of $R$?  Justify your answer.
+	\vspace{1in}
+\end{enumerate}
+
+\newpage
+%4 From an E/R diagram, give keys specified and translate into
+% database schema
+\item Draw an E/R diagram for the following situations. Indicate any
+keys, weak entity sets, or subclasses.
+\begin{enumerate}
+    \item Entity sets {\em Courses} and {\em Departments}.  A course
+	is given by a unique department, but its only attribute is its
+	number.  Different departments can offer courses with the same
+	number.  Each department has a unique name.
+	\vspace{3in}
+    \item Entity sets {\em Computers}, {\em Laptops}, and {\em Owners}.
+	A computer has a manufacturer, CPU speed, and a unique name.
+	Laptops, have all the properties of computers, as well as their
+	weight and battery life.  Owners are identified by their names.
+	Every computer has at most one owner, but owners can have 
+	several computers.
+\end{enumerate}
+
+\newpage
+%5 From an ODL definition, give keys specified and translate into
+% database schema
+\item Give an ODL design for a database recording information about teams,
+players, and their fans, including:
+\begin{enumerate}
+    \item For each team, its name, its players, its team captain (one its
+	players), and the colors of its uniform.
+    \item For each player, his/her name.
+    \item For each fan, his/her name, favorite teams, favorite players,
+	and favorite color.
+\end{enumerate}
+
+\newpage
+%6 Many-one, one-one, many-many
+\item For each of the following types of relationships, give an
+	example and draws its E/R diagram:
+    \begin{enumerate}
+	\item one-one:
+	\vspace{1.2in}
+	\item many-one:
+	\vspace{1.2in}
+	\item many-many:
+	\vspace{1.2in}
+    \end{enumerate}
+%8 Functional Dependencies and Multivalued Dependencies
+\item 
+  \begin{enumerate}
+    \item Consider a relation $R(A,B)$ with two tuples: $R=\{(4,1),(4,2)\}$.
+    \begin{enumerate}
+	\item Does $A\rightarrow B$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ NO
+	    \bigskip
+	\item Does $A\rightarrow\!\hspace{-0.5em}\rightarrow B$ hold for 
+	    this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ NO
+	    \bigskip
+	    \bigskip
+    \end{enumerate}
+    \item Now consider a relation $R(A,B,C)$ with two tuples:
+    $R = \{(3,2,1), (4,2,6)\}$.
+    \begin{enumerate}
+	\item Does $A\rightarrow B$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ NO
+	    \bigskip
+	\item Does $B\rightarrow C$ hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ NO
+	    \bigskip
+	\item Does $A\rightarrow\!\hspace{-0.5em}\rightarrow C$ 
+	    hold for this instance of $R$?\\
+	    \smallskip
+	    Circle one: YES \ \ NO
+	    \bigskip
+	    \bigskip
+	    \bigskip
+    \end{enumerate}
+    \end{enumerate}
+
+\newpage
+%6 odl --> relational database schema
+\item Convert the following ODL description of a schema to a relational
+database schema.  Remember that {\tt Course} objects have an ``object
+identity,'' and you may invent an attribute representing this OID, 
+e.g. {\tt CourseID}.  
+
+\begin{verbatim}
+interface Course {
+    attribute integer number;
+    attribute string room;
+    relationship Dept deptOf inverse Dept::coursesOf;
+};
+
+interface LabCourse : Course {
+    attribute integer computerAlloc;
+};
+
+interface Dept (key name) {
+    attribute string name;
+    attribute string chair;
+    relationship Set<Course> coursesOf
+         inverse Dept::deptOf;
+};
+\end{verbatim}
+
+\newpage
+
+
+\newpage
+%8 Compare/Contrast Normal Forms
+\item 
+    \begin{enumerate} 
+	\item Define Boyce-Codd Normal Form (BCNF):
+	    \vspace{1in}
+	\item Define Third Normal Form (3NF):
+	    \vspace{1in}
+	\item Define Fourth Normal Form (4NF):
+	    \vspace{1in}
+        \item Is every relation in Third Normal Form also in Boyce Codd
+	    Normal Form?  If yes, explain why.  If no, give an example
+	    that shows why this is not true.
+	    \vspace{1.75in}
+        \item Is every relation in Fourth Normal Form also in Boyce Codd
+	    Normal Form?  If yes, explain why.  If no, give an example
+	    that shows why this is not true.
+	    \vspace{1.5in}
+    \end{enumerate} 
+
+\newpage
+
+%10 BCNF and 4NF
+\item Given the relation schema $R(A,B,C,D)$ with the functional dependencies
+$$
+\begin{array}{c}
+	AB \rightarrow C\\
+	BC \rightarrow D\\
+	CD \rightarrow A\\
+	AD \rightarrow B\\
+\end{array}
+$$
+\begin{enumerate}
+    \item Indicate all the Boyce Codd Normal Form violations.  
+	Do not forget to consider
+	dependencies that are not in the given set, but follow from them.
+	However, it is not necessary to give violations that have more than
+	one attribute on the right side.
+	\vspace{2.5in}
+    \item Decompose the relations, as necessary, into a collection of 
+	relations that are in Boyce Codd Normal Form.
+	\vspace{2in}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
+

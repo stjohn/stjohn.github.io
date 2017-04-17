@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 6 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 6</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers stacks.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+This assignment focuses on using stacks for parsing and 
+simple calculations.  The necessary files are available 
+on Blackboard.
+
+
+<ol>
+
+
+<li><b>Adding Operators</b> (30 points)
+
+<p>
+Modify the postfix program (available on Blackboard) to 
+allow the user to enter the additional operators:
+<ul>
+	<li> subtraction (-),
+	<li> division (/),
+	<li> increment (++),
+	<li> decrement (--)
+</ul>
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+What is the order of growth of the worst case time
+needed to process an arithmetic expression?  Justify
+your answer.
+</p>
+
+<p>
+Submit your answer via Blackboard as a text or word
+file.
+</p>
+
+
+<li><b>Shunting Algorithm: From Infix to Postfix</b> (50 points)
+
+<p>Implement Dijkstra's Shunting Algorithm (see webpage
+for algorithms) that 
+converts infix notation to postfix.  Your program 
+should take as input a string in infix notation,
+use the Shunting Algorithm to convert the input
+to postfix notation, and then use your program 
+above to calculate the answer.  
+</p>
+
+<p>For example, if the user enters <tt>12 * (4 + 5) / 6</tt>,
+you should convert it to <tt>12 4 5 + * 6 /</tt> and then 
+apply the calculator code (from the first part of the homework)
+to yield <tt>18</tt>.  See <a href="http://www.chris-j.co.uk/parsing.php">http://www.chris-j.co.uk/parsing.php</a>
+for excellent examples.</p>
+
+<p>Submit your answer as a .java file via Blackboard.</p>
+
+
+</ul>
+
+
+
+</div>
+</body>
+</html>

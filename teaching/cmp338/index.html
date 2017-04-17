@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>CMP 338, Data Structures and Algorithms I, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2><br>CMP 338, Data Structures and Algorithms I <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h2>
+</div>
+
+<div>
+<table>
+	<tr>
+		<th>Instructor:</th> <td>Dr. Katherine St. John</td>
+	</tr>
+	<tr>
+		<th>E-mail:</th> <td>katherine.stjohn at lehman.cuny.edu<td>
+	</tr>
+	<tr>
+		<th>Phone:</th> <td>718-960-7423</td>
+	</tr>
+	<tr>
+		<th>Office:</th> <td>Gillet 137E and <a href="../../teaching/officeHours.html">office hours</a></td>
+	</tr>
+	<tr>
+		<th>Class Hours:</th> <td>Tuesdays, Thursdays 9am-10:40pm in G 333</td>
+	</tr>
+</table>
+</div>
+
+<div>
+<h3>Announcements:</h3>
+<ul>
+	<li> Due to the delay in setting up the Blackboard page, the deadline for
+		Problem Set 10 has been delayed until Monday at noon.
+	<li> From Problem Set 5 onward, the deadline will be Fridays at noon.
+<!--	<li> Due to the lack of (readable) pseudo-code for the second list of sorts,
+		you only need to implement one sort from the first list.  If you have implemented
+		one from the second list, it will count as extra credit.-->
+	<!--<li>Office hours will start in the classroom for
+		course and move to Gillet 137 (Prof. St. John's office).</li>
+		Have office hours in a lab on Thursdays? -->
+  	<!--<li>Instead of taking the scheduled 10 minute break in the middle of
+	class, we will stop 10 minutes early.</li>-->
+  	<!--<li>Please bring textbook and storage device (ie USB keydrive or
+	floppy) to every class.  </li>-->
+  <!--
+  <li> Due to restrictions from the publisher, the book lecture notes are
+  only available via the class page on Blackboard.-->
+</ul>
+</div>
+
+<div>
+<h3>Handouts:</h3>
+
+<p>
+Note:  `CLR' refers to the <i>Introduction to Algorithms</i> by Cormen, Leiserson, and Rivest, 1st
+edition or Cormen, Leiserson, Rivest, and Stein, 2nd and 3rd editions.
+</p>
+
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:</b></td>
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+	</tr>
+	<tr>
+		<td><b>1 February</b></td>
+		<td>First Day Details<br> Review:  Searching Algorithms
+			and Recursion</td>		
+		<td><a href="s11/syl.html">Syllabus</a><br>
+		<a href="s11/ps1.html">Problem Set 1</a> (Searching)</td>		
+		<td><a href="../acadPol.pdf">Academic Integrity Code</a>,<br>
+		Wiki: <a href="http://en.wikipedia.org/wiki/Linear_search">Linear Search</a> and
+		<a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Binary Search</a>,<br>
+		CLR: Chapter 1</td>
+	</tr>
+	<tr>
+		<td><b>3 February</b></td>
+		<td>Review:  Recursion and Sorting, MergeSort,
+		InsertionSort, BubbleSort, SelectionSort;
+		QuickSort<br>
+		
+		<span class = "deadline">Deadline: Problem Set 1 (Searching)</span></td>		
+		<td><a href="s11/ps2.html">Problem Set 2</a> (Sorting)
+		</td>		
+		<td>Recursion:
+		<a href="http://en.wikipedia.org/wiki/Recursion">Wiki</a>,
+		<a href="http://www.cs.princeton.edu/introcs/23recursion/">Princeton</a>, 
+		<a href="http://www.ibm.com/developerworks/linux/library/l-recurs.html">IBM</a>, and
+		<a href="http://www.toves.org/books/java/ch18-recurex/index.html">Toves</a><br>
+		Sorting Wiki pages: <a href="http://en.wikipedia.org/wiki/Bubble_sort">BubbleSort</a>,
+		<a href="http://en.wikipedia.org/wiki/Insertion_sort">InsertionSort</a>,
+		<a href="http://en.wikipedia.org/wiki/Selection_sort">SelectionSort</a>,
+		<a href="http://en.wikipedia.org/wiki/Merge_sort">MergeSort</a> and
+		<a href="http://en.wikipedia.org/wiki/Quicksort">QuickSort</a>,
+<br>
+		CLR: Chapters 1 and 8 (1st Ed), or 1,2 and 7 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>8 February</b></td>
+		<td>Introduction to Asymptotic Analysis: Comparing Running Times
+		and Order of Growth (Big Oh Notation); 
+		Analysis of Comparison Sort Algorithms</td>		
+		<td></td>		
+		<td><a href="http://coderaptors.com/?All_sorting_algorithms">Comparing Sorts</a> and another
+		<a href="http://www.sorting-algorithms.com/">Comparing Sorts</a>,
+		<a href="http://mathcs.emory.edu/~jsmit52/cs323/readings/BigOh.pdf">Informal Explanation</a>,
+		<a href="http://www.dreamincode.net/forums/topic/125427-determining-big-o-notation/">Determining
+		Order of Growth</a>, <a href="http://en.wikipedia.org/wiki/Big_O_notation">Wiki</a>,
+		<a href="http://www.apcomputerscience.com/apcs/misc/BIG-O.pdf">AP Cheat Sheet</a>
+		<br>CLR: Chapter 2 (1st Ed) or 3 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>10 February</b></td>
+		<td>Counting and Radix Sorts; <br>		
+		<span class = "deadline">Deadline: Problem Set 2 (Sorting)</td>		
+		<td><a href="s11/ps3.html">Problem Set 3</a> (QuickSort and Linear Sorts)</td>		
+		<td>
+		<a href="http://en.wikipedia.org/wiki/Counting_sort">Counting Sort</a>, 
+		<a href="http://en.wikipedia.org/wiki/Radix_sort">Radix Sort</a>,
+		<a href="http://www.google.com/images?q=image+punched+card">Images of punched cards</a>
+		<br>
+		CLR: Chapter 9 (1st Ed), or 8 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>15 February</b></td>
+		<td>Abstract Data Types (ADTs), Linked Lists, 
+		Implementing `by hand' and using the `built-in' version
+		</td>		
+		<td><a href="s11/ps4.html">Problem Set 4</a> (Linked Lists)</td>
+		<td>
+		<a href="http://en.wikipedia.org/wiki/Linked_list">Linked List Wiki</a>,
+		<a href="http://download.oracle.com/javase/6/docs/api/java/util/LinkedList.html">Linked List API</a>,
+		<a href="http://leepoint.net/notes-java/data/collections/lists/simple-linked-list.html">Example, by hand & by java.util.LinkedList</a>,	
+
+		<br>
+		CLR: Intro to Section III, Chapter 11 (1st Ed), or 10 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>17 February</b></td>
+		<td> The Queue ADT<br>
+		Java Concepts:  Generics, Collections, and Iterators		
+		<br>
+		<span class = "deadline">Deadline: Problem Set 3 (QuickSort and Linear Sorts)</span>
+		<br>
+		<span class = "announcement">Last day to drop without the grade of 'W' </span></td>		
+		<td></td>
+		<td>
+		<a href="http://en.wikipedia.org/wiki/Queue_%28data_structure%29">Queue Wiki</a>,
+		<a href="http://download.oracle.com/javase/1.5.0/docs/guide/collections/index.html">Collections API</a>,
+		<a href="http://download.oracle.com/javase/tutorial/collections/interfaces/collection.html">Collections Tutorial</a>,
+		<a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html">Iterator API</a>,
+		<a href="http://en.wikipedia.org/wiki/Iterator">Iterator Wiki</a>,
+		<a href="http://download.oracle.com/javase/tutorial/java/generics/index.html">Generics Tutorial</a>,
+		<br>
+		CLR: Chapter 11 (1st Ed), or 10 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>22 February</b></td>
+		<td> More on Queues:  Implementation using Linked List and Circular Arrays,
+		Java Queue Interface
+		</td>		
+		<td><a href="s11/ps5.html">Problem Set 5</a> (Queues)</td>		
+		<td>
+		<a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/Queue.html">Queue API</a>,
+		<a href="http://download.oracle.com/javase/tutorial/collections/interfaces/queue.html">Queue Interface Tutorial</a>
+		<br>
+		CLR: Chapter 11 (1st Ed), or 10 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>24 February</b></td>
+		<td> The Stack ADT, Using Stacks
+		<br>
+		<span class = "deadline">Deadline: Problem Set 4 (Linked Lists)</span>
+		</td>		
+		<td><a href="s11/ps6.html">Problem Set 6</a> (Stacks)</td>		
+		<td>
+		<a href="http://oopweb.com/Java/Documents/ThinkCSJav/Volume/chap15.htm">Think CS on Stacks</a>,
+		<a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/Stack.html">Stack API</a>,
+		<a href="http://en.wikipedia.org/wiki/Stack_%28data_structure%29">Stack Wiki</a>,
+		<a href="http://www.spsu.edu/cs/faculty/bbrown/web_lectures/postfix/">Postfix Mini-lecture</a>,
+		<a href="http://www.chris-j.co.uk/parsing.php">Parsing example</a>,
+		<a href="http://www.java2s.com/Tutorial/Java/0140__Collections/StackExampleDelimiterMatching.htm">Delimiter Matching</a>
+		<br>
+		CLR:  Chapter 11 (1st Ed), or 10 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>1 March</b></td>
+		<td>More on Stacks: Implementation and Examples 
+		</td>		
+		<td></td>		
+		<td><a href="http://www.chris-j.co.uk/parsing.php">Parsing Example</a>,
+		<a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm">Shunting Algorithm</a>
+		<br>
+		CLR: Chapter 11 (1st Ed), or 10 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>3 March</b></td>
+		<td>
+		Review
+		</td>		
+		<td></td>		
+		<td>
+		</td>
+	</tr>	
+	<tr>
+		<td><b>4 March</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 5 (Queues)</span>
+		</td>
+	</tr>	
+	
+	<tr>
+		<td><b>8 March</b></td>
+		<td><span class="announcement">First Exam</span></td>		
+		<td><a href="s11/exam1/index.html">Information about First Exam</a></td>		
+		<td></td>
+	</tr>
+	<tr>
+		<td><b>10 March</b></td>
+		<td>Trees</td>		
+		<td></td>		
+		<td><a href="http://en.wikipedia.org/wiki/Tree_%28data_structure%29">Wiki</a><br>
+		CLR: Chapters 5 and 13 (1st Ed), or Appendix B and Chapter 12 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>15 March</b></td>
+		<td>Binary Search Trees</td>		
+		<td><a href="s11/ps7.html">Problem Set 7</a> (Binary Search Trees)</td>		
+		<td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Wiki</a>,
+		<a href="http://people.ksp.sk/~kuko/bak/">Demo</a>, <a href="http://research.cs.queensu.ca/~jstewart/applets/bst/bst-rotation.html">Rotations</a><br>
+		CLR: Chapter 13 (1st Ed), or 12 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>17 March</b></td>
+		<td>More on Binary Search Trees; Some Other Tree Structures (AVL, Red-Black, 
+		B-Trees)</td>		
+		<td></td>		
+		<td><a href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wiki<a>, 
+		<a href="http://www.strille.net/works/media_technology_projects/avl-tree_2001/">AVL Demo</a>,
+		<a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Wiki</a>,
+		<a href="http://www.ece.uc.edu/~franco/C321/html/RedBlack/redblack.html">Red-Black Tree Demo</a>,
+		<a href="http://en.wikipedia.org/wiki/B-tree">B-Tree Wiki</a>,
+		<a href="http://slady.net/java/bt/view.php">B-Tree Demo</a>
+		<br>
+		CLR: Chapters 13 and 14(1st Ed), or 12 and 13 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>18 March</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 6 (Stacks)</span>
+		</td>
+	</tr>		
+	<tr>
+		<td><b>22 March</b></td>
+		<td> Heaps and Priority Queues</td>		
+		<td><a href="s11/ps8.html">Problem Set 8</a> (Priority Queues)</td>		
+		<td><a href="http://en.wikipedia.org/wiki/Heap_%28data_structure%29">Heap Wiki,	
+		<a href="http://www.eecs.wsu.edu/~cook/aa/lectures/applets/sort1/heapsort.html">Heap Demo,
+		<a href="http://en.wikipedia.org/wiki/Priority_queue">Priority Queue Wiki,
+		<a href="http://nova.umuc.edu/~jarc/idsv/lesson2.html">Priority Queue, Implemented as a Heap</a>
+		<br>
+		CLR: Chapter 7 (1st Ed), or 6 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>24 March</b></td>
+		<td> More on Priority Queues; Graph ADT</td>		
+		<td></td>		
+		<td><a href="http://en.wikipedia.org/wiki/Graph_%28data_structure%29">Graph Wiki</a>,
+	
+		
+		<br>
+		CLR: Chapter 7 (1st Ed), or 6 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>25 March</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 7 (Binary Search Trees)</span>
+		</td>
+	</tr>	
+	<tr>
+		<td><b>29 March</b></td>
+		<td>Graphs: Breadth-first and Depth-first Search</td>		
+		<td><a href="s11/ps9.html">Problem Set 9</a> (Searching Graphs)</td>		
+		<td>	<a href="http://en.wikipedia.org/wiki/Breadth-first_search">Breadth First Search Wiki</a>,
+		<a href="http://en.wikipedia.org/wiki/Depth-first_search">Depth First Search Wiki</a>,
+		<a href="http://www.cs.sunysb.edu/~skiena/combinatorica/animations/search.html">BFS and DFS 
+		Animation</a>,
+		<a href="http://sziami.cs.bme.hu/~gsala/alg_anims/3/graph2-e.html">Another BFS Animation</a>,
+		<a href="http://sziami.cs.bme.hu/~gsala/alg_anims/3/graph-e.html">Another DFS Animation</a><br>
+		CLR: Chapter 23 (1st Ed), or 22 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>31 March</b></td>
+		<td>Review</td>		
+		<td></td>		
+		<td><br>
+		</td>
+	</tr>	
+	<tr>
+		<td><b>1 April</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 8 (Priority Queues)</span>
+		</td>
+	</tr>	
+	<tr>
+		<td><b>5 April</b></td>
+		<td><span class="announcement">Second Exam</span></td>		
+		<td><a href="s11/exam2/index.html">Information about Second Exam</a></td>		
+		<td></td>
+	</tr>
+	<tr>
+		<td><b>7 April</b></td>
+		<td>Graphs: Spanning Trees<br>
+		
+		</td>		
+		<td><a href="s11/ps10.html">Problem Set 10</a> (Graphs: MSTs)</td>
+		<td><a href="http://en.wikipedia.org/wiki/Minimum_spanning_tree">MST Wiki</a>, 
+		<a href="http://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim Wiki</a>,
+		<a href="http://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal Wiki</a>,
+		<a href="http://students.ceid.upatras.gr/~papagel/project/prim.htm">Prim Demo</a>,
+		<a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/dijkstra/Prim.shtml">Another Prim Demo</a>,
+		<a href="http://students.ceid.upatras.gr/~papagel/project/kruskal.htm">Kruskal Demo</a>,
+		<a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/kruskal/Kruskal.shtml">Another Kruskal Demo</a>,
+		<br>		
+		CLR: Chapter 24 (1st Ed), or 23 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>11 April</b></td>
+		<td colspan = 3><span class="announcement">Last day to drop with the grade of 'W'</span></td>
+	</tr>	
+	<tr>
+		<td><b>12 April</b></td>
+		<td>Graphs: Shortest Paths</td>		
+		<td></td>		
+		<td><a href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra wiki</a>,
+		<a href="http://optlab-server.sce.carleton.ca/POAnimations2007/DijkstrasAlgo.html">Dijkstra animation</a>,
+		<a href="http://www.cs.sunysb.edu/~skiena/combinatorica/animations/dijkstra.html">Another animation</a></td>
+	</tr>
+	<tr>
+		<td><b>14 April</b></td>
+		<td>Graphs: Flow</td>		
+		<td></td>		
+		<td><a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/maxflow/MaxflowApp.shtml?demo5">Maximum Flow
+		Wiki</a>, <a href="http://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm">Ford-Fulkerson wiki</a>,
+		<a href="http://www-b2.is.tokushima-u.ac.jp/~ikeda/suuri/maxflow/MaxflowApp.shtml?demo1">Demo</a>,
+		<br>
+		CLR: Chapter 25 (1st Ed), or 24 (2nd/3rd Ed)</td>
+	</tr>
+		<tr>
+		<td><b>15 April</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 9 (Searching Graphs)</span>
+		</td>
+	</tr>
+	<tr>
+		<td><b>19 April</b></td>
+		<td colspan = 3><span class="announcement">Spring Break: No class</span></td>
+	</tr>
+	<tr>
+		<td><b>21 April</b></td>
+		<td colspan = 3><span class="announcement">Spring Break: No class</span></td>
+	</tr>	
+	<tr>
+		<td><b>26 April</b></td>
+		<td colspan = 3><span class="announcement">Spring Break: No class</span></td>
+	</tr>
+	<tr>
+		<td><b>28 April</b></td>
+		<td>Hashing</td>		
+		<td><a href="s11/ps11.html">Problem Set 11</a> (Hashing)</td>
+		<td><a href="http://en.wikipedia.org/wiki/Hash_table">Wiki: Hash Tables</a>, 
+		<a href="http://download.oracle.com/javase/1.4.2/docs/api/java/util/Map.html">Map Interface API</a>,
+		<a href="http://download.oracle.com/javase/1.4.2/docs/api/java/util/HashMap.html">HashMap API</a>,
+		<a href="http://download.oracle.com/javase/6/docs/api/java/util/TreeMap.html">TreeMap API</a><br>		
+		CLR: Chapter 12 (1st Ed), or 11 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>3 May</b></td>
+		<td>More on Hashing</td>		
+		<td></td>		
+		<td><br>
+		CLR: Chapter 12 (1st Ed), or 11 (2nd/3rd Ed)</td>
+	</tr>
+	<tr>
+		<td><b>5 May</b></td>
+		<td>Dynamic Programming</td>		
+		<td></td>		
+		<td><br>
+		CLR: Chapters 1 and 16 (1st Ed), 1 and 15 (2nd Ed), 4 and 15 (3rd Ed)</td>
+	</tr>
+		<tr>
+		<td><b>9 May</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 10 (Graphs: MSTs)</span>
+		</td>
+	</tr>
+	<tr>
+		<td><b>10 May</b></td>
+		<td>More on Dynamic Programming</td>		
+		<td></td>		
+		<td><a href="http://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming Wiki</a>, 
+		<a href="http://en.wikipedia.org/wiki/Smith-Waterman">Smith-Waterman Algorithm</a><br>
+		CLR: Chapter 16 (1st Ed), or 15 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>12 May</b></td>
+		<td>Algorithmic Approaches:  Brute Force, Divide-and-Conquer, and Greedy Algorithms</td>		
+		<td></td>		
+		<td><br>
+		CLR: Introduction to Section V, Chapter 17 (1st Ed), or 16 (2nd/3rd Ed)</td>
+	</tr>	
+	<tr>
+		<td><b>17 May</b></td>
+		<td>Review</td>		
+		<td></td>		
+		<td></td>
+	</tr>
+	<tr>
+		<td><b>18 May</b></td>
+		<td colspan=3>
+		<span class = "deadline">Deadline (noon): Problem Set 11 (Hashing)</span>
+		</td>
+	</tr>		
+	<tr>
+		<td><b>19 May</b></td>
+		<td colspan = 3><span class="announcement">Reading Day: No class</span>
+		<br>
+		<!--<span class = "deadline">Deadline: Problem Set 12 (Algorithmic Techniques)--></span>
+		</td>		
+	</tr>	
+	<tr>
+		<td><b>26 May<br> <span class="announcement">8:30-10:30</span></b></td>
+		<td><span class="announcement">Final Exam</span></td>		
+		<td><a href="s11/final/index.html">Information about Final Exam</a></td>		
+		<td></td>
+	</tr>	
+</table>
+
+
+
+<br>
+<br>
+<br>
+(Last updated: 17 May 2011)

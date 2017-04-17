@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 4, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 4<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on looping through strings and files. 
+<br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+
+</div>
+
+<div>
+<h3>More on Looping: Lists</h3>
+
+<p> In <a href="lab2.html">Lab 2</a>, we worked through an example from the textbook that changed looped through a list of colors (from <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/IterationSimplifiesourTurtleProgram.html">4.6 Iteration Simplifies our Turtle Program</a>):
+	<pre>
+import turtle            # set up alex
+wn = turtle.Screen()
+alex = turtle.Turtle()
+
+for aColor in ["yellow", "red", "purple", "blue"]:
+   alex.color(aColor)
+   alex.forward(50)
+   alex.left(90)
+
+wn.exitonclick()	
+	</pre>
+
+<p>What if we wanted more colors?  We can add more to our list:
+
+<pre>for aColor in ["yellow", "red", "purple", "blue", "green", "pink"]:
+</pre>
+
+<p>We can also set up the list ahead of time and then just write its name in the for loop:
+<pre>
+myColors = ["yellow", "red", "purple", "blue", "green", "pink"]
+for aColor in myColors:
+</pre>
+
+<p> Python creates a location in memory that holds the list.  If we want to use the list, we just write its name (in this case, <tt>myColors</tt>).  In Python, the lists are items, separated by commas, and surrounded by square brackets (i.e. "[" and "]").  
+
+<p>
+<iframe src="https://trinket.io/embed/python/39eb5f0a0e" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>Add in three more colors to make <tt>tortuga</tt> draw more!
+
+</div>
+
+
+<div>
+<h3>Reading from a File</h3>
+
+<p> We often store data in a file outside the program.  We could store the really long list of colors in a file, and then, we can change the colors in the drawing by just changing the file.  For example:
+
+<p>
+<iframe src="https://trinket.io/embed/python/013fcc3c8f" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>Click on the tabs just below the run button.  The first tab has the Python program.  The next two contain files.  The first is called <tt>colorList</tt> and is used when you start the program.  The second, called <tt>colors2</tt> has the first 50 colors from the HTML color list.  Change the line that opens the file to:
+<pre>
+infile = open("colors2")
+</pre>
+and run the program again.  How many lines does the program draw?
+
+<p> Let's look at this program line-by-line:
+
+<ul>
+	<li> This is the standard import statement that we include to use turtles:
+<pre>
+import turtle
+</pre>
+	<li> Next, we open the file.  The name to the left of the equals sign is the variable containing information about the file (i.e. name, how much we have read, etc.):
+<pre>
+#Uses a file to store the colors
+#First open up the file:
+infile = open("colorList")
+</pre>
+	<li> The next lines set up a turtle and make it turtle-shaped:
+<pre>
+#Create a turtle, named tortuga:
+tortuga = turtle.Turtle()
+tortuga.shape("turtle")
+</pre>
+	
+	<li> Now, for our loop, instead of using a <tt>range()</tt> or a list, we are going to take lines from <tt>infile</tt>.  The loop variable, <tt>c</tt>, will first be the first line in the file, then the next line in the file, and continue until we have exhausted the number of lines in the file:
+<pre>
+#For each color in our file, draw a side that color and then turn 93 degrees:
+for c in infile:
+  	tortuga.color(c)
+  	tortuga.forward(100)
+  	tortuga.left(93)
+
+</pre>
+
+	<li> Lastly, when we're done with a file, we should close it:
+<pre>
+infile.close()
+</pre>
+
+</ul>
+
+
+</div>
+
+
+
+<div>
+<h3>Multiple Items Per Line</h3>
+
+<p>Our program above worked well since there was only one thing per line.  But many files (including data files we will see in later labs) have multiple items
+per line.  
+
+<p>
+Consider the file that has a color and shape on each line, separated by a comma:
+<pre>
+blue turtle 
+red arrow 
+purple classic 
+blue circle  
+red turtle 
+</pre>
+
+<p>
+The first item on each line is the color for the turtle and the second is for the shape.  When we read in a line:
+
+<pre>
+for line in infile:
+</pre>
+
+<p>The variable, <tt>line</tt>, contains <tt>"blue, turtle"</tt>.  To split up a string into pieces, we can use a built-in string function: <tt>split()</tt> that will return a list.  To use <tt>split()</tt>, we need to specify how we want to split up the line.  Common ways to deliminate items are commas, tabs, and spaces.  Here, we used commas, so, we give <tt>split()</tt> the input parameter , ' ':
+<pre>
+words = line.split(' ')
+</pre>
+
+<p>
+The variable <tt>words</tt> is a list.  Using the input file above, <tt>line</tt>, contains <tt>"blue turtle"</tt>, so, 
+<tt>words</tt> is <tt>["blue", "turtle"]</tt>.  
+<tt>words[0]</tt> contains the color (in this case <tt>"blue"</tt>).
+<tt>words[1]</tt> contains the shape (in this case <tt>"turtle"</tt>).
+Python did the work of finding the comma and breaking down the string into parts that we can use.
+
+<p>
+Let's try it!  Copy this file into a Python file:
+<pre>
+import turtle
+
+#Uses a file to store the colors
+#First open up the file:
+infile = open("colorShape")
+
+#Create a turtle, named tortuga:
+tortuga = turtle.Turtle()
+tortuga.shape("turtle")
+
+#For each line in our file, split it in parts, and draw a side that color and shape:
+for line in infile:
+	words = line.split(' ')
+	tortuga.color(words[0])
+	tortuga.shape(words[1])
+	tortuga.forward(100)
+	tortuga.left(93)
+</pre>
+
+In the same folder, save the file <a href="colorShape">colorShape</a>.
+Try running your program.  Change the contents of the input file (or create a new one) and try again!  Once you've tested your program, submit as Program 18.
+</div>
+
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a quiz on <tt>for</tt>-loops and lists.  The password to access the quiz will be given during lab.
+
+</div>
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+</div>
+
+<div>
+<h3>Using Python on Your Computer</h3>
+
+The Python programming language and IDLE environment are freely available
+for many platforms from <a href="http://www.python.org">python.org</a> or
+<a href="https://www.continuum.io/downloads">Anaconda</a>.  
+For this class, we are using <b>Python 3</b>.  Many features of the language
+(including the syntax of <tt>print</tt> statements) changed between the second and third
+version, so, you must use the Python 3 for submitting programs.
+
+
+</div>
+
+</html>

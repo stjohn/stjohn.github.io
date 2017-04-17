@@ -1,0 +1,87 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #8, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Homework #8</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<b>Topics:</b>  Voronoi Diagrams; Commuting Costs<br>
+<b>Deadline:</b>  Wednesday, 5 April 2017, 11:59pm 
+</div>
+
+
+<div>
+<h3>Data</h3>
+
+We will use two different data sets from <a href="https://data.cityofnewyork.us/">OpenData NYC</a> and one from the NYC DOE.  The first two were used in 
+<a href="cw6.html">Classwork #6</a>.  The third is from <a href="cw8.html">Classwork #8</a>:
+
+<ul>
+	<li> A geoJSON file with the regions.  For our first choropleth map, we'll use the NYC school district boundaries available from 
+	<p><a href="https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">Open Data NYC Planning</a><p>
+	(scroll down to "School, Police, Health & Fire" and export as geoJSON, called <tt>schoolDistricts.json</tt>).
+	<!--<li> <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj/data">NYC School District Boundaries</a>
+	(export as geoJSON, called <tt>schoolDistricts.json</tt>).-->
+	<li> <a href="http://schools.nyc.gov/Accountability/data/TestResults/ELAandMathTestResults">NYC Department of Education Test Results</a>
+	(see <a href="cw6.html">Classwork #6</a> for filtering the data to a CSV file).
+	<li> <a href="http://data.beta.nyc/dataset/nyc-zoning-districts/resource/6d635f4d-d225-48ad-b0e4-9820ed54c66f?view_id=e0d5313b-cfa1-420f-b53a-0f93003448bd">NYC Zoning Districts</a> (see <a href="cw8.html">Classwork #8</a> for filtering the data).
+</ul>
+
+</div>
+</div>
+
+
+
+<div>
+<h3>Assignment</h3>
+
+
+<ul>
+
+	<li> 
+	<a href="https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/">Five Thirty Eight</a>	 examined the price New Yorkers were willing to pay per month to trim a minute off their commute ($56/month).
+	<a href="https://www.brookings.edu/wp-content/uploads/2016/07/Srvy_JobsProximity.pdf">Kneebone & Holmes 2015</a> show that the proximity to jobs has decreased over time.  Focusing on the same data, 
+	<a href="http://cityobservatory.org/how-important-is-proximity-to-jobs-for-the-poor/">Cortright 2015</a> tabulated the relative job accessibility data. The New York metropolitian region shows some gap by income, but a very large gap city/surbanan living:  those within the city are within commuting distance of 5.4 times as many as those in the suburbs.  
+
+	<p>This difference was more pronounced that other regions.  Why are there so many more jobs available to city residents?  Use references from the reading to justify your answer.
+		<ul>
+			<li> #1:  Submit your paragraph as a <b>.pdf</b> file.
+		</ul>
+		<br>
+
+	<li> Make a choropleth map shaded by the different residential zone densities.  See <a href="cw8.html">Classwork #8</a> for a template program and data sets.  Note that setting all commercial and manufacturing zones to 100, and residential from 1 to 10, based on their zone will emphasize the residential zones in the shading of your map.
+		<ul>
+			<li> #2:  Submit your program as a <b>.py</b> file.
+			<li> #3:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>
+		<br>
+	<li> Using the English Language Arts test scores for New York City, make a choropleth map shading districts by the change in profiency from 2013 to 2016.  That is, districts where the percentage of students reaching proficiency has decreased should be shaded red; districts where the students reaching profiency has increased should be shaded purple. 
+		<ul>
+			<li> #4:  Submit your program as a <b>.py</b> file.
+			<li> #5:  Submit your map as either a zipped <b>.html</b> or as a screenshot (<b>.png</b> or <b>.jpg</b>) file.
+		</ul>
+		<br>
+
+	<li> <b>Project Timeline:</b>  As a group, submit a detailed timeline of when each milestone (data collection, analysis, visualization, and making the presentation) will be completed.
+</ul>
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

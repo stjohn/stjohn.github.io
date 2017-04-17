@@ -1,0 +1,102 @@
+<title>Notes for 6 April, COEN 251, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+
+<h2>Notes for Monday, 6 April<br>
+COEN 251: Data Structures and Algorithms</h2>
+<h2>Spring 1998</h2>
+
+<hr>
+C++ code for heapsort:
+<hr>
+<pre>
+#include &lt;iostream.h&gt
+#include &lt;math.h&gt
+
+void heapsort(int A[], int length);
+void buildheap(int A[], int length);
+void heapify(int A[], int heaplength, int root);
+void swap(int& x, int& y);
+
+void main()
+{
+	int A[100],	// The array that holds the heap
+	    length,     // The length of the heap
+	    i = 0,	// A counter for input/output of list
+	    input;	// Used for reading in the list
+	
+    // Get the list of numbers:                (takes O(n) time)
+	cout &lt;&lt "Please enter your numbers.\n"
+		&lt;&lt "Indicate the end of the list with a negative number: ";
+	while ( (i &lt 100) && (input &gt;= 0))
+	{
+		cin &gt;&gt input;
+		A[i] = input;
+		i++;
+	} 
+	length = i-1;	// Save the length of the list
+	 
+	// Sort the list		       (takes O(n lg n) time)
+	heapsort(A, length);
+	
+	// Print the sorted list:	       (takes O(n) time)
+	cout &lt;&lt endl &lt;&lt "Here's the list sorted:\n";
+	for ( i = 0 ; i &lt length ; i++ )
+		cout &lt;&lt A[i] &lt;&lt "  ";
+}
+
+
+
+void heapsort(int A[], int length)//	       (takes O(n lg n) time)
+{
+	int heapsize = length;
+	
+	buildheap(A, length);	//Take the unsorted list and make it a heap
+	for (int i = length-1; i &gt;=1; i--)
+	{
+		swap(A[0], A[i]);
+		heapsize--;
+		heapify(A, heapsize, 0);		
+	}
+}
+
+void buildheap(int A[], int length)	//     (takes O(n) time)
+{	
+	for (int i = floor((length)/2); i &gt;= 0 ; i--)
+		heapify(A, length, i);
+}
+
+void heapify(int A[], int heapsize, int root) //(takes O(h) time,
+					// h is the height of root
+{
+	int left = 2*root+1, 
+		right = 2*root +2,
+		largest;
+	
+	if ( (left &lt heapsize) && (A[left] &gt A[root]))
+		largest = left;
+	else 
+		largest = root;
+	
+	if ( (right &lt heapsize) && (A[right] &gt A[largest]))
+		largest = right;
+		
+	if (largest != root)
+	{
+		swap(A[root], A[largest]);
+		heapify(A, heapsize, largest);
+	}
+}
+
+void swap(int& x, int& y)
+{
+	int temp;
+	
+	temp = x;
+	x = y;
+	y = temp;
+}
+</pre>
+

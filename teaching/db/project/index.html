@@ -1,0 +1,181 @@
+<title>Project for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Project Information</h1>
+<h2>CMP 420: Database Systems<br>
+Lehman College, City University of New York<br>
+Fall 2001</h2>
+
+
+<hr>
+<h2>General Information</h2>
+
+This course is required to have a project implemented in a database
+query language  (see the <a href="../syl.html">syllabus</a> for course
+description).  The projects for this semester will be implemented in
+a combination of SQL and Java.  The project is worth 10% of your final
+grade.
+
+<p>
+As described in <a href="../lab1.html">Lab 1</a>, you will be
+building a substantial database application for a real-world scenario
+of your choosing. You will design a relational schema for the
+database, and you will create an actual database using a relational
+database management system.  You will populate the database with
+sample data, write interactive queries and modifications on the
+database, and develop user-friendly tools for manipulating the
+database. For ideas on possible databases, see the book's webpage.
+
+<p>
+Your first step is to identify the domain you would like to manage
+with your database, and to construct an entity-relationship diagram
+for the data. Pick an application that you will enjoy working with,
+since you'll be stuck with it for the rest of the semester.
+
+<p>
+Try to pick an application that is relatively substantial, but not
+too enormous. For example, when expressed in the entity-relationship
+model, you might want your design to have in the range of five or so
+entity sets, and a similar number of relationships. Note that this
+is a ballpark figure only! You should certainly include different
+kinds of relationships (e.g., many-one, many-many) and different
+kinds of data (strings, integers, etc.), but your application is not
+required to use advanced features, such as subclassing, multiway
+relationships, or weak entity sets, if they are not appropriate
+for your application.
+
+<p>
+
+
+<h3>Design Specification</h3> 
+<font color=red>Due 15 November with <a href="hw8.html">Homework 8</a>.
+</font>
+
+<p>
+For this part of the project, you need:
+<ul>
+    <li> An <b>E/R diagram</b> describing your database application.  
+	You can use the one you wrote for Homework 5, as long as it
+	includes at least 5 entity sets and 5 relations.  Make sure to
+	mark any one-one and many-one relations, as well as weak entity
+	sets, subclasses, and keys.  Include as notes on your diagram
+	any assumptions made for your database.  
+    <li> <b>Conversion to Relations:</b>  Convert your E/R diagram 
+	to a relational schema.  Include keys for each relation 
+	and a list of <b>functional dependencies for each of your
+	relations</b>.
+    <li> <b>Normal Forms:</b> Are your relations in normal form for
+	BCNF, 3NF or 4NF?  Include a brief explanation about which
+	normal forms your relations obey.  If they violate some 
+	normal form, explain why (remember, sometimes there's cases
+	where being in normal form might not be best for the design).
+</ul>
+<p>
+
+<h3>SQL Schema and Data Modification</h3> 
+<font color=red>Due 29 November in lab.
+</font>
+<p>
+For this part of the project, you must turn, on paper, the SQL
+commands and java programs used.  You also must demonstrate that
+your database has the properties listed below, during lab.
+<p>
+For this part of the project, you need:
+<ul>
+    <li> An <b>SQL schema</b> that creates the relations in your
+	database, including definitions of primary keys and 
+	references.  This can be done either by loading a file
+	into <tt>psql</tt> or by running a java program.
+    <li> <b>To Populate your database:</b> with at least 10 tuples
+	per table and a total of at 100 entries.  Use a java program
+	to insert the values into the table, or to format a file
+	of SQL commands and load those via <tt>psql</tt>.
+    <li> <b>Data Selection Queries:</b> You need at least 3 selection
+	queries that are <b>natural</b> for your database application.
+	For example, if you have a database about films, a natural
+	queries would be all the films by a given studio, or the longest
+	film each actor appeared in.
+	At least one of the queries must include a subquery.  At least
+	one must use more than one table.  These queries must be
+	embedded in java programs.
+    <li> <b>Data Modification Statements:</b> You need at least 2
+	data modification statements that make sense for your 
+	database application.  For example, if you have a database
+	for employees, you could have an update statement that gives
+	every employee a 5% raise.  These statements must be
+	embedded in  java programs.
+</ul>
+<p>
+
+<!--
+<h3>Triggers, Constraints, and Views</h3> 
+-->
+<h3>Views</h3> 
+<font color=red>Due 6 December in lab.
+</font>
+<p>
+Create two natural views for your database.  These should incorporate
+some common query a user would ask of your database.  For example, if
+your database is for employees, you might want a view that consists of
+the names and addresses of all employees that live in the Bronx.
+
+<h3>Java Interface</h3> 
+<font color=red>Due 13 December in lab.
+</font>
+<p>
+Write a java interface for a user to interact with your database.  A
+user should be able to click on a button that executes one of your 
+queries from above and displays the results to the screen (using a 
+scrolling text subwindow would be one way to do this).  You should have
+a second button that displays one of your views.
+
+<p>
+Extra credit points (5% each) will be given, if in addition to above,
+your interface:
+<ul>
+    <li> allows the user to insert a tuple into one of your tables,
+	using button, radio buttons, and text windows (i.e. the user
+	should do the minimal amount of typing).  For example, if your
+	database is for a university, you should allow a user to 
+	enroll in a class, by typing their social security number, and
+	then choosing the department and course number from menus or
+	buttons.
+    <li> allows the user to delete a tuple from your database by 
+	specifying only the key.  For example, if your database is 
+	an employee database, include the ability for the user to
+	delete employees by typing only their employee id number.
+</ul>
+
+<h3>Turning in the Final Project</h3>
+
+During the last lab, you need to show Prof. St. John how each part
+of your lab works.  Once you have done that, you should collect
+all the files for the lab into a bundle (called a <tt>tarball</tt>)
+and mail it to 
+<a href="mailto:stjohn@lehman.cuny.edu">stjohn@lehman.cuny.edu</a>.
+
+<p>
+To make bundle a directory, called <tt>myproject</tt>, you type 
+at the command line:
+<pre>
+    tar cfv myproject.tar myproject
+</pre>
+This will create a file called <tt>myproject.tar</tt> that consists
+of all the files in the directory <tt>myproject</tt>.  To mail it,
+you can use Netscape mail, or you type at the command line:
+<pre>
+    mail stjohn < myproject.tar
+</pre>
+
+<p>
+Since all accounts will disappear 14 January, you should transfer 
+any files you wish to keep to another machine.  To do this, make 
+a tarball of the directories and then mail it (or you can use 
+the file transfer program, <tt>ftp</tt>) to another machine.
+
+</body>
+</html>
+
+
+

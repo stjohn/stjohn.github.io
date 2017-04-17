@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Regular Expressions Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  Regular Expressions</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+</div>
+
+<div>
+<h3>Out-of-Class (Snow Day Make-up)</h3>
+
+Since we missed a day of class due to the snow, we have an "asynchronous learning activity" to replace the missing instructional time. It is modeled on our typical class, and contains the following activities:
+<ul>
+	<li> <b>Reading:</b>  topics for this week are equality and low income housing (see <a href="hw10.html">Homework #10</a>), 
+	<li> <b>Discussion:</b>  a Discussion forum is available via Blackboard (called <tt>Classwork #10</tt>), 
+	<li> <b>Tech Skills:</b>  described below, focusing on extracting information from strings, files, and webpages, 
+	<li> <b>Group work:</b>  described below and submitted via Blackboard, and
+	<li> <b>Homework:</b>  see <a href="hw10.html">Homework #10</a> for more information.
+</ul>
+
+
+
+</div>
+
+
+<div>
+<h3>Discussion</h3>
+
+For the discussion, use the discussion board under "Classwork" folder.  
+<ol>
+	<li> Complete the reading and associated question on <a href="hw10.html">Homework #10</a>.  
+	<li> Share an image of the property that you focused on for your rezoning, as well as its address, and its zoning under the new regulations.  Include your plan and why it would enhance the urban experience.
+	<li> For two other properties, suggest a possible new building and explain why it is possible and why it would improve the livability of the neighborhood. That is, submit a comment in the discussion, with your suggestions.  
+	<li> Pick another property that has its three possible designs uploaded and summarize the common features and constrast the differences between them.  That is, choose a property that has three designs in it, and add your compare/contrast summary as a comment.  Note:  only one summary per entry (if someone has already written one for a property, find another one to summarize).
+</ol>
+
+
+</div>
+
+
+<div>
+<h3>Tech Skills</h3>
+
+The tech skills for today focus on extracting information from strings, files, and webpages.  While we have extracted information from strings and files throughout the term, this session starts with review and moves to new ways to find patterns (called "regular expressions") as well as useful ways to scrap webpages (such as the popular "beautifulSoup" package).
+
+<h4>Useful String Methods</h4>
+
+A standard use of Python is to manipulate strings.  Here are some useful methods for strings that we have used over the semester:
+<ul>
+	<li> <tt>s.count(<i>pattern</i>)</tt>:  returns the number of times the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.find(<i>pattern</i>)</tt>:  returns the location (index) of the first place the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.replace(<i>old</i>,<i>new</i>)</tt>:	replaces all occurrences of the <i>old</i> string with the <i>new</i> string.
+	<li> <tt>indices</tt>: <tt>s[i]</tt> is the ith element of the string <tt>s</tt>	
+	<li> <tt>slicing</tt>: <tt>s[<i>start</i>, <i>stop</i>, <i>step</i>]</tt> is the substring of <tt>s</tt> beginning at index <i>start</i> and going up by <i>step</i> upto but not including stop.  <br>
+	<tt>s[-1::-1]</tt> or <tt>s[::-1]</tt> returns the reverse of the string.
+</ul>
+
+<h3>Challenges:</h3>
+
+<p><i>You can check if your answers are right, but typing them into a Python shell.</i></p>
+<ul>
+	<li> Let <tt>s = "A man a plan a canal Panama"</tt>.
+		<ul> 
+			<li> Use string methods to count the number of 'a' or 'A' in the string <tt>s</tt>.
+			<li> Use string methods to count the number of words in the string <tt>s</tt>.
+			<li> Write the reverse of the string <tt>s</tt>.			
+			<li> Write the string <tt>s</tt> without spaces between the words.
+			<li> Write the reverse of the string <tt>s</tt> without spaces between the words.
+		</ul>
+	</li>
+	<li> Replace MHC with "Macaulay Honors College" CUNY with "City University of New York", and NYC with "New York City" in the string:
+	<blockquote><tt>
+blurb = "Welcome to MHC, the Honors College at CUNY.  MHC provides the transformational experiences that will take students from their academic aspirations into careers as leaders in their chosen fields. We 
+have already seen that transformation taking place, 
+as more of our accomplished young alumni make their mark on NYC and the world.
+Nothing is more satisfying to me than being able to positively impact the lives of NYC's most promising undergraduate students.  I invite you to learn more about MHC and our remarkable students and alumni at MHC, CUNY. Attend an open house or cultural event, read some recent press or browse this site.
+<br>
+Mary C. Pearl, Ph.D."</tt>
+	</blockquote></li>
+	<li> Write code that takes a string of the form:
+	<pre>
+	"POINT (40.715 -73.99)"
+	</pre>
+	and extracts out the two numbers <tt>40.715</tt> and <tt>-73.99</tt>.
+	<br>
+	Use that to extract data from a CSV of museums across the city:
+	<a href="https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z">https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z</a>.
+	</li>
+</ul>
+</div>
+
+
+<div>
+<h4>More Tech Skills:  Regular Expressions</h4>
+
+<p> Regular expressions provide a powerful way to find patterns, in particular, those that might vary in length.  Patterns can be as simple as a single word, or a series of strings that can occur a fixed or varying number of times.  For example, if you were searching for any number of the letter <tt>a</tt>, you could write:
+<pre>	
+	a*
+</pre>
+which says you are looking for 0 or more <tt>a</tt>.  Similarly, if you wanted 
+a word repeated:
+<pre>
+	(hi)*
+</pre>
+This pattern will match any number of copies of the word <tt>hi</tt>, such as:
+<tt>hi</tt>, <tt>hihihihihi</tt>, etc.
+
+<p>This search for patterns are quite useful in many fields including biology (yup, this was added just for all the biology majors in the class).  
+For example, in a DNA sequence, small patterns can occur varying number of times 
+(<a href="http://www.biology.arizona.edu/human_bio/activities/blackett2/str_description.html">short tandem repeat polymorphism</a>).  To find the first AT repeat of longer than 4 repeats, we can use a regular expression:
+<pre>
+import re
+dna = "ACTGCATTATATCGTACGAAAGCTGCTTATACGCGCG" 
+runs = re.findall("[AT]{4,100}", dna) 
+print(runs)
+</pre>
+To find the location of a pattern in a string, we can use:
+<pre>
+if re.search(r"GC[ATGC]GC", dna):
+    print("restriction site found!")
+</pre>
+(for the biologists in the class: more examples like this from <a href="http://pythonforbiologists.com/index.php/introduction-to-python-for-biologists/regular-expressions/">Python for Biologists</a>).
+
+<p>
+The <tt>re</tt> library is distributed with Python.  We will use two useful functions in the library:
+<ul>
+	<li> <tt>re.search(<i>pattern</i>, <i>string</i>)</tt> returns information if the <i>pattern</i> occurs in the <i>string</i> (otherwise returns None-- so can be used in an if statement).  Often use a "r" before the pattern to indicate that you want the "raw" string (i.e. don't translate the (e.g.'\n'), but keep them as their raw characters).  
+	<li> <tt>re.findall(<i>pattern</i>, <i>string</i>)</tt> finds all occurrences of <i>pattern</i> in the <i>string</i>.  It returns a list of the matching patterns.
+</ul>
+
+<p>
+We often want more information than just if a pattern occurred or in what way.  To find out the starting (and stopping) location, we can use the match object that <tt>re.search()</tt> returns.  It's most useful functions are:
+<ul>
+	<li> <tt>group()</tt>:  returns the string matched by the regular expression
+	<li> <tt>start()</tt>:  returns the starting position of the match
+	<li> <tt>end()</tt>:  returns the ending position of the match
+		
+</ul>
+(see <a href="https://docs.python.org/2/howto/regex.html">Python regex tutorial</a> for more details).
+
+<p>
+From our example above, we could store the match object:
+<pre>
+m = re.search(r"GC[ATGC]GC, dna)
+print "The matching string is", m.group()
+print "Match starts at", m.start()
+print "Match ends at", m.end()
+</pre>
+
+<p>
+
+These are more general (and more powerful) tools than the string methods above. In many cases, either can be used. For finding approximate matches or matches of varying lengths, using regular expressions is much easier.
+Here's a 
+<a href="<a href="https://github.com/tartley/python-regex-cheatsheet/releases/download/v0.3.3/cheatsheet.pdf">regex cheat sheet</a> with an overview of the most common commands.
+
+<h4>Challenges</h4>
+
+Try the following challenges (use the cheat sheet or google if you get stuck):
+<ul>
+	<li> How many CG repeats are there in:
+	<pre>
+	dna = "ACTGCATTATATCGTACGAAAGCTGCTTATACGCGCG"
+	</pre>
+	<li> For the above string, are there any T's at least 20 base pairs apart?
+	
+	<li> How many possible zipcodes are listed below (from the CUNY locations file used in <a href="cw4.html">Classwork 4</a>)
+	
+<pre>
+College or Institution Type	Campus	Campus Website	Address	City	State	Zip	Latitude	Longitude	Location
+Senior Colleges	Baruch College	http://baruch.cuny.edu	151 East 25th Street	New York	NY	10010-2313	40.740977	-73.984252	(40.740977, -73.984252)
+Senior Colleges	Brooklyn College	http://brooklyn.edu	2900 Bedford Avenue	Brooklyn	NY	11210-2850	40.630276	-73.955545	(40.630276, -73.955545)
+Community Colleges	Borough of Manhattan Community College	http://bmcc.cuny.edu	199 Chambers Street	New York	NY	10007-1044	40.717367	-74.012178	(40.717367, -74.012178)
+Community Colleges	Bronx Community College	http://bcc.cuny.edu	2155 University Avenue	Bronx	NY	10453	40.856673	-73.910127	(40.856673, -73.910127)
+Senior Colleges	The City College of New York	http://ccny.cuny.edu	160 Convent Avenue	New York	NY	10031-9101	40.819548	-73.949518	(40.819548, -73.949518)
+Graduate Colleges	CUNY School of Law	http://law.cuny.edu	2 Court Square	Long Island City	NY	11101-4356	40.747639	-73.943676	(40.747639, -73.943676)
+Graduate Colleges	The Graduate School and University Center	http://gc.cuny.edu	365 5th Avenue	New York	NY	10016-4309	40.748724	-73.984205	(40.748724, -73.984205)
+Senior Colleges	Hunter College	http://hunter.cuny.edu	695 Park Avenue	New York	NY	10065-5024	40.768731	-73.964915	(40.768731, -73.964915)
+</pre>
+		<i>Hint:  Think about the pattern a zip code has.</i>
+
+		<li> What patterns do emails have?  How could you extract all the emails 
+		from the <a href="https://macaulay.cuny.edu/directory/">Macaulay Honors College Directory</a>?
+</ul>
+
+
+</div>
+
+<div>
+<h3>Tech Skills:  Scraping Webpages</h3>
+
+<p>
+Webpages are formatted using the HyperText Markup Language (HTML) which is a series of commands on how the pages should be formatted, along with links and embedded calls to programs. For example, if you would like a word to show up in <b>bold</b>, you surround it by "tags" that say what to do:
+<pre>
+&ltb&gtbold&lt/b&gt
+</pre>
+The opening tag starts the bold text and the closing tag (indicated by the '/') ends the bold text.  Most HTML commands follow this same style:  there's an opening tag, paired with a closing text that includes a '/' and the same name.
+
+
+<p>
+We can access files stored on webpages inside Python.  The built-in 
+<tt>urllib</tt> module has functions to mimic the file I/O we have seen before. 
+If we are reading in a CSV file, we can use pandas directly (see the citiBike example in <a href="cw9.html">Classwork 9</a>).
+
+<p>Let's say we want to make a list of all the seminars at the American Museum of Natural History (we're using these, since I like to go to their seminars, and the format is a bit easier than the MHC events page which is scattered across multiple pages).  We can `scrap the data' on the comparative biology seminar page into our Python program.  We can then search for strings that look like dates and print out the subsequent lines.  The interface is very similarly to opening files:
+<ol>
+	<li> Use <tt>urllib.open()</tt> to open file.
+	<li> Then can use <tt>read()</tt>, <tt>readline()</tt> or <tt>readlines()</tt> to traverse file.
+</ol>
+(If you are going to be parsing lots and lots of HTML files, you should consider the <a href="">beautifulSoup</a> that does a great job handling badly formatted files-- see tutorials below).
+
+<p>
+The museum's webpage is machine generated (you can look at the raw code by saving the HTML file and then opening it with TextEdit, TextWrangler, or some other editor meant for text files).  The code is very clean with no missing ending tags (unlike the HTML for the page you're currently reading...).
+
+<!--
+<p> MHC events page:  https://macaulay.cuny.edu/news-and-events/calendar-of-events/
+-->
+
+<p>
+Here are the first couple of lines with the seminar dates:
+<p>
+<img src="../../amnh/seminarRawFile.png" width=800>
+
+<p>
+We can search the file for dates, and then print out the subsequent lines with the speaker and title.  We can do this in several different ways.  Here's one approach:
+<ol>
+	<li> Open the URL ('URL' stands for Uniform Record Locator and is the location of the file.  It usually starts out <tt>http://www...</tt>).
+	<li> Read the file into a list of strings, called <tt>lines</tt>.
+	<li> For each line in <tt>lines</tt>, check if it contains the date.
+	<li>	If so, print out the date and the subsequent lines with name, affiliation, and title.
+	<li> Close file.
+</ol>
+
+<p>We are just missing the tools to open webpages.  There are several options (both built-in and modules you can download).  We are going to use <tt>requests</tt> since it automatically converts incoming data from bytes to text, making it simplier to use.  First we need to import the module:
+<pre>
+import requests
+</pre>
+<p>If you do not have <tt>requests</tt> on your machine, you can download it in a terminal with:
+<pre>
+pip install requests
+</pre>
+
+<p>
+To get the contents of a webpage:
+<pre>
+data = requests.get("http://www.amnh.org/our-research/richard-gilder-graduate-school/academics-and-research/seminars-and-conferences")
+</pre>
+which now contains the strings in the file as well as some other information (This will take a bit depending on network connectivity.)  The text of the file can be accessed via:
+<pre>
+data.text
+</pre>
+<p>
+It's stored as a single, very long string with <tt>\n</tt> separating the lines.  So, if we want to look at the file line-by-line, we can use our friend, <tt>split()</tt>
+<pre>
+lines = data.text.split("\n")
+</pre>
+<p>If you print out <tt>lines</tt>, you'll notice that most lines are blank or formatting statements.  To find the seminars, we need to go through and check each line to see if it contains a seminar listing (hint: if statement!).
+
+<p>
+Since each line of the webpage is in the variable <tt>lines</tt>, and we can loop through it.  Here's an outline: it traverses the list by line number since we'll want to refer to the lines after it (where the name and titles are stored):
+<pre>
+for i in range(len(lines)):
+	#Check if the lines[i] has a date in it (can use find() or regular expressions)
+	#If it does print it, 
+	#	as well as the subsequent lines[i+2] (has name) and 
+	#	lines[i+4] (has title)
+</pre>
+
+<p>Test and debug your program and then figure out how to print just the date, name, affiliation, and title (without the HTML formatting statements).
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> Modify your program to just print out the dates, using full names for the months and the full year:  i.e. <tt>25 January 2016</tt> for <tt>25-Jan-16</tt>.
+	<li> We can use Python to scrap data from multiple webpages.  The program, <a href="weatherPD.py">weatherPD.py</a>, extracts the minimum and maximum temperatures from <a href="http://wunderground.com">Weather Underground</a>'s historical data for New York City (uses La Guardia Airport's weather station).  Modify the program to graph the minimum and maximum temperture for your birthday for the last 25 years.
+</ul>
+
+</div>
+
+<div>
+<h3>Tech Skills Bonus:  Beautiful Soup</h3>
+
+<p>For those who are going to be digging deep into webpages, there's a lovely package that makes it much easier (if the above web scraping was more than enough for you, skip this section).
+
+<p>
+The 
+<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> package for Python has the motto:
+<blockquote>
+You didn't write that awful page. You're just trying to get some data out of it. Beautiful Soup is here to help. Since 2004, it's been saving programmers hours or days of work on quick-turnaround screen scraping projects.
+</blockquote>
+
+<p>Like folium or pandas, you will need to download the package to your machine to use it.  Here is the <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">soup quick start</a>.  
+
+<ul>
+	<li>To get started work through the tutorial (an example based on <i>Alice in Wonderland</i>). It's a bit cryptic but gives a nice summary of syntax.</li>
+
+	<li>Now, work through the <a href="http://www.pythonforbeginners.com/python-on-the-web/beautifulsoup-4-python/">Python For Beginners</a> tutorial which has you scraping data from their website.</li>
+
+	<li>Finally, look back at the example of the AMNH webpage, how can you use beautifulSoup to simplify the code (hint:  look at the tags for entries and use those to find seminar entries).
+</ul>
+</div>
+
+
+
+<div>
+<h3>Group Work</h3>
+
+This week's readings focus on the income inequality in New York City.  The 
+<a href="http://storymaps.esri.com/stories/2016/wealth-divides/index.html">ERSI storymap</a> illustrates the income disparity across the city as well as several other metropolitian areas.  Working with your group, answer the following questions and submit via Blackboard:
+<ol>
+	<li> Using the interactive map of New York City with the number of households earning over $200,000 per year and those earning less than $25,000, find the census tract in each borough that has the highest ratio of high-to-low earners?
+	<li> Find the census tract in each borough with the fewest high income earners.
+	<li> The article suggests that New York City is more mixed by income with extremely wealthy neighborhoods adjacent to poor neighborhoods, when compared to other cities.  How could you use the data to test this statement?  No need to write code, but as a group, come up with a way to analysis the data ERSI has collated.  Your answer should outline a way to say if the statement is true or false.
+
+</ol>
+
+</div>
+
+
+

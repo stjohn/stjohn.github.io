@@ -1,0 +1,85 @@
+<title>Lab 5, COSMOS 2002, UC Davis</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+
+<h1>Laboratory Exercise 5</h1>
+<h2>Robotics<br>
+COSMOS 2002<br>
+UC Davis</h2>
+
+<hr>
+<h3>Random Walks</h3>
+
+<p>
+Today's lab uses the random number generator to make your 
+robot take a random walk.  Random walks are used in mathematics and 
+physics to model physical phenomena. 
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  No light or touch sensor is needed.  Your robot
+should be able to hold a piece of chalk or pen.
+
+<p><b>Programs used:</b> Today's lab uses
+<a href="pirouette.nqc">pirouette.nqc</a>.
+
+<p><b>Lab Set-up:</b> The lab assumes that there's small (5 by 5
+square), medium (7 by 7 square), and large (10 by 10 square) 
+box, traced out by tape outside of the lab.  The robots
+will start in the middle of the box, and traces out a random walk
+in the box.  Each robot should be holding a piece of chalk, or, if
+paper is available to cover the box, a crayon or pen. 
+
+<h3>Battery Life</h3>
+
+Load the <a href="pirouette.nqc">pirouette.nqc</a> and adjust the
+<tt>TURN_TIME</tt> so that your robot turns 360 degrees.  This time
+will probably have changed from the last time you ran the program
+due to change in battery strength.
+
+<h3>Step Function</h3>
+
+Write a function, <tt>step()</tt> that will generate a random number
+between 0 and 3, and take a single step, in one of four directions:
+<ul>
+   <li> if the number is 0: one step in the direction you're already going
+   <li> if the number is 1: turn 90 degrees and take one step
+   <li> if the number is 2: turn 180 degrees and take one step
+   <li> if the number is 3: turn 270 degrees and take one step
+</ul>
+A step should cover 6 inches or a single square of tile on the 
+flooway outside.  Check with the TA for the size of a "step" for
+the boxes set up outside.
+
+<h3>Tracing Your Path</h3>
+
+Add a mount to your robot to hold a piece of chalk (or pen, if 
+there's paper available for the boxes).  Using a simple program 
+like <a href="guidenqc/tankbot1.nqc">tankbot1.nqc</a>, test to make
+sure the chalk marks a line and stays in place.
+
+<h3>Random Walks</h3>
+
+Using the <tt>step()</tt> function from above, write a program
+that will take a random walk of 20 steps.  Starting at the middle
+of the small box, does your robot leave the box?  Run your program
+5 times.  How many of those runs left the box?  
+
+<p>
+How many steps does it take to make it out of the small box?
+The medium box?  The large box?  There is a mathematical theorem
+that predicts how many steps it should take given the dimensions
+of the box.  Can you figure out the predicted number by running
+experiments with your robot?
+
+<h3>Extra Activities</h3>
+
+If you finish early, you can work on your project.
+
+
+</body>
+</html>
+
+

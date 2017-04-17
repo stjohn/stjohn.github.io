@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>HW #5, Data Science at Lehman College, CUNY, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" src="wordle7.jpg" height="150px">
+<h1>Homework #5</h1>
+<h2>CMP 464-C401/MAT 456-01: <br>Topics Course: Data Science<br>
+Spring 2016
+</h2>
+</div>
+
+<div>
+<b>Topics:</b>  Bayes Theorem, Simpson's Paradox, & Regular Expressions<br>
+<b>Deadline:</b>  Thursday, 10 March 2016, 10:30am 
+</div>
+
+<div>
+<h3>Textbook's Code</h3>
+
+<p>This assignment uses the Naive Bayes Spam Filter developed by the textbook's author and available at:
+<blockquote>
+	<a href="https://github.com/joelgrus/data-science-from-scratch/blob/master/code/naive_bayes.py">https://github.com/joelgrus/data-science-from-scratch/blob/master/code/naive_bayes.pyz</a>
+</blockquote>
+</div>
+
+<div>
+<h3>Datasets</h3>
+
+This assignment uses the following datasets:
+<ul>
+	<li> Name data collected by the <a href="https://www.ssa.gov/oact/babynames/index.html">Social Security Administration</a>.	
+	<li> The weather data for the month of January from <a href="hw1.html">Homework #1</a>
+	<li> The zipcode collision data collected for <a href="hw3.html">Homework #3</a>
+	<li> Spam data collected by <a href="http://apache.org">Apache</a>.
+
+	
+</ul>
+
+<p>The <a href="https://www.ssa.gov/oact/babynames/index.html">Social Security Administration</a> keeps track of the most popular names given each year as well as by state.  For this assignment, you will need 21 years of state name data.  You can use the <a href="nystate.tar.gz">nystate.tar.zip</a> file for 1990 to 2010 for New York state, or you may download a different state (or time range) from the <a href="https://www.ssa.gov/oact/babynames/limits.html">SSA data page</a>.
+
+<h4>Spam Data</h4>
+<p>
+This assignment uses  data collected and made publicly by 
+<a href="http://apache.org">Apache</a>, and can be found at:
+<blockquote>
+<a href="http://spamassassin.apache.org/publiccorpus/">http://spamassassin.apache.org/publiccorpus/</a>
+</blockquote>
+
+<p>For this assignment, you will need to download three different data sets:
+<ol>
+	<li> 20021010_easy_ham.tar.bz2 
+	<li> 20021010_hard_ham.tar.bz2 
+	<li> 20021010_spam.tar.bz2 	
+</ol>
+(If you are on a Windows machine, you might need a program like <a href="http://www.7-zip.org/">7-Zip</a> to decompress and extract the data files.)
+
+
+
+
+<p>
+We will use these data sets for later homework assignments.  Since scraping the data takes time, save these data sets to use again for the future programs.
+</div>
+
+
+
+<div>
+<h3>Assignment</h3>
+
+<p> 
+The work to be submitted differs by whether you are enrolled in the computer science or mathematics course.  
+</p>
+
+<table border=1>
+
+<tr>
+<th></th>
+<th>CMP 464 Homework:</th>
+<th>MAT 456 Homework:</th>
+</tr>
+
+
+
+<tr>
+<th>#1-2</th>
+<td colspan=2>
+Use regular expressions to search for name occurrences in the Social Security Administration data.  Choose a name that can be spelled 3 or more ways (for example, "Katherine" has alternative spellings of "Catherine", "Katharine", "Catharine", "Kathryn", etc.).  Use regex to combine the totals from different spellings and graph over 21 years of state data.
+<br><br>
+#1:  Submit your Python program that computes correlation and produces the graph as a <b>.py</b> file.<br>
+#2:  Submit a screen shot of the graphics window containing the plot.  Your graph should contain both datasets shown on the same plot, using different axis for each.  Include the correlation in the label of the graph. 
+</td>
+</tr>
+
+<tr>
+<th>#3-4</th>
+<td>
+Are collisions correlated to temperature?  Limit your zipcode data set to dates just in January 2016 (either write a quick filter program or download again with limited dates).  Using a dictionary structure of your choice, count the number of collisions that occurred in your zipcode on each day.  On same plot, plot the number of collisions and the daily temperature (see <a href="twoPlots.py">twoPlots.py</a> for graphing plots with different scales on same image).
+<br>
+<br>
+#3:  Submit your Python program as a <b>.py</b> file.<br>
+#4:  Submit a screen shot of the graphics window containing the plot.
+</td>
+<td rowspan=4>
+Submit your files as scans of (neatly) written answers or pdf-latex files:<br>
+<br>
+#3:  Say the number of students applying to graduate programs over the last 5 years has decreased by 2%, but the number of students applying to computer science is up by 3.9%, mathematics up by 4.5%, statistics up by 10.1%, and psychology up by 1%.  How is this possible?  Give population numbers for now and 5 years ago that could support these numbers.<br><br>
+#4:  Assume a rare disease occurs in 1 out of every 10,000 people.  A test has been developed that is 99.5% accurate.  That is, if you have the disease, it comes back positive  99.5% of the time and negative 0.5% of time.  Similarly, if you do not have the disease, it comes back positive 0.5% of the time and negative 99.5% of the time.  You have just tested positive for the disease.  With what probability do you have the disease? Justify your answer.<br> <br>
+#5:  You have two bags of candy:  one is half reds and half blues.  The other is two third reds and a third blues.  You choose a bag at random, and then a candy at random.  The candy is red.  What is the probability it came from the first bag?  Justify your answer.<br><br>
+#6:  Assume you flip a coin repeatedly until 2 tosses in a row are tails.  If the probability that the coin comes up is heads is some number 0 < p < 1.  What is the probability that the experiment ends on the nth toss?  <br>
+<br>
+Hints:  
+<ul>
+	<li> The coin tosses can be viewed as Bernoulli trials with probability of succes p.
+	<li> Work out the probabilities for small cases to see the pattern.
+	<li> Think about how to break down the (n+1)st case in terms of previous cases.
+</ul>
+</tr>
+
+<tr>
+<th>#5-6</th>
+<td>
+Extend the textbook's analysis of the spam data set to count plurals (all words of 4 or more characters that end in a single s) and -est words (all words of 5 or more letters ending in -est to count as the base word).  See the discussion in the textbook.
+<br>
+<br>
+#5:  Submit your Python program as a <b>.py</b> file.<br>
+#6:  Submit a text file with your results and conclusion-- how much more spam did you find with this extension?  Did this increase the amount of real mail ('ham') that was identified as spam? 
+</td>
+
+
+</tr>
+
+
+
+</table>
+
+
+</div>
+
+<div>
+<h3>Submitting Homework</h3>
+
+To submit your homework, log on to the Blackboard system, and go to "Homework".  For each part of the homework, there is a separate input box.  You may submit the homework as many times as you would like before the deadline. 
+</div>

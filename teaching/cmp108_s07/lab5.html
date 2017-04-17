@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 5, CMP 108, Lehman College-- CUNY Spring 2007</title>
+</head>
+<body bgcolor="#ffffff" link="#003399" vlink="#236b8e">
+<h1>Laboratory Exercise 5<br>
+</h1>
+<h2>CMP 108:&nbsp; Programming for Non-majors<br>
+Lehman College-- CUNY<br>
+9 March 2007</h2>
+<h2></h2>
+<hr>
+<h3>Light Sensors</h3>
+Today's lab is to try out the light seeking and
+line following programs discussed in lecture. Some of the constant
+values will need to be adjusted, depending on how close the light
+sensor is to the ground and whether you have natural or artificial
+light. We'll also write a program for counting the number of black
+lines crossed.
+<p><b>Design requirements:</b> This lab assumes that the
+two motors are wired to output ports A and C. Further, each motor is
+attached to a means of locomotion (legs, treads,
+feet, etc.). When using the light sensor, it is wired to sensor port
+2.&nbsp;
+</p>
+<p><b>Programs used:</b>
+Today's lab uses the light sensor, the touch sensors, the <a
+ href="guidenqc/linebot1.nqc">linebot1.nqc</a> and
+the <a href="seek.nqc">seek.nqc</a><a href="guidenqc/bumpbot1.nqc"></a>
+from lecture.
+</p>
+<p><b>Lab Set-up:</b> This lab uses the practice tracks that
+come with the robot documentation (a large white piece of paper with a
+black oval drawn on it in the bottom of the blue robot box). There
+should also be
+sets of 5 to 10 unequally spaced lines of black tape for testing the
+line-counting programs in the second half of the
+lab.&nbsp;<br>
+</p>
+Using the light sensor
+The second half of today's lab is to try out the light seeking and
+line following programs discussed in lecture. First, download
+<a href="seek.nqc">seek.nqc</a>. This program will seek out a
+bright light. If it doesn't find a light, it will beep, turn
+for random distance, and go forward.
+<p>If it's going forward and never beeping, check to see if the
+sensor is connected to input port 2. Next, increase the THRESHOLD
+constant in the program. If the robot is beeping
+and turning all the time, decrease the THRESHOLD constant. The values
+of the THRESHOLD constant will change depending on
+how close the light sensor is to the ground, the ground surface, and
+the type of light. To see the value of the light
+sensor, toggle the <tt>VIEW</tt> button on the robot to sensor port 2.
+</p>
+<p>While you have the light sensor on the robot, also try the <a
+ href="guidenqc/linebot1.nqc">linebot1.nqc</a> program. This program
+will follow a black line on the ground. Try it out on the test track
+that comes with the robot kit. Adjust this program for the current
+light level (change the light threshold constants as above).
+</p>
+<h3>Counting Lines</h3>
+Now that you have the idea of the light sensor, write a program
+that will cross 5 black lines, turn around, and then stop. Your
+program should beep as it crosses each line.
+<p>First, write a program that will beep when it sees a black line.
+You will probably have to adjust the THRESHOLD values several times,
+depending on the background lighting, before this works
+well. Next, incorporate this into a loop that stops after it
+sees five lines. You might find using a variable, <tt>lineCount</tt>,
+helpful in keeping track of the lines you've seen so far.
+</p>
+<h3>Finishing up for the Day<br>
+</h3>
+To get credit for this laboratory, you need to show and explain your
+programs to Prof. St. John, as well as demonstrate that they run using
+your robot.<br>
+<br>
+We must be out of the computer laboratory by 12:30pm.&nbsp; As such, if
+you
+are not ready to demonstrate your work by 12:15pm, you can do so in the
+next laboratory.&nbsp; Before leaving the room, make sure that all
+computers
+and monitors are turned off, that any paper and trash have been
+removed, and that all chairs are returned
+to their proper places.&nbsp; Also, make sure you pack up your IR tower
+in
+your shoe box, since they're difficult to replace.
+&nbsp; &nbsp;<!--
+<h3>If you finish early...</h3>
+
+We will be playing basketball in the next lab. The goal is to 
+a small object from the starting area, carry it to the basket,
+and drop it in.  One approach to this is to use a dump truck,
+like the one described in Chapter 9 of the textbook.   
+-->
+</body>
+</html>

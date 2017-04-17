@@ -1,0 +1,910 @@
+\documentstyle[12pt]{article}
+\pagestyle{empty}
+\textwidth=6.5 true in
+\textheight=9 true in
+\topmargin = 10pt
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\Large
+\begin{center}
+    Answer Key for Exam 3 \\
+    Computer Science 125 \\
+    Boise State University\\
+    Friday, 16 April 1999
+\end{center}
+}
+
+
+\begin{enumerate}
+
+%1 True or False:
+        \item True or False:
+        \begin{enumerate}
+            \item \underline{F} In Java, files can be opened
+                for reading, or writing, but not both.
+
+            \item \underline{T} Classes can have data fields that
+                are arrays of values.
+
+            \item \underline{F} Two dimensional arrays always 
+		have the same number of rows and columns.
+
+            \item \underline{T} All elements of an array are 
+		of the same type.
+
+            \item \underline{T} A Java source file can contain
+                any number of classes with package access.
+
+            \item \underline{F} Data fields can only be declared
+                as {\tt private}.
+
+            \item \underline{T} {\tt System.out} is a static
+                public variable.
+
+            \item \underline{T} {\tt Math.PI} is a static public variable.
+
+            \item \underline{T} After the following code is 
+		executed {\tt b[2]} has the value 3.
+\begin{verbatim}
+     int[] a = {1, 2, 3, 4, 5};
+     int[] b = a;
+     a[2] = 5;
+\end{verbatim}
+
+
+            \item \underline{T} The following code copies array {\tt a}
+                into array {\tt b}, in reverse order:
+\begin{verbatim}
+    for (int i = 0; i < a.length; i++)
+        b[i] = a[i];
+\end{verbatim}
+
+\end{enumerate}
+
+
+%2 Short Answer
+        \item 
+            \begin{enumerate}
+            	\item Write code that sets up an array {\tt cheese} to hold 
+		    10 strings.
+		    
+\begin{verbatim}
+String [] cheese = new String[10];
+\end{verbatim}		    
+            	   
+            	\item Write code that fills each element of the array 
+                    {\tt cheese} with the string {\tt "cheddar"}.
+		    
+\begin{verbatim}
+for (int i=0; i < 10; i++)
+  cheese[i] = "cheddar";
+\end{verbatim}		    
+            	   
+           	    
+            	\item Write code that opens, for reading, a text 
+		    file with the name, {\tt input.dat}.
+		    
+\begin{verbatim}
+TextInputStream ins = new TextInputStream("input.dat");
+\end{verbatim}		    
+            	   
+
+            	    
+            	\item Write code that opens a text file with the name, 
+                    {\tt output.dat}, for writing, and writes 
+                    {\tt "Hello, world"} to the file {\tt output.dat}.
+		    
+\begin{verbatim}
+TextOutputStream outs = new TextOutputStream("output.dat");
+outs.println("Hello, world");
+\end{verbatim}		    
+            	   
+            	    
+            \end{enumerate}
+
+
+
+%3 Draw $r = cos n *\Theta$ for n=2, n=5
+        \item Consider the function:
+\begin{verbatim}
+public void rosie(int n)
+{
+   Point oldPt = new Point(5,0);
+   Point newPt;
+
+   for (int i = 0 ; i < 100 ; i++)
+   {
+      double theta = i*n*Math.PI/100;
+      double r = 5*Math.cos(5*theta);
+      newPt = new Point(r*Math.cos(theta), r*Math.sin(theta));
+      new Line(oldPt, newPt).draw();
+      oldPt = newPt; 
+   }
+}
+\end{verbatim}
+
+{\bf There is a typo in the above function.  The intended function
+was:
+\begin{verbatim}
+public void rosie(int n)
+{
+   Point oldPt = new Point(5,0);
+   Point newPt;
+
+   for (int i = 0 ; i < 100 ; i++)
+   {
+      double theta = i*n*Math.PI/100;
+      double r = 5*Math.cos(theta);
+      newPt = new Point(r*Math.cos(theta), r*Math.sin(theta));
+      new Line(oldPt, newPt).draw();
+      oldPt = newPt; 
+   }
+}
+\end{verbatim}
+}
+
+         \begin{enumerate}
+             \item What is the output of {\tt rosie(2)}?\\	       	
+        	{\bf Output:}
+        	
+INSERT JPG
+
+        	{\bf Output of intended function:}
+        	
+INSERT JPG
+        	
+            \item What is the output of {\tt rosie(5)}?\\
+        	{\bf Output:}
+        	
+INSERT JPG
+
+        	{\bf Output of intended function:}
+        	
+INSERT JPG
+        	
+        	        	
+                \end{enumerate}
+
+
+%4
+        \item Given the input file, {\tt winnie.hum}:
+
+
+        	\begin{tabular}{|l|}
+            	\hline
+LINES WRITTEN BY A BEAR OF VERY LITTLE BRAIN \\
+On Monday, when the sun is hot \\
+I wonder to myself a lot: \\
+"Now is it true, or is it not, \\
+"That what is which and which is what?" \\
+            	\hline
+        	\end{tabular}
+
+{\em (From work of A.~A.~Milne)}
+
+	\begin{enumerate}
+
+	    \item What is the output of the following program:
+\begin{verbatim}
+import ccj.*;
+public class partA
+{ public static void main(String[] args)
+  { TextInputStream in = new TextInputStream("winnie.hum");
+    TextOutputStream out = new TextOutputStream("humming");
+    boolean alt = false;
+    while (!in.fail()) {  
+      String s = in.readLine();
+      if (!in.fail()) {
+        if ( alt ) {
+          out.println(s);
+          alt = !alt;
+        }
+        else {
+          System.out.println(s);
+          alt = !alt;
+        }
+      }
+    }
+  }
+}
+\end{verbatim}
+        	\begin{tabular}{|l|}
+		\hline
+        	{\bf Screen Output:}\\
+            	\hline
+            	\\
+LINES WRITTEN BY A BEAR OF VERY LITTLE BRAIN \\
+I wonder to myself a lot: \\
+"That what is which and which is what?" \\
+            	\\
+            	\hline
+        	\end{tabular}
+
+        	\begin{tabular}{|l|}
+            	\hline
+        	{\bf Contents of {\tt humming}:}\\
+            	\hline
+            	\\
+On Monday, when the sun is hot \\
+"Now is it true, or is it not, \\
+            	\\
+            	\hline
+        	\end{tabular}
+
+	    \item What is the output of the following program:
+\begin{verbatim}
+import ccj.*;
+public class partB
+{ public static void main(String[] args)
+   { TextInputStream in = new TextInputStream("winnie.hum");
+     TextOutputStream out = new TextOutputStream("humming");
+     int count = 0;
+     while (!in.fail()) {  
+       String s = in.readLine();
+       if (!in.fail()) {
+         out.println(s+"\n");
+         count++;
+       }
+     }
+     System.out.println("Count is " + count);
+  }
+}
+\end{verbatim}
+        	\begin{tabular}{|l|}
+            	\hline
+        	{\bf Screen Output:}\\
+            	\hline
+            	\\
+Count is 5 \\
+            	\\
+            	\hline
+        	\end{tabular}
+
+        	\begin{tabular}{|l|}
+            	\hline
+        	{\bf Contents of {\tt humming}:}\\
+            	\hline
+            	\\
+\\            	
+On Monday, when the sun is hot \\
+\\
+I wonder to myself a lot: \\
+\\
+"Now is it true, or is it not, \\
+\\
+"That what is which and which is what?" \\
+\\
+\\
+            	\hline
+        	\end{tabular}
+
+	\end{enumerate}
+
+
+%5
+        \item 
+            \begin{enumerate}
+            	\item Label each method and member 
+ 		variable in the class 
+		{\tt Faces} with {\bf C} if it
+            	is a class method or variable, or {\bf I} if it is an 
+                instance method or variable.
+\begin{verbatim}
+public class Faces {
+  Faces() {                                     // INSTANCE
+    center = new Point(0,0); 
+    radius = 5;
+    numFaces++;
+  }
+  Faces(Point p, int r) {                      // INSTANCE
+    center = p.clone(); 
+    radius = r;
+    numFaces++;
+  }
+  public void move(double dx, double dy) {     // INSTANCE
+    center.move(dx,dy);
+  }
+  public void draw() {                         // INSTANCE
+    new Circle(center, r).draw();
+    new Point(center.getX() - radius/2, 
+              center.getY() + radius/2).draw();
+    new Point(center.getX() + radius/2, 
+              center.getY() + radius/2).draw();
+    new Circle(new Point(center.getX(), 
+                         center.getY() - radius/2), 
+               radius/4).draw();
+  }
+  private Point center;                       // INSTANCE
+  private Point radius;                       // INSTANCE
+  private static int numFaces;                // CLASS
+}
+\end{verbatim}
+
+		\item After the following code is run:
+\begin{verbatim}
+    Faces me = new Faces();
+    Faces you = new Faces(new Point(3,3), 2);
+    Faces him = new Faces();
+\end{verbatim}
+		
+		    How many copies are there of the variable {\tt center}? 
+		    \begin{tabular}{|c|}
+		    \hline
+		    3\\
+		    \hline
+		    \end{tabular}
+		    
+		    How many copies are there of the variable {\tt numFaces}?
+		    \begin{tabular}{|c|}
+		    \hline
+		    1\\
+		    \hline
+		    \end{tabular}
+		    
+		    What is value of the variable {\tt numFaces}?
+		    \begin{tabular}{|c|}
+		    \hline
+		    3\\
+		    \hline
+		    \end{tabular}
+            \end{enumerate}
+
+
+%6
+        \item You are working as a programmer for a large company which 
+		is shipping a new version 
+        of its operating system next week.  While looking over the 
+		code you have written 
+        you suddenly notice that a section of the code which 
+		handles error checking is "commented out". 
+        Frantically you look over the test suits for the code, 
+		which were created by an outside consultant, 
+        and realize that none of them would have created the error 
+		that the code was 
+        supposed to handle.  The company has 10,000 boxes ready to ship.
+
+		\begin{enumerate}
+			\item What is the ethical dilemma that you face?
+
+			\item What are {\bf three} possible ways of 
+				dealing with the situation and 
+				what are possible ramifications of each?
+
+		\end{enumerate}
+
+
+%7
+        \item Write a {\bf complete applet} that plots the national budget
+	   surplus/deficit for the last thirty years.  
+	   The budget deficit numbers
+           are stored in a file called {\tt budget.in}: 
+
+        	\begin{tabular}{|l|}
+            	\hline
+            	1969 3\\
+            	1970 -3\\
+            	1971 -23\\
+            	1972 -23\\
+            	1973 -15\\
+		\vdots\\
+            	\hline
+        	\end{tabular}
+
+	   The first number on each line is the year, the second is the 
+           budget surplus or deficit in billions of dollars.  You may 
+           assume that the surplus/deficit is between than -300 to 100
+           billion dollars.
+
+           The output of your program should be a line graph of 
+           the data from 
+           the file {\tt budget.in}, where the x-axis is the year and
+           the y-axis is the amount of the surplus/deficit. 
+
+\begin{verbatim}
+import ccj.*;
+
+public class budget extends GraphicsApplet
+{
+  public void run()
+  {
+    setcoord(1969,100,1999,300);   //Resize to fit budget data
+    
+    TextInputStream in = new TextInputStream("budget.in");
+                                   //Open data file for reading
+    int year = 1969;               //The year in the data file
+    int surp_def = in.readInt();   //Get first surplus/deficit
+    Point newPoint = new Point(year,surp_def);//to set up initial point
+    Point oldPoint;                //Used to save previous point
+    
+    while ( !in.fail() )
+    {
+      year++;            
+      oldPoint = newPoint;
+      surp_def = in.readInt();
+      if ( !in.fail() )
+      {
+        newPoint = new Point(year, surp_def);
+        new Line(oldPoint, newPoint).draw();
+      }
+    }
+  }
+}
+\end{verbatim}          
+
+%8
+        \item The card game, Topdrops, is played on a deck of $n$
+           cards with the cards numbered $1,2,\ldots,n$.  For example,
+           if $n=5$, the cards are $1,2,3,4,5$.  The cards are laid
+           face up on the table.  For example:
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               4&2&1&5&3\\
+               \hline
+           \end{tabular}
+
+	   To play a round, you look at the number on the first card 
+           (in this case: 4) and reverse that number of cards from
+           left to right.  So, we reverse the first 4 cards to get:
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               5&1&2&4&3\\
+               \hline
+           \end{tabular}
+
+	   The game stops when the card with $1$ reaches the far
+           left.
+
+           (The rest of the example game is:\\
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               3&4&2&1&5\\
+               \hline
+           \end{tabular}
+	$\rightarrow$
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               2&4&3&1&5\\
+               \hline
+           \end{tabular}
+	$\rightarrow$
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               4&2&3&1&5\\
+               \hline
+           \end{tabular}
+	$\rightarrow$
+	   \begin{tabular}{|c|c|c|c|c|}
+               \hline
+               1&3&2&4&5\\
+               \hline
+           \end{tabular}.)
+
+
+      \begin{enumerate}
+         \item
+	   Write a recursive function that takes a hand 
+           (an array of integers),
+           prints the hand, and if the first card is not $1$, 
+           plays a round and calls itself with the new hand.
+\begin{verbatim}
+public static void play(int[] hand)
+{
+  if ( hand.length() != 0)
+  {
+    //Print the hand:
+    for ( int i=0 ; i < hand.length() ; i++)
+      System.out.print(hand[i]+ " ");
+    System.out.println();
+    
+    if ( hand[0] != 1 )
+    {
+      int j;
+      int cardsToReverse = hand[0];  //Storage space to do reverse
+      int[] temp = new int(CardsToReverse);
+      
+      //Reverse the cards:
+      for ( j=0 ; j < CardsToReverse ; j++ )
+        temp[i] = hand[i];
+      for ( j=0 ; j < CardsToReverse ; j++ )
+        hand[i] = temp[CardsToReverse - i - 1];
+      
+      //Call the function again:
+      play(hand);      
+    }
+  }
+}
+\end{verbatim}
+
+         \item  Write a program that prompts the user for the number
+           of cards and the initial hand, and then calls your
+           recursive function.
+
+\begin{verbatim}
+import ccj.*;
+
+public class CardGame
+{
+  public static void main(String[] args)
+  {
+    System.out.print("Enter number of cards:");
+    int numCards = Console.in.readInt();
+    int[] hand = new int[numCards];
+     
+    for (int i = 0 ; i < numCards ; i++)
+    {
+      System.out.print("Enter card "+(i+1) + ": ");
+      hand[i] = Console.in.readInt();
+    }
+    
+    play(hand);
+  }
+}
+\end{verbatim}
+
+
+      \end{enumerate}
+
+
+%9 Modify java and calculator programs:
+        \item Clearly mark all changes:
+                \begin{enumerate}
+                        \item Add two buttons to the program below.  The
+			    first button should have the label {\tt Black}
+                            and change the drawing color to black.  The
+	                    second button should have the label {\tt Purple}
+                            and change the drawing color to purple.
+\begin{verbatim}
+// This example is modified from the book "Java in a Nutshell" 
+// David Flanagan, O'Reilly & Associates, 1996.
+
+import java.applet.*;	//Load in the applet class
+import java.awt.*;	//Load in buttons and friends 
+
+public class OneColorDraw extends Applet {
+  private int last_x = 0;	//Keep track of x and y coordinate
+  private int last_y = 0;	//When the mouse is clicked
+  private Color current_color = Color.black;	//Current color
+  private Button clear_button;	//Declare space for the clear button
+  
+  
+//ADDED to store buttons:
+private Button black_button;
+private Button purple_button;
+    
+  // This function is called initially, when the program begins
+  // executing.  It initializes the graphics window.
+    
+  public void init() {
+    this.setBackground(Color.white);   //Set the background color
+  
+    // Create a button and add it to the graphics window
+    clear_button = new Button("Clear");//Make label say "Clear"
+    clear_button.setForeground(Color.black);
+    clear_button.setBackground(Color.lightGray);
+    this.add(clear_button);	//Necessary to use the button
+    
+//ADDED:
+black_button = new Button("Black");//Make label say "Black"
+black_button.setForeground(Color.black);
+black_button.setBackground(Color.lightGray);
+this.add(black_button);	//Necessary to use the button
+purple_button = new Button("Purple");//Make label say "Purple"
+purple_button.setForeground(Color.black);
+purple_button.setBackground(Color.lightGray);
+this.add(purple_button);	//Necessary to use the button
+    
+       
+  }
+    
+  // Called when the user clicks the mouse to start a scribble
+  // Sets the values of variables last_x and last_y to mark the
+  // point of the click.
+    
+  public boolean mouseDown(Event e, int x, int y)
+  {
+    last_x = x; last_y = y;//Store coordinates when mouse clicked
+    return true;	//and don't do anything else (that is, the
+        		//"event handled" is true)
+  }
+    
+// Continued on the next page -->
+\end{verbatim}
+
+\begin{verbatim}
+  // Called when the user draws with the mouse button down
+  // Draws a line between the points (last_x, last_y) and (x, y)
+    
+  public boolean mouseDrag(Event event, int x, int y)
+  {
+    Graphics g = this.getGraphics(); //Necessary to draw 
+    g.setColor(current_color);	 //Line will be current_color
+    g.drawLine(last_x, last_y, x, y);//Draws the line
+    last_x = x;	//Saves (x,y) in last (last_x, last_y), so that
+    last_y = y;	//the next line drawn will start from these points
+    return true;	//and don't do anything else ("event handled").
+  }
+
+  // Called when the user clicks the Clear button, and 
+  // clears the graphics window.
+    
+  public boolean action(Event event, Object arg) {
+    //If Clear button was clicked, clear graphics window
+    if (event.target == clear_button) {
+      Graphics g = this.getGraphics();
+      Rectangle r = this.bounds();
+      g.setColor(this.getBackground());
+      g.fillRect(r.x, r.y, r.width, r.height);
+      return true;
+    }
+    
+//ADDED:
+else if (event.target == black_button)
+{
+  current_color = Color.black;
+  return true;
+}
+else if (event.target == purple_button)
+{
+  current_color = Color.purple;
+  return true;
+}
+    
+    // Otherwise, let the superclass handle it.
+    else return super.action(event, arg);
+  }
+}
+\end{verbatim}
+
+                        \item Add square root, {\tt sqrt}, 
+			    to the {\tt expr} package
+			    below.  {\tt sqrt} returns
+			    the square root of its argument.
+\begin{verbatim}
+package expr;
+import ccj.*;
+
+public class Expression
+{ public Expression(String expr)
+  { parser = new Parser(expr);
+    opstack = new java.util.Stack();
+    numstack = new java.util.Stack();
+  }
+  public double eval()
+  { while (true)
+    { int type = parser.nextTokenType();
+      String s = parser.nextToken();
+      if (type == Parser.OPERATOR)
+      { if (opstack.empty())
+          opstack.push(s);
+        else
+        { String old = (String)opstack.pop();
+          if (Parser.precedence(s) > Parser.precedence(old))
+            opstack.push(old);
+          else
+            evalOperator(old);
+          opstack.push(s);
+        }
+      }
+      else if (type == Parser.LEFT_PAREN)
+        opstack.push(s);
+      else if (type == Parser.RIGHT_PAREN)
+      { boolean more = true;
+          while (more)
+          { if (opstack.empty())
+              throw new IllegalArgumentException("Too many )");
+            String old = (String)opstack.pop();
+            if (old.equals("(")) more = false;
+            else evalOperator(old);
+          }
+      }
+      else if (type == Parser.END_OF_STRING)
+      { while (!opstack.empty())
+          { String old = (String)opstack.pop();
+            if (old.equals("("))
+              throw new IllegalArgumentException("Too many (");
+            else evalOperator(old);
+          }
+          if (numstack.empty())
+            throw new IllegalArgumentException("Syntax error");
+          double x = Numeric.parseDouble((String)numstack.pop());
+         
+          if (!numstack.empty())
+            throw new IllegalArgumentException("Syntax error");
+          return x;
+      }
+      else if (type == Parser.NUMBER)
+        numstack.push(s);
+      else
+        throw new IllegalArgumentException("Bad token");
+    }
+  }
+
+  private void evalOperator(String op)
+  { if (numstack.empty())
+      throw new IllegalArgumentException("Syntax error");
+    double y = Numeric.parseDouble((String)numstack.pop());
+    if (numstack.empty())
+      throw new IllegalArgumentException("Syntax error");
+      
+      
+//ADDED:
+if (op.equals("sqrt") 
+{
+  if (x < 0)
+    throw new IllegalArgumentException("Negative square root");
+  z = Math.sqrt(x);
+  numstack.push("" + z);
+  return;
+}
+    
+    double x = Numeric.parseDouble((String)numstack.pop());
+
+    double z;
+    if (op.equals("^")) z = Math.pow(x, y);
+    else if (op.equals("*")) z = x * y;
+    else if (op.equals("/"))
+    { if (y == 0)
+        throw new IllegalArgumentException("Divide by 0");
+      else z = x / y;
+    }
+    else if (op.equals("+")) z = x + y;
+    else if (op.equals("-")) z = x - y;
+    else
+      throw new IllegalArgumentException("Bad token");
+    numstack.push("" + z);
+  }
+
+  private java.util.Stack opstack;
+  private java.util.Stack numstack;
+  private Parser parser;
+}
+\end{verbatim}
+
+\begin{verbatim}
+
+class Parser
+{ Parser(String toParse)
+  { input = toParse;
+    pos = 0;
+  }
+
+  public int nextTokenType()
+  { skipWhiteSpace();
+    if (pos >= input.length()) return END_OF_STRING;
+    String ch = input.substring(pos, pos + 1);
+    if (ch.equals("(")) return LEFT_PAREN;
+    if (ch.equals(")")) return RIGHT_PAREN;
+    if ("+-*/^".indexOf(ch) != -1) return OPERATOR;
+    if ("1234567890".indexOf(ch) != -1) return NUMBER;
+    
+//ADDED:
+if (ch.equals("sqrt")) return OPERATOR;
+    
+    return BAD_TOKEN;
+  }
+
+  public String nextToken()
+  { int i = nextTokenType();
+    if (i == END_OF_STRING || i == BAD_TOKEN) return "";
+    if (i == NUMBER)
+    { int end = pos + 1;
+      boolean more = true;
+      while (more && end < input.length())
+        { String ch = input.substring(end, end + 1);
+          if (ch.equals(".") || "1234567890".indexOf(ch) != -1)
+             end++;
+          else
+             more = false;
+        }
+      String r = input.substring(pos, end);
+      pos = end;
+      return r;
+    }
+    else
+    { 
+
+//ADDED:
+if ( input.substring(pos,pos+4).equals("sqrt") )
+{
+  String r = input.substring(pos, pos + 4);
+  pos = pos + 4;
+  return r;
+}
+
+      String r = input.substring(pos, pos + 1);
+      pos++;
+      return r;
+    }
+  }
+\end{verbatim}
+
+\begin{verbatim}
+   
+  public static int precedence(String operator)
+  { if (operator.equals("+") || operator.equals("-")) 
+      return 1;
+    if (operator.equals("*") || operator.equals("/")) 
+      return 2;
+    if (operator.equals("^")) return 3;
+    
+//ADDED:
+if (operator.equals("sqrt") return 4;
+    
+    return 0; 
+  }
+
+  public static final int OPERATOR = 1;
+  public static final int NUMBER = 2;
+  public static final int LEFT_PAREN = 3;
+  public static final int RIGHT_PAREN = 4;
+  public static final int END_OF_STRING = 5;
+  public static final int BAD_TOKEN = 6;
+
+  private void skipWhiteSpace()
+  { while (pos < input.length() 
+      && input.substring(pos, pos + 1).equals(" "))
+        pos++;
+  }
+
+  private String input;
+  private int pos;
+}
+\end{verbatim}
+                \end{enumerate}
+            
+
+%10
+        \item  Design a class {\tt GradeBook}.  The {\tt GradeBook} must 
+		keep track of student names (first, middle and last),
+		student ID numbers (9 digits), and for each student
+		up to 10 quiz scores, up to 30 program scores, and
+		4 exam scores.	Also keep the current grade where
+		quizzes are 20\%, programs are 40\% and exams are
+		40\% of the total grade.
+
+		Your design needs to include the definitions of
+		the data for the class, the javadoc comments and
+		definitions for the methods including constructors.
+		{\bf Do NOT write the code for any of the methods!}
+		
+\begin{verbatim}
+
+The definitions for the data:
+
+  private String first;
+  private String middle;
+  private Strirng last;
+  private int[] quizes;
+  private int[] programs;
+  private int[] exams;
+
+A constructor with javadoc comment:
+/**
+ * The default constructor which allocates space for 10 quizzes,
+ * 30 programs, and 4 exams.  Sets all strings to null and all 
+ * numbers to 0
+ **/
+public GradeBook()
+
+A method with javadoc comment:
+
+/**
+ * Calculates and returns the grade using the following 
+ * formula: .2*(quiz total) + .4*(program total) + .4*(exam total).
+ * Each total is calculated by summing up the values in the array
+ * and dividing by the length. 
+ *
+ * @return the overall grade (which ranges from 0 to 100)
+ **/
+public double CalculateGrade()
+
+
+\end{verbatim}
+
+\end{enumerate}
+\end{document}
+

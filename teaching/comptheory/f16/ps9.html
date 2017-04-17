@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 9 for CMP 416/685: Computability Theory, CUNY, Fall 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<img id="bookImage" alt="cover picture" src="../cover.gif"
+ width="90"><br>
+ 
+<h2>Problem Set 9:  Decidable Languages</h2>
+<h3>Computer Science 416/685: Computability Theory<br>
+Lehman College, City University of New York<br>
+Fall 2016<br><br></h3>
+</div>
+
+
+<div>
+<font color="#ff0000">Due Dates: &nbsp;Oral presentations of material begin on 22 November.<br>
+Written descriptions of material presented due one week after presentation.</font><br>
+</div>
+
+
+
+<div>
+
+<b>Topics:</b> Decidable Languages (Chapter 4).<br>
+<br>
+An integral part of this class is understanding and presenting the problems
+assigned as homework. Everyone is expected to do all the problems,
+but we will take turns on who presents the problem solutions to the class
+(every 2-3 weeks, depending on the number of students in the class). Within
+a week of presenting a problem solution to the class, you must submit a written
+description of it, via the Blackboard system. The written solutions
+will be posted on the Blackboard website for the class, so, they can used
+by everyone to study for the exams. Since it's hard to write
+down answers that are concise and are easily readable by all, if you wish
+to improve a grade on any problem, you may resubmit it for grading.
+</div>
+
+
+
+<div>
+<h2>Undergraduate Problems</h2>
+All students enrolled should complete the following:<br>
+<br>
+<ol>
+
+	<li> Answer the following for the DFA, M.  Explain your answers.
+	<br>
+	<img src = "dfa5.png">
+	<ul>
+		<li> Is &lt;M, aacc&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M, aac&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M&gt; &isin; A<sub>DFA</sub>?		
+	</ul>
+	<br>
+
+	<li> Answer the following for the DFA, M.  Explain your answers.
+	<br>
+	<img src = "dfa2.png">
+	<ul>
+		<li> Is &lt;M, acac&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M, acac&gt; &isin; A<sub>REX</sub>?
+		<li> Is &lt;M,M&gt; &isin; EQ<sub>DFA</sub>?		
+	</ul>
+	<br>
+	
+	<li> Answer the following for the DFA, M.  Explain your answers.
+	<br>
+	<img src = "dfa6.png">
+	<ul>
+		<li> Is &lt;M, aacc&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M, aac&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M&gt; &isin; E<sub>DFA</sub>?		
+	</ul>
+	<br>
+	
+	<li> Answer the following for the DFA, M<sub>1</sub> and M<sub>2</sub>.  
+	Explain your answers.
+	<p>
+	<table>
+		<tr><th>M<sub>1</sub>:</th><td></td><th>M<sub>2</sub>:</th></tr>
+		<tr><td></td><td><img src = "dfa3.png"></td><td></td><td><img src = "dfa4.png"></td><tr>
+	</table>
+	<ul>
+		<li> Is &lt;M<sub>1</sub>, abb&gt; &isin; A<sub>DFA</sub>?
+		<li> Is &lt;M<sub>2</sub>, abb&gt; &isin; A<sub>DFA</sub>?		
+		<li> Is &lt;M<sub>1</sub>,M<sub>2</sub>&gt; &isin; EQ<sub>DFA</sub>?	
+	</ul>
+	<br>
+
+  <li> Let:
+  <blockquote>
+  ALL<sub>DFA</sub> = {&lt;A&gt; | A is a DFA that recognizes &Sigma;*} 
+  </blockquote>
+  Show that ALL<sub>DFA</sub> is decidable 
+  
+  (assume that the alphabet is {0,1}).</li>
+
+  <li> Let:
+  <blockquote>
+  A&epsilon;<sub>CFG</sub> = {&lt;G&gt; | G is a CFG that generates &epsilon;} 
+  </blockquote>
+  Show that A&epsilon;<sub>CFG</sub> is decidable 
+  
+  (assume that the alphabet is {0,1}).</li>
+  
+</ol>
+</div>
+
+<div>
+<h2>Graduate Problems</h2>
+Students enrolled for graduate credit, should complete all the undergraduate problems, as well as:<br>
+<br>
+<ol>
+
+	<li> Consider the problem of testing whether a DFA and a regular expression are equivalent.  Express the problem as a language and show that it is decidable.
+  <li> Let 
+  <blockquote>
+  A = {&lt;R,S&gt; | R and S are regular expressions and L(R) &subseteq; L(S)}
+  </blockquote>
+  <p>Show that A is decidable
+  (assume that the alphabet is {0,1}).</li>
+  
+</ol>
+</div>
+</body></html>

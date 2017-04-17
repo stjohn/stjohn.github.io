@@ -1,0 +1,76 @@
+<title>FAQ for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Frequently Asked Questions</h1>
+<h2>CMP 420: Database Systems<br>
+Lehman College, City University of New York<br>
+Spring 2002</h2>
+
+<hr>
+
+<h3>Exam 1</h3>
+
+<ol>
+    <li> <tt>
+	In exam rule you said that an A4 piece of paper is allowed 
+	filled with notes etc Question - Can the notes fill both 
+	sides of the paper or just one side?
+	</tt> 
+
+	<p>
+	You can use both sides of the paper for notes.
+        <p>
+
+    <li><tt>can you send me the answers for question 9 & 10 for the 
+	example exam you have on your webpage?(exam 1 given by prof 
+	St john)
+	</tt>
+	<p>
+	Problem 9 is just definitions from the textbook.  I can type 
+	them in for you, but they'll be easier to read from the textbook.
+
+	<p>
+	Problem 10:  Given the relation schema R(A,B,C,D) with the 
+	functional dependencies: AB->C, BC->D, CD->A, and AD->B.  
+
+	<p>
+	a) Indicate all the BCNF violations:
+
+	<p>
+	First, find the closures of each subset of attributes.
+	Note that the closure of the singletons are just the singletons:<br>
+		A+ = A, B+ = B, C+ = C, and D+ = D.<br>
+	For the subsets of size two, break into two groups: those who are
+	the left hand side of a functional dependency (those turn out to
+	be keys) and the rest whose closure are themselves:<br>
+		AB+ = BC+ = CD+ = AD+ = all attributes<br>
+		AC+ = AC, BD+ = BD.<br>
+	The subsets of size three are all extensions of the keys of
+	size two (ABC, ABD, ACD, and BCD) are superkeys.
+
+	<p>
+	So, for each of the functional dependencies above, the left
+	hand side is a key, so they are all in BCNF.
+
+	<p>
+	The question also says to consider the derived dependencies, that
+	is all functional dependencies that follow from the ones given.
+	Note that any derived functional dependency must start with a
+	left hand side of those given.  Since the left hand sides are all
+	keys, any derived key must also be in BCNF.
+
+	<p>
+	b) Decompose the relations, as necessary, into a collection of relations
+	that are in BCNF.
+
+	<p>
+	R is in BCNF, so, no decomposition is needed.
+	
+	<p>
+</ol>
+
+</body>
+
+<hr>
+<font size=-2> (Last updated: 11 March 2002)</font>

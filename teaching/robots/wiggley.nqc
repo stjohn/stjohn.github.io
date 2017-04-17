@@ -1,0 +1,36 @@
+// wiggley.nqc: a program that demonstrates functions with 
+//	parameters passed by value
+
+task main() {
+  int i;
+ 
+  i=5;
+  wiggle(i);
+  Wait(200);
+  i++;
+  wiggle(i);
+  for (i=0; i<5;i++)
+  {
+	PlaySound(SOUND_CLICK);
+	Wait(10);
+  }
+}
+
+void wiggle(int count) 
+{
+  int j;
+  for(j=1;j<=count;j++)
+  { 
+	OnFwd(OUT_A);
+ 	OnRev(OUT_C);
+	pause(20);
+	OnFwd(OUT_C);
+ 	OnRev(OUT_A);
+	pause(20);
+	Off(OUT_A + OUT_C);
+    }
+}
+
+void pause(int time) {
+ 	Wait(time);
+}

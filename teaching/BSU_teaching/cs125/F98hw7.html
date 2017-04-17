@@ -1,0 +1,104 @@
+<title>Homework 7 for CS 125, Boise State University</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>Homework 7 for Computer Science 125</h1>
+<h2>Introduction to Computer Science</h2>
+<h2>Boise State University, Fall 1998</h2>
+
+<hr>
+<font color="red">This homework is due by midnight, Wednesday,
+	21 October 1998.</font>  See the directions 
+	in <a href="hw1.html">Homework 1</a>
+	to electronically submit homework.
+
+<hr>
+<h2>Warm-up and Practice Problems</h2>
+
+These are not be turned in.  They are to help you understand
+the material, and some will appear on exams.
+
+<ul>
+	<li> CCJ: Exercise R8.4, p 361.
+	<li> CCJ: Exercise R8.9, p 361.
+	<li> CCJ: Exercise R9.1, p 413.
+	<li> CCJ: Exercise R9.2, p 413.
+	<li> CCJ: Exercise R9.3, p 413.
+	<li> Ethics: Scenario 4, p 233-236.  Who is responsible for
+		the construction accident?  If more than one party
+		is responsible, rank them in order of responsiblity.
+		Justify your answer.
+</ul>
+
+<h2>Graded Problems</h2>
+<ol>
+	
+<p>
+    <dt><b>P18.</b> Modify the 
+    	<a href="plain.html">OneColorDraw</a> applet to 
+	allow the user to change colors that are drawn.
+	Add at least 3 choices of colors and buttons for
+	each choice.  For example, if you choose the
+	colors red, blue, and black, you should have buttons
+	that when pressed, change the color that is drawn
+	to red, blue, or black, respectively.  Your applet
+	should also have a clear button like OneColorDraw.
+	For example:
+<p>
+	<applet code="ThreeColorDraw.class"
+		width = 300 height = 300>
+	</applet>
+<p>
+    	Submit this as program 18 
+	using the electronic submission.  Please call the
+	file (and the class) Program18.  
+	Include an HTML	file in the directory called Program18.html
+	that displays your applet.
+
+<p>
+    <dt><b>P19.</b> Write a class called <tt>PuzzlePiece</tt>.
+    	A puzzle piece will have a label which will be a number
+	between 1 and 15 and the location of the puzzle piece (which
+	will be the coordinates of the upper left corner).  
+	Your class should contain three 
+	constructors: 
+	<ul>
+		<li> a default constructor that sets the 
+		coordinates to (0,0) and the label to 0, 
+		<li> a constructor that has a single argument
+		that is assigned to label and sets the 
+		coordinates to (0,0), and
+		<li> a constructor that takes three arguments:
+		the label, the x-coordinate, and the y-coordinate
+		(in that order) and sets the values.
+	</ul>
+	<p>
+    	<tt>PuzzlePiece</tt> should contain a move method:
+	<pre>    public void move(int dx, int dy)</pre>
+	that changes the position by <tt>dx</tt> units in the x 
+	direction and <tt>dy</tt> units in the y direction.
+	Finally, you should have a draw method:
+	<pre>    public void draw()</pre>
+	that draws a square containing the label, using
+	the object's coordinates for the upper left corner.
+	<p>
+	Write a second class called Program19 that uses 
+	<tt>PuzzlePiece</tt> and demonstrates its features.
+    	Submit this as program 19 
+	using the electronic submission.  Please call the
+	file (and the class) Program19.  
+	Include an HTML	file in the directory called Program19.html
+	that displays your applet.
+
+<p>
+    <dt><b>P20.</b> P6.18, p 287.  Submit this as program 20
+        using the electronic submission.  Please call the
+	file (and the class) Program20.  Your program should
+	calculate the result to six digits after the decimal
+	point.
+
+</body>

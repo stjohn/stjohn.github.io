@@ -1,0 +1,16 @@
+// display_ok.nqc
+
+int displayValue = 0;
+
+task main()
+{
+	int x;
+
+	ClearTimer(0);
+	SetUserDisplay(displayValue, 0);
+	while(true)
+	{
+		x = 1 + Timer(0);
+		displayValue = x;
+	}
+}

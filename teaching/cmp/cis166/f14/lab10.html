@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 10, CIS 166, Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+This lab focuses on decisions and gives more techniques for finding errors.
+</div>
+
+
+<div>
+In Lab 3, we started with a program that drew a square to the screen, using turtle graphics:
+<pre>
+import turtle
+
+def main():
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(4):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(90)        #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+Recall, our turtle, named <tt>daniel</tt>, moved forward 100 steps, made a 90 degree right
+turn, and then repeated these actions for a total of 4 times.  Let's modify it, so, that it 
+will draw an 8 sided polygon:
+<pre>
+import turtle
+
+def main():
+	numSides = 8                #Number of sides of the polygon
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)	#Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+To make it easier to modify, we stored the number of sides in just one place (the variable
+named <tt>numSides</tt>) and use it in range statement in the for-loop as well as calculating
+the amount needed to turn each time.
+
+<p>Run the program to make sure there's no errors.  On the graphics window, you should see
+an octogon (8-sided) figure.  How would you make an octogon like this:
+<p>
+<img src="redGreen8.jpg">
+
+<p>
+Notice that the edges change colors, the first, third, fifth, and seventh edges are red;
+while the second, fourth, sixth, and eighth edges are green.  Since we start counting with
+0, we have that the edges are red when the loop index variable <tt>i</tt> is 0,2,4,6.  The edges
+are green when the loop index variable is 1,3,5,7.  
+
+<p>To make the colors change, we need to test for when the loop index variable is even.  
+A way to say that mathematically is <tt>i</tt> is even when <tt>i</tt> divided by 2 has no remainder.
+In python, we can write that as:
+<pre>
+	if i % 2 == 0:
+		daniel.color("red")
+</pre>
+
+Let's add that to our program:
+<pre>
+#Blinking turtle for introductory programming lab
+
+import turtle
+
+def main():
+    numSides = 8
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        if i % 2 == 0:
+            daniel.color("red")      
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)  #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+What does that do?  How do we make the color green for when <tt>i</tt> is odd?  Let's add in an 
+<tt>else</tt> to our <tt>if</tt> statement:
+<pre>
+	if i % 2 == 0:
+		Turn daniel red
+	else:
+		Turn daniel green
+</pre>
+Putting all the pieces together, we get:
+<pre>
+#Blinking turtle for introductory programming lab
+
+import turtle
+
+def main():
+    numSides = 8
+    daniel = turtle.Turtle()    #Set up a turtle named "daniel"
+    myWin = turtle.Screen()     #The graphics window
+
+    #Draw a square
+    for i in range(numSides):
+        if i % 2 == 0:
+            daniel.color("red")
+        else:
+            daniel.color("green")        
+        daniel.forward(100)     #Move forward 10 steps
+        daniel.right(360/numSides)  #Turn 90 degrees to the right
+
+    myWin.exitonclick()         #Close the window when clicked
+    
+main()
+</pre>
+
+Try the program to make sure that the colors change, depending on the value of <tt>i</tt>.
+Next, change your program to make a 10-sided polygon (hint:  you only need to change one line).
+
+</div>
+
+<div>
+<h3>Finding Errors, II</h3>
+
+<p>In <a href="lab6.html">Lab 6</a>, we looked at some common syntax errors and how to fix them.  Most of those errors were missing punctuation (such at colons, quotes, or plus signs).  Let's look at a few more errors that occur when using conditionals, loops, and functions:
+
+<pre>
+# errors2.py-- modified from Zelle
+# recursions.py
+#   A collection of simple recursive functions from Zelle, 2nd Edition
+#   (Some also include looping counterparts).
+
+def fact(n)
+    # returns factorial of n
+    if n == 0:
+        return 1
+    else
+        return n * fact(n-1
+
+def reverse(s):
+    # returns reverse of string s
+    if s == "":
+        return s
+    elif:
+        return reverse(s[1:]) + s[0]
+
+def anagrams(s):
+    # returns a list of all anagrams of string s
+    if s == "":
+        return [s]
+    else:
+        ans = []
+        for w in anagrams(s[1:]):
+            for pos in range(len(w)+1):
+                    ans.append(w[:pos]+s[0]+w[pos:])
+        return ans
+
+def loopFib(n):
+    # returns the nth Fibonacci number
+    curr = 1
+        prev = 1
+    for i in range(n-2):
+        curr, prev = curr+prev, curr
+    return curr
+
+def main():
+    n = eval(input("Enter a number: "))
+    s = input("Enter a string: ")
+    print(n+"!= ", fact(n), "or, loopFig(n))
+    print(s, "reversed is: ", reverse(s))
+    print("\n anagrams: ", anagrams(s))
+
+main()
+
+</pre>
+
+<p>Load the program into IDLE and run the program.  A dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="errors2Window1.jpg">
+<br>
+<p>
+We have seen this one before, it's a missing colon (":") at the end of the function definition.  Add it in and run again.
+<br>
+<img src="errors2Window2.jpg">
+<br>
+<p>
+Again, we get an invalid syntax.  What's wrong here?  (Hint: same as the last one).  Fix the error, and let's run the program again:
+<br>
+<img src="errors2Window3.jpg">
+<br>
+<p>
+This one is different.  IDLE has highlighted the word <tt>def</tt>, and yet that seems to spelled correctly.  A general rule to follow: if you do not see an error on the current line, look above (usually for missing quotes or closing parenthesis).  On the previous line, the function call to <tt>fact()</tt> is missing the closing parenthesis.  Add it, and run the program again:
+<br>
+<img src="errors2Window4.jpg">
+<br>
+<p>
+This one is a bit harder-- all the keywords are spelled correctly and there's no missing colons, parenthesis, or quotes.  What's wrong?  Python expected the word <tt>else</tt> (<tt>elif</tt> is only used when you need multiple tests in multi-way decision).  Replace <tt>elif</tt> with <tt>else</tt> and try again:
+<br>
+<img src="errors2Window5.jpg">
+<br>
+<p>
+The message says:  <tt>unexpected indent</tt>.  The line does seem to be indented for no reason (i.e. it's not part of a block of code in a loop or decision construct).  Remove the extra indent and continue:
+<br>
+<img src="errors2Window6.jpg">
+<br>
+<p>
+This is a common error.  In plain English, it means that the end of the line ("EOL") was reached before the string finished.  In other words, the string is missing its ending quotes.  Add it in (right after the word <tt>or</tt>) and run the program again.  
+
+<p>It now compiles!  But we need to test it to make sure no run-time errors remain:
+<br>
+<img src="errors2Window7.jpg">
+<br>
+<p>
+When reading the traceback message (all the red text), go to the very last line and see what it says.  The message says we cannot use <tt>+</tt> for <tt>'int'</tt> and <tt>'string'</tt>.  We only used <tt>+</tt> once in the line to concatenate <tt>n</tt> to a string.  Since we want <tt>n</tt> to eventually be a string and printed to the screen, let's change it to a string (by using the <tt>str()</tt> function):
+<pre>
+print(str(n)+"!= ", fact(n), "or", loopFig(n))
+</pre>
+<p>
+Running it again, a new run-time errors appears:
+<br>
+<img src="errors2Window8.jpg">
+<br>
+<p>
+The message says that IDLE cannot find <tt>loopFig()</tt>.  Scanning through the file, it looks we misspelled it!  The function is called <tt>loopFib()</tt>.  Fix the misspelling in the <tt>main()</tt> and try again...
+<br>
+<img src="errors2Window9.jpg">
+<br>
+<p>
+Success!  The program accepted input, processed it, and outputted it to the screen.  Try with a couple of different inputs to test how it works.
+
+
+<div>
+
+</div>
+
+
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+</html>

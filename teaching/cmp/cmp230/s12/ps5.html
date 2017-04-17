@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 5, CMP 230, Programming Methods 1, Lehman College, CUNY, Spring 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Problem Set 5<br>
+CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Due Date:  midnight, Friday, 9 March.</span></p>
+<p>
+This assignment focuses on computing with strings, Chapter 5.
+</p>
+
+</div>
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+<ol>
+
+<!--
+	<li> Write a program that prompts the user to enter 5 numbers and 
+		then writes the minimum and maximum values entered to the screen.
+	<li> Chapter 7, #5
+	<li> Chapter 7, #7
+	<li> Chapter 7, #11 
+	<li> Chapter 7, #17 
+
+	<li> Chapter 5, #4 (acronym):  Note that the phrase could be of
+		any length.
+	<li> Chapter 5, #7 (Caesar cipher)
+	<li> Chapter 5, #9 (number of words in a sentence)
+	<li> Chapter 5, #10 (average word length in a sentence)
+	<li> Chapter 5, #16 (quiz score histogram)
+-->
+	<li> Write a program that prompts the user to enter a list of numbers and
+		then writes the minimum and maximum values to the screen.  Note that 
+		the list of numbers can be of any length and should be separated by commas.
+	<li> Chapter 5, #4 (acronym):  Note that the phrase could be of
+		any length.
+	<li> Write a program that prompts the user for the name of an input file. 
+		Your program should then write to the screen the number of characters in the file.
+ 
+	<li> Write that asks the user for a file name.  You may assume that the file has
+		the following format:
+		<pre>
+		12.3 10
+		99 84.3
+		0.3 20
+		</pre>
+		(two numbers per line).  Your program should use a graphics window to display the 
+		information in the file.  In particular, your program should read each line from the file 
+		and display a circle at the coordinates indicated.  If the first line is <tt>12.3 10</tt>
+		should draw a small circle at <tt>(12.3, 10)</tt> on the graphics window.
+		
+		<p>
+		You may assume that all points have coordinates between 0 and 100 and set the 
+		coordinates of the window to be bounded by 0 and 100 in both directions.
+	<li> The Social Security Administration maintains 
+	<a href="http://www.ssa.gov/OACT/babynames/limits.html">lists</a> of baby names 
+		indexed by state and year.  Write a program that asks the name of a file
+		and a year, prints how many years that name occurred.
+		
+		<p>Each of these files have the same format:  on each line
+		there is two characters for the state, followed by 'M' or 'F' for
+		gender, the year, the name, and then the number of babies given that
+		name that year.  For example, 
+		
+		<pre>
+ NYM1910Herbert,83
+ NYM1910Leo,80
+ NYM1910Andrew,79
+ NYM1910Ernest,79
+ NYM1910Milton,79
+		</pre>
+		is part of the file <a href="../f11/NY.TXT">NY.TXT</a> containing the data
+		for New York State.  Note that in 1910, there were 83 boys named Herbert,
+		80 boys named Leo, and 79 boys eached named Andrew, Ernest, and Milton.
+		
+		<p>If the user types in a name that has longer versions in the file, your program
+		should print out all the matches.  For example, if the user wants to search for
+		<tt>Chris</tt> and the file contains longer versions of the name (i.e. <tt>Christina</tt>,
+		<tt>Christopher</tt>, and <tt>Christine</tt>), your program should count all of these.
+		Note that this simplifies the problem since this is the default action of the string
+		method <tt>count()</tt>.
+</ol>
+
+For more information on using Blackboard, see the <a href="ps1.html">first 
+problem set</a>.
+</div>
+
+<div>
+
+<h3>General Notes</h3>
+
+<ul>
+	<li> Two of the five submitted programs will be chosen at random for grading.  
+	<li> Assignments must be <b>submitted by noon</b> on the date due. 
+	<li> Every program should begin with a comment that includes your name and a brief description.
+	<li> No credit will be given for a late assignment. 
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+
+<ul>

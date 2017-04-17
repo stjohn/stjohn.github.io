@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head> <title>Favorite Food</title>
+    <link type="text/css" rel="stylesheet" 
+      href="../food.css" />
+  </head>
+  <body>
+    <div id="header"><h1>My Favorite Foods</h1></div>
+    <div id="sidebar">
+      <p> Recipes for both of these can be found in 
+      books on Italian and Spanish cooking at 
+      <a href="http://amazon.com">Amazon</a>.</p>
+    </div>
+    <div id="pesto"> <h2>Pesto</h2>
+      <p><a href="pesto.html">Pesto</a> is made from 
+      fresh basil, garlic, olive oil, and salt.</p>
+    </div>
+    <div id="dulce"> <h2>Dulce de Leche</h2>
+      <p>The ice cream, <a href="dulce.html>Dulce
+        de Leche</a>, is made from milk and 
+        sugar and has a smooth caramel taste.</p>
+    </div>
+    <div id="footer">
+       <p>Katherine St. John,  <span class="email">stjohn@lehman.cuny.edu</span></p>
+    </div>
+  </body>
+</html> 

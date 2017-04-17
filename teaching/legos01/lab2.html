@@ -1,0 +1,112 @@
+<title>Lab 2, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Laboratory Exercise 2</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program, UC Davis<br>
+13 July 2001</h2>
+
+<hr>
+<h3>Using Loops</h3>
+
+Today's lab is on using loops in programs and is based on
+the <a href="pirouette.nqc">pirouette.nqc</a>,
+the <a href="duet.nqc">duet.nqc</a>, and
+the <a href="forTurn.nqc">forTurn.nqc</a> from lecture.
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  
+
+<p> A touch sensor and bumper, wired to input port 1, is 
+needed if you would like to do the extra activities in the
+last section.
+
+<h3>Square and Hexagons</h3>
+
+The first part of this lab is to rewrite the program that
+traces out a square using a loop.  Copy your turnInPlace
+program to a new file:
+<pre>
+cp turnInPlace.nqc ngon.nqc
+</pre>
+and then use vi to modify <tt>ngon.nqc</tt>.  You will 
+need to do the following steps (in between each step,
+test the program on the robot, to make sure it's doing
+the right thing):
+<ol>
+    <li>  Have the robot turn only 90 degrees or a quarter
+	of the way around.
+    <li>  Now, have the robot walk straight, followed
+	by turning 90 degrees.
+    <li>  Put a loop "around" your statements above so
+	that it repeats these statements 4 times. 
+</ol>
+
+What changes if you want to draw a hexagon instead?  
+How about a octagon?
+
+
+<h3>Ngons</h3>
+
+Modify your program so that <b>only one</b> constant needs
+to be changed to change the number of sides your 
+robot traces out.  We will use this program as part of
+a future lab, so, save it somewhere where you can find it
+again.
+
+<h3>Obstacle Course</h3>
+
+There is a simple obstacle course set up on the patio outside
+Physics 106.  The goal is to have your robot make as many laps
+around the course as possible.  For future labs, we will use 
+the touch sensors for the obstacle course.  
+For this lab, you will need to go solely
+by the amount of time that has passed and calculate when to
+turn based on time.  
+
+<p>
+First, make a program called <tt>lap.nqc</tt> that can make
+one lap around the track.  Then, add a loop so that your 
+robot will make 5 laps around the track.
+
+<h3>Some Extra Programs</h3>
+
+If you have time, download the following programs:
+<ul>
+    <li> <b>Singing:</b> Download <a href="sing.nqc">sing.nqc</a>
+	to your directory.  Compile the program and download it to
+	the robot.  The robot can store up to 5 programs at a time.
+	To download <tt>sing.nqc</tt> to the Program 2 slot, type:
+<pre>
+nqc -pgm 2
+nqc -d sing.nqc 
+</pre>
+	The first command sets the Program slot to 2.  This can
+	also be done by clicking the <b>Pgm</b> button on the 
+	robot until you reach Program Slot 2.
+
+    <li> <b>Bumper:</b> Download 
+	<a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>.  To
+	download it to the Program 3 slot, type
+<pre>
+nqc -pgm 3
+nqc -d bumpbot1.nqc 
+</pre>
+</ul>
+
+You can also think about what you would like to do for your final
+project.  Your project can have up to 5 programs (the total size
+of all loaded programs cannot exceed 6K).  Different lego
+configurations for different programs are possible, but you must
+be able to convert from one to another quickly.   The 
+<a href="projects.html">projects.html</a> page contains some ideas
+for possible projects.
+
+
+</body>
+</html>
+
+

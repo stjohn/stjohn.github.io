@@ -1,0 +1,19 @@
+#define forward(power) \
+    SetPower(OUT_A + OUT_C, power); \
+    OnFwd(OUT_A + OUT_C);
+#define left(power) \
+    SetPower(OUT_A + OUT_C, power); \
+    OnRev(OUT_A); OnFwd(OUT_C);
+#define right(power) \
+    SetPower(OUT_A + OUT_C, power); \
+    OnFwd(OUT_A); OnRev(OUT_C);
+
+task main() {
+  forward(OUT_FULL);
+  Wait(100);
+  left(OUT_HALF);
+  Wait(100);
+  right(OUT_HALF);
+  Wait(100);
+  Off(OUT_A + OUT_C);
+}

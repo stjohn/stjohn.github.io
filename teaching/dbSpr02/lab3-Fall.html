@@ -1,0 +1,168 @@
+<title>Lab 3 for CMP 420, Fall 2001, Lehman College, CUNY</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+<h1>Laboratory Exercise 3</h1>
+<h2>CMP 420: Database Systems<br> 
+Lehman College, City University of New York<br>
+25 October 2001</h2>
+
+<hr>
+<h3>Unix Commands</h3>
+
+Each lab begins with several Unix commands that will be useful
+for completing today's lab and future labs and assignments.
+Try the following commands:
+<ul>
+	<li> <tt>w</tt><br>
+	This lists all the users currently logged onto the system.
+	Try it on your desktop machine, and then telnet to comet
+	and try it there.
+	<li> pasting to a file<br>
+	It is often useful to cut part of the text from a terminal
+	window and paste it into a file.  To do this, open up the
+	editor (the pencil icon).  Next, highlight, using the left
+	mouse button some text you would like to copy from a terminal
+	window.  Go back to the editor, and choose "Paste" from the
+	menus.  This will paste the highlighted text into the file.
+	You can now edit the file and save it for later.
+	<li> <tt>pwd</tt><br>
+	<tt>pwd</tt> tells you the full name, or path, of the directory
+	of which you're currently (often called the "working directory").
+	This is very useful when you're moving around directories and	
+	are not quite sure where you are.
+<!--
+	<li> <tt>&lt; </tt><br>
+	<li> <tt>&gt; </tt><br>
+	<li> <tt>&gt;&gt; </tt><br>
+	<li> <tt>diff</tt> <i>file1 file2</i><br>
+	<t>diff</tt> compares two files and reports back any difference.
+	This command is very useful for looking small changes in very 
+	large files.
+-->
+</ul>
+
+<h3>Using PostgreSQL</h3>
+
+Last lab, we created a database called MYNAMElab2.  We will use that
+same database for today's lab and continue working with <tt>psql</tt>.
+Remember, you must telnet into <tt>comet</tt> before using <tt>psql</tt>.
+
+<p>
+First, let's interactively view the database using <tt>psql</tt>:  
+<pre>
+    psql MYNAMElab2
+</pre>
+Last time, we used the display commands ("\d") to display information 
+about the tables in the database.  There are several other useful 
+commands that you should try:
+<ul>
+    <li> <tt>\dT</tt>: This lists all the allowable types for attributes.<br>
+	How many different ways are there to represent integers?  How are
+	they different?<br>
+	What types can you use to express the date?  The date and time?
+	Just the time?  What fields do they need?
+    <li> <tt>\s [filename]</tt>: Print history (that is, every command you
+	have typed this session).  If you leave off the file name, it will 
+	display the history on the screen.  If you give it a filename, it 
+	will save the history in <tt>filename</tt>.  For example, to save
+	a list of the commands you've typed so far to a file called 
+	<tt>lab3.commands</tt>, you type:
+<pre>
+    \s lab3.commands
+</pre>
+	Note this only saves the commands themselves, and not the results.
+    <li> <tt>\h [cmd]</tt>: Gives help on the syntax of SQL commands. If
+	you would like all the commands, replace <tt>[cmd]</tt> with *. 
+</ul>
+
+
+<h3>SQL Commands</h3>
+
+Often, you want to compare or display only a part of a date and time, 
+instead of using the whole field.  For example, if you want to find all
+orders placed on a Monday or during August 2001.  To do this, there is a 
+function called: <tt>date_part(part,dateTimeAttribute)</tt>.  For example,
+if you would like to find all orders placed in January, you can use the
+query:
+<pre>
+    SELECT *
+    FROM orders
+    WHERE date_part('month',ord_placed)=1;
+</pre>
+In addition to 'month', you can also for the 'year', 'day', 'hour',
+'minute', 'second', and 'dow' (for day of the week, Sunday is 0, 
+Saturday is 6).
+
+<p>
+Now, we're ready to start writing queries.  You can either type the
+queries directly in at the <tt>psql</tt> prompt.  Or, you can type
+them into a text file (using the text editor of your choice) and 
+then load
+the file in using the following command at the <tt>psql</tt> prompt:
+<pre>
+    \i filename
+</pre>
+where <tt>filename</tt> is the name that contains your queries.
+
+<p>
+Remember, you must follow every SQL command with a semi-colon (";")-- since 
+you can type your queries on multiple lines that is your signal to 
+the program that you are finished entering the query.  If you forget
+to type the semi-colon, <tt>psql</tt> will wait until you do.
+
+<h3>Submitting Your Lab</h3>
+
+For today's lab, you should write queries that do the following:
+<ol>
+    <li> Display all orders placed in 2001.
+    <li> Display all orders placed in the first 3 months of 2001.
+    <li> Display the products ordered on Monday, along with the total
+	quantity ordered of each.<br>
+	<i>(Hint: Group by the product code.)</i>
+    <li> Select all orders that were placed in a different month from
+	when the product was delivered.  For example, the order is
+	placed on 06-29-2001, and the product is delivered on 
+	07-06-2001.  Include in the output, the order ID, the product
+	code, the date the order was placed and the date is was 
+	delivered.<br>
+    <li> Modify the above query to print out the company associated with
+	each order (by their name, not their company ID) and 
+	the product description (instead of the product code). 
+	Restrict the output to only companies that placed their
+	order in 2000.
+    <li> Modify the query to sort the output (order by) the company's
+	name.
+</ul>
+
+Save the queries to a file for later use.  You can either cut-and-paste
+your session to a text-editor or use the save history command inside
+<tt>psql</tt> (both are described in the lab above).
+
+<h3>Final Comments</h3>
+
+Before leaving the lab, you need to log out and shut down your
+computer.  First, you should quit all applications.  Then,
+go to the <tt>K</tt> menu in the bottom left hand corner and
+select <tt>Log Out</tt>.  Choose the <tt>Shut Down</tt> option,
+and shut off the monitor when you're done.
+
+<p>
+Remember to pick up any files you sent to the printer and to
+take any personal belongings.  It is difficult to get back
+into the lab later (since it's locked when not in use), so,
+it's worth making sure you haven't forgotten anything.
+
+<p>
+Also, remember to turn in Homework 5 before leaving!
+
+<p>
+Next lab, we will focus on designing and compiling Java
+programs on an Unix platform.  If you haven't programmed in
+Java in sometime, you should review how to write a program that
+instantiates objects and has a graphical user interface (GUI).
+
+</body>
+</html>
+
+

@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Lab 4, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 4<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br>
+</h2>
+</div>
+
+<div>
+<p>
+Topics:  Useful string methods, Counting Bases, Regular Expressions, 
+Finding motifs in sequences.
+</div>
+
+<div>
+<h3>Useful String Methods</h3>
+
+<p>In lecture, we introduced some very useful methods for strings:
+<ul>
+	<li> <tt>s.count(<i>pattern</i>)</tt>:  returns the number of times the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.find(<i>pattern</i>)</tt>:  returns the location (index) of the first place the <i>pattern</i> string occurs in string <tt>s</tt>.
+	<li> <tt>s.replace(<i>old</i>,<i>new</i>)</tt>:	replaces all occurrences of the <i>old</i> string with the <i>new</i> string.
+	<li> <tt>indices</tt>: <tt>s[i]</tt> is the ith element of the string <tt>s</tt>	
+	<li> <tt>slicing</tt>: <tt>s[<i>start</i>, <i>stop</i>, <i>step</i>]</tt> is the substring of <tt>s</tt> beginning at index <i>start</i> and going up by <i>step</i> upto but not including stop.  <br>
+	<tt>s[-1::-1]</tt> or <tt>s[::-1]</tt> returns the reverse of the string.
+</ul>
+
+
+</div>
+
+<div>
+<h3>Does Optimal Living Temperture Affect GC Content?</h3>
+
+Let's use these methods to address the following the hypothesis: 
+
+<blockquote>
+Since C and G form 3 hydrogen bonds while A and T form 2 hydrogen bonds, the stronger C-G bonds will occur more frequently in thermophiles (organisms that thrive in extremely hot environments).
+</blockquote>
+
+This is a much debated question (see <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030005#pcbi-0030005-st001">Zeldovich <i>et al.</i>, 2007</a> and <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0088339">Li <i>et al.</i>, 2014</a>) whose answer varies depending on the region.  
+Since the whole genome files are quite large, 
+let's run a small test using FASTA sequence files for small regions of 
+2 thermophiles and 2 mesophiles (downloaded from <a href="http://bacteria.ensembl.org/index.html">EnsemblBacteria</a> and stored as a <a href="gcContent.tar.gz">zip file</a>).  
+
+<ul>
+	<li> Download and open the zip file.  There should be 4 FASTA sequence files
+	inside.  
+	<li> Open up one of the FASTA files and look at the format.  How can you tell where the sequence is versus comments or labels?  Is the sequence on a single line or multiple lines?  
+	<li> Write a program that will content the percentage of base pairs that are either a 'G' or a 'C' in each file.  (Hint:  it will be a very short program!).
+	<li> How would you modify your program to handle multiple sequences in one file (see <a href="http://rosalind.info">Rosalind, #8</a>)?
+</ul>
+</div>
+
+
+<div>
+<h3>Regular Expressions</h3>
+
+<p>
+Regular expresssions are extremely powerful in finding patterns that vary in length.  For example, to find the first AT repeat of longer than 4 repeats, we can use a regular expression:
+<pre>
+import re
+dna = "ACTGCATTATATCGTACGAAAGCTGCTTATACGCGCG" 
+runs = re.findall("[AT]{4,100}", dna) 
+print runs
+</pre>
+To find the location of a pattern in a string, we can use:
+<pre>
+if re.search(r"GC[ATGC]GC", dna):
+    print "restriction site found!"
+</pre>
+(more examples from <a href="http://pythonforbiologists.com/index.php/introduction-to-python-for-biologists/regular-expressions/">Python for Biologists</a>).
+
+<p>
+The <tt>re</tt> library is distributed with Python.  We will use two useful functions in the library:
+<ul>
+	<li> <tt>re.search(<i>pattern</i>, <i>string</i>)</tt> returns information if the <i>pattern</i> occurs in the <i>string</i> (otherwise returns None-- so can be used in an if statement).  Often use a "r" before the pattern to indicate that you want the "raw" string (i.e. don't translate the (e.g.'\n'), but keep them as their raw characters).  
+	<li> <tt>re.findall(<i>pattern</i>, <i>string</i>)</tt> finds all occurrences of <i>pattern</i> in the <i>string</i>.  It returns a list of the matching patterns.
+</ul>
+
+<p>
+We often want more information than just if a pattern occurred or in what way.  To find out the starting (and stopping) location, we can use the match object that <tt>re.search()</tt> returns.  It's most useful functions are:
+<ul>
+	<li> <tt>group()</tt>:  returns the string matched by the regular expression
+	<li> <tt>start()</tt>:  returns the starting position of the match
+	<li> <tt>end()</tt>:  returns the ending position of the match
+		
+</ul>
+(see <a href="https://docs.python.org/2/howto/regex.html">Python regex tutorial</a> for more details).
+
+<p>
+From our example above, we could store the match object:
+<pre>
+m = re.search(r"GC[ATGC]GC, dna)
+print "The matching string is", m.group()
+print "Match starts at", m.start()
+print "Match ends at", m.end()
+</pre>
+
+
+<p>These are more general (and more powerful) tools than the string methods above.  In many cases, either can be used.  For finding approximate matches or matches of varying lengths, using regular expressions is much easier.  Today's lab has some simple uses of regular expressions.  We will go into more depth when we dive into the genome assembly in the second half of the course.
+</div>
+
+
+<div>
+<h3>Seeing the Trees in the Nexus File</h3>
+
+Use regular expressions to find all trees in a nexus file.  <a href="https://en.wikipedia.org/wiki/Nexus_file">Nexus files</a> have a very strict format, and you can assume that all trees are preceded by the word <tt>TREE</tt>, followed by their name and an equals sign ('=').  The tree, in Newick format, is given, followed by a semi-colon (;).  Trees can span multiple lines.  A sample file:
+<pre>
+#NEXUS
+BEGIN TAXA;
+  TAXLABELS A B C;
+END;
+
+BEGIN TREES;
+  TREE tree1 = ((A,B),C);
+  TREE tree2 = (A,(B,C));
+  TREE tree3 = ((A,C),A);
+END;
+</pre>
+
+<p>
+Write a program that takes as input a nexus file and prints to the screen all trees contained in the file.  Your program should print the names of each trees, followed by the equals sign and the tree itself.  You should not print the preceding "TREE" or ending semi-colon (although both are very useful for locating trees in the file).  For example, given the nexus file above, your program would print:
+<pre>
+Welcome to my tree-hunting program!
+Please enter the name of your nexus file:  sample.nex
+
+Trees in your file:
+tree1 = ((A,B),C)
+tree2 = (A,(B,C))
+tree3 = ((A,C),A)
+</pre>
+
+<p>
+<i>Hints:</i>
+<ol>
+	<li> Write down an outline of what your program will do.
+	<li> Next, think through what it will do on several examples.  Will it work on the example above?
+	<li> What happens if there are multiple trees in the file?  Will it find them all?  How does it go on to the next?
+	<li> Write the program in small pieces:  first, read in the file and just print it back out (to make sure the reading is working correctly).
+	<li> Next, add in the other pieces you've sketched out, testing each part as you go (it sounds like it will take longer, but it's quicker to eliminate bugs one-by-one than a whole swarm of them).
+</ol>
+<p>
+Note:  you can implement this program with either regular expressions or <tt>find()</tt>-- use whichever makes more sense to you.  
+
+</div>
+
+
+<div>
+<h3>Lab Report</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  22 February 2016<br>
+Title:  Lab 4:  <br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  If applicable, show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first two challenges.
+</div>
+

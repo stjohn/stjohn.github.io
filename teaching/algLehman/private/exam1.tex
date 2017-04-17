@@ -1,0 +1,270 @@
+% Exam 1 for Coen 251
+% 13 April 1998
+
+\documentstyle[12pt]{article}
+\pagestyle{myheadings}
+\markboth{Name:\underline{\hspace{3in}}}
+{Name:\underline{\hspace{3in}}}
+\textwidth=6 true in
+\textheight=8.5 true in
+\oddsidemargin = 0.0 true in
+\evensidemargin = 0.0 true in
+\newcommand{\ul}{\underline}
+\newcommand{\spa}{\hspace{.25in}}
+\begin{document}
+
+{\Large
+\begin{center}
+\mbox{ }
+\vspace{.1in} \\
+    Exam 1 \\
+    Computer Science 751\\ 
+    Lehman College-- CUNY\\ 
+    Thursday, 17 October 2002
+\end{center}
+}
+
+{\large
+\begin{center}
+\begin{tabular}{ll}
+\mbox{ }
+\vspace{.5in} \\
+NAME (Printed) & \ul{\hspace{3in}}\\ 
+NAME (Signed) & \ul{\hspace{3in}} \\
+Login & \ul{\hspace{3in}}\\
+%Day of Lab Session & \ul{\hspace{3in}}\\
+\end{tabular}
+\end{center}
+}
+
+Please show all your work and circle your answers.  Your grade 
+will be based on the the work shown.  
+{\large
+\begin{center}
+\mbox{ }
+\vspace{.5in} \\
+\begin{tabular}{|c|l|l|}
+\hline \hline
+\hspace{.05in} Question 1 \hspace{.05in} & \hspace{.5in} \mbox{ } & 10 points \\ \hline
+\hspace{.05in} Question 2 \hspace{.05in} & \hspace{.5in} \mbox{ } & 15 points \\ \hline
+\hspace{.05in} Question 3 \hspace{.05in} & \hspace{.5in} \mbox{ } & 15 points \\ \hline
+\hspace{.05in} Question 4 \hspace{.05in} & \hspace{.5in} \mbox{ } & 10 points \\ \hline
+\hspace{.05in} Question 5 \hspace{.05in} & \hspace{.5in} \mbox{ } & 15 points \\ \hline 
+\hspace{.05in} Question 6 \hspace{.05in} & \hspace{.5in} \mbox{ } &15 points \\ \hline
+\hspace{.05in} Question 7 \hspace{.05in} & \hspace{.5in} \mbox{ } &20 points \\ \hline
+
+\hspace{.05in} TOTAL \hspace{.05in} & \hspace{1in} \mbox{ }  &100 points \\ \hline \hline
+\end{tabular}
+\end{center}
+}
+
+\newpage
+\begin{center}
+\begin{large}
+Useful Formulas
+\end{large}
+\end{center}
+
+$$
+\begin{array}{lr}
+	\sum_{i=1}^n i = \frac{n(n+1)}{2}
+	& 
+	\sum_{i=1}^n x^i = \frac{x^{n+1} - 1}{x-1}
+	\\
+	\\
+	\sum_{i=1}^n \frac{1}{i} = \ln n + O(1)
+	& 
+	\sum_{i=0}^{\infty} ix^i = \frac{x}{(1-x)^2}
+	\\
+	\\
+	e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots
+	& 
+	\lim_{n\rightarrow\infty} (1+\frac{x}{n})^n = e^x
+	\\
+	\\
+	n! = \sqrt{2\pi n} (\frac{n}{e})^n (1 + \Theta(\frac{1}{n}))
+	& 
+	n! = o(n^n)
+	\\
+	\\
+	n! = \omega(2^n)
+	& 
+	\lg(n!) = \Theta(n\lg n)
+	\\
+	\\
+	{n \choose k} = \frac{n!}{k!(n-k)!}
+	& 
+	(\frac{n}{k})^k \leq {n \choose k} \leq (\frac{en}{k})^k
+	\\
+	\\
+	E[X] = \sum_x x Pr[X=x]
+	& 
+	Var[X] = E[(X-E[X])^2]\\ 
+	&= E[X^2] - E^2[X]
+
+\end{array}
+$$
+
+\newpage
+\begin{enumerate}
+
+%Question 1:  5 T/F
+    \item True or False (2 point each):
+        \begin{enumerate}
+    	    \item \underline{\hspace{.25in}} $\lg n = o(n^2)$.
+    	    \item \underline{\hspace{.25in}} $\lg n = O(n^2)$.   
+    	    \item \underline{\hspace{.25in}} $3n^2 + 2n = \omega(n)$.
+    	    \item \underline{\hspace{.25in}} $3n^2 + 2n = \Omega(n)$.  
+
+    	    \item \underline{\hspace{.25in}} $n! = \Omega(2^n)$.	        	    \item \underline{\hspace{.25in}} $\lg(n!) = \Theta(\lg(n^n))$.	 	    	 
+    	     \item \underline{\hspace{.25in}} $f(n) = o(g(n))$ implies 
+    	    	$f(n) = O(g(n))$.
+    	    \item \underline{\hspace{.25in}} $f(n) = \Omega(g(n))$ implies 
+    	    	$f(n) = \Theta(g(n))$.
+    	    \item \underline{\hspace{.25in}} $f(n) = \Theta(g(n))$ implies 
+    	    	$f(n) = O(g(n))$.
+    	    \item \underline{\hspace{.25in}} $f(n) = \Theta(g(n))$ implies 
+    	    	$f(n) = \omega(g(n))$.
+    	    		    	 
+    	\end{enumerate}
+%\newpage
+%Question 2: running time of 2 simple functions, bucket, radix, counting,
+		%partition?
+	\item Assume that every statement takes a constant $c$ time.  Give
+		tight bounds on the order of growth and justify your answer:
+		\begin{enumerate}
+%			\item Assume $L$ is a singly linked list and $k$ is a key:
+%\begin{verbatim}
+%LIST-SEARCH(L,k)
+%1  x <- head[L]
+%2  while x != NIL and key[x] != k
+%3       do x <- next[x]
+%4  return x
+%\end{verbatim}
+%			\item Assume $A$ is an array storing a heap and $k$ is a key:
+%\begin{verbatim}
+%HEAP-INSERT(A,k)
+%1  heap-size[A] <- heap-size[A] + 1
+%2  i <- heap-size[A]
+%3  while i > 1 and A[PARENT(i)] < key
+%4       do A[i] <- A[PARENT(i)]
+%5          i <- PARENT(i)
+%6  A[i] <- key
+%\end{verbatim}
+    \item What is the output, assuming the following piece of code
+      is embedded in a complete and correct program:
+\begin{verbatim}
+for ( int i = 5; i > 0; i--)
+{
+   for ( int j = 0 ; j < i; j++)
+       cout << '*';
+   cout << endl;
+}
+\end{verbatim}
+\bigskip
+			\item Assume A is an array of length $n$:
+\begin{verbatim}
+FIND-MAX(A)
+1  max <- - infinity
+2  for i <- 1 to n
+3       do if A[i] > max
+4          then max <- A[i]
+5  return max
+\end{verbatim}
+\bigskip
+			\item Assume A is an array and the function COMBINE takes $\Theta(n)$
+				on a sublists {\tt A[p..r]} and {\tt A[r+1..p]} of combined length $n$:
+\begin{verbatim}
+MSORT(A,p,q)
+1  if ( q - p > 1)
+2       do MSORT(A,p, q/2);
+3            MSORT(A,q/2+1,q);
+4            COMBINE(A,p,q/2,r);
+\end{verbatim}
+
+		\end{enumerate}
+\newpage
+
+\item Assume $A$ is an array storing a heap and $k$ is a key:
+\begin{verbatim}
+HEAP-INSERT(A,k)
+1  heap-size[A] <- heap-size[A] + 1
+2  i <- heap-size[A]
+3  while i > 1 and A[PARENT(i)] < key
+4       do A[i] <- A[PARENT(i)]
+5          i <- PARENT(i)
+6  A[i] <- key
+\end{verbatim}
+
+    	\begin{enumerate}
+		\item What does the heap look like 
+			inserting keys from the sequence: $\{10,3,1,12,20,18,14,16\}$?
+			\vspace{2in}
+		\item What is the height of the heap
+				from inserting keys from the sequence: $\{10,3,1,12,20,18,14,16\}$?
+				\\ \\
+				\ \hfill\underline{\hspace{1in}}
+		\item Write a function that will take a heap (stored in an array called A)
+			and return the maximum value.
+			\vspace{2in}
+    	\end{enumerate}
+\newpage
+%Question 5: 2 simple recurrences
+	\item Give asymptotic upper and lower bounds for $T(n)$ for the 
+		following two recurrences.  Make your bounds as tight as possible,
+		and justify your answers:\\
+		Assume that $T(n)$ is constant for $n\leq 2$:
+		\begin{enumerate}
+			\item $T(n) = 5T(n/3) + 1$		
+				\vspace{2in}
+			\item $T(n) = 10T(n-2) + n$
+				\vspace{2in}
+		\end{enumerate}
+
+\newpage    	
+%Question 7: write code for max/min/search?
+	\item Assume $A[1..n]$ is an array.  
+\begin{verbatim}
+FIND-KEY(A,k)
+1  for i <- 1 to n
+2       do if A[i] = k
+3          then return i
+\end{verbatim}
+		\begin{enumerate}
+			\item What are tight bounds on the {\bf worst case} order of growth?
+				Justify your answer:
+				\vspace{1.5in}
+			\item What are tight bounds on the {\bf best case} order of growth?
+				Justify your answer:
+				\vspace{1.5in}
+			\item What are tight bounds on the {\bf average case} order of growth,
+				assuming that all numbers in A are randomly drawn from the 
+				interval $[1,n]$?
+				Justify your answer:
+				\vspace{1.5in}
+		\end{enumerate}
+\newpage
+
+	\item Suppose that we have an array of $n$ objects to sort and that
+		the key of each record has the value $\{0,1,\ldots,k\}$. Assume that
+		$k$ is much smaller than $n$ ($k = o(n)$).   Give a simple,
+		{\bf linear-time} algorithm for sorting the $n$-objects.
+		\vspace{3in}
+		
+	\item Suppose that we have an array of $n$ objects to sort, and there
+		are no conditions on the keys.  
+		\begin{enumerate}
+			\item What is the lower bound on the worst case running time of 
+				a comparison sort of the array A?
+				\vspace{.75in}
+			\item Write a sorting algorithm that sorts a list with the worst case
+				running time you stated above:
+				\vspace{3in}
+		\end{enumerate}
+
+		
+\end{enumerate}
+\end{document}
+
+
+

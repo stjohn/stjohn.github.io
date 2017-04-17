@@ -1,0 +1,371 @@
+<BODY bgcolor="white">
+
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="+2">
+Key for Exam 1 <BR>
+Computer Science 125 <BR>
+Boise State University
+<BR>
+Friday, 19 February 1999
+</FONT></DIV>
+
+<P>
+<DL COMPACT>
+<DD><P>
+<DT>1.
+<DD>TRUE or FALSE:
+        <DL COMPACT>
+<DT>(a)
+<DD><U>F</U> The <EM>Cuckoo's Egg</EM> is fiction.
+<P></P>
+            <DT>(b)
+<DD><U>T</U> The logical expression
+                <IMG
+ WIDTH="83" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$!(A\&\&B)$">
+is equivalent to !<I>A</I>||!<I>B</I>.
+
+<P></P>
+            <DT>(c)
+<DD><U>F</U> The logical expression
+                <IMG
+ WIDTH="63" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.gif"
+ ALT="$A\&\&B$">
+evaluates <I>B</I> only if <I>A</I> is <TT>false</TT>.
+
+<P></P>
+            <DT>(d)
+<DD><U>T</U> Cliff Stoll created the
+            <EM>Strategic Defense Initiative Network</EM> as bait for the hacker.
+
+<P></P>
+            <DT>(e)
+<DD><U>F</U> To execute an applet you type <TT>java</TT> followed by the filename.
+
+<P></P>
+            <DT>(f)
+<DD><U>F</U> David La Macchia was convicted of wire fraud.
+
+<P></P>
+            <DT>(g)
+<DD><U>F</U> Objects should always be compared
+            with ==.
+
+<P></P>
+            <DT>(h)
+<DD><U>F</U> The compiler will locate all of the errors in every program.
+
+<P></P>
+            <DT>(i)
+<DD><U>F</U> Most computer crimes are
+            committed by professional computer programmers.
+
+<P></P>
+            <DT>(j)
+<DD><U>T</U> It violates the BSU Math/CS
+            Departmental computer policy to let your friend use your account
+            to read their e-mail.
+</DL>
+<P>
+<DT>2.
+<DD>Give the Java code to construct the following objects:
+<DL COMPACT>
+<DT>(a)
+<DD>The time spring break officially begins this semester
+<BR>
+(Hint: it starts March 19 at 5:00pm).
+<PRE>
+Time SpringBreak = new Time(1999,3,19,17,0,0);
+</PRE>
+<P>
+<DT>(b)
+<DD>An employee named Sam Smith whose salary is $28,000.
+<PRE>
+Employee peon = new Employee("Sam Smith", 28000);
+</PRE>
+<P>
+<DT>(c)
+<DD>A line through (0,0) which has slope 2.
+<PRE>
+Line l = new Line(new Point(0,0),new Point(1,2));
+</PRE>
+<P>
+</DL>    <DT>3.
+<DD>What is the output for each of the following sections of code?
+    There are no intentional syntax errors.
+<DL COMPACT>
+<DT>(a)
+<DD><P>
+<PRE>
+String s = "the fun begins";
+String t = "now";
+String m = "later";
+
+System.out.print(s + m+" or");
+System.out.println(t + s);
+</PRE>
+<P>
+<B>Output:</B>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">the fun beginslater ornowthe fun begins</TD>
+</TR>
+</TABLE>
+<P>
+<DT>(b)
+<DD><PRE>
+String s = "123,457";
+int n = s.length();
+System.out.println(s.substring(n-4,n);
+</PRE>
+<P>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">,457</TD>
+</TR>
+</TABLE>
+<P>
+</DL>
+<P>
+<DT>4.
+<DD>What is the output for the following sections of code?
+    There are no intentional syntax errors.
+<PRE>
+int choice = 3;
+boolean valid = true;
+if (choice == 1)
+{ System.out.println("You selected 1");
+  valid = true;
+}
+else if (choice == 2)
+{ System.out.println("You selected 2");
+  valid = true;
+}
+else
+{ System.out.println("Your choice is not valid");
+  valid = false;
+}
+</PRE>
+<P>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">Your choice is not valid</TD>
+</TR>
+</TABLE>
+<P>
+
+<P></P>
+
+<P>
+<DT>5.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>What does this program produce as output?
+<PRE>
+import ccj.*;
+public class Exam
+{public static void main(String[] args)
+  {  int A = 105;
+     int B = A/60;
+     System.out.println(""+(A+B));
+  }
+}
+</PRE>
+<P>
+<P></P>
+
+<P></P>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">106</TD>
+</TR>
+</TABLE>
+<P>
+
+<P></P>
+
+<P></P>
+
+<P>
+<DT>(b)
+<DD>What does this program produce as output?
+<PRE>
+import ccj.*;
+public class Example
+{ public static void main(String[] args)
+  { int x = 16;
+    if ((x % 2 == 0) &amp;&amp; (x % 3 == 0))
+       System.out.println("The value of x is divisible by 6");
+    else
+       System.out.println("The value of x is not a multiple of 6");
+  }
+}
+</PRE>
+<P>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER">The value of x is not a multiple of 6</TD>
+</TR>
+</TABLE></DL>
+<P>
+<DT>6.
+<DD><DL COMPACT>
+<DT>(a)
+<DD>What does this program produce as output?
+<P>
+<PRE>
+import ccj.*;
+public class MysteryApplet1 extends GraphicsApplet
+{public void run()
+  {Point p1 = new Point(-3,4);
+   Point p2 = new Point(3,4);
+   Line line1 = new Line(p1,p2);
+   Circle c = new Circle(new Point(0,4),3);
+   c.draw();
+   line1.draw();
+  }
+}
+</PRE>        <B>Output:</B>
+<img src="mystery1.jpg">
+<P>
+<DT>(b)
+<DD>What does this program produce as output?
+<PRE>
+import ccj.*;
+public class MysteryApplet extends GraphicsApplet
+{ public void run()
+    {  Point p1 = new Point(-5,-5);
+       Point p2 = new Point(5,5);
+       Line line1 = new Line(p1, p2);
+       line1.draw();
+       line1.move(3,3);
+       line1.draw();
+    }
+}
+</PRE>        <B>Output:</B>
+<img src="mystery2.jpg">
+<P>
+</DL>
+<P>
+<DT>7.
+<DD>Evaluate the following Java expressions.
+
+<P>
+<DL COMPACT>
+<DT>(a)
+<DD>
+<!-- MATH: $990 \% 100$ -->
+<IMG
+ WIDTH="77" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif"
+ ALT="$990 \% 100$">
+<TT>= 90</TT>
+<P>
+<DT>(b)
+<DD>
+<!-- MATH: $4.4 * 2/4 + 6$ -->
+4.4 * 2/4 + 6 <TT>= 8.2</TT>
+
+<P>
+<DT>(c)
+<DD>
+<!-- MATH: $8 \% 3 * 5 - 16/3 * 4$ -->
+<IMG
+ WIDTH="155" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$8 \% 3 * 5 - 16/3 * 4$">
+<TT>= -10</TT>
+
+<P>
+<DT>(d)
+<DD>
+<!-- MATH: $3.4 <= 8 - 9/2$ -->
+3.4 &lt;= 8 - 9/2 <TT>= true</TT>
+
+<P>
+<DT>(e)
+<DD>
+<!-- MATH: $x < 5 || x >= 5$ -->
+<I>x</I> &lt; 5 || <I>x</I> &gt;= 5 <TT>= true</TT>
+
+<P>
+</DL>    <DT>8.
+<DD>Which of the ethical approaches discussed in class, Utilitarian,
+    Rights, Fairness, Common-Good, or Virtue, comes closest to the
+    way you make decisions?
+
+<P>
+<BR>
+<BR>
+<BR>
+Answer the following question based on the approach that you selected.
+    Justify your answer in terms of your chosen approach.
+
+<P>
+In the <EM>Cuckoo's Egg</EM> Bob Morris (Sr.) was the head of
+    the NSA and his son Robert T. Morris (Jr.) was responsible for
+    writing a virus that brought the internet to a standstill. Was
+    Bob Morris (Sr.) ethically bound to turn in his son?
+
+<P>
+<DT>9.
+<DD>Below is an applet that will draw a cylinder. Modify the code
+so that it will draw a cylinder whose radius and height are both doubled.
+Cross out each of the statements that you are changing and write the new
+statement beside the one that is changed.
+
+<P>
+<PRE>
+import ccj.*;
+public class Cylinder extends GraphicsApplet
+{public void run()
+ { Point origin = new Point(0,0);
+   int radius = 3; //CROSS OUT THIS and add: int radius = 6;
+   int height = 4; //CROSS OUT THIS and add: int height = 8;
+   Circle bottom = new Circle(origin,radius);
+   bottom.draw();
+   Point p1 = new Point(-radius,0);
+   Point p2 = new Point(radius,0);
+   Point p3 = (Point)p1.clone();
+   Point p4 = (Point)p2.clone();
+   p3.move(0,height);
+   p4.move(0,height);
+   Line l1 = new Line(p1,p3);
+   Line l2 = new Line(p2,p4);
+   l1.draw();
+   l2.draw();
+   bottom.move(0,height);
+   bottom.draw();
+ }
+}
+</PRE>
+<P>
+<DT>10.
+<DD>Write a <B>complete</B> stand-alone(non applet) Java program which
+prompts a user to enter a 7 digit integer without commas and then
+prints the integer with the commas separating the millions and thousands
+and the thousands and hundreds.
+
+<P>
+<PRE>
+import ccj.*
+
+public class Commas
+{
+  public static void main(String[] args)
+  {
+    System.out.print("Enter a 7 digit number:");
+    int inNum = Console.in.readWord();
+    String outNum = inNum.substring(0,1) + ","
+               + inNum.substring(1,4) + ","
+               + inNum.substring(4,7);
+    System.out.print(outNum);
+  }
+}
+
+//Can also be done using integers and % and /
+</PRE></DL>
+<BR><HR>
+</BODY>
+</HTML>

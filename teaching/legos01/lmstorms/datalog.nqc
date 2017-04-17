@@ -1,0 +1,15 @@
+int count;
+
+task main() {
+  CreateDatalog(20);
+  ClearTimer(0);
+  SetSensor(SENSOR_1, SENSOR_TOUCH);
+  
+  count = 0;
+  until (count == 20) {
+    until(SENSOR_1 == 1);
+    AddToDatalog(Timer(0));
+    count++;
+    until(SENSOR_1 == 0);
+  }
+}

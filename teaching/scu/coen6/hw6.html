@@ -1,0 +1,110 @@
+<title>Homework 6, Computer Engineering 6, SCU</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<img src="math.gif" width=600 height=60>
+
+<h2>Homework 6</h2>
+<h2>Computer Engineering 6, Winter 1998<br> 
+Introduction to Computing</h2>
+
+
+<hr>
+<b>Due by noon, Thursday, 19 February.</b><br>
+The starred problems include programming and should be submitted
+both electronically and on paper.  In the paper portion of the
+starred problems, you should include output of several test runs
+that demonstrates what your program does.
+The electronic portion
+should be sent to coen006@scudc.scu.edu (with subjects
+"hw 6.4" and "hw 6.5", respectively).
+The paper portion should
+be placed in Dr. St. John's box in the Engineering Center. 
+<hr>
+
+<ol>
+	<li> Below is the definition for the class <b>ShoeSize</b>.
+	Write an appropriate definitions for the member functions
+	<b>input()</b> and <b>output()</b>:
+<pre>
+class ShoeSize
+{
+    public:
+        void input();    // Gets length and width by asking user.
+        void output();   // Prints out the length and width.
+
+    private:
+        int length;       // Stores the length (i.e. 8, 9, 10, ...))
+        char width;       // Stores the width (i.e. 'N' for Narrow,
+                          // 'M' for medium, 'W' for wide)
+};
+</pre>
+
+	<li> Write a definition for a structure type for records 
+	consisting of a person's wage rate, accrued vacaction 
+	(which some whole number of days), and status (which 
+	is either hourly or salaried). Represent the status as one 
+	of the two char values 'H' and 'S'.
+	Call the type <b>EmployeeRecord</b>.
+
+	<li> Suppose your program contains the following class definition
+	(along with the definitions of the member functions):
+<pre>
+class YourClass
+{
+    public:
+        YourClass(int new_info, char more_new_info);
+        YourClass();
+        void do_stuff();
+    private:
+        int information;
+        char more_information;
+};
+</pre>
+	Which of the following are legal?  Which are illegal?
+	Explain which each one does or give reasons why it's illegal.
+	
+	<ol>
+		<li type=a> <pre> YourClass an_object(42, 'A');</pre>
+		<li type=a> <pre> YourClass another_object;</pre>
+		<li type=a> <pre> YourClass yet_another_object();</pre>
+		<li type=a> <pre> an_object = YourClass(99, 'B');</pre>
+		<li type=a> <pre> an_object = YourClass();</pre>
+		<li type=a> <pre> an_object = YourClass;</pre>
+	</ol>
+
+	<li>* Write a program to score the paper-rock-scissor game.
+	Each of two users types in either <b>P</b>, <b>R</b>, or
+	<b>S</b> and the program then announces the winner as well
+	as the basis for determining the winner:
+<pre>Paper covers rock, Rock breaks scisssors, 
+Scissors cut paper, or Nobody wins</pre>
+	Be sure to allow the users to use lowercase as well as 
+	uppercase letters.  Your program should include a loop that
+	the lets the users play again until the users say they are
+	done.
+
+	<li>* Write a program for grades for this course.  Use a
+	class definition that
+	has variables to contain the homework total, the
+	lab total, the two midterm scores, and the final
+        exam. 
+	You may assume that all grades are whole numbers between
+	0 and 100.
+	Your class should have two public functions: one to get input
+	and the other to print.  The print function should call a
+	private "helper" function to calculate the grade (using the
+	percentages from the <a href="syllabus.html">syllabus</a>).
+        It should also have a default constructor that sets all values 
+	to 0 and a member function print that prints out the class.
+
+	<p>
+	<b>Extra Credit:</b> When calculating grades, replace one of
+	the midterm grades by the final, if the final grade is 
+	higher.
+
+
+</ol>
+
+</body>
+</html>
+

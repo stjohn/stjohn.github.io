@@ -1,0 +1,51 @@
+int i;
+
+task main() {
+SetSensorType(SENSOR_2, SENSOR_TYPE_TEMPERATURE);
+SetSensorMode(SENSOR_2, SENSOR_MODE_CELSIUS);
+
+until (SENSOR_1 == 4);
+
+while (SENSOR_3 < 35) {
+  PlaySound(0);
+  Wait(50);
+}
+
+while (SENSOR_3 < 35)
+  Wait(50);
+
+SetPower(OUT_A + OUT_C, OUT_FULL);
+if (SENSOR_2 < 50) {
+  Fwd(OUT_A);
+  Rev(OUT_C);
+}
+else {
+  Rev(OUT_A);
+  Fwd(OUT_C);
+}
+On(OUT_A + OUT_C);
+
+  i = 0;
+  i = SENSOR_2;
+  i++;
+  i += 1;
+  i = i + 1;
+
+  SetSensorType(SENSOR_3, SENSOR_TYPE_TOUCH);
+  SetSensorMode(SENSOR_3, SENSOR_MODE_RAW);
+
+  SetSensorType(SENSOR_3, SENSOR_TYPE_LIGHT);
+  SetSensorMode(SENSOR_3, SENSOR_MODE_BOOL);
+  
+  int power = 6;
+  forward(power);
+  
+  forward(OUT_HALF);
+  
+  forward(Message());
+}
+
+void forward(const int& power) {
+  SetPower(OUT_A + OUT_C, power);
+  OnFwd(OUT_A + OUT_C);
+}

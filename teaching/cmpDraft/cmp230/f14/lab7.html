@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 7, CMP 230,Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 7<br>
+CMP 230 (CMP 167): Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab focuses on functions from Chapter 6.
+
+</div>
+
+
+<div>
+
+<h3>Graphing functions with functions</h3>
+
+<p>Since our first day of class, we have been using functions.  This chapter revisits
+functions in more depth.  In python, we indicate a function by following a name with parenthesis.  
+For example, <tt>print()</tt> and <tt>main()</tt> are examples of functions.  The <tt>print()</tt>
+is a built-in function in python, while the <tt>main()</tt> function is one that we write.
+
+<p> 
+To define a function, we say:
+<pre>
+	def functionName(anyInputsGoHere):
+		<the body of the function goes here>
+</pre>
+
+<p>
+Let's write a program that defines multiple functions.  Start your program with the following:
+<pre>
+# Demonstration program to graph function entered by user.
+# Prof. Melvin Fitting
+# October 24, 2011
+
+from graphics import *
+from math import *
+
+def main():
+	print("This program will graph a function...")
+	#Get user data
+	#Set up window
+	#Graph the function
+	#Close the window
+	
+	
+main()
+</pre>
+
+We've set up an outline, in comments for our program.  Let's fill in each part
+with a function.   To make our main program easier to read, we will use functions,
+each of which does one part of the program. We will give our functions descriptive names
+so by reading through the main function we have an idea of what the program does.  
+
+<p> We first need to get user data, so, let's make a function called <tt>getUserData()</tt>.
+It will take no input (also called parameters) but will need to return the data the
+user entered.  
+
+<pre>
+# Demonstration program to graph function entered by user.
+# Prof. Melvin Fitting
+# October 24, 2011
+
+from graphics import *
+from math import *
+
+def main():
+	print("This program will graph a function...")
+	#Get user data
+	function, left, right, top, bottom = getUserData()
+	#Set up window
+	#Graph the function
+	#Close the window
+
+def getUserData():
+    print("This program graphs an arbitrary math function.")
+    print("You must enter the x and y ranges to be displayed.")
+    left = eval(input("Enter x coordinate for left edge of window: "))
+    right = eval(input("Enter x coordinate for right edge of window: "))
+    bottom = eval(input("Enter y coordinate for lower edge of window: "))
+    top = eval(input("Enter y coordinate for upper edge of window: "))
+    function = input("Enter function expression to be graphed, with x as variable: ")
+    return function, left, right, top, bottom	
+	
+main()
+</pre>
+
+What happens when you run this program?  The <tt>main()</tt> function is called first.
+It prints the message, <tt>This program ...</tt> and then calls the <tt>getUserData()</tt>
+function.  The <tt>getUserData()</tt> function is defined below the <tt>main()</tt> function.
+It prints a message and then prompts the user for the coordinates of the window and 
+the function that should be graphed.  Try running your program.  
+Some inputs that you can use to test the program are:
+<tt>0, 10, -100, 100, sin(x)*x**2</tt>.  Nothing much will happen yet, since all we have
+done is asked for input.  
+
+<p>
+Let's add more to the program.  The next step is to set up the window.  Add to the
+<tt>main()</tt> function:
+<pre>
+	win = setUpWindow(left, right, top, bottom, function)
+</pre>
+(this line should go right below the <tt>#Set up window</tt> comment).
+
+<p>After the <tt>getUserData</tt>, add in the function definition for the function
+that will set up a window:
+<pre>
+def setUpWindow(left, right, top, bottom, function):
+    win = GraphWin("Graph of " + function, 500, 500)
+    win.setCoords(left, bottom, right, top)
+    Line(Point(left, 0), Point(right, 0)).draw(win)
+    Line(Point(0, bottom), Point(0, top)).draw(win)
+    return win
+</pre>
+
+<p>Take a look at you program before you run it.  When you type <tt>main()</tt>, it calls (or
+`invokes') the function <tt>main()</tt>.  Inside <tt>main()</tt>, a message is printed, then 
+there is a call to <tt>getUserData()</tt> function which returns 5 values that are assigned
+to the variables, <tt>function, left, right, top, bottom</tt>.  The next line calls the function 
+<tt>setUpWindow()</tt>.  <tt>setUpWindow()</tt> takes 5 input parameters and creates a window
+object, <tt>win</tt>.
+
+<p>Looking at the <tt>main()</tt> function, there are still two last items to fill out in
+our outline of comments:
+<pre>
+    #Graph the function
+    drawGraph(win, function, left, right)
+    #Close the window
+    win.getMouse()
+    win.close()
+</pre>
+We need to add in a definition for the function <tt>drawGraph()</tt>
+<pre>
+def drawGraph(win, function, left, right):
+    increment = (right-left)/100
+    x = left
+    rightPoint = Point(x, eval(function))
+    for n in range(100):
+        leftPoint = rightPoint
+        x += increment
+        rightPoint = Point(x, eval(function))
+        Line(leftPoint, rightPoint).draw(win)
+</pre>        
+Add this function definition after the one for <tt>setUpWindow()</tt>.  We now have a complete
+program that makes multiple function calls.  Try running it with 
+the inputs:  <tt>0, 10, -100, 100, sin(x)*x**2</tt>.  
+
+<p>Here's an overview of what happens when you run this program:
+<ol>
+	<li>  When you type <tt>main()</tt> function, the statements in the body of the function 
+		are executed one after another.
+	<li> First it prints a message to the screen.
+	<li> Next, it calls <tt>getUserData()</tt> which asks the user for data to draw a window
+		and what function should be graphed.  These are returned to the <tt>main()</tt> and 
+		stored in the variables <tt>function, left, right, top, bottom</tt>.
+	<li> Next, using the variables <tt>function, left, right, top, bottom</tt> as inputs, we
+		call the <tt>setUpWindow()</tt> function which creates a window and returns it to 
+		the <tt>main()</tt> function.
+	<li> Next, we call the <tt>drawGraph()</tt> function.  It takes 4 inputs:  the window we're
+		drawing on, 
+		the function to be drawn, and the left and right range of the window.  This method 
+		draws the function by breaking it down into 100 short intervals, and drawing a line 
+		across each interval.  The x coordinate starts at the left side, and goes up by 1/100's
+		of the width each time.  The y coordinate is the value of the function at each value of
+		x.
+</ol>
+
+
+</p>
+</div>
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>

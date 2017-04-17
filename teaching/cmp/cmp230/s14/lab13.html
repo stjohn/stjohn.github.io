@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 13, CMP 230, Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 13<br>
+CMP 230: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+
+<p>
+This lab builds a simple class for billiard balls, using the built-in turtle library.
+</div>
+
+
+<div>
+As the class has progressed, 
+we have been using classes and objects that others have written.  For example, 
+Zelle (the author of our textbook) defined a series of classes for graphics (that
+reside in graphics.py file).  In today's lab, we will define our own class and 
+instantiate objects for it.   
+
+<p>
+We're going to write a simple class to represent billiard (pool) balls that
+bounce off the boundary edges (i.e. the edges of the billiard table).  For this
+simple class, we will focus on just single objects and not the interaction between
+them (or multitasking-- it's beyond the scope of this course but will be covered
+next semester).
+
+<p>
+In the image below is an example of a billiard ball in action.  the billiard
+ball is blue with boundaries of the bounding box of (-200,-200) to (200,200).  The
+ball started at the center pointed in a random direction and travelled for 400 
+iterations, bouncing off boundary walls when it encountered them:
+
+<img src="tBall.jpg" height = 400>
+
+<p>
+Here is the <tt>main()</tt> program:
+<pre>
+def main():
+    setUpTable(-200,-200,400)
+
+    b1 = TurtleBall("blue",random()*360,-200,-200,200,200)
+    b1.move(400)
+
+    turtle.Screen().exitonclick()
+main()
+
+</pre>
+The function <tt>setUpTable</tt> draws the boundaries of the billiard table 
+to the screen given the minimal x and y coordinates and the length of the
+sides.  <tt>b1</tt> is an object of our new class <tt>turtleBall</tt>.
+
+
+<p>
+Before we go into the details of the class:
+<ol>
+	<li> Download the <a href="turtleBall.py">class file</a> and the 
+	<a href="testTurtleBall.py">main file</a> and run them (they are also
+	included below if you have troubles downloading them).
+	
+	<li> Experiment with the program by adding a new object, <tt>b2</tt> 
+	to the main program that has a billiard ball that is green:
+	
+	<pre>
+    b2 = TurtleBall("green",random()*360,-100,-100,100,100)
+    b2.move(400)	
+	</pre>
+	
+	And run your program.  What happens?  Why does it only cover part of 
+	the screen?  What is different from the definition of <tt>b1</tt> and
+	<tt>b2</tt>?
+	
+	<li> Add a third billiard ball that bounces outside of table drawn
+	to the screen.
+</ol>
+
+<p>
+Our class will have instant variables (to keep track of properties of each object)
+and methods (functions that can be applied to the objects.  For instance variables, 
+we will use a turtle to keep track of the location and color.  For methods, we
+need to write a constructor method (called <tt>__init__</tt> in Python) that creates
+new objects of the class.  Note that in our main program, we invoke a class method
+called <tt>move()</tt> that moves the billiard ball around the screen.
+
+
+Now, let's look at the class definition in detail.  In Python, classes begin
+with the keyword, <tt>class</tt>:
+<pre>
+#A simple class, demonstrating constructors and methods in python
+#Intro Programming, Lehman College, CUNY, Spring 2014
+from turtle import *
+
+class TurtleBall:
+</pre>
+Classes contain constructor methods that are used to create new objects.
+Constructors are always called <tt>__init__</tt> and all methods in a
+class have as their first parameter the object itself (traditionally 
+called <tt>self</tt>).  Our class has two constructors.  The first one
+has input parameters of the object itself, the starting color and angle,
+and the boundaries for where it can go.  It then creates a turtle (called
+<tt>self.turtle</tt>) as an instance variable, as well as 4 instance
+variables for storing the bounding box of the boundary
+(<tt>self.xMin</tt>, <tt>self.yMin</tt>, <tt>self.xMax</tt>, and 
+<tt>self.yMax</tt>):
+<pre>
+    def __init__(self,color,angle,x1,y1,x2,y2):
+        self.turtle = Turtle()
+        self.turtle.color(color)
+        self.turtle.shape("circle")
+        self.turtle.left(angle)
+        self.turtle.speed(0)
+        self.xMin,self.yMin,self.xMax,self.yMax = x1,y1,x2,y2
+</pre>
+The second constructor is for when we are lazy and do not want to specify
+the angle or boundaries.  Instead, it takes as input parameters just the
+color and calls the first <tt>__init__</tt> method with a starting angle
+of 45 degrees and a boundary with bounding box of (-100,-100) and (100,100).
+<pre>
+    def __init__(self,color):
+        __init(self,color,45,-100,-100,100,100)        
+</pre>
+Python decides which of these two methods to call based on the number
+of input parameters.  If you call it with 6 actual parameters, it calls
+the first.  If you call it with 1 parameter, it calls the second.  If you 
+call it with any other number of parameters, it will fill the Python shell
+with red text and give an error.
+
+<p>The most interesting part of our class is the <tt>move()</tt> method.
+It moves the turtle <tt>d*5</tt> steps, where <tt>d</tt> is specified
+as an input parameter.  At each iteration, it checks to see if the turtle
+is in bounds.  If it is not and close to the x boundaries, it turns 
+<tt>180-2*angle</tt> to the left.  If it is close to the y boundaries, it turns
+<tt>360-2*angle</tt> to the left.  In both cases, <tt>angle</tt> is the
+direction it is currently moving, and the amount to turn was calculated
+using similar triangles (from high school geometry):
+<pre>
+    def move(self,d):
+        for i in range(d):
+            x,y = self.turtle.pos()
+            angle = self.turtle.heading()
+            if (x > self.xMax-4 or x < self.xMin+4)\
+               and (y > self.yMax-4 or y < self.yMin+4):
+                self.turtle.left(180)
+            elif x > self.xMax-4 or x < self.xMin+4:
+                self.turtle.left(180-2*angle)
+            elif y > self.yMax-4 or y < self.yMin+4:
+                self.turtle.left(360-2*(angle))
+            self.turtle.forward(5)
+</pre>
+Our last two methods allow you to get and set the turtle variable:
+<pre>
+    def getTurtle(self):
+        return self.turtle
+
+    def setTurtle(self, value):
+        self.turtle = turtle
+</pre>
+
+
+Next, try adding two methods to the class.  Your new methods should
+be called, <tt>getColor()</tt> and <tt>setColor()</tt> and they should
+get and set, respectively, the color of the turtle.  Modify your 
+main program to test that your new methods work.
+
+
+</div>
+
+
+<div>
+<h3>The Complete Program</h3>
+
+<b>TurtleBall.py</b>
+<pre>
+#A simple class, demonstrating constructors and methods in python
+#Intro Programming, Lehman College, CUNY, Spring 2014
+from turtle import *
+
+class TurtleBall:
+
+    def __init__(self,color):
+        __init(self,color,45,-100,-100,100,100)
+
+    def __init__(self,color,angle,x1,y1,x2,y2):
+        self.turtle = Turtle()
+        self.turtle.color(color)
+        self.turtle.shape("circle")
+        self.turtle.left(angle)
+        self.turtle.speed(0)
+        self.xMin,self.yMin,self.xMax,self.yMax = x1,y1,x2,y2
+
+    def move(self,d):
+        for i in range(d):
+            x,y = self.turtle.pos()
+            angle = self.turtle.heading()
+            if (x > self.xMax-4 or x < self.xMin+4)\
+               and (y > self.yMax-4 or y < self.yMin+4):
+                self.turtle.left(180)
+            elif x > self.xMax-4 or x < self.xMin+4:
+                self.turtle.left(180-2*angle)
+            elif y > self.yMax-4 or y < self.yMin+4:
+                self.turtle.left(360-2*(angle))
+            self.turtle.forward(5)
+
+    def getTurtle(self):
+        return self.turtle
+
+    def setTurtle(self, value):
+        self.turtle = value
+
+
+</pre>
+
+<b>testTurtleBall.py</b>
+<pre>
+#Test program for turtles as billard balls
+import turtle
+from turtleBall import *
+from random import *
+
+def setUpTable(xMin,yMin,side):
+    draw = turtle.Turtle()
+    draw.up()
+    draw.goto(xMin,yMin)
+    draw.down()
+    for i in range(4):
+        draw.forward(side)
+        draw.left(90)
+    draw.hideturtle()
+    
+
+def main():
+    setUpTable(-200,-200,400)
+    b1 = TurtleBall("blue",random()*360,-200,-200,200,200)
+    b1.move(400)
+    
+    turtle.Screen().exitonclick()
+    
+main()
+</pre>
+
+
+</div>
+
+</html>

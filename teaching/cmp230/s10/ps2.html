@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 2 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "2." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		li {
+			margin-top: 25px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 2</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 2: Methods &amp; Data.
+</p>
+
+<p>You should complete <b>70 points</b> worth of programs
+(with an additional 7 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+<li><b>Method Tutorial</b> (5 points)
+<p>
+<img width="100" src="../images/napTutorial.png">
+</p>
+<p>
+Open the Alice animation system and choose <tt>Open World</tt> from the 
+<tt>File Menu</tt> (this should automatically open when you open Alice).   
+Click on the <tt>Tutorial</tt> tab, and choose Tutorial 2.  Work through 
+the entire tutorial.  
+</p>
+</li>
+
+<li><b>Kangaroo</b> (10 points)
+
+<p>Methods are used to define behaviors for an object.  For example, 
+in lecture and in the text, we have used built-in methods such as 
+<tt>roll</tt> and <tt>move</tt> and created methods to make objects
+(i.e. cheerleaders and frogs) jump.
+</p>
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/kangaroo.png">
+</p>
+
+<p>
+Create a new Alice world with a kangaroo (from the <tt>Animals</tt>
+gallery).  Add a new method called <tt>hop</tt> that makes the 
+kangaroo hop into the air and land again while moving forward a
+short distance.  Demonstrate your new method by having the kangaroo
+hop several times.
+</p>
+</li>
+
+<li><b>Flap</b> (10 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Dinosaurs/Pterodactyl.png">
+</p>
+<p>
+Programming Project 2.1 (p 37) asks you to create an Alice world in 
+which a bird flies across the sky.  Use an appropriate class from the 
+<tt>Animals</tt> gallery (i.e. the <tt>pterodactyl</tt> class) to make 
+the bird fly.  Add a method called <tt>flap</tt> to the bird that causes
+both wings to move up and down in unison one full stroke while move the 
+bird forward a set distance.
+</p>
+</li>
+
+<li>
+<b>Rowboat</b> (15 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Rowboat.png">
+</p>
+<p>
+Programming Project 2.4 (p 38):  Create an Alice world that shows a
+person rowing a boat across the water.  Use an appropriate person from
+the <tt>People</tt> gallery and an object created from the <tt>Rowboat</tt>
+class in the <tt>Vehicle</tt> gallery.  Add a method called <tt>row</tt>
+to the person that causes the person to make one stroke with both oars
+and consequently causes the boat to move forward a randomly determined
+distance.
+</p>
+
+
+<li>
+<b>Random Numbers</b> (15 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Bugs/beetle.png">
+</p>
+<p>
+Programming Project 2.7 (p 38) asks that you create a world in which 
+three beetles are seen scurrying around the ground.  Instead of beetles, 
+create an object of your favorite animal (or bug) class.  Add a method
+called <tt>scurry</tt> that causes the animal to turn in a random direction
+and then move forward a random direction.  Duplicate that animal twice
+and call the <tt>scurry</tt> method of all three objects several times 
+from <tt>my first method</tt>.
+</p>
+</li>
+
+<li><b>Kangaroo with Parameters</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/kangaroo.png">
+</p>
+<p>
+Modify your world with a kangaroo from <a href="lab2.html">last lab</a>
+so that the <tt>hop</tt> method accepts a parameter that specifies
+the jumping distance.  Demonstrate your new method by having the kangaroo
+hop several times.
+</p>
+</li>
+
+
+<li><b>Search &amp; Rescue</b> (20 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Helicopter.png">
+</p>
+<p>
+Programming Project 2.8 (p 38): Create an Alice world that shows a 
+search and rescue opertation in which a helicopter flies in a pattern 
+above the ocean, occasionaly stopping to hover for a while as if looking 
+for something.  Eventually the helicopter swoops in to save a person who 
+was adrift.  Create a <tt>hover</tt> method the helicopter that accepts
+the number of seconds it should hover as a parameter.  Create a 
+<tt>search</tt> method and a <tt>rescue</tt> method to handle those
+aspects of the operation.
+</p>
+
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 70 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 7 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+// pulsecount.nqc 
+//	counts the number of sensor touches in 5 seconds
+// UCD COSMOS, Cluster V, Summer 2001 
+
+// sensor and motors
+#define COUNT	SENSOR_1
+
+// waiting times
+#define REST 	50
+
+task main()
+{
+    int i;
+
+    //Initialize the counting sensor to pulse count mode
+    SetSensor(COUNT, SENSOR_PULSE);
+	
+    //After 5 seconds, beep the COUNT:
+    Wait(500);
+    for (i=0; i<COUNT;i++)
+    {
+	PlaySound(SOUND_CLICK);
+	Wait(REST);
+    }
+}

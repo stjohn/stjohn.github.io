@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Seminar 4, Macaulay Honors College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img style = "max-width:100%" src = "s17/briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<small><i>(Proposed Bridges, New York Tribune, 1 January 1911, via <a href="http://stuffnobodycaresabout.com/2014/05/21/in-1911-the-proposed-mccarren-bridge-was-to-replace-the-old-brooklyn-bridge-while-it-was-being-reconstructed/">stuffnobodycaresabout</a>)</i></small>
+<br>
+
+<br>
+<h1>
+MHC 250/Seminar 4:  Shaping the Future of New York<br>
+Macaulay Honors College</h1>
+
+Spring 2017<br>
+Thursdays: 5:30-8pm<br>
+Prof. Katherine St. John <br>
+Email: <tt>stjohn AT lehman cuny edu</tt> & 
+<a href="../officeHours.html">Office Hours</a><br>
+IT Fellow:  Kevin Ambrose <br>
+Email: <tt>kevind.ambrose AT macaulay.cuny.edu</tt> 
+</h2>
+
+</div>
+
+
+<div>
+<h3>Announcements:</h3>
+<ul> 
+	<li>  The webpages on clustering markers are a bit confusing.  Here's a sample file that creates a list of locations and popup messages and then adds them to a map altogether so they can be clustered:
+	<ul>
+		<li> Python script: <a href="http://comet.lehman.cuny.edu/stjohn/teaching/seminar4/s17/clusterMarkersCUNY.py">clusterMarkersCUNY.py</a>
+		<li> Outputted map: <a href="http://comet.lehman.cuny.edu/stjohn/teaching/seminar4/s17/cunyLocations.html">cunyLocations.html</a>
+
+<!--
+	<li> Due to the snow, CUNY is closed on Thursday, 9 February.  Homework 2 has been postponed until the following week.  Lehman College & MHC have not announced the make-up day plans, but we assume it will be an additional day at the end of the term.  We will adjust the course schedule as we get more information.
+	
+	<li> Every Seminar 4 has an out-of-class trip.  Ours is a self scheduled visit to an excellent and very relevant exhibit at the Cooper Hewitt Museum.  Due to the exhibition closing 26 February, you will need to visit the Cooper-Hewitt Museum's temporary exhibition on <a href ="https://www.cooperhewitt.org/channel/by-the-people/">By The People:  Designing a Better America</a> this coming week (free entry with CUNY ID).  Allow at least 1 hour to see the exhibit.
+	Part of <a href="s17/hw3.html">Homework 3</a> is:
+		<ul>
+			<li> #1:  Titles and URLs of 3 exhibits you found most relevant (URLs are stored on the visitor pen and can be retrieved on-line using the unique code on your entry ticket).
+			<li> #2:  A paragraph describing each of the three exhibits.  Include a description of the hypothesis of each exhibit, the planned or resulting design, and why it could be relevant to your neighborhood.
+			Submit as <b>.pdf</b> file.
+		</ul>
+	-->
+<!--
+	<li> No class or office hours on Tuesday, 9 February since CUNY is following a Friday schedule.
+-->
+<!--
+	<li> The <a href="final/final.html">final exam</a> is Thursday, 26 May, 11am-1pm.
+	<li> Unless otherwise noted:
+		<ul>
+			<li> Homework assignments are due on Blackboard Thursdays at 10:30am.
+			<li> Quizzes are due on Blackboard Saturdays at noon.
+		</ul>
+-->
+</ul>
+</div>
+
+
+<div>
+<h3>Useful Links:</h3>
+<ul>  
+	<li> <a href = "s17/syl.html">Syllabus</a>
+	<!--
+	<li> <a href = "project.html">Project Information</a>
+	-->
+	<li> Python:
+		<ul>
+			<li> <a href = "https://www.continuum.io/downloads">Anaconda</a> distribution (has many, useful packages included)
+			<li> <a href = "http://www.pythonanywhere.com">PythonAnywhere</a>:  browser-based Python system<br>
+			(See <a href="https://help.pythonanywhere.com/pages/MatplotLibGraphs/">help page</a> about saving <tt>matplotlib</tt> plots.)
+
+		</ul>
+	<li>  <a href="https://education.github.com/pack">Github education pack</a>	
+	<li> <a href="http://interactivepython.org/runestone/static/thinkcspy/toc.html">How to Think Like a Computer Scientist</a>:  good review (that's also free!)
+</ul>
+</div>
+
+<div>
+<h3>Outline:</h3>
+
+<span class="announcement">(Provisional-- need to adjust dates and content to accommodate snow day)</span>
+<table class="handouts" border="1">
+	<tr>
+		<td><b>Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></td>
+		<td><b>Topics:</b></td>		
+		<td><b>Handouts:</b></td>		
+		<td><b>Reading:</b></td>
+		<td><b>Classwork:</b></td>
+		<td><b>HW/Project:</b></td>
+	</tr>
+	<tr>
+		<td><b>#1</b>
+		<br>2 February</td>
+		<td>Course Goals & Overview;<hr>
+		Tech Skills: <a href="http://www.matplotlib.org">matplotlib</a> overview & CSV files<hr>
+		Classwork:  Plotting NYC Population Growth;<hr>
+		Demographics & Census Data
+		</td>
+		<td><a href="s17/syl.html">Syllabus</a>, <br>
+		<a href="http://matplotlib.org">matplotlib</a> overview, <br>
+		<a href="https://geomap.ffiec.gov/FFIECGeocMap/GeocodeMap1.aspx">Census Tract Finder</a>
+		</td>		
+		<td><a href="http://www.lehman.edu/academics/arts-humanities/documents/CUNYPolicyonAcademicIntegrity.pdf">Academic Integrity Policy</a>,<br>
+		<a href="http://www.nature.com/scitable/knowledge/library/introduction-to-population-demographics-83032908">Population Demographics (Nature)</a>,
+		<a href="https://www.jstor.org/stable/pdf/40230959.pdf?seq=1#page_scan_tab_contents">Demographics Overview (JSTOR)</a>,
+		<a href= "https://www.dol.gov/dol/aboutdol/history/herman/reports/futurework/conference/trends/TrendsI.htm">Labor Demographics</a>,
+		<a href="http://www.nyc.gov/html/onenyc/downloads/pdf/publications/OneNYC.pdf">OneNYC Plan</a>,
+		<a href="http://www1.nyc.gov/office-of-the-mayor/news/631-16/mayor-de-blasio-nyc-sets-affordable-housing-record-highest-production-since-1989">Mayor's Housing Efforts</a>
+		</td>	
+		<td>
+		<a href="s17/plotRecipes.html">Plotting recipes & CSV Files</a>, 
+		<a href="s17/nycRawTotals.py">nycRawTotals.py</a>,
+		<a href="s17/statesSummary.csv">statesSummary.csv</a>,
+		<a href="s17/csvEx.py">simple CSV example</a> & <a href="s17/in.csv">data</a></td>
+		<td><a href="s17/hw1.html">HW #1: My Neighborhood</a></td>
+	</tr>
+	
+	<tr>
+		<td><b></b>
+		<br>9 February</td>
+		<td colspan = 5  align="center"><span class="announcement">Snow Day!  CUNY CLOSED</span>
+	</tr>	
+
+	<tr>
+		<td><b>#2</b>
+		<br>16 February</td>
+
+		
+		<td> 
+		Discussion:  Neighborhood overviews; Housing & OneNYC; Where should new housing be? <hr>
+		Tech Skills:  lists, tuples, & dictionaries;<hr>
+		Classwork:  tabulating parking tickets (dictionaries);<hr>
+		Recap:  OneNYC & 
+		Cooper-Hewitt Museum-- out-of-class trip
+		<br>
+		
+
+		</td>		
+		<td>
+		<a href="http://matplotlib.org/examples/api/two_scales.html">two scales</a>,
+		<a href="http://news.e-scribe.com/397">lists vs. tuples</a>,
+		<a href="http://www.pythontutor.com/visualize.html#code=eng2esp%3D%7B%7D%0Aprint%28eng2esp%29%0A%0Aeng2esp%5B'one'%5D%20%3D%20'uno'%0Aprint%28eng2esp%29%0Aeng2esp%5B'two'%5D%20%3D%20'dos'%0Aprint%28eng2esp%29%0Aprint%28eng2esp%5B'two'%5D%29%0Aeng2esp%5B'three'%5D%20%3D%20'tres'%0A%0Anames%20%3D%20%5B'Adam',%20'Aspen',%20'Amanda',%20'Daniel',%20%0A'Isabelle',%20'Aaron',%20'Daniel',%20'Anthony',%20'Isabelle'%5D%0A%0AnameCounts%20%3D%20%7B%7D%0Afor%20n%20in%20names%3A%0A%20%20%20%20nameCounts%5Bn%5D%20%3D%20nameCounts.get%28n,0%29%20%2B%201%0Aprint%28nameCounts%29%0A%0AfirstLetterCounts%20%3D%20%7B%7D%20%0Afor%20n%20in%20names%3A%0A%20%20%20%20firstLetterCounts%5Bn%5B0%5D%5D%20%3D%20firstLetterCounts.get%28n%5B0%5D,0%29%20%2B%201%0Aprint%28firstLetterCounts%29%0A%0Acounts%20%3D%20%7B%7D%0Afor%20l%20in%20%22a%20man%20a%20plan%20a%20canal%20panama%22%3A%0A%09counts%5Bl%5D%20%3D%20counts.get%28l,0%29%20%2B%201%0A%0Afor%20k%20in%20counts.keys%28%29%3A%0A%20%20%20%20print%20%28k,%20counts%5Bk%5D%29%0A%0Aprint%28%22Counts%3A%22,%20counts%29%0AsortedList%20%3D%20sorted%28counts.items%28%29%29%0Aprint%28%22sortedList%3A%22,%20sortedList%29%20%0A%0A%0A%0AsortByValue%20%3D%20%5B%28k,v%29%20for%20v,k%20in%20sorted%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B%28v,k%29%20for%20k,v%20in%20counts.items%28%29%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%29%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0Aprint%28%22sorted%20by%20values%3A%22,%20sortByValue%29%20%20%20%20%20%20%20%20%20%20%20%20%0AsortReverseValue%20%3D%20sortByValue%5B%3A%3A-1%5D%20%20%20%20%20%20%20%20%20%0Aprint%28%22sorted%20by%20reverse%20order%20on%20values%22,%20sortReverseValue%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">Dictionary examples</a>, <br>		
+		<a href="https://www.nhgis.org/user-resources/data-availability">Historic Census Tract Data</a> <br>
+		<a href="https://www.cooperhewitt.org/channel/by-the-people/">By the People at Cooper-Hewitt</a>
+		
+		
+		</td>		
+		<td>
+		<a href="http://www.sciencedirect.com/science/article/pii/S0966692312002177">Parking Supply (ScienceDirect)</a>, <a href="http://iquantny.tumblr.com/post/144197004989/the-nypd-was-systematically-ticketing-legally">Legally Parked</a>, <a href="http://docs.trb.org/prp/16-4597.pdf">Deliveries & Parking</a>,
+		<a href="http://www.jstor.org/stable/pdf/23251503.pdf">Cost of Parking Policies (JSTOR)</a></td>
+		<td><a href="s17/binning.html">Binning Parking Data: NYC OpenData & Dictionaries</a></td>	
+		<td><a href="s17/hw2.html">HW #2: Comparison Neighborhoods, Parking </a></td>
+	</tr>
+		
+	<tr>
+		<td><b>#3</b>
+		<br>23 February</td>
+		<td> Discussion: Neighborhood parking results; Should new housing require parking? <hr>
+		Correlation, Regression<hr>
+		Tech Skills:  Python review, pandas & seaborn<hr>
+		Classwork:  Parking Recommendations, Getting started with github, linear regression with pandas and seaborn
+		
+		</td>		
+		<td>
+
+		
+		<a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a>,
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a>, <a href="https://education.github.com/pack">github student pack</a>,
+		<a href="https://education.github.com/git-cheat-sheet-education.pdf">github cheat sheet</a>;<br>
+		<a href="http://onlinestatbook.com/2/regression/intro.html">regression overview</a>, <br>
+		<a href="https://github.com/jvns/pandas-cookbook">pandas cookbook</a>, <a href="https://s3.amazonaws.com/quandl-static-content/Documents/Quandl+-+Pandas,+SciPy,+NumPy+Cheat+Sheet.pdf">general cheat sheet</a>,
+		<a href="https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf">pandas cheat sheet</a><br>
+		<a href="http://web.stanford.edu/~mwaskom/software/seaborn/index.html">seaborn</a> 
+		</td>		
+		<td>
+		<a href="https://www1.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/projections_report_2010_2040.pdf">NYC Population Predictions</a>, 
+		<a href="https://savingplaces.org/stories/a-tale-of-two-planners-jane-jacobs-and-robert-moses#.WIZYK1cWRCc">Two Planners: Jacobs & Moses</a>, 
+		<a href="http://www.theatlantic.com/magazine/archive/2016/11/the-prophecies-of-jane-jacobs/501104/">Jane Jacobs</a>,
+		<a href="https://www.ted.com/talks/jeff_speck_the_walkable_city">Walkable City</a>,
+		<a href="https://www.walkscore.com">walk scores</a>
+		</td>
+		<td><a href="s17/cw3.html">correlation & regression (pandas & seaborn); github</a>; parking recommendations<br>
+		
+		<!--<a href="dsWiki.txt">dsWiki.txt</a> (for group work)--></td>
+		<td><a href="s17/hw3.html">HW #3: Binning 311 Data & By Design Exhibit</a>
+		<!--Measuring Dispersion</a>--></td>
+	</tr>
+	
+	<tr>
+		<td><b>#4</b>
+		<br>2 March</td>
+		<td>
+		Discussion:  Best Ideas from "By the People:  Designing a Better America";  Which would work in NYC?<hr>
+		Tech Skills:  <!--list comprehensions & zip; <br>	-->	
+		Geographical maps, <!-- in <tt>matplotlib</tt>: 
+		<tt>basemap</tt>, 
+		Maps available for NYC; -->
+		Data formats:  ERSI's shapefiles, JSON, KML;<hr>
+		Classwork: Metrics for comparing neighborhoods; Plotting GIS data <!--, using NYC shapemaps-->
+					
+		
+		</td>		
+		<td>
+	
+		<a href="https://pypi.python.org/pypi/folium">folium</a>, <br>
+		<a href="https://www.dnainfo.com/new-york/crime-safety-report/ranking">DNA Info's rankings</a>, 
+		<a href="https://www.brickunderground.com/live/best-nyc-neighborhoods-for-college-grads-2016">Brick Underground</a>,
+		<a href="https://www.buzzfeed.com/perpetua/where-should-you-actually-live-in-new-york-city?utm_term=.dvk8EJ3Ne#.clDxXrwq4">BuzzFeed</a>,
+		<a href="http://nymag.com/realestate/neighborhoods/2010/65374/">NY Magazine</a>
+		
+		</td>		
+		<td>
+		<a href="http://www.jstor.org./stable/pdf/3559933.pdf">Effects of Neighborhood Demographics Shifts (JSTOR)</a>,
+		<a href="http://www.jstor.org/stable/pdf/40230828.pdf">Migration in NYC (JSTOR)</a></td>	
+		<td>
+		<a href="s17/cw4.html">
+		comparing neighborhoods;
+		plotting points with folium</a>
+		</td>
+		<td><a href="s17/hw4.html">HW #4:  Comparing Neighborhoods; Mapping GIS Data</a></td>
+	</tr>	
+
+
+	<tr>
+		<td><b>#5</b>
+		<br>9 March</td>
+		<td>Discussion:  Comparing neighborhood change;  What affects population growth?<hr>
+		
+		Tech Skills:  More on map formats:
+		shapefiles, JSON, KML; choropleth maps
+		<hr>
+		
+		Classwork: geoJSON for GIS data; Quantifying neighborhood changes
+		<hr>
+		
+		Limits to growth
+
+		</td>		
+		<td>
+		 <a href="http://www.json.org">JSON</a>, 
+		 <a href="http://geojson.org">geoJSON</a>,
+		<a href="https://developers.google.com/kml/">KML</a>,
+		<a href="http://apprentice.craic.com/tutorials/28">summary & comparison</a>,
+		<a href="http://www.gdal.org/index.html">gdal conversion tools</a>
+		<!--,<br>
+		<a href="http://matplotlib.org/1.3.1/mpl_toolkits/mplot3d/tutorial.html">mplot3d tutorial</a>, matplotlib <a href="http://matplotlib.org/users/colormaps.html">colormaps</a>-->
+		</td>		
+		<td><!--Cartography Readings-->
+		<a href="http://journals.sagepub.com/doi/pdf/10.1177/000276428002400107">Limits of Growth</a>,
+		<a href="https://www.washingtonpost.com/news/wonk/wp/2015/10/06/there-is-no-such-thing-as-a-city-that-has-run-out-of-room/?utm_term=.7f1e9e38291f">Run Out of Room</a>,
+		<a href="https://www1.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/historical-population/pop_density_1950_2010.pdf">NYC Density</a>, <a href="https://www.nytimes.com/2017/01/11/nyregion/de-blasio-affordable-housing.html?_r=0">NYC Housing Growth</a>,</td>
+		<td>
+		<a href="s17/cw5.html">geoJSON for GIS data; limits to growth</a>
+		<!--<a href="https://github.com/datanews/elevators">elevator data</a>--></td>
+		<td><a href="s17/hw5.html">HW #5: geoJSON; Limits to Growth</a><br><br>
+		<!--<a href="project.html">-->Project:  Topics Preference<!--</a>--></td>
+	</tr>	
+	
+	<tr>	
+		<td><b>#6</b>
+		<br>16 March</td>
+		<td>
+		Discussion:  Geographic & Resource Limits
+		<hr>
+		Tech Skills:  choropleth maps
+		<hr>
+		Classwork:  Project Teams
+		
+		<hr>
+		Data as Vectors	 
+		</td>		
+		<td>
+		<a href="https://github.com/python-visualization/folium#choropleth-maps">choropleth maps in folium</a>,
+		
+		
+		</td>		
+		<td><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.953.5608&rep=rep1&type=pdf">US Zoning</a>, 
+		<a href="https://www.nytimes.com/interactive/2016/05/19/upshot/forty-percent-of-manhattans-buildings-could-not-be-built-today.html?_r=0">Zoning Today</a>,
+		<a href="http://data.beta.nyc/dataset/nyc-zoning-districts">NYC Zoning Districts</a>, 
+		<a href=" https://www1.nyc.gov/site/planning/zoning/districts-tools.page">Zoning Explained</a>,
+		<!--<a href="http://journals.sagepub.com/doi/pdf/10.1080/0042098032000165271">Economic History of Zoning</a>,-->
+		<a href="https://aging.ny.gov/LivableNY/ResourceManual/Housing/III1i.pdf">Accessory Apartments</a>
+		</td>	
+		<td><a href="s17/cw6.html">choropleth maps; 
+		<br>project teams</a></td>
+		<td><a href="s17/hw6.html">HW #6: Choropleth maps; Zoning</a></td>		
+	</tr>	
+	
+	<tr>	
+		<td><b>#7</b>
+		<br>23 March</td>
+		<td>
+		Discussion:  Zoning & Limits to Growth<hr>
+		Tech Skills:  Series in pandas & github pages
+		
+		<hr>
+		
+		Classwork:  Maps & yimby
+
+		<hr>
+		Transit & Commuting
+		<br> </td>
+		<td>
+		<a href="http://gothamzoning.org">Gotham zoning</a>,
+		<a href="http://newyorkyimby.com">yimby</a>,
+		
+		<!--
+		<a href="http://isoscope.martinvonlupin.de">Isoscope: Exploring Mobility</a>-->
+
+		</td>		
+			
+		<td>
+		<a href="https://medium.com/the-opportunity-series/the-not-so-simple-commute-98326477648e#.iygdthgx8">Not-So-Simple Compute</a>,
+		<a href="http://www.environment.ucla.edu/perch/resources/gender-japa-summer-02007.pdf">Gender Gap in Commuting</a> </td>
+		<td>
+		<a href="s17/cw7.html">zoning, github & projects</a>
+		
+		</td>
+		<td>
+		<a href="s17/hw7.html">HW #7: Transit; Github Site</a><br><br>
+		Project:  Proposal</td>
+	</tr>
+	
+	<tr>	
+		<td><b>#8</b>
+		<br>30 March</td>
+		<td>
+		Discussion: How has transit shaped the your neighborhood? The city?<hr>
+		Tech Skills:  Working with Multi-dimensional Data
+		<hr>
+		Classwork:  
+		More on Pandas
+		<hr>
+		Density & Neighborhoods
+		</td>		
+		<td>
+		<a href="https://www.trulia.com/local/new-york-ny/driving:1|transit:0|position:40.714927;-74.007940|time:40_commute">Trulia Distances</a>
+
+			
+		</td>
+		
+		<td>
+		<a href="https://www.brookings.edu/wp-content/uploads/2016/07/Srvy_JobsProximity.pdf">Job Proximity</a>,
+		<a href="http://cityobservatory.org/how-important-is-proximity-to-jobs-for-the-poor/">Job Access by Income</a>,
+		<a href="https://fivethirtyeight.com/features/new-yorkers-will-pay-56-a-month-to-trim-a-minute-off-their-commute/">Price of Trimming of Commutes</a>
+		</td>
+		<td><a href="s17/cw8.html">More on pandas & zoning; project timeline</a></td>
+		<td><a href="s17/hw8.html">HW #8:  Time as Distance</a><br><br>Project:  Timeline</td>
+	</tr>	
+		
+	<tr>	
+		<td><b>#9</b>
+		<br>6 April</td>
+		<td> 
+		Discussion:  Time as Distance<hr>
+		Tech Skills:  Voronoi Diagrams<hr>
+		Classwork:  
+		Mapping Zoning versus Density
+		Boundaries & Divides; 
+		<hr>
+		Project Check-in 
+		</td>		
+		<td><a href="http://mbostock.github.io/d3/talk/20111116/airports-all.html">nearest airport</a>, <a href="http://iquantny.tumblr.com/post/137259799714/almost-one-third-of-nyc-is-not-patrolled-by-the">precincts' Voronoi diagram</a>,
+		<a href="http://zderadicka.eu/voronoi-diagrams/">Voronoi diagrams from triagulations</a>, <a href="http://docs.scipy.org/doc/scipy-0.17.0/reference/generated/scipy.spatial.Voronoi.html">scipy Voronoi module</a>
+		<br>
+		<!--
+		<br>
+		<a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means (wiki)</a>,
+		<a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_color_quantization.html#example-cluster-plot-color-quantization-py">k-means image example</a>,
+		<a href="http://scikit-learn.org/stable/modules/clustering.html">scikit-learn clustering</a>
+		-->
+		</td>		
+		
+		<td><a href="http://tigerprints.clemson.edu/cgi/viewcontent.cgi?article=1000&context=planning_pubs">Laurence-- Urban Design</a>,
+		<a href="http://www1.nyc.gov/site/planning/plans/urban-design-principle/urban-design-principle.page">NYC's Urban Design Principles</a>, 
+		<a href="http://www1.nyc.gov/site/hpd/community/citywide-planning-initiatives.page">NYC Planning Initiatives</a>,
+		<a href="http://www.accessmagazine.org/wp-content/uploads/sites/7/2016/05/access48-webprint_cuttingthecost.pdf">Shoup:  cost of parking</a></td>
+		<td>
+		<a href="https://en.wikipedia.org/wiki/Second_Avenue_Subway">2nd Avenue Subway Proposed Stations</a>, 
+		<a href="http://web.mta.info/maps/submap.html">Current Subway Map</a><br>
+		
+		<a href="s17/cw9.html">More on geoJSON; Voronoi diagrams</a><!--; commuting distances-->
+		<br>Project Check-in (informal presentations)</td>
+		<td><a href="s17/hw9.html">HW #9:  Voronoi Diagrams; Density</a><br><br>
+		
+		<br></td>
+	</tr>	
+
+	<tr>	
+		<td><b>#10</b>
+		<br>Out-of-Class<br>
+		(Snow Day Make-up)</td>
+		<td>
+		Discussion:  Density & New Housing<hr>
+		Tech Skills:  	
+		finding patterns in data<hr>
+		Classwork:  regular expressions, scraping webpages & beautifulSoup; 
+		<!--More on clustering: k-means & hierarchical clustering<hr>
+		Classwork:  Clustering tools in scipy--><hr>
+		Mobility & Distance
+		</td>		
+		<td>
+		<!--<a href="http://www.onmyphd.com/?p=k-means.clustering&ckattempt=1">k means example</a>, <a href="https://www.quora.com/How-is-the-k-nearest-neighbor-algorithm-different-from-k-means-clustering">k-nearest-neighbor versus k-means</a>, <a href="http://scikit-learn.org/stable/modules/clustering.html">scikit-learn clustering</a>
+		<a href="http://schools.nyc.gov/schoolsearch/Maps.aspx?grade=ALL&borough=M&q=">NYC Schools</a>, <a href="middleSchools.png">MS data</a> (for in class)<br>-->
+		<a href="https://github.com/tartley/python-regex-cheatsheet/releases/download/v0.3.3/cheatsheet.pdf">regex cheat sheet</a>, 
+		<a href="http://www.crummy.com/software/BeautifulSoup/">beautifulSoup</a>,
+		<a href="http://www.crummy.com/software/BeautifulSoup/bs4/doc/">soup documentation</a>,
+		<a href="http://cecilialiao.com/2014/02/03/wheres-beautifulsoup-in-anacondas-python/">where's beautifulSoup?</a>, Frances Zlotnick's
+		<a href="http://web.stanford.edu/~zlotnick/TextAsData/Web_Scraping_with_Beautiful_Soup.html">tutorial</a>,
+		<a href="http://www.openbookproject.net/tutorials/getdown/css/lesson4.html">DOM tutorial</a>,<br>
+		<a href="https://www.6sqft.com/interactive-map-reveals-the-income-gap-that-divides-nycs-richest-and-poorest/">Income Gap Map</a>
+		</td>
+		<td>
+		<a href="https://www.trulia.com/blog/trends/low-income-housing/">Low Income Housing</a>,
+		<a href="http://storymaps.esri.com/stories/2016/wealth-divides/index.html">Wealth Divides</a>, 
+		<a href="http://equalityindicators.org/wp-content/uploads/2017/02/Narrowing-The-Gap-Vol16-Race-Ethnicity.pdf">Equality Indicators</a></td>
+		<td><a href="s17/cw10.html">regex, on-line discussions and group work</a></td>	
+		<td rowspan=2><a href="s17/hw10.html">HW #10: Regex; Inequality</a>
+		</td>
+		
+	</tr>
+	</tr>	
+	
+	<tr>	
+		<td>
+		<br>13 April</td>
+		<td colspan = 5  align="center"><span class="announcement">Spring Recess: No Classes</span></td>
+	</tr>	
+	
+	<tr>	
+		<td><b></b>
+		<br>20 April</td>
+		<td colspan = 5  align="center"><span class="announcement">No Class:  CUNY Follows Monday Schedule</span></td>
+	</tr>	
+	
+	<tr>	
+		<td><b>#11</b>
+		<br>27 April</td>
+		<td> Discussion:  Income Inequality<hr>
+		Tech Skills: 
+		Principal Components Analysis (PCA)<hr>
+		Classwork:  <tt>PCA</tt> and <tt>scipy</tt>
+		<hr>
+		Presentations
+		</td>
+		<td>
+		
+		
+				<a href="http://setosa.io/ev/principal-component-analysis/">PCA, explained visually</a>, 
+		<a href="http://scipy.org">scipy</a>, <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">sklearn's PCA</a>, 
+		<a href="http://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#example-datasets-plot-iris-dataset-py">pca on iris dataset</a>, 
+		<a href="http://www.scipy-lectures.org/intro/numpy/array_object.html">scipy lecture notes on arrays</a>, <br>
+		
+		
+		</td>
+		<td></td>
+		<td>
+		PCA in practice; Presentations</td>
+		<td>
+		Project:  Draft Presentations due</td>		
+	</tr>
+	
+	<tr>	
+		<td><b>#12</b>
+		<br>4 May</td>
+		<td colspan=5 align="center">  Class Presentations  (meet in Lecture Hall)</td>
+		
+	</tr>
+
+	<tr>	
+		<td><b>#12</b>
+		<br>5/6 May</td>
+		<td colspan=5 align="center"> Model City Council Presentations</td>
+	</tr>
+
+	<tr>	
+		<td><b>#13</b>
+		<br>11 May</td>
+		<td>Crash Course in SQL</td>		
+		<td><a href="https://www.khanacademy.org/computing/computer-programming/sql">Khan Academy on SQL</a>,
+		<a href="http://sqlitebrowser.org">sqlitebrowser</a>,
+		<a href="https://www.sqlite.org">sqlite</a>, <a href="introSQL.html">SQL lab</a></td>
+				<td></td>		
+		<td></td>
+		<td><!--HW #13: NLP & Networks<br><br>-->Complete Project </td>		
+		
+		
+	</tr>	
+
+	<tr>	
+		<td><b>#14</b>
+		<br>18 May</td>
+		<td>Machine Learning Overview:  Modeling, Overfitting, Feature Extraction & Selection; </td>
+		<td><a href="http://twiecki.github.io/blog/2014/11/18/python-for-data-science/">Thomas Wiecki's modern guide to data science</a>, <a href="http://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html">SVM intro</a>,
+		<a href="http://scikit-learn.org/stable/tutorial/basic/tutorial.html">sklearn ML introduction</a>, 
+		<a href="http://scikit-learn.org/stable/modules/svm.html">sklearn svm</a>,
+		<a href="http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html">face recognition</a>,
+		<a href="http://scikit-learn.org/stable/tutorial/basic/tutorial.html">sklearn ML intro</a>, 
+		<a href="http://www.scipy-lectures.org/advanced/scikit-learn/">sklearn ML advanced</a></td>
+		<td></td>
+		<td></td>
+		<td></td>		
+	</tr>	
+
+
+
+	
+</table>
+
+
+<br>
+<br>
+<br>
+<i>(Last updated: 6 April 2017)</i>

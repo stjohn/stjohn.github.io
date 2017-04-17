@@ -1,0 +1,52 @@
+# Error: illegal define arguments
+File "mystery.nqc" ; line 7
+# #define RIGHT=OUT_C
+#              ^
+#----------------------------------------------------------
+# Error: #define required a symbol name
+File "mystery.nqc" ; line 10
+# #define 42 LEFT_THRESHOLD  
+#         ^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 17
+#  SetSensor(EYE, SENSOR_LIGHT)
+#            ^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 17
+#  SetSensor(EYE, SENSOR_LIGHT)
+#            ^^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 22
+#   if (EYE =< LEFT_THRESHOLD)
+#       ^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 22
+#   if (EYE =< LEFT_THRESHOLD)
+#       ^^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 25
+#    until(EYE > LEFT_THRESHOLD);
+#                              ^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 25
+#    until(EYE > LEFT_THRESHOLD);
+#                              ^
+#----------------------------------------------------------
+# Error: undefined variable 'Left'
+File "mystery.nqc" ; line 26
+#    Fdw(Left);
+#        ^^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 29
+#   else if (EYES >= RIGHT_THRESHOLD)
+#   ^^^^
+#----------------------------------------------------------
+Too many errors - only first 10 reported
+# 12 errors during compilation

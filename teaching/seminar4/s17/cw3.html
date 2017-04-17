@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Regression & github Classwork, Seminar 4, MHC, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    </head>
+<body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
+
+
+<div>
+
+<img align="right" height="200px" src = "briges-January-1-1911-NY-Tribune-stuffnobodycaresabout.jpg"><br>
+<h1>Classwork:  correlation & regression (pandas & seaborn), and github</h1>
+<h2>MHC 250/Seminar 4: <br>
+Shaping the Future of New York City<br>
+Spring 2017</h2>
+
+
+</div>
+
+
+
+
+<div>
+<h3>Useful Packages:  Pandas & Seaborn</h3>
+
+<p>
+The second part of the lab is to popular packages to manage and visualize data.  Before starting the next section, check to see if the following are installed, by typing at the Python shell (in spyder, idle, or your favorite Python interface):
+<pre>
+	import pandas as pd
+</pre>
+
+<p>If you get an error that the library is not found.  Open up a terminal, and use conda to install it:
+<pre>
+	conda install pandas
+</pre>
+
+<a href="http://pandas.pydata.org">Pandas</a>, Python Data Analysis Library, is an elegant, open-source package for extracting, manipulating, and analyzing data, especially those stored in 2D arrays (like spreadsheets).  It incorporates most of the Python constructs and libraries that we have seen thus far.
+
+<p>Next, check if seaborn is installed:
+<pre>
+	import seaborn as sns
+</pre>
+<p>If you get an error that the library is not found.  Open up a terminal, and use conda to install it:
+<pre>
+	conda install seaborn
+</pre>
+<a href="http://seaborn.pydata.org">Seaborn</a> is a Python visualization library based on matplotlib.  It provides beautiful statistical graphics.  
+
+</div>
+
+
+<div>
+<h3>Regression & Correlation</h3>
+
+<p>In class, we discussed the uses of regression and correlation.  Let's now apply those to a data set that we used in <a href="hw1.html">Homework 1</a>:
+the NY Fed's labor trends for recent college graduates, <a href="labor.csv">labor.csv</a>.  
+
+<p>Our goal is to see the correlation and add an linear regression to the analysis from the first homework.
+
+<p>Seaborn uses the data structures in pandas as its default.  And given how easy it is to use, we will too.  The basic structure is a <tt>DataFrame</tt>
+which stored data in rectangular grids.
+<ul>
+	<li> Before continuing, work through the first two sections of
+		<a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.5RWFGjI">Pandas Tutorial:  DataFrames in Python</a>
+	</ul>
+	
+<p>
+Let's use this to visualize the labor data.  First, start your file with the standard import statements:
+
+<pre>
+	import numpy as np
+	import pandas as pd
+	import matplotlib as mpl
+	import matplotlib.pyplot as plt
+	import seaborn as sns
+</pre>
+
+<p>
+Next, let's read in the NY Fed data (this assumes that the file is called <tt>labor.csv</tt> and located in the same directory as your Python program):
+
+<pre>
+	labor = pd.read_csv('labor.csv', skiprows=13)
+</pre>
+
+Remember how the first 13 lines had extra stuff in it?  The <tt>read_csv()</tt> function has an option to skip rows that don't contain data.  We now have stored the data from <tt>labor.csv</tt> into the DataFrame, <tt>labor</tt> in a single line (instead of the multiple lines it took with regular Python file I/O or the <tt>csv</tt> library).
+
+<p>To see if this works, try to print the column of majors:
+<pre>
+	print("The majors are:", labor["Major"])
+</pre>
+
+<ul>
+<li> How would you print out the unemployment rates?
+</ul>
+
+<p> To compute the correlation between two columns, we select the columns 
+(<tt>labor.iloc[:,[2,3]]</tt>) and then apply Pandas correlation function:  <tt>corr()</tt> 
+
+<pre>
+	print( labor.iloc[:,[2,3]].corr() )
+</pre>	
+
+<p>If we wanted to compute the correlations between all columns, we can just apply the function to the whole DataFrame:  <tt>labor.corr()</tt>).
+
+<p>In seaborn, making a <a href="http://seaborn.pydata.org/tutorial/regression.html">regression plot</a> is very straightforward:
+<pre>
+	sns.regplot(x="Underemployment Rate", y="Median Wage Early Career", data=labor)
+</pre>
+
+<p>Note that we specified the columns by the names that were used in the original CSV file.
+
+</div>
+
+<div>
+<h3>Additional Challenges</h3>
+<ul>
+	<li> Are underemployment and unemployment rates correlated?  Use <tt>corr()</tt> and <tt>regplot()</tt> to view the relationship.
+	<li> Work through the <a href="http://seaborn.pydata.org/tutorial/regression.html">regression plot</a> tutorial.  What else is in the <tt>tips</tt> data set?  What other patterns do you see in that data?
+</ul>
+</div>
+
+<div>
+<h3>github</h3>
+
+<a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
+The first part of today's classwork is to get started on github:
+
+<ol>
+	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.
+	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
+	<li> Work through the 
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
+	<li> Submit your github username for Problem #1 on Homework #3.  If you have more than one account, submit the username you plan to use for the programming and project for this course.
+</ol>
+
+</div>
+
+
+<!--			
+
+<h3>Additional Challenges</h3>
+
+Modify your Python programs to answer the following:
+<ul>
+	<li> Which street was the location of the most tickets?
+	<li> What were the most common violations?
+	<li> Bin the ticket data by the hour the violation occurred and display as a histogram.
+	<br>(Hint:  The violation time is stored as a 5 character string such as "0932A" and "0810P": convert into 24 hour time to keep from conflating morning and afternoon tickets).
+</ul>
+
+-->			

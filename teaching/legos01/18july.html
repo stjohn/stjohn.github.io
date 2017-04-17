@@ -1,0 +1,96 @@
+<title>18 July 2001, Cluster V, COSMOS, UC Davis, Summer 2001</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+<!--
+Add BSU gif...
+<img src="math.gif" width=600 height=60>
+-->
+
+<h1>18 July 2001</h1>
+<h2>Cluster V: Computers and Robots<br>
+COSMOS Program<br>
+UC Davis</h2>
+
+<hr>
+Today's lecture is on tasks, fixing errors, and planning for
+the final project.
+
+<h3>Tasks</h3>
+For tasks, there's an example program:
+<ul>
+	<li> task.nqc
+</ul>
+that demonstates a program with several tasks.
+
+<h3>Finding Errors</h3>
+
+The program <a href="mystery.nqc">mystery.nqc</a> has lots
+of errors.  If you type:
+<pre>
+nqc mystery.nqc
+</pre>
+You will see:
+<pre>
+# Error: illegal define arguments
+File "mystery.nqc" ; line 7
+# #define RIGHT=OUT_C
+#              ^
+#----------------------------------------------------------
+# Error: #define required a symbol name
+File "mystery.nqc" ; line 10
+# #define 42 LEFT_THRESHOLD  
+#         ^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 17
+#  SetSensor(EYE, SENSOR_LIGHT)
+#            ^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 17
+#  SetSensor(EYE, SENSOR_LIGHT)
+#            ^^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 22
+#   if (EYE =< LEFT_THRESHOLD)
+#       ^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 22
+#   if (EYE =< LEFT_THRESHOLD)
+#       ^^^
+#----------------------------------------------------------
+# Error: undefined variable 'SENSOR'
+File "mystery.nqc" ; line 25
+#    until(EYE > LEFT_THRESHOLD);
+#                              ^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 25
+#    until(EYE > LEFT_THRESHOLD);
+#                              ^
+#----------------------------------------------------------
+# Error: undefined variable 'Left'
+File "mystery.nqc" ; line 26
+#    Fdw(Left);
+#        ^^^^
+#----------------------------------------------------------
+# Error: parse error
+File "mystery.nqc" ; line 29
+#   else if (EYES >= RIGHT_THRESHOLD)
+#   ^^^^
+#----------------------------------------------------------
+Too many errors - only first 10 reported
+# 12 errors during compilation
+</pre>
+
+
+<h3>Projects</h3>
+
+See <a href="projects.html">projects.html</a> for details.
+
+
+</html>
+</body>
+

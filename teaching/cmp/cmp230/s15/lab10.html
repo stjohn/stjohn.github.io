@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 10, CMP 167<br>
+  	Introductory Programming, Lehman College, CUNY, Spring 2015</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 10, CMP 167<br>
+Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2015<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will write a simple implementation of the popular <a href="http://gabrielecirulli.github.io/2048/">2048 game</a> by 
+by Gabriele Cirulli.  
+
+<br>
+<img src="2048.jpg">
+
+<p>
+Our game is implemented with turtle graphics, so, it is easy to understand, but very, very slow.
+</div>
+
+
+
+<div>
+
+<h3>The 2048 Game</h3>
+
+<p>Before starting our lab, try the real implementation of 
+<a href="http://gabrielecirulli.github.io/2048/">2048 game</a> to understand the basic rules.  Note:  we are not going to do scoring, just moving of tiles.
+
+<p>As in the Tic-Tac-Toe game in <a href="lab9.html">Lab 9</a>, we need to keep track of the previous moves.  Our game board here is slightly larger, 4 x 4 squares instead of the 3 x 3 used in Tic-Tac-Toe, but the list of lists still works well to store the board.  As in Tic-Tac-Toe, we will set the empty squares to the empty list:
+<pre>
+grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+</pre>
+
+<p>How do we play the game?  While there are empty squares, we ask the user for their move and then play the move.  When there are no more empty squares, we conclude the game.  This makes for a very simple main function: 
+
+<pre>
+def main():
+    grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+    welcome()
+    win,t = setUp(4,4)
+    drawGrid(t,4,4)     
+
+    while squaresFilled(grid) < 16: #While there are empty squares, keep playing:
+        generateNewSquare(t,grid)
+        makeMove(t,grid)
+
+    conclusion(win,t)    
+    
+main()
+</pre>
+
+<p>
+Let's fill in each of these functions.  We need to include both the turtle and random libraries.  We use the turtles for drawing and the random library to randomly generate a new square each round.
+<ul>
+<li>The first three functions called from the <tt>main()</tt> are very similar to those from Tic-Tac-Toe or our lab that drew colors from a file:
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+A summing game based on 2048
+by Gabriele Cirulli (http://gabrielecirulli.github.io/2048/)
+"""
+
+from turtle import *
+from random import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("Welcome to a summing game")
+    print("For each move pick a direction")
+    print("([L]eft, [R]ight, [U]p, or [D]own).")    
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUp(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    t = Turtle()
+    t.speed(10)
+    t.hideturtle()
+    return win,t
+
+""" Draws a grid to the graphics window"""
+def drawGrid(tic,xMax,yMax):
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+</pre>        
+
+<li>Next, we need to fill in the functions called from the main.  The first one function, takes a <tt>grid</tt> and returns the number of filled squares:
+
+<pre>
+"""Return the number of squares that are filled"""
+def squaresFilled(grid):
+    filled = 0
+    for i in range(4):
+        for j in range(4):
+            if grid[i][j] != "":
+                filled = filled + 1
+    return(filled)
+</pre>
+
+Note that it uses nested loops to check if each square is empty.  First, it looks at grid[0][0], grid[0][1], grid[0][2], grid[0][3], grid[1][0] ... and continues until it finishes checking grid[3][3].
+
+<li>  To generate a new square, we need to choose a space at random.  If that space is filled, we keep choosing randomly until we find an opening:
+
+<pre>
+def generateNewSquare(t,grid):
+    x = randrange(4)
+    y = randrange(4)
+    while grid[x][y] != "":
+        x = randrange(4)
+        y = randrange(4)
+    grid[x][y] = "2"
+    fillSquareWithValue(t,x,y,"2")
+    
+""" Fills in the square (x,y) and write value"""
+def fillSquareWithValue(t,x,y,value):
+    t.up()
+    t.goto(x+.1,y+.1)
+    t.fillcolor("white")
+    t.begin_fill()
+    for i in range(4):
+        t.forward(.8)
+        t.right(90)
+    t.end_fill()
+    t.goto(x+.50,y+.85)
+    t.write(value,align="center",font=('Arial', 70, 'normal'))        
+</pre>
+
+Note that we call a helping function to draw the new value to the board that first fills the square with the background color white and then writes the value of the square onto it.
+
+<li>  The concluding function is also easy to write:
+<pre>
+""" Write thank you message and close window on click"""
+def conclusion(win,t):
+    t.up()
+    t.goto(2,4.25)
+    t.write("Thank you for playing!",align="center",font=('Arial', 20, 'normal'))    
+
+    win.exitonclick()
+
+</pre>
+
+<li> That leaves the <tt>makeMove()</tt> function.  Lets use top-down design again and break that down into function calls also, and then fill in those function calls:  
+
+<pre>
+"""Asks user for move, makes move and returns the number of squares freed"""
+def makeMove(t,grid):
+    move = input("Enter move([L]eft, [R]ight, [U]p, or [D]own):")
+    if move == "L" or move == "l":
+        moveLeft(grid)
+    if move == "R" or move == "r":
+        moveRight(grid)
+    if move == "U" or move == "u":
+        moveUp(grid)
+    if move == "D" or move == "d":
+        moveDown(grid)
+    drawBoard(t,grid)
+</pre>
+
+We have created separate functions for moving left, right, up, and down, as well as a function to draw the board.
+
+<li>  We need to write the functions called by <tt>makeMove()</tt>.  The easiest to write is the <tt>drawBoard()</tt>:
+
+<pre>
+def drawBoard(t,grid):
+    for i in range(4):
+        for j in range(4):
+            fillSquareWithValue(t,i,j,grid[i][j])
+
+</pre>
+
+<li>  That leaves the functions that make the actual moves.  They all follow the same structure of repeating sliding all the pieces until they are as far left, right, up or down as possible (depending on the move chosen.  After that, squares that are adjacent are summed up.  And then we slide everything down again so that all pieces are in the right place: 
+<pre>
+def moveLeft(grid):
+    score = 0
+    for i in range(3):
+        slideGridLeft(grid)
+    for i in range(3):
+        combineColumns(grid,i+1,i)
+    slideGridLeft(grid)   
+
+
+def moveRight(grid):
+    score = 0
+    for i in range(3):
+        slideGridRight(grid)
+    for i in range(3,0,-1):
+        combineColumns(grid,i-1,i)
+    slideGridRight(grid)     
+
+
+def moveUp(grid):
+    for i in range(3):
+        slideGridUp(grid)
+    for i in range(3):
+        combineRows(grid,i+1,i)
+    slideGridUp(grid)     
+
+def moveDown(grid):
+    for i in range(3):
+        slideGridDown(grid)
+    for i in range(3,0,-1):
+        combineRows(grid,i-1,i)
+    slideGridDown(grid) 
+
+
+def slideGridDown(grid):
+    for i in range(4):
+        for j in range(3,0,-1):
+            if grid[i][j] == "" and grid[i][j-1] != "":
+                grid[i][j] = grid[i][j-1]
+                grid[i][j-1] = ""
+
+
+def slideGridUp(grid):
+    for i in range(4):
+        for j in range(3):
+            if grid[i][j] == "" and grid[i][j+1] != "":
+                grid[i][j] = grid[i][j+1]
+                grid[i][j+1] = ""
+
+
+def combineRows(grid,source,target):
+    for i in range(4):
+        if grid[i][target] != "" and grid[i][target] == grid[i][source]:
+            grid[i][target] = str(int(grid[i][target])+int(grid[i][source]))
+            grid[i][source] = ""
+           
+
+def slideGridRight(grid):
+    for j in range(4):
+        for i in range(3,0,-1):
+            if grid[i][j] == "" and grid[i-1][j] != "":
+                grid[i][j] = grid[i-1][j]
+                grid[i-1][j] = ""
+
+
+def slideGridLeft(grid):
+    for j in range(4):
+        for i in range(3):
+            if grid[i][j] == "" and grid[i+1][j] != "":
+                grid[i][j] = grid[i+1][j]
+                grid[i+1][j] = ""
+
+
+def combineColumns(grid,source,target):
+    for i in range(4):
+        if grid[target][i] != "" and grid[target][i] == grid[source][i]:
+            grid[target][i] = str(int(grid[target][i])+int(grid[source][i]))
+            grid[source][i] = ""
+           
+</pre>                
+
+</ul>
+
+</div>
+
+<div>
+<h3>Color the Squares</h3>
+
+Your job in this lab is to color the squares by color.  The current program fills in each square with the background color white.  Choose a color for 2, 4, 8, 16, and 32, and <b>only modify</b> the <tt>fillSquareWithValue()</tt>
+to change the colors.  For example, if you choose his coloring, you would
+<ul>
+	<li>  If the value is 2, fill the background color to be beige,
+	<li>  If the value is 4, fill the background color to be yellow, 	
+	<li>  If the value is 8, fill the background color to be light orange,
+	<li>  If the value is 16, fill the background color to be medium orange,	
+	<li>  If the value is 32, fill the background color to be dark orange,
+	<li>  Else, color the square white.
+</ul>
+Choose your own colors instead of using his!
+
+
+</div>
+
+
+
+<div>
+<h3>The Complete Program</h3>
+
+<a href="2048.py">2048.py</a>
+
+<pre>
+"""
+Katherine St. John, Spring 2015
+Introductory Programming, Lehman College, CUNY
+A summing game based on 2048
+by Gabriele Cirulli (http://gabrielecirulli.github.io/2048/)
+"""
+
+from turtle import *
+from random import *
+
+""" Welcome messages for the program"""
+def welcome():
+    print("Welcome to a summing game")
+    print("For each move pick a direction")
+    print("([L]eft, [R]ight, [U]p, or [D]own).")    
+    print()
+
+""" Sets up the screen with the origin in upper left corner """
+def setUp(xMax,yMax):
+    win = Screen()
+    win.setworldcoordinates(-0.5, yMax+0.5,xMax+0.5,-0.5)
+    t = Turtle()
+    t.speed(10)
+    t.hideturtle()
+    return win,t
+
+""" Draws a grid to the graphics window"""
+def drawGrid(tic,xMax,yMax):
+    #Draw the vertical bars of the game board:
+    for i in range(0,xMax+1):
+        tic.up()
+        tic.goto(0,i)
+        tic.down()
+        tic.forward(yMax)
+    #Draw the horizontal bars of the game board:
+    tic.left(90)    #Point the turtle in the right direction before drawing
+    for i in range(0,yMax+1):
+        tic.up()
+        tic.goto(i,0)
+        tic.down()
+        tic.forward(xMax)
+
+""" Fills in the square (x,y) and write value"""
+def fillSquareWithValue(t,x,y,value):
+    t.up()
+    t.goto(x+.1,y+.1)
+    t.fillcolor("white")
+    t.begin_fill()
+    for i in range(4):
+        t.forward(.8)
+        t.right(90)
+    t.end_fill()
+    t.goto(x+.50,y+.85)
+    t.write(value,align="center",font=('Arial', 70, 'normal'))    
+
+def drawBoard(t,grid):
+    for i in range(4):
+        for j in range(4):
+            fillSquareWithValue(t,i,j,grid[i][j])
+
+def generateNewSquare(t,grid):
+    x = randrange(4)
+    y = randrange(4)
+    while grid[x][y] != "":
+        x = randrange(4)
+        y = randrange(4)
+    grid[x][y] = "2"
+    fillSquareWithValue(t,x,y,"2")
+
+def slideGridDown(grid):
+    for i in range(4):
+        for j in range(3,0,-1):
+            if grid[i][j] == "" and grid[i][j-1] != "":
+                grid[i][j] = grid[i][j-1]
+                grid[i][j-1] = ""
+
+
+def slideGridUp(grid):
+    for i in range(4):
+        for j in range(3):
+            if grid[i][j] == "" and grid[i][j+1] != "":
+                grid[i][j] = grid[i][j+1]
+                grid[i][j+1] = ""
+
+
+def combineRows(grid,source,target):
+    for i in range(4):
+        if grid[i][target] != "" and grid[i][target] == grid[i][source]:
+            grid[i][target] = str(int(grid[i][target])+int(grid[i][source]))
+            grid[i][source] = ""
+           
+
+def slideGridRight(grid):
+    for j in range(4):
+        for i in range(3,0,-1):
+            if grid[i][j] == "" and grid[i-1][j] != "":
+                grid[i][j] = grid[i-1][j]
+                grid[i-1][j] = ""
+
+
+def slideGridLeft(grid):
+    for j in range(4):
+        for i in range(3):
+            if grid[i][j] == "" and grid[i+1][j] != "":
+                grid[i][j] = grid[i+1][j]
+                grid[i+1][j] = ""
+
+
+def combineColumns(grid,source,target):
+    for i in range(4):
+        if grid[target][i] != "" and grid[target][i] == grid[source][i]:
+            grid[target][i] = str(int(grid[target][i])+int(grid[source][i]))
+            grid[source][i] = ""
+           
+                
+def moveLeft(grid):
+    score = 0
+    for i in range(3):
+        slideGridLeft(grid)
+    for i in range(3):
+        combineColumns(grid,i+1,i)
+    slideGridLeft(grid)   
+
+
+def moveRight(grid):
+    score = 0
+    for i in range(3):
+        slideGridRight(grid)
+    for i in range(3,0,-1):
+        combineColumns(grid,i-1,i)
+    slideGridRight(grid)     
+
+
+def moveUp(grid):
+    for i in range(3):
+        slideGridUp(grid)
+    for i in range(3):
+        combineRows(grid,i+1,i)
+    slideGridUp(grid)     
+
+def moveDown(grid):
+    for i in range(3):
+        slideGridDown(grid)
+    for i in range(3,0,-1):
+        combineRows(grid,i-1,i)
+    slideGridDown(grid) 
+    
+"""Asks user for move, makes move and returns the number of squares freed"""
+def makeMove(t,grid):
+    move = input("Enter move([L]eft, [R]ight, [U]p, or [D]own):")
+    if move == "L" or move == "l":
+        moveLeft(grid)
+    if move == "R" or move == "r":
+        moveRight(grid)
+    if move == "U" or move == "u":
+        moveUp(grid)
+    if move == "D" or move == "d":
+        moveDown(grid)
+    drawBoard(t,grid)
+
+"""Return the number of squares that are filled"""
+def squaresFilled(grid):
+    filled = 0
+    for i in range(4):
+        for j in range(4):
+            if grid[i][j] != "":
+                filled = filled + 1
+    return(filled)
+
+""" Write thank you message and close window on click"""
+def conclusion(win,t):
+    t.up()
+    t.goto(2,4.25)
+    t.write("Thank you for playing!",align="center",font=('Arial', 20, 'normal'))    
+
+    win.exitonclick()
+
+
+         
+def main():
+    grid = [["","","",""],["","","",""],["","","",""],["","","",""]]    
+    welcome()
+    win,t = setUp(4,4)
+    drawGrid(t,4,4)     
+
+    while squaresFilled(grid) < 16: #While there are empty squares, keep playing:
+        generateNewSquare(t,grid)
+        makeMove(t,grid)
+
+    conclusion(win,t)    
+    
+main()
+</pre>
+
+</div>
+
+
+
+<div>
+
+
+<p> If you finish early, you may work on the programming problems.
+
+</p>
+</div>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 6, CIS 166,Introductory Programming, Lehman College, CUNY, Spring 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 6<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Spring 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab focuses on formatting and file processing.
+
+</div>
+
+
+<div>
+
+<h3>Working With Files</h3>
+
+
+<p>Python has many built-in functions for working with strings and files 
+(<a href="http://docs.python.org/release/3.1.5/library/stdtypes.html#string-methods">string
+methods</a>).  In this lab, we will manipulate files using various string methods.
+
+<p>
+Let's start with the program <tt>printfile.py</tt> from the book's website.  Try 
+running it.  When it asks for a file, type in printfile.py.  What does it print out?
+
+<p> Next, let's try it on the file <a href="allcaps.txt">allcaps.txt</a>.
+Let's change the print line to 
+<pre>
+	print(data.lower())
+</pre>
+What happens?  Why?
+
+<p>
+To print to a file (instead of to the screen) is very easy:
+<ul>
+	<li> Open a file for writing
+	<li> Add <tt>file=outFileName</tt> to your print statements.
+</ul>
+
+<p>Let's do that for the <tt>printfile.py</tt> program:
+<pre>
+def main():
+    fname = input("Enter filename: ")
+    infile = open(fname,"r")
+    outfile = open("out.txt","w")
+    data = infile.read()
+    print(data, file=outfile)
+</pre>
+Run the program.  Where did it send the output?  Modify this program so that all
+the output is in <i>lowercase</i> and test it on the text file above.
+
+<p>
+In python, there's often many different ways to write the same program.  Let's 
+write a program that prints the lines of a file using a for loop:
+<pre>
+def main():
+    print("This program prints a file.")
+
+    # get the input file name
+    infileName = input("Please enter name of input file: ")
+
+    # open the files:
+    infile = open(infileName, "r")
+
+    # read each line of the input file and print it to outfile
+    #   
+    for line in infile:
+        print(line)
+
+main()
+</pre>
+
+What happens when you run this program?  Why is it doublespacing the output?  
+When you read a line from a file, it ends with an enter or `newline' character
+(often represented as <tt>`\n'</tt>.  We can solve this in several different
+ways.  One way to keep the last character of a line
+from being printed, we can use the slice operator to truncate the string:
+<pre>
+	print(line[:-1], file = outfile)
+</pre>
+The slice, <tt>line[:-1]</tt> says that you would like the string that consists
+of all the characters in <tt>line</tt> up to but not including the last character
+(since the -1 index always refers to the last character of a string, no matter
+how long the string is).
+
+<p>Modify this second program to print out the file all lowercase and
+singlespaced, and test it.
+
+
+</div>

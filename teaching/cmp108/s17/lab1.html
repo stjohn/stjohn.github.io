@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 1, CMP 108/MAT 135/SOC 251, Lehman College, CUNY, Spring 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div>
+<img align="right" id="bookImage" alt="mapping quake data" src="../images/mappingQuakeData5.png" width="120">
+ 
+<h2>Lab 1<br>
+Programming for Data Analysis<br>
+Lehman College, City University of New York<br>
+Spring 2017<br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on using the Blackboard system and simple programs
+in Python.  <br>Software tools needed:  web browser and Python IDLE programming 
+environment.
+
+
+
+
+</div>
+
+<div>
+<h3>Using Blackboard</h3>
+
+<p>This course will use the on-line Blackboard system for submitting 
+work electronically. Blackboard should be accessible 
+through your CUNY portal account (<a href="http://portal.cuny.edu">http://portal.cuny.edu</a>). 
+If you have not used Blackboard in the past, information is available at the Computer Center
+(<a href="http://www.lehman.edu/itr/blackboard.php">http://www.lehman.edu/itr/blackboard.php</a>). 
+They can set up your account and have information sheets about using the system.
+
+
+<p>We will be using Blackboard for in-class quizzes, submitting programs, and 
+posting grades.  Quizzes and submitting programs are done via the <tt>Content</tt>
+menu (left hand side of <tt>Home</tt> screen).  
+
+<p>
+<b>Chrome:</b> There were known bugs using the previous version of Blackboard with the Chrome browser.  In particular, the Chrome browser often would freeze during quizzes.  These have reportedly been fixed in the new version.  
+</p>
+
+
+<p>
+<b>Timing Out:</b> If the system times out and locks your attempt (happens rarely 
+when the browser or PC crashes), send email to an instructor so they
+can clear the attempt so you can try again.
+</p>
+</div>
+
+<div>
+<h3>Using Python</h3>
+
+<p>We will be using the <tt>IDLE</tt> programming environment for Python, since it is very simple and comes with all distributions of Python (if you would prefer to use another programming environment, both <tt>Spyder</tt> and <tt>Jupyter/iPython</tt>, are on the lab machines).
+
+<p>There are several ways to launch <tt>IDLE</tt>:
+<ul>
+	<li> On some machines, the <tt>IDLE</tt> icon has been saved to the tool bar.  Click the icon, and the program will launch.
+	<li> Click simultaneously on <tt>COMMAND</tt> and <tt>SPACE</tt> (the key with the apple or flower on it, along with the space bar).  This will launch <tt>Spotlight</tt>, the built-in searching feature.  Type <tt>idle3</tt>, and it will find and launch idle for you.
+	<li> Open a terminal window (a window that allows you to type commands), and type <tt>idle3</tt> (or <tt>idle</tt> on some systems) at the prompt.
+</ul>
+
+To see that it works, type at the prompt:
+
+<pre>
+	print("Hello, world!")
+</pre>
+
+<p>
+Instead of using
+the shell window (which lets us try things immediately), let's use a text window, where
+we can save our program for later and submit it to Blackboard (this is the basis of the first program, due on Friday).
+
+<ol>
+	<li> First, open up a text window:  on the menu bar, choose "File" and from that menu, choose "New File" (you can also type "&#8984;N").
+	<li> In that window, type:
+	<pre>
+#Name:  ...your name here...
+#Date: February 3, 2017
+#This program prints: hello world
+
+print("Hello world")
+	</pre>
+	<li> Save the program (using the "Save" under the "File" menu or "&#8984;S"). When you save it, name it something that you will be remember for the future and end it in <tt>.py</tt>.  For example, <tt>ps1.py</tt>.  At the end of lab, save your programs to a USB drive, DropBox, or mail them to yourself.
+	<li> Run your program (using the "Run Module" from the "Run" menu or F5 key).  
+	<li> If it prints "Hello World" to the screen, then log into Blackboard (see notes above).  On the left hand menu, choose "Programming Problems".  From the list, choose "Program #1".
+	In the file upload, enter the name of the <tt>.py</tt> file you just created and ran, and click "Submit".
+	
+</ol>
+</div>
+
+<div>
+<h3>More Python:  Turtles</h3>
+
+<p> Now that you have just submitted your first program, let's try some other Python commands:
+<ol>
+	<li>  Open up a new file window in <tt>IDLE</tt> ("File > New File" or "&#8984;N").
+	<li> Type (or copy) into your window:
+<pre>
+import turtle
+tia = turtle.Turtle()
+for i in range(4):
+    tia.forward(150)
+    tia.right(90)
+</pre>	
+	<li> Save your program ("File > Save" or "&#8984;S"). <br>
+	<i>Note:  Choose a name for your file that is <b>not</b> <tt>turtle.py</tt>. 
+		When executing the "import turtle" statement, the computer first looks in the folder where the file is saved for the turtle module and then in the libraries (and other places on the path).  So, it thinks the module is itself, causing all kinds of errors.  To avoid this, name your program something like "myTurtle.py" or "program2.py".</i>
+	<li> Run your program (using the "Run Module" from the "Run" menu or F5 key).  
+	<li> Change your program so that it draws a hexagon (6-sided polygon).
+	<li> Test your program and modify until you have a hexagon.  When you do, add comments at the top of your program:
+	<pre>
+#Name:  ...your name here...
+#Date: February 3, 2017
+#This program draws a hexagon.
+	</pre>
+	Run your program after editing to make sure you do not have any typos.
+	<li> Log into Blackboard (see notes above).  On the left hand menu, choose "Programming Problems".  From the list, choose "Program #2".
+	In the file upload, enter the name of the <tt>.py</tt> file you just created and ran, and click "Submit".
+
+</ol>
+
+<p>
+A quick overview of the parts of your second program:
+<ul>
+	<li> Lines that begin with <tt>#</tt> are ignored by Python-- they are comments for you to remember what you did and others to follow what's going on.
+	<li> The line <tt>import turtle</tt> loads in the built-in turtle graphics drawing package.  It's part of all versions of Python but, to keep programs small, is not included unless you explicitly import it.  In addition to built-in packages, there are many others that have been written to make Python more useful.  We will use both kinds as the semester progresses.
+	<li>  The line <tt>tia = turtle.Turtle()</tt> creates a turtle object called <tt>tia</tt> (you can call your turtles almost any combination of letters (and underscores and numbers)-- we used a name starting with "t" since turtle starts with "t").  
+	<li> The next line:  <tt>for i in range(4):</tt> is the first part of a for-loop that will repeat the commands indented beneath it 4 times.
+	<li> The turtle class has many functions that you can use for your turtle.  The next two lines demonstrate two of them:
+	<ul>
+	    <li> <tt>tia.forward(150)</tt> moves <tt>tia</tt> forward 150 steps.
+    	<li> <tt>tia.right(90)</tt> turns <tt>tia</tt> to the right 90 degrees.
+    </ul>
+    Here's a <a href="https://docs.python.org/3/library/turtle.html">list of more turtle commands</a> and the <a href="http://interactivepython.org/courselib/static/thinkcspy/PythonTurtle/toctree.html">turtle chapter</a> from the textbook.
+</ul>
+
+</div>
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a quiz on the academic integrity policy of City University of New York.  The password to access the quiz will be given during lab.
+
+</div>
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+</div>
+
+<div>
+<h3>Using Python on Your Computer</h3>
+
+The Python programming language and IDLE environment are freely available
+for many platforms from <a href="http://www.python.org">python.org</a> or
+<a href="https://www.continuum.io/downloads">Anaconda</a>.  
+For this class, we are using <b>Python 3</b>.  Many features of the language
+(including the syntax of <tt>print</tt> statements) changed between the second and third
+version, so, you must use the Python 3 for submitting programs.
+
+
+</div>
+
+</html>

@@ -1,0 +1,106 @@
+<html>
+<head>
+
+<style>
+	body {
+		font-family: sans-serif;
+		background-color: #ddddff;
+	}
+	table {
+		border: thin solid black;
+		border-collapse: collapse;
+		font: large;
+	}
+</style>
+<script>
+
+var board = new Array;
+var turn;
+
+// Sets up the initial playing board:
+function initializeBoard() {
+	var max = 9, i;
+
+	turn = 2;
+	for (i = 1; i <= 9; i++) {
+		board[i] = "empty";
+		document.getElementById("square"+i).src = "empty.jpg";
+		document.getElementById("square"+i).alt = "";		
+	}
+
+}
+
+// Moves to the square that was clicked on:
+function playMove(i)
+{
+	var who;
+	
+	if ( (turn%2) == 0)
+		who = "X";
+	else
+		who = "O";
+		
+	if (board[i] == "empty") {
+		board[i] = who;
+		turn= turn+1;
+		document.getElementById("square"+i).src = who + ".jpg";
+		document.getElementById("square"+i).alt = who;
+	}	
+	else {
+		alert("That move is not available.");
+	}
+	
+	if ( checkForWinner() ) {
+		alert(who+" has won!");
+		initializeBoard();
+	}
+	if ( turn > 10 ) {
+		alert(" Sorry, there is no winner!");
+		initializeBoard();
+	}
+}
+
+// Checks to see if someone has won:
+function checkForWinner()
+{
+	//Fill in this function so that it returns true if there's a winner
+	// and false if no one has won.
+	
+	return(false)
+}
+
+</script>
+</head>
+
+<body onload = "initializeBoard()">
+<h1>CIS 228 Tic-Tac-Toe</h1>
+
+<p>
+Please click a square to move:
+</p>
+
+
+<table>
+	<tr>
+		<td><img id="square1" src="" alt="" height="80" onclick="playMove(1)"></td>
+		<td><img id="square2" src="" alt="" height="80" onclick="playMove(2)"></td>
+		<td><img id="square3" src="" alt="" height="80" onclick="playMove(3)"></td>
+
+	</tr>
+	<tr>
+		<td><img id="square4" src="" alt="" height="80" onclick="playMove(4)"></td>
+		<td><img id="square5" src="" alt="" height="80" onclick="playMove(5)"></td>
+		<td><img id="square6" src="" alt="" height="80" onclick="playMove(6)"></td>
+				
+	</tr>
+		<tr>
+		<td><img id="square7" src="" alt="" height="80" onclick="playMove(7)"></td>
+		<td><img id="square8" src="" alt="" height="80" onclick="playMove(8)"></td>
+		<td><img id="square9" src="" alt="" height="80" onclick="playMove(9)"></td>
+				
+	</tr>
+</table>
+
+
+</body>
+</html> 

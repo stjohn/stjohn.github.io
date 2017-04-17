@@ -1,0 +1,42 @@
+<html>
+<head>
+<script>
+function displayMessage(message)
+{
+if (message)
+	alert(message);
+}
+
+function squareNumber(input)
+{
+	if (isNaN(input)) 
+		return (-1);  //Not a number, so, return -1
+	else
+		return(input*input);
+}
+
+function squareButton()
+{
+	var num, square;
+	
+	num = prompt("Enter a number:");
+	square = squareNumber(num);
+	
+	if ( square == -1 )
+		alert("Did not enter a number!");
+	else
+		alert("The square is " + square + ".");
+}
+</script>
+</head>
+
+<body>
+<form name="myform">
+<input type="button" value="Hit me" onclick="displayMessage('Ouch!')"><br>
+<input type="button" value="I'm done" onclick="displayMessage('Bye')"><br>
+<input type="button" value="Smile" onclick="displayMessage(':)')"><br>
+<hr>
+<input type="button" value="Square" onclick="squareButton()">
+</form>
+</body>
+</html> 

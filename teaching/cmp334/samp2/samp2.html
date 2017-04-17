@@ -1,0 +1,568 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+<META NAME="description" CONTENT="No Title">
+<META NAME="keywords" CONTENT="samp2">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="samp2.css">
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1"
+ HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif_gr.gif">   
+<BR>
+<B> Next:</B> <A NAME="tex2html2"
+ HREF="node1.html">About this document ...</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<BIG>
+<DIV ALIGN="CENTER">
+Sample Exam 2<IMG WIDTH="13" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.gif"
+ ALT="$\frac{1}{2}$">
+<BR>
+Computer Programming 334 <BR>
+Dr.&nbsp;St.&nbsp;John
+<BR>
+Lehman College
+<BR>
+City University of New York
+<BR>
+Fall 1999
+</DIV>
+</BIG>
+<P><BIG>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>
+<BR>
+<BR></TD>
+<TD ALIGN="LEFT" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>NAME (Printed)</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>NAME (Signed)</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>E-mail</TD>
+<TD ALIGN="LEFT" NOWRAP><U> </U></TD>
+</TR>
+</TABLE></DIV>
+</BIG>
+<P><DL COMPACT>
+<DT>1.
+<DD>True or False: 
+<DL COMPACT>
+<DT>(a)
+<DD><U> </U> Every mnemonic in the 
+Intel Instruction set has a unique op code assigned to it.
+        <DT>(b)
+<DD><U> </U> The twos complement of <TT>FFh</TT>
+		is <TT>01h</TT>.
+        <DT>(c)
+<DD><U> </U> The minimum number of bits
+		needed to represent <TT>33d</TT> is 5.
+        <DT>(d)
+<DD><U> </U> <TT>DX</TT> is a base register.
+        <DT>(e)
+<DD><U> </U> When the <TT>AH</TT> register is
+		modified, the value in <TT>AX</TT> changes.
+        <DT>(f)
+<DD><U> </U> The <TT>DD</TT> directive doubles
+		the value stored in the <TT>DX</TT> register.
+        <DT>(g)
+<DD><U> </U> The <TT>EXTRN</TT> directive
+		can only be used for procedures.
+        <DT>(h)
+<DD><U> </U> When you assemble a program
+		with the command: <TT>tasm test.asm</TT>,
+		the resulting object code is placed in the file
+		<TT>test.lst</TT>.
+        <DT>(i)
+<DD><U> </U> <TT>INT 10h</TT> is used for
+		DOS function calls.
+        <DT>(j)
+<DD><U> </U> The result of the following
+		statement is always <TT>0</TT>: <TT>or al, 0</TT> no
+		matter what the value of the <TT>AL</TT> register.
+<P>    </DL>
+<P>    <DT>2.
+<DD>Assume your program has the following data segment and
+	the offset of <TT>var1</TT> is <TT>0120h</TT> and the offset
+	of <TT>var2</TT> is <TT>0124h</TT>:
+<PRE>
+.data
+var1 db 4 dup(20h)
+var2 dw 1234h, 5678h, 9ABCh
+var3 dw var2
+</PRE>
+	What are the contents of AX and BX after each of the following
+	instructions:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax,var3       ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bx,[ax+2]     ;AX =            BX =
+</PRE>
+	    <DT>(c)
+<DD><PRE>
+push ax           ;AX =            BX =
+</PRE>
+	    <DT>(d)
+<DD><PRE>
+mov bx, [ax]+2    ;AX =            BX =
+</PRE>
+	    <DT>(e)
+<DD><PRE>
+pop bx            ;AX =            BX =
+</PRE>
+	</DL>
+<P>    <DT>3.
+<DD>What are the contents of AX and BX after each of the following
+	instructions:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax,FF0Fh       ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bx,00F0h       ;AX =            BX =
+</PRE>
+	    <DT>(c)
+<DD><PRE>
+and ax,bx          ;AX =            BX =
+</PRE>
+	    <DT>(d)
+<DD><PRE>
+xor bx, FFFFh      ;AX =            BX =
+</PRE>
+	    <DT>(e)
+<DD><PRE>
+xor bx, FFFFh      ;AX =            BX =
+</PRE>
+	</DL>
+<P>    <DT>4.
+<DD>Assume your program has the following data segment and
+	the offset of <TT>a1</TT> is <TT>0100h</TT>: 
+<PRE>
+.data
+ROWSIZE = 3
+a1     dw 1020h,3040h,5432h
+       dw 1020h,3040h,5432h
+       dw 1020h,3040h,5432h
+LENGTH = ($ - a1)/2
+</PRE>
+	What are the contents of AX and BX after each of the following
+	instructions:
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+mov ax, offset al               ;AX =            BX =
+</PRE>
+<DT>(b)
+<DD><PRE>
+mov bh, LENGTH                  ;AX =            BX =
+</PRE>
+<P>	    <DT>(c)
+<DD><PRE>
+mov bl,byte ptr[ax+ROWSIZE*2]   ;AX =            BX =
+</PRE>
+<P>	    <DT>(d)
+<DD><PRE>
+mov bx,offset a1+8              ;AX =            BX =
+</PRE>
+<P>	    <DT>(e)
+<DD><PRE>
+mov ax,[bx]                     ;AX =            BX =
+</PRE>
+<P>	</DL>
+<P><P>
+<P>
+<BR>
+<P>    <DT>5.
+<DD>Assume your program has the following data segment: 
+<PRE>
+.data
+message   db &quot;Help, help! cried Piglet, a Heffalump, a Horrible&quot;
+          db &quot;Heffalump!&quot;
+LENGTH = ($ - message)
+</PRE>
+	What is the output from each of the following code 
+	fragments?
+	<DL COMPACT>
+<DT>(a)
+<DD><PRE>
+    mov cx, LENGTH
+    mov dl, 0
+    mov ah, 2
+    mov si, offset message
+
+L1: 
+    mov al, [si]
+    cmp al, '!'
+    jne next
+    inc dl
+next:
+    inc si
+    loop L1
+
+    add dl, 30h
+    int 21h
+</PRE>
+<B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	    <DT>(b)
+<DD><PRE>
+    mov si, offset message
+    mov cx, LENGTH
+
+L1: mov dl, [si]
+    inc si
+    cmp dl, 'P'
+    loopne L1
+
+    mov cx, 3
+    mov ah, 2
+
+L2: mov dl,[si]
+    int 21h
+    inc si
+    loop L2
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE>
+<P>	    <DT>(c)
+<DD><PRE>
+    mov ah, 2
+    mov si, offset message
+    add si, LENGTH
+
+L1: 
+    mov dl, [si]
+    cmp dl, ' '
+    inc si
+    jne L1
+    
+    mov cx, 4
+L2:
+    mov dl, [si]
+    int 21h
+    inc si
+    loop L2
+    
+    pop cx
+    loop L1
+</PRE>
+        <B>Output:</B>
+        <TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+</TR>
+</TABLE></DL>
+<P>   <DT>6.
+<DD>What is the output of this program?
+<PRE>
+title Mystery Program      (mystery.asm)
+; This program is a mystery....
+.model small
+.stack 100h
+.data
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+    mov bx, 16             ;(For WriteInt: output will be hexadecimal)
+    mov cx, 1
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 2
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 3
+    call myst
+    call WriteInt          ; Output is:
+    mov cx, 4
+    call myst
+    call WriteInt          ; Output is:
+    mov ax,4C00h
+    int 21h
+main endp
+
+myst proc
+    push bx
+    push cx
+    mov ax, 1
+    cmp cx, 1
+    je end
+    dec cx
+    push ax
+    call myst
+    pop bx
+    add ax, cx
+end:
+    pop cx
+    pop bx
+    ret
+myst endp
+end main
+</PRE>
+<P>    <DT>7.
+<DD>Fill in the program below.  The program should 
+	input 10 characters from standard input and echo them 
+	to standard output (each character will appear twice).
+	Use only <TT>INT 21h</TT> functions 1 and 2.
+<P><PRE>
+title Echo Program      (echo.asm)
+
+; This program echos 10 characters.
+.model small
+.stack 100h
+.data
+
+
+
+.code
+
+main proc
+    mov ax, @data
+    mov ds, ax
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>8.
+<DD>Write a program that asks the user for an
+	integer.  Your program should then print out
+	the number and then print out twice the number.
+	Do <B>NOT</B> use the <TT>MUL</TT> or <TT>IMUL</TT>
+	instructions.
+<P>
+Hint: Use the <TT>ReadString</TT> and <TT>WriteString</TT>
+	from the Irvine link library.
+<P><PRE>
+title PrintName Program      (name.asm)
+
+; This program prompts and then prints the user's name
+.model small
+.stack 100h
+.data
+
+
+
+
+.code
+extrn ReadString:proc, WriteString:proc
+
+main proc
+    mov ax, @data
+    mov ds, ax
+
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>9.
+<DD>Write a program that encrypts the user's input,
+	using the following algorithm:
+	<DL COMPACT>
+<DT>(a)
+<DD>For each byte, double its value
+<DT>(b)
+<DD>Then, <TT>XOR</TT> the value by 123d.
+	</DL>
+<P><PRE>
+title encrypt2 Program      (encrypt2.asm)
+
+; This program encrypts the input
+.model small
+.stack 100h
+.data
+
+
+
+.code
+main proc
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P>    <DT>10.
+<DD>Write a program that reads in an integer from
+	the user, and then prints out the largest power
+	of two less than the number.
+<P>
+For example, if the user entered 5, your program
+	would print out 4, since it's the largest power
+	of two smaller than 5.
+<P>
+Hint:  Use the <TT>BSR</TT> (bit scan reverse) 
+	directive to find the largest power of two 
+	contained in the number.
+<P><PRE>
+title PrintPower Program      (power.asm)
+
+; This program prints the largest power of two in the input
+.model small
+.stack 100h
+.data
+
+
+.code
+main proc
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+   
+  
+ 
+
+    mov ax,4C00h
+    int 21h
+main endp
+end main
+</PRE>
+<P></DL>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html3"
+ HREF="node1.html#SECTION00010000000000000000">
+About this document ... </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1"
+ HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif_gr.gif"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif_gr.gif">   
+<BR>
+<B> Next:</B> <A NAME="tex2html2"
+ HREF="node1.html">About this document ...</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Red Hat Linux User</I>
+<BR><I>11/29/1999</I>
+</ADDRESS>
+</BODY>
+</HTML>

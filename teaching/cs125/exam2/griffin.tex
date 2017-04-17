@@ -1,0 +1,133 @@
+\documentstyle[11pt]{article}
+\pagestyle{empty}
+\parskip 1em
+\topmargin 1pt \headheight 1pt \headsep 2pt \footskip 1pt 
+\oddsidemargin -10pt \evensidemargin -10pt \parindent 0pt
+\begin{document}
+\input{epsf}
+
+Computer Science 125 - 002 \hspace*{1in} November 3, 1998 \hspace*{1in} Second Exam\\
+
+1. In the following, you are to define a portion of a {\tt Circle}
+class (that does not invlolve any graphics).
+Include the following items:
+\begin{itemize}
+\item data members for the x and y coordinates
+of the center and the radius.
+\item default constructor which creates a circle with
+center at the origin and unit radius.
+\item a constructor which takes a supplied x and y coordiantes
+for the center and a radius.
+\item a method which computes and returns the area.
+\end{itemize}
+[24 points]
+
+
+
+
+
+2. The following technique was used by a software
+company:
+
+Users who installed a product from the company
+were invited to run a supplied program to
+generate a mailing label 
+for product registration.  The
+software scanned the user's disk for all products which
+were produced by the company 
+and included the encoded inventory information
+on the label (users were not informed of its exact behavior).  
+The company then used the
+information to trace and pursue people who 
+had illegally installed its software.
+
+Do you think that the above practice was a violation of
+privacy rights?  Support your position.  [12 points]
+
+3. The following function does a linear search of
+in integer array through a specified number of
+elements for a value which is passed as a parameter and
+returns the index where found or -1 if not found.
+
+
+\begin{verbatim}
+    public int LSearch(int[] a, int count, int value)
+    {
+        int index = 0;
+        while (index < count)
+        {
+            if (a[i] == value)
+                return index;
+            else
+                index++;
+        }
+        return -1;
+    }
+\end{verbatim}
+
+If the arrary {\tt a} is in ascending order, then
+the above can be improved slightly so that 
+unsuccessful searches are generally somewhat better.
+Make the required changes (DO NOT turn it into
+a binary search). [10 points]
+
+
+
+4. Given the following problem statement, circle the words
+(or phrases) which are candidates for the major classes
+in the problem.  Also underline items which
+are good candidates for methods and for each such item,
+draw an arrow to the class in which it should be placed.
+Problem statement: [14 points]
+
+\begin{quote}
+
+Design a program which performs additions and multiplications
+with polynomials.  A polynomial will consist of one or
+more terms where a term consists of a nonzero coefficient
+and a nonnegative integer exponent.
+
+\end{quote}
+
+5. Testing is an important activity in system development [8 points each].
+
+(a) Differentiate between black-box and white-box unit testing.
+
+(b)  Each of the methods in (a) tend to expose different
+kinds of errors.  For one of the techniques, indicate a 
+(type of) problem which it 
+may be more effective at exposing than the other.  
+
+
+6. Write a function named {\tt Transpose} which takes a two-dimensional
+double array
+parameter, creates,  and returns the transpose of its
+parameter.  The {\em transpose} of an MxN array is
+an NxM array for which an entry in the (i,j) position comes
+from the (j,i) position from the other matrix.  For example,
+the transpose of
+\[ \left (
+\begin{array}{cc}
+1 & 2\\
+3 & 4\\
+5 & 6\\
+\end{array}
+\right )
+\ \ \ is\ \ \
+ \left (
+ \begin{array}{ccc}
+ 1 & 3 & 5\\
+ 2 & 4 & 6\\
+ \end{array}
+ \right ) \]
+
+ [14 points]
+
+
+ 7.  Draw a picture showing all of the storage cells associated with
+ the statement: [10 points]
+
+ {\tt int[][][] a = new int[2][3][2];}
+ 
+\end{document}
+

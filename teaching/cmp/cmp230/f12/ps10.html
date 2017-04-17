@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 10, CIS 166 & CMP 230, Introductory Programming, Lehman College, CUNY, Fall 2012</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Problem Set 10<br>
+CIS 166 & CMP 230, Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2012<br><br>
+</h2>
+</div>
+
+<div>
+
+<p><span class="announcement">Due Date:  midnight, Friday, 13 December.</span></p>
+
+<p>
+This assignment focuses on basic searching and sorting from Chapter 13.
+</p>
+</div>
+
+
+<div>
+
+<p>Submit the following programs via Blackboard:</p>
+
+<ol>
+
+	<li> Write a program that asks the user for a name of a file, and a keyword
+		and then prints out the first line the keyword appears. 
+		<br>Note:  you can use the search from this chapter or built-in python 
+		functions.
+	
+	<li> Modify the selectionSort (from Chapter 13 of the book or Zelle's website)
+		to sort lists of string ignoring case.  For example, the list, 
+		["Amy", "aardvark", "Amsterdam", "ape", "Alice"] should be 
+		alphabetized as ["aardvark", "Alice", "Amsterdam", "Amy", "ape"].
+		
+	<li> Implement the Insertion Sort algorithm
+		<pre>
+function insertionSort(array A)
+    for i from 1 to length[A]-1 do
+        value := A[i] 
+        j := i-1
+        while j >= 0 and A[j] > value do
+            A[j+1] := A[j]
+            j := j-1
+        done
+        A[j+1] = value
+    done
+		</pre>
+		(pseudocode from <a href="http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort">Rosetta Code</a>)
+		
+		<p>
+		Write a main program that demonstrates that your insertion sort function works.
+		<br>
+		(Hint:  this does not have to be a graphics program, printing the list before and
+		after is fine.)
+		
+
+	<li> Turtle graphics are a built-in module of python that allows you
+		to draw by moving a "turtle" (the cursor) around the screen.  The
+		basic functions are:
+		<ul>
+			<li> <tt>left(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>right(degs):</tt> turns your turtle left <tt>degs</tt> degrees
+			<li> <tt>forward(s):</tt> moves your turtle forward <tt>s</tt> steps
+			<li> <tt>backward(s):</tt> moves your turtle forward <tt>s</tt> steps
+		</ul>
+		The following program uses recursion to draw a square spiral:
+		<pre>
+#From http://interactivepython.org/courselib/static/pythonds/Recursion/graphical.html
+
+import turtle
+
+#This function draws a line, turns right, and calls itself
+#  to draw a shorter line:
+def drawSpiral(t,lineLength):
+    if lineLength > 0:
+        t.forward(lineLength)
+        t.right(90)
+        drawSpiral(t, lineLength-5)
+
+def main():
+    #Set up a turtle:
+    myTurtle = turtle.Turtle()
+
+    #Set up a graphics window:
+    myWin = turtle.Screen()
+
+    #Call the function that will draw a spiral
+    drawSpiral(myTurtle,150)
+
+    #After mouse click, close window
+    myWin.exitonclick()
+
+main()
+		</pre>
+		Modify the program so that it draws a <b>triangular</b> spiral.
+		<br>
+		(Hint: Think about the difference about between a square and a triangle.
+		You only need to modify one line of code.)
+
+	<li> Chapter 13, #8.  (Hint:  use the turtle module from above, instead
+		of implementing each function as suggested in the last paragraph.)
+		
+</ol>
+
+For more information on using Blackboard, see the <a href="lab1.html">first 
+lab</a>.
+</div>
+
+<div>
+
+<h3>General Notes</h3>
+
+<ul>
+	<li> Two of the five submitted programs will be chosen at random for grading.  
+	<li> Assignments must be <b>submitted by midnight</b> on the date due. 
+	<li> Every program should begin with a comment that includes your name and a brief description.
+	<li> No credit will be given for a late assignment. 
+	<li> Extra credit will be awarded for graded programs that are submitted early. If a graded 
+	program is submitted more than 12 hours early (before Friday noon), 1 extra credit point will be awarded. For 
+	graded programs submitted more than 24 hours early (Thursday or earlier), 2 extra credit points will be awarded. 
+	<li> Before submitting an assignment you are free to ask for help in class 
+	(if your question might be of general interest), during office hours, and 
+	by e-mail. Please take advantage of this.
+
+<ul>

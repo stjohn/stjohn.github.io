@@ -1,0 +1,7 @@
+task main() {
+  SetPower(OUT_A + OUT_C, OUT_HALF);
+  Fwd(OUT_A + OUT_C);
+  OnFor(OUT_A + OUT_C, 100);
+  Rev(OUT_A + OUT_C);
+  OnFor(OUT_A + OUT_C, 100);
+} 

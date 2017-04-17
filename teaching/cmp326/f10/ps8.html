@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 8 for CMP 326, Lehman College, CUNY, Fall 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;		
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say 1;
+			content: "8." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		ol ul li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+
+		ol ol li:before {
+		   counter-increment: say 0;
+		   content: "";
+		}
+    </style>
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 8</h2>
+<h3>CMP 326: Programming Methods II <br>
+Lehman College, City University of New York<br>
+Fall 2010<br><br>
+</h3>
+
+<p>
+This problem set covers material from Chapter 11 (Recursion).
+</p>
+
+
+<p>You should complete <b>80 points</b> worth of programs
+(with an additional 8 points extra credit possible). 
+</p>
+</div>
+
+
+
+<div>
+<ol>
+
+<li><b>Factorial</b> (10 points)
+
+<p>Problem 12.3, p 787</p>
+
+<li><b>Odd Digits</b> (10 points)
+
+<p>Exercise 12.3, p 786</p>
+
+<li><b>Max Value</b> (10 points)
+
+<p>Exercise 12.7, p 786</p>
+
+<li><b>Sum of n digits</b> (10 points)
+
+<p>Problem 12.4, p 788</p>
+
+<li><b>Double Factorial</b> (15 points)
+
+<p>The double factorial of a number, written <tt>x!!</tt> 
+is very similar to the factorial:
+<pre>
+0!! = 1
+1!! = 1
+2!! = 2
+3!! = 3 * 1
+4!! = 4 * 2 
+5!! = 5 * 3 * 1
+6!! = 6 * 4 * 2 * 1
+...
+If n is odd, n!! = n * (n-2) * ... * 1  
+If n is even, n!! = n * (n-2) * ... * 0
+</pre>
+Write a method that implements double factorial and
+place in a test program that allows the user to enter
+a number and then prints out the double factorial of 
+the number.
+</p>
+
+<li><b>Fibonacci Sequence</b> (15 points)
+
+<p>Problem 12.7, p 789</p>
+
+
+<li><b>Quicksort</b> (20 points)
+
+<p>Implement the following version of the recursive sort, <tt>QuickSort</tt>
+(from <a href="http://en.wikipedia.org/wiki/Quicksort">http://en.wikipedia.org/wiki/Quicksort</a>).
+Here is the pseudocode of the two methods:
+<pre>
+  function partition(array, left, right, pivotIndex)
+     pivotValue := array[pivotIndex]
+     swap array[pivotIndex] and array[right] // Move pivot to end
+     storeIndex := left
+     for i  from  left to right - 1 // left ≤ i < right 
+         if array[i] ≤ pivotValue
+             swap array[i] and array[storeIndex]
+             storeIndex := storeIndex + 1
+     swap array[storeIndex] and array[right] // Move pivot to its final place
+     return storeIndex
+
+
+  procedure quicksort(array, left, right)
+     if right > left
+         select a pivot index //(e.g. pivotIndex := left+(right-left)/2)
+         pivotNewIndex := partition(array, left, right, pivotIndex)
+         quicksort(array, left, pivotNewIndex - 1)
+         quicksort(array, pivotNewIndex + 1, right)
+
+</pre>
+<p>Write a driver program that demonstrates that your sort.
+</p>
+
+<li><b>Fractal Curve</b> (25 points)
+
+<p>Problem 12.9, p 790</p>
+</ol>
+
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

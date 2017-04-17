@@ -1,0 +1,144 @@
+<title>Lab 3B, COSMOS 2002, UC Davis</title>
+
+<body bgcolor="ffffff" link="003399" vlink="236b8e"> 
+
+
+<h1>Laboratory Exercise 3B</h1>
+<h2>Robotics<br>
+COSMOS 2002<br>
+UC Davis</h2>
+
+<hr>
+<h3>Multitasking</h3>
+
+<p>
+Today's lab is on multitasking, or executing
+more than one task at once.  We will modify the 
+<a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>
+to do two tasks at once-- the driving/bumping from before and
+also playing music.
+
+<p>
+The second program will use a separate task to monitor the 
+light sensor.  If the robot encounters a bright light, it 
+will beep.  The main task (driving/bumping) will continue
+independently of the light sensor activity.
+
+<p><b>Design requirements:</b>  This lab assumes that the
+two motors are wired to output ports A and C.  Further, each 
+motor is attached to a means of locomotion (legs, treads,
+feet, etc.).  When using the light sensor, it is wired to 
+sensor port 2.  The touch sensor is wired to sensor port 1
+and is attached to a bumper).
+
+<p><b>Programs used:</b> Today's lab uses
+<a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a> and
+<a href="task.nqc">task.nqc</a>.  
+Note that the bumpbot 
+program assumes that the sensor is wired backwards (it
+has value 0 when pushed, value 1 otherwise).
+
+<h3>Musical Cars</h3>
+
+Download <a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>.
+Note that the bumpbot 
+program assumes that the sensor is wired backwards (it
+has value 0 when pushed, value 1 otherwise).  If you are 
+using the bumpers from earlier labs, modify the program
+to have value 1 when the bumper is pushed.
+Make sure the program works before going on to the next
+part.
+
+<p>
+Add a new task called <tt>play_music()</tt> that plays a
+song (see <a href="sing.nqc">sing.nqc</a> for example).
+Start your new task in the <tt>main()</tt> task.
+
+
+<h3>Bright Lights, Big City</h3>
+
+Next, write another program (using 
+<a href="guidenqc/bumpbot1.nqc">bumpbot1.nqc</a>) with
+a new task that beeps whenever a bright light is seen.
+One way to this is with a <tt>while(true)</tt> loop that
+checks if the light sensor is above a threshold.  
+The program also should reverse and back up when it 
+encounters an object.
+
+<h3>Minimums and Maximums</h3>
+
+It is often useful to have variables that are shared between
+all the tasks.  These are called <b>global variables</b> and
+are declared outside of any task, usually immediately after the
+constant definitions.  For this next program we will use global
+variables to keep track of the brightest and darkest readings.
+Again, we'll <tt>bumpbot1.nqc</tt> as a starting point, so, copy
+it to a new file and add the following global variables before the
+<tt>main()</tt> task:
+
+<pre>
+int min = 100;
+int max = 0;
+</pre>
+
+<tt>max</tt> will keep track of the highest reading (to start
+with we set it to 0) and <tt>min</tt> will keep track of the
+lowest.
+
+The second program above has a separate task to monitor the 
+light sensor.  If the robot encountered a bright light, it 
+beeped.  The main task (driving/bumping) continued
+independently of the light sensor activity.  Modify the 
+light monitoring task to compare the current light value to
+the minimum and maximum stored.  If it is larger than 
+<tt>max</tt>, play the <tt>SOUND_UP</tt> tone and store the
+new value in <tt>max</tt>.  If it is smaller than 
+<tt>min</tt>, play the <tt>SOUND_DOWN</tt> tone and store the
+new value in <tt>min</tt>.
+
+<p>Try your program in an area with variable light.  At
+first, it should beep a lot.  But after it has taken 
+readings from more and more of the area, the beeps should
+subside (since most of the values will fall in between the
+minimum and maximum it saw earlier).
+
+<h3>Extra Activities</h3>
+
+If you finish early, you can work on your project design.
+As part of every project, there will be a
+webpage describing the design, the construction, and the
+programs used.  The webpage should have enough detail for
+another student or the RAs to reconstruct your robot and 
+programs.  
+You should also include references to webpages and books
+you used for your project.  Some sections your webpage
+should have:
+<ul>
+    <li> Title and your name
+    <li> Brief summary of your project.  This should 
+	include any special features or tasks and should
+	describe all programs used in your project.
+    <li> List of parts used (include pictures of any
+	non-standard parts used)
+    <li> A how-to-build your robot, with pictures and
+	links to similar robots
+    <li> A how-to-use your robot section that describes
+	what inputs you expect and how to get the robot
+	to perform tasks
+    <li> Links to all the program files used for the 
+	project.
+</ul>
+
+<p>
+First, set up a webpage with a title for your project, 
+your name, and a brief description of your project.  Next,
+make a new section with the parts you think you will be
+using for your robot (list all motors and sensors, as
+well as any parts that are not part of the standard kit).
+If you have time, you can start filling in what you know
+about the other sections.
+
+</body>
+</html>
+
+

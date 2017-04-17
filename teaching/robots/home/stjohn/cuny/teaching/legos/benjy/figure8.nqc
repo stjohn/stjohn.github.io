@@ -1,0 +1,11 @@
+// figure8.nqc - drive straight ahead
+// Benjy Hass
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+
+task main()
+{
+    OnFor(LEFT,1300);
+    OnFor(RIGHT,1300);
+}

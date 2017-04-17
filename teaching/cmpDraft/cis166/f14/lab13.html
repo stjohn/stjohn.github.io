@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 13, CIS 166, Introductory Programming, Lehman College, CUNY, Fall 2014</title>
+    <link type="text/css" rel="stylesheet" href="../../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 13<br>
+CIS 166: Introductory Programming <br>
+Lehman College, City University of New York<br>
+Fall 2014<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab looks at loops for processing data from files.
+
+</div>
+
+
+<div>
+<h3>Social Security Administration Name Data</h3>
+
+The Social Security Administration maintains 
+<a href="http://www.ssa.gov/OACT/babynames/limits.html">lists</a> of baby names 
+indexed by state and year.  
+Each of these files have the same format:  on each line
+there is two characters for the state, followed by 'M' or 'F' for
+gender, the year, the name, and then the number of babies given that
+name that year.  For example, 
+		
+		<pre>
+ NYM1910Herbert,83
+ NYM1910Leo,80
+ NYM1910Andrew,79
+ NYM1910Ernest,79
+ NYM1910Milton,79
+		</pre>
+		is part of the file <a href="NY.TXT">NY.TXT</a> containing the data
+		for New York State.  Note that in 1910, there were 83 boys named Herbert,
+		80 boys named Leo, and 79 boys eached named Andrew, Ernest, and Milton.
+
+
+<p>We are going to write a program that asks the user for a first name, and 
+then reports back the average number of times that name occurs per year as
+well as the maximum number it occurs (and that year).
+
+<p>Here is a sample run of our program:
+<pre>
+Please enter the file name: NY.txt
+Please enter the first name: Herbert
+Herbert averaged 241.19 times per year.
+It was most popular in 1929 occurring 928 times.
+</pre>
+and another:
+<pre>
+Please enter the file name: NY.txt
+Please enter the first name: Katherine
+Katherine averaged 456.35 times per year.
+It was most popular in 1990 occurring 978 times.
+</pre>
+
+Our program encapsulates several important concepts:
+<ul>
+	<li> It reads through each line of the file, gathering several different data points
+		from each line.
+	<li> It keeps both a running total as well as a running maximum of the data seen.
+	<li> After all the data has been processed, it calculates ending values ("post-processes")
+		for the data.
+	<li> It formats the output for increased readability of the user.
+</ul>
+
+Let's work through the program step-by-step:  First, since we're going to calculate
+an average, we need to have variables to hold the total as well as the number of
+times they occur.  We set those to 0 to start:
+<pre>
+#Lab:  calculating popularity of names in SSA data
+
+def main():
+    #Set the totals to 0 to start:
+    total, numTimes = 0,0
+</pre>
+
+We're also interested in the maximum number of times a name occurs and the year, so, 
+we set those to 0 at the start:
+<pre>
+    #Set the max's to 0 to start:
+    maxOccur,maxYear = 0,0
+</pre>
+
+Next, we ask the user for a file name and open the file:
+<pre>
+    fname = input("Please enter the file name: ")
+    infile = open(fname, "r")
+</pre>
+
+And ask the user for the name to search for:
+<pre>
+    #Name we're searching for in the file:
+    searchee = input("Please enter the first name: ")
+</pre>
+
+After we have finished with this initialization, we can now traverse the 
+file.  We will go line-by-line (storing the lines in the variable <tt>l</tt>):
+<pre>
+    for l in infile.readlines():
+        #The year always occurs in positions [4,8]:
+        year = eval(l[4:8])
+        
+        #Split the rest of the line on the comma:
+        w = l[8:].split(",")
+
+        #w has the name, followed by the occurrences:
+        name = w[0]
+        occur = eval(w[1])
+
+        #Check if the current name is the searchee and update:
+        if name == searchee:
+            total = total + occur
+            numTimes += 1
+            if occur > maxOccur:
+                maxOccur = occur
+                maxYear = year
+</pre>
+
+The loop will finish when there are no more lines in the file.  So, at the end
+of the loop, <tt>maxOccur</tt> and <tt>maxYear</tt> will hold the largest number
+of times the name occurred and the year, respectively.  Similarly, <tt>total</tt>
+and <tt>numTimes</tt> will have the total number of New Yorkers given that name
+as well as the number of years in which the name was given.  We can then use
+this information to calculate the average, and print out the maximums:
+
+<pre>
+    #Calculate the average and print out the collected data, nicely formatted:
+    average = total/numTimes
+    print(searchee, "averaged {0:0.02f} times per year.".format(average))
+    print("It was most popular in", maxYear, "occurring", maxOccur, "times.")
+</pre>
+
+Try running the program (complete version below).  If the name does not occur, 
+what happens?  Why?  Think about ways to fix this to make it more user-friendly.
+
+</div>
+<div>
+<h3>The Complete Program</h3>
+
+<pre>
+#Lab:  calculating popularity of names in SSA data
+
+def main():
+    #Set the totals to 0 to start:
+    total, numTimes = 0,0
+
+    #Set the max's to 0 to start:
+    maxOccur,maxYear = 0,0
+    
+    fname = input("Please enter the file name: ")
+    infile = open(fname, "r")
+
+    #Name we're searching for in the file:
+    searchee = input("Please enter the first name: ")
+
+
+
+    for l in infile.readlines():
+        #The year always occurs in positions [4,8]:
+        year = eval(l[4:8])
+        
+        #Split the rest of the line on the comma:
+        w = l[8:].split(",")
+
+        #w has the name, followed by the occurrences:
+        name = w[0]
+        occur = eval(w[1])
+
+        #Check if the current name is the searchee and update:
+        if name == searchee:
+            total = total + occur
+            numTimes += 1
+            if occur > maxOccur:
+                maxOccur = occur
+                maxYear = year
+
+    #Calculate the average and print out the collected data, nicely formatted:
+    average = total/numTimes
+    print(searchee, "averaged {0:0.02f} times per year.".format(average))
+    print("It was most popular in", maxYear, "occurring", maxOccur, "times.")
+
+
+main()
+
+</pre>
+</div>
+
+<div>
+
+
+<p> If you finish early, you may work on the <a href="ps.html">programming problems</a>.
+
+</p>
+</div>
+
+<div>
+
+
+</html>

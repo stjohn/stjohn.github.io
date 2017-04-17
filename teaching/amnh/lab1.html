@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 1, RGGS 670: Algorithmic Approaches to Biological Data, Spring 2016</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+<br>
+<h2>Lab 1<br>
+RGGS 670: Algorithmic Approaches to Biological Data<br>
+Spring 2016<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab begins with a quick tutorial on using Python, the built-in turtle and random libraries, and the on-line bioinformatics challenges, <a href="http://rosalind.info">Rosalind</a>.  The main focus is on simulating Brownian motion by
+1D and 2D random walks.
+<br>Software tools needed:  Python IDLE programming 
+environment and a web browser (for accessing lab and <a href="http://rosalind.info">Rosalind</a>).
+
+
+
+
+</div>
+
+
+
+<div>
+<h3>Using Python</h3>
+
+
+
+
+<p>We will be using the IDLE programming environment for Python. The Python programming language and IDLE environment are freely available
+for many platforms from <a href="http://www.python.org">python.org</a>.  
+For this class, we are using <b>Python 2</b>, which is part of the Mac OSX operating system.  Many features of the language
+(including the syntax of <tt>print</tt> statements) changed between the second and third version, and many popular packages are still only available for the second version.
+
+<p>
+To launch IDLE on your Macintosh:
+<ol>
+	<li>  Open the <tt>Applications</tt> folder.  
+	<li>  Inside it, open the <tt>Utilities</tt> folder.
+	<li>  Launch the <tt>Terminal</tt> application.
+	<li>  The terminal will open a window where you can type commands.  In that window, type:
+	<blockquote><tt>idle</tt></blockquote>
+	(remember to hit the <tt>enter/return</tt> key, so, the computer realizes you're done typing).
+	<li>  Another window should open.  Test to see if it is working by typing:
+	<blockquote><tt>print "Hello!"</tt></blockquote>
+	(remember to hit the <tt>enter/return</tt> key, so, the computer realizes you're done typing).
+</ol>
+
+<p>
+Once you have IDLE running, you can keep it in your dock by clicking on it and choosing options.</p>
+
+</div>
+
+<div>
+<h3>Turtle Library & <tt>for</tt> loops</h3>
+
+<p>
+For our first programs, we will use a built-in library (file of useful commands) for drawing using <a href="https://docs.python.org/2/library/turtle.html">turtles</a>. We will begin with a simple program and modify it to add functionality.  This can be done from the Python prompt (<tt> >>> </tt> in IDLE), but it is easier to store the program in a file and modify the file. To do this, go to the <tt>File</tt> menu of <tt>IDLE</tt> and choose <tt>New File</tt> (or type <tt>&#8984;N</tt>).</p>
+
+<p>In the new file window, type:
+<pre>
+    import turtle
+
+    teddy = turtle.Turtle()
+    for i in range(4):
+        teddy.forward(100)
+        teddy.right(90)
+    
+    turtle.exitonclick()
+</pre>
+Indentation does matter, so, remember to indent the lines after the <tt>for</tt>, using TABs, 
+so that they are included in the <tt>for</tt>-loop.
+Save the file as <tt>firstProgram.py</tt>.  
+
+<p>Notes on saving files: 
+<ul>  
+	<li> You can save your programs as almost anything, except the names of libraries (e.g. <tt>turtle</tt> or <tt>random</tt>).  Using a library name will confuse Python-- it will think your program should be used instead of the similarly named library.  
+	<li> Saving your program with the <tt>.py</tt> extension is not necessary, but it is good form.  Also, any file with a <tt>.py</tt> extension will be displayed nicely (color coding of keywords, etc.)
+</ul>
+	
+To run your program, go to the <tt>Run</tt> menu and choose <tt>Run Module</tt>.  Python should open a new graphics window and draw a square.  
+
+<h4>Line-by-Line</h4>
+<p>
+What is this program doing?  Let's go through, line-by-line:
+<ul>
+	<li> The first line
+	<pre>
+    import turtle</pre>
+    tells Python that you would like to use some of the commands contained in the module, called, <tt>turtle</tt>.
+	<li> The next line creates a <tt>turtle</tt> object that can be used in the program:
+	<pre>
+    teddy = turtle.Turtle()</pre>
+	I named my turtle after President Roosevelt, but you can use any name you would like (as long as you spell it the same throughout).
+	
+	<li> A <tt>for</tt> statement is used to repeatedly perform sequences of statements (so called a ``loop'').  This <tt>for</tt>-loop repeats actions
+	4 times:
+	<pre>
+    for i in range(4):</pre>
+  	To repeat the actions more times, you can change the parameter to the <tt>range</tt> statement.  For example, <tt>range(6)</tt> in our loop would repeat the actions 6 times.
+	<li> Inside our <tt>for</tt>-loop, we have our turtle perform 2 actions:  walk forward 100 steps, and then turn 90 degrees:
+	<pre>
+        teddy.forward(100)
+        teddy.right(90)</pre>  	
+	<li> The last command keeps the graphics window open until the mouse is clicked.  When clicked, the window will close and the program will end.
+	<pre>
+    turtle.exitonclick()</pre>
+</ul>
+
+
+<h4>Some Challenges</h4>
+
+Modify your program to:
+<ol>
+	<li> Draw a hexagon.
+	<li> Draw an octagon.
+	<li> What does the following do?  Work through it on paper, and then implement in Python to verify:
+	<pre>
+    import turtle
+
+    teddy = turtle.Turtle()
+    for i in range(40):
+        teddy.forward(10*i)
+        teddy.right(90)
+    
+    turtle.exitonclick()
+</pre>
+	<li> Implement the following piece of pseudocode (i.e. directions that look very similar to code) as a complete program using turtle graphics:
+	<pre>
+    Repeat 45 times:
+        Walk forward 100 steps
+        Turn right 92 degrees
+    </pre>
+    <p>
+	Your output should look similar to: <br>
+	<img src="spiral.jpg">
+	<li>  Draw a 5-pointed star.
+	<li>  Print your name to the Python prompt 50 times.
+<p>
+</div>
+
+<div>
+<h3>Random Library</h3>
+
+<p>Another useful library is <a href="https://docs.python.org/2/library/random.html">random</a> library that generates (pseudo)-random numbers.  The following:
+<pre>
+	import random           #use the random library
+		
+	# other code here....
+		
+	random.randrange(7)
+</pre>
+generates a random whole number between 0 and 6.  Similarly, the 
+command
+<pre>
+	random.randrange(360)
+</pre>
+generates a random whole number between 0 and 359.  The command also allows random numbers to be chosen from multiples.  For example:
+<ul>
+	<li> <tt>random.randrange(0,100,2)</tt> chooses a random even number that's
+	greater than 0 and less than 100.
+	<li> <tt>random.randrange(0,360,90)</tt> chooses a random number from the
+	sequence <tt>0, 90, 180, 270</tt>.
+	
+</ul>
+
+Let's write a program that turns a random amount each time.  Here is an outline in comments (anything after the `#' is ignored by Python):
+<pre>
+#Include the random and turtle libraries
+#Create a turtle
+#Have a loop that repeats 25 times
+	#Inside that loop, 
+	#Move forward 10 steps
+	#Turn a random amount
+#Close window on mouse click
+</pre>
+Try to fill in each piece (if you're stuck, <a href="randomTurn.py">here</a> is a possible solution).
+
+<h4>Some Challenges</h4>
+
+Modify your program to:
+<ol>
+	<li> Modify your random turning program to make random turns of 90 degrees only (i.e. 0, 90, 180, 270 degrees only).
+ 	<li> Modify your random turning program to make random turns of 180 degrees only (i.e. 0 and 180 degrees only).	
+</ol>
+
+
+</div>
+
+<div>
+<h3>Simulating Brownian Motion with Random Walks</h3>
+
+<p>
+We can use the programs above to simulate `random walks' where an object moves in a random direction (and a random distance forward).  <a href="https://en.wikipedia.org/wiki/Random_walk">Random walks</a> are well studied for modeling <a href="https://en.wikipedia.org/wiki/Brownian_motion">Brownian motion</a>, diffusion models, paths of foraging animals, fluctuations in stock prices, and genetic drift.   
+
+<p>
+For this lab, we will use the random turn programs to gather data to affirm or refute the hypothesis:
+<blockquote>
+	The longer the walk, on average, the farther east or west from the origin it ends.
+</blockquote>
+
+<p>
+Some notes:
+<ul>
+	<li> Test this hypothesis for all three types of random turns: 1 degree, 90 degrees, and 180 degree turns.
+	<li> The turtle library has several commands for reporting position.  A useful one here is <tt>xcor()</tt> which gives the x coordinate of the turtle.
+	<li> For each length = 100, 200, 300, 400, 500, simulate 10 runs and report the average of the <tt>x</tt> position for each length walk. 
+</ul>
+
+</div>
+
+<div>
+<h3>Lab Write-Up</h3>
+
+<p>
+For each lab, you should submit a lab report by the target date to:  <tt>kstjohn AT amnh DOT org</tt>.  The reports should be about a page for the first labs  and contain the following:
+
+<p>
+Target Date:  1 February 2016<br>
+Title:  Lab 1:  Simulating Brownian Motion with Random Walks<br>
+Name & Email:<br>
+
+<p>
+Purpose:  Give summary of what was done in this lab.<br>
+Procedure:  Describe step-by-step what you did (include programs or program outlines).<br>
+Results:  Show all data collected.  Including screen shots is fine (can capture via the <tt>Grab</tt> program).<br>
+Discussion:  Give a short explanation and interpretation of your results here.  
+
+
+</div>
+
+<div>
+<h3>Using Rosalind</h3>
+
+<p>This course will use the on-line <a href="http://rosalind.info">Rosalind</a> system for submitting 
+programs electronically.  The password for the course has been sent to your email.  Before leaving lab today, complete the first challenge.
+</div>
+
+</html>

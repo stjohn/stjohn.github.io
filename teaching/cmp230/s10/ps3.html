@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 3 for CMP 230, Lehman College, CUNY, Spring 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;	
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "3." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+		li {
+			margin-top: 25px;
+		}
+    </style>
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 3</h2>
+<h3>CMP 230: Programming Methods I <br>
+Lehman College, City University of New York<br>
+Spring 2010<br><br>
+</h3>
+</div>
+
+<div>
+<p>
+This problem set is based on the material in Chapter 3: Decisions &amp; Loops.
+</p>
+
+<p>You should complete <b>130 points</b> worth of programs
+(with an additional 13 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<ol>
+<li><b>Too Hot</b> (5 points)
+
+<p>
+<img width="100" src="http://alice.org/gallery/People/Snowman.png">
+</p>
+<p>
+Create a world with a snowman and stove in it (found in the <tt>People</tt>
+and <tt>Kitchen</tt> galleries, respectively).  In the <tt>my first method</tt>,	
+add in an <tt>If/Else</tt> statement that the snowman jumps if he is within
+2  meters of the stove.  He should do nothing otherwise.  Test your decision
+statement by placing your snowman in different spots in the world.</p>
+
+
+<li><b>Shrinking Bunny</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Bunny2.png">
+</p>
+<p>
+Create a world with a bunny in it.  In the <tt>my first method</tt>,	
+add in an <tt>If/Else</tt> statement that 30% of the time the bunny
+doubles in size and the rest of the time the bunny shrinks to half of
+its original size.  Play the program several times to show the affect.</p>
+</li>
+
+
+<li><b>Morning Dancing</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/PinkBallerina.png">
+</p>
+<p>
+Create a world with a dancer in it (several are in the <tt>People</tt>
+gallery).  Write an <tt>If/Else</tt> statement that causes the dancer
+to spin in place two revolutions if it's currently morning.<br>
+<br>(Hint: Use the <tt>Is AM</tt> world function (see Appendix
+B of the book for more details)).
+</p>
+</li>
+
+<li><b>Changing Colors</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/Snowman.png">
+</p>
+<p>
+Create a world with a snowman and stove in it (found in the <tt>People</tt>
+and <tt>Kitchen</tt> galleries, respectively).  In the <tt>my first method</tt>,	
+add in an <tt>If/Else</tt> statement that the snowman turns red is within
+2  meters of the stove, otherwise he turns blue.  You can control the color
+of the snowman by using <tt>color</tt> from its list of properties.</p>
+</li>
+
+<li><b>Bike at Intersection</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/People/bikekid1.png">
+</p>
+<p>
+Modify the <tt>Intersection2</tt> program (available on the book's CD or 
+class Blackboard site) so that the bike turns left 75% of the time and
+right 25% of the time.
+</p>
+</li>
+
+<li><b>Random Roo</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/kangaroo.png">
+</p>
+<p>
+Create a world with a kangaroo under a tree.  Have the kangaroo move 
+a random distance forward.  Next use an <tt>If/Else</tt> statement 
+that causes the kangaroo to spin in place if he is farther than a 
+meter from the tree.
+</p>
+</li>
+
+<li><b>Bruce the Shark</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Ocean/Shark.png">
+</p>
+<p>
+Modify the <tt>Shark2</tt> program (available on the book's CD or 
+class Blackboard site) so that Bruce potentially rises to the 
+surface every other lap.
+</p>
+</li>
+
+
+<li><b>Hopping Forever</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/kangaroo.png">
+</p>
+<p>
+Using your kangaroo from <a href="lab2.html">Lab 3</a>, create a 
+world where your kangaroo hops forever.<br>
+Hint:  Use a <tt>While true</tt> statement.
+</p>
+</li>
+
+<li><b>Collision</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/CementTruck.png">
+</p>
+<p>
+Modify the <tt>Collision</tt> program (available on the book's CD or 
+class Blackboard site) so that when the trucks collide, a crashing
+sound is played and the cement truck's right front wheel breaks loose
+and continues to roll down the street.
+</p>
+</li>
+
+
+<li><b>Stop Hop</b> (10 points)
+
+<p>
+Using your kangaroo world from above, add in a tree and have 
+your kangaroo hop towards tree as long as the distance is greater
+than 3 meters.<br>
+Hint:  Use the <tt>distance behind</tt> proximity function (see Appendix B).
+</p>
+</li>
+
+<li><b>Falling Object</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Sports/beachball.png">
+</p>
+<p>
+Exercise 3.5 (p 63):  Write a <tt>While</tt> statement that causes an 
+object of your choice (some possible ones: a ball, a skydiver, a water balloon, 
+a meteor, etc.) to move down one meter as long as it is above a specific
+object on the ground (e.g. a target, a person, a house, etc.).<br>
+Hint:  Use the <tt>is above</tt> proximity function (see Appendix B).
+</p>
+</li>
+
+<li><b>Ten Twirls</b> (5 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/Bunny2.png">
+</p>
+<p>
+Exercise 3.9:  Write a loop statement that causes an object (e.g. a skater,
+a bunny, a car, etc) to spin in place 10 times.
+</p>
+</li>
+
+<li><b>Count Down</b> (15 points)
+
+<p>
+Exercise 3.8:  Write a <tt>While</tt> statement updates the value of a
+variable called <tt>seconds</tt> and displays it in a 3D text
+object called <tt>countdown</tt>.  Start <tt>seconds</tt> at 10 and 
+loop until it reaches 0.
+<br>Hint: use the "what as text" function to convert your variable into
+text that can be displayed on the screen.
+</p>
+
+</li>
+
+
+<li><b>Odometer</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Car.png">
+</p>
+<p>
+Modify the <tt>SpeedingCar</tt> program (available on the book's CD or 
+class Blackboard site) so that it displays the distance the car has
+traveled while it is moving.  Continuously display the result on a
+3D text object that stays visible in the upper portion of the display
+window.
+<br>Hint: use the "what as text" function to convert your variable into
+text that can be displayed on the screen.
+</p>
+</li>
+
+<li><b>Biplane</b> (10 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Vehicles/Biplane.png">
+</p>
+<p>
+PP 3.2 (p 64): Create an Alice world in which a <tt>Biplane</tt> from the <tt>Vehicles</tt>
+gallery flies in from the right side of the viewing area, makes seven 
+consecutive veritcal loops as it moves across the sky, then flies off to
+the left.  Its propeller should be turning the entire time.
+</p>
+</li>
+
+<li><b>Frog Race</b> (15 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Animals/frog.png">
+</p>
+<p>
+PP 3.5:  Create an Alice world in which two frogs race toward
+a finish line.  Use a loop in which both frogs hop forward in each 
+iteration.  Determine the distance of each hop randomly.  End the
+animation when one of the frogs crosses the finish line.  The <tt>Frog</tt>
+class is in the <tt>Animals</tt> gallery.  
+</p>
+</li>
+
+<li><b>Bouncing Ball</b> (20 points)
+<p>
+<img width="100" src="http://alice.org/gallery/Sports/toyball.png">
+</p>
+<p>
+PP 3.6:  Create an Alice world in which a ball rolls off a table,
+bounces on the ground, and eventually comes to rest.  Use the 
+<tt>ToyBall</tt> class from the <tt>Sports</tt> gallery to create
+the ball.  Use a loop to control the bounces, 
+decreasing the height of the rebound by half every time.  Move the
+ball away from the table slightly on each bounce.  Continue the bounces until the 
+rebound height decreases to an insignificant amount.
+</p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 130 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 13 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+Manchester to Chicago
+Manchester to Baltimore
+Chicago to San Francisco
+Houston to Los Angeles
+Houston to Phoenix
+Los Angeles to Chicago
+Los Angeles to Seattle
+Los Angeles to Portland
+Atlanta to New York
+New York to Chicago
+New York to Detroit
+New York to Baltimore
+New York to Atlanta
+Phoenix to Los Angeles
+Phoenix to Houston
+Portland to Los Angeles
+Portland to Chicago
+Baltimore to Philadelphia
+Baltimore to Manchester

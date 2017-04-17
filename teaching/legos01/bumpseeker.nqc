@@ -1,0 +1,123 @@
+// Light/Dark Seeker by Peter Str–mberg <pez@pezius.com>. For NCQ 2.
+//
+// An AcroBot (from RIS 1.5 Constructopedia) based bot with two motors,
+// one bumper and one light sensor.
+//
+// The main() task mainly starts of two tasks; One for bumping off of
+// walls and one for Seeking out the the lightest or darkest spot in
+// the room (depending on whether the the bumper is pressed during
+// startup or not). When the spot is found the bot makes a little dance
+// and the continues seeking.
+//
+// Before spot seeking takes place the bot probes the room to record
+// the darkest and lightest areas (i.e. a calibration phase).
+//
+// Now and then during spot seeking the bot probes the room again.
+// 
+// The program doesn't deal with conflicting control over the motors from
+// the different tasks. (Other than care has been taken not to use any
+// toggling of directions.) It isn't needed as far as I can see.
+
+#define EYE SENSOR_1
+#define BUMPER SENSOR_2
+#define RIGHT_MOTOR OUT_A
+#define LEFT_MOTOR OUT_C
+#define DRIVE LEFT_MOTOR + RIGHT_MOTOR
+#define LEFT 0
+#define RIGHT 1
+
+#define PROBE_TIME 200
+#define DANCE_TIMES 4
+#define PAUSE 100
+#define LOW_TONE 500
+#define HIGH_TONE 5000
+
+#define LIGHT_TOLERANCE 1/16
+#define light_spot max_light - (max_light - min_light) * LIGHT_TOLERANCE
+#define dark_spot min_light + (max_light - min_light) * LIGHT_TOLERANCE
+
+int max_light=0, min_light=100;
+int seek_light=true;
+
+task main() {
+	SetSensor(EYE, SENSOR_LIGHT);
+	SetSensor(BUMPER, SENSOR_TOUCH);
+	seek_light = !BUMPER;
+	SetPower(DRIVE, OUT_HALF);
+	OnFwd(DRIVE);
+	start BumpOffWalls;
+	ProbeRoom();
+	Wait(PAUSE);
+	start SeekSpot;
+}
+
+task BumpOffWalls() {
+	while (true) {
+		if (BUMPER) {
+			SetDirection(DRIVE, OUT_REV);
+			Wait(PAUSE);
+			TurnRandom();
+			SetDirection(DRIVE, OUT_FWD);
+		}
+	}
+}
+
+task SeekSpot() {
+	int i=0;
+	int spot;
+	if (seek_light) spot = light_spot; else spot = dark_spot;
+	while (true) {
+		while ((seek_light && (EYE < spot)) || (!seek_light && (EYE > spot))) {
+			if ((i++ % 100) == 0) PlayTone(HIGH_TONE, PAUSE / 3);
+		}
+		Dance(DANCE_TIMES);
+		SetDirection(DRIVE, OUT_FWD);
+		if ((i % 1000) == 0) ProbeRoom();
+	}
+}
+
+void ProbeRoom() {
+	int last_light=0;
+	int i=0;
+	ClearTimer(0);
+	while (Timer(0) < PROBE_TIME) {
+		last_light = EYE;
+		if (last_light > max_light) {
+			max_light = last_light;
+			PlayTone(HIGH_TONE, PAUSE / 3);
+		}
+		if (last_light < min_light) {
+			min_light = last_light;
+			PlayTone(LOW_TONE, PAUSE / 3);
+		}
+	}
+	PlaySound(SOUND_DOUBLE_BEEP);
+}
+
+void Dance(const int& dance_times) {
+	repeat (dance_times) {
+		TurnRandom();
+		Wait(PAUSE / 3);
+		PlaySound(SOUND_UP);
+	}
+}
+
+void Turn(const int& direction) {
+	if (direction == LEFT) {
+		SetDirection(LEFT_MOTOR, OUT_FWD);
+		SetDirection(RIGHT_MOTOR, OUT_REV);
+	} else {
+		SetDirection(RIGHT_MOTOR, OUT_FWD);
+		SetDirection(LEFT_MOTOR, OUT_REV);
+	}
+}
+
+void TurnRandom() {
+	if (Random(100) < 50) {
+		Turn(LEFT);
+	} else {
+		Turn(RIGHT);
+	}
+	Wait(PAUSE / 5 + Random(PAUSE));
+}
+

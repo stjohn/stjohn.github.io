@@ -1,0 +1,63 @@
+// square.nqc - robot traces out a square
+// Benjy Hass
+
+#define LEFT OUT_A
+#define RIGHT OUT_C
+#define SIDE_TIME 400
+#define TURN_TIME 220
+
+task main()
+{
+//Set power for motors:
+    SetPower(LEFT,3);
+    SetPower(RIGHT,3);
+
+//Straight line
+    OnFwd(LEFT);
+    OnFwd(RIGHT);
+    Wait(SIDE_TIME);
+    Off(LEFT+RIGHT);
+
+//Turn in place for 90 degrees    
+    OnFwd(LEFT);
+    OnRev(RIGHT);
+    Wait(TURN_TIME);
+    Off(LEFT+RIGHT);
+
+//Straight line
+    OnFwd(LEFT);
+    OnFwd(RIGHT);
+    Wait(SIDE_TIME);
+    Off(LEFT+RIGHT);
+
+//Turn in place for 90 degrees    
+    OnFwd(LEFT);
+    OnRev(RIGHT);
+    Wait(TURN_TIME);
+    Off(LEFT+RIGHT);
+
+//Straight line
+    OnFwd(LEFT);
+    OnFwd(RIGHT);
+    Wait(SIDE_TIME);
+    Off(LEFT+RIGHT);
+
+//Turn in place for 90 degrees    
+    OnFwd(LEFT);
+    OnRev(RIGHT);
+    Wait(TURN_TIME);
+    Off(LEFT+RIGHT);
+
+//Straight line
+    OnFwd(LEFT);
+    OnFwd(RIGHT);
+    Wait(SIDE_TIME);
+    Off(LEFT+RIGHT);
+
+//Turn in place for 90 degrees    
+    OnFwd(LEFT);
+    OnRev(RIGHT);
+    Wait(TURN_TIME);
+    Off(LEFT+RIGHT);
+
+}

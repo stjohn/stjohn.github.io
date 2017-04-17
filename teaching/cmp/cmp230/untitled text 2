@@ -1,0 +1,25 @@
+ideas for cmp 230, spring 12
+
+more automated grading-- 
+	quizzes along the lines of, 
+		good design questions from the beginning:
+			given these 5 python lines of codes (or functions)
+			arrange them to produce the following output
+			or perform in a certain way
+		or which function call would you use, with what parameters
+		some reading comprehension questions
+		would it make sense to have a write the code, followed by 
+			analyze the output
+		could have elementary sorts in here, parameter passing,
+			if statements
+		or the first two lines of this program are missing, what 
+			should they be to give output ...
+			
+use assignment instead of test to allow automatic downloading and cheat
+	checking
+	
+see if safeassign can handle python programs
+
+YOPNZNF
+
+		

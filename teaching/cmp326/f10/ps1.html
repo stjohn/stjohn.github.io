@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 1 for CMP 326, Lehman College, CUNY, Fall 2010</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+    <style>  
+		ol { 
+			padding: 0;
+			margin-left: 0;		
+			list-style-type: none; 
+			counter-reset: say; 
+
+		} 
+		ol li:before { 
+			counter-increment: say;
+			content: "1." counters(say,".") ":  "; 
+			font-weight: bold;
+		}
+    </style>
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 1</h2>
+<h3>CMP 326: Programming Methods II <br>
+Lehman College, City University of New York<br>
+Fall 2010<br><br>
+</h3>
+
+<p>
+This problem set covers review material from Chapters 1-4.
+</p>
+
+
+<p>You should complete <b>50 points</b> worth of programs
+(with an additional 5 points extra credit possible). 
+</p>
+</div>
+
+<div>
+<h3>General Information About the Lab</h3>
+<p>
+The department has the following policies for
+the lab:
+</p>
+<ul>
+  <li> There is no eating or drinking in the lab. </li>
+  <li> Due to restricted class sizes, children are not allowed in the
+computer labs. </li>
+  <li> Do not waste paper-- only print files that directly relate to
+the class. </li>
+  <li> Do not enter the lab until the scheduled class time. If the lab
+is open before class time, it is because another class is using it or
+for maintenance. </li>
+  <li> Always log out and turn off the monitor when you leave the lab. </li>
+</ul>
+</div>
+
+<div>
+<h3>Getting Started</h3>
+First, turn on the computer-- the button is
+in the front. The monitor should also come on, if it doesn't,
+the button for it is also in the front. It will take a few moments for
+the computer to get started. Some machines in the department are set up
+as dual boot.  If yours is, you will then see a RedHat logo
+on the left hand side of the screen, and the words <tt>linux</tt>
+and <tt>win</tt> in a white box on the right. Choose <tt>win </tt>and
+hit return. These machines are "dual-boot," with both Linux
+and Windows. By choosing <tt>win</tt>, the machine will boot up
+under the Windows operating system.
+</div>
+
+
+<div>
+
+<ol>
+
+<li><b>Snowman</b> (5 points)
+
+<p>
+Problem 1.6 (p 39):  Write a program similar to Listing 1.2 that
+displays a picture of a snowman.  
+<br><i>Hint:</i>  Draw three circles, 
+one above the other.  Make the circles progressively smaller from 
+bottom to top.  Make the top circle a happy face.
+</p>
+</li>
+
+
+<li><b>Vertical Display</b> (5 points)
+
+<p>Problem 2.4 (p 116): Write a program that reads a four-digit
+integer, such as 1998, and then display it, one digit per line, 
+like so:</p>
+<pre>
+1
+9
+9
+8
+</pre>
+</li>
+
+
+<li><b>Hate/Love Program</b> (10 points)
+
+<p>Problem 2.7 (p 116): Write a program that reads a line of
+text and then displays the line, ut with the first occurrence
+of <i>hate</i> changed to <i>love</i>.  For example, a possible 
+sample diaglog might be:</p>
+<pre>
+Enter a line of text.
+I hate you.
+I have rephrased that line to read:
+I love you.
+</pre>
+</li>
+
+
+<li><b>Making Change</b> (10 points)
+
+<p>Problem 2.10 (p 117): Write a program that determines the
+change to be dispensed from a vending machine,  An item in the
+machine can cost between 25 cents and a dollar, in 5-cent
+increments (25, 30, 35, ..., 90, 95, or 100), and machine accepts only
+a single dollar bill to pay for the item.  For example, a 
+possible dialogue with the user migh be:
+<pre>
+Enter price of item
+(from 25 cents to a dollar, in 5-cent increments): 45
+
+You bought an item for 45 cents and gave me a dollar,
+so you change is
+2 quarters,
+0 dimes, and
+1 nickel.
+</pre></p>
+</li>
+
+<li><b>Binary Converter</b> (15 points)
+
+<p>Problem 2.11 (p 117): Write a program that reads a four-bit
+binary number from the keyboard as a string and then converts
+it into decimal.  For example, if the input is <tt>1100</tt>,
+the output should be 12.  <br>
+<i>Hint:</i> Break the string into substrings and then convert
+each substring to a value for a single bit.  If the bits are a,
+b, c, and d, the decimal equivalent is 8a + 4b+ 2c + d.</p>
+</li>
+
+<li><b>Date Converter</b> (10 points)
+
+<p>Problem 2.13 (p 118): Write a rpogram that reads a string
+for a date in the format <i>month / day / year></i> and
+displays it in the format <i>day . month . year</i>, which
+is a typical format used in Europe.  For example, if the input
+is 06/17/08, the output should be 17.06.08.  Your program 
+should use <tt>JOptionPane</tt> for input and output.</p>
+</li>
+
+
+<li><b>Order</b> (10 points)
+
+<p>Problem 3.2 (p 172): Write a program to read in three
+nonnegative integers from the keyboard.  Display the 
+integers in increasing order.</p>
+</li>
+
+<li><b>Guessing Game</b> (10 points)
+
+<p>Write a guessing game program that asks the user to 
+guess your secret number.  If the guess is too high, write
+a message saying so and ask them to guess again.  
+Similarly, if the guess is too low, write a message
+saying so and ask them to guess again.  If they guess
+correctly, congratulate them and end the program.</p>
+</li>
+
+
+
+</ol>
+
+</div>
+
+
+
+
+
+<div>
+<h3>Submitting Your Problem Set</h3>
+<p>
+You should submit 50 points worth of problems for grading by
+the deadline (see class schedule for date).  To submit a program, 
+you need to demonstrate (during office hours or lab) your program
+and explain how it works.
+</p>
+
+<p>
+If you complete extra problems by the deadline, up to 5 additional 
+points can be counted towards extra credit.
+</p>
+
+<h3>Logging Out</h3>
+<p>Before leaving the lab, you need to log out and shut
+down your computer. Remember to pick up any files you sent to the
+printer
+and to take any personal belongings. It is difficult
+to get back into the lab later (since it's locked when
+not in use), so, it's worth making sure you haven't
+forgotten anything.
+</p>
+</div>
+</body>
+</html>

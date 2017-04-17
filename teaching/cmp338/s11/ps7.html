@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Problem Set 7 for CMP 338, Lehman College, CUNY, Spring 2011</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+
+</head>
+<body>
+
+<div id="header">
+<h2>Problem Set 7</h2>
+<h3>CMP 338: Data Structures and Algorithms <br>
+Lehman College, City University of New York<br>
+Spring 2011<br><br>
+</h3>
+
+<p>
+This problem set covers binary search trees.  
+See the class webpage for references.  
+
+</p>
+
+
+</div>
+
+<div>
+In this assignment, you will implement useful methods for binary 
+search trees, as well as analyze performance.  The necessary files are available 
+on Blackboard.
+
+
+<ol>
+
+
+<li><b>Rotating Binary Search Trees</b> (60 points)
+
+<p>
+Using the base program discussed in class (available on Blackboard), 
+add the following methods:
+<ul>
+	<li> <tt>height(N):</tt> returns the height of the tree rooted at <tt>N</tt>
+	<li> <tt>rotateLeft(N):</tt> rotate the tree to the left at node <tt>N</tt>, 
+		if the right child of <tt>N</tt> is not null.
+	<li> <tt>rotateRight(N):</tt> rotate the tree to the right at node <tt>N</tt>, 
+		if the left child of <tt>N</tt> is not null.
+</ul>
+<p>
+For a good description of rotating binary trees, see <a href="http://en.wikipedia.org/wiki/Tree_rotation">Wiki
+page</a>.
+
+<p>
+Submit your program as a .java file via Blackboard.
+</p>
+
+<li><b>Test Cases</b> (20 points)
+
+<p>Report the following:
+<ul>
+
+   	<li> the height of a tree created by inserting 127 randomly generated numbers 
+    	(ranging from 1 to 500) are inserted into a binary	search tree.
+	<li> the height of the initial tree after 1 left rotations at the root (if possible).
+	<li> the height of the initial tree after 1 right rotations at the root (if possible).    			
+	<li> the height of the same tree after 3 left rotations at the root (if possible).
+	<li> the height of the initial tree after 3 right rotations at the root (if possible).
+
+</ul>
+<p>
+Run the test 10 times and make a table with your average heights as well as the standard deviation 
+for each algorithm. Submit your table via Blackboard.
+
+<li><b>Analysis</b> (20 points)
+
+<p>
+Using your data above, answer the following questions:
+<ul>
+
+	<li> Do single rotations, on average, shorten the height of the tree?  Why or why not?
+	<li> Do three rotations in a row, on average, shorten the height of the tree?  Why or why not?
+	<li> The shortest tree possible with 127 keys has height 6, while the tallest possible tree
+		has height 126.  How close were your trees to the best (ie shortest) height?
+</ul>
+</p>
+
+<p>
+Submit your answer via Blackboard as a text or word
+file.
+</p>
+
+
+
+</ul>
+
+
+
+</div>
+</body>
+</html>

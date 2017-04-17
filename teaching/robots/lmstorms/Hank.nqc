@@ -1,0 +1,27 @@
+#define BACK_TIME 50
+#define TURN_TIME 80
+
+task main() {
+  SetSensor(SENSOR_1, SENSOR_TOUCH);
+  SetSensor(SENSOR_3, SENSOR_TOUCH);
+  OnFwd(OUT_A + OUT_C);
+  while (true) {
+    if (SENSOR_1 == 1) {
+      PlayTone(440, 50);
+      OnRev(OUT_A + OUT_C);
+      Wait(BACK_TIME);
+      OnFwd(OUT_A);
+      Wait(TURN_TIME);
+      OnFwd(OUT_C);
+    }
+    if (SENSOR_3 == 1) {
+      PlayTone(880, 50);
+      OnRev(OUT_A + OUT_C);
+      Wait(BACK_TIME);
+      OnFwd(OUT_C);
+      Wait(TURN_TIME);
+      OnFwd(OUT_A);
+    }
+  }
+}
+
