@@ -25,38 +25,72 @@ Today's lab on vectors and arrays in the R programming language.
 <div>
 <h3>Try R Vector Tutorial</h3>
 
-<p>Last lab, we worked through the first chapter of the <
+<p>Last lab, we worked through the first chapter of the <a href="http://tryr.codeschool.com/">Try R</a>.  
+
+<p>Today, we will work through <b>Chapter 2: Vectors</b> of <a href="http://tryr.codeschool.com/">Try R</a>.  Work through the entire chapter on vectors, and then try the vector and plotting below.
 
 </div>
 
-
-
 <div>
+<h3>Plotting Vector Data</h3>
+
 <p>
-Let's try some of our other Python programs.  R doesn't have turtles, but it does have loops.
+Let's try some of the ideas from the <a href="http://tryr.codeschool.com/">Try R</a> tutorial to plot Vector Data.  
 
-<ul>
-	<li>  In shell, use a loop to repeat a message.</li>
-	<li>  Variable assignment (note no = sign, but &lt;- instead)
-	<li>  Run a program from a file.</li>
-	<li>  Accumulator design pattern.</li>
-	<li>  Simple counting, mean, standard deviation.</li>
-	<li>  Always useful to know:  to quit R, you type:  <tt>q()</tt>
-</ul>
+<p>
+Open up the R console (either via Applications folder or Spotlight).  At the prompt, create a vector of population for the Bronx:
+<pre>
+	bronxPop <- c(200507,430980,732016,1265258,1394711,1451277,1424815,1471701,1168972,1203789,1332650,1385108)
+</pre>
+This is the population from 1900, 1910, 1920, ... 2010 that we used in <a href="lab6.html">Lab 6</a>.
 
-Next lab:
-<ul>
-	<li> vectors
-	<li> data frames 
-	<li> file I/O?
-</ul>
+<p>What does it look like?  Let's try plotting it:
+<pre>
+	plot(bronxPop)
+</pre>
+<p>
+It's okay, but we're missing the years.  Let's create another vector with the years.  We have a start of 1900, a stop of 2010, and a step of 10:
+<pre>
+	years <- c(seq(1900,2010,10))
+</pre>
+<p>
+Check to make sure we have the right numbers by typing it's name at the prompt:
+<pre>
+	years
+</pre>
+
+<p>Now, we can use <tt>years</tt> as the x-axis and <tt>bronxPop</tt> as the y-axis:
+<pre>
+	plot(years,bronxPop)
+</pre>
+
+<p>To make it prettier, let's add in some color:
+
+<pre>
+	plot(years,bronxPop,col="red")
+</pre>
+
+<p>Let's also try making a barplot:
+<pre>
+	barplot(bronxPop)
+</pre>
+<p>The labels are missing.  <tt>barplot()</tt> works a bit differently than <tt>plot</tt> for specifying the labels for the x-axis.  We can either give the labels as a parameter:
+<pre>
+	barplot(bronxPop, names.arg=c(seq(1900,2010,10)))
+</pre>
+Or, we can set the names for bronxPop (as in the Try R tutorial) and then use <tt>barPlot</tt>:
+<pre>
+	names(bronxPop) = c(seq(1900,2010,10))
+	barplot(bronxPop)
+</pre>
+will yield the same plot.
 
 </div>
 
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is a quiz on functions and loops.  The password to access the quiz will be given during lab.
+During lab, there is a quiz on R basics.  The password to access the quiz will be given during lab.
 
 </div>
 
@@ -65,18 +99,6 @@ During lab, there is a quiz on functions and loops.  The password to access the 
 <h3>What's Next?</h3>
 
 <p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
-
-</div>
-
-<div>
-<h3>Using R at Home</h3>
-
-To duplicate the setting in the lab, you will need to download 
-<ul>
-	<li>R</li>
-	<li><a href="https://www.xquartz.org">XQuartz</a> for Mac OSX</li>
-</ul>
-
 
 </div>
 

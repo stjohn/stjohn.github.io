@@ -375,39 +375,39 @@ main()
 
 <p>Load the program into IDLE and run the program.  A dialog box pops up and says "invalid syntax":<br>
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window1.jpg">
+<img src="errors2Window1.jpg">
 <br>
 <p>
 We have seen this one before, it's a missing colon (":") at the end of the function definition.  Add it in and run again.
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window2.jpg">
+<img src="errors2Window2.jpg">
 <br>
 <p>
 Again, we get an invalid syntax.  What's wrong here?  (Hint: same as the last one).  Fix the error, and let's run the program again:
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window3.jpg">
+<img src="errors2Window3.jpg">
 <br>
 <p>
 This one is different.  IDLE has highlighted the word <tt>def</tt>, and yet that seems to spelled correctly.  A general rule to follow: if you do not see an error on the current line, look above (usually for missing quotes or closing parenthesis).  On the previous line, the function call to <tt>fact()</tt> is missing the closing parenthesis.  Add it, and run the program again:
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window4.jpg">
+<img src="errors2Window4.jpg">
 <br>
 <p>
 This one is a bit harder-- all the keywords are spelled correctly and there's no missing colons, parenthesis, or quotes.  What's wrong?  Python expected the word <tt>else</tt> (<tt>elif</tt> is only used when you need multiple tests in multi-way decision).  Replace <tt>elif</tt> with <tt>else</tt> and try again:
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window5.jpg">
+<img src="errors2Window5.jpg">
 <br>
 <p>
 The message says:  <tt>unexpected indent</tt>.  The line does seem to be indented for no reason (i.e. it's not part of a block of code in a loop or decision construct).  Remove the extra indent and continue:
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window6.jpg">
+<img src="errors2Window6.jpg">
 <br>
 <p>
 This is a common error.  In plain English, it means that the end of the line ("EOL") was reached before the string finished.  In other words, the string is missing its ending quotes.  Add it in (right after the word <tt>or</tt>) and run the program again.  
 
 <p>It now compiles!  But we need to test it to make sure no run-time errors remain:
 <br>
-<img src=".../../cmp/cmp230/f14/errors2Window7.jpg">
+<img src="errors2Window7.jpg">
 <br>
 <p>
 When reading the traceback message (all the red text), go to the very last line and see what it says.  The message says we cannot use <tt>+</tt> for <tt>'int'</tt> and <tt>'string'</tt>.  We only used <tt>+</tt> once in the line to concatenate <tt>n</tt> to a string.  Since we want <tt>n</tt> to eventually be a string and printed to the screen, let's change it to a string (by using the <tt>str()</tt> function):
