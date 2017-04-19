@@ -26,6 +26,18 @@ Today's lab introduces the R programming language.
 <div>
 <h3>Getting Started with R</h3>
 
+Before we start writing R code on our machines, we're going to start with a fun tutorial that demonstrate some of the syntatic differences between Python and R.
+
+<ul>
+	<li> Work through the first chapter, "Using R", of <a href="http://tryr.codeschool.com/">Try R</a>.  If you would like to save your progress, you should create a free account (click on upper left menu for <tt>Sign Up/Log In</tt>).  We will be continuing with further chapters of this tutorial in future labs. 
+</ul>
+
+</div>
+
+
+<div>
+<h3>Using R on the Lab Computers</h3>
+
 <p>The <a href="https://www.r-project.org">R programming language</a> is freely available (see below for downloading on your own computer).  On the lab machines, R has been downloaded and is in the <tt>Applications</tt> folder.  To find it, navigate to <tt>Applications</tt> or use <tt>Spotlight</tt> (the built-in search function-- the magnifying glass icon on the right side of the top menu bar) and type <tt>R</tt>.  
 </p>
 
@@ -34,41 +46,128 @@ Today's lab introduces the R programming language.
 <p>
 When launched, a window will pop up labeled <tt>R Console</tt>.  This functions much in the same way as the Python Shell.  Let's start by saying hello to the world.  At the console prompt (the &gt; line at the bottom of the window), type:
 <pre>
-print("Hello World!")
+	print("Hello World!")
 </pre>
 
 The message, <tt>Hello World!</tt> will be printed below the command, just as it did in the Python shell.</p>
 
 <p>Let's try the same command but stretched out over multiple lines:
 <pre>
-print("Hello
+	print("Hello
 </pre>
 When you hit enter, the prompt changes from a <tt>&gt;</tt> to a <tt>+</tt> to let you know that R thinks that more is needed for the command.  Let's finish it with:
 <pre>
-World")
+	World")
 </pre>
 
 <p>
 You can end R commands with a enter/return (as in Python), or with a semi-colon (<tt>;</tt>).
 
+<p>
+As in Python, we can have comments:
+<pre>
+	#This is a comment
+</pre>
 
 <p>
-Let's try some of our other Python programs.  R doesn't have turtles, but it does have loops.
+As in Python, anything after the <tt>#</tt> is information for the user and is ignored as a command.
+
+<p>
+We now have all the pieces to write our first R program!
+<ol>
+	<li> On the menu bar of the R Console, click the plain-piece-of-paper icon (second from the right):
+	<br>
+	<img src="rConsoleMenuNewFile.png">
+	<p>
+	This will be open up a new window where you can write an R program.
+	<li> In your new window, type:
+	<pre>
+	#My first R program
+	#My name
+	#April 19, 2017
+
+	print("Hello World")
+	</pre>
+	<li> Save your file, using the <tt>File</tt> menu.
+	<li> To run your program, go back to the R Console and click on the R icon
+	(second from the left):
+	<br>
+	<p>
+	<img src="rConsoleMenuSource.png">
+	<p>	
+	You will see a prompt for which file you would like to run.  Choose the one you just saved.  The output will appear in the console window.
+</ol>
 
 <ul>
-	<li>  In shell, use a loop to repeat a message.</li>
-	<li>  Variable assignment (note no = sign, but &lt;- instead)
-	<li>  Run a program from a file.</li>
-	<li>  Accumulator design pattern.</li>
-	<li>  Simple counting, mean, standard deviation.</li>
-	<li>  Always useful to know:  to quit R, you type:  <tt>q()</tt>
+<li>Note:  To open a file you already created, choose the icon with the R on a piece of paper (third from the right):
+	<br>
+	<p>
+	<p><img src="rConsoleMenuOpenFile.png">
+</ul>
+</div>
+
+<div>
+<h3>For Loops in R</h3>
+
+<p>For-loops are very similar in R to those in Python.  The basic format is:
+<pre>
+for (var in seq) expr
+</pre>
+<p>where 
+<ul>
+	<li> <tt>for</tt> is the reserved word indicating a definite loop, 
+	<li> <tt>var</tt> is the name of the loop variable, 
+	<li> <tt>seq</tt> yields a vector (much like a list-- more on vectors next lab), and
+	<li> <tt>expr</tt> is a command (or commands) that form the body of the loop.
 </ul>
 
-Next lab:
+<p>Let's use a simple way to create a vector of numbers:
+<pre>
+	1:10
+</pre>
+will give <tt>1 2 3 4 5 6 7 8 9 10</tt>.  The general form is like the range statement in Python:
+<pre>
+	start:stop
+</pre>
+<p>
+<b>But unlike Python, it includes the last number!</b>
+</p>
+
+<p>If the <tt>stop</tt> is smaller than the <tt>start</tt>, R will create a vector with the numbers in reverse order:
+<pre>
+	10:1
+</pre>
+will output <tt>10  9  8  7  6  5  4  3  2  1</tt>.
+
+<p>
+Let's use this simple vector of numbers as the sequence for the <tt>for</tt> loop: 
+<pre>
+for (i in 1:5) print(i)
+</pre>
+<p>This will print the first 5 numbers.  
+
+<h4>Challenges</h4>
+
+<p>Let's redo some of our early Python programs in R:
 <ul>
-	<li> vectors
-	<li> data frames 
-	<li> file I/O?
+	<li> Write a program that will print the first 20 numbers. 
+		<br><i>Hint: it is a 1-line program!</i>
+	<li> Write a program that will print your name to the console 20 times.
+	<li> Write a program that will print out:
+<pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Blast off!
+</pre>
+
 </ul>
 
 </div>
@@ -76,8 +175,7 @@ Next lab:
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is a quiz on functions and loops.  The password to access the quiz will be given during lab.
-
+During lab, there is a paper quiz on <a href="ps.html#set6">Programs 26-30</a>.  As with all paper quizzes, no extra materials (notes, book, computer, etc.) are allowed. 
 </div>
 
 <div>
@@ -91,12 +189,13 @@ During lab, there is a quiz on functions and loops.  The password to access the 
 <div>
 <h3>Using R at Home</h3>
 
-To duplicate the setting in the lab, you will need to download 
+To duplicate the setting in the lab, you will need to download and install: 
 <ul>
-	<li>R</li>
+	<li><a href="https://cran.r-project.org/bin/macosx/">R for Mac OSX</a> </li>
 	<li><a href="https://www.xquartz.org">XQuartz</a> for Mac OSX</li>
 </ul>
 
+R is also available for <a href="https://cran.r-project.org/bin/windows/base/">Windows</a> and <a href="https://www.r-project.org">other platforms</a>.
 
 </div>
 
