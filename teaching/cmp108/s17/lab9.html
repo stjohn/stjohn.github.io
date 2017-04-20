@@ -375,31 +375,37 @@ main()
 
 <p>Load the program into IDLE and run the program.  A dialog box pops up and says "invalid syntax":<br>
 <br>
-<img src="errors2Window1.png">
+<p>
+<img src="errors2Window1.jpg">
 <br>
 <p>
 We have seen this one before, it's a missing colon (":") at the end of the function definition.  Add it in and run again.
 <br>
+<p>
 <img src="errors2Window2.jpg">
 <br>
 <p>
 Again, we get an invalid syntax.  What's wrong here?  (Hint: same as the last one).  Fix the error, and let's run the program again:
 <br>
+<p>
 <img src="errors2Window3.jpg">
 <br>
 <p>
 This one is different.  IDLE has highlighted the word <tt>def</tt>, and yet that seems to spelled correctly.  A general rule to follow: if you do not see an error on the current line, look above (usually for missing quotes or closing parenthesis).  On the previous line, the function call to <tt>fact()</tt> is missing the closing parenthesis.  Add it, and run the program again:
 <br>
+<p>
 <img src="errors2Window4.jpg">
 <br>
 <p>
 This one is a bit harder-- all the keywords are spelled correctly and there's no missing colons, parenthesis, or quotes.  What's wrong?  Python expected the word <tt>else</tt> (<tt>elif</tt> is only used when you need multiple tests in multi-way decision).  Replace <tt>elif</tt> with <tt>else</tt> and try again:
 <br>
+<p>
 <img src="errors2Window5.jpg">
 <br>
 <p>
 The message says:  <tt>unexpected indent</tt>.  The line does seem to be indented for no reason (i.e. it's not part of a block of code in a loop or decision construct).  Remove the extra indent and continue:
 <br>
+<p>
 <img src="errors2Window6.jpg">
 <br>
 <p>
@@ -407,6 +413,7 @@ This is a common error.  In plain English, it means that the end of the line ("E
 
 <p>It now compiles!  But we need to test it to make sure no run-time errors remain:
 <br>
+<p>
 <img src="errors2Window7.jpg">
 <br>
 <p>
@@ -417,12 +424,14 @@ print(str(n)+"!= ", fact(n), "or", loopFig(n))
 <p>
 Running it again, a new run-time errors appears:
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window8.jpg">
+<p>
+<img src="errors2Window8.jpg">
 <br>
 <p>
 The message says that IDLE cannot find <tt>loopFig()</tt>.  Scanning through the file, it looks we misspelled it!  The function is called <tt>loopFib()</tt>.  Fix the misspelling in the <tt>main()</tt> and try again...
 <br>
-<img src="../../cmp/cmp230/f14/errors2Window9.jpg">
+<p>
+<img src="errors2Window9.jpg">
 <br>
 <p>
 Success!  The program accepted input, processed it, and outputted it to the screen.  Try with a couple of different inputs to test how it works.
