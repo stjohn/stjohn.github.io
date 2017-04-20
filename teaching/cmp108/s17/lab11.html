@@ -88,6 +88,49 @@ will yield the same plot.
 </div>
 
 <div>
+<h3>Some More Useful Vector Commands</h3>
+
+<p> In addition to the vector commands in the tutorial, there are several other ones that we will use often to analyze the data.
+
+<p>
+The first set takes as input a vector and returns a number:
+<ul>
+	<li> <tt>sum(myVec)</tt> returns a number: the sum of the values in <tt>myVec</tt>
+	<li> <tt>max(myVec)</tt> returns a number: the max of the values in <tt>myVec</tt>
+	<li> <tt>min(myVec)</tt> returns a number: the max of the values in <tt>myVec</tt>
+	<li> <tt>mean(myVec)</tt> returns a number: the average of the values in <tt>myVec</tt>	
+</ul>	
+<p>
+The next set takes a vector as input and also returns a vector:
+<ul>	
+	<li> <tt>cumax(myVec)</tt> returns a vector: the values are a running maximum of those seen so far in <tt>myVec</tt>. 
+	<li> <tt>cumin(myVec)</tt> returns a vector: the values are a running maximum of those seen so far in <tt>myVec</tt>. 
+	<li> <tt>diff(myVec)</tt> returns a vector: the values are the difference between entries in <tt>myVec</tt>. 	
+</ul>
+
+<p>
+Here's an example, of the high temperatures in New York City in March 2017:
+
+<pre>
+temps = c(66,63,38,29,35,44,50,59,60,47,28,30,35,32,27,39,47,38,47,51,59,49,43,55,56,42,50,46,58,51,43)
+</pre>
+
+Try the following:
+<ol>
+	<li> First, use <tt>plot()</tt> to visualize the data as we did above.
+	<li> Using the commands above, what is the maximum high temperature for the month?  
+	<li> What is the minimum high temperature for the month?
+	<li> What is the average (mean) high temperature for the month?
+	<li> Create a vector of the daily differences between temperatures (i.e. how much the temperature changed day-to-day).  Plot the vector.
+</ol>
+
+
+<p> 
+
+
+</div>
+
+<div>
 <h3>In-class Quiz</h3>
 
 During lab, there is a quiz on R basics.  The password to access the quiz will be given during lab.
