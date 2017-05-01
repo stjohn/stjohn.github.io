@@ -23,20 +23,87 @@ Today's lab focuses on reading data from files in the R programming language.
 </div>
 
 <div>
-plotting, sums, adding vectors, making vectors of numbers.
+<h3>Try R Vector Tutorial</h3>
 
+<p>In the last labs, we worked through the first two chapters of the <a href="http://tryr.codeschool.com/">Try R</a>.  
+
+<p>Today, we will work through the chapters on summary statistics and 2D data.  Work through the following:
 <ul>
-	<li> vectors
-	<li> data frames 
-	<li> file I/O?
-	<li>  Accumulator design pattern.</li>
-	<li>  Simple counting, mean, standard deviation.</li>
+	<li> <b>Chapter 3: Matrices</b> of <a href="http://tryr.codeschool.com/">Try R</a>:  this chapter reviews what we covered in lecture on matrices.
+	<li>  <b>Chapter 4: Summary Statistics</b> of <a href="http://tryr.codeschool.com/">Try R</a>: three useful ways to summarize data (mean, median, and standard deviation).
+	<li> <b>Chapter 5: Factors</b> of <a href="http://tryr.codeschool.com/">Try R</a>:  a short, but useful, chapter on factors or "types" of data.	
+	<li> <b>Chapter 6: Data Frames</b> of <a href="http://tryr.codeschool.com/">Try R</a>:  very similar to the dataFrames from pandas in Python.  This chapter also covers reading in data from a file.
+</ul>  
 
-</ul>
+</div>
 
-Next lab:
+
+
+<div>
+<h3>Reading in Data</h3>
+
+<p>Let's use the commands you just learned to load in data (if you haven't done so already, work through Chapters 2-6 from the <a href="http://tryr.codeschool.com/">Try R</a>).  
+
+<p>We'll use the <a href="nycHistPop.csv">NYC historical population data</a> that we explored with pandas.  If you do not have a copy, download and save to the desktop.
+
+<p>Open R and use the <tt>list.files()</tt> command to make sure the file is there:
+<pre>
+	list.files(path = "~/Desktop")
+</pre>
+R will print out a list of the files currently on the desktop.  If <tt>nycHistPop.csv</tt> does not show up on that list, download it again from 
+<a href="nycHistPop.csv">NYC historical population data</a>.
+
+<p>
+Use Excel, or your favorite spreadsheet program, to open up the file.  How many lines of comments and introductory material are there?  As with pandas, we need to skip those row when we read in the program.
+
+<p>
+To find the option for skipping lines, bring up the help page for <tt>read.csv</tt>:
+
+<pre>
+	help(read.csv)
+</pre>
+
+Read down the documentation until you find the command for skipping extra lines at the beginning of the file.  Try it before looking at the answer below.
+
+<p>To read in the CSV file:
+<pre>
+	pop <- read.csv("~/Desktop/nycHistPop.csv", skip=5)
+</pre>
+
+<p>
+Let's use the notation for R data frames to make a bar plot of the Bronx population over time:
+<pre>
+	barplot(names=pop$Year, pop$Bronx)
+</pre>
+
+Next, let's add in the average population into the graph.  First, we need to 
+compute the mean:
+<pre>
+	mean(pop$Bronx)
+</pre>
+When we do this in R, we end up with the value <tt>na</tt> ("not assigned").  Let's check why:
+<pre>
+	print(pop)
+</pre>
+The early years in the table have no values for the Bronx population.  Remember from lecture that there's an option to ignore unassigned values?  If not, try 
+help:
+<pre>
+	help(mean)
+</pre>
+What is the option to ignore the values?  (The answer is below.)
+<pre>
+	mean(pop$Bronx, na.rm = TRUE)
+</pre>
+Great!  Now we have the average population of the Bronx, over time.  Let's assign it to a variable and add a line to the graph:
+<pre>
+	m <- mean(pop$Bronx, na.rm = TRUE)
+	abline(h = m)
+</pre>
+
+<h4>Challenges</h4>
 <ul>
-
+	<li> Add in a legend to your plot (hint:  see the tutorial on reading in data).
+	<li> Make a plot of the population of Manhattan.  Include a line marking the mean on your plot.
 </ul>
 
 </div>
@@ -45,7 +112,7 @@ Next lab:
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is a quiz on functions and loops.  The password to access the quiz will be given during lab.
+During lab, there is a quiz on vectors in R.  The password to access the quiz will be given during lab.
 
 </div>
 
@@ -56,19 +123,6 @@ During lab, there is a quiz on functions and loops.  The password to access the 
 <p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
 
 </div>
-
-<div>
-<h3>Using R at Home</h3>
-
-To duplicate the setting in the lab, you will need to download 
-<ul>
-	<li>R</li>
-	<li><a href="https://www.xquartz.org">XQuartz</a> for Mac OSX</li>
-</ul>
-
-
-</div>
-
 
 </body>
 </html>
