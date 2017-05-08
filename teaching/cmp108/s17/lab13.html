@@ -19,16 +19,151 @@ Spring 2017<br><br>
 <div>
 
 <p>
-Today's lab focuses on probability distributions in the R programming language.  
+Today's lab focuses on standard statistical tools for comparing data series and useful packages for plotting in the R programming language.  
+</div>
+
+<div>
+<h3>Using Packages</h3>
+
+<p>
+As with Python, R has both built-in functionality as well as a large community writing additional, useful packages.  R packages can be found at the <a href="https://cran.r-project.org">Comprehensive R Archive Network (CRAN)</a> repository.  
+
+
+<p>In lecture, we used both the built-in (base) graphics package and a fancier graphics package to make prettier images, <a href="http://ggplot2.org">ggplot2</a>.  Here's directions on how to load it onto your computer:
+<ul>
+	<li> At the R console (this is different from adding packages to Python, where we were at the terminal window-- for R, you are running R when downloading new libraries).
+	<li> The command to install packages is:  <tt>install.packages()</tt>.
+	For example, to install <a href="http://ggplot2.org">ggplot2</a>, at the R console, you type:
+	<pre>
+	install.packages("ggplot2")
+	</pre>
+	<li> You will be asked to choose a mirror site from which to download the package.  The closer the mirror is to your location, the faster the download
+	(for example, choosing London, UK will take longer than Indiana, USA, since the files would have to transferred across the ocean instead of using (relatively) local routing through the US).
+	<li> To use a package, type at the prompt (or include in your file):
+<pre>
+	library("ggplot2")
+</pre>
+</ul>
+
+<p>Today's lab uses <tt>ggplot</tt> as well as <a href="http://ggobi.github.io/ggally/">GGally</a> to make visualizations of correlations in a dataframe.  Repeat the steps above to download and install <tt>GGally</tt>.
+
+</div>
+
+<div>
+<h3>Built-in Datasets</h3>
+
+R has a package of built in data that can be used for examples and analysis at
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">R's Dataset Package</a>.
+
+<p>
+Some packages that we have seen (or will see) in lecture, lab, and programming include:
+<ul>
+	<li> <tt>cars</tt>:  Speed and stopping distance of cars, recorded in 1920's
+	<!--
+	require(stats); require(graphics)
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+     las = 1)
+lines(lowess(cars$speed, cars$dist, f = 2/3, iter = 3), col = "red")
+title(main = "cars data")
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+     las = 1, log = "xy")
+title(main = "cars data (logarithmic scales)")
+lines(lowess(cars$speed, cars$dist, f = 2/3, iter = 3), col = "red")
+summary(fm1 <- lm(log(dist) ~ log(speed), data = cars))
+opar <- par(mfrow = c(2, 2), oma = c(0, 0, 1.1, 0),
+            mar = c(4.1, 4.1, 2.1, 1.1))
+plot(fm1)
+par(opar)
+
+## An example of polynomial regression
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+    las = 1, xlim = c(0, 25))
+d <- seq(0, 25, length.out = 200)
+for(degree in 1:4) {
+  fm <- lm(dist ~ poly(speed, degree), data = cars)
+  assign(paste("cars", degree, sep = "."), fm)
+  lines(d, predict(fm, data.frame(speed = d)), col = degree)
+}
+anova(cars.1, cars.2, cars.3, cars.4)
+-->
+	<li><tt>mtcars</tt>:  1974 Motor Trend magazine's car analysis.
+	<li><tt>presidents</tt>:  US presidential approval ratings from 1945 to 1974.
+	<!--
+	require(stats); require(graphics)
+plot(presidents, las = 1, ylab = "Approval rating (%)",
+     main = "presidents data")
+    -->
+	<li><tt>Titantic</tt>:  A manifest of the Titanic and whose survived.
+	<!--https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Titanic.html
+	
+	<pre>
+	require(graphics)
+mosaicplot(Titanic, main = "Survival on the Titanic")
+## Higher survival rates in children?
+apply(Titanic, c(3, 4), sum)
+## Higher survival rates in females?
+apply(Titanic, c(2, 4), sum)
+## Use loglm() in package 'MASS' for further analysis ...
+	</pre>
+	-->
+
+	<li><tt>quakes</tt>:  Locations of a 1000 earthquakes off the island of Fiji.  <!-- Can we scatter plot lat and lon?-->
+	
+	<li><tt>volcano</tt>:  Digitized topographic map of Mt Eden (Maunga Whau) near Auckland, New Zealand.
+	
+	
+	<!--
+	<li> <tt>women</tt>:  
+	<pre>
+	require(graphics)
+plot(women, xlab = "Height (in)", ylab = "Weight (lb)",
+     main = "women data: American women aged 30-39")
+    </pre>-->
+    
+</ul>
+
+</div>
+
+
+<div>
+<h3>ggplot2</h3>
+
+<p>
+In lecture, we briefly touched on the <a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Harvard's R graphics tutorial</a>.  Work through the tutorial, and then try the related <a href="ps.html#set11">challenges/programming problems</a>.
+
+<!--
+<h4>Challenges</h4>
+
+<ul>
+	<li>
+</ul>
+-->
+</div>
+
+<div>
+<h3>Comparing Data Series</h3>
+
+<p>
+When analyzing data, a common question is do two things have intertwined behavior?  That is, if one is larger than average, would you expect the larger than average?  There are rigorous tools to measure this inter-related behavior.  We will focus on an incredibly useful one that is easily used in R, called correlation.  Work through the 
+<a href="https://www.datacamp.com/community/blog/r-correlation-tutorial">DataCamp's correlation tutorial</a>.  Then try the related <a href="ps.html#set11">challenges/programming problems</a>.
+
+<!--
+<h4>Challenges</h4>
+
+<ul>
+	<li>
+</ul>
+-->
 </div>
 
 
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is a quiz on functions and loops.  The password to access the quiz will be given during lab.
-
+During lab, there is a paper quiz on CW #24: <a href="s17/ps.html#set9">Programs 41-45</a>
 </div>
+
+
 
 <div>
 
