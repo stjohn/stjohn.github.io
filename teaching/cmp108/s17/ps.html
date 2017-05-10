@@ -736,6 +736,8 @@ Blast off!
 			<i>(Hint:  see the <tt>title()</tt> command)</i>, and
 			<li> display the average stopping value as an abline.
 		</ul>
+		
+		<p><i>Note:  while computing averages and adding ablines were covered in lecture and tutorials, the adding labels and titles were not.  The purpose of this problem is for you to figure out how to add these using R's help system (i.e. <tt>help(plot)</tt> will give all the options for creating a plot-- read through the options and choose the appropriate ones).</i>
 
 	<li > <b>Due Date: 11 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
 
@@ -753,7 +755,7 @@ Blast off!
 			of the earthquake observations in the file.
 		</ol>
 
-	<li > <b>Due Date: 12 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
+	<li > <b>Due Date: 12 May</b>  <b style="float:right">Harvard R Graphics Tutorial</b><br>		
 
 		The goal of the graphics tutorial in <a href="lab13.html">Lab 13</a>
 		was to produce the <a href="http://www.economist.com/node/21541178">following graph</a> from The Economist:
@@ -766,7 +768,7 @@ Blast off!
 <a id="set12"></a>
 <hr>
 
-	<li > <b>Due Date: 15 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
+	<li > <b>Due Date: 15 May</b>  <b style="float:right">DataCamp Correlation Tutorial</b><br>		
 	
 		
 		In the correlation tutorial in <a href="lab13.html">Lab 13</a>, we used <tt>ggcorr</tt> to plot a color coded matrix labeled with the correlation coefficients of each variable to the other as well as scatter plots with linear regression lines.
@@ -777,26 +779,46 @@ Blast off!
 			<li> a smoothed <tt>qplot</tt> of <tt>votes</tt> versus <tt>profitPerYear</tt>.
 		</ul>
 
+	<li > <b>Due Date: 16 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
+	
+		Using the shelter census data from <a href="lab6.html">Lab 6</a> as well as the graphics tutorial in <a href="lab13.html">Lab 13</a> and 
+		<a href="http://ggplot2.tidyverse.org/reference/labs.html">tidyverse help page on ggplot2</a>, create the following plot.
+		
+		<p>
+		<img src="shelter_ggplot.png" width=600>
+		
+		<p>
+		The plot shows the total number of individuals in the shelter over time.  The curve is shaded by the number of children.  Labels and titles should match the image. 
+		
+		<p>
+		<i>Note: The city's choice of date formats is not one of the defaults for <tt>read_csv</tt>.  If you read in your file to the data frame, <tt>dhs</tt>, you can fix the dates by specifying which subfield corresponds to month, day, and year by:
+		<pre>
+		dhs$Date.of.Census <- as.Date(dhs$Date.of.Census, "%m/%d/%Y")
+		</pre>
+		(where %m is month, %d is day, and %Y is the year as 4 digits).
+		</i>
 
+	<li > <b>Due Date: 17 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>			
+	
+		In <a href="lab13.html">Lab 13</a>, we worked through two different tutorials.  Use the movie data set from the first tutorial and the techniques from the second (scroll down to house values by state section) to create the analysis below of movie profits by genre and year:
+		
+		<p>
+		<img src="moviesByGenre.png" width=800>
 	
 
 <!--
 
-	<li > <b>Due Date: 16 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
+
 	
-		Modify the code in the correlation tutorial in <a href="lab13.html">Lab 13</a> to make a plot of the 
-	
-	<li > <b>Due Date: 17 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>			
-	
-		In <a href="lab13.html">Lab 13</a>, correlation
+
 
 	<li > <b>Due Date: 18 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
 	
-		In <a href="lab14.html">Lab 14</a>, 
+		In <a href="lab14.html">Lab 14</a>, hypothesis testing
 	
 	<li > <b>Due Date: 19 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
 	
-		In <a href="lab14.html">Lab 14</a>, 	
+		In <a href="lab14.html">Lab 14</a>, hypothesis testing	
 	
 
 -->			
@@ -821,7 +843,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 8 May 2017.)</i><br>
+<i style="float:right">(This file was last modified on 9 May 2017.)</i><br>
 </div>
 </body>
 </html>
