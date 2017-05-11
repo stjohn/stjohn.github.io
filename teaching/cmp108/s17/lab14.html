@@ -26,7 +26,40 @@ Today's lab focuses on using statistical models and hypothesis testing in the R 
 <h3>Hypothesis Testing</h3>
 
 <p>
-If it's been a long time since you have seen hypothesis testing, Khan Academy has a very friendly introduction to <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample">significance tests of one sample</a>.   If you're in the lab, to be kind to your neighbors, watch with headphones or turn off the sound and read the subtitles.  Below, we're going to compute the Z-statistics and T-statistics, which are in the section on "Tests about a population mean."
+Basic idea:
+<a href="https://www.r-bloggers.com/hypothesis-testing-on-normally-distributed-data-in-r/">
+
+<p>
+If it's been a long time since you have seen hypothesis testing, Khan Academy has a very friendly introduction to <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample">significance tests of one sample</a>.   If you're in the lab, be kind to your neighbors, and watch with headphones (or turn off the sound and read the subtitles).  Below, we're going to compute the Z-statistics and T-statistics, which are in the section on "Tests about a population mean."
+
+<p>
+How do we do this in R?
+
+<a href="http://www.cyclismo.org/tutorial/R/probability.html">distributions in R</a>
+
+
+<p>
+t-tests in R
+
+<a href="http://statistics.berkeley.edu/computing/r-t-tests">UCB's notes on t-tests in R</a>
+
+need to explain rnorm in R
+
+chi-squared tests in R:
+
+chisq.test(mtcars$carb, mtcars$cyl)
+
+
+<p>
+Ideas for data sets:
+<ul>
+	<li> arrival times of subways or buses ( +- from scheduled?)
+	<li> time-to-degree for students-- compute mean and then test if some subset is normally distributed, differs significantly from mean?  can you get student growth data?
+	maybe look at asap programs
+	<li> test scores for nyc schools-- can you get raw scores or average scores for schools?
+	<li> sample something medical?  drug study
+	<li> time of collisions-- number of minutes after the hour-- would expect uniform, not normal, so, maybe use later?
+</ul>
 </div>
 
 
