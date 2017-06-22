@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Lists of Numbers</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session5_1a.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="session5.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+		<h1>Numbers from Lists</h1>
+		<hr>
+
+		<p>
+		We wrote programs to change the turtle's colors using a list.  Let's use the same idea, but instead of colors, we will have a list of distances:  </p>
+		
+		<p>
+		<iframe src="https://trinket.io/embed/python/8ade9a91d5" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></p>
+		
+		<p> Let's step through the program:</p>
+		<ol>
+			<li> We create a turtle for drawing.
+			<li> For each item in the list, 
+				<ol>
+					<li> Move forward the distance <tt>num</tt> from our list				
+					<li> Turn our turtle to the right 93 degrees
+				</ol>
+		</ol>
+		
+		<p>
+		The variable, <tt>num</tt>, takes each value in the list of the numbers.  The first time through the loop <tt>num</tt> is 123.  The next time it is 55.  The loop continues until each item in the list is used.  We use <tt>num</tt> to control how many step the turtle, <tt>tess</tt>, moves forward:</p>
+		<pre>
+	tess.forward(num)
+		</pre>
+		
+
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Drawing Shapes with Loops</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session4_1a.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="session4.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+		<h1>Drawing Shapes with Loops</h1>
+		<hr>
+
+
+
+		<p>A <b>loop</b> allows you to repeat commands multiple times.  For example, 
+		this program will draw a square:
+		
+		<p><iframe src="https://trinket.io/embed/python/bcce14e59c?start=result" width="90%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		
+		<p>Let's examine what each line does in the program:
+		<p>
+		<table bgcolor="lightblue">
+			<tr><th>1</th>
+				<td><tt>import turtle</tt></td>
+				<td>Directs Python to load the turtle package, so, we can use the commands in it.</td></tr>
+			<tr><th>2</th>
+				<td><tt></tt></td>
+				<td>Blank lines are ignored by Python.</td></tr>
+			<tr><th>3</th>
+				<td><tt>ty = turtle.Turtle()</tt></td>
+				<td>Creates a variable called <tt>ty</tt>.  Variables store information while our program is running.  <tt>ty</tt> keeps track of the location and direction facing.</td></tr>
+			<tr><th>4</th>
+				<td><tt>ty.color("orange")</tt></td>
+				<td>Change <tt>ty</tt>'s color to be orange.</td></tr>
+			<tr><th>5</th>
+				<td><tt></tt></td>
+				<td>Blank lines are ignored by Python.</td></tr>
+			<tr><th>6</th>
+				<td><tt>for i in range(4):</tt></td>
+				<td>The <tt>for</tt> loop repeats the indented statements below it.  </td></tr>
+			<tr><th>7</th>
+				<td><tt>&nbsp; ty.forward(100)</tt></td>
+				<td>Move <tt>ty</tt> forward 100 steps.</td></tr>
+			<tr><th>8</th>
+				<td><tt>&nbsp; ty.left(90)</tt></td>
+				<td>Turn ty 90 degrees to the left.</td></tr>
+		</table>
+		
+		<p>By changing the <tt>range()</tt>, we change the number of times the loop repeats.
+
+	</div>
+
+</body>
+</html>
+
+

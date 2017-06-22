@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@font-face {
+  font-family: 'thesans';
+  src: url("thesans-5-regular-webfont.woff2") format("woff2"), url("thesans-5-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0px auto;
+  color: #18519f; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'thesans'; }
+
+.banner {
+  height: 100px;
+  width: 100vw;
+  background-color: #18519f; }
+
+.banner .toc {
+  position: absolute;
+  max-height: 40px;
+  right: 50px;
+  margin-top: 30px; }
+
+.banner .amnh-logo {
+  max-height: 50px;
+  margin-left: 50px;
+  margin-top: 25px; }
+
+.content {
+  max-width: 75%;
+  margin: 0px auto; }
+
+.forward, .backward {
+  position: fixed;
+  top: 50%; }
+
+.forward {
+  right: 5%; }
+
+.backward {
+  left: 5%; }
+
+.challenge {
+	padding:
+	0 
+	0 
+	0 
+	100px; 
+	background: url('../icons/challenge.png') no-repeat left
+	20%; 
+	color: #777777;
+	/*# text-transform: uppercase;*/
+}
+
+.challenge
+p
+{
+font-weight: bold;
+}
+
+/*# sourceMappingURL=main.css.map */
