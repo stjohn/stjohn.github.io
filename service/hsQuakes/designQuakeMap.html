@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Wednesday Morning, II:  Drawing Studio</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session6.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="freePlayWLoops.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+	
+		<h2>Thursday Morning: Program Design</h2>
+		<hr>
+
+		<p>
+		Implement your design below:
+		</p>	
+	
+		<p> 
+		<iframe src="https://trinket.io/embed/python/2d4990109d" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		</p>
+		
+		<p>Here's some useful commands:</p>
+		<table>
+			<tr>
+			<td>
+			<tt>f = open("allWeek2017Jan17.csv",'r') &nbsp; &nbsp;</tt>
+			</td><td>
+			opens file <tt>allWeek2017Jan17.csv</tt> for reading.
+			</td>
+			</tr>
+
+			<tr>
+			<td>
+			<tt>f.readline()</tt>
+			</td><td>
+			throws away a line (used if there's comments or a title instead of data)
+			</td>
+			</tr>
+
+			<tr>
+			<td>
+			<tt>lines = f.readlines()</tt>
+			</td><td>
+			read in the remaining lines of data in a file.
+			</td>
+			</tr>
+
+			<tr>
+			<td>
+			<tt>for lineOfData in lines:</tt><!--<br>
+			&nbsp; &nbsp; <tt>(add code here)</tt>-->
+			</td><td>
+			repeats for each <tt>lineOfData</tt> from <tt>lines</tt>.
+			</td>
+			</tr>
+
+			
+			<tr>
+			<td>
+			&nbsp; &nbsp; <tt>columns = lineOfData.split(',')</tt>
+			</td><td>
+			breaks up the <tt>lineOfData</tt> into pieces.
+			</td>
+			</tr>
+			
+			<tr>
+			<td>
+			&nbsp; &nbsp; <tt>lat = float(columns[1])</tt>
+			</td><td>
+			stores the number after the first comma in <tt>lat</tt>
+			</td>
+			</tr>
+			
+
+			
+		</table>
+
+		<p>
+	</div>
+
+</body>
+</html>	 
+
+
+
+
+
