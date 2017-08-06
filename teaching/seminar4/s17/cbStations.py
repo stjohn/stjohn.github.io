@@ -12,6 +12,7 @@ import folium
 stations = pd.read_json('https://feeds.citibikenyc.com/stations/stations.json')
 mapBikes = folium.Map(location=[40.75, -73.99],tiles="Cartodb Positron",zoom_start=14)
 
+
 for i,row in stations.iterrows():
     beanList = row['stationBeanList']
     lat = beanList['latitude']
