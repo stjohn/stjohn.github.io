@@ -31,7 +31,9 @@ environment.
 <div>
 <h3>Computers in CSci 127 Lab</h3>
 
-<p>
+<p>CSci 127 has a laboratory, 1001E North, dedicated for its use.  The room has a flexible set-up to encourage group work and laptop computers that can be checked out for use in the room only.  When you enter the room, hand your Hunter ID to undergraduate teaching assistant in exchange for a laptop computer.  At the end of lab, make sure to return your computer to its docking station so that it can be charged.
+
+<p>The laptops run Ubuntu Linux operating system. When you open the laptop, choose the "Guest" account.  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).  
 </div>
 
 
@@ -39,22 +41,26 @@ environment.
 <div>
 <h3>Using Python</h3>
 
-<p>We will be using the <tt>IDLE</tt> programming environment for Python, since it is very simple and comes with all distributions of Python (if you would prefer to use another programming environment, both <tt>Spyder</tt> and <tt>Jupyter/iPython</tt>, are on the lab machines).
+<p>We will be using the <tt>IDLE</tt> programming environment for Python, since it is very simple and comes with all distributions of Python (if you would prefer to use another programming environment, <tt>Spyder</tt> is loaded on the lab machines).
 
-<p>There are several ways to launch <tt>IDLE</tt>: 
+<p>To launch <tt>IDLE</tt>: 
 
-<p><b>UPDATE for lab machines!</b>
+
 <ul>
-	<li> On some machines, the <tt>IDLE</tt> icon has been saved to the tool bar.  Click the icon, and the program will launch.
-	<!--
-	<li> Click simultaneously on <tt>COMMAND</tt> and <tt>SPACE</tt> (the key with the apple or flower on it, along with the space bar).  This will launch <tt>Spotlight</tt>, the built-in searching feature.  Type <tt>idle3</tt>, and it will find and launch idle for you.-->
-	<li> Open a terminal window (a window that allows you to type commands), and type <tt>idle3</tt> (or <tt>idle</tt> on some systems) at the prompt.
+	<li> Click the icon on the left for the terminal.  It will launch a terminal window in which you can type commands.
+	<li> In the terminal window, type:
+	
+	<pre>idle3
+	</pre>
+	(followed by an enter/return).
+	
+	<li> A new window will launch for <tt>IDLE</tt>.
 </ul>
 
-To see that it works, type at the prompt:
+To see that it works, type at the <tt>IDLE</tt> prompt:
 
 <pre>
-	print("Hello, world!")
+    print("Hello, World!")
 </pre>
 
 <p>
@@ -67,16 +73,20 @@ we can save our program for later and submit it to Gradescope (this is the basis
 	<li> In that window, type:
 	<pre>
 #Name:  ...your name here...
-#Date: February 3, 2017
+#Date: August 25, 2017
 #This program prints: Hello, World!
 
 print("Hello, World!")
 	</pre>
-	<li> Save the program (using the "Save" under the "File" menu<!-- or "&#8984;S"-->). When you save it, name it something that you will be remember for the future and end it in <tt>.py</tt>.  For example, <tt>ps1.py</tt>.  At the end of lab, save your programs to a USB drive, DropBox, or mail them to yourself.
-	<li> Run your program (using the "Run Module" from the "Run" menu<!-- or F5 key-->).  
-	<li> If it prints "Hello, World!" to the screen, then log into Gradescope (see notes above).  On the left hand menu, choose "Assignments".  From the list, choose "1. Hello, World!".
-	In the file upload, drag over the <tt>.py</tt> file you just created and ran, and click "Submit".
-	
+	<li> Save the program (using the "Save" under the "File" menu). When you save it, name it something that you will be remember for the future and end it in <tt>.py</tt>.  For example, <tt>ps1.py</tt>.  At the end of lab, save your programs to a USB drive, DropBox, or mail them to yourself.
+	<li> Run your program (using the "Run Module" from the "Run" menu).  
+	<li> If it prints "Hello, World!" to the screen, then log into Gradescope (see notes below):
+	<ul>
+		<li> On the left hand menu, choose "Assignments".  
+		<li> From the list, choose "1. Hello, World!".
+		<lik> In the file upload, drag over the <tt>.py</tt> file you just created and ran, and 
+		<li> click "Submit".
+	</ul>
 </ol>
 </div>
 
@@ -100,9 +110,13 @@ work electronically.  An email invitation to the course was sent to your email a
 <div>
 <h3>More Python:  Turtles</h3>
 
-<p> Now that you have just submitted your first program, let's try some other Python commands:
+<p> Now that you have just submitted your first program, let's try some other Python commands.  Here's a quick demo (click the triangle to run the program):
+<p>
+<iframe src="https://trinket.io/embed/python/22709f8349" width="80%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>Now, let's write the same program in <tt>IDLE</tt>:
 <ol>
-	<li>  Open up a new file window in <tt>IDLE</tt> ("File > New File"<!-- or "&#8984;N"-->).
+	<li>  Open up a new file window in <tt>IDLE</tt> ("File > New File").
 	<li> Type (or copy) into your window:
 <pre>
 import turtle
@@ -114,12 +128,12 @@ for i in range(4):
 	<li> Save your program ("File > Save"). <br>
 	<i>Note:  Choose a name for your file that is <b>not</b> <tt>turtle.py</tt>. 
 		When executing the "import turtle" statement, the computer first looks in the folder where the file is saved for the turtle module and then in the libraries (and other places on the path).  So, it thinks the module is itself, causing all kinds of errors.  To avoid this, name your program something like "myTurtle.py" or "program2.py".</i>
-	<li> Run your program (using the "Run Module" from the "Run" menu<!--or F5 key-->).  
+	<li> Run your program (using the "Run Module" from the "Run" menu).  
 	<li> Change your program so that it draws a octagon (8-sided polygon).
 	<li> Test your program and modify until you have a octagon.  When you do, add comments at the top of your program:
 	<pre>
 #Name:  ...your name here...
-#Date: September 1, 2017
+#Date: August 25, 2017
 #This program draws a octagon.
 	</pre>
 	Run your program after editing to make sure you do not have any typos.
@@ -225,6 +239,10 @@ If you have a Mac or Windows computer, the easiest installation is <a href="http
   pip install folium
 	</pre>
 	<li> For Windows, it's very similar (<a href="https://packaging.python.org/tutorials/installing-packages/">more details</a>).
-</div>
+</ul>
 
+<p>
+There are many free on-line versions that you could use via a browser, such as <a href="http://pythonanywhere.com">pythonanywhere</a>. 
+
+</div>
 </html>
