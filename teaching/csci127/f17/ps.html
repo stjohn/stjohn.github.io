@@ -129,55 +129,6 @@ Mihi cura futuri
 
 	<li > <b>Due Date: 13 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 4</a></b><br>	
 
-		Write a program that prompts the user for a DNA string, and then prints three letters per line (often called codons).
-		
-		<p>A sample run of your program should look like:
-<pre>
-Enter a DNA string:  ATGCCCGGGATG
-ATG
-CCC
-GGG
-ATG
-</pre>	
-
-		<p> Note:  to make the programming simpler, you may assume that every string has length a multiple of 3 (i.e. no left over pieces at the end).
-
-		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>
-
-	<li > <b>Due Date: 14 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
-
-		The Turtle drawing library has a command that will control the width that's drawn to the screen.  For example, if you turtle was named <tt>tony</tt>, the following command would set the pen to draw at size 10:
-		<pre>tony.pensize(10)
-		</pre>
-		Write a program that implements the pseudocode below:
-	
-<pre>
-    For i = 10, 15, 20, 25, ..., 50:
-        Change the pen size to i
-        Walk forward i steps
-        Turn left 50 degrees
-</pre>
-		Your output should look similar to:
-		<br>
-		<img src="bloatedSpiral.png">
-
-	<li > <b>Due Date: 15 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
-	
-		Write a program that prompts the user to enter a word and then prints out the word with each letter <b>shifted left</b> by 1.  That is, 'a' becomes 'z', 'b' becomes 'a', ... 'y' becomes 'z', and 'z' becomes 'y'.  
-	
-		<p>Assume that all inputted words are in lower case letters:  'a',...,'z'.
-	
-		<p>A sample run of your program should look like:
-<pre>
-Enter a word:  enigma
-Your word in code is:  dmhflz
-</pre>
-
-
-		<p> <i>Hint:  See the example programs from Lecture 2.</i>
-
-	<li > <b>Due Date: 18 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
-	
 		Write a program that prompts the user to enter a phrase and then prints out the ASCII code of each character in the phrase. 
 	
 		<p>A sample run of your program should look like:
@@ -200,69 +151,163 @@ In ASCII:
 33
 </pre>
 
-		<p><i>Hint:  If <tt>c</tt> is a character, <tt>ord(c)</tt> returns its ASCII code.  For example, if <tt>c</tt> is 'A', then <tt>ord(c)</tt> returns 65. </i>
+		<p><i>Hint:  If <tt>c</tt> is a character, <tt>ord(c)</tt> returns its ASCII code.  For example, if <tt>c</tt> is 'I', then <tt>ord(c)</tt> returns 73.  See <a href="lab2.html">Lab 2</a>.</i>
+
+	<li > <b>Due Date: 14 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
+
+		The Turtle drawing library has a command that will control the width that's drawn to the screen.  For example, if you turtle was named <tt>tony</tt>, the following command would set the pen to draw at size 10:
+		<pre>tony.pensize(10)
+		</pre>
+		Write a program that implements the pseudocode below:
+	
+<pre>
+    For i = 10, 15, 20, 25, ..., 50:
+        Change the pen size to i
+        Walk forward i steps
+        Turn left 50 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="bloatedSpiral.png">
+
+	<li > <b>Due Date: 15 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
+	
+		Write a program that prompts the user for a DNA string, and then prints the length and GC-content (percent of the string that is C or G).
+		
+		<p>A sample run of your program should look like:
+<pre>
+Enter a DNA string:  ATGCCCGGGATG
+Length is 12
+GC-content is 0.75
+</pre>	
+
+
+		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>
+
+
+
+
+
+	<li > <b>Due Date: 18 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
+	
+		Write a program that prompts the user to enter a word and then prints out the word with each letter <b>shifted left</b> by 1.  That is, 'a' becomes 'z', 'b' becomes 'a', ... 'y' becomes 'z', and 'z' becomes 'y'.  
+	
+		<p>Assume that all inputted words are in lower case letters:  'a',...,'z'.
+	
+		<p>A sample run of your program should look like:
+<pre>
+Enter a word:  enigma
+Your word in code is:  dmhflz
+</pre>
+
+
+		<p> <i>Hint:  See the example programs from Lecture 2.</i>
 
 
 	
 
-	
 	
 	<li > <b>Due Date: 19 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
 
-		Write a program that asks the user to enter a phrase, and then print each word of the phrase on a separate line.
+		Write a program that asks the user to enter a phrase, and then print out every second character.
 		
 		<p>A sample run of your program should look like:
 <pre>
 Enter a phrase:  Mihi cura futuri
-Mihi
-cura
-futuri
+M
+h
+
+u
+a
+
+f
+t
+r
 </pre>		
 
 		<p> <i>Hint:  see <a href="lab2.html">Lab 2</a>.</i>
 
 
-<!--
 	
 <a id="set3"></a>						
 <hr>
 	
-	<li > <b>Due Date: 25 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
+	<li > <b>Due Date: 25 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 9</a></b><br>	
+
+
+		Write a program that implements the pseudocode below:
 	
-		Input a list of colors and loop through, drawing a figure with turtle graphics.
-	
-		
+<pre>
+    For i = 10, 20, 30,... ,250:
+        Walk forward i steps
+        Turn left 90 degrees
+</pre>
+		Your output should look similar to:
+		<br>
+		<img src="blockSpiral.png">	
+
+<!--
 	<li > <b>Due Date: 26 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
 	
-		Loop through shades of purple (using range() or numpy array slices)
+		Write a program that asks the user for a list of color names (separated by spaces).  For each color, your program should change the color of the turtle to that color, move forward 100 steps, and turn left 77 degrees.
+		
+		<p> A sample run of your program should look like:
+
+<pre>
+Enter a list of colors: purple lavendar violet blue
+</pre>
+<p>
+<img src="colorShape.png">
 	
+			
 	<li > <b>Due Date: 27 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
 	
 		Ask user for hex input and display the corresponding color (on a turtle) and numbers in decimal.
 	
 	<li > <b>Due Date: 28 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>
 	
-		Compute the average color of an image (a la first screen of http://koalastothemax.com-- include as iframe).
+		Modify the program from <a href="lab3.html">Lab 3</a> to go through the shades of blue.
 	
 	<li > <b>Due Date: 2 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
-	
-		Follow pseudocode to make a simple image compression (average every 4 pixels) and display image at 50% size.
+
+		Write a program that asks the user for a name of an image png file, the name of an output file.  Your program should create a new image that has only the blue channel of the original image.
+		
+		
+		<p> A sample run of your program should look like:
+
+<pre>
+Enter name of the input file:  hunter.png
+Enter name of the output file:  blueH.png
+</pre>
+
+<p>
+<img src="hunter.png">		
+<img src="blueH.png">
+
+
+
 
 <a id="set4"></a>						
 <hr>
 
 	<li > <b>Due Date: 3 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
+		Compute the average color of an image (a la first screen of http://koalastothemax.com-- include as iframe).
+	
+		<p> Give pseudocode
+		
 	
 	<li > <b>Due Date: 4 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
-	Simple command line script
+		Simple command line script  from <a href="lab4.html">Lab 4</a>.
 	
 	<li > <b>Due Date: 5 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
-	Another command line script
+		Another command line script
 
 	<li > <b>Due Date: 10 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+		Modify contour line program to add lines-- maybe different colors for every 100 meters?
 	
 	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>		
 
@@ -277,21 +322,9 @@ futuri
 	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
 	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
 <a id="set6"></a>
 <hr>	
-
-	Use as group work?
-
-		Write a program that implements the pseudocode below:
-	
-<pre>
-    For i = 10, 20, 30,... ,250:
-        Walk forward i steps
-        Turn left 90 degrees
-</pre>
-		Your output should look similar to:
-		<br>
-		<img src="blockSpiral.png">	
 
 
 	
@@ -890,7 +923,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 15 August 2017.)</i><br>
+<i style="float:right">(This file was last modified on 21 August 2017.)</i><br>
 </div>
 </body>
 </html>
