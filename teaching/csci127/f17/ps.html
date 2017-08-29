@@ -176,7 +176,7 @@ In ASCII:
 		
 		<p>A sample run of your program should look like:
 <pre>
-Enter a DNA string:  ATGCCCGGGATG
+Enter a DNA string:  ACGCCCGGGATG
 Length is 12
 GC-content is 0.75
 </pre>	
@@ -219,7 +219,6 @@ h
 
 u
 a
-
 f
 t
 r
@@ -246,27 +245,58 @@ r
 		<br>
 		<img src="blockSpiral.png">	
 
-<!--
-	<li > <b>Due Date: 26 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
-	
-		Write a program that asks the user for a list of color names (separated by spaces).  For each color, your program should change the color of the turtle to that color, move forward 100 steps, and turn left 77 degrees.
-		
-		<p> A sample run of your program should look like:
 
+	<li > <b>Due Date: 26 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 4</a></b><br>	
+
+		Write a program that asks the user for the name of a color and then displays a turtle that color.  
+		
+		<p>A sample run of your program should look like:
 <pre>
-Enter a list of colors: purple lavendar violet blue
-</pre>
-<p>
-<img src="colorShape.png">
+Enter a color name:  purple
+</pre>		
+
+		<p>and the output should look similar to:
+		<br>
+		<img src="purpleTurtle.png">
+		
+		<p> <i>Hint:  see <a href="lab3.html">Lab 3</a>.</i>
+		
+	<li > <b>Due Date: 27 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 4</a></b><br>			
+
+Modify the program from <a href="lab3.html">Lab 3</a> to show the shades of blue.
 	
+		<p>
+		Your output should look similar to:
+		<br>
+		<img src="shadesOfBlue.png">	
 			
-	<li > <b>Due Date: 27 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
+
 	
-		Ask user for hex input and display the corresponding color (on a turtle) and numbers in decimal.
+
+
+		
+<!--	
+
+	<li > <b>Due Date: 28 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2, 4 & 8.10</a></b><br>
+
+
+
+	Ask user for hex input and display the corresponding color (on a turtle) and numbers in decimal.
+		
+		<p>A sample run of your program should look like:
+<pre>
+Enter a hex string:  #A9A922
+</pre>		
+
+		<p>and the output should look similar to:
+		<br>
+		<img src="hexColor.png">
+		
+		<p> <i>Hint:  see <a href="lab3.html">Lab 3</a>.</i>
+
 	
-	<li > <b>Due Date: 28 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>
-	
-		Modify the program from <a href="lab3.html">Lab 3</a> to go through the shades of blue.
+		
+
 	
 	<li > <b>Due Date: 2 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
 
@@ -278,7 +308,9 @@ Enter a list of colors: purple lavendar violet blue
 <pre>
 Enter name of the input file:  hunter.png
 Enter name of the output file:  blueH.png
-</pre>
+</pre>	
+
+<p> Sample input and resulting output files:
 
 <p>
 <img src="hunter.png">		
@@ -291,80 +323,39 @@ Enter name of the output file:  blueH.png
 <hr>
 
 	<li > <b>Due Date: 3 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+
+
 	
-		Compute the average color of an image (a la first screen of http://koalastothemax.com-- include as iframe).
+The program <a href="turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
+		<ul>
+			<li> 'F':  moves the turtle forward
+			<li> 'L':  turns the turtle 90 degrees to the left
+			<li> 'R':  turns the turtle 90 degrees to the right
+			<li> '^':  lifts the pen
+			<li> 'v':  lowers the pen
+		</ul>
+		For example, if the user enters the string "FLFLFLFL^FFFvFLFLFLFL", the turtle would move forward and then turn left.  It repeats this 4 times, drawing a square.  Next, it lifts the pen and move forward 3, puts the pen back down and draw another square.
+		
+		<p>
+		Modify this program to allow the user also to specify with the following symbols:
+		<ul>
+			<li> 'B':  moves the turtle backwards
+			<li> 'r':  change the pen color to red			
+			<li> 'g':  change the pen color to green
+			<li> 'b':  change the pen color to blue
+		</ul>		
 	
-		<p> Give pseudocode
 		
 	
 	<li > <b>Due Date: 4 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
-	
-		Simple command line script  from <a href="lab4.html">Lab 4</a>.
+
+		Ask user for input.
+		If-statement:  turn turtle blue if user enters "left", turn turtle red if user enters "right".
+		
+		
 	
 	<li > <b>Due Date: 5 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
-		Another command line script
-
-	<li > <b>Due Date: 10 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
-	
-		Modify contour line program to add lines-- maybe different colors for every 100 meters?
-	
-	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>		
-
-<a id="set5"></a>
-<hr>	
-	<li > <b>Due Date: 12 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-	<li > <b>Due Date: 13 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-<a id="set6"></a>
-<hr>	
-
-
-	
-	<li > <b>Due Date: 14 February</b>  <b style="float:right">Reading: Chapter 4</b><br>	
-	
-		Use as a group work question-- give code in pythonTutor
-	
-		Write a program that will print out:
-<pre>
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-Blast off!
-</pre>
-		
-
-		
-	
-		Use for simulations section?
-	
-		Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.<br>
-		<i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>	
-
-
-
-
-	<li > <b>Due Date: 23 February</b>  <b style="float:right">Reading: Chapter 4</b><br>
-		Write a program that draws a colorful 5-pointed star to screen.  Your program should prompt the user for the color that the star will drawn.
-		<br><i>Hint:  See <a href="lab3.html">Lab 3</a></i>.
-		
-		
-	<li > <b>Due Date: 25 February</b>  <b style="float:right">Reading: Chapter 2</b><br>	
-
 		Write a program that implements the pseudocode below:
 <pre>
 1.  Ask the user for the number of days until finals.
@@ -372,115 +363,143 @@ Blast off!
 3.  Print out the leftover days (leftover = days % 7)
 </pre>	
 
-		
+	<li > <b>Due Date: 10 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-	<li > <b>Due Date: 2 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
-		Write a program that takes a file of colors (one name per line) and draws a figure with each line drawn another color of the file.  That is, the first line your turtle draws should be the first color in the file. 
-		<br>
-		<i>Hint: See <a href="lab4.html">Lab 4</a>.</i>	
+		Modify contour line program to add lines-- maybe different colors for every 100 meters?
 
-	<li > <b>Due Date: 3 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
-		Write a program that takes the file where each line has two items, separated by a comma, and prints out the first item on each line to the screen.  Assume that your file is called <a href="colorShape">colorShape</a>.
-		<p>
-		For example, if the contents of your file matched the one used in the lab, then your output should look like:
-<pre>
-blue
-red
-purple
-blue
-red
-</pre>
-		<br>
-		<i>Hint: See <a href="lab4.html">Lab 4</a>.</i>	
-
-	<li > <b>Due Date: 6 March</b>  <b style="float:right">Reading: Chapters 9, 11</b><br>
-		Modify the first program in <a href="lab4.html">Lab 4</a>.  For your program, assume that each line of the file has a whole number, and use that to adjust the pen size of each line drawn. 
-		<p>
-		For example, if the contents of your file is:
-<pre>
-10
-1
-15
-8 
-7
-2
-50
-</pre>
-		then your drawing would be:
 	
-		<p>
-		<img src = "sizeFile.png">
+	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-		<br>
-		<i>Hint: You can convert a string to a number using </i><tt>int(c)</tt> <i>and use that as the input parameter to </i><tt>pensize()</tt><i> (i.e. </i><tt>tortuga.pensize(int(c))</tt><i>).</i>	
+		Count snowpack in California drought?  Amount flooding in Hurricane Harvey?
+	
+		Pseudocode for turning an image to all black or all white.  For each pixel, decide if its closer to black or two white, and make new pixel accordingly.
 
 <a id="set5"></a>
+<hr>	
+	<li > <b>Due Date: 12 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		Easy circuit question from lab.
+	
+	<li > <b>Due Date: 13 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		Harder circuit question from lab.
+		
+	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		Command line script
+	
+	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	
+		Compute the average color of an image (a la first screen of http://koalastothemax.com-- include as iframe).
+	
+		<p> Give pseudocode or
+
+		bit masking?  or some bit manipulation from lab.
+	
+	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		pseudocode question about logical expressions or truth tables
+
+<a id="set6"></a>
+<hr>	
+
+	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+<a id="set7"></a>
+<hr>	
+
+	<li > <b>Due Date: 30 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 31 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 1 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+	<li > <b>Due Date: 2 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 3 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+<a id="set8"></a>
+<hr>	
+
+	<li > <b>Due Date: 6 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+	<li > <b>Due Date: 9 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 10 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+<a id="set9"></a>
+<hr>	
+
+	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 14 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 15 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+	<li > <b>Due Date: 16 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	
+	<li > <b>Due Date: 17 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+<a id="set10"></a>
+<hr>			
+
+	<li > <b>Due Date: 20 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 21 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+
+	
+	<li > <b>Due Date: 27 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	<li > <b>Due Date: 28 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+<a id="set11"></a>
 <hr>
 
+	<li > <b>Due Date: 29 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-	<li > <b>Due Date: 8 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	<li > <b>Due Date: 30 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+	<li > <b>Due Date: 1 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+	<li > <b>Due Date: 4 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+	<li > <b>Due Date: 5 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+<a id="set12"></a>
+<hr>
 	
-		Write a program that prompts the user to enter a list of names.  Each person's name is separated from the next by a semi-colon (`;') and the names are entered <tt>lastName, firstName</tt>.  Your program should then print out the names, one per line, with the first names first followed by the last names.
-		
-		Here is a sample interaction:
-		<pre>Please enter your list of names:  Amadou, Zara; Burchman, Elaine; Fera, Joe; Owen, Megan; Schneiderman, Rob; St. John, Katherine
-		
-You entered:
-
-Zara Amadou
-Elaine Burchman
-Joe Fera
-Megan Owen
-Rob Schneiderman
-Katherine St. John
-
-Thank you for using my name organizer! 
-		</pre>	
-
-		<i>Hint:  Do this problem in parts:  first, split the list by person (what should the delimiter be?).  Then, split each of person's name into first and last name (what should the delimiter be here?).
-		</i>
-
-
+	<li > <b>Due Date: 6 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
+	<li > <b>Due Date: 7 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-
-	<li > <b>Due Date: 11 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
-
-		Write a program that prompts the user to enter 5 lines of text and then outputs the total number of characters that they entered.
-		
-		<p>
-		Here is a sample interaction:
-		<pre>Enter line: Sing me no song, read me no rhyme
-line character count is 33
-Enter line: Don't waste my time, show me!
-line character count is 29
-Enter line: Don't talk of June, don't talk of fall
-line character count is 38
-Enter line: Don't talk at all!
-line character count is 18
-Enter line: Show me!
-line character count is 8
-The number of characters entered is: 126
-		</pre>	
-
+	<li > <b>Due Date: 8 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
-		
-		
-<a id="set6"></a>
-<hr>			
-	
-	<li > <b>Due Date: 13 March</b>  <b style="float:right">Reading: Chapter 9</b><br>
+	<li > <b>Due Date: 11 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-	Write a program that asks the user to enter whole numbers, separated by spaces and 
-	prints out the total of the numbers entered.
+	<li > <b>Due Date: 12 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
-		Here is a sample interaction:
-		<pre>Please enter your list of numbers:  3 1 4 5 1 9
-		
-Your total is 23
-</pre>
-
-	<p><i>Hint:  See <a href="lab5.html">Lab 5</a>.</i>
+<hr>
+<hr>
+	
+		Use for simulations section?
+	
+		Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.
 
 	<li > <b>Due Date: 15 March</b>  <b style="float:right">Reading: Chapters 9 & 11</b><br>
 
@@ -923,7 +942,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 21 August 2017.)</i><br>
+<i style="float:right">(This file was last modified on 29 August 2017.)</i><br>
 </div>
 </body>
 </html>

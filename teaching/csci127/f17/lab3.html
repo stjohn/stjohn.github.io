@@ -39,13 +39,146 @@ environment.
 <h3>Colors</h3>
 
 <p>
+There are several different ways to specify colors.  We will use colors, by name, by percentage, and by hexadecimal format.
+</p>
 
-<tt>
-<ul>
-	<li> start by coloring turtles with color names
-	<li> then, introduce RGB colors
-	<li> hex representation-- have a turtle get redder and redder, by upping hex values
-</tt>
+<br>
+
+<h4>Names for Colors</h4>
+
+<p>
+For common colors, you can give the name of the color, as a string.  For example, run the program (click the triangle) to see two turtles, drawing in different colors:
+
+<p>
+<iframe src="https://trinket.io/embed/python/b594e53e4a" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</p>
+
+<!--
+<p>There are <a href="http://www.w3schools.com/colors/colors_hex.asp">more than 100 colors</a> that we can use by name.  For example:
+</p>
+<p>
+<a href="http://www.w3schools.com/colors/colors_hex.asp"><img src="blues.png" ></a>
+</p>
+<!--Here's a list:
+<p>
+<!--
+<iframe src="http://www.computerhope.com/htmcolor.htm#purple" width="100%" height="250" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>-->
+
+<p>Some are obvious, like (red or blue), others are a bit more obscure (like darksalmon or chartreuse).  What color is darksalmon?  Change the color of one of the turtles in the coding window above to find out.  Add in a new turtle and make it your favorite color.  Draw a few lines to demonstrate its color.
+</p>
+-->
+
+<p>Most common color names are available (as are some not-so-common ones).
+
+
+
+<br>
+<h4>Colors by Decimals</h4>
+
+<p>
+As we saw above, the turtle package recognizes many common colors by name.  If your favorite color is not on that list, you can make a new color by specifying how much of the red, green, and blue ('RGB') light intensity you would like. The range for each is from 0 (no light) to 255 (100% light).  For example, if all the light intensities are 255 (100% of the possible), then the color is white.  
+</p>
+
+<p> Read the code below and guess what color each turtle is.  Check your guess by running the program:
+<br><br>
+</p>
+
+<p>
+<iframe src="https://trinket.io/embed/python/11f1644654" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</p>     
+
+<p>Let's look at some of the shades of red that are available.  Here's our plan:
+<ol>
+	<li> Create a turtle, <tt>tess</tt>.
+	<li> For 10, 20, 30, ..., 250,
+	<li> &nbsp;&nbsp; Move forward 10 steps
+	<li> &nbsp;&nbsp; Make the turtle a bit larger each time
+	<li> &nbsp;&nbsp; Make the turtle a bit more red each time
+</ol>
+
+Let's change each piece of our "To Do" list into Python code:
+<ol>
+	<li> Create a turtle, <tt>tess</tt>.
+	
+		<p> We've done this before.  We import the turtle module and set up the turtle.  One new thing we need to do, is to tell the turtle library that we would like to represent colors as decimal numbers:
+<pre>
+#A program that demonstrates the shades of red
+#Fall 2017
+
+import turtle				#Import the turtle drawing package
+
+turtle.colormode(255)		#Allows colors to be given as 0...255
+tess = turtle.Turtle()		#Create a turtle
+</pre>
+
+		<p> To keep our drawing from running off the screen, we'll move <tt>tess</tt> backwards before we start our loop:
+		
+<pre>
+tess.backward(100)			#Move her backwards, to give more space to draw
+</pre>
+		
+	<li> For 10, 20, 30, ..., 250,
+	
+		<p>This can be done with a <tt>for</tt>-loop and a <tt>range</tt> that starts at 10, stops at 255, and steps up by 10 each time:
+		
+<pre>
+for i in range(0,255,10):
+</pre>
+	<li> &nbsp;&nbsp; Move forward 10 steps
+<pre>
+     tess.forward(10)		#Move forward  
+</pre>
+	<li> &nbsp;&nbsp; Make the turtle a bit larger each time
+<pre>
+     tess.pensize(i)		#Set the drawing size to be i (larger each time)   
+</pre>	
+	<li> &nbsp;&nbsp; Make the turtle a bit more red each time
+<pre>
+
+     tess.color(i,0,0)		#Set the red channel to be i (brighter each time)    
+</pre>	
+</ol>
+
+<p>Here's the whole program altogether.  Copy it over to an idle file window and try running it:
+
+<pre>
+#A program that demonstrates the shades of red
+#Fall 2017
+
+import turtle				#Import the turtle drawing package
+
+turtle.colormode(255)		#Allows colors to be given as 0...255
+tess = turtle.Turtle()		#Create a turtle
+tess.shape("turtle")		#Make it turtle shaped
+tess.backward(100)			#Move her backwards, to give more space to draw
+
+#For 0,10,20,...,250
+for i in range(0,255,10):
+     tess.forward(10)		#Move forward
+     tess.pensize(i)		#Set the drawing size to be i (larger each time)
+     tess.color(i,0,0)		#Set the red channel to be i (brighter each time)    
+</pre>
+
+<p>
+The resulting graphics window is:
+<p>
+<img src="shadesOfRed.png">
+
+<p>
+How would you show shades of blue?  See <a href="ps.html">Programming Problem List</a>.
+
+
+<br>
+<h4>Colors by Hexadecimal</h4>
+
+
+<p>
+<a href="http://www.w3schools.com/colors/colors_hex.asp"><img src="blues.png" ></a>
+</p>
+
+hex representation-- have a turtle get redder and redder, by upping hex values
+
+Find image of 8-fingered hands (Head First HTML?)
 
 </div>
 
@@ -74,7 +207,7 @@ Include one or two more commands from labs 3 onward...
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is a quiz on the academic integrity policy of City University of New York.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
+During lab, there is a <a href="quizzes.html">quiz</a>.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
 
 </div>
 
@@ -85,6 +218,56 @@ During lab, there is a quiz on the academic integrity policy of City University 
 <h3>What's Next?</h3>
 
 <p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you, and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+<div>
+<h3>Using Python on Your Computer</h3>
+
+<p>Today's lab introduced several packages that are freely available but do not always come bundled with Python.  If you are using anaconda, then most are included.  See the directions below for other installations.
+
+<p> Directions for anaconda
+The Python programming language and IDLE environment are freely available
+for many platforms from <a href="http://www.python.org">python.org</a> or
+<a href="https://www.continuum.io/downloads">Anaconda</a>.  
+For this class, we are using <b>Python 3</b>.  Many features of the language
+(including the syntax of <tt>print</tt> statements) changed between the second and third
+version, so, you must use the Python 3 for submitting programs.
+
+<p>
+If you have a Linux machine and would like to match the environment on the lab machines, at a terminal window, type the following commands:
+<pre> sudo apt-get update
+ sudo apt-get -y upgrade
+ sudo apt-get install python3 python3-pip idle3
+ pip3 install numpy pandas folium image matplotlib scipy
+ sudo apt-get install spyder
+</pre>
+
+<p>
+If you have a Mac or Windows computer, the easiest installation is <a href="https://docs.continuum.io/anaconda/install/#detailed-installation-information">Anaconda</a>.  When given the choice, choose to "Install for me only" (this avoids some odd permission problems that occur when choosing the install for everyone).  
+
+<p>Almost all the packages we will use are automatically included in the Anaconda default installation.  The two that are not, image and folium, can be installed via <tt>pip</tt> (Python package manager).  We won't need these immediately, so, you can wait on installing them.  Here are the directions:
+<ul>
+	<li> Check if your machine has pip installed already, by typing:
+	<pre>
+  which pip
+	</pre>
+	at the terminal window.  
+	<li> If it prints a line that ends with pip, then it's already on your machine.
+	<li> If it printed nothing, then you need to add pip your machine.  On the Macs, Anaconda installs a program called, <tt>easy_install</tt>, which we'll use to get pip by typing at the terminal:
+	<pre>
+  easy_install pip
+	</pre>
+	And then add the packages:
+	<pre>
+  pip install image
+  pip install folium
+	</pre>
+	<li> For Windows, it's very similar (<a href="https://packaging.python.org/tutorials/installing-packages/">more details</a>).
+</ul>
+
+<p>
+There are many free on-line versions that you could use via a browser, such as <a href="http://pythonanywhere.com">pythonanywhere</a>. 
 
 </div>
 
