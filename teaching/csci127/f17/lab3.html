@@ -42,8 +42,9 @@ environment.
 There are several different ways to specify colors.  We will use colors, by name, by percentage, and by hexadecimal format.
 </p>
 
-<br>
+</div>
 
+<div>
 <h4>Names for Colors</h4>
 
 <p>
@@ -71,12 +72,13 @@ For common colors, you can give the name of the color, as a string.  For example
 <p>Most common color names are available (as are some not-so-common ones).
 
 
+</div>
 
-<br>
+<div>
 <h4>Colors by Decimals</h4>
 
 <p>
-As we saw above, the turtle package recognizes many common colors by name.  If your favorite color is not on that list, you can make a new color by specifying how much of the red, green, and blue ('RGB') light intensity you would like. The range for each is from 0 (no light) to 255 (100% light).  For example, if all the light intensities are 255 (100% of the possible), then the color is white.  
+As we saw above, the turtle package recognizes many common colors by name.  If your favorite color is not on that list, you can make a new color by specifying how much of the <span style="color:red">red</span>, <span style="color:green">green</span>, and <span style="color:blue">blue</span> ('<span style="color:red">R</span><span style="color:green">G</span><span style="color:blue">B</span>') light intensity you would like. The range for each is from 0 (no light) to 255 (100% light).  For example, if all the light intensities are 255 (100% of the possible), then the color is white.  
 </p>
 
 <p> Read the code below and guess what color each turtle is.  Check your guess by running the program:
@@ -167,15 +169,42 @@ The resulting graphics window is:
 <p>
 How would you show shades of blue?  When you have figured out the answer, see <a href="ps.html">Programming Problem List</a>.
 
+</div>
 
-<br>
-<br>
+<div>
 <h4>Colors by Hexadecimal</h4>
 
+<p>
+A common way to represent colors is using hexadecimal numbers.  Our traditional decimal, or base-10 numbers, use 10 symbols for each digit:  0, 1, 2, 3, ..., 9.  Hexadecimail, or base-16 numbers, use 16 symbols.  In addition to 0, 1, 2, ..., 9, the letters A, B, C, D, E, and F are also used.  
 
+<p> A good way to think about it is to think about what the world would be like if everyone had 8 fingers on each hand, instead of 5.  When we count, on 10 fingers, we can use the symbols 0, 1, 2, ..., 9 to label each finger:
+
+<p>
+<img src="hands10.png">
+<br>
+(from <a href ="http://www.i-programmer.info/babbages-bag/478-hexadecimal.html">i-programmer.info</a>)
+
+<p>
+Doing the same for 16 fingers, we use 0, 1, 2, ..., 9, and then A, B, ..., E when we run out of the normal symbols for numbers:
+
+<p>
+<img src="hands16.png">
+<br>
+(from <a href ="http://www.i-programmer.info/babbages-bag/478-hexadecimal.html">i-programmer.info</a>)
+
+<p>
+The first 9 numbers are the same in both decimal and hexadecimal, but larger numbers are different.  For example, counting out 11 on our 8-fingered hands gives the symbol A.  So, decimal number 11 is the single digit hexadecimal number, A.  
+
+<p> Going in the other direction, the hexadecimal number 11, is counting through all the fingers (16) plus one more, yielding 17. 
+
+<p>  Why does this matter?  Our color values range in decimal from 0 to 255.  If we write these in hexadecimal, the range is 0 to FF.  FF is the largest hexadecimal number, so, this range of values fits perfectly in two-digit hexadecimal numbers.
+
+<p>For example, here are some shades of blue, given with their name and hexadecimal value:
 <p>
 <a href="http://www.w3schools.com/colors/colors_hex.asp"><img src="blues.png" ></a>
 </p>
+
+<p>
 
 hex representation-- have a turtle get redder and redder, by upping hex values
 
@@ -192,6 +221,62 @@ Include one or two more commands from labs 3 onward...
 
 <div>
 <h3>Images</h3>
+
+<img src="sic-imageplanes.png" height= 200 align="right">
+There are many different formats to store images.  Some store the information about the color of every <i>pixel</i> ("picture element" or dot on the screen).  Others store end points of lines or boundaries of regions and the colors of each.  We focus on the former, and in particular, use the <tt>png</tt> (portable network graphics) file format, which is popular for storing images captured from cameras and is `lossless' (every pixel captured is stored, so, can also be quite large).  Each pixel is represented by its the percentage of red, green, and blue ("RGB") values. Images are stored as a grid of red values, a grid of green values, and a grid of blue
+values. 
+
+<p>
+For example, if we stored our image in the variable, <tt>img</tt>, we could access the red
+value by:
+<pre>
+	print "Upper left has red:", img[0,0,0]
+</pre>
+and the amount of green:
+<pre>
+	print "Upper left has green:", img[0,0,1]
+</pre>
+and the amount of blue:
+<pre>
+	print "Upper left has blue:", img[0,0,2]
+</pre>
+Any point can be accessed via its coordinates <tt>(i,j)</tt> and the color channel (0 for red, 1 for green, and 2 for blue).
+
+<p>
+What does this code do?   Work through it first, and then try on your computer.  This program assumes that you have a file called <a href="bf1.png">bf1.png</a> in the same directory.  You can use that file, or substitute one of your own.
+	<pre> 	
+import matplotlib.pyplot as plt  
+import numpy as np               
+img = plt.imread('bf1.png')	#Read in image from bf1.png
+plt.imshow(img)			#Load image into matplotlib
+plt.show()
+height = img.shape[0]
+width = img.shape[1]
+newImage = np.zeros((height,width,3))
+for i in range(height):
+	print "processing row", i 
+	for j in range(width): 
+		newImage[i,j,0] = img[i,j,0] 
+		newImage[i,j,1] = 0 
+		newImage[i,j,2] = 0		
+plt.imshow(newImage)		#Open window to show image (close to continue)
+plt.show() 
+plt.imsave('face2.png',newImage)
+</pre>
+
+<h4>Challenges:</h4>
+<ul>
+	<li> How can you display only the green channel? How can you display the blue
+channel?
+	<li> Write a program that displays the image in black and white. Each color value of the pixels in the new image are an average of the red, green, and blue in the original. That is, 
+	<pre>
+newR = (r+g+b)/3
+newG = (r+g+b)/3
+newB = (r+g+b)/3
+</pre>
+	<li> Write a program that shows only the pixels that are white (or very close-- that is, red, blue, and green values above 90%).	
+	<li> Write a program that shows only pixels that differ between these two butterfly images, <a href="bf1.png">bf1.png</a> and <a href="bf2.png">bf2.png</a>.
+</ul>
 
 <tt>
 <ul>
