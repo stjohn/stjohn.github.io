@@ -65,7 +65,7 @@ lab</a>.
 <div>
 
 <hr>
-<p>Submit the following programs via <a href="http://gradescope.com">gradescope:</a></p>
+<p>Submit the following programs via <a href="http://gradescope.com">Gradescope:</a></p>
 <a id="set1"></a>
 <hr>
 
@@ -245,7 +245,7 @@ r
 		<br>
 		<img src="blockSpiral.png">	
 
-
+<!--
 	<li > <b>Due Date: 26 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 4</a></b><br>	
 
 		Write a program that asks the user for the name of a color and then displays a turtle that color.  
@@ -259,7 +259,7 @@ Enter a color name:  purple
 		<br>
 		<img src="purpleTurtle.png">
 		
-		<p> <i>Hint:  see <a href="lab3.html">Lab 3</a>.</i>
+		<p> <i>Hint:  see <a href="lab2.html">Lab 2</a> for getting input from users and <a href="lab3.html">Lab 3</a> for colors.</i>
 		
 	<li > <b>Due Date: 27 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2 & 4</a></b><br>			
 
@@ -271,11 +271,7 @@ Modify the program from <a href="lab3.html">Lab 3</a> to show the shades of blue
 		<img src="shadesOfBlue.png">	
 			
 
-	
 
-
-		
-<!--	
 
 	<li > <b>Due Date: 28 September</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 2, 4 & 8.10</a></b><br>
 
@@ -285,17 +281,14 @@ Modify the program from <a href="lab3.html">Lab 3</a> to show the shades of blue
 		
 		<p>A sample run of your program should look like:
 <pre>
-Enter a hex string:  #A9A922
+Enter a hex string:  #A922A9
 </pre>		
 
 		<p>and the output should look similar to:
 		<br>
-		<img src="hexColor.png">
+		<img src="purplyTurtle.png" style="padding:25px">
 		
-		<p> <i>Hint:  see <a href="lab3.html">Lab 3</a>.</i>
-
-	
-		
+		<p> <i>Hint:  see <a href="lab2.html">Lab 2</a> for getting input from users and <a href="lab3.html">Lab 3</a> for colors.</i>
 
 	
 	<li > <b>Due Date: 2 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters 4 & 8.10</a></b><br>	
@@ -306,15 +299,15 @@ Enter a hex string:  #A9A922
 		<p> A sample run of your program should look like:
 
 <pre>
-Enter name of the input file:  hunter.png
+Enter name of the input file:  csBridge.png
 Enter name of the output file:  blueH.png
 </pre>	
 
 <p> Sample input and resulting output files:
 
 <p>
-<img src="hunter.png">		
-<img src="blueH.png">
+<img src="csBridge.png" width = 300>		
+<img src="blueH.png" width = 300 >
 
 
 
@@ -346,11 +339,14 @@ The program <a href="turtleString.py">turtleString.py</a> takes a string as inpu
 		</ul>		
 	
 		
+		<p><i>Hint:  See Lecture 4 notes.</i>
 	
 	<li > <b>Due Date: 4 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-		Ask user for input.
-		If-statement:  turn turtle blue if user enters "left", turn turtle red if user enters "right".
+		Write a program that asks the user for a whole number.  If that number is even, your turtle should draw a blue line towards the left hand side of the screen. If that number is odd, your turtle should draw a red line towards the right hand side of the screen.
+		
+		<br>
+		<p><i>Hint:  See <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a> of the Python textbook and Lecture 4 notes.</i>
 		
 		
 	
@@ -370,7 +366,7 @@ The program <a href="turtleString.py">turtleString.py</a> takes a string as inpu
 	
 	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-		Count snowpack in California drought?  Amount flooding in Hurricane Harvey?
+
 	
 		Pseudocode for turning an image to all black or all white.  For each pixel, decide if its closer to black or two white, and make new pixel accordingly.
 
@@ -389,28 +385,57 @@ The program <a href="turtleString.py">turtleString.py</a> takes a string as inpu
 		Command line script
 	
 	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-	
-		Compute the average color of an image (a la first screen of http://koalastothemax.com-- include as iframe).
-	
-		<p> Give pseudocode or
 
-		bit masking?  or some bit manipulation from lab.
+		Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
+		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
+		<ul>
+			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
+			
+			<li> If the number of rides is 3 or more, then do the following computation:
+			<ul>
+				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
+				<li> 7-day cost of ride is $31.00/number of rides.
+			</ul>
+			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
+			<p>
+			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
+		</ul>
+
+
+
 	
 	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		pseudocode question about logical expressions or truth tables
+		pseudocode question about logical expressions or truth tables (need to test that R, G, & B are all above a threshold-- ask user for it?)
+		Count snowpack in California drought?  Amount flooding in Hurricane Harvey?
+	
+
+
+		
 
 <a id="set6"></a>
 <hr>	
 
 	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
+		Pandas-- read in a local CSV and display
+	
 	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		Pandas-- read from the web, use openData NYC-- parking tickets or something else?
 	
 	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
+		Write a function that averages?
+		Compute the average color of a slice of an image (a la first screen of http://koalastothemax.com-- include as iframe).  Provide the program, students fill in the function.
+		(Insprired by <a href="http://koalastothemax.com">koalas to the max</a>)
+
+	
 	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		
+		<p> Need some bit manipulation question, either 
+		bit masking?  or some bit manipulation from lab.
 	
 	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
@@ -422,10 +447,21 @@ The program <a href="turtleString.py">turtleString.py</a> takes a string as inpu
 	<li > <b>Due Date: 31 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
 	<li > <b>Due Date: 1 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+
+		Write a function, <tt>monthString()</tt> that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
+
+		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
+		
+		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, or else it will not be able to find the function and will not get the full points for the program.
+
 	
 	<li > <b>Due Date: 2 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
 	<li > <b>Due Date: 3 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		Write a function that averages?
+		Compute the average color of a slice of an image (a la first screen of http://koalastothemax.com-- include as iframe).  Provide the program, students fill in the function.
+		(Insprired by <a href="http://koalastothemax.com">koalas to the max</a>)
 
 <a id="set8"></a>
 <hr>	
@@ -501,27 +537,7 @@ The program <a href="turtleString.py">turtleString.py</a> takes a string as inpu
 	
 		Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.
 
-	<li > <b>Due Date: 15 March</b>  <b style="float:right">Reading: Chapters 9 & 11</b><br>
 
-
-		Write a program that asks the user for the name of a file.  You may assume that every line of the contains a single floating point number.
-		Your program should print out the sum of the numbers in the file.
-
-		<p>For example, if your file contained:
-<pre>
-8.0
--2.5
-100.0
-6.5
-</pre>
-		<p>Then a sample run of your program would look like:
-<pre>
-Please enter your file name:  nums.txt
-The sum of your numbers is 112.0.
-</pre>
-
-		<br>
-		<i>Hint:  see <a href="lab5.html">Lab 5</a>.</i>
 
 
 	<li > <b>Due Date: 16 March</b>  <b style="float:right">Reading: Chapter 9</b><br>	
@@ -536,12 +552,6 @@ The sum of your numbers is 112.0.
 	
 		Modify your program from <a href="lab6.html">Lab 6</a>  that graphs shelter census data.  In addition to graphing the data, also print to the screen (Python shell), the minimum, average (mean), and maximum numbers of total individuals in the shelter.
 
-	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: Chapter 7</b><br>	
-	
-		Write a program that asks the user for a whole number.  If that number is even, your turtle should draw a blue line towards the left hand side of the screen. If that number is odd, your turtle should draw a red line towards the right hand side of the screen.
-		
-		<br>
-		<p><i>Hint:  See <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a> of the Python textbook.</i>
 
 
 <a id="set7"></a>
@@ -589,53 +599,8 @@ main()
 		<i>Hint:  You may assume that there is one grade per line of the file.  See <a href="lab7.html">Lab 7</a>.</i>	
 			
 
-
-	<li > <b>Due Date: 24 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
-	
-		The program <a href="../../cmp/cmp230/f14/turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
-		<ul>
-			<li> 'F':  moves the turtle forward
-			<li> 'L':  turns the turtle 90 degrees to the left
-			<li> 'R':  turns the turtle 90 degrees to the right
-			<li> '^':  lifts the pen
-			<li> 'v':  lowers the pen
-		</ul>
-		For example, if the user enters the string "FLFLFLFL^FFFvFLFLFLFL", the turtle would move forward and then turn left.  It repeats this 4 times, drawing a square.  Next, it lifts the pen and move forward 3, puts the pen back down and draw another square.
-		
-		<p>
-		Modify this program to allow the user also to specify with the following symbols:
-		<ul>
-			<li> 'B':  moves the turtle backwards
-			<li> 'r':  change the pen color to red			
-			<li> 'g':  change the pen color to green
-			<li> 'b':  change the pen color to blue
-		</ul>		
-
-		<p>Submit your modified program (including a comment at the top of the program with your name).		
-
-	<li > <b>Due Date: 27 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
-	
-		Write a function that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should print out <tt>January</tt>.  If the parameter is 2, your function should print out <tt>February</tt>, etc.
-
-		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
 	
 
-	<li > <b>Due Date: 29 March</b>  <b style="float:right">Reading: Chapter 7</b><br>
-	
-		Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
-		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
-		<ul>
-			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
-			
-			<li> If the number of rides is 3 or more, then do the following computation:
-			<ul>
-				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
-				<li> 7-day cost of ride is $31.00/number of rides.
-			</ul>
-			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
-			<p>
-			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
-		</ul>
 
 <a id="set8"></a>
 <hr>
@@ -722,68 +687,6 @@ main()
 	
 		Write a program that asks the user to enter a string. If the user enters an empty string, your program should continue prompting the user for a new string until they enter a non-empty string. Your program should then print out the string entered.
 
-	
-	<li > <b>Due Date: 27 April</b>  <b style="float:right">Reading: Chapter 8</b><br>	
-		
-		Modify the  tic-tac-toe program from <a href="lab9.html">Lab 9</a> to check that the user chooses an empty square.  Your program should ask the user for coordinates of where to play.  While their choice of square if filled, you should continue to ask them until they choose an empty square.  When the choose an empty square, the program continues as before.
-	
-
-<a id="set10"></a>
-<hr>
-
-	<li > <b>Due Date: 1 May</b>  <b style="float:right">Reading: Intro to R</b><br>	
-		
-		Write an R program that prints <tt>Hello World!</tt>.  See <a href="lab10.html">Lab 10</a> for getting started with the R programming language.
-
-	<li > <b>Due Date: 2 May</b>  <b style="float:right">Reading: Intro to R</b><br>	
-		Write an R program that will print your name to the console 20 times.
-		
-	<li > <b>Due Date: 3 May</b>  <b style="float:right">Reading: Intro to R</b><br>	
-		Write an R program that will print out:
-<pre>
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-Blast off!
-</pre>	
-
-	<li > <b>Due Date: 4 May</b>  <b style="float:right">Reading: Intro to R</b><br>		
-
-		Write an R program that prints out the numbers from 2000 to 2017 to the screen.
-
-	<li > <b>Due Date: 5 May</b>  <b style="float:right">Reading: Intro to R</b><br>		
-
-		Write an R program that prints out the following pattern:
-<pre>
-[1] 1
-[1] 1 2
-[1] 1 2 3
-[1] 1 2 3 4
-[1] 1 2 3 4 5
-[1] 1 2 3 4 5 6
-[1] 1 2 3 4 5 6 7
-[1] 1 2 3 4 5 6 7 8
-[1] 1 2 3 4 5 6 7 8 9
- [1]  1  2  3  4  5  6  7  8  9 10
- [1]  1  2  3  4  5  6  7  8  9 10 11
- [1]  1  2  3  4  5  6  7  8  9 10 11 12
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
-</pre>
-		<it>(Hint: it can be done in 1 line of code!  Think about what <tt>1:i</tt> does...)</it>
 
 <a id="set11"></a>
 <hr>
@@ -830,103 +733,10 @@ Blast off!
 			of the earthquake observations in the file.
 		</ol>
 
-	<li > <b>Due Date: 12 May</b>  <b style="float:right">Harvard R Graphics Tutorial</b><br>		
 
-		The goal of the graphics tutorial in <a href="lab13.html">Lab 13</a>
-		was to produce the <a href="http://www.economist.com/node/21541178">following graph</a> from The Economist:
-		
-		<p>
-		<a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html"><img src="economistGraph.png"></a>
-		
-		<p>Submit your program that produces a graph that is as close as possible to the original graph.
 
-<a id="set12"></a>
-<hr>
 
-	<li > <b>Due Date: 15 May</b>  <b style="float:right">DataCamp Correlation Tutorial</b><br>		
-	
-		<p>
-		<b>Cancelled due to issues with <tt>ggplot</tt> in the lab.</b>
-		<p>
-		<strike>		
-		In the correlation tutorial in <a href="lab13.html">Lab 13</a>, we used <tt>ggcorr</tt> to plot a color coded matrix labeled with the correlation coefficients of each variable to the other as well as scatter plots with linear regression lines.
-		
-		<p>Using the same movies data set, create a new variable of <tt>profitPerYear</tt> (that is, the amount of profit made divided by the duration of the film).  Your final program should include:
-		<ul>
-			<li> <tt>ggcorr</tt> plot, including the new variables <tt>profit</tt> and <tt>profitPerYear</tt>.
-			<li> a smoothed <tt>qplot</tt> of <tt>votes</tt> versus <tt>profitPerYear</tt>.
-		</ul>
-		(Note: <tt>ggcorr()</tt> is not showing the graphics window, so, you can skip that part of the assignment).
-		</strike>
 
-	<li > <b>Due Date: 16 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
-	
-		<p>
-		<b>
-		Cancelled due to issues with <tt>ggplot</tt> in the lab.</b>
-		<p>
-		<strike>
-		Using the shelter census data from <a href="lab6.html">Lab 6</a> as well as the graphics tutorial in <a href="lab13.html">Lab 13</a> and 
-		<a href="http://ggplot2.tidyverse.org/reference/labs.html">tidyverse help page on ggplot2</a>, create the following plot.
-		
-		<p>
-		<img src="shelter_ggplot.png" width=600>
-		
-		<p>
-		The plot shows the total number of individuals in the shelter over time.  The curve is shaded by the number of children.  Labels and titles should match the image. 
-		
-		<p>
-		<i>Note: The city's choice of date formats is not one of the defaults for <tt>read_csv</tt>.  If you read in your file to the data frame, <tt>dhs</tt>, you can fix the dates by specifying which subfield corresponds to month, day, and year by:
-		<pre>
-		dhs$Date.of.Census <- as.Date(dhs$Date.of.Census, "%m/%d/%Y")
-		</pre>
-		(where %m is month, %d is day, and %Y is the year as 4 digits).
-		</i>
-		</strike>
-
-	<li > <b>Due Date: 17 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>			
-	
-		<p>
-		<b>Cancelled due to issues with <tt>ggplot</tt> in the lab.</b>
-		<p>
-		<strike>
-		In <a href="lab13.html">Lab 13</a>, we worked through two different tutorials.  Use the movie data set from the first tutorial and the techniques from the second (scroll down to house values by state section) to create the analysis below of movie profits by genre and year:
-		</strike>
-		<p>
-		<img src="moviesByGenre.png" width=800>
-	
-	<li > <b>Due Date: 18 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
-	
-		Modify the first program in <a href="http://www.statmethods.net/advgraphs/probability.html">Probability Plots</a> that shows the comparison of the Student t-distribution (generated with the <tt>dt</tt>) for different degrees of freedom.  Change the program to 
-		<ul>
-			<li> It currently compares the Student T-distribution with degrees of freedom of 1, 3, 8, 30 with the normal distribution.  Modify the program to compare 10 degrees of freedom. also (that is 1, 3, 8, 10, 30 with the normal distribution).
-			<li> Your new curve should be purple.
-			<li> Your labels and legend should include this additional curve.
-		</ul>
-	
-		(Hint:  See <a href="lab14.html">Lab 14</a>).
-
-	
-	<li > <b>Due Date: 19 May</b>  <b style="float:right">DataCamp Intro Tutorial</b><br>		
-	
-		Write a program to compute the chi-squared test on the hypotheses that miles per gallon is independent of the other variables in the built-in data set, <tt>mtcars</tt>:
-<pre>
-> str(mtcars)
-'data.frame':	32 obs. of  11 variables:
- $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
- $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
- $ disp: num  160 160 108 258 360 ...
- $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
- $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
- $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
- $ qsec: num  16.5 17 18.6 19.4 17 ...
- $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
- $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
- $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
- $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
-</pre>
-
-		(Hint:  See <a href="lab14.html">Lab 14</a>).
 -->
 </ol>
 
@@ -942,7 +752,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 29 August 2017.)</i><br>
+<i style="float:right">(This file was last modified on 1 September 2017.)</i><br>
 </div>
 </body>
 </html>
