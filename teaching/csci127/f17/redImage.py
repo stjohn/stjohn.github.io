@@ -20,5 +20,3 @@ plt.imshow(img2)         #Load our new image into pyplot
 plt.show()               #Show the image (waits until closed to continue)
 
 plt.imsave('blueH.png', img2)  #Save the image we created to the file: reds.png
-
-

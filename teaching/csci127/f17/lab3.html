@@ -245,7 +245,7 @@ We have already used the shell in the previous two labs.  When you typed:
 <pre>
    idle3
 </pre>
-you were asking the operating system to launch the program <tt>idle3</tt>.  The laptop was configured to first look in folders containing applications, and then to check your home folder, and then to check the current folder you are using.  
+you were asking the operating system to launch the program <tt>idle3</tt>.  The laptop was configured to first look in folders containing applications, and then to check your home folder, and then to check the current folder you are using to find an application by that name.  
 
 <p>
 Let's create a new <b>directory</b>, or folder, to hold your images using the shell.  Where it says <tt>thomasH</tt> below, replace with your name.  It is easier if you avoid spaces in the names:
@@ -319,10 +319,16 @@ and the amount of blue:
 <pre>
 	print "Upper left has blue:", img[0,0,2]
 </pre>
-Any point can be accessed via its coordinates <tt>(i,j)</tt> and the color channel (0 for red, 1 for green, and 2 for blue).
+Any point can be accessed via its coordinates <tt>(i,j)</tt> and the color channel (0 for red, 1 for green, and 2 for blue).  In our example above, 
+with the picture stored in the variable, <tt>img</tt>:
+<pre>
+	img[r,c,chan]
+</pre>
+where the <tt>r</tt> is the row and <tt>c</tt> is the column of the pixel and <tt>chan</tt> is the color channel (0 for red, 1 for green, and 2 for blue). Note that when we are accessing parts of our images, we use the square brackets ('[' and ']'), just as we did for lists.  The round parenthesis ('(' and ')') are used for functions (like <tt>print()</tt> and <tt>right()</tt>).
+
 
 <p>
-What does this code do?   Work through it first, and then try on your computer.  This program assumes that you have a file called <a href="csBridge.png">csBridge.png</a> in the same directory.  You can use that file, or substitute one of your own.
+Let's write a program that manipulates an image.  Read through the code first, and then try on your computer.  What does it do?  Note:  this program assumes that you have a file called <a href="csBridge.png">csBridge.png</a> in the same directory.  You can use that file, or substitute one of your own.
 	<pre> 	
 #Name:  CSci 127 Teaching Staff
 #Date:  Fall 2017
@@ -349,12 +355,9 @@ plt.imsave('reds.png', img2)  #Save the image we created to the file: reds.png
 </pre>
 
 <p>
-Add in:
-<ul>
-	<li> Also cut the image in 1/2
-	<li> Then the upper quarter
-	<li> Give it a border-- make it black, turn to purple?
-</ul>
+The code above always produces an image with only the red channel displayed.  How would you modify the program to display only the blue channel?
+When you have figured out the answer, see the <a href="ps.html">Programming Problem List</a>.
+
 
 
 </div>
