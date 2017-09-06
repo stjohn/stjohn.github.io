@@ -192,7 +192,8 @@ The tests are expressions that evaluate to either true or false.  The blocks of 
 
 <h4>Complementary DNA Strands</h4>
 
-<tt>Compute the complement of DNA strand- include images from wiki.  Use if-statements.</tt>
+<!--
+<tt>Compute the complement of DNA strand- include images from wiki.  Use if-statements.</tt>-->
 
 <p>Let's do an example to illustrate a decision, or <tt>if</tt>-statement in Python.  In <a href="lab2.html">Lab 2</a>, we examined the initial segment of a DNA strand for insulin in humans.  DNA is double-stranded molecule.  Given one strand of the molecule, we can figure out the complementary strand by the following rules:
 <ul>
@@ -216,13 +217,9 @@ Since if the nucleotide is an A, we don't need to check if it's also a C, G, or 
       print("Error:  not a valid value!")
 </pre>
 
-<p> explain concatenation
+<p>Here's a demonstration of our code:
 
-<p> put into a python tutor window
-
-
-
-
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=nucleotide%20%3D%20input%28'Enter%20a%20nucleotide%3A%20'%29%0Aif%20nucleotide%20%3D%3D%20%22A%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22T%22%0Aelif%20nucleotide%20%3D%3D%20%22C%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22G%22%0Aelif%20nucleotide%20%3D%3D%20%22G%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22C%22%0Aelif%20nucleotide%20%3D%3D%20%22T%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22A%22%20%20%20%20%0Aelse%3A%0A%20%20%20%20print%28%22Error%3A%20%20not%20a%20valid%20value!%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=1&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%22A%22%5D&textReferences=false"> </iframe>
 
 </div>
 
@@ -281,14 +278,16 @@ We can use this data to make a flood map of New York City.  When Hurricane Sandy
 <pre>
 	if elevation <= 0: 
 	    #Below sea level
-	    Color blue
+	    Color the pixel blue
 	elif elevation <= 6:
 	    #Below the storm surge of Hurricane Sandy (flooding likely)
-	    Color red
+	    Color the pixel red
 	else:
 	    #Above the 6 foot storm surge and didn't flood
-	    Color green
+	    Color the pixel green
 </pre>
+
+
 
 <p> To give us complete control of the coloring, we will create a new array that will hold the colors for each pixel.  Here's an outline of our program:
 <ol>
@@ -300,6 +299,59 @@ We can use this data to make a flood map of New York City.  When Hurricane Sandy
 	<li> Display the image.
 </ol>
 
+<p>We'll use a very simple (but a bit garish) color scheme, with our "blue" being 0% red, 0% green, and 100% blue.  And similarly, the "red" and the "green" we'll use will be 100% of each, 0% of the others, giving a map like:
+
+<p>
+<img src = "floodMap.png">
+
+
+<p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <href="elevationsNYC.txt">elevationsNYC.txt</tt> is in the same directory as your program.
+<pre>
+# Name:  ... your name here ...
+# Date:  September 2017
+# Takes elevation data of NYC and displays using the default color map
+
+
+#Import the libraries for arrays and displaying images:
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+#Read in the data to an array, called elevations:
+elevations = np.loadtxt('elevationsNYC.txt')
+
+#Take the shape (dimensions) of the elevations
+#  and add another dimension to hold the 3 color channels:
+mapShape = elevations.shape + (3,)
+
+#Create a blank image that's all zeros:
+floodMap = np.zeros(mapShape)
+
+for row in range(mapShape[0]):
+    for col in range(mapShape[1]):
+        if elevations[row,col] <= 0: 
+            #Below sea level
+           floodMap[row,col,2] = 1.0     #Set the blue channel to 100%
+        elif elevations[row,col] <= 6:
+            #Below the storm surge of Hurricane Sandy (flooding likely)
+           floodMap[row,col,0] = 1.0     #Set the red channel to 100%
+        else:
+            #Above the 6 foot storm surge and didn't flood
+            floodMap[row,col,1] = 1.0   #Set the green channel to 100%
+     
+#Load the flood map image into matplotlib.pyplot:
+plt.imshow(floodMap)
+
+#Display the plot:
+plt.show()
+
+</pre>
+
+<p> What would you change to make a more fine-grained map?  Namely, modify your program to color the region just above the Sandy storm surge (6 feet) and less than or equal to 20 feet the color grey (50% red, 50% green, 50% blue).  See
+<a href="ps.html">Programming Problem List</a>.
+
+<p>
+<img src = "floodMap2.png">
 
 </div>
 
