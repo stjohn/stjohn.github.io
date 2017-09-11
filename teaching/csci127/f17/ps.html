@@ -204,7 +204,7 @@ dmhflz
 </pre>
 
 
-		<p> <i>Hint:  See the example programs from Lecture 2.</i>
+		<p> <i>Hint:  See the example programs from <a href="csci127Lecture2.pdf">Lecture 2</a>.</i>
 
 
 	
@@ -276,7 +276,7 @@ Enter a color name:  purple
 
 
 
-	<li > <b>Due Date: 28 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a>, <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
+	<li > <b>Due Date: 28 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
 
 
 
@@ -313,7 +313,7 @@ Enter name of the output file:  blueH.png
 <img src="blueH.png" width = 300 >
 
 
-
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
 
 <a id="set4"></a>						
 <hr>
@@ -399,45 +399,64 @@ Enter number:  90
 <i>More to come...</i>
 <!--
 
-	<li > <b>Due Date: 12 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 12 October</b>  <b style="float:right">Reading: 
+	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
 	
-		<p>Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>.  Submit a single text file containing your shell commands.  See <a href="lab5.html">Lab 5</a>.
+		<p>Write an Unix shell script that does the following: 
+		<ul>
+			<li> Creates a directory, <tt>projectFiles</tt>.  
+			<li> Creates 3 additional directories (as subdirectories of 
+			<tt>projectFiles</tt>):  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>.  
+		</ul>
+		
+		Submit a single text file containing your shell commands.  See <a href="lab5.html">Lab 5</a>.
 
 	
 	<li > <b>Due Date: 13 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Easy circuit question from lab.
+		<p>Easy circuit question from lab:  majority of 3 inputs, called <tt>in1</tt>, <tt>in2</tt>, <tt>in3</tt>:  
+		<ul>
+			<li> If two or more of the inputs are <tt>True</tt>, then your expression should evaluate to  <tt>True</tt>.
+			<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
+		</ul>
 		
 	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p> Write a program that asks the user for a base, and then prints out 
+		all two digit numbers in that base.  See example below for the expected format of the output.  
+		
+		<p>
+		
+		<p> <i>Hint: See notes from Lecture 3.</i>  	
 	
-		<p>Harder circuit question from lab.	
 	
 	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
-		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
-		<ul>
-			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
-			
-			<li> If the number of rides is 3 or more, then do the following computation:
-			<ul>
-				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
-				<li> 7-day cost of ride is $31.00/number of rides.
-			</ul>
-			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
-			<p>
-			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
-		</ul>
-
-
+		<p>Harder circuit question from lab.
 
 	
 	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
 
-		<p>Write a program that asks the user to enter a bounding box and name of image file, name of output file, and puts a cropped version of the file in output file.
-		<p> Follows from lab discussion of more details about images.  See <a href="lab5.html">Lab 5</a>.		
+		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
 		
+		<p>A sample run of your program should look like:
+<pre>
+Enter image file name: csBridge.png
+Enter output file: croppedH.png
+Enter highest: 100
+Enter lowest: 150
+Enter farthest left: 200
+Enter farthest right: 400
+
+
+</pre>		
+
+		<p>which would have as input and output:
+<p>
+<img src="csBridge.png" width = 300>		
+<img src="croppedH.png" width = 300 >
+
 
 		
 
@@ -468,8 +487,23 @@ Enter number:  90
 	 	
 	
 	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
+		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
+		<ul>
+			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
+			
+			<li> If the number of rides is 3 or more, then do the following computation:
+			<ul>
+				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
+				<li> 7-day cost of ride is $31.00/number of rides.
+			</ul>
+			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
+			<p>
+			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
+		</ul>
+
 	
-		<p>Pseudocode for converting hex string to decimal 
 		
 		
 <a id="set7"></a>
@@ -533,6 +567,7 @@ Enter number:  90
 	
 	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
+		<p>Pseudocode for converting hex string to decimal, or 
 
 		<p>Need some bit manipulation question, either 
 		bit masking?  or some bit manipulation from lab.
@@ -543,7 +578,7 @@ Enter number:  90
 		<p>Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>
 		as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
 		
-		<p>Add more to this-- maybe move earlier?
+		<p>Add more to this, since already created directories back in Lab 8-- maybe have it run a python file from the command line?  
 	
 	<li > <b>Due Date: 9 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
@@ -725,7 +760,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 2 September 2017.)</i><br>
+<i style="float:right">(This file was last modified on 11 September 2017.)</i><br>
 </div>
 </body>
 </html>

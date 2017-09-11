@@ -38,19 +38,12 @@ environment.
 </div>
 
 <div>
-<h3> More on Files & Command Line Interface</h3>
+<h3>Logical Expressions & Circuits</h3>
 
-Include one or two more commands from labs 3 onward...
+<p> Last week, we introduced decisions (if-statements).  These relied on the "test" which was an expression that evaluated to true or false.  
 
-<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
-		
-<p>All of your commands should be in a single text or shell file.  
-		
-</div>
+<p> We can build up more complicated logical expressions using built-in operators, <tt>and</tt>, <tt>or</tt>, and </tt>not</tt>.
 
-
-<div>
-<h3>Logical Expressions</h3>
 
 <tt>
 <ul>
@@ -61,37 +54,82 @@ Include one or two more commands from labs 3 onward...
 </tt>
 
 
-<!--
-<p> <b> Use in lab with if-statements</b>
-Compute the complement of DNA strand- include images from wiki.  Instead of if-statements, use string methods to replace each letter.  Translate to lower case (to avoid translate items twice), then use upper case to make it look the same as input format.
--->
-
-
 </div>
 
-<div>
-<h3>More on Command Line Interface</h3>
 
-Include one or two more commands from labs 3 onward...
+
+<div>
+<h3> More on the Command Line Interface</h3>
+
+<p>
+In <a href="lab2.html">Lab 2</a>, we introduced the shell, or command line, commands to create new directories (folders) and how to list the contents of those folders.  We can take those commands and store them in a file to be used
+later.
+
+<p>
+It's a bit archaic, but we can create the file with the <tt>vi</tt> editor.   It 
+dates back to the early days of the Unix operating system.  It has the advantage that it's integrated into the operating system and guaranteed to be there.  It is worth trying at least once (so if you're in a bind and need to edit unix files remotely, you can), but if you hate it (which is likely), use the graphical gedit (you can find it via the search icon on the left hand menu bar).
+
+<p>
+Let's create a simple shell script with <tt>vi</tt>:
+<ol>
+	<li> Open a terminal window.
+	<li> Type in the terminal window:  <tt>vi setupProject</tt>
+	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
+	which stands for "insert"
+	<li> Type the lines:
+	<pre>
+mkdir projectFiles
+cd projectFiles
+mkdir source
+mkdir data
+mkdir results
+	</pre>
+	<li> Click on the ESC (escape key-- usually on the upper row of keys) which escapes from insert mode.
+	<li> Type:  <tt>:wq</tt> which stands for "write my file" and "quit" (the ":" is necessary-- it tells vi that you want to use the menu commands).
+	<li> This brings us back to the terminal window.  
+	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
+	<tt>setupProject</tt>, you just created.
+	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
+	<pre>
+chmod +x setupProject
+	</pre>
+	(changes the "mode" to be executable).
+	
+	<li> To run your first shell script, you can now type its name at the terminal:
+	<pre>
+./setupProject
+	</pre>
+	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
+	<li>
+</ol>
+
+
+<p>Include one or two more commands from labs 3 onward...
+
+<p> sh-bang line?
+
+<p> Troubles with vi?  It's not intuitive-- here's some cheat sheets.  If you hate it, just edit using gEdit (the Linux version of TextEdit) or IDLE.
+
+
+<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
+		
+<p>All of your commands should be in a single text or shell file.  
+		
 </div>
 
-<div>
-
-<h3> Logical Circuits</h3>
-<tt>
-<ul>
-	<li> 
-</ul>
-</tt>
 
 
-</div>
 
 <div>
-<h4>More Details on Images</h4>
+<h3>Slicing Strings, Lists, & Arrays</h3>
 
-Here or next lab?
 
+
+<p>
+Recap indexing, link slicing to range, give examples with just lists and strings.
+
+<p>
+Same idea works for arrays (they even have a step!)
 <p>
 Explain slices and indexing, take an image and add a border to it.
 
