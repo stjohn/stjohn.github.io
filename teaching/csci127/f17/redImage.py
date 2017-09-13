@@ -13,10 +13,10 @@ plt.imshow(img)		           #Load image into pyplot
 plt.show()                         #Show the image (waits until closed to continue)
 
 img2 = img.copy()        #make a copy of our image          
-img2[:,:,0] = 0          #Set the green channel to 0
-img2[:,:,1] = 0          #Set the blue channel to 0 
+img2[:,:,1] = 0          #Set the green channel to 0
+img2[:,:,2] = 0          #Set the blue channel to 0 
 
 plt.imshow(img2)         #Load our new image into pyplot
 plt.show()               #Show the image (waits until closed to continue)
 
-plt.imsave('blueH.png', img2)  #Save the image we created to the file: reds.png
+plt.imsave('reds.png', img2)  #Save the image we created to the file: reds.png

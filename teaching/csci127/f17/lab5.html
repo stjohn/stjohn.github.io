@@ -38,17 +38,70 @@ environment.
 </div>
 
 <div>
-<h3>Logical Expressions & Circuits</h3>
+<h3>Logical Expressions</h3>
 
 <p> Last week, we introduced decisions (if-statements).  These relied on the "test" which was an expression that evaluated to true or false.  
 
 <p> We can build up more complicated logical expressions using built-in operators, <tt>and</tt>, <tt>or</tt>, and </tt>not</tt>.
 
+<p>
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>in2</tt></th> <th><tt>in1 and in2</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td><td>False</td>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td><td>False</td>
+	</tr>
+	<tr>
+		<td>False</td><td>False</td><td>False</td>
+	</tr>	
+</table>
+
+<p>Similarly for <tt>or</tt>:
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>in2</tt></th> <th><tt>in1 or in2</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>False</td><td>False</td>
+	</tr>	
+</table>
+
+<p> The <tt>not</tt> operator changes the input from false to true, or true to false.  That is, <tt>not True</tt> is false and <tt>not False</tt> is true.  We can write this in the table format above:
+
+<p>
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>not in1</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td>
+	</tr>	
+</table>
+
 
 <tt>
 <ul>
-	<li> Truth tables for ANDs and ORs.
-	<li> Combining statements
+	<li> Add more explanation
+	<li> Give an example of combining statements
 
 </ul>
 </tt>
@@ -56,6 +109,25 @@ environment.
 
 </div>
 
+
+<div>
+<h3>Logical Circuits</h3>
+
+<p>The logical expressions above are useful not only in designing decisions and selecting data in Python, but the same concept underlies much of the hardware of computers.  The <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>.
+
+<p>
+Image of hardware
+
+<p>
+iframe in a circuit program
+
+<p>
+Do majority of 3 inputs
+
+<p>
+Add two digit numbers with carry, 
+
+</div>
 
 
 <div>
@@ -123,7 +195,8 @@ chmod +x setupProject
 <div>
 <h3>Slicing Strings, Lists, & Arrays</h3>
 
-
+<p>
+In lecture, we have been discussing <tt>range()</tt> and slicing of strings, lists, and arrays.  Let's work through an example both to recap and pull all these ideas together.
 
 <p>
 Recap indexing, link slicing to range, give examples with just lists and strings.

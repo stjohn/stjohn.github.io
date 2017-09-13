@@ -399,10 +399,87 @@ Enter number:  90
 <i>More to come...</i>
 <!--
 
-	<li > <b>Due Date: 12 October</b>  <b style="float:right">Reading: 
-	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
+	<li > <b>Due Date: 12 October</b> <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br> 
+
+		<p>pseudocode question about logical expressions or truth tables (need to test that R, G, & B are all above a threshold-- ask user for it?)
+		Count snowpack in California drought?  Amount flooding in Hurricane Harvey?
+
+		<p> <i>Hint: see <a href="lab5.html">Lab 5</a></i>.
+
+	<li > <b>Due Date: 13 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
+		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
+		<ul>
+			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
+			
+			<li> If the number of rides is 3 or more, then do the following computation:
+			<ul>
+				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
+				<li> 7-day cost of ride is $31.00/number of rides.
+			</ul>
+			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
+			<p>
+			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
+		</ul>
+
+ 
 	
-		<p>Write an Unix shell script that does the following: 
+	
+
+
+	
+
+
+
+
+
+		
+	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+
+		<p>Easy circuit question from lab:  majority of 3 inputs, called <tt>in1</tt>, <tt>in2</tt>, <tt>in3</tt>:  
+		<ul>
+			<li> If two or more of the inputs are <tt>True</tt>, then your expression should evaluate to  <tt>True</tt>.
+			<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
+		</ul>
+
+		<p> <i> Hint:  See <a href="lab5.html">Lab 5</a>.</i>
+
+	
+	
+	
+	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		Easy circuit question:  rewrite circuit diagram of a half adder as a logical expression.
+
+		<p> <i> Hint:  See <a href="lab5.html">Lab 5</a>.</i>
+
+
+		<p>Write three logical expressions operating on three inputs, <tt>in1</tt>, <tt>in2</tt>, and <tt>in3</tt>.  The inputs have values <tt>0</tt> and <tt>1</tt> and represent a number stored in binary numbers.  For example:
+		<ul>
+			<li> the decimal number 0 is <tt>in1 = 0, in2 = 0, in3 = 0</tt>,
+			<li> the decimal number 1 is <tt>in1 = 0, in2 = 0, in3 = 1</tt>, 
+			<li> the decimal number 2 is <tt>in1 = 0, in2 = 1, in3 = 0</tt>, and
+			<li> the decimal number 3 is <tt>in1 = 0, in2 = 1, in3 = 1</tt>.
+		</ul>
+		<p>Your expressions should be of the form:
+		<pre>
+out1 = ...
+out2 = ...
+out3 = ...</pre>
+		where <tt>out1, out2, out2</tt> represents a number one greater than 
+		<tt>in1, in2, in3</tt>.  
+
+	
+
+
+
+	
+	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: 
+	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
+		
+			<p>Write an Unix shell script that does the following: 
 		<ul>
 			<li> Creates a directory, <tt>projectFiles</tt>.  
 			<li> Creates 3 additional directories (as subdirectories of 
@@ -411,31 +488,39 @@ Enter number:  90
 		
 		Submit a single text file containing your shell commands.  See <a href="lab5.html">Lab 5</a>.
 
-	
-	<li > <b>Due Date: 13 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Easy circuit question from lab:  majority of 3 inputs, called <tt>in1</tt>, <tt>in2</tt>, <tt>in3</tt>:  
-		<ul>
-			<li> If two or more of the inputs are <tt>True</tt>, then your expression should evaluate to  <tt>True</tt>.
-			<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
-		</ul>
+
+
+<a id="set6"></a>
+<hr>	
+
+	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		<p>Pandas-- read in a local CSV and display
 		
-	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+		Modify your program from <a href="lab6.hmtl">Lab 6</a> that graphs historical NYC population data.  Instead of plotting the data as a line graph, use the pandas <tt>plot.bar()</tt> function for creating bar charts:
+		
+		<p>
+		<img src="nycBar.png" height = 400>
+
+
+	
+	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		Parking tickets, from lab?
+	
+	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+		<p>Pandas-- read from the web, use openData NYC and graph-- homeless shelter data?
+	
+	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
 		<p> Write a program that asks the user for a base, and then prints out 
 		all two digit numbers in that base.  See example below for the expected format of the output.  
-		
-		<p>
-		
-		<p> <i>Hint: See notes from Lecture 3.</i>  	
-	
-	
-	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Harder circuit question from lab.
-
+		<p> <i>Hint: See notes from Lecture 3.</i> 	 	
 	
-	<li > <b>Due Date: 18 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
 
 		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
@@ -458,52 +543,9 @@ Enter farthest right: 400
 <img src="croppedH.png" width = 300 >
 
 
-		
+		<p> <i>Hint:  See notes from Lecture ??.</i>
+	
 
-<a id="set6"></a>
-<hr>	
-
-	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-		<p>Pandas-- read in a local CSV and display
-		
-		Modify your program from <a href="lab6.hmtl">Lab 6</a> that graphs historical NYC population data.  Instead of plotting the data as a line graph, use the pandas <tt>plot.bar()</tt> function for creating bar charts:
-		
-		<p>
-		<img src="nycBar.png" height = 400>
-
-	
-	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-		<p>Pandas-- read from the web, use openData NYC and graph-- homeless shelter data?
-	
-	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
-	
-		<p>Accumulator design pattern-- count something?  CA snow pack, give pseudocode
-	
-	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-		<p> Dictionary question-- easy variant from lab?  
-	 	
-	
-	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
-		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
-		<ul>
-			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
-			
-			<li> If the number of rides is 3 or more, then do the following computation:
-			<ul>
-				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
-				<li> 7-day cost of ride is $31.00/number of rides.
-			</ul>
-			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
-			<p>
-			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
-		</ul>
-
-	
 		
 		
 <a id="set7"></a>
@@ -559,8 +601,17 @@ Enter farthest right: 400
 
 	<li > <b>Due Date: 6 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>pseudocode question about logical expressions or truth tables (need to test that R, G, & B are all above a threshold-- ask user for it?)
-		Count snowpack in California drought?  Amount flooding in Hurricane Harvey?
+		<p>Write a function that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
+		<ul>
+			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
+			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
+			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
+			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
+			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
+			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+		<p> You should include in the file a <tt>main()</tt> that calls your function several times to demonstrate that it works.
+
 	
 		Pseudocode for turning an image to all black or all white.  For each pixel, decide if its closer to black or two white, and make new pixel accordingly.
 	
@@ -658,17 +709,6 @@ main()
 		<p>Simple machine language program from lab.
 
 	<li > <b>Due Date: 29 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
-
-		<p>Write a function that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
-		<ul>
-			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
-			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
-			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
-			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
-			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
-			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
-		</ul>
-		<p> You should include in the file a <tt>main()</tt> that calls your function several times to demonstrate that it works.
 
 
 
