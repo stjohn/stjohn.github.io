@@ -106,7 +106,25 @@ environment.
 </ul>
 </tt>
 
+<p>Example:  counting snow pack in California, work through example.
 
+<h4>Landsat Satellite Data</h4>
+
+<p>
+Landsat Satellite Program is a joint program of USGS and NASA that has provided continuous images of the earth since 1972. The data is publicly available through the USGS-EROS site and has been invaluable in mapping changes in the earth. Today, we will use data images from the USGS remote sensing gallery:
+<blockquote>
+<a href="http://remotesensing.usgs.gov/gallery/">http://remotesensing.usgs.gov/gallery/</a>
+</blockquote>
+
+<p>
+The gallery consists usually of pairs of images demonstrating change over time.
+Our challenges for today are:
+<ul>
+	<li> California drought: how much change has their been in the Sierra Nevada snowpack during the current drought?
+	there are three images of the Sierra Nevada mountains. Count the amount of snow cover (pixels that are nearly white) in the image from 
+	<a href="CaliforniaDrought_02232011_md.png">February 2011</a>. Then count the snow cover in 
+	<a href="CaliforniaDrought_02122013_md.png">February 2013</a> and in 
+	<a href="CaliforniaDrought_02232014_md.png">February 2014</a>. What is the percentage coverage (using 2011 as a baseline)?  
 </div>
 
 
@@ -125,106 +143,40 @@ iframe in a circuit program
 Do majority of 3 inputs
 
 <p>
-Add two digit numbers with carry, 
+Give a half adder as a circuit, rewrite as logical expressions. 
+
+http://www.neuroproductions.be/logic-lab/
 
 </div>
 
 
-<div>
-<h3> More on the Command Line Interface</h3>
-
-<p>
-In <a href="lab2.html">Lab 2</a>, we introduced the shell, or command line, commands to create new directories (folders) and how to list the contents of those folders.  We can take those commands and store them in a file to be used
-later.
-
-<p>
-It's a bit archaic, but we can create the file with the <tt>vi</tt> editor.   It 
-dates back to the early days of the Unix operating system.  It has the advantage that it's integrated into the operating system and guaranteed to be there.  It is worth trying at least once (so if you're in a bind and need to edit unix files remotely, you can), but if you hate it (which is likely), use the graphical gedit (you can find it via the search icon on the left hand menu bar).
-
-<p>
-Let's create a simple shell script with <tt>vi</tt>:
-<ol>
-	<li> Open a terminal window.
-	<li> Type in the terminal window:  <tt>vi setupProject</tt>
-	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
-	which stands for "insert"
-	<li> Type the lines:
-	<pre>
-mkdir projectFiles
-cd projectFiles
-mkdir source
-mkdir data
-mkdir results
-	</pre>
-	<li> Click on the ESC (escape key-- usually on the upper row of keys) which escapes from insert mode.
-	<li> Type:  <tt>:wq</tt> which stands for "write my file" and "quit" (the ":" is necessary-- it tells vi that you want to use the menu commands).
-	<li> This brings us back to the terminal window.  
-	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
-	<tt>setupProject</tt>, you just created.
-	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
-	<pre>
-chmod +x setupProject
-	</pre>
-	(changes the "mode" to be executable).
-	
-	<li> To run your first shell script, you can now type its name at the terminal:
-	<pre>
-./setupProject
-	</pre>
-	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
-	<li>
-</ol>
 
 
-<p>Include one or two more commands from labs 3 onward...
 
-<p> sh-bang line?
-
-<p> Troubles with vi?  It's not intuitive-- here's some cheat sheets.  If you hate it, just edit using gEdit (the Linux version of TextEdit) or IDLE.
-
-
-<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
-		
-<p>All of your commands should be in a single text or shell file.  
-		
-</div>
 
 
 
 
 <div>
-<h3>Slicing Strings, Lists, & Arrays</h3>
+<h3> More on the Command Line Interface:  Absolute Paths</h3>
 
-<p>
-In lecture, we have been discussing <tt>range()</tt> and slicing of strings, lists, and arrays.  Let's work through an example both to recap and pull all these ideas together.
+<p><a href="lab4.html">Last lab</a>, we introduced relative paths for navigating the directories via the shell.  Relative paths (e.g. <tt>cd ../</tt>) used the current location when executing.  We can also use <i>absolute paths</i> that are independent of your location.  For example, 
+<pre>
+cd /usr/bin
+pwd
+ls
+</pre>
+will change your working directory to one of the machine's standard <tt>bin</tt> directories which is filled with programs, or binaries.  The next two commands show the path to the working directory and list its contents.  These binaries are in a central location to make it easier to find and use.
 
-<p>
-Recap indexing, link slicing to range, give examples with just lists and strings.
+<p>Since it is nice to be able to return to your default, or home directory, there is a built-in short-cut for home (<tt>~</tt>).  Try
+<pre>
+cd ~
+pwd
+ls
+</pre>
+The first command will return you to your home directory, no matter where you started.
 
-<p>
-Same idea works for arrays (they even have a step!)
-<p>
-Explain slices and indexing, take an image and add a border to it.
-
-<p>In addition to selecting individual "slices" of the , we can actually select regions of the image to manipulate.  Our image above, has 287 rows, 573 columns, and 4 color channels (for red, green, blue, and a fourth channel for luminosity or how transparent the image is).  
-Add in:
-<ul>
-	<li> Also cut the image in 1/2
-	
-img[:img.height/2,:,:]
-
-
-	
-	<li> Then the upper quarter
-	<li> Give it a border-- make it black, turn to purple?
-	<li> print(img.shape)  print(img.shape)
-	<li> Can traverse an image pixel by pixel-- explain slicing?
-	<li> Count pixels that are snow-- CA drought images?
-
-
-
-</ul>
-</div>
+<p>Next lab, we will introduce options for obtaining more details about files in your directories.
 
 <div>
 <h3>In-class Quiz</h3>

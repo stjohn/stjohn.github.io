@@ -363,6 +363,40 @@ During lab, there is a <a href="quizzes.html">quiz</a>.  The password to access 
 </div>
 
 
+<div>
+<h3> More on the Command Line Interface:  Relative Paths</h3>
+
+<p><a href="lab3.html">Last lab</a>, we introduced the Unix shell commands:
+<ul>
+	<li> <tt>cd</tt>: change directories (or folders),
+	<li> <tt>mkdir</tt>: make a directory,
+	<li> <tt>ls</tt>: list the contents of a directory, and 
+	<li> <tt>pwd</tt>: show the path (location) of the current working directory.
+</ul>
+
+<p>We'll expand a bit on the change directory (<tt>cd</tt>) command.  At a terminal window, we had typed:
+<pre>
+    mkdir thomasH
+    cd thomasH
+    pwd
+</pre>
+which created a new directory, changed the current directory to it, and shows us what directory we were in.  
+
+<p>In addition to changing to a directory, we can also change back to its "parent" directory by typing:
+<pre>
+    cd ../
+</pre>
+which says go to the parent of my current location.  It's often called a <i>relative path</i> since your destination is relative to your current location.  Typing 
+<pre>
+    pwd
+</pre>
+will show the current working directory.  What is the parent of your current directory?  
+
+
+
+<p>This simple <tt>cd ../</tt> gives a powerful way to navigate the directories (especially when we are working on a server without a graphical user interface or automating a process).  Next lab, we will introduce <i>absolute paths</i> that change directories to the same place each time (independent of your current working directory.
+</div>
+
 
 <div>
 

@@ -41,15 +41,167 @@ environment with the Pandas package installed.
 
 <div>
 <h3>Pandas</h3>
+
+
 </div>
 
 <div>
-<h3>More on Command Line Interface</h3>
+<h3>Slicing Strings, Lists, & Arrays</h3>
 
-Include one or two more commands from labs 3 onward...
+<p>
+In the last couple of lectures, we have been discussing <tt>range()</tt> and slicing of strings, lists, and arrays.  Let's work through an example both to recap and pull all these ideas together.
+
+<p>
+Let's say we want to crop an image.  For example, take the Hunter computer science department image:
+<p>
+<img src="csBridge.png" width = 300>	
+
+<p> and crop it to contain the words and save it to a new image file:
+<p>
+<img src="croppedH.png" width = 300 >
+
+<p> Figure out the size (img.shape)
+
+<p> Figure out a good bounding box.
+
+
+
+
+<p>
+Recap indexing, link slicing to range, give examples with just lists and strings.
+
+<p>
+Same idea works for arrays (they even have a step!)
+<p>
+Explain slices and indexing, take an image and add a border to it.
+
+<p>In addition to selecting individual "slices" of the , we can actually select regions of the image to manipulate.  Our image above, has 287 rows, 573 columns, and 4 color channels (for red, green, blue, and a fourth channel for luminosity or how transparent the image is).  
+Add in:
+<ul>
+	<li> Also cut the image in 1/2
+	
+img[:img.height/2,:,:]
+
+
+	
+	<li> Then the upper quarter
+	<li> Give it a border-- make it black, turn to purple?
+	<li> print(img.shape)  print(img.shape)
+	<li> Can traverse an image pixel by pixel-- explain slicing?
+	<li> Count pixels that are snow-- CA drought images?
+
+
+
+</ul>
+
+		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
+		
+		<p>A sample run of your program should look like:
+<pre>
+Enter image file name: csBridge.png
+Enter output file: croppedH.png
+Enter highest: 100
+Enter lowest: 150
+Enter farthest left: 200
+Enter farthest right: 400
+
+#Name:  CSci 127 Teaching Staff
+#Date:  Fall 2017
+#This program loads an image, displays it, and then creates, displays,
+#    and saves a new image that has only the red channel displayed.
+
+#Import the packages for images and arrays:
+import matplotlib.pyplot as plt  
+import numpy as np
+
+
+inImg = input('Enter input image: ')
+
+img = plt.imread(inImg)   #Read in image from csBridge.png
+plt.imshow(img)		           #Load image into pyplot
+plt.show()                         #Show the image (waits until closed to continue)
+
+outImg = input('Enter out image: ')
+t = int(input('Enter top:'))
+b = int(input('Enter bottom:')) 
+l = int(input('Enter left: '))
+r = int(input('Enter right: '))
+
+
+img2 = img[t:b,l:r]        
+
+plt.imshow(img2)         #Load our new image into pyplot
+plt.show()               #Show the image (waits until closed to continue)
+
+plt.imsave(outImg, img2)  #Save the image we created to the file: reds.png
+
+
+
+</pre>		
+
+
+
 </div>
 
 
+<div>
+<h3> More on the Command Line Interface</h3>
+
+<p>
+In <a href="lab2.html">Lab 2</a>, we introduced the shell, or command line, commands to create new directories (folders) and how to list the contents of those folders.  We can take those commands and store them in a file to be used
+later.
+
+<p>
+It's a bit archaic, but we can create the file with the <tt>vi</tt> editor.   It 
+dates back to the early days of the Unix operating system.  It has the advantage that it's integrated into the operating system and guaranteed to be there.  It is worth trying at least once (so if you're in a bind and need to edit unix files remotely, you can), but if you hate it (which is likely), use the graphical gedit (you can find it via the search icon on the left hand menu bar).
+
+<p>
+Let's create a simple shell script with <tt>vi</tt>:
+<ol>
+	<li> Open a terminal window.
+	<li> Type in the terminal window:  <tt>vi setupProject</tt>
+	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
+	which stands for "insert"
+	<li> Type the lines:
+	<pre>
+mkdir projectFiles
+cd projectFiles
+mkdir source
+mkdir data
+mkdir results
+	</pre>
+	<li> Click on the ESC (escape key-- usually on the upper row of keys) which escapes from insert mode.
+	<li> Type:  <tt>:wq</tt> which stands for "write my file" and "quit" (the ":" is necessary-- it tells vi that you want to use the menu commands).
+	<li> This brings us back to the terminal window.  
+	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
+	<tt>setupProject</tt>, you just created.
+	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
+	<pre>
+chmod +x setupProject
+	</pre>
+	(changes the "mode" to be executable).
+	
+	<li> To run your first shell script, you can now type its name at the terminal:
+	<pre>
+./setupProject
+	</pre>
+	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
+	<li>
+</ol>
+
+
+<p>Include one or two more commands from labs 3 onward...
+
+<p> sh-bang line?
+
+<p> Troubles with vi?  It's not intuitive-- here's some cheat sheets.  If you hate it, just edit using gEdit (the Linux version of TextEdit) or IDLE.
+
+
+<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
+		
+<p>All of your commands should be in a single text or shell file.  
+		
+</div>
 
 </div>
 
