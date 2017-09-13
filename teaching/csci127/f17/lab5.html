@@ -42,7 +42,10 @@ environment.
 
 <p> Last week, we introduced decisions (if-statements).  These relied on the "test" which was an expression that evaluated to true or false.  
 
-<p> We can build up more complicated logical expressions using built-in operators, <tt>and</tt>, <tt>or</tt>, and </tt>not</tt>.
+<p> We can build up more complicated logical expressions using built-in operators, <tt>and</tt>, <tt>or</tt>, and </tt>not</tt>.  A standard way to summaries these operators is with <b>truth tables</b>.  A truth table lists all the possible inputs and gives the output for each combination.  
+
+<p>For example, here is the truth table for 
+the <tt>and</tt> operator:
 
 <p>
 <table border="1px">
@@ -63,7 +66,10 @@ environment.
 	</tr>	
 </table>
 
-<p>Similarly for <tt>or</tt>:
+<p>It lists all the possible combinations of values for the inputs, <tt>in1</tt> and <tt>in2</tt> and what <tt>and</tt> would give as output.  For example, if <tt>in1</tt> is <tt>True</tt> and <tt>in2</tt> is <tt>False</tt>, the value of 
+<tt>in1 and in2</tt> can be read off the last column of the third line of the truth table as <tt>False</tt>.
+
+<p>Similarly here is the truth table for <tt>or</tt>:
 <table border="1px">
 	<tr>
 		<th><tt>in1</tt></th> <th><tt>in2</tt></th> <th><tt>in1 or in2</tt></th>
@@ -82,6 +88,9 @@ environment.
 	</tr>	
 </table>
 
+<p>For example, if <tt>in1</tt> is <tt>True</tt> and <tt>in2</tt> is <tt>False</tt>, the value of 
+<tt>in1 or in2</tt> can be read off the last column of the third line of the truth table as <tt>True</tt>.
+
 <p> The <tt>not</tt> operator changes the input from false to true, or true to false.  That is, <tt>not True</tt> is false and <tt>not False</tt> is true.  We can write this in the table format above:
 
 <p>
@@ -97,18 +106,14 @@ environment.
 	</tr>	
 </table>
 
+<p>
+These logical operators are useful building complex tests for our <tt>if</tt>-statements (as well as other control structures that will be introduced later).
 
-<tt>
-<ul>
-	<li> Add more explanation
-	<li> Give an example of combining statements
 
-</ul>
-</tt>
+<h4>Snow Pack in California</h4>
 
-<p>Example:  counting snow pack in California, work through example.
-
-<h4>Landsat Satellite Data</h4>
+<p>
+As an example of logical expressions, we will use them to estimate the snow pack level in California over the last drought using satellite imagery.
 
 <p>
 Landsat Satellite Program is a joint program of USGS and NASA that has provided continuous images of the earth since 1972. The data is publicly available through the USGS-EROS site and has been invaluable in mapping changes in the earth. Today, we will use data images from the USGS remote sensing gallery:
@@ -116,15 +121,79 @@ Landsat Satellite Program is a joint program of USGS and NASA that has provided 
 <a href="http://remotesensing.usgs.gov/gallery/">http://remotesensing.usgs.gov/gallery/</a>
 </blockquote>
 
-<p>
-The gallery consists usually of pairs of images demonstrating change over time.
-Our challenges for today are:
-<ul>
-	<li> California drought: how much change has their been in the Sierra Nevada snowpack during the current drought?
-	there are three images of the Sierra Nevada mountains. Count the amount of snow cover (pixels that are nearly white) in the image from 
-	<a href="CaliforniaDrought_02232011_md.png">February 2011</a>. Then count the snow cover in 
-	<a href="CaliforniaDrought_02122013_md.png">February 2013</a> and in 
-	<a href="CaliforniaDrought_02232014_md.png">February 2014</a>. What is the percentage coverage (using 2011 as a baseline)?  
+<p> The <a href="https://earthobservatory.nasa.gov/IOTD/view.php?id=89738">snow pack in the Sierra Nevada mountains</a> provide almost a third of the water used by California.  As a first estimate of snow pack, the number of pixels that are (nearly) white are counted.
+How much change has their been in the Sierra Nevada snowpack during the past drought in California?  Here are images from before and during the worst years of the drought:
+<table>
+	<tr>
+		<td><img src="CaliforniaDrought_02232011_md.png" width=300></td>
+		<td><img src="CaliforniaDrought_02122013_md.png" width=300></td>
+		<td><img src="CaliforniaDrought_02232014_md.png" width=300></td>
+	</tr>
+	<tr>
+		<td><a href="CaliforniaDrought_02232011_md.png">February 2011</a></td>
+		<td><a href="CaliforniaDrought_02122013_md.png">February 2013</a></td>
+		<td><a href="CaliforniaDrought_02232014_md.png">February 2014</a></td>
+	</tr>
+</table>
+ 
+<p>How much snow is there?  We will use the number of pixels that are nearly white as an estimate of the snow.  We can add in a new variable, <tt>countSnow</tt> to keep track of each time a pixel is nearly white.
+Here's an outline of our program:
+<ol>
+	<li> Import the libraries to manipulate and display arrays.
+	<li> Read in the California image and store in the variable, <tt>ca</tt>
+	<li> Create a new variable, <tt>countSnow</tt>, to keep track of the number of pixels that are nearly white.
+	<li> For each element in elevations, 
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; If the pixel is nearly white
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+			<tt>countSnow = countSnow + 1</tt>
+	<li> Print out <tt>countSnow</tt>.
+</ol>
+
+<p>When is a pixel white?  It's when the red, green, and blue values are close to 100%.  In code, we would have:
+<pre>
+t = 0.75    #Threshold for almost white-- can adjust between 0.0 and 1.0 
+
+...
+for i in range(ca.shape[0]):
+    for j in range(ca.shape[1]):
+	    if (ca[i,j,0] > t) and (ca[i,j,1] > t) and (ca[i,j,2] > t):
+            countSnow = countSnow + 1
+</pre>
+
+Let's translate that into Python.  Open up a new IDLE window and copy over the outline.  Using the image programs from <a href="lab4.html">last lab</a> as a template, fill in as much as possible before looking at the program below:
+
+<pre>
+#Name:  CSci 127 Teaching Staff
+#Date:  Fall 2017
+#This program loads an image, counts the number of pixels that are
+#    nearly white as an estimate for snow pack.
+
+#Import the packages for images and arrays:
+import matplotlib.pyplot as plt  
+import numpy as np
+
+
+ca = plt.imread('CaliforniaDrought_02232011_md.png')   #Read in image
+countSnow = 0            #Number of pixels that are almost white
+t = 0.75                 #Threshold for almost white-- can adjust between 0.0 and 1.0
+
+#For every pixel:
+for i in range(ca.shape[0]):
+     for j in range(ca.shape[1]):
+          #Check if red, green, and blue are > t:
+          if (ca[i,j,0] > t) and (ca[i,j,1] > t) and (ca[i,j,0] > t):
+               countSnow = countSnow + 1
+
+print("Snow count is", countSnow)
+</pre>
+
+<p>This program assumes that you have downloaded and saved <a href="CaliforniaDrought_02232011_md.png">CaliforniaDrought_02232011_md.png</a> 
+to the same directory as your program.
+
+<p>How can you modify your program to let the user specify the input file?  
+See
+<a href="ps.html">Programming Problem List</a>.
+
 </div>
 
 
@@ -136,14 +205,13 @@ Our challenges for today are:
 <p>
 Image of hardware
 
-<p>
-iframe in a circuit program
 
 <p>
 Do majority of 3 inputs
 
 <p>
 Give a half adder as a circuit, rewrite as logical expressions. 
+<p> <iframe width="800" height="300" frameborder="0" src="http://www.neuroproductions.be/logic-lab/"> </iframe>
 
 http://www.neuroproductions.be/logic-lab/
 
@@ -162,21 +230,23 @@ http://www.neuroproductions.be/logic-lab/
 
 <p><a href="lab4.html">Last lab</a>, we introduced relative paths for navigating the directories via the shell.  Relative paths (e.g. <tt>cd ../</tt>) used the current location when executing.  We can also use <i>absolute paths</i> that are independent of your location.  For example, 
 <pre>
-cd /usr/bin
-pwd
-ls
+    cd /usr/bin
+    pwd
+    ls
 </pre>
 will change your working directory to one of the machine's standard <tt>bin</tt> directories which is filled with programs, or binaries.  The next two commands show the path to the working directory and list its contents.  These binaries are in a central location to make it easier to find and use.
 
 <p>Since it is nice to be able to return to your default, or home directory, there is a built-in short-cut for home (<tt>~</tt>).  Try
 <pre>
-cd ~
-pwd
-ls
+    cd ~
+    pwd
+    ls
 </pre>
 The first command will return you to your home directory, no matter where you started.
 
-<p>Next lab, we will introduce options for obtaining more details about files in your directories.
+<p>Next lab, we will introduce scripts, or files of shell commands, that we can execute at the command line.
+
+</div>
 
 <div>
 <h3>In-class Quiz</h3>
