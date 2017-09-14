@@ -215,10 +215,13 @@ Since if the nucleotide is an A, we don't need to check if it's also a C, G, or 
       newNucleotide = "A"    
   else:
       print("Error:  not a valid value!")
+      
+      
 </pre>
 
 <p>Here's a demonstration of our code:
 
+<p>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=nucleotide%20%3D%20input%28'Enter%20a%20nucleotide%3A%20'%29%0Aif%20nucleotide%20%3D%3D%20%22A%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22T%22%0Aelif%20nucleotide%20%3D%3D%20%22C%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22G%22%0Aelif%20nucleotide%20%3D%3D%20%22G%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22C%22%0Aelif%20nucleotide%20%3D%3D%20%22T%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22A%22%20%20%20%20%0Aelse%3A%0A%20%20%20%20print%28%22Error%3A%20%20not%20a%20valid%20value!%22%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=1&heapPrimitives=false&origin=opt-frontend.js&py=2&rawInputLstJSON=%5B%22A%22%5D&textReferences=false"> </iframe>
 
 </div>
@@ -273,7 +276,7 @@ plt.show()
 <p> you can see the Hudson River and New York Harbor (bright blue) and the ridges of the Palisades along the Hudson and mountains in Staten Island and western New Jersey in yellow and red.  
 
 <p> 
-We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<tt>add ref</tt>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
+We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">NYT map</a>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
 
 <pre>
 	if elevation <= 0: 
@@ -305,7 +308,7 @@ We can use this data to make a flood map of New York City.  When Hurricane Sandy
 <img src = "floodMap.png">
 
 
-<p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <href="elevationsNYC.txt">elevationsNYC.txt</tt> is in the same directory as your program.
+<p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <a href="elevationsNYC.txt">elevationsNYC.txt</a> is in the same directory as your program.
 <pre>
 # Name:  ... your name here ...
 # Date:  September 2017
@@ -355,13 +358,6 @@ plt.show()
 
 </div>
 
-<div>
-<h3>In-class Quiz</h3>
-
-During lab, there is a <a href="quizzes.html">quiz</a>.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
-
-</div>
-
 
 <div>
 <h3> More on the Command Line Interface:  Relative Paths</h3>
@@ -390,12 +386,26 @@ which says go to the parent of my current location.  It's often called a <i>rela
 <pre>
     pwd
 </pre>
-will show the current working directory.  What is the parent of your current directory?  
-
+will show the current working directory.  Using <tt>cd ../</tt> and <tt>pwd</tt>, answer the following:
+<ul>
+	<li> What is the parent of your current directory?  
+	<li> Change to the parent directory.  What is the parent of your current directory?
+	<li> How many times can your repeat this?
+	<li> Which directory has no parent (i.e. "ancestor" to all the other directories?)?
+</ul>
 
 
 <p>This simple <tt>cd ../</tt> gives a powerful way to navigate the directories (especially when we are working on a server without a graphical user interface or automating a process).  Next lab, we will introduce <i>absolute paths</i> that change directories to the same place each time (independent of your current working directory.
 </div>
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a <a href="quizzes.html">quiz</a>.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
+
+</div>
+
+
 
 
 <div>

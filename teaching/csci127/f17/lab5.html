@@ -200,18 +200,42 @@ See
 <div>
 <h3>Logical Circuits</h3>
 
-<p>The logical expressions above are useful not only in designing decisions and selecting data in Python, but the same concept underlies much of the hardware of computers.  The <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>.
+<p>The logical expressions above are useful not only in designing decisions and selecting data in Python, but the same concept underlies much of the hardware of computers.  The <tt>and</tt>, <tt>or</tt>, and <tt>not</tt> can all be simulated in hardware via <a href="https://en.wikipedia.org/wiki/Logic_gate">logic gates</a>.  These gates take inputs (usually 0 or 1) and output a value, based on the logical operator it is simulating.  
+
+
+<p>Here is a simulator for circuits.  Let's see an <tt>and</tt> gate in action:
+<ul>
+	<li> From the left hand menu, pull over two switches (the little boxes with a toggle switch on them) to the canvas..  
+	<li> Scroll down to the next menu, and choose "AND" from the Logic ports and 
+	drag it over to canvas.
+	<li> Each switch has an output (little circle with an outward pointing arrow).  Click on the output of the first switch and link to the inward pointing arrow of the AND gate.
+	<li> Repeat with the other switch to connect it to the other input of the AND gate.
+	<li> Scroll down to the bottom of the left hand menu, and choose the output 
+	with the single red circle.
+	<li> Connect the output of the AND to the input of the red output gate.
+	<li> Toggle (click) on the switches.  What happens to the red output light?
+</ul>	
+<p> <iframe width="800" height="600" frameborder="0" src="http://www.neuroproductions.be/logic-lab/"> </iframe>
+
+<p>Next, follow the same steps to simulate an OR gate.  What changes?
+
+<h4>Majority of 3 Inputs</h4>
 
 <p>
-Image of hardware
+Now, let's build a circuit, or collection of gates, that takes
+majority of 3 inputs, called <tt>in1</tt>, <tt>in2</tt>, <tt>in3</tt>:  
+<ul>
+	<li> If two or more of the inputs are <tt>True</tt>, then your expression should evaluate to  <tt>True</tt>.
+	<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
+</ul>
+
+<p> <iframe width="800" height="600" frameborder="0" src="http://www.neuroproductions.be/logic-lab/"> </iframe>
 
 
-<p>
-Do majority of 3 inputs
 
 <p>
 Give a half adder as a circuit, rewrite as logical expressions. 
-<p> <iframe width="800" height="300" frameborder="0" src="http://www.neuroproductions.be/logic-lab/"> </iframe>
+<p> <iframe width="800" height="600" frameborder="0" src="http://www.neuroproductions.be/logic-lab/"> </iframe>
 
 http://www.neuroproductions.be/logic-lab/
 
