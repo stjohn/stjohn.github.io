@@ -389,6 +389,7 @@ Enter number:  90
 		
 		<p> Your resulting map should look like:
 		<p> <img src="floodMap2.png">
+		<p> and be saved to a file called <tt>floodMap.png</tt>.
 	
 
 
@@ -413,6 +414,8 @@ Enter number:  90
 Enter file name:  caDrought2014.png
 Snow count is 70210
 		</pre>
+		
+		<p> Note:  for this program, you only need to compute the snow count.  Showing the image will confuse the grading script, since it's only expecting the snow count.  
 
 		<p> <i>Hint: See <a href="lab5.html">Lab 5</a></i>.
 
@@ -548,23 +551,27 @@ Enter farthest right: 400
 		<p> <i>Hint:  See notes from Lecture 4.</i>		
 		
 
-	
+		<p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
 
 
 	
 	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Pandas-- read in a local CSV and display
+		<p> Modify the program from <a href="lab6.html">Lab 6</a> that displays the <a href="nycHistPop.csv">NYC historical population data</a>.  Your program should ask the user for the borough and then display the percentage of the population that has lived in that borough, over time.
 		
-		Modify your program from <a href="lab6.hmtl">Lab 6</a> that graphs historical NYC population data.  Instead of plotting the data as a line graph, use the pandas <tt>plot.bar()</tt> function for creating bar charts:
+		<p> A sample run of the program:
+<pre>
+Enter borough name:  Queens
+Enter output file name:  queensPercent.png
+</pre>
+		<p> The file <tt>queensPercent.png</tt>:
 		
-		<p>
-		<img src="nycBar.png" height = 400>
+		<p><img src="queensPercent.png">
+
+
+		<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
 
 	
-
-		
-		
 	
 	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 	
@@ -625,6 +632,7 @@ Enter farthest right: 400
 		
 		<p>
 		<iframe width="800" height="300" frameborder="0" src="http://www.neuroproductions.be/logic-lab/index.php?id=78960">
+		</iframe>
 
 		<p> The grading scripts are expecting a Python program (explain!)
 		
