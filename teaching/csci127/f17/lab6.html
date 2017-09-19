@@ -43,7 +43,7 @@ environment with the Pandas package installed.
 <h3>Pandas & Reading Data</h3>
 
 <p>
-To make reading files easier, we will use the pandas library that lets you read in CSV files very efficiently.  <a href="http://pandas.pydata.org">Pandas</a>, Python Data Analysis Library, is an elegant, open-source package for extracting, manipulating, and analyzing data, especially those stored in 2D arrays (like spreadsheets).  It incorporates most of the Python constructs and libraries that we have seen thus far.
+To make reading files easier, we will use the Pandas library that lets you read in structured data files very efficiently.  <a href="http://pandas.pydata.org">Pandas</a>, Python Data Analysis Library, is an elegant, open-source package for extracting, manipulating, and analyzing data, especially those stored in 2D arrays (like spreadsheets).  It incorporates most of the Python constructs and libraries that we have seen thus far.
 
 <p>(Pandas is installed on all the lab machines.  If you are using your own machine, see the directions at the end of <a href="lab1.html">Lab 1</a> for installing packages for Python.)
 <!--
@@ -72,8 +72,21 @@ The <tt>as pd</tt> allows us to use pandas commands without writing out <tt>pand
 
 <p>
 Next, save the <a href="nycHistPop.csv">NYC historical population data</a> to the same directory as your program.  
-This is a "comma separated values" file-- which is spreadsheet data, with commas separating the different columns (thus, the name).
-Open the file in your favorite spreadsheet program (such as Excel) or text editor to see what it looks like.  Note that it has 5 extra lines at the top before the column names occur.  The pandas function for reading in CSV files is <tt>read_csv()</tt>.  It has an option to skip rows which we will use here:
+This is a "comma separated values" file-- which is a plain text file containging spreadsheet data, with commas separating the different columns (thus, the name).
+Here's the first 10 lines of the file:
+<pre>
+Source:  https://en.wikipedia.org/wiki/Demographics_of_New_York_City,,,,,,
+* All population figures are consistent with present-day boundaries.,,,,,,
+First census after the consolidation of the five boroughs,,,,,,
+,,,,,,
+,,,,,,
+Year,Manhattan,Brooklyn,Queens,Bronx,Staten Island,Total
+1698,4937,2017,,,727,7681
+1771,21863,3623,,,2847,28423
+1790,33131,4549,6159,1781,3827,49447
+1800,60515,5740,6642,1755,4563,79215
+</pre>
+Note that it has 5 extra lines at the top before the column names occur.  The pandas function for reading in CSV files is <tt>read_csv()</tt>.  It has an option to skip rows which we will use here:
 
 <pre>
 pop = pd.read_csv('nycHistPop.csv',skiprows=5)
@@ -105,6 +118,7 @@ pop.plot(x="Year")
 <p>
 If you are using IDLE, you will need two more lines to make plots pop up automatically:
 <pre>
+
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -112,6 +126,7 @@ pop = pd.read_csv('nycHistPop.csv',skiprows=5)
 pop.plot(x="Year")
 
 plt.show()
+
 </pre>
 
 
@@ -153,7 +168,7 @@ print("The average number living in the Queens is", pop["Queens"].mean())
 Each column in the original spreadsheet is a column, or <tt>series</tt>.  We can look at the column for the Bronx with:
 
 <pre>
-print(pop['Bronx'])
+    print(pop['Bronx'])
 </pre>
 
 How would you look at the one for Brooklyn?
@@ -161,28 +176,38 @@ How would you look at the one for Brooklyn?
 <p>
 A nice thing about series is that you can do basic arithmetic with them.  For example, 
 <pre>
-print(pop['Bronx']*2)
+    print(pop['Bronx']*2)
 </pre>
 prints out double the values in the column.
 
 <p>You can also use multiple columns in a calculation:
 <pre>
-print(pop['Bronx']/pop['Total'])
+    print(pop['Bronx']/pop['Total'])
 </pre>
 prints out the fraction of the total population that lives in the Bronx.
 <p>
 We can save that series by creating a new column for it:
 <pre>
-pop['FractionBronx'] = pop['Bronx']/pop['Total']
+    pop['FractionBronx'] = pop['Bronx']/pop['Total']
 </pre>
 and then can use it to create a new graph:
 <pre>
-pop.plot(x = 'Years', y = 'FractionBronx')
+    pop.plot(x = 'Years', y = 'FractionBronx')
 </pre>
 shown in the following plot:
 <p>
-<img src="percentBronx.png" height = 400>
+<img src="fractionBronx.png" height = 400>
 <b>Fix image with percentage and fraction</b>
+
+Putting this altogether, we have a program:
+
+<pre>
+import pandas as pd
+pop = pd.read_csv('nycHistPop.csv',skiprows=5)
+pop['FractionBronx'] = pop['Bronx']/pop['Total']
+pop.plot(x = 'Years', y = 'FractionBronx')
+</pre>
+<b>Figure out how to save this to a file for grading</b>
 
 </div>
 
