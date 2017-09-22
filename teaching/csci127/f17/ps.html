@@ -524,9 +524,9 @@ Enter base: 2
 <a id="set6"></a>
 <hr>	
 
-<i>More to come...</i>
-<!--
-	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+
+	<li > <b>Due Date: 19 October</b>  <b style="float:right">Reading: <a href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">Numpy tutorial (DataCamp)</a></b><br>
 
 		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
 		
@@ -555,31 +555,44 @@ Enter farthest right: 400
 
 
 	
-	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 23 October</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-		<p> Modify the program from <a href="lab6.html">Lab 6</a> that displays the <a href="nycHistPop.csv">NYC historical population data</a>.  Your program should ask the user for the borough and then display the percentage of the population that has lived in that borough, over time.
+		<p> Modify the program from <a href="lab6.html">Lab 6</a> that displays the <a href="nycHistPop.csv">NYC historical population data</a>.  Your program should ask the user for the borough, an name for the output file, and then display the fraction of the population that has lived in that borough, over time.
 		
 		<p> A sample run of the program:
 <pre>
 Enter borough name:  Queens
-Enter output file name:  queensPercent.png
+Enter output file name:  qFraction.png
 </pre>
-		<p> The file <tt>queensPercent.png</tt>:
+		<p> The file <tt>qFraction.png</tt>:
 		
-		<p><img src="queensPercent.png">
+		<p><img src="qFraction.png" height = "300">
 
 
 		<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
 
 	
 	
-	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	<li > <b>Due Date: 24 October</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, 
+		<a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>	
 	
+		<p> Write a program that computes the minimum, average, and maximum population for a borough (entered by the user).  Your program should assume that the NYC historical population data file, <a href="nycHistPop.csv">nycHistPop.csv</a> is in the same directory.
+		
+		<p>A sample run of your program:
+<pre>
+Enter borough: Staten Island
+Minimum population:  727
+Average population:  139814.23076923078
+Maximum population:  474558
+</pre>
+		<p>and another run:
+<pre>
+Enter borough: Brooklyn
+Minimum population:  2017
+Average population:  1252437.5384615385
+Maximum population:  2738175
+</pre>
 
-		<p>Pandas-- read from the web, use openData NYC and graph-- homeless shelter data?
-		
-		
-	
 	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading: 
 	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
 		
@@ -592,7 +605,7 @@ Enter output file name:  queensPercent.png
 		
 		Submit a single text file containing your shell commands.  See <a href="lab6.html">Lab 6</a>.
 	
-	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 26 October</b>  <b style="float:right">Reading: <a href="https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Comb/gates.html">UMd Logical Gates Overview</a></b><br>
 
 
 		<p>Write a logical expression that takes a single input, <tt>in1</tt>, and <b>always</b> returns <tt>True</tt>.  Your expression must only use 
@@ -609,7 +622,16 @@ Enter output file name:  queensPercent.png
 <a id="set7"></a>
 <hr>	
 
+<i>More to come...</i>
+
+<!--
+
 	<li > <b>Due Date: 30 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+	
+		<p>Pandas-- read from the web, use openData NYC and graph-- homeless shelter data?
+		
+		
 	
 		<p>Using folium (see <a href="lab7.html">Lab 7</a>), create a map that will mark 5 cities.  When you click on the marker for each city, it should pop-up the name of the city.
 
@@ -628,12 +650,8 @@ Enter output file name:  queensPercent.png
 		
 	<li > <b>Due Date: 1 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-		<p> Write a function, <tt>xor()</tt>, that takes 2 inputs and returns the ``exclusive or'' of the inputs.  
-		
-		<p>
-		<iframe width="800" height="300" frameborder="0" src="https://www.neuroproductions.be/logic-lab/index.php?id=78960">
-		</iframe>
-
+		<p> Write a function, <a href="http://www.neuroproductions.be/logic-lab/index.php?id=78960">xor()</a>, that takes 2 inputs and returns the ``exclusive or'' of the inputs.  
+	
 		<p> The grading scripts are expecting a Python program (explain!)
 		
 		<p> Write a function, <tt>binary2decimal()</tt>, that takes a string of 0's and 1's as input and returns the equivalent number in decimal (base 10).
@@ -882,7 +900,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 14 September 2017.)</i><br>
+<i style="float:right">(This file was last modified on 22 September 2017.)</i><br>
 </div>
 </body>
 </html>

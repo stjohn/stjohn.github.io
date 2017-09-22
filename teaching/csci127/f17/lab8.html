@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Lab 8, CSci 127, Introduction to Computer Science, Hunter College, CUNY, Fall 2017</title>
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
+</head>
+<body>
+
+<div id="header">
+
+<h2>Lab 8<br>CSci 127: Introduction to Computer Science<br>
+Hunter College, City University of New York<br>
+Fall 2017<br><br>
+</h2>
+</div>
+
+<div>
+
+<p>
+Today's lab will focus on mapping data, using pandas, numpy, and folium.  
+
+<p>Software tools needed:  web browser and Python IDLE programming 
+environment with the pandas, numpy, and folium package installed.
+
+
+
+</div>
+
+
+
+<div>
+<h3>Using Python, Gradescope, and Blackboard</h3>
+
+<p>See <a href="lab1.html">Lab 1</a> for details on using Python, Gradescope, and Blackboard.
+</p>
+</div>
+
+<div>
+<h3>Using NYC OpenData</h3>
+
+<p>
+Much of the data collected by city agencies is publicly available at 
+<a href="http://opendata.cityofnewyork.us">NYC Open Data</a>.  Let's use pandas to plot some data from NYC OpenData.
+
+<p> We'll start with data that has the daily number of families and individuals residing in the Department of Homeless Services (DHS) shelter system:
+<ul>
+	<li> <a href="https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m">https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m</a>
+</ul>
+
+<p>
+Click on the "View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2015.  To do this:
+<ul>
+	<li> Click on the "Filter" button.
+	<li> On the menu that pops us, click on "Add a New Filter Condition".
+	<li> Choose "Date of Census" but change the "is" to be "is after".
+	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2015.
+	<li> Click the check box to the left of the data.  
+	<li> It will take a few seconds (it's a large file) but the rows on the left 
+	will be filtered to be all counts after January 1, 2015.
+</ul>
+To download the file, 
+<ul>
+	<li> Click on the "Export" button.
+	<li> Under "Download", choose "CSV".
+	<li> The download will begin automatically (files are usually stored in "Downloads" folder).
+</ul>
+
+<p>
+Move your CSV file to the directory you save your programs.  Open with Excel (or your favorite spreadsheet program) to make sure it downloaded correctly.  Look at the names of the columns since those will correspond to series we can plot.
+
+<p> Now, we can write a (short) program to display daily counts:
+<pre>
+import pandas as pd
+
+homeless = pd.read_csv("DHS_Daily_Report.csv")
+homeless.plot(x = "Date of Census", y = "Total Individuals in Shelter")
+</pre>
+
+Save your program and try on your dataset.
+
+
+<h4>Challenges</h4>
+
+<ul>
+	<li> What happens if you leave off the <tt>y = "Total Individuals in Shelter"</tt>?
+	<li> Display a plot that shows the fraction of the total population that is familes, over time.  Is it increasing or decreasing?
+</ul>
+
+</div>
+
+<div>
+<h3>github</h3>
+
+<a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
+The first part of today's classwork is to get started on github:
+
+<ol>
+	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.
+	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
+	<li> Work through the 
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
+	<li> Submit your github username for Problem #1 on Homework #3.  If you have more than one account, submit the username you plan to use for the programming and project for this course.
+</ol>
+
+</div>
+
+<div>
+<h3>Finding Errors</h3>
+</div>
+
+<div>
+<h3>In-class Quiz</h3>
+
+During lab, there is a <a href="quizzes.html">quiz</a>.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
+
+</div>
+
+
+
+<div>
+
+<h3>What's Next?</h3>
+
+<p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you, and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
+
+</div>
+
+
+
+</html>
