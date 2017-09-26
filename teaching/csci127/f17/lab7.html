@@ -17,7 +17,7 @@ Fall 2017<br><br>
 <div>
 
 <p>
-Today's lab will focus on mapping data, using pandas, numpy, and folium, and using Python from the command line.  
+Today's lab will focus on mapping data, using pandas, numpy, and folium.  
 
 <p>Software tools needed:  web browser and Python IDLE programming 
 environment with the pandas, numpy, and folium package installed.
@@ -28,7 +28,6 @@ environment with the pandas, numpy, and folium package installed.
 
 
 
-
 <div>
 <h3>Using Python, Gradescope, and Blackboard</h3>
 
@@ -36,227 +35,280 @@ environment with the pandas, numpy, and folium package installed.
 </p>
 </div>
 
-
 <div>
-<h3>World Maps</h3>
+<h3>Using NYC OpenData</h3>
 
-<p>We are going to use Python to make maps.  Let's start by mapping cities of the world.  
-Locations in the world are usually indicated by their latitude and longitude.  
+<p>
+Much of the data collected by city agencies is publicly available at 
+<a href="http://opendata.cityofnewyork.us">NYC Open Data</a>.  Let's use pandas to plot some data from NYC OpenData.
+
+<p>
+<img src="shelterTotal.png" height=400>
+
+<p> We'll start with data that has the daily number of families and individuals residing in the Department of Homeless Services (DHS) shelter system:
 <ul>
-	<li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
-	<li> <b>Longitude</b> measures the number of degrees east or west of the prime meridian.  When written as a number, it ranges from -180 to +180.
+	<li> <a href="https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m">https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m</a>
 </ul>
 
-We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's map some cities:
-
-<p> In the trinket below, map the following cities:
+<p>
+Click on the "View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2015.  To do this:
 <ul>
-	<li> New York City,
-	<li> Los Angeles,
-	<li> Paris, France,
-	<li> Tokyo, Japan, and 
-	<li> Rio, Brazil.
+	<li> Click on the "Filter" button.
+	<li> On the menu that pops us, click on "Add a New Filter Condition".
+	<li> Choose "Date of Census" but change the "is" to be "is after".
+	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2015.
+	<li> Click the check box to the left of the data.  
+	<li> It will take a few seconds (it's a large file) but the rows on the left 
+	will be filtered to be all counts after January 1, 2015.
 </ul>
-<p>
-<iframe src="https://trinket.io/embed/python/7705126110?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
-</div>
-
-<div>
-<h3>Pandas & Folium</h3>
-
-<p>  We introduced <a href="http://pandas.pydata.org">Pandas</a> in <a href="lab6.html">Lab 6</a>.  We'll use here to read in large CSV files and then make maps of the GIS data inside it.
-
-<p>
-<a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make beautiful interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding html file in a web browser to see your map.
-
-<p>
-Folium is installed on the lab machines,  To check to see if your home machine has it, type at the Python prompt:
-<pre>
-import folium
-</pre>
-
-If you get an error, go to the terminal, and download it:
-<pre>
-pip install folium
-</pre>
-
-<h4>Our First Map</h4>
-
-<p>
-<img src="worldMap.png" height=400>
-
-<p>To make a map in folium, the process is:
+To download the file, 
 <ul>
-	<li> Write a program in Python, using folium.
-	<li> Run the program, which outputs an .html file.
-	<li> Open the .html file in a browser.
+	<li> Click on the "Export" button.
+	<li> Under "Download", choose "CSV".
+	<li> The download will begin automatically (files are usually stored in "Downloads" folder).
 </ul>
 
-<p> Here's our first program:
+<p>
+Move your CSV file to the directory that you save your programs.  Open with Excel (or your favorite spreadsheet program) to make sure it downloaded correctly.  Look at the names of the columns since those will correspond to series we can plot.
+
+<p> Now, we can write a (short) program to display daily counts:
 <pre>
-#Import the folium package for making maps
-import folium
-
-#Create a map, centered (0,0) and zoomed out a bit:
-mapWorld = folium.Map(location=[0, 0],zoom_start=3)
-
-#Save the map:
-mapWorld.save(outfile='tempMap.html')
-</pre>
-
-<p>
-Save this file and run it.  It will create a file called <tt>tempMap.html</tt>.
-Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" and then choose the file <tt>tempMap.html</tt>.  You should see a map of the world.
-
-<h4>Map of New York City</h4>
-
-<p>
-<img src="hunterMap.png" height=400>
-
-<p>
-<b>UPDATE!!</b>
-
-<p>
-Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
-<pre>
-import folium
-
-mapCUNY = folium.Map(location=[40.75, -74.125],zoom_start=10)
-</pre>
-
-<p> Let's add in a marker for Hunter College:
-<pre>
-folium.Marker(location = [40.873442, -73.889361], popup = "Hunter College").add_to(mapCUNY)
-</pre>
-
-<p>and create the .html file:
-<pre>
-mapCUNY.save(outfile='tempMap.html')
-</pre>
-
-</div>
-
-
-<div>
-<h3>Plotting from Input</h3>
-
-<p>Let's write a program that plots 3 cities that the user enters.  
-
-<p> See <a href="ps.html">Programming Problem List</a>.
-
-</div>
-
-<div>
-<h3>Plotting from Files</h3>
-
-We can combine the mapping of folium with the tools we have used for CSV files.
-
-<p>Let's make an interactive map of the the CUNY campuses.  Instead of typing every location in by hand, we can use a file.   First, download a CSV file from data.ny.gov:
-<ul>
-	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
-</ul>
-(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
-
-<p>
-Let's use Pandas to read in the file.  We will need to import pandas and folium:
-<pre>import folium
-from folium.plugins import MarkerCluster
 import pandas as pd
-</pre>
-Note that we're explicitly importing MarkerCluster from the Folium plugins (we're going to use it to cluster markers together as the map zooms out).
+import matplotlib.pyplot as plt
 
-
-
-<p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
-<pre>
-cuny = pd.read_csv('cunyLocations.csv')
-print (cuny["Campus"])
+homeless = pd.read_csv("DHS_Daily_Report.csv")
+homeless.plot(x = "Date of Census", y = "Total Individuals in Shelter")
+plt.show()
 </pre>
 
-<p>Next, let's set up a map, centered on New York City:
-<pre>
-mapCUNY = folium.Map(location=[40.75, -74.125])
-</pre>
+Save your program and try on your dataset.
 
-<p>
-We need to add markers for each campus.  First, we'll create empty lists to hold the locations, the popup messages, and the icons:
-<pre>
-#Create lists to hold coordinates and popups:
-coords = []
-popups = []
-icons = []
-</pre>
 
-We're going to iterate through the rows of dataframe to create the markers:
-<pre>
-#For each row in the CSV file:
-for index,row in cuny.iterrows():
-    #Extract the data:
-    lat = row["Latitude"]
-    lon = row["Longitude"]
-    name = row["Campus"]
-    #Add the [lat,lon] to list of coordinates:
-    coords.append([lat,lon])
-    #Add the names to the popup list>
-    popups.append(name)
-    if row["College or Institution Type"] == "Senior Colleges":
-        icons.append(folium.Icon(icon='cloud'))
-    else:
-        icons.append(folium.Icon(color='green'))
-</pre>
-Note that we're putting in different icons, depending on whether its a senior college or not.
+<h4>Challenges</h4>
 
-<p>Once we have everything set up, let's add all the markers at once:
-<pre>
-#Add all the markers at once:
-mapCUNY.add_children(MarkerCluster(locations=coords, popups = popups, icons=icons))
-</pre>
-
-<p>Lastly, let's save our map:
-<pre>
-mapCUNY.save(outfile='cunyLocations.html')
-</pre>
-
-<p>
-To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
-
+<ul>
+	<li> What happens if you leave off the <tt>y = "Total Individuals in Shelter"</tt>?
+	<li> Display a plot that shows the fraction of the total population that is familes, over time.  Is it increasing or decreasing?
+	<li> How can you save your plot to file?  (Hint:  See <a href="lab6.html">Lab 6</a>.)
+</ul>
 
 </div>
 
+<div>
+<h3>github</h3>
+
+<a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
+We will use it as a place (<b>repository</b> or "repo") for programs and lab exercises.
+
+<ol>
+	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.  <tt>github</tt> will be used in future classes (and by employers), so, choose an account name that you can use for years to come.
+	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
+	<li> Work through the 
+		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
+</ol>
+
+</div>
 
 <div>
 <h3><tt>main()</tt></h3>
 
-<p>Python allows you to write programs as scripts, basically a list of commands that are executed one after the other.  You can also organize the programs in functions, which groups commands together that can be reused.  Many programming languages (like C++ or Java) require that your programs be organized in functions.
-
-<p>function main()
-
-<p> include conditional execution
-
-<p> test execution both ways.
+<p>Python allows you to write programs as scripts: basically, a list of commands that are executed one after the other.  You can also organize the programs in functions, which groups commands together that can be reused.  Many programming languages (like C++ or Java) require that your programs be organized in functions.
 
 
+<p>To define function in Python, we use the <tt>def</tt> command, which has the basic form:
+
+<pre>
+def myFunction(input1, input2, ...):
+    command1
+    command2 
+    ...
+</pre>
+Note that everything indented below the <tt>def</tt> line is considered part of the function.  When you type the function name (followed by parenthesis), it calls the function, which means it executes all the commands, one after another, that are part of the function.
+
+<p>Let's rewrite our first program, using functions.  By tradition (and since it matches the naming protoccol of C & C++), we will call our function <tt>main()</tt> (see <a href="https://interactivepython.org/runestone/static/thinkcspy/Functions/mainfunction.html">Section 6.7:  Using a Main Function</a>):
+
+<pre>
+#Name:  your name here
+#Date:  October 2017
+#This program, uses functions, says hello to the world!
+
+def main():
+    print("Hello, World!") 
+    
+if __name__ == "__main__":
+    main()
+</pre>
+
+In Python, we have the option of running our programs as a standalone program, or included as module as part of another program.  Since it's common to do either, we include the last two lines of the file, which say if the program is being run directly (which we can test to see if the variable <tt>__name__</tt> that is set by Python is <tt>__main__</tt>), then we call <tt>main()</tt>.  If it's not, then the file is being included in something else, and leaves it to that program to call it.
+
+<p> Save your program and try running it in IDLE.
+
+<p> Now, at the prompt (the window with the lines beginning with <tt>&gt;&gt;&gt;</tt>), type <tt>main()</tt>.  This calls the function directly.  Note that calling the function either way results in the same actions:  the commands inside <tt>main()</tt> are executed.
+
+<p>
+When you have a running version, see the <a href="ps.html">Programming Problem List</a>.
 </div>
-
 
 <div>
-<h3>Using Python from the Command Line Interface</h3>
+<h3>Finding Errors</h3>
 
-Include one or two more commands from labs 3 onward...
-<p> sh-bang line?
+Finding, and fixing errors, in your programs is a very useful skill.  Let's look at a program with lots of errors and work through how to identify the issues and fix them.  The program, <a href="../../cmp/cmp230/f14/errors.py">errors.py</a>, when loaded into IDLE does not run:
+<pre># errors.py is based on dateconvert2.py from Chapter 5 of the Zelle textbook
+#     Converts day month and year numbers into two date formats
 
-https://en.wikipedia.org/wiki/Shebang_(Unix)
+def main()
+    # get the day month and year
+    day, month year = eval(input("Please enter day, month, and year numbers: ")
+
+    date1 = str(month)"/"+str(day)+"/"+str(year)
+
+    months = ["January", "February", "March", "April", 
+              "May", "June", "July", "August", 
+              "September", "October", "November", "December"]
+    monthStr = months[month+1]
+    date2 = monthStr+" " + str(day) + ",  + str(year)
+
+    print("The date is" date1, "or", date2+".")
+
+main()
+</pre>
+Instead, a dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="../../cmp/cmp230/f14/errorWindow1.jpg">
+<br>
+
+<p>The red line indicates where the intepreter has found an error.  Can you tell what it is?  Syntax is another word for grammar, so, it most likely missing `punctuation' or a misspelling of some sort.  We have spelled <tt>def</tt> correctly and have the right number of parenthesis, so, what else is missing?
+
+<p>The answer is after the parenthesis on a function definition, a colon is required.  Add that in:
+<pre>
+    def main():
+</pre>
+and try to run the program again.
+
+<p>Again, we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow2.jpg"><br>
+<br>Instead of the whole line being highlighted, only the word <tt>year</tt> is.  The Python intepreter was not expecting <tt>year</tt> and says there is a grammatical mistake.  Since <tt>year</tt> does not include any grammatical constructs, we need to look <i>before</i> the message to see where the error is.  
+Do you see it?
+
+<p>The answer is lists of variables need commas in between them to distinguish one from the next.  Add the comma in:
+<pre>
+    day, month, year = ...
+</pre>
+and try to run the program again.
+
+<p>
+Once more we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow3.jpg"><br>
+
+<p>It has highlighted the first item, <tt>date1</tt> on the line.  That is a name and looks fine.  So, as above, let's look before the highlighted error to see if there's a problem.  The line above it is:
+<pre>
+    day, month, year = eval(input("Please enter day, month, and year numbers: ")
+</pre>
+It did not highlight this line, so, the problem must be at the end.  Do you see it?  
+
+<p>The answer is we are missing a closing parenthesis.  The line has two left parenthesis but only one right parenthesis.  Add the right parenthesis in:
+<pre>
+    ... and year numbers: "))
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow4.jpg"><br>
+
+<p>The intepreter does not understand the second " on the line.  Why?  What is this line doing?  It's constructing a string and storing it in the variable <tt>date1</tt>.  How do you build a string out of smaller strings?
+
+<p>The answer is to put smaller strings together (called concatenation) we need to use the plus sign (+).  The line is missing a plus sign right before the quotes.  Add the plus sign in:
+<pre>
+    date1 = str(month) + "/" ...
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box, but this one has a different message:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow5.jpg"><br>
+
+<p><tt>EOL</tt> means "End of the line", so, the message says that the end of the line was reached before you finished defining the string.  How can you fix this?
+
+<p>The answer is to end the string, using quotation marks.  The line is missing a quotation mark at the very end.  Add the quotation mark :
+<pre>
+    ...+ ",  + str(year)"
+</pre>
+and try to run the program again.
+
+<p>
+Our familiar dialog box returns:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow6.jpg"><br>
+
+<p>We have seen this type of error before.  How do you fix it?
+
+<p>The answer is lists of arguments need commas in between them to distinguish one from the next.  Add the comma in:
+<pre>
+    ... date is", date1 ...
+</pre>
+and try to run the program again.
+
+<p>It runs!  Now let's make sure it works.  Type in at the prompt:
+<pre>
+Please enter day, month, and year numbers: 31, 12, 2014
+</pre>
+Uh oh, instead of output, we get the following messages:
+<pre style = "color: red">
+Traceback (most recent call last):
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 18, in <module>
+    main()
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 13, in main
+    monthStr = months[month+1]
+IndexError: list index out of range
+</pre>
+<p>When you see messages like this, go to the very last line:
+<pre style = "color: red">
+IndexError: list index out of range
+</pre>
+It says that the index for our list is out of range.  An index is the item of the list that we're accessing.  For example, <tt>months[1]</tt> has index <tt>1</tt> and will give us <tt>February</tt>.  The range of the index for a list is <tt>0</tt> to one less than the length of the list.  In the case of <tt>months</tt>, the range is <tt>[0,1,2,...,11]</tt>.  What went wrong when we entered <tt>12</tt> for our month?  
 
 
+<p>The answer is we used <tt>month+1 = 12 + 1 = 13</tt> as the index:
+<pre>
+    monthStr = months[month+1]
+</pre>
+which is out of range.  What do we want instead?  Instead of adding <tt>1</tt>, we should subtract <tt>1</tt>.  Change it in the program:
+<pre>
+    monthStr = months[month-1]
+</pre>
+and try to run the program again.
 
-<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
-		
-<p>All of your commands should be in a single text or shell file.  
-		
-</div>
+<p>It still runs, but does it work?  Let's try the same input again:
+<pre>
+Please enter day, month, and year numbers: 31, 12, 2014
+The date is 12/31/14 or December 31,  + str(year).
+</pre>
 
+<p>Something odd is happening at the end-- <tt>str(year)</tt> does not look right.  Let's look at the print statement:
+<pre>
+date2 = monthStr+" " + str(day) + ",  + str(year)"
+</pre>
+The intepreter is treating <tt>",  + str(year)"</tt> as a string (instead of evaluating <tt>str(year)</tt>), so, we must have put the quotation mark in the wrong place before.  Let's move it:
+<pre>
+date2 = monthStr+" " + str(day) + ","  + str(year)
+</pre>
+and try to run the program again.
 
+<p>Success!  But try a few other inputs, just to make sure.  It is always good to try cases that are near the `boundary' of what's allowed, since those are the places we are most likely to make mistakes:
+<pre>
+Please enter day, month, and year numbers: 1,1,2015
+The date is 1/1/2015 or January 1,2015.
+
+Please enter day, month, and year numbers: 1, 2, 2003
+The date is 2/1/03 or February 1,2003.
+
+Please enter day, month, and year numbers: 4, 7, 1976
+The date is 7/4/1976 or July 4,1976.
+</pre>
+
+<p>We have removed all the errors, and the program now runs correctly!
+
+</div>    
 
 <div>
 <h3>In-class Quiz</h3>
