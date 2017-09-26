@@ -40,7 +40,7 @@ environment with the pandas, numpy, and folium package installed.
 <div>
 <h3>World Maps</h3>
 
-<p>We can use the techniques from last lab to map and different scales.  Let's start by mapping cities of the world.  
+<p>We are going to use Python to make maps.  Let's start by mapping cities of the world.  
 Locations in the world are usually indicated by their latitude and longitude.  
 <ul>
 	<li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
@@ -54,10 +54,8 @@ We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's
 	<li> New York City,
 	<li> Los Angeles,
 	<li> Paris, France,
-	<li> Tokyo, Japan,
-	<li> Sydney, Australia,
-	<li> Rio, Brazil, and 
-	<li> Cairo, Egypt
+	<li> Tokyo, Japan, and 
+	<li> Rio, Brazil.
 </ul>
 <p>
 <iframe src="https://trinket.io/embed/python/7705126110?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
@@ -73,12 +71,12 @@ We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's
 <a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make beautiful interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding html file in a web browser to see your map.
 
 <p>
-Check to see if you have folium already:
+Folium is installed on the lab machines,  To check to see if your home machine has it, type at the Python prompt:
 <pre>
 import folium
 </pre>
 
-If not, go to the terminal, and download it:
+If you get an error, go to the terminal, and download it:
 <pre>
 pip install folium
 </pre>
@@ -114,7 +112,10 @@ Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" an
 <h4>Map of New York City</h4>
 
 <p>
-<img src="lehmanMap.png" height=400>
+<img src="hunterMap.png" height=400>
+
+<p>
+<b>UPDATE!!</b>
 
 <p>
 Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
@@ -124,9 +125,9 @@ import folium
 mapCUNY = folium.Map(location=[40.75, -74.125],zoom_start=10)
 </pre>
 
-<p> Let's add in a marker for Lehman College:
+<p> Let's add in a marker for Hunter College:
 <pre>
-folium.Marker(location = [40.873442, -73.889361], popup = "Lehman College").add_to(mapCUNY)
+folium.Marker(location = [40.873442, -73.889361], popup = "Hunter College").add_to(mapCUNY)
 </pre>
 
 <p>and create the .html file:
@@ -134,6 +135,15 @@ folium.Marker(location = [40.873442, -73.889361], popup = "Lehman College").add_
 mapCUNY.save(outfile='tempMap.html')
 </pre>
 
+</div>
+
+
+<div>
+<h3>Plotting from Input</h3>
+
+<p>Let's write a program that plots 3 cities that the user enters.  
+
+<p> See <a href="ps.html">Programming Problem List</a>.
 
 </div>
 
@@ -168,11 +178,6 @@ print (cuny["Campus"])
 <pre>
 mapCUNY = folium.Map(location=[40.75, -74.125])
 </pre>
-
-
-
-
-
 
 <p>
 We need to add markers for each campus.  First, we'll create empty lists to hold the locations, the popup messages, and the icons:
@@ -220,7 +225,19 @@ To view your map, open a browser.  From the browser, open the file:  <tt>cunyLoc
 </div>
 
 
+<div>
+<h3><tt>main()</tt></h3>
 
+<p>Python allows you to write programs as scripts, basically a list of commands that are executed one after the other.  You can also organize the programs in functions, which groups commands together that can be reused.  Many programming languages (like C++ or Java) require that your programs be organized in functions.
+
+<p>function main()
+
+<p> include conditional execution
+
+<p> test execution both ways.
+
+
+</div>
 
 
 <div>
