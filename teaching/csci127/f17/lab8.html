@@ -138,26 +138,13 @@ mapCUNY.save(outfile='tempMap.html')
 
 
 <div>
-<h3>Plotting from Input</h3>
-
-<p>Let's write a program that plots 3 cities that the user enters.  
-
-<p> See <a href="ps.html">Programming Problem List</a>.
-
-</div>
-
-<div>
 <h3>Plotting from Files</h3>
 
-<p>  
-We can combine the mapping of folium with the tools we have used for CSV files.
-We introduced <a href="http://pandas.pydata.org">Pandas</a> in <a href="lab6.html">Lab 6</a>.  We'll use it here to read in large CSV files and then make maps of the GIS data inside the files.
-
-
-
 We can combine the mapping of folium with the tools we have used for CSV files.
 
-<p>Let's make an interactive map of the the CUNY campuses.  Instead of typing every location in by hand, we can use a file.   First, download a CSV file from data.ny.gov:
+<iframe width="600" height="400" frameborder="0" src="cunyLocations.html"></iframe>
+
+<p>Let's make an interactive map of the the CUNY campuses.  We can download a CSV file from data.ny.gov:
 <ul>
 	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
 </ul>
@@ -166,12 +153,8 @@ We can combine the mapping of folium with the tools we have used for CSV files.
 <p>
 Let's use Pandas to read in the file.  We will need to import pandas and folium:
 <pre>import folium
-from folium.plugins import MarkerCluster
 import pandas as pd
 </pre>
-Note that we're explicitly importing MarkerCluster from the Folium plugins (we're going to use it to cluster markers together as the map zooms out).
-
-
 
 <p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
 <pre>
@@ -185,38 +168,18 @@ mapCUNY = folium.Map(location=[40.75, -74.125])
 </pre>
 
 <p>
-We need to add markers for each campus.  First, we'll create empty lists to hold the locations, the popup messages, and the icons:
+We need to add markers for each campus.  We're going to iterate through the rows of dataframe to create the markers:
 <pre>
-#Create lists to hold coordinates and popups:
-coords = []
-popups = []
-icons = []
-</pre>
-
-We're going to iterate through the rows of dataframe to create the markers:
-<pre>
-#For each row in the CSV file:
 for index,row in cuny.iterrows():
-    #Extract the data:
     lat = row["Latitude"]
     lon = row["Longitude"]
     name = row["Campus"]
-    #Add the [lat,lon] to list of coordinates:
-    coords.append([lat,lon])
-    #Add the names to the popup list>
-    popups.append(name)
-    if row["College or Institution Type"] == "Senior Colleges":
-        icons.append(folium.Icon(icon='cloud'))
-    else:
-        icons.append(folium.Icon(color='green'))
+    newMarker = folium.Marker([lat, lon], popup=name)
+    newMarker.add_to(mapCUNY)
 </pre>
-Note that we're putting in different icons, depending on whether its a senior college or not.
-
-<p>Once we have everything set up, let's add all the markers at once:
-<pre>
-#Add all the markers at once:
-mapCUNY.add_children(MarkerCluster(locations=coords, popups = popups, icons=icons))
-</pre>
+For each row in the file, we find the latitude, longitude, and name of the campus, and use those to create a new marker which we add to our map.  We repeat for each row, until we have made markers for all 23 campuses in the file.
+<!--(Note:  we're using an older way to add markers (since it's simpler), and  some versions of folium will give a warning to use the newer version).
+(Note:  this isn't the most efficient way to plot points.  We'll discuss a better way-- creating a geoJSON layer-- next week.)-->
 
 <p>Lastly, let's save our map:
 <pre>
@@ -230,8 +193,22 @@ To view your map, open a browser.  From the browser, open the file:  <tt>cunyLoc
 </div>
 
 
+<!--
+<div>
+<h3>Plotting from Input</h3>
+
+<p>Let's write a program that plots 5 locations that the user enters. 
+
+<p> Write with a function?
+
+<p> See <a href="ps.html">Programming Problem List</a>.
+
+</div>
+-->
 
 
+
+<!--
 
 <div>
 <h3>Using Python from the Command Line Interface</h3>
@@ -249,7 +226,7 @@ https://en.wikipedia.org/wiki/Shebang_(Unix)
 		
 </div>
 
-
+-->
 
 <div>
 <h3>In-class Quiz</h3>
