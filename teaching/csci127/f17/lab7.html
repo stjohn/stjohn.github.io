@@ -44,6 +44,7 @@ Much of the data collected by city agencies is publicly available at
 
 <p>
 <img src="shelterTotal.png" height=400>
+<br>(Totals for 2015-2016)
 
 <p> We'll start with data that has the daily number of families and individuals residing in the Department of Homeless Services (DHS) shelter system:
 <ul>
@@ -51,15 +52,15 @@ Much of the data collected by city agencies is publicly available at
 </ul>
 
 <p>
-Click on the "View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2015.  To do this:
+Click on the "Explore Data/View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2017.  To do this:
 <ul>
 	<li> Click on the "Filter" button.
 	<li> On the menu that pops us, click on "Add a New Filter Condition".
 	<li> Choose "Date of Census" but change the "is" to be "is after".
-	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2015.
+	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2017.
 	<li> Click the check box to the left of the data.  
 	<li> It will take a few seconds (it's a large file) but the rows on the left 
-	will be filtered to be all counts after January 1, 2015.
+	will be filtered to be all counts after January 1, 2017.
 </ul>
 To download the file, 
 <ul>
@@ -137,20 +138,45 @@ When you have a running version, see the <a href="ps.html">Programming Problem L
 </div>
 
 
+
+
 <div>
-<h3>github</h3>
+<h3>Using Python from the Command Line Interface</h3>
 
-<a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
-We will use it as a place (<b>repository</b> or "repo") for programs and lab exercises.
+<p> In addition to IDLE (and other development environments with graphical interfaces), Python can also be used directly from the command line.  In fact, this is what the grading scripts do to evaluate your programs, since Gradescope uses a server in the cloud and does not have a graphics window.
 
-<ol>
-	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.  <tt>github</tt> will be used in future classes (and by employers), so, choose an account name that you can use for years to come.
-	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
-	<li> Work through the 
-		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
-</ol>
+<p> To start, we need a command line interface (aka a terminal window).  To launch the terminal, click on the terminal window icon in the left menu, or go to search option in the upper left corner and type and then open <tt>terminal</tt>.
 
+<p> In <a href="lab1.html">Lab 1</a>, we launched IDLE from the terminal by 
+typing:
+<pre>
+    idle3
+</pre>
+
+<p> We can use Python in a similar fashion.  In a terminal window, change directories to where you stored your hello program above (see <a href="lab4.html">Lab 4</a> for changing directories at the command line).
+
+<p> Let's run your hello program from the command line.  If your program is 
+called <tt>hello.py</tt>, you would type at the command line:
+<pre>
+    python3 hello.py
+</pre>
+Notice that the output goes directly to the terminal window.  Try running other programs you have written from the command line.
+
+<!--Include one or two more commands from labs 3 onward...
+<p> sh-bang line?
+
+https://en.wikipedia.org/wiki/Shebang_(Unix)
+
+
+
+<p>Command line script:  Using Unix shell commands, create a directory, <tt>projectFiles</tt>.  The directory should contain three subdirectories:  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>, as well as a <tt>README</tt> file.  The subdirectories will be empty, but the <tt>README</tt> file should contain the message:  "This project is organized with code (in source), data, and output from the computations (in results)."
+		
+<p>All of your commands should be in a single text or shell file.  -->
+		
 </div>
+
+
+
 
 <div>
 <h3>In-class Quiz</h3>

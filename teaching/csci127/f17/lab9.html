@@ -29,16 +29,162 @@ environment with the pandas, numpy, and folium package installed.
 
 
 <div>
-<h3></h3>
+<h3>World Maps</h3>
+
+<p>We are going to use Python to make maps.  Let's start by mapping cities of the world.  
+Locations in the world are usually indicated by their latitude and longitude.  
+<ul>
+	<li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
+	<li> <b>Longitude</b> measures the number of degrees east or west of the prime meridian.  When written as a number, it ranges from -180 to +180.
+</ul>
+
+We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's map some cities:
+
+<p> In the trinket below, map the following cities (GIS coordinates are rounded to the nearest whole number):
+<ul>
+	<li> New York City (longitude: -74, latitude: 41),
+	<li> Los Angeles (longitude: -118, latitude: 34),
+	<li> Paris, France (longitude: 2, latitude:49),
+	<li> Tokyo, Japan (longitude: 140, latitude: 35), and 
+	<li> Rio de Janeiro, Brazil (longitude: -43, latitude: -23) .
+</ul>
+<p>
+<iframe src="https://trinket.io/embed/python/7705126110?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 </div>
 
 <div>
-<h3></h3>
+<h3>Folium</h3>
 
+<p>
+<a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make beautiful interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding html file in a web browser to see your map.
+
+<p>
+(Folium is installed on the lab machines,  To check to see if your home machine has it, type at the Python prompt:
+<tt>
+import folium
+</tt>
+<br>
+If you get an error, go to the terminal, and download it:
+<pre>
+pip install folium
+</pre>
+and the package will download and install.)
+
+<h4>Our First Map</h4>
+
+<p>
+<img src="worldMap.png" height=400>
+
+<p>To make a map in folium, the process is:
+<ul>
+	<li> Write a program in Python, using folium.
+	<li> Run the program, which outputs an <tt>.html</tt> file.
+	<li> Open the <tt>.html</tt> file in a browser.
+</ul>
+
+<p> Here's our first program:
+<pre>
+#Import the folium package for making maps
+import folium
+
+#Create a map, centered (0,0), and zoomed out a bit:
+mapWorld = folium.Map(location=[0, 0],zoom_start=3)
+
+#Save the map:
+mapWorld.save(outfile='tempMap.html')
+</pre>
+
+<p>
+Save this file and run it.  It will create a file called <tt>tempMap.html</tt>.
+Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" and then choose the file <tt>tempMap.html</tt>.  You should see a map of the world.
+
+<h4>Map of New York City</h4>
+
+<p>
+<img src="hunterMap.png" height=400>
+
+<p>
+<b>UPDATE!!</b>
+
+<p>
+Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
+<pre>
+import folium
+
+mapCUNY = folium.Map(location=[40.75, -74.125], zoom_start=10)
+</pre>
+
+<p> Let's add in a marker for Hunter College:
+<pre>
+folium.Marker(location = [40.873442, -73.889361], popup = "Hunter College").add_to(mapCUNY)
+</pre>
+
+<p>and create the .html file:
+<pre>
+mapCUNY.save(outfile='tempMap.html')
+</pre>
+
+</div>
+
+
+<div>
+<h3>Plotting from Files</h3>
+
+We can combine the mapping of folium with the tools we have used for CSV files.
+
+<iframe width="600" height="400" frameborder="0" src="cunyLocations.html"></iframe>
+
+<p>Let's make an interactive map of the the CUNY campuses.  We can download a CSV file from data.ny.gov:
+<ul>
+	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
+</ul>
+(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
+
+<p>
+Let's use Pandas to read in the file.  We will need to import pandas and folium:
+<pre>import folium
+import pandas as pd
+</pre>
+
+<p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
+<pre>
+cuny = pd.read_csv('cunyLocations.csv')
+print (cuny["Campus"])
+</pre>
+
+<p>Next, let's set up a map, centered on New York City:
+<pre>
+mapCUNY = folium.Map(location=[40.75, -74.125])
+</pre>
+
+<p>
+We need to add markers for each campus.  We're going to iterate through the rows of dataframe to create the markers:
+<pre>
+for index,row in cuny.iterrows():
+    lat = row["Latitude"]
+    lon = row["Longitude"]
+    name = row["Campus"]
+    newMarker = folium.Marker([lat, lon], popup=name)
+    newMarker.add_to(mapCUNY)
+</pre>
+For each row in the file, we find the latitude, longitude, and name of the campus, and use those to create a new marker which we add to our map.  We repeat for each row, until we have made markers for all 23 campuses in the file.
+<!--(Note:  we're using an older way to add markers (since it's simpler), and  some versions of folium will give a warning to use the newer version).
+(Note:  this isn't the most efficient way to plot points.  We'll discuss a better way-- creating a geoJSON layer-- next week.)-->
+
+<p>Lastly, let's save our map:
+<pre>
+mapCUNY.save(outfile='cunyLocations.html')
+</pre>
+
+<p>
+To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
 
 
 </div>
+
+
+
 
 <div>
 <h3>Plotting from Files</h3>
@@ -121,6 +267,12 @@ mapCUNY.save(outfile='cunyLocations.html')
 To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
 
 
+</div>
+
+<div>
+<h3>Command Line <tt>git</tt></h3>
+
+<p>Use git commands to download the errors.py program...
 </div>
 
 <div>

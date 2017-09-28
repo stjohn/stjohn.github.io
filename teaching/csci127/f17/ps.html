@@ -622,53 +622,104 @@ Maximum population:  2738175
 <a id="set7"></a>
 <hr>	
 
-<i>More to come...</i>
 
-<!--
 
-	<li > <b>Due Date: 30 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+	<li > <b>Due Date: 30 October</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 	
-		<p>Pandas-- read from the web, use openData NYC and graph-- homeless shelter data?
+		<p> Modify the program from <a href="lab7.html">Lab 7</a> to:
+		<ul> 
+			<li> asks the user to specify the input file, 
+			<li> asks the user to specify the output file,
+			<li> makes a plot of the fraction of the total population that are children over time from the data in input file, and
+			<li> stores the plot in the output file the user specified.
+		</ul>
 		
-		<p> Graph fraction of families in the shelters;  and print max number to command line.  See <a href="lab7.html">Lab 7</a>.
+		<p>A sample run of the program:
+<pre>
+Enter name of input file:  DHS_2015_2016.csv
+Enter name of output file:  dhsPlot.png
+</pre>
+		<p> which produces an output:
 		
+		<p><img src="dhsPlot.png" height = 300>
 
 	
 		
-	<li > <b>Due Date: 31 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 31 October</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/mainfunction.html">Section 6.7</a></b><br>
 	
-		<p>In <a href="lab8.html">Lab 8</a>, you created a github account.  Submit the name of your account.		
+		<p> Write a program, using a function <tt>main()</tt> that prints "Hello, World!" to the screen.   See <a href="lab7.html">Lab 7</a>.
 		
-		curl -i https://api.github.com/users/cmwalla
-		
-	<li > <b>Due Date: 1 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 1 November</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/TraversalandtheforLoopByItem.html">Section 9.10</a></b> <br>
 
-		<p> Hello world program, rewritten with main()
+		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a binary number and print out the corresponding decimal number.
 		
-	<li > <b>Due Date: 2 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+		<pre>
+    Ask user for binary input, and store in string: binString
+    Set decNum = 0
+    for each c in binString:
+        decNum = decNum * 2
+        if c == 1:
+            decNum = decNum + 1
+    Print decNum
+		</pre>
+		
+<p> A sample run of the program:
+<pre>
+Enter binary number: 10
+Your number in decimal is 2
+</pre>
 
-		<p>The program, 
-		<a href="../../cmp/cmp230/f14/errors.py">errors.py</a>, has lots of errors.  Fix the errors and submit the modified program.
-		<br><i>Hint:  see end of <a href="lab8.html">Lab 8</a>.</i>
-	
+		<p> And another sample run of the program:
+<pre>
+Enter binary number: 1111
+Your number in decimal is 15
+</pre>
+		
+	<li > <b>Due Date: 2 November</b>  <b style="float:right">Reading: <a href="https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Comb/gates.html">UMd Logical Gates Overview</a></b><br>
+
+		<p>Write a logical expression that takes a single input, <tt>in1</tt>, and <b>always</b> returns <tt>False</tt>.  Your expression must only use 
+		<tt>in1</tt> and the logical operators, <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>
+
+		<p> See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
+		
 			
-	<li > <b>Due Date: 3 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 3 November</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/TraversalandtheforLoopByItem.html">Section 9.10</a></b><br>
 
-		<p> Given the framework for a program, fill in the function:
+		
+		<p> A DNA molecule can be modeled by two complementary strands of character strings:
+		
+		<p><a href="http://web.stanford.edu/group/hopes/cgi-bin/hopes_test/an-introduction-to-dna-and-chromosomes-text-and-audio/"><img src="http://web.stanford.edu/group/hopes/cgi-bin/hopes_test/wp-content/uploads/2011/02/f_b08complem.jpg"><br>web.stanford.edu</a>
 	
-		<p>		Write a function, <tt>monthString()</tt> that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
-
-		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
 		
-		
+		<p>Write a program that asks the user for a DNA string and prints the complement.  The complementary strand has the following constraints:
+		<ul>
+			<li> If the base is a 'A', it's complement is a 'T'.
+			<li> If the base is a 'C', it's complement is a 'G'.
+			<li> If the base is a 'G', it's complement is a 'C'.
+			<li> If the base is a 'T', it's complement is a 'A'.
+		</ul>
 
+<p> A sample run of the program:
+<pre>
+Enter DNA strand: GATTCGTAGC
+The complementary strand is CTAAGCATGC
+</pre>
 
+		<p> And another sample run of the program:
+<pre>
+Enter DNA strand: ACGTATATA
+The complementary strand is TGCATATAT 
+</pre>
 
 	
 		
 
 <a id="set8"></a>
 <hr>	
+
+<i>More to come...</i>
+<!--
 
 	<li > <b>Due Date: 6 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
@@ -697,7 +748,10 @@ Maximum population:  2738175
 	
 	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-
+		<p>In <a href="lab8.html">Lab 8</a>, you created a github account.  Submit the name of your account.		
+		
+		curl -i https://api.github.com/users/cmwalla
+		
 	
 		<p> Museum map-- read in locations from CSV
 		
@@ -742,8 +796,15 @@ Maximum population:  2738175
 	<li > <b>Due Date: 9 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
 
+		<p> Given the framework for a program, fill in the function:
+	
+		<p>		Write a function, <tt>monthString()</tt> that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
 
+		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
 
+		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, or else it will not be able to find the function and will not get the full points for the program.
+		
+		<p><i>Hint:  See notes from Lecture 7.</i>
 
 
 
@@ -770,15 +831,14 @@ Maximum population:  2738175
 
 	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p> Write a function, <tt>binary2decimal()</tt>, that takes a string of 0's and 1's as input and returns the equivalent number in decimal (base 10).
-		
-		<p> give example
+		Pseudocode for recusive fractal drawing-- Sie??'s triangle
 	
-
-	
-
 	
 	<li > <b>Due Date: 14 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p>The program, 
+		<a href="../../cmp/cmp230/f14/errors.py">errors.py</a>, has lots of errors.  Fix the errors and submit the modified program.
+		<br><i>Hint:  see  <a href="lab9.html">Lab 9</a>.</i>
 
 	
 		<p>Using Unix shell commands, ....
