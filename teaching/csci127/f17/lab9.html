@@ -74,7 +74,10 @@ and the package will download and install.)
 <h4>Our First Map</h4>
 
 <p>
-<img src="worldMap.png" height=400>
+
+<iframe src="world.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
 
 <p>To make a map in folium, the process is:
 <ul>
@@ -101,11 +104,11 @@ Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" an
 
 <h4>Map of New York City</h4>
 
-<p>
+<!--<p>
 <img src="hunterMap.png" height=400>
 
 <p>
-<b>UPDATE!!</b>
+<b>UPDATE!!</b>-->
 
 <p>
 Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
@@ -117,7 +120,7 @@ mapCUNY = folium.Map(location=[40.75, -74.125], zoom_start=10)
 
 <p> Let's add in a marker for Hunter College:
 <pre>
-folium.Marker(location = [40.873442, -73.889361], popup = "Hunter College").add_to(mapCUNY)
+folium.Marker(location = [40.768731, -73.964915], popup = "Hunter College").add_to(mapCUNY)
 </pre>
 
 <p>and create the .html file:
@@ -139,7 +142,7 @@ We can combine the mapping of folium with the tools we have used for CSV files.
 <ul>
 	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
 </ul>
-(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
+(Export as a <b>.csv</b> file and save in the same directory as your programs.  ) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
 
 <p>
 Let's use Pandas to read in the file.  We will need to import pandas and folium:
@@ -147,15 +150,17 @@ Let's use Pandas to read in the file.  We will need to import pandas and folium:
 import pandas as pd
 </pre>
 
-<p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
+<p>To read in the CSV file, we'll use pandas' CSV reader.  We'll print out the campus locations to make sure that all were read in:
 <pre>
 cuny = pd.read_csv('cunyLocations.csv')
 print (cuny["Campus"])
 </pre>
+Note:  we saved our CSV file to 'cunyLocations.csv'.  If you saved it to a different name, change the input parameters for read_csv() to the name of your file. 
 
-<p>Next, let's set up a map, centered on New York City:
+
+<p>Next, let's set up a map, centered on Hunter College:
 <pre>
-mapCUNY = folium.Map(location=[40.75, -74.125])
+mapCUNY = folium.Map(location=[40.768731, -73.964915])
 </pre>
 
 <p>
@@ -179,6 +184,8 @@ mapCUNY.save(outfile='cunyLocations.html')
 
 <p>
 To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
+
+
 
 
 </div>
@@ -272,7 +279,18 @@ To view your map, open a browser.  From the browser, open the file:  <tt>cunyLoc
 <div>
 <h3>Command Line <tt>git</tt></h3>
 
-<p>Use git commands to download the errors.py program...
+<p> In <a href="lab8">Lab 8</a>, we introduced github which can be used to share and store code, websites, etc. (roughly, a "Google Docs" for programs).  The website for this course as well as all the programs are stored in repositories (or "repos") at github.
+
+<p> The github site has both a web browser interface (which we used last lab), and the option to use the command line interface to interact with the site.  The basic actions for git are:
+<ul>
+	<li> <b>pull</b>:
+	<li> <b>push</b>:
+	<li> <b>commit</b>:
+</ul>
+
+<p>Give directions on how to pull
+
+
 </div>
 
 <div>

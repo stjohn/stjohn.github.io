@@ -655,11 +655,11 @@ Enter name of output file:  dhsPlot.png
 		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a binary number and print out the corresponding decimal number.
 		
 		<pre>
-    Ask user for binary input, and store in string: binString
-    Set decNum = 0
-    for each c in binString:
+    Ask user for input, and store in the string, binString.
+    Set decNum = 0.
+    For each c in binString,
         decNum = decNum * 2
-        if c == 1:
+        if c is 1, then
             decNum = decNum + 1
     Print decNum
 		</pre>
@@ -719,16 +719,83 @@ The complementary strand is TGCATATAT
 <hr>	
 
 <i>More to come...</i>
+
 <!--
-
 	<li > <b>Due Date: 6 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-		<p> Using folium (see <a href="lab7.html">Lab 7</a>), create a map that 
-		asks users for info for 3 cities (lat, lon, and title) and displays them on map.
-		
-		<p>
-		Note: for this program, submit your .py program (not the .html file that it generates).
 	
+		<p> Modify the parking ticket program from <a href="lab8.html">Lab 8</a> to do the following:
+		<ul>
+			<li> Ask the user for the name of the input file.
+			<li> Ask the user for the attribute (column header) to search by.
+		</ul>
+		
+		<p>A sample run:
+		<pre>
+Enter file name:  novTickets.csv
+Enter attribute:  Color
+The 10 worst offenders are:
+		</pre>
+
+
+
+
+	
+	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p>In <a href="lab8.html">Lab 8</a>, you created a github account.  Submit the name of your account.		
+		
+		curl -i https://api.github.com/users/cmwalla
+
+		
+		
+
+
+	
+	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	
+		<p>Fill in the missing functions:
+		
+		<p>		Write a function, <tt>monthString()</tt> that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
+
+		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
+
+		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, or else it will not be able to find the function and will not get the full points for the program.
+		
+		<p><i>Hint:  See notes from Lecture 7.</i>
+		<p>Fill in the missing functions:
+
+
+
+		
+	
+	<li > <b>Due Date: 9 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p>Pseudocode for recusive fractal drawing-- Sie??'s triangle
+
+
+
+
+
+
+
+	
+	<li > <b>Due Date: 10 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
+		<p> Given the framework for a program, fill in the function:
+
+		<p> Write a function that averages?
+		<p> Give pseudocode for:
+		Compute the average color of a slice of an image (a la first screen of http://koalastothemax.com-- include as iframe).  Provide the program, students fill in the function.
+		(Insprired by <a href="http://koalastothemax.com">koalas to the max</a>)
+
+
+		
+
+<a id="set9"></a>
+<hr>	
+
+	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+
 		<p>Write a function that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
 		<ul>
 			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
@@ -740,98 +807,11 @@ The complementary strand is TGCATATAT
 		</ul>
 		<p> You should include in the file a <tt>main()</tt> that calls your function several times to demonstrate that it works.
 		
-
-	
-	
-		
-	
-	
-	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-		<p>In <a href="lab8.html">Lab 8</a>, you created a github account.  Submit the name of your account.		
-		
-		curl -i https://api.github.com/users/cmwalla
-		
-	
-		<p> Museum map-- read in locations from CSV
-		
-		<p>Using pandas and folium (see <a href="lab8.html">Lab 8</a>), make a map of all the museums in New York City.  Your map should have a marker for each museum and include the name of the museum as a popup.
-		<p> This assignment uses collision data collected and made publicly by 
-		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
-		<blockquote>
-			<a href="https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z">https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z</a>.
-		</blockquote>
-		Download using the "Export" button (in CSV format).
-			
-		<p>
-		For this program, submit your .py program (not the image that it generates).	
-		
-		<p><i>Hint:  You will need to use string methods to extract the latitude and longitude from the location data.</i></p>			
-
-
-	
-
-
-
-	
-	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
-	
-
-			<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, or else it will not be able to find the function and will not get the full points for the program.
-		
-		<p><i>Hint:  See notes from Lecture 7.</i>
-
-
-		<p> Given the framework for a program, fill in the function:
-
-		<p> Write a function that averages?
-		<p> Give pseudocode for:
-		Compute the average color of a slice of an image (a la first screen of http://koalastothemax.com-- include as iframe).  Provide the program, students fill in the function.
-		(Insprired by <a href="http://koalastothemax.com">koalas to the max</a>)
-
-
-
-		
-	
-	<li > <b>Due Date: 9 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-
-		<p> Given the framework for a program, fill in the function:
-	
-		<p>		Write a function, <tt>monthString()</tt> that takes number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
-
-		<p>In your file, you should include a <tt>main()</tt> that allows the user to enter a number and calls your function to demonstrate that it works.		
-
-		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, or else it will not be able to find the function and will not get the full points for the program.
-		
-		<p><i>Hint:  See notes from Lecture 7.</i>
-
-
-
-	
-	<li > <b>Due Date: 10 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-		<p>
-		Using folium (see <a href="lab7.html">Lab 7</a>), create a map that shows all the traffic collisions on your birthday last year.
-		
-		<p> This assignment uses collision data collected and made publicly by 
-		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
-		<blockquote>
-			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
-		</blockquote>
-		Download <b>Collisions on your birthday</b>:  Using the "Filter" option, choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.
-	
-		<p>
-		Note: for this program, submit your .py program (not the .html file that it generates).	
 	
 		
 
-<a id="set9"></a>
-<hr>	
 
-	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		Pseudocode for recusive fractal drawing-- Sie??'s triangle
 	
 	
 	<li > <b>Due Date: 14 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
@@ -850,7 +830,47 @@ The complementary strand is TGCATATAT
 		<p> Given a framework, fill in a function that takes lat/lon/label
 		and creates a marker
 
+		<p>
+		Using folium (see <a href="lab7.html">Lab 7</a>), create a map that shows all the traffic collisions on your birthday last year.
+		
+		<p> This assignment uses collision data collected and made publicly by 
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+		</blockquote>
+		Download <b>Collisions on your birthday</b>:  Using the "Filter" option, choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.
+	
+		<p>
+		Note: for this program, submit your .py program (not the .html file that it generates).	
+	
 
+		<p> Museum map-- read in locations from CSV
+		
+		<p>Using pandas and folium (see <a href="lab8.html">Lab 8</a>), make a map of all the museums in New York City.  Your map should have a marker for each museum and include the name of the museum as a popup.
+		<p> This assignment uses collision data collected and made publicly by 
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
+		<blockquote>
+			<a href="https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z">https://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z</a>.
+		</blockquote>
+		Download using the "Export" button (in CSV format).
+			
+		<p>
+		For this program, submit your .py program (not the image that it generates).	
+		
+		<p><i>Hint:  You will need to use string methods to extract the latitude and longitude from the location data.</i></p>			
+
+		<p> Given the framework for a program, fill in the function:
+	
+
+
+	
+		<p> Using folium (see <a href="lab7.html">Lab 7</a>), create a map that 
+		asks users for info for 3 cities (lat, lon, and title) and displays them on map.
+		
+		<p>
+		Note: for this program, submit your .py program (not the .html file that it generates).
+	
+	
 
 
 
@@ -921,7 +941,6 @@ Name of an image: hunter.png
 	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
 
-
 		<p> Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.
 
 
@@ -972,6 +991,8 @@ Name of an image: hunter.png
 
 	
 	<li > <b>Due Date: 6 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	
+		<p> Hex to decimal converter from pseudocode	
 
 <a id="set13"></a>
 <hr>
@@ -984,11 +1005,11 @@ Name of an image: hunter.png
 
 	<li > <b>Due Date: 8 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
-		<p> Hex to decimal converter from pseudocode
+		<p> 2-complement question.
 	
 	<li > <b>Due Date: 11 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
-		<p> 2-complement question.
+
 
 	<li > <b>Due Date: 12 December</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 	
@@ -1014,7 +1035,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 22 September 2017.)</i><br>
+<i style="float:right">(This file was last modified on 29 September 2017.)</i><br>
 </div>
 </body>
 </html>
