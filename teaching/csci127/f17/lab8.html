@@ -20,7 +20,7 @@ Fall 2017<br><br>
 Today's lab will focus on mapping data, using pandas, numpy, and folium, and using Python from the command line.  
 
 <p>Software tools needed:  web browser and Python IDLE programming 
-environment with the pandas, numpy, and folium package installed.
+environment with the pandas and matplotlib packages installed.
 
 
 
@@ -37,15 +37,156 @@ environment with the pandas, numpy, and folium package installed.
 <div>
 <h3>Binning Data:  Parking Tickets</h3>
 
-<p>
-Use df['status'].value_counts()
+<p>A simple, but very powerful, technique is "binning data"-- that is grouping data into the number of occurrences for each categories.  The category values can often show patterns that individual data points do not.  For example, binning population by zipcode can show patterns in density that's difficult to see with individual data points.  
 
 <p>
+Today, we will look at the parking tickets issues by New York City in fiscal year 2016. 
+<div>
+<h3> Parking Tickets in Your Neighborhood</h3>
 
 <p>
+Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you can access data from almost every city agency.   We will use the parking ticket data set.  Since it is quite large, even for a single year, we will focus on your neighborhood.  
+<ul>
+	<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www.nyc.gov/html/nypd/html/precinct_maps/precinct_finder.shtml">useful tool</a>)
+	<li>  
+	<a href= "https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2016/kiv2-tbus/data">Fiscal year 2016 (FY2016) parking tickets</a> for your precinct:  download the data set as a CSV, filtering by precinct. For example, Macaulay Honors College is located in the 20th Precinct, so, you would enter <tt>20</tt> on the filter.
+
+</ul>
+</div>
+
+<div>
+<h3>CSV Data Files</h3>
+
+CSV files store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
+<pre>
+1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
+</pre>
+<p>
+All lines are formatted similarly: they start with the 
+summons number, then the license plate, registration state, plate Type, date, and continue with the information about the location and type of violation, and sometimes additional information such as the who issued the ticket and the color of the car. The first line of the file gives the entries in the order they occur in the rows. 
+
+<p>
+The sample entry above gives details for a ticket issues on June 9, 2015 to a passenger car with Florida plates, L040HZ.  The red Nissan SUV received the ticket on West 83rd Street.  Each entry also begins with a unique identifier that can be used to look up the parking ticket.
 </div>
 
 
+(see <a href="hw2.html">Homework 2</a> for details).  Since the set is quite large, we will focus on the 20th precinct in which Macaulay Honors College is located.  Since there were over 196,000 tickets for the FY 2016 for the 20th precinct, the file for today's classwork is the first 1000 lines:  <a href="tickets.csv">tickets.csv</a>.
+
+<p>
+Here is a sample line of <a href="tickets.csv">tickets.csv</a>:
+<pre>
+1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
+</pre>
+<p>
+All lines are formatted similarly: they start with the 
+summons number, then the license plate, registration state, plate Type, date, and continue with the information about the location and type of violation, and sometimes additional information such as the who issued the ticket and the color of the car. The first line of the file gives the entries in the order they occur in the rows. 
+
+<p>
+Here are some questions we can ask about the data:
+<ul>
+	<li> which car got the most tickets?
+	<li> what color of car is most likely to get a ticket?
+	<li> what type of license gets the most tickets?
+	<li> which location yields the most tickets?
+</ul>
+	
+For each of these questions, we can traverse the file and count the occurrences as we go.  A great way to do this is with dictionaries.
+
+</div>
+<div>
+<h3>Counting Tickets per Car</h3>
+
+<p> How can tell which car got the most tickets?  First, we need to figure out a unique way to identify different cars.  Luckily, cars almost always have license plates-- with each state having a unique number.  (For this simple exercise, we'll assume that each license plate is unique on its own-- not an unreasonable assumption since every state has a different schema for assigning numbers, but to be more accurate we should keep track of license plate number and issuing state.)
+
+<p>Open up the CSV file and look at the columns.  Which column contains the license plate number?  For each line, we can pull out the licence plate number and use it as a "key" for a dictionary.  Here's the basic idea of our program to count tickets per car:
+
+<ol>
+	<li> Open CSV file.
+	<li> Initialize the dictionary, <tt>tickets</tt>.
+	<li> Read first line of column names.
+	<li> For each line in the file:
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; Let <tt>plate</tt> be the license plate on the line. </tt>
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; Update the count of tickets for <tt>plate</tt>.
+	<li> Sort the dictionary by value.
+	<li> Print out the top 10 license plates, in terms of ticket counts.
+</ol>
+
+<p>
+Use df['status'].value_counts()
+
+
+<p>
+Lets use the <tt>csv</tt> module, as we did at the end of last weeks' classwork (if you didn't reach that part of the classwork, read <a href="plotRecipes.html">that last section</a> before continuing).  
+We will add in the Python code for each of these steps:
+<ul>
+	<li> We are using the csv library, so need to import it:
+	<pre>
+import csv	
+	</pre>
+
+	<li> We will use a dictionary to store the ticket information:	
+<pre>
+#Setting up a dictionary to store tickets:
+tickets = {}
+</pre>
+
+	<li> Our data is in <tt>tickets.csv</tt> which we can open with a dictionary reader:
+<pre>
+#Using the dictionary reader to access by column names
+f = open("tickets.csv")
+reader = csv.DictReader(f)
+</pre>
+
+	<li> Since we are using a dictionary reader, we can refer to columns from the CSV files by name:
+<pre>
+for row in reader:
+    plate = row["Plate ID"]
+    tickets[plate] = tickets.get(plate, 0) + 1
+    print("Ticket", tickets[plate], "for", plate)
+f.close()
+</pre>
+	(The <tt>print()</tt> is there so we can check that it's working.)
+	
+	<li> We want the license plates that got the highest number of tickets.  There are several ways to do this (see dictionary examples on class webpage for a nice way to do this with list comprehensions.  Here, we first make a list of the worst offenders (sorting in reverse since we want the largest values first):
+<pre>
+worst = sorted(tickets, key = tickets.__getitem__, reverse=True)
+</pre>
+	Once we have that list, we can just print out the top 10 values:
+<pre>
+for i in range(10):
+    print("Plate", worst[i], "has", tickets[worst[i]], "tickets.")
+</pre>
+</ul>
+
+Try your program to make sure it works, and then move on to the challenges below.
+</div>
+
+<div>
+
+<h3>Binning Other Data</h3>
+
+<p>Now that you have a program to use as a basic template, answer the following questions:
+<ul>
+	<li> what color of car is most likely to get a ticket?
+	<li> what type of license gets the most tickets?
+	<li> which location yields the most tickets?
+</ul>	
+(Remember to check the csv file for the name used for the columns and use that with your dictionary reader.)
+
+</div>
+			
+<div>
+<h3>Additional Challenges</h3>
+
+Modify your Python programs to answer the following:
+<ul>
+	<li> Which street was the location of the most tickets?
+	<li> What were the most common violations?
+	<li> Bin the ticket data by the hour the violation occurred and display as a histogram.
+	<br>(Hint:  The violation time is stored as a 5 character string such as "0932A" and "0810P"-- convert into 24 hour time to keep from conflating morning and afternoon tickets).
+</ul>
+</div>
+			
 
 
 <div>
@@ -62,7 +203,7 @@ the next function is written.
 <p>
 <img src="herd.png" height=300>
 
-<p>In today's lab, we will write a program to draw images using turtles.  Many of the functions we write today will be reused in future programs.  Here's a basic outline of our program:
+<p>In today's lab, we will write a program to draw images using turtles.  We will focus on breaking down the problem into functions, and then implementing (and testing!) each function separately.  Here's a basic outline of our program:
 
 <pre>
 #Intro Programming Lab:  A program with a herd of turtles
