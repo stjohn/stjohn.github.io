@@ -26,6 +26,28 @@ environment with the pandas, numpy, and folium package installed.
 
 </div>
 
+<div>
+<h3>Random Range</h3>
+
+Python has a built-in library for generating random numbers.  To use it, you include at the top of your file:
+<pre>
+import random
+</pre>
+
+The <tt>random</tt> library includes a function that's similar to <tt>range</tt>, called <tt>randrange</tt>.  As with <tt>range</tt>, you can specify the starting, stopping, and step values, and the function <tt>randrange</tt> chooses a number at random in that range.  Some examples:
+<ul>
+	<li> <tt>random.randrange(5)</tt> returns one of 0,1,2,3,4
+	<li> <tt>random.randrange(1,10,2)</tt> returns one of 1,3,5,7,9
+	<li> <tt>random.randrange(360)</tt> returns one of 0,1,2,...,359
+</ul>
+
+Let's use that last example to have our turtle make a random walk:
+<iframe src="https://trinket.io/embed/python/ab6cddc880" width="80%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>
+Notice that our turtle turns <tt>a</tt> degrees, where <tt>a</tt> is chosen at random between 0 and 359 degrees.  What if your turtle was in a city and had to stay on a grid of streets (and not ramble through buildings)?  How can you change the <tt>randrange()</tt> to choose only from the numbers:  <tt>0,90,180,270</tt> (submit your answer as Problem #10).
+
+</div>
 
 
 <div>
