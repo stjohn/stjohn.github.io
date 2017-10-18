@@ -42,26 +42,26 @@ environment.
 <h3>Strings</h3>
 
 <p>A sequence of characters (i.e. letters, numbers, symbols) is called a <tt>string</tt>.  To indicate a string, we use quotes (either single or double, just as long as they match up) to indicate the start and end (a fancier way to say that is:  quotes deliminate the string).  For example, for our first program, we wrote:
-<pre>
-  print("Hello, World!")
+<pre style = "background-color:lavender;width:400px">
+print("Hello, World!")
 </pre>
 <p>
 The string, or sequence of characters, <tt>Hello, World!</tt>, was printed to the screen.  We can also store strings to be used again in the program.  For example, 
-<pre>
-  greeting = "Hello, World!"
-  print(greeting)
+<pre style = "background-color:lavender;width:400px">
+greeting = "Hello, World!"
+print(greeting)
 </pre>
 <p>
 creates a location in memory that can be accessed by typing the name (or identifier) that we chose:  <tt>greeting</tt>.  <tt>greeting</tt> stores the string <tt>Hello, World!</tt>.  While the quotes are not stored, we will often write <tt>"Hello, World!"</tt> to make it more clear where the string begins and ends.  When we execute the code above, it will create the variable, <tt>greeting</tt>, and then print out the message:
-<pre>
-  Hello, World!
+<pre style = "background-color:lavender;width:400px">
+Hello, World!
 </pre>
 
 <p>We can use the variable any number of times.  For example, if we wanted to print the message twice, we could use:
-<pre>
-  greeting = "Hello, World!"
-  print(greeting)
-  print(greeting)
+<pre style = "background-color:lavender;width:400px">
+greeting = "Hello, World!"
+print(greeting)
+print(greeting)
 </pre>
 
 <h4>More Useful String Methods</h4>
@@ -112,7 +112,7 @@ creates a location in memory that can be accessed by typing the name (or identif
 <h3>Getting Input</h3>
 
 <p>Last week, we used the <tt>print()</tt> function to write messages to the user of our program.  This week, we introduce, <tt>input()</tt>, to get information from the user.  Here's the basic format:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 aString = input("Put a message here to show user: ")
 </pre>
 where the string <tt>"Put a message..."</tt> is replaced by the prompt you would like the user to see and <tt>aString</tt> with the name of the string you are using in your program.
@@ -126,8 +126,8 @@ where the string <tt>"Put a message..."</tt> is replaced by the prompt you would
 <h3>Biomolecular Sequences</h3>
 
 <p> Let's apply what we just learned to some questions from biology.  DNA is a molecule that contains instructions for the cell (<a href="https://en.wikipedia.org/wiki/DNA">wiki</a>).  We can represent it as a string of four characters:  <tt>'A'</tt>, <tt>'C'</tt>, <tt>'G'</tt>, and <tt>'T'</tt> corresponding to the four nucleotides that are the building blocks for the sequences.  For example, 
-<pre>
-  insulin = "AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGGTCTGTTCCAAGGGCCTTTGCGTCAGGTGGGCTCAGGATTCCAGGGTGGCTGGACCCCAGGCCCCAGCTCTGCAGCAGGGAGGACGTGGCTGGGCTCGTGAAGCATGTGGGGGTGAGCCCAGGGGCCCCAAGGCAGGGCACCTGGCCTTCAGCCTGCCTCAGCCCTGC"
+<pre style = "background-color:lavender;">
+insulin = "AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGGTCTGTTCCAAGGGCCTTTGCGTCAGGTGGGCTCAGGATTCCAGGGTGGCTGGACCCCAGGCCCCAGCTCTGCAGCAGGGAGGACGTGGCTGGGCTCGTGAAGCATGTGGGGGTGAGCCCAGGGGCCCCAAGGCAGGGCACCTGGCCTTCAGCCTGCCTCAGCCCTGC"
 </pre>
 is the start of the <a href="https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=3630">DNA sequence for insulin in humans</a>.
 
@@ -207,16 +207,16 @@ If it swims like a loon and dives like a loon, it probably is a loon.
 <h3>Looping Through Strings, Revisited</h3>
 
 <p>There's another way we can loop through strings, using the index of each character.  Let's assume that we have:
-<pre>
-  greeting = "Hello, World!"
+<pre style = "background-color:lavender;width:400px">
+greeting = "Hello, World!"
 </pre>
 Before, we printed out the whole string with:
-<pre>
-  print(greeting)
+<pre style = "background-color:lavender;width:400px">
+print(greeting)
 </pre>
 If we wanted to print out only the first letter, we could write:
-<pre>
-  print(greeting[0])
+<pre style = "background-color:lavender;width:400px">
+print(greeting[0])
 </pre>
 where the number between the square brackets is the index of the character, in this case, 0, or the very first character of the string.  
 
