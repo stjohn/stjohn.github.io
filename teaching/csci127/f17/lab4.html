@@ -79,7 +79,7 @@ Here is one possible design:
 
 <p>Above, we are missing an important part-- the formula to calculate miles from kilometers.  By typing <tt>1 km = miles</tt> into google, we find that 1 km = 0.621371 miles.  So, we can add
 that to our file:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #1. Input the distance in kilometers (call it km)
 #2. Calculate the distance in miles as 0.621371*km
 #3. Output miles
@@ -91,7 +91,7 @@ Note that we're preceding the items in our outline by '#', so they can be used a
 
 <p>
 Now, we are ready to convert our outline of the algorithm to Python.  Begin by adding a comment to the beginning of the file:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #Name:  your name 
 #Date:  September 2017
 #Converter example program from Lab 4
@@ -102,7 +102,7 @@ Now, we are ready to convert our outline of the algorithm to Python.  Begin by a
 #3. Output miles
 </pre>
 Next, let's print a welcome message:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #Name:  your name 
 #Date:  September 2017
 #Converter example program from Lab 4
@@ -116,7 +116,7 @@ print("Welcome to Daniel's calculator!")
 Make sure that there are no typos by saving and running your program (F5 or 'Run Module' in the Run menu).
 
 <p>Next, fill in the program line by line.  First, ask the user for their input:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #Name:  your name 
 #Date:  September 2017
 #Converter example program from Lab 4
@@ -134,7 +134,7 @@ Test to make sure that the program runs.  Note that it will ask for the input bu
 <p>Python cares about spacing and distinguishes between spaces and tabs.  If you get an error above, check that each of the lines beneath the definition is indented using a TAB.
 
 <p>Now, process the input (i.e. do the conversion):
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #Name:  your name 
 #Date:  September 2017
 #Converter example program from Lab 4
@@ -150,7 +150,7 @@ miles = 0.621371*km
 Save and run your program again.  It will ask for input but does not yet produce output.
 
 <p>Finally, add the print statement that shows the output:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 #Name:  your name 
 #Date:  September 2017
 #Converter example program from Lab 4
@@ -177,7 +177,7 @@ In addition to multiplication ('*'), Python has addition ('+'), subtraction ('-'
 <h3>Decisions</h3>
 
 <p>Python has a built-in control structure for making decisions.  It's basic form is:
-<pre>
+
 	if <i>test or conditional</i>:
 	    if true do this block 
 	elif <i>another test or conditional</i>:
@@ -204,7 +204,7 @@ The tests are expressions that evaluate to either true or false.  The blocks of 
 </ul>
 
 Since if the nucleotide is an A, we don't need to check if it's also a C, G, or T (and similarly for the other possible values), we can rewrite this as:
-<pre>
+<pre style = "background-color:lavender;width:450px">
   if nucleotide == "A":
       newNucleotide = "T"
   elif nucleotide == "C":
@@ -248,7 +248,7 @@ For the last part of the lab, let's combine what we have learned about images an
 	<li> Create a folder to hold your work (see <a href="lab2.html">Lab 2</a> for directions for doing so from the command line).
 	<li> Download <a href="elevationsNYC.txt">elevationsNYC.txt</a> and save to your folder (you may need to move it from your <tt>Downloads</tt> folder).
 	<li> Open IDLE, and create the following short program:
-	<pre>
+	<pre style = "background-color:lavender;width:600px">
 # Name:  ... your name here ...
 # Date:  September 2017
 # Takes elevation data of NYC and displays using the default color map
@@ -278,7 +278,7 @@ plt.show()
 <p> 
 We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">NYT map</a>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
 
-<pre>
+<pre style = "background-color:lavender;width:600px">
 	if elevation <= 0: 
 	    #Below sea level
 	    Color the pixel blue
@@ -309,7 +309,7 @@ We can use this data to make a flood map of New York City.  When Hurricane Sandy
 
 
 <p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <a href="elevationsNYC.txt">elevationsNYC.txt</a> is in the same directory as your program.
-<pre>
+<pre style = "background-color:lavender;width:600px">
 # Name:  ... your name here ...
 # Date:  September 2017
 # Takes elevation data of NYC and displays using the default color map
@@ -374,7 +374,7 @@ plt.imsave('floodMap.png', floodMap)
 </ul>
 
 <p>We'll expand a bit on the change directory (<tt>cd</tt>) command.  At a terminal window, we had typed:
-<pre>
+<pre style = "background-color:lavender;width:400px">
     mkdir thomasH
     cd thomasH
     pwd
@@ -382,11 +382,11 @@ plt.imsave('floodMap.png', floodMap)
 which created a new directory, changed the current directory to it, and shows us what directory we were in.  
 
 <p>In addition to changing to a directory, we can also change back to its "parent" directory by typing:
-<pre>
+<pre style = "background-color:lavender;width:400px">
     cd ../
 </pre>
 which says go to the parent of my current location.  It's often called a <i>relative path</i> since your destination is relative to your current location.  Typing 
-<pre>
+<pre style = "background-color:lavender;width:400px">
     pwd
 </pre>
 will show the current working directory.  Using <tt>cd ../</tt> and <tt>pwd</tt>, answer the following:

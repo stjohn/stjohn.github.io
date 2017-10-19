@@ -1,4 +1,5 @@
-#triangles two ways
+#CSci 127 Teaching Staff
+#Triangles two ways...
 import turtle
 
 def setUp(t, dist, col):
@@ -6,12 +7,14 @@ def setUp(t, dist, col):
      t.forward(dist)
      t.pendown()
      t.color(col)
+     
 def nestedTriangle(t, side):
      if side > 10:
           for i in range(3):
                t.forward(side)
                t.left(120)
           nestedTriangle(t, side/2)
+          
 def fractalTriangle(t, side):
      if side > 10:
           for i in range(3):

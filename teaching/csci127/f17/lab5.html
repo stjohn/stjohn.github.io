@@ -150,7 +150,7 @@ Here's an outline of our program:
 </ol>
 
 <p>When is a pixel white?  It's when the red, green, and blue values are close to 100%.  In code, we would have:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 t = 0.75    #Threshold for almost white-- can adjust between 0.0 and 1.0 
 
 ...
@@ -162,7 +162,7 @@ for i in range(ca.shape[0]):
 
 Let's translate that into Python.  Open up a new IDLE window and copy over the outline.  Using the image programs from <a href="lab4.html">last lab</a> as a template, fill in as much as possible before looking at the program below:
 
-<pre>
+<pre style = "background-color:lavender;width:675px">
 #Name:  CSci 127 Teaching Staff
 #Date:  Fall 2017
 #This program loads an image, counts the number of pixels that are
@@ -295,38 +295,38 @@ we represent this as a logical expression?  Let's work backwards from the output
 
 <p>
 Our last gate is an or, so we will write down an <tt>or</tt>
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	(lotsOfStuff1) or (lotsOfStuff2)
 </pre>
 We'll use parenthesis to keep things neat.  Now,  let's look at the left hand side <tt>(lotsOfStuff1)</tt>.  It also has an <tt>or</tt>, so we can write it down:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	((lotsOfStuff3) or (lotsOfStuff4)) or (lotsOfStuff2)
 </pre>
 Let's keep refining our expressions <tt>(lotsOfStuff3)</tt> has an <tt>and</tt>
 at the top, so, we will replace it with:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	(((lotsOfStuff5) and (lotsOfStuff6)) or (lotsOfStuff4)) or (lotsOfStuff2)
 </pre>
 <tt><tt>(lotsOfStuff5)</tt> is just a wire back to the first input, so, we can 
 write that instead:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	((in1 and (lotsOfStuff6)) or (lotsOfStuff4)) or (lotsOfStuff2)
 </pre>
 and similarly, (lotsOfStuff6)</tt> is just a wire back to the second input, so, we can write that instead:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	((in1 and in2) or (lotsOfStuff4)) or (lotsOfStuff2)
 </pre>
 That looks better!  If look at <tt>lotsOfStuff4</tt>, we see an <tt>and</tt> gate with wires back to the first and third inputs:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	((in1 and in2) or (in1 and in3)) or (lotsOfStuff2)
 </pre>
 Similarly, we can replace <tt>lotsOfStuff2</tt> with:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 	((in1 and in2) or (in1 and in3)) or (in2 and in3)
 </pre>
 
 Save this line to a text file (you can use any text editor, just make sure to save it as plain text, with no formatting):
-<pre>
+<pre style = "background-color:lavender;width:650px">
 #Name: Your name here
 #Date: 16 October 2017
 #Program #23:  Computes the majority of 3 inputs
@@ -352,7 +352,7 @@ Toggle the inputs</a> to figure out what the gate does.
 
 <p>
 When you have the answer, label your inputs in1 and in2, save the answer in a file:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 out = ...
 </pre>
 (where <tt>...</tt> is replaced by your answer).  See <a href="ps.html">Programming Problem List</a>.
@@ -364,7 +364,7 @@ out = ...
 <h3> More on the Command Line Interface:  Absolute Paths</h3>
 
 <p><a href="lab4.html">Last lab</a>, we introduced relative paths for navigating the directories via the shell.  Relative paths (e.g. <tt>cd ../</tt>) used the current location when executing.  We can also use <i>absolute paths</i> that are independent of your location.  For example, 
-<pre>
+<pre style = "background-color:lavender;width:400px">
     cd /usr/bin
     pwd
     ls
@@ -372,7 +372,7 @@ out = ...
 will change your working directory to one of the machine's standard <tt>bin</tt> directories which is filled with programs, or binaries.  The next two commands show the path to the working directory and list its contents.  These binaries are in a central location to make it easier to find and use.
 
 <p>Since it is nice to be able to return to your default, or home directory, there is a built-in short-cut for home (<tt>~</tt>).  Try
-<pre>
+<pre style = "background-color:lavender;width:400px">
     cd ~
     pwd
     ls

@@ -64,7 +64,7 @@ In Pandas, the basic structure is a <tt>DataFrame</tt>
 which stored data in rectangular grids.
 Let's use this to visualize the change in New York City's population.  First, start your file with an import statements for pyplot and pandas:
 
-<pre>
+<pre style = "background-color:lavender;width:450px">
 import matplotlib.pyplot as plt
 import pandas as pd
 </pre>
@@ -77,7 +77,7 @@ The <tt>as pd</tt> allows us to use pandas commands without writing out <tt>pand
 Next, save the <a href="nycHistPop.csv">NYC historical population data</a> to the same directory as your program.  
 This is a "comma separated values" file-- which is a plain text file containging spreadsheet data, with commas separating the different columns (thus, the name).
 Here's the first 10 lines of the file:
-<pre>
+<pre style = "background-color:lavender;width:600px">
 Source:  https://en.wikipedia.org/wiki/Demographics_of_New_York_City,,,,,,
 * All population figures are consistent with present-day boundaries.,,,,,,
 First census after the consolidation of the five boroughs,,,,,,
@@ -91,18 +91,18 @@ Year,Manhattan,Brooklyn,Queens,Bronx,Staten Island,Total
 </pre>
 Note that it has 5 extra lines at the top before the column names occur.  The pandas function for reading in CSV files is <tt>read_csv()</tt>.  It has an option to skip rows which we will use here:
 
-<pre>
+<pre style = "background-color:lavender;width:450px">
 pop = pd.read_csv('nycHistPop.csv',skiprows=5)
 </pre>
 
 <p>
 Before going on, let's print out the variable <tt>pop</tt>.  <tt>pop</tt> is a dataframe, described in the reading above:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 print(pop)
 </pre>
 
 The last line of our first pandas program is:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 pop.plot(x="Year")
 </pre>
 
@@ -112,7 +112,7 @@ which makes a graphical display of all of the data series in the variable <tt>po
 
 <p>
 To recap:  our program is:
-<pre>
+<pre style = "background-color:lavender;width:450px">
 
 import matplotlib.pyplot as plt
 
@@ -135,12 +135,12 @@ which did the following:
 
 There are useful built-in statistics functions for the dataframes in pandas.  For example, if you would like to know the maximum value for the series "Bronx", you apply the <tt>max()</tt> function to that series:
 
-<pre>
+<pre style = "background-color:lavender;width:575px">
 print("The largest number living in the Bronx is", pop["Bronx"].max()) 
 </pre>
 
 Similarly the average (mean) population for Queens can be computed:
-<pre>
+<pre style = "background-color:lavender;width:575px">
 print("The average number living in the Queens is", pop["Queens"].mean()) 
 </pre>
 
@@ -162,7 +162,7 @@ print("The average number living in the Queens is", pop["Queens"].mean())
 <p>
 Each column in the original spreadsheet is a column, or <tt>series</tt>.  We can look at the column for the Bronx with:
 
-<pre>
+<pre style = "background-color:lavender;width:450px">
     print(pop['Bronx'])
 </pre>
 
@@ -170,27 +170,27 @@ How would you look at the one for Brooklyn?
 
 <p>
 A nice thing about series is that you can do basic arithmetic with them.  For example, 
-<pre>
+<pre style = "background-color:lavender;width:450px">
     print(pop['Bronx']*2)
 </pre>
 prints out double the values in the column.
 
 <p>You can also use multiple columns in a calculation:
-<pre>
+<pre style = "background-color:lavender;width:450px">
     print(pop['Bronx']/pop['Total'])
 </pre>
 prints out the fraction of the total population that lives in the Bronx.
 <p>
 We can save that series by creating a new column for it:
-<pre>
+<pre style = "background-color:lavender;width:450px">
     pop['Fraction'] = pop['Bronx']/pop['Total']
 </pre>
 and then can use it to create a new graph:
-<pre>
+<pre style = "background-color:lavender;width:450px">
     pop.plot(x = 'Year', y = 'Fraction')
 </pre>
 We can save it to a file, by storing the current figure (via "get current figure" or gcf() function and then saving it:
-<pre>
+<pre style = "background-color:lavender;width:450px">
     fig = plt.gcf()
     fig.savefig('fractionBX.png')
 </pre>
@@ -202,7 +202,7 @@ shown in the following plot:
 <p>
 Putting this altogether, we have a program:
 
-<pre>
+<pre style = "background-color:lavender;width:650px">
 #Libraries for plotting and data processing:
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -245,7 +245,7 @@ Let's create a simple shell script with <tt>vi</tt>:
 	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
 	which stands for "insert"
 	<li> Type the lines:
-	<pre>
+	<pre style = "background-color:lavender;width:450px">
 #Your name here
 #October 2017
 #First shell script:  creates directories for project
@@ -261,13 +261,13 @@ mkdir results
 	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
 	<tt>setupProject</tt>, you just created.
 	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
-	<pre>
+	<pre style = "background-color:lavender;width:450px">
 chmod +x setupProject
 	</pre>
 	(changes the "mode" to be executable).
 	
 	<li> To run your first shell script, you can now type its name at the terminal:
-	<pre>
+	<pre style = "background-color:lavender;width:450px">
 ./setupProject
 	</pre>
 	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
