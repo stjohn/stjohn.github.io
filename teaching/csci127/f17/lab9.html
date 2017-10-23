@@ -125,8 +125,10 @@ folium.Marker(location = [40.768731, -73.964915], popup = "Hunter College").add_
 
 <p>and create the .html file:
 <pre>
-mapCUNY.save(outfile='tempMap.html')
+mapCUNY.save(outfile='nycMap.html')
 </pre>
+
+Save your commands to a file and run via IDLE.  Your program will create an HTML file called, <tt>nycMap.html</tt>.  Open it in your favorite browser to make sure it creates a map of NYC with a marker for Hunter College.  When you have a running program, see the <a href="ps.html">Programming Problem List</a>.
 
 </div>
 
@@ -187,119 +189,42 @@ mapCUNY.save(outfile='cunyLocations.html')
 To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
 
 
-
-
 </div>
 
 
 
-
-<div>
-<h3>Plotting from Files</h3>
-
-<p>  
-We can combine the mapping of folium with the tools we have used for CSV files.
-We introduced <a href="http://pandas.pydata.org">Pandas</a> in <a href="lab6.html">Lab 6</a>.  We'll use it here to read in large CSV files and then make maps of the GIS data inside the files.
-
-
-
-We can combine the mapping of folium with the tools we have used for CSV files.
-
-<p>Let's make an interactive map of the the CUNY campuses.  Instead of typing every location in by hand, we can use a file.   First, download a CSV file from data.ny.gov:
-<ul>
-	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
-</ul>
-(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).  
-
-<p>
-Let's use Pandas to read in the file.  We will need to import pandas and folium:
-<pre>import folium
-from folium.plugins import MarkerCluster
-import pandas as pd
-</pre>
-Note that we're explicitly importing MarkerCluster from the Folium plugins (we're going to use it to cluster markers together as the map zooms out).
-
-
-
-<p>To read in the CSV file, we'll use pandas' csv reader.  We'll print out the campus locations to make sure that all were read in:
-<pre>
-cuny = pd.read_csv('cunyLocations.csv')
-print (cuny["Campus"])
-</pre>
-
-<p>Next, let's set up a map, centered on New York City:
-<pre>
-mapCUNY = folium.Map(location=[40.75, -74.125])
-</pre>
-
-<p>
-We need to add markers for each campus.  First, we'll create empty lists to hold the locations, the popup messages, and the icons:
-<pre>
-#Create lists to hold coordinates and popups:
-coords = []
-popups = []
-icons = []
-</pre>
-
-We're going to iterate through the rows of dataframe to create the markers:
-<pre>
-#For each row in the CSV file:
-for index,row in cuny.iterrows():
-    #Extract the data:
-    lat = row["Latitude"]
-    lon = row["Longitude"]
-    name = row["Campus"]
-    #Add the [lat,lon] to list of coordinates:
-    coords.append([lat,lon])
-    #Add the names to the popup list>
-    popups.append(name)
-    if row["College or Institution Type"] == "Senior Colleges":
-        icons.append(folium.Icon(icon='cloud'))
-    else:
-        icons.append(folium.Icon(color='green'))
-</pre>
-Note that we're putting in different icons, depending on whether its a senior college or not.
-
-<p>Once we have everything set up, let's add all the markers at once:
-<pre>
-#Add all the markers at once:
-mapCUNY.add_children(MarkerCluster(locations=coords, popups = popups, icons=icons))
-</pre>
-
-<p>Lastly, let's save our map:
-<pre>
-mapCUNY.save(outfile='cunyLocations.html')
-</pre>
-
-<p>
-To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
-
-
-</div>
 
 <div>
 <h3>Command Line <tt>git</tt></h3>
 
 <p> In <a href="lab8">Lab 8</a>, we introduced github which can be used to share and store code, websites, etc. (roughly, a "Google Docs" for programs).  The website for this course as well as all the programs are stored in repositories (or "repos") at github.
 
-<p> The github site has both a web browser interface (which we used last lab), and the option to use the command line interface to interact with the site.  The basic actions for git are:
-<ul>
-	<li> <b>pull</b>:
-	<li> <b>push</b>:
-	<li> <b>commit</b>:
-	<li> <b>add</b>:
-	<li> <b>fetch</b>:
-</ul>
+<p> The github site has both a web browser interface (which we used last lab), and the option to use the command line interface to interact with the site.  For this course, we will only retrieve code from existing repos (in future courses, they will introduce how to share your code and merge your changes with others).
 
-<p>Give directions on how to fetch
+<p> From Program #40 onward, all sample programs are available at the class 
+repository (repo):
+<blockquote>
+	<a href="https://github.com/stjohn/csci127">
+	https://github.com/stjohn/csci127</a>
+</blockquote>
+You can access programs by going to the website, or, using the following git command at the command line:
 
+<pre>
+git clone https://github.com/stjohn/csci127
+</pre>
 
+This command will make a copy of all the programs in the class repo in directory called, <tt>csci127</tt>, in your current working directory.
+
+<p> If you have that directory already and would like to update it with new files that have been (we periodically update the repo), you can 'fetch' the changes:
+<pre>
+git fetch https://github.com/stjohn/csci127
+</pre>
 </div>
 
 <div>
 <h3>Finding Errors</h3>
 
-Finding, and fixing errors, in your programs is a very useful skill.  Let's look at a program with lots of errors and work through how to identify the issues and fix them.  The program, <a href="../../cmp/cmp230/f14/errors.py">errors.py</a>, when loaded into IDLE does not run:
+Finding, and fixing errors, in your programs is a very useful skill.  Let's look at a program with lots of errors and work through how to identify the issues and fix them.  If you cloned the repo above, you will have a copy of <a href="https://github.com/stjohn/csci127/blob/master/errors.py">errors.py</a> on your computer (you can also download from the webpage).  When loaded into IDLE, it does not run:
 <pre># errors.py is based on dateconvert2.py from Chapter 5 of the Zelle textbook
 #     Converts day month and year numbers into two date formats
 

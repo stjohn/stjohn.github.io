@@ -7,7 +7,7 @@ Created on Fri Feb 24 11:17:29 2017
 """
 
 import folium
-from folium.plugins import MarkerCluster
+#from folium.plugins import MarkerCluster
 import pandas as pd
 #import numpy as np
 

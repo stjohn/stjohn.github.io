@@ -53,7 +53,7 @@ Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you c
 <h3>CSV Data Files</h3>
 
 CSV files store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
-<pre>
+<pre style = "background-color:lavender;width:1300px">
 1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
 </pre>
 <p>
@@ -85,14 +85,14 @@ For each of these questions, we can traverse the file and count the occurrences 
 <p> How can tell which car got the most tickets?  First, we need to figure out a unique way to identify different cars.  Luckily, cars almost always have license plates-- with each state having a unique number.  (For this simple exercise, we'll assume that each license plate is unique on its own-- not an unreasonable assumption since every state has a different schema for assigning numbers, but to be more accurate we should keep track of license plate number and issuing state.)
 
 <p>Open up the CSV file and look at the columns.  Which column contains the license plate number?  Here's all the column names (first line of <a href="tickets.csv">tickets.csv</a>):
-<pre>
+<pre style = "background-color:lavender;width:1300px">
 Summons Number,Plate ID,Registration State,Plate Type,Issue Date,Violation Code,Vehicle Body Type,Vehicle Make,Issuing Agency,Street Code1,Street Code2,Street Code3,Vehicle Expiration Date,Violation Location,Violation Precinct,Issuer Precinct,Issuer Code,Issuer Command,Issuer Squad,Violation Time,Time First Observed,Violation County,Violation In Front Of Or Opposite,House Number,Street Name,Intersecting Street,Date First Observed,Law Section,Sub Division,Violation Legal Code,Days Parking In Effect    ,From Hours In Effect,To Hours In Effect,Vehicle Color,Unregistered Vehicle?,Vehicle Year,Meter Number,Feet From Curb,Violation Post Code,Violation Description,No Standing or Stopping Violation,Hydrant Violation,Double Parking Violation
 </pre>
 
 It's the second column:  <tt>Plate ID</tt>.  Scanning the CSV file, it looks like most cars got one or two tickets.  How can we get the worst offenders (i.e. those cars that got the most parking tickets)?
 
 <p> Let's use Pandas to read in the CSV file, following the same pattern as last lab:
-<pre>
+<pre style = "background-color:lavender;width:600px">
 #CSci 127 Teaching Staff
 #October 2017
 #Count which cars got the most parking tickets
@@ -107,23 +107,24 @@ print(tickets) 				#Print out the dataframe
 
 <p>
 Run your program.  That printed out all the information about all the tickets issued.  Let's focus in on just licence plates.  Change the last line of your program to be:
-<pre>
+<pre style = "background-color:lavender;width:600px">
 print(tickets["Plate ID"])	#Print out licence plates 
 </pre>
 <p>When you run the program again, you should just see the row number and licence plates.
 
 <p> We want to refine this further to print how many tickets each car got.  Pandas has a function just for counting occurrences, called <tt>value_counts()</tt>.  Let's modify our last line again to use it:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 print(tickets["Plate ID"].value_counts())	#Print out plates & number of tickets each got
 </pre>
 <p>Rerunning the program, there are a lot of cars that got only a single ticket.  If you scroll back up the Python shell, you will see the cars with the most tickets are listed first.  Let's just print out the 10 cars that got the most tickets.  We can do this by slicing to <tt>[:10]</tt>:
-<pre>
+<pre style = "background-color:lavender;width:650px">
 print(tickets["Plate ID"].value_counts()[:10)	#Print 10 worst & number of tickets 
 </pre>
 <p>
 Even with only 1000 lines of ticket information, there is a car (with plate <tt>TOPHAT5</tt>) that got more than 5 tickets.  
 <p>Let's make our program a bit more general, to allow the user to enter their own file name:
-<pre>#CSci 127 Teaching Staff
+<pre style = "background-color:lavender;width:650px">
+#CSci 127 Teaching Staff
 #October 2017
 #Count which cars got the most parking tickets
 
@@ -140,7 +141,8 @@ print(tickets["Plate ID"].value_counts()[:10]) #Print out the dataframe
 <a href="Parking_Violations_Jan_2016.csv">Parking_Violations_Jan_2016.csv</a>.
 
 <p>You should see output:
-<pre>Enter CSV file name: Parking_Violations_Jan_2016.csv
+<pre style = "background-color:lavender;width:650px">
+Enter CSV file name: Parking_Violations_Jan_2016.csv
 The 10 worst offenders are:
 63044JM    52
 63277JM    46
@@ -186,7 +188,7 @@ the next function is written.
 
 <p>In today's lab, we will write a program to draw images using turtles.  We will focus on breaking down the problem into functions, and then implementing (and testing!) each function separately.  Here's a basic outline of our program:
 
-<pre>
+<pre style = "background-color:lavender;width:675px">
 #Intro Programming Lab:  A program with a herd of turtles
 
 import turtle
@@ -206,7 +208,7 @@ if __name__ == "__main__":
 </pre>
 We will fill in each function, one-by-one, using the comments as guidance.
 The first function should welcome the user to the program:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def welcomeMessage():
     print()
     print("Welcome to our herd of turtles demonstration!")
@@ -220,13 +222,13 @@ is on the right hand side of an equals sign, it returns a value (namely, the num
 of turtles) that we will use later in the program.  So, our function will ask
 the user for the number and then use a <tt>return</tt> statement to send that
 value back to the calling function:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def getInput():
     n = eval(input("Please enter the number of turtles: "))
     return n
 </pre>
 When we add these in, we now have the program:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 #Intro Programming Lab:  A program with herd of turtles
 
 import turtle
@@ -260,7 +262,7 @@ turtle command to change the background color is <tt>bgcolor</tt> and
 colors can be referred by their names or the percentage of red, green,
 and blue ('RGB') in the color.  Let's use the name to change the window
 color:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def setUpScreen():
     w = turtle.Screen()
     w.bgcolor("green")
@@ -268,7 +270,7 @@ def setUpScreen():
 </pre>
 Next, we need to set up a list of turtles.  From the function invocation in the
 <tt>main()</tt> we know it has the outline:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def setUpTurtles(n):
     #Create a list of turtles
     #Make each turtle appear turtle-shaped
@@ -282,7 +284,7 @@ To set up our list, we will follow our outline from the strings and lists chapte
 
 </ol>
 For our turtles, this looks like:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def setUpTurtles(n):
     tList = []
     #Create turtles:
@@ -294,7 +296,7 @@ def setUpTurtles(n):
     return tList
 </pre>
 Lastly for this function, we need to change the color and direction.  We will use the `red-blue-green' (`RGB') values to give each turtle a different color.  To keep the turtle color from clashing with the green background, we will set the red and green parts of the color to 0, and just allow the blue to change from 50% to 100%.  To spread the turtles out, we'll divide the circle into even angles:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def setUpTurtles(n):
     tList = []
     #Create turtles:
@@ -314,7 +316,7 @@ If you run your program, you will see the turtles arranged pointing outwards fro
 a center point, in different shapes of blue.
 
 <p>The next functions of the program are straightforward.  We will move each turtle forward using a for-loop.  We chose 30 by experimenting with window size.  If it does not fit well on your screen, change the forward distance to something that does.  To make a stamp of where the turtle has been, we use the Turtle graphics function, <tt>stamp()</tt>
-<pre>
+<pre style = "background-color:lavender;width:675px">
 def moveForward(tList):
     for t in tList:
         t.forward(30)
@@ -325,7 +327,7 @@ def stamp(tList):
 </pre>
 
 Putting all the pieces together, we get:
-<pre>
+<pre style = "background-color:lavender;width:675px">
 #Intro Programming Lab:  A program with herd of turtles
 
 import turtle

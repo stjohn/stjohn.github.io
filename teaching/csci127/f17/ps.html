@@ -35,8 +35,7 @@ Fall 2017<br><br>
 #Date: September 1, 2017
 #This program prints: Hello, World!
 
-print("Hello, World!")
-	</pre>
+print("Hello, World!")</pre>
 	<li> You are encouraged to submit your assignments early.  Below lists the 
 		last date on which each assignment will be accepted.
 		Assignments must be 
@@ -157,8 +156,8 @@ In ASCII:
 	<li > <b>Due Date: 14 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
 
 		<p>The Turtle drawing library has a command that will control the width that's drawn to the screen.  For example, if you turtle was named <tt>tony</tt>, the following command would set the pen to draw at size 10:
-		<pre style ="background-color:lavender;width:400px">tony.pensize(10)
-		</pre>
+		<pre style ="background-color:lavender;width:400px">
+tony.pensize(10)</pre>
 		Write a program that implements the pseudocode below:
 	
 <pre>
@@ -736,8 +735,7 @@ GREY      574
 SILVE     450
 BLUE      412
 Name: Vehicle Color, dtype: int64
-
-		</pre>
+</pre>
 
 		<p>And another run:
 <pre style ="background-color:lavender;width:400px">
@@ -857,74 +855,105 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
 AccountNameGoesHere
 </pre>
 	
-<hr>		
-<p><i>More to come...</i>		
-<hr>	
 
-<!--
+
 
 <a id="set9"></a>
 <hr>	
 
 
 
-	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 13 November</b>  <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
-		<p>Generate an HTML page:  ask for name, favorite color, and name of image, and create a file <tt>index.html</tt>
+		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
 		
-		<p>Useful string command:  <tt>myString.replace(old, new)</tt> will replace all occurrences of the string stored in old with the string in new
+		<p> <i>Hint:  See <a href="lab9.html">Lab 9</a>.</i>
 		
-		<p>A sample run of your program:
-<pre style ="background-color:lavender;width:400px">
-Enter your name: Thomas Hunter
-What is your favorite color: purple
-Name of an image: hunter.png
-</pre>
 
-		<p> Add an iframe with the output
 	
-		<p> <i>Hint:  See notes from Lecture 8.</i>
-	
-	<li > <b>Due Date: 14 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-
-		<p> Fill in a framework for a turtles program that make maps.  
-		
-		<p> The starting file is available at github:...
-		
-		<p><i>Hint:  See <a href="lab8.html">Lab 8</a> for mapping with turtles and <a href="lab9.html">Lab 9</a> for fetching files from github.</i>
-
-
-
-		
-	<li > <b>Due Date: 15 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	<li > <b>Due Date: 14 November</b>  <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
 		<p>
-		Using folium (see <a href="lab9.html">Lab 9</a>), create a map that shows all the traffic collisions from the input file.
+		Using folium (see <a href="lab9.html">Lab 9</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
 		
 		<p>A sample run:
 <pre>
+Enter CSV file name:  collisionsThHunterBday.csv
+Enter output file:  thMap.html
 </pre>
+		<p>which would produce the html file:
 		
-		<p>iframe with example html</p>
+		<p><iframe src="th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
+		
+		<p>(The demo above is for October 18, 2016 using the time the collision occurred ("TIME") to label each marker and changed the underlying map with the option:  
+		<tt>tiles="Cartodb Positron"</tt> when creating the map.)
 		
 		<p> This assignment uses collision data collected and made publicly by 
 		<a href="https://nycopendata.socrata.com">New York City Open Data</a>.
-		See Programming Problem #39 for details on this data set.
+		See Programming Problem #39 for details on this data set.  When creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".  
 	
-		<p>
-		Note: for this program, submit your .py program (not the .html file that it generates).
+		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
+
+		
+	<li > <b>Due Date: 15 November</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>	
+
+		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
+		<ul>
+			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
+			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
+			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
+			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
+			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
+			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+		
+		<p>A template program, <tt>copenhagenTransit.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+		
+		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
 
 
-
-
+<hr>
+<i>More to come...</i>
+<hr>
 	
+<!--	
 	<li > <b>Due Date: 16 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>The program, 
-		<a href="../../cmp/cmp230/f14/errors.py">errors.py</a>, has lots of errors.  Fix the errors and submit the modified program.
-		<br><i>Hint:  see  <a href="lab9.html">Lab 9</a>.</i>
+		<p> Write four functions: 
+		<ul>
+			<li> <tt>getData()</tt> that asks the user for the name of the CSV and returns a dataframe of the contents.	
+			<li> <tt>getLocale()</tt> asks the user for latitude and longitude of the user's current location and returns those floating points numbers. 			
+			<li> <tt>getColumnNames()</tt> that asks the user for the exact name of the columns that contains the latitude and longitude and returns those values as a tuple.  Since the NYC OpenData files use different names for the columns, such as "Lat", "Latitude", "LATITUDE" for latitude, the program asks for the name of the column as well as the name of the data file.
+			<li> <tt>computeDist()</tt> that computes the squared distance
+			between two points <tt>(x1,y1)</tt> and <tt>(x2,y2)</tt>:
+				<blockquote>
+					<tt>(x1-x2)<sup>2</sup> + (y1-y2)<sup>2</sup></tt>
+				</blockquote>
+		</ul>  
+		
+		<p> A sample run (using the list of all trash cans from <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>
+<pre>
+Enter CSV file name:  trashCans.csv
+Enter output file:  
+</pre>
+		<p>which would produce the html file:
+		
+		<p><iframe src="th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
+	
 
-		<p> Change to grab file from github</a>
+		<p>A template program, <tt>mapClosest.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+		  
+		
+		<p> Write functions that give (min, max) of a data series to center map in middle of data.  
+		
+		<p> Also, write a function that computes the distance between any two points and use it in a function that finds closest trash can.
+
+		
+		<p><i>Hint:  See <a href="lab9.html">Lab 9</a>.</i>
+
+
 	
 	
 	<li > <b>Due Date: 17 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
@@ -933,8 +962,8 @@ Name of an image: hunter.png
 	
 		<p> Write a function that averages?
 		<p> Give pseudocode for:
-		Compute the average color of a slice of an image (a la first screen of http://koalastothemax.com-- include as iframe).  Provide the program, students fill in the function.
-		(Insprired by <a href="http://koalastothemax.com">koalas to the max</a>)
+		Compute the average color of a slice of an image.  Provide the program, students fill in the function.
+		(Inspired by <a href="http://koalastothemax.com">koalas to the max</a>)
 
 		<p><i>Hint:  See notes from Lecture 9.</i>
 
@@ -945,12 +974,22 @@ Name of an image: hunter.png
 <hr>			
 
 	<li > <b>Due Date: 20 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
+
+		<p>The program, 
+		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
+		<p><i>Hint:  see  <a href="lab10.html">Lab 10</a>.</i>
+
+	<li > <b>Due Date: 21 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>		
 		
-		<p>Using Unix shell commands, something with pipes...
+		<p> Modify the program from <a href="lab10.html">Lab 10</a> that makes a turtle walk 100 times.  Each "walk" is 5 steps forward and the turtle can turn 0,1,2,...,359 degrees (chosen randomly) at the beginning of each walk.
+
+		<p> A sample run of your program:
+<pre>
+</pre>
 
 		
-	<li > <b>Due Date: 21 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+
 	
 
 		<p> Write a program that asks the user to enter a string. If the user enters an empty string, your program should continue prompting the user for a new string until they enter a non-empty string. Your program should then print out the string entered.	
@@ -959,14 +998,12 @@ Name of an image: hunter.png
 <pre>
 </pre>
 	
-	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+		<p><i>Hint:  See <a href="lab10.html">Lab 10</a>.</i>
+		
 
 
-		<p> Write a program that makes a turtle walk 100 times.  Each "walk" is 25 steps forward and the turtle can turn 0, 90, 180, or 270 degrees (chosen randomly) at the beginning of each walk.
 
-		<p> A sample run of your program:
-<pre>
-</pre>
+		
 
 <a id="set11"></a>
 <hr>
@@ -976,35 +1013,25 @@ Name of an image: hunter.png
 
 
 	<li > <b>Due Date: 27 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
-	
-		<p> simulation question
+
+		<p>Simple machine language program from lab.	
+
 	
 	<li > <b>Due Date: 28 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Simple machine language program from lab.
+		<p>Machine language program from lab.
 
 	<li > <b>Due Date: 29 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
-		<p>Machine language program.
+		
+		<p>Using Unix shell commands, something with pipes...  Put in lab 11.
+		
+		<p><i>Hint:  See <a href="lab11.html">Lab 11</a>.</i>
+		
 
 	<li > <b>Due Date: 30 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
 		<p>Machine language program.
-	
-		<p> Pseudocode for turning an image to all black or all white.  For each pixel, decide if its closer to black or two white, and make new pixel accordingly.
-				
-
-		<p> Given the framework for a program, fill in the function:
-	
-
-
-	
-		<p> Using folium (see <a href="lab7.html">Lab 7</a>), create a map that 
-		asks users for info for 3 cities (lat, lon, and title) and displays them on map.
-		
-		<p>
-		Note: for this program, submit your .py program (not the .html file that it generates).
-	
 	
 
 
@@ -1047,6 +1074,24 @@ Mihi cura futuri
 
 	<li > <b>Due Date: 6 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
 
+		<p> Write a <b>C++ program</b> program that asks the user for a number and draws a triangle of that height and width using 'character graphics'.
+		
+		<p>A sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter a number:  6
+*
+**
+***
+****
+*****
+******
+</pre>
+
+<a id="set13"></a>
+<hr>
+
+	<li > <b>Due Date: 7 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
+
 		<p> Write a <b>C++ program</b> program that asks the user for the hour of the day (in 24 hour time), and prints 
 		<ul>
 			<li>"Good Morning" if it is strictly before 12, 
@@ -1073,22 +1118,28 @@ Good Afternoon
 		
 
 
-<a id="set13"></a>
-<hr>
 
-	<li > <b>Due Date: 7 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
-	
-		<p> Hex to decimal converter from pseudocode	
+
+
 
 	<li > <b>Due Date: 8 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
 	
-		<p> Write a function, <a href="http://www.neuroproductions.be/logic-lab/index.php?id=78960">xor()</a>, that takes 2 inputs and returns the ``exclusive or'' of the inputs.  
+		<p> SIR-model of disease.  
 	
-		<p> The grading scripts are expecting a C++ program (explain!)	
+		
 	
 	<li > <b>Due Date: 11 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
 	
-		<p> C++ question using a while loop
+		<p> Write a <b>C++ program</b> program that asks the user for a number larger than 0.  If the user enters 0 or a negative number, your program should continue prompting the user for a new number until they enter a positive number. Your program should then print out the number entered.	
+		
+		<p> A sample run of your program:
+<pre style ="background-color:lavender;width:400px">
+Please enter a positive number:  -3
+Not positive.  Enter again:  0
+Not positive.  Enter again:  -43.2
+Not positive.  Enter again:  42
+Thank you!  You entered: 42
+</pre>
 
 	<li > <b>Due Date: 12 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
 	
@@ -1116,7 +1167,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 17 October 2017.)</i><br>
+<i style="float:right">(This file was last modified on 23 October 2017.)</i><br>
 </div>
 </body>
 </html>
