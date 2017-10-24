@@ -1,9 +1,9 @@
 #CSci 127 Teaching Staff
 #October 2017
 #A program that converts hex numbers to decimal, but filled with errors...  
-#Modified by:  ADD YOUR NAME HERE
+Modified by:  ADD YOUR NAME HERE
 
-defin convert(s):
+define convert(s):
      """ Takes a hex string as input.
      Returns decimal equivalent.
      """
