@@ -69,6 +69,9 @@ While the <tt>condition</tt> is true, the block of commands nested under the whi
 <iframe src="https://trinket.io/embed/python/6738c47304" width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 <p> Indefinite loops are useful for simulations (like our simple random walk above) and checking input.  For example, the following code fragment:
+
+
+
 <pre>
 age = int(input('Please enter age: '))
 while age < 0:
@@ -76,7 +79,7 @@ while age < 0:
     age = int(input('Please enter age: '))
 print('You entered your age as:', age)
 </pre>
-will ask the user for their age, and continue asking until the number they entered is non-negative.  
+will ask the user for their age, and continue asking until the number they entered is non-negative (<a href="http://pythontutor.com/visualize.html#code=age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Awhile%20age%20%3C%200%3A%0A%20%20%20%20print%28'Entered%20a%20negative%20number.'%29%0A%20%20%20%20age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Aprint%28'You%20entered%20your%20age%20as%3A',%20age%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22-3%22,%223%22%5D&textReferences=false">example in pythonTutor</a>).
 </div>
 
 
