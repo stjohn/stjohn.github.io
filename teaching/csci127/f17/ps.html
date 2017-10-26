@@ -928,11 +928,8 @@ The fare is 11.5
 		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
 
 
-<hr>
-<i>More to come...</i>
-<hr>
-	
-<!--	
+
+
 	
 	<li > <b>Due Date: 16 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
@@ -948,18 +945,31 @@ The fare is 11.5
 				</blockquote>
 		</ul>  
 		
-		<p> A sample run (using the list of all trash cans from <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>):
-<pre>
-Enter CSV file name:  trashCans.csv
-Enter column name for latitude:  Latitude
-Enter column name for longitude:  Longitude
-Enter current latitude:  40.768731
-Enter current longitude:  -73.964915
-Enter output file: trash.html
+		<p> A sample run to find the closest CUNY campus to the Brooklyn Navy Yard:
+<pre style ="background-color:lavender;width:400px">
+Enter CSV file name: cunyLocations.csv
+Enter column name for latitude: Latitude
+Enter column name for longitude: Longitude
+Enter current latitude: 40.7021
+Enter current longitude: -73.9708
+Enter output file: closestCUNY.html
 </pre>
 		<p>which would produce the html file:
 		
-		<p><iframe src="trash.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
+		<p><iframe src="closestCUNY.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>			
+		
+		<p> Another sample run to find the closest recycling bin to Roosevelt Island (using the list of recycling bins from <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>):
+<pre style ="background-color:lavender;width:400px">
+Enter CSV file name: recyclingBins.csv
+Enter column name for latitude: Latitude
+Enter column name for longitude: Longitude
+Enter current latitude: 40.7605
+Enter current longitude: -73.951
+Enter output file: recyc.html
+</pre>
+		<p>which would produce the html file:
+		
+		<p><iframe src="recyc.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
 
 	
 		<p>A template program, <tt>mapClosest.py</tt>, is available on the 
@@ -969,16 +979,40 @@ Enter output file: trash.html
 		<p><i>Hint:  See <a href="lab9.html">Lab 9</a>.</i>
 
 
-	
-	
+
+
 	<li > <b>Due Date: 17 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
 
 		<p>Fill in the missing functions:
-	
-		<p> Write a function that averages?
-		<p> Give pseudocode for:
-		Compute the average color of a slice of an image.  Provide the program, students fill in the function.
-		(Inspired by <a href="http://koalastothemax.com">koalas to the max</a>)
+		
+		<ul>
+			<li> <tt>average(region):</tt>  Takes a region on an image and
+     		returns the average red, green, and blue values across the region.
+     		<li> <tt>setRegion(region,r,g,b):</tt> Takes a region of an image and red, green, and blue values, r, g, b.  Sets the region so that all points have red values of r, green values of g, and blue values of b.
+     	</ul>
+ 	
+ 		<p> The functions are part of a program that averages smaller and smaller regions of an image until the underlying scene is visible
+ 		(inspired by the elegant <a href="http://koalastothemax.com">koalas to the max</a>).
+ 		
+ 		<p>For example, if you inputted our favorite image, you would see (left to right):
+ 		
+ 		<p>
+ 		<img src="refined1.png" width=150>
+  		<img src="refined2.png" width=150>
+  		<img src="refined3.png" width=150>
+  		<img src="refined4.png" width=150>
+  		<img src="refined5.png" width=150>
+  		<img src="refined6.png" width=150>
+  		<img src="refined7.png" width=150>
+  		<img src="refined8.png" width=150> 
+  		
+  		<p> and finally:
+  		
+  		<p> <img src="csBridge.png" width=400>
+
+		<p>A template program, <tt>averageImage.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.  
+		The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them). 
 
 		<p><i>Hint:  See notes from Lecture 9.</i>
 
@@ -988,22 +1022,20 @@ Enter output file: trash.html
 <a id="set10"></a>
 <hr>			
 
-	<li > <b>Due Date: 20 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
+	<li > <b>Due Date: 20 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/toctree.html#">Chapter 3</a></b><br>
 
 		<p>The program, 
 		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
 		<p><i>Hint:  see  <a href="lab10.html">Lab 10</a>.</i>
 
-	<li > <b>Due Date: 21 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>		
+	<li > <b>Due Date: 21 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>		
 		
-		<p> Modify the program from <a href="lab10.html">Lab 10</a> that makes a turtle walk 100 times.  Each "walk" is 5 steps forward and the turtle can turn 0,1,2,...,359 degrees (chosen randomly) at the beginning of each walk.
+		<p> Modify the program from <a href="lab10.html">Lab 10</a> that makes a turtle walk 100 times.  Each "walk" is 10 steps forward and the turtle can turn 0,1,2,...,359 degrees (chosen randomly) at the beginning of each walk.
 
 		<p> A sample run of your program:
-<pre>
-</pre>
-
+<p> <img src="randomWalk.png" height=200>
 		
-	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
+	<li > <b>Due Date: 22 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>	
 
 	
 
@@ -1024,6 +1056,11 @@ You entered: Mihi Cura Futuri
 
 
 
+<hr>
+<i>More to come...</i>
+<hr>
+	
+<!--
 		
 
 <a id="set11"></a>
@@ -1185,7 +1222,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 23 October 2017.)</i><br>
+<i style="float:right">(This file was last modified on 26 October 2017.)</i><br>
 </div>
 </body>
 </html>
