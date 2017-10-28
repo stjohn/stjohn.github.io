@@ -1069,12 +1069,17 @@ You entered: Mihi Cura Futuri
 
 	<li > <b>Due Date: 27 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Simple machine language program from lab.	
+		<p> Write a simplified machine language program that prints the motto:  <tt>Mihi Cura Futuri</tt>
+		
+		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
 
 	
 	<li > <b>Due Date: 28 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Machine language program from lab.
+		<p>Machine language program from lab with loop.
+
+		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
+
 
 	<li > <b>Due Date: 29 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>	
 
@@ -1086,7 +1091,7 @@ You entered: Mihi Cura Futuri
 
 	<li > <b>Due Date: 30 November</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/index.html">Think CS: Chapters ??</a></b><br>
 
-		<p>Machine language program.
+		<p>Machine language program with accumulator & registers.
 	
 
 
@@ -1179,7 +1184,30 @@ Good Afternoon
 
 	<li > <b>Due Date: 8 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
 	
-		<p> SIR-model of disease.  
+	
+		<p> The <a href="https://www.nature.com/articles/srep46076">SIR-model of disease</a> is a simple, but powerful, tool for modeling the spread of infectious disease.  It has three variables for subgroups of the population:
+		<ul>
+			<li> <b>S</b>:  The number of individuals in the population that are <i>susceptible</i> to the disease (but not infected).
+			<li> <b>I</b>:  The number of individuals in the population that are <i>infected</i> with the disease.
+			<li> <b>R</b>:  The number of individuals in the population that have <i>recovered</i> from the disease, and are immune to future 
+			infections.
+		</ul>
+		
+		<p>At each stage, the numbers change as follows:
+		<ul>
+			<li> <b>S</b>:  The number of susceptible individuals at the previous stage minus the number of those who were infected.
+			<blockquote>
+				S = S - S*infectionRate
+			</blockquote>
+			<li> <b>I</b>:  The number of individuals in the population that are infected at the previous stage and the number of newly affected minus the number who recover.
+			<blockquote>
+				I = I + S*infectionRate - I*recoveryRate
+			</blockquote>			
+			<li> <b>R</b>:  The number of individuals in the population that have recovered previously and the number who recovered at this stage. 
+			<blockquote>
+				R = R + I*recoveryRate
+			</blockquote>
+		</ul>		
 	
 		
 	
