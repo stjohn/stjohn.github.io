@@ -17,7 +17,7 @@ Fall 2017<br><br>
 <div>
 
 <p>
-Today's lab will introduce a simplified machine language
+Today's lab will introduce a simplified machine language.
 
 <p>Software tools needed:  web browser and a graphical editor, such as <tt>gEdit</tt>.
 
@@ -28,6 +28,17 @@ Today's lab will introduce a simplified machine language
 
 <div>
 <h3>Simplified Machine Language</h3>
+
+<p> In today's lab, we will explore a programming language that is very "low level" in that it maps very closely to the actual commands that are used by the computer's processor.
+
+<p> We will use a simulator, <a href="">weMIPS</a>, to emulate what a machine-level language would do for a popular class of computer processors, MIPS.  Processors with <a href="">MIPS</a> are a Reduced Instructor Set Computer (RISC), meaning they have fewer different types of instructions that the processor knows (and thus fewer that have to be implemented, leading to faster processors).
+
+
+<b>Need to launch separately!  No https service available for the iframes...</b>
+
+<iframe src="http://rivoire.cs.sonoma.edu/cs351/wemips/" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
 
 <p>Give simple commands
 <p>Instructions for using GUI
@@ -41,9 +52,13 @@ Today's lab will introduce a simplified machine language
 </div>
 
 <div>
-<h3>More on Unix</h3>
+<h3>More on Unix:  Using Pipes</h3>
 
+<p> Unix has a very useful construct to let you glue together commands to perform more complex actions.
 
+<p> Simple pipe example with ls and grepping all the .py files in the directory.
+
+<p> Let's put this into a script.  Remember to use <tt>Unix</tt> end-of-lines, since gradescope will run what you submit as a Unix script and will be very confused if you have non-Unix (i.e. Windows-style) end-of-lines.
 
 </div>
 
