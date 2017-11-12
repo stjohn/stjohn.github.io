@@ -118,7 +118,7 @@ print(tickets["Plate ID"].value_counts())	#Print out plates & number of tickets 
 </pre>
 <p>Rerunning the program, there are a lot of cars that got only a single ticket.  If you scroll back up the Python shell, you will see the cars with the most tickets are listed first.  Let's just print out the 10 cars that got the most tickets.  We can do this by slicing to <tt>[:10]</tt>:
 <pre style = "background-color:lavender;width:650px">
-print(tickets["Plate ID"].value_counts()[:10)	#Print 10 worst & number of tickets 
+print(tickets["Plate ID"].value_counts()[:10])	#Print 10 worst & number of tickets 
 </pre>
 <p>
 Even with only 1000 lines of ticket information, there is a car (with plate <tt>TOPHAT5</tt>) that got more than 5 tickets.  
