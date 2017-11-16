@@ -1184,9 +1184,7 @@ Enter hour (in 24 hour time):  15
 Good Afternoon
 </pre>
 
-<hr>
-<i>More to come...</i>
-<hr>
+
 
 		
 	<li > <b>Due Date: 8 December</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
@@ -1195,39 +1193,67 @@ Good Afternoon
 		
 		<p> A sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter starting amount: 1000
-Year 1  1100.0
-Year 2  1210.0
-Year 3  1331.0
+Please enter the starting amount: 1000
+Year 1  1100.00
+Year 2  1210.00
+Year 3  1331.00
 Year 4  1464.10
 Year 5  1610.51
 Year 6  1771.56
-Year 7  1948.71
+Year 7  1948.72
+Year 8  2143.59
 </pre>
 		<p> <it>Hint:  use an indefinite loop.</it>
 
+
+
+
+
 	<li > <b>Due Date: 11 December</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 	
-		<p> One last unix script...
+		<p> Write a <b>C++ program</b> that asks the user for their age, and continue asking until the number entered positive (that is, greater than 0).  That is, write the <a href="http://pythontutor.com/visualize.html#code=age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Awhile%20age%20%3C%200%3A%0A%20%20%20%20print%28'Entered%20a%20negative%20number.'%29%0A%20%20%20%20age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Aprint%28'You%20entered%20your%20age%20as%3A',%20age%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22-3%22,%223%22%5D&textReferences=false">Python program</a> 
+		from <a href="lab10.html">Lab 10</a> in C++.
 		
-	<li > <b>Due Date: 12 December</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
+		<p>A sample run:
+<pre style ="background-color:lavender;width:400px">
+Please enter age: -6
+Entered a negative number.
+Please enter age: -50
+Entered a negative number.
+Please enter age: 100
+You entered your age as: 100
+</pre>		
 		
-		<p> Write a <b>C++ program</b> that asks the user for a whole number between -31 and 31 and prints out the number in "twos complement" notation, using the following algorithm:
-<pre>
-Decimal		Two's complement
-7			0111
-6			0110
-5			0101
-4			0100
-3			0011
-...
-0			0000
-...
-−8 			1000
+	<li > <b>Due Date: 12 December</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
+		
+		<p> Write a <b>C++ program</b> that asks the user for a whole number between -31 and 31 and prints out the number in "<a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complement</a>" notation, using the following algorithm:
+
+<ol>
+    <li> Ask the user for a number, n.
+	<li> If the number is negative, print a 1 and let x = 32 + n.
+	<li> If the number is positive, print a 0 and let x = n.
+	<li> Let b = 16.
+	<li> While b > 0.5:
+		<ol>
+			<li> If x >= b then print 1, otherwise print 0
+			<li> Let x be the remainder of dividing x by b.
+			<li> Let b be b/2.
+		</ol>
+	<li> Print a new line ('\n')
+</ol>
+
+<p>A sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter a number:  8
+001000
 </pre>
 
+<p>Another run:
+<pre style ="background-color:lavender;width:400px">
+Enter a number: -1
+111111
+</pre>
 
--->
 </ol>
 
 
@@ -1242,7 +1268,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 15 November 2017.)</i><br>
+<i style="float:right">(This file was last modified on 16 November 2017.)</i><br>
 </div>
 </body>
 </html>
