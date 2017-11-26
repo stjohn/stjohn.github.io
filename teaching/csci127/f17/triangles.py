@@ -27,7 +27,7 @@ def main():
      nestedTriangle(nessa, 160)
 
      frank = turtle.Turtle()
-     setUp(frank, -100, "red")
+     setUp(frank, -100, "purple")
      fractalTriangle(frank, 160)
 
 if __name__ == "__main__":
