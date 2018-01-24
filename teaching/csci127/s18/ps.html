@@ -92,7 +92,7 @@ lab</a>.
 </pre>
 		Your output should look similar to:
 		<br>
-		<img height=200 src="flower.png">
+		<img width=200 src="flower.png">
 	
 	<li > <b>Due Date: 9 February</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>		
 	
@@ -223,11 +223,11 @@ jgnnq
 <pre>
     For i = 10, 20, 30, ..., 100:
         Walk forward i steps
-        Turn left 91 degrees
+        Turn left 94 degrees
 </pre>
 		Your output should look similar to:
 		<br>
-		<img src="">
+		<img src="spiral10.png" height=200>
 
 	
 
@@ -273,7 +273,7 @@ I
 		<p>
 		Your output should look similar to:
 		<br>
-		<img src="shadesOfGreen.png">	
+		<img src="shadesOfGreen.png" height=200>	
 			
 
 		
@@ -352,7 +352,7 @@ Your number in decimal is 15
 
 	<li > <b>Due Date: 28 February</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a></b><br>	
 
-		<p> Write a Python program that converts kilometers to miles.  Your program should prompt the user for the number of kilometers and then print out the number of miles.
+		<p> Write a program that converts kilometers to miles.  Your program should prompt the user for the number of kilometers and then print out the number of miles.
 		
 		<p> A useful formula:  <i> miles = 0.621371* kilometers</i>.
 		
@@ -391,20 +391,21 @@ Hours: 4
 
 	<li > <b>Due Date: 2 March</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">7</a></b><br>	
 	
-		Write a program that asks the user for 5 whole (integer) numbers.  For each number, the turtle should move forward 100, and then turn left the  degrees entered.
+		<p>
+		Write a program that asks the user for 5 whole (integer) numbers.  For each number, turn the turtle left the degrees entered and then the turtle should move forward 100.
 		
 		<p>A sample run of your program should look like:
 <pre style ="background-color:lavender;width:400px">
-Enter number:  100
-Enter number:  10
-Enter number:  150
-Enter number:  73
-Enter number:  90
+Enter a number: 270
+Enter a number: 100
+Enter a number: 190
+Enter a number: 200
+Enter a number: 80
 </pre>		
 
 		<p>and the output should look similar to:
 		<br>
-		<img src="" style="padding:25px">	
+		<img src="5turns.png" style="padding:25px" height=200>	
 		
 
 	
@@ -413,18 +414,27 @@ Enter number:  90
 		<p>Modify the flood map of NYC from <a href="lab4.html">Lab 4</a> to color the region of the map with elevation greater than 6 feet and less than or equal 20 feet above sea level the color grey (50% red, 50% green, and 50% blue).
 		
 		<p> Your resulting map should look like:
-		<p> <img src="../f17/floodMap2.png">
+		<p> <img src="../f17/floodMap2.png" width=300>
 		<p> and be saved to a file called <tt>floodMap.png</tt>.	
 
-
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
 
 	
 	<li > <b>Due Date: 6 March</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/2DimensionalIterationImageProcessing.html">Think CS: Section 8.10</a></b><br>	
 
 
-		<p> Modify the map-mapking program from <a href="lab4.html">Lab 4</a> to create a topographic map (with less garish colors).  Your program should create a map with the following colors: nicer blue, every 10 feet a darker shade of grey.  Give as a "word problem"
+		<p> Modify the map-mapking program from <a href="lab4.html">Lab 4</a> to create a map that outlines the coastline.  Your program should create a new image, called <tt>coast.png</tt> with the pixels colored as follows:
+		<ul>
+			<li> If the elevation is less than or equal to 0, color the pixel 50% blue (and 0% red and 0% green).
+			<li> If the elevation is exactly 1, color the pixel 75% red, 75% green, and 75% blue.
+			<li> Otherwise, the pixel should be colored 50% red, 50% green, and 50% blue.
+		</ul>
+
+		<p> Your resulting map should look like:
+		<p> <img src="coast.png" width=300>
+		<p> and be saved to a file called <tt>coast.png</tt>.	
 	
-	
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
 
 
 
@@ -462,7 +472,7 @@ Snow count is 38010</pre>
 			<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
 		</ul>
 		
-		<p> <img src="../f17/maj7.png" height=200>
+		<p> <img src="../f17/maj7.png" width=300>
 		
 		<p>Save your expression to a text file.  
 		See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
@@ -472,13 +482,17 @@ Snow count is 38010</pre>
 
 		Build a circuit that has the same behavior as a <tt>nor</tt> gate (i.e. for the same inputs, gives identical output) using only <tt>and</tt>, <tt>or</tt>, and <tt>not</tt> gates.
 		<p>
-		<img src="norGate.png" height = 150>
+		<img src="norGate.png" width=300>
 
 		<p>Save your expression to a text file.  
 		See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
 
 
-	
+<hr>
+<i>More to come...</i>
+<hr>
+
+<!--	
 	
 	
 	<li > <b>Due Date: 13 March</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & 
@@ -532,6 +546,120 @@ Snow count is 38010</pre>
 <a id="set6"></a>
 <hr>	
 
+	<li > <b>Due Date: 15 March</b>  <b style="float:right">Reading: <a href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">Numpy tutorial (DataCamp)</a></b><br>
+
+		<p> Modify the program from <a href="lab6.html">Lab 6</a> that displays the <a href="nycHistPop.csv">NYC historical population data</a>.  Your program should ask the user for the borough, an name for the output file, and then display the fraction of the population that has lived in that borough, over time.
+		
+		<p> A sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter borough name:  Queens
+Enter output file name:  qFraction.png
+</pre>
+		<p> The file <tt>qFraction.png</tt>:
+		
+		<p><img src="../f17/qFraction.png" width=300>
+
+
+		<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
+
+	<li > <b>Due Date: 16 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+
+		<p> Write a program that computes the average and maximum population over time for a borough (entered by the user).  Your program should assume that the NYC historical population data file, <a href="nycHistPop.csv">nycHistPop.csv</a> is in the same directory.
+		
+		<p>A sample run of your program:
+<pre style ="background-color:lavender;width:400px">
+Enter borough: Staten Island
+Average population:  139814.23076923078
+Maximum population:  474558
+</pre>
+		<p>and another run:
+<pre style ="background-color:lavender;width:400px">
+Enter borough: Brooklyn
+Average population:  1252437.5384615385
+Maximum population:  2738175
+</pre>	
+	
+		<p> <i>Hint: See <a href="lab6.html">Lab 6</a></i>.
+		
+		
+	<li > <b>Due Date: 19 March</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> </b><br>	
+	
+		<p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints 
+		<ul>
+			<li>"Good Morning" if it is strictly before 12, 
+			<li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and 
+			<li> "Good Evening" otherwise.
+		</ul>
+		
+		<p>A sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  11
+Good Morning
+</pre>
+		<p>Another sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  20
+Good Evening
+</pre>
+		<p>And another run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  15
+Good Afternoon
+</pre>
+
+	<li > <b>Due Date: 20 March</b>  <b style="float:right">Reading: 
+	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
+		
+			<p>Write an Unix shell script that does the following: 
+		<ul>
+			<li> Creates a directory, <tt>projectFiles</tt>.  
+			<li> Creates 3 additional directories (as subdirectories of 
+			<tt>projectFiles</tt>):  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>.  
+		</ul>
+		
+		Submit a single text file containing your shell commands.  See <a href="lab6.html">Lab 6</a>.
+	
+	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: <a href="https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Comb/gates.html">UMd Logical Gates Overview</a></b><br>
+
+
+		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
+		
+		<p>A sample run of your program should look like:
+<pre style ="background-color:lavender;width:400px">
+Enter image file name: csBridge.png
+Enter output file: croppedH.png
+Enter highest: 100
+Enter lowest: 150
+Enter farthest left: 200
+Enter farthest right: 400
+</pre>		
+
+		<p>which would have as input and output:
+<p>
+<img src="../f17/csBridge.png" width = 300>		
+<img src="../f17/croppedH.png" width = 300 >
+
+
+		<p> <i>Hint:  See notes from Lecture 4.</i>		
+		
+
+		<p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
+
+
+		
+		
+<a id="set7"></a>
+<hr>	
+
+		<p>Write a logical expression that takes a single input, <tt>in1</tt>, and <b>always</b> returns <tt>True</tt>.  Your expression must only use 
+		<tt>in1</tt> and the logical operators, <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>
+
+		<p> See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
+		
+		<p> <i>Hint:  Think about the circuit below:</i>
+
+		<p>
+		<img src="PorNotP.png" width=300>
 		<p> Write a program that asks the user for a base, and then prints out 
 		all two digit numbers in that base.  See example below for the expected format of the output.  
 
@@ -591,101 +719,6 @@ Enter base: 2
 	
 
 
-	<li > <b>Due Date: 15 March</b>  <b style="float:right">Reading: <a href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">Numpy tutorial (DataCamp)</a></b><br>
-
-		<p>Write a program that asks the user for the name of an image, the name of an output file, and the region ('bounding box') to display.  For the latter, ask for the upper left and lower right corners (i.e. the farthest left, highest, farthest right, and lowest).  Save the cropped image to the output file specified by the user.
-		
-		<p>A sample run of your program should look like:
-<pre style ="background-color:lavender;width:400px">
-Enter image file name: csBridge.png
-Enter output file: croppedH.png
-Enter highest: 100
-Enter lowest: 150
-Enter farthest left: 200
-Enter farthest right: 400
-</pre>		
-
-		<p>which would have as input and output:
-<p>
-<img src="../f17/csBridge.png" width = 300>		
-<img src="croppedH.png" width = 300 >
-
-
-		<p> <i>Hint:  See notes from Lecture 4.</i>		
-		
-
-		<p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
-
-
-	
-	<li > <b>Due Date: 16 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
-
-		<p> Modify the program from <a href="lab6.html">Lab 6</a> that displays the <a href="nycHistPop.csv">NYC historical population data</a>.  Your program should ask the user for the borough, an name for the output file, and then display the fraction of the population that has lived in that borough, over time.
-		
-		<p> A sample run of the program:
-<pre style ="background-color:lavender;width:400px">
-Enter borough name:  Queens
-Enter output file name:  qFraction.png
-</pre>
-		<p> The file <tt>qFraction.png</tt>:
-		
-		<p><img src="qFraction.png" height = "300">
-
-
-		<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
-
-	
-	
-	<li > <b>Due Date: 19 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, 
-		<a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>	
-	
-		<p> Write a program that computes the minimum, average, and maximum population for a borough (entered by the user).  Your program should assume that the NYC historical population data file, <a href="nycHistPop.csv">nycHistPop.csv</a> is in the same directory.
-		
-		<p>A sample run of your program:
-<pre style ="background-color:lavender;width:400px">
-Enter borough: Staten Island
-Minimum population:  727
-Average population:  139814.23076923078
-Maximum population:  474558
-</pre>
-		<p>and another run:
-<pre style ="background-color:lavender;width:400px">
-Enter borough: Brooklyn
-Minimum population:  2017
-Average population:  1252437.5384615385
-Maximum population:  2738175
-</pre>
-
-	<li > <b>Due Date: 20 March</b>  <b style="float:right">Reading: 
-	<a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>
-		
-			<p>Write an Unix shell script that does the following: 
-		<ul>
-			<li> Creates a directory, <tt>projectFiles</tt>.  
-			<li> Creates 3 additional directories (as subdirectories of 
-			<tt>projectFiles</tt>):  <tt>source</tt>, <tt>data</tt>, and <tt>results</tt>.  
-		</ul>
-		
-		Submit a single text file containing your shell commands.  See <a href="lab6.html">Lab 6</a>.
-	
-	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: <a href="https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Comb/gates.html">UMd Logical Gates Overview</a></b><br>
-
-
-		<p>Write a logical expression that takes a single input, <tt>in1</tt>, and <b>always</b> returns <tt>True</tt>.  Your expression must only use 
-		<tt>in1</tt> and the logical operators, <tt>and</tt>, <tt>or</tt>, and <tt>not</tt>
-
-		<p> See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
-		
-		<p> <i>Hint:  Think about the circuit below:</i>
-
-		<p>
-		<img src="PorNotP.png">
-		
-		
-<a id="set7"></a>
-<hr>	
-
-
 
 
 	<li > <b>Due Date: 22 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
@@ -705,7 +738,7 @@ Enter name of output file:  dhsPlot.png
 </pre>
 		<p> which produces an output:
 		
-		<p><img src="dhsPlot.png" height = 300>
+		<p><img src="../f17/dhsPlot.png" height = 300>
 
 		<p> Note:  The grading script is expecting that the label (i.e. name of your new column) is "Fraction Children".
 		
@@ -932,7 +965,7 @@ Enter output file:  thMap.html
 </pre>
 		<p>which would produce the html file:
 		
-		<p><iframe src="th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
+		<p><iframe src="../f17/th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
 		
 		<p>(The demo above is for March 18, 2016 using the time the collision occurred ("TIME") to label each marker and changed the underlying map with the option:  
 		<tt>tiles="Cartodb Positron"</tt> when creating the map.)
@@ -1005,7 +1038,7 @@ Enter output file: closestCUNY.html
 </pre>
 		<p>which would produce the html file:
 		
-		<p><iframe src="closestCUNY.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>			
+		<p><iframe src="../f17/closestCUNY.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>			
 		
 		<p> Another sample run to find the closest recycling bin to Roosevelt Island (using the list of recycling bins from <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>):
 <pre style ="background-color:lavender;width:400px">
@@ -1018,7 +1051,7 @@ Enter output file: recyc.html
 </pre>
 		<p>which would produce the html file:
 		
-		<p><iframe src="recyc.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
+		<p><iframe src="../f17/recyc.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>		
 
 	
 		<p>A template program, <tt>mapClosest.py</tt>, is available on the 
@@ -1046,14 +1079,14 @@ Enter output file: recyc.html
  		<p>For example, if you inputted our favorite image, you would see (left to right):
  		
  		<p>
- 		<img src="refined1.png" width=150>
-  		<img src="refined2.png" width=150>
-  		<img src="refined3.png" width=150>
-  		<img src="refined4.png" width=150>
-  		<img src="refined5.png" width=150>
-  		<img src="refined6.png" width=150>
-  		<img src="refined7.png" width=150>
-  		<img src="refined8.png" width=150> 
+ 		<img src="../f17/refined1.png" width=150>
+  		<img src="../f17/refined2.png" width=150>
+  		<img src="../f17/refined3.png" width=150>
+  		<img src="../f17/refined4.png" width=150>
+  		<img src="../f17/refined5.png" width=150>
+  		<img src="../f17/refined6.png" width=150>
+  		<img src="../f17/refined7.png" width=150>
+  		<img src="../f17/refined8.png" width=150> 
   		
   		<p> and finally:
   		
@@ -1082,7 +1115,7 @@ Enter output file: recyc.html
 		<p> Modify the program from <a href="lab10.html">Lab 10</a> that makes a turtle walk 100 times.  Each "walk" is 10 steps forward and the turtle can turn 0,1,2,...,359 degrees (chosen randomly) at the beginning of each walk.
 
 		<p> A sample run of your program:
-<p> <img src="randomWalk.png" height=200>
+<p> <img src="../f17/randomWalk.png" height=200>
 		
 	<li > <b>Due Date: 26 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>	
 
@@ -1119,7 +1152,7 @@ You entered: Mihi cura futuri
 		
 		<p> <i>Hint:  You may find the following table useful:</i>
 		<p>
-		<img src ="ASCIITable.png" height=400>
+		<img src ="../f17/ASCIITable.png" height=400>
 		<br><i>(Image from wikimedia commons)</i>
 	
 	<li > <b>Due Date: 1 May</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
@@ -1267,7 +1300,7 @@ Year 8  2143.59
 	
 		<p> Write a <b>C++ program</b> that asks the user for their age, and continue asking until the number entered positive (that is, greater than 0).  <!--That is, write the <a href="http://pythontutor.com/visualize.html#code=age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Awhile%20age%20%3C%200%3A%0A%20%20%20%20print%28'Entered%20a%20negative%20number.'%29%0A%20%20%20%20age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Aprint%28'You%20entered%20your%20age%20as%3A',%20age%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22-3%22,%223%22%5D&textReferences=false">Python program</a> 
 		from <a href="lab10.html">Lab 10</a> in C++.-->
-		
+<!--		
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
 Please enter age: -6
@@ -1311,6 +1344,8 @@ Enter a number: -1
 111111
 </pre>
 
+-->
+
 </ol>
 
 
@@ -1325,7 +1360,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 7 January 2018.)</i><br>
+<i style="float:right">(This file was last modified on 24 January 2018.)</i><br>
 </div>
 </body>
 </html>
