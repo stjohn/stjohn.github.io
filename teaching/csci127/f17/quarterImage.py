@@ -14,7 +14,7 @@ plt.show()                         #Show the image (waits until closed to contin
 height = img.shape[0]              #Get height
 width = img.shape[1]               #Get width
 
-img2 = img[:height/2, :width/2]    #Crop to upper left corner
+img2 = img[:int(height/2), :int(width/2)]    #Crop to upper left corner
 
 plt.imshow(img2)                   #Load our new image into pyplot
 plt.show()                         #Show the image (waits until closed to continue)
