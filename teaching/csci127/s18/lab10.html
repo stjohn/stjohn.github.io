@@ -254,21 +254,65 @@ The date is 7/4/1976 or July 4,1976.
 
 
 <div>
-<h3>More on Command Line Interface:  pipes</h3>
+<h3>More on Command Line Interface:  <tt>echo</tt></h3>
+
+<p>
+In <a href="lab6.html">, we wrote a simple script that prints <tt>Hello, World</tt>.  We can write scripts that take the shell commands we have learned and store them in a file to be used later.
+In <a href="lab3.html">Lab 3</a>, we introduced the shell, or command line, commands to create new directories (folders) and how to list the contents of those folders (and expanded on this with relative paths in <a href="lab4.html">Lab 4</a> and absolute paths in <a href="lab5.html">Lab 5</a>).  
 
 
-<p>  Lab on pipes, using ps and sort
+<p>
+It's a bit archaic, but we can create the file with the <tt>vi</tt> editor.   It 
+dates back to the early days of the Unix operating system.  It has the advantage that it's integrated into the Unix operating system and guaranteed to be there.  It is worth trying at least once (so if you're in a bind and need to edit Unix files remotely, you can), but if you hate it (which is likely), use the graphical <tt>gEdit</tt> (you can find it via the search icon on the left hand menu bar).
 
-A pipe is used for chaining together different processes to implement more complex actions.
+<p>
+Let's create a simple shell script with <tt>vi</tt>:
+<ol>
+	<li> Open a terminal window.
+	<li> Type in the terminal window:  <tt>vi helloScript</tt>
+	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
+	which stands for "insert"
+	<li> Type the lines:
+	<pre style = "background-color:lavender;width:450px">
+#Your name here
+#October 2017
+#First shell script:  creates directories for project
+mkdir projectFiles
+cd projectFiles
+mkdir source
+mkdir data
+mkdir results
+</pre>
+	<li> Click on the ESC (escape key-- usually on the upper row of keys) which escapes from insert mode.
+	<li> Type:  <tt>:wq</tt> which stands for "write my file" and "quit" (the ":" is necessary-- it tells vi that you want to use the menu commands).
+	<li> This brings us back to the terminal window.  
+	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
+	<tt>setupProject</tt>, you just created.
+	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
+	<pre style = "background-color:lavender;width:450px">
+chmod +x setupProject
+</pre>
+	(changes the "mode" to be executable).
+	
+	<li> To run your first shell script, you can now type its name at the terminal:
+	<pre style = "background-color:lavender;width:450px">
+./setupProject
+</pre>
+	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
 
-It's a form of redirection-- taking the output from one program and sending to be the input of another program.
+</ol>
 
+<p> <b>Troubles with vi?</b>  It's not intuitive-- here's more on vi:
+<ul>
+	<li> <a href="https://www.ibm.com/developerworks/linux/tutorials/l-vi/index.html">IBM tutorial for vi</a>
+	<li> <a href="http://heather.cs.ucdavis.edu/~matloff/UnixAndC/Editors/ViIntro.html">UC Davis 5-minute Tutorial</a>
+	<li> <a href="https://ryanstutorials.net/linuxtutorial/cheatsheetvi.php">Ryan's Tutorial vi cheat sheet</a>
 
-A form of 
+</ul>
+If you hate <tt>vi</tt>, just edit using <tt>gEdit</tt> (the Linux version of TextEdit) or IDLE.
 
-ls -l 
+<p>When done, see the <a href="ps.html">Programming Problem List</a>.
 
-ls -l | more
 
 
 </div>

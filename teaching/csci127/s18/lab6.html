@@ -235,61 +235,50 @@ How can you modify the program to let the user specify the borough to compute th
 <div>
 <h3> More on the Command Line Interface</h3>
 
-<p>
-In <a href="lab3.html">Lab 3</a>, we introduced the shell, or command line, commands to create new directories (folders) and how to list the contents of those folders (and expanded on this with relative paths in <a href="lab4.html">Lab 4</a> and absolute paths in <a href="lab5.html">Lab 5</a>).  We can take those commands and store them in a file to be used
-later.
+<p>You can write programs in the Unix shell scripting language.  Often called <i>scripts</i>, they are typically used for tying together input and output from different programs.  
 
-<p>
-It's a bit archaic, but we can create the file with the <tt>vi</tt> editor.   It 
-dates back to the early days of the Unix operating system.  It has the advantage that it's integrated into the Unix operating system and guaranteed to be there.  It is worth trying at least once (so if you're in a bind and need to edit Unix files remotely, you can), but if you hate it (which is likely), use the graphical <tt>gEdit</tt> (you can find it via the search icon on the left hand menu bar).
+<p> Let's look at a sample script (from <a href="https://www.panix.com/~elflord/unix/bash-tute.html">elf lord's tutorials on linux</a>):
 
-<p>
-Let's create a simple shell script with <tt>vi</tt>:
-<ol>
-	<li> Open a terminal window.
-	<li> Type in the terminal window:  <tt>vi setupProject</tt>
-	<li> To add text to the file, begin by typing <tt>i</tt> (the letter i)
-	which stands for "insert"
-	<li> Type the lines:
-	<pre style = "background-color:lavender;width:450px">
-#Your name here
-#October 2017
-#First shell script:  creates directories for project
-mkdir projectFiles
-cd projectFiles
-mkdir source
-mkdir data
-mkdir results
+<pre style = "background-color:lavender;width:450px">
+#!/bin/bash
+echo "hello, $USER. I wish to list some files of yours"
+echo "listing files in the current directory, $PWD"
+ls  # list files
 </pre>
-	<li> Click on the ESC (escape key-- usually on the upper row of keys) which escapes from insert mode.
-	<li> Type:  <tt>:wq</tt> which stands for "write my file" and "quit" (the ":" is necessary-- it tells vi that you want to use the menu commands).
-	<li> This brings us back to the terminal window.  
-	Type <tt>ls</tt> to see a listing of the directory, which should include the file,
-	<tt>setupProject</tt>, you just created.
-	<li> Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
-	<pre style = "background-color:lavender;width:450px">
-chmod +x setupProject
-</pre>
-	(changes the "mode" to be executable).
-	
-	<li> To run your first shell script, you can now type its name at the terminal:
-	<pre style = "background-color:lavender;width:450px">
-./setupProject
-</pre>
-	<li> Check to see that your script works, type <tt>ls</tt> to see the new directories your script you created.
 
-</ol>
-
-<p> <b>Troubles with vi?</b>  It's not intuitive-- here's more on vi:
+Looking at this script line-by-line:
 <ul>
-	<li> <a href="https://www.ibm.com/developerworks/linux/tutorials/l-vi/index.html">IBM tutorial for vi</a>
-	<li> <a href="http://heather.cs.ucdavis.edu/~matloff/UnixAndC/Editors/ViIntro.html">UC Davis 5-minute Tutorial</a>
-	<li> <a href="https://ryanstutorials.net/linuxtutorial/cheatsheetvi.php">Ryan's Tutorial vi cheat sheet</a>
+	<li> 
+	<pre style = "background-color:lavender;width:450px">
+#!/bin/bash
+</pre>
 
+<p>  It's standard to include as the first line of your scripts that specifies the program that's running (this is often called the "shebang" line).  There's different variants of shell scripts.  We're using the default for Ubuntu (the type of Unix running on the lab laptops, called <tt>bash</tt>, so, we start our script by specifying that we want to use the <tt>bash</tt> shell to evaluate it.
+
+	<li> The command <tt>echo</tt> is similar to <tt>print()</tt> in Python.  It 
+		writes a message to the terminal:
+<pre style = "background-color:lavender;width:450px">
+echo "hello, $USER. I wish to list some files of yours"
+echo "listing files in the current directory, $PWD"
+</pre>
+
+		<p> <tt>$USER</tt> is a built-in variable that store the name of the current user.  Similarly, the built-in variable, <tt>$PWD</tt>, stores the current directory (folder) that you are in.  
+		
+	<li> Lastly, our scripts can include any of the Unix commands that you have already learned.  The last line of this file lists the files in the current directory using the <tt>ls</tt> command:
+
+<pre style = "background-color:lavender;width:450px">
+ls  # list files
+</pre>
 </ul>
-If you hate <tt>vi</tt>, just edit using <tt>gEdit</tt> (the Linux version of TextEdit) or IDLE.
 
-<p> Once you have a working script, see the <a href="ps.html">Programming Problem List</a>.
+<p>
+In the shell, the different types of quotes have similar, but different, <a href="https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html">meanings</a>.  We'll use the double quotes since strings in double quotes will have special characters (like <tt>\n</tt> for newline) interpreted as in Python and C++.  
+
+<p> Use <tt>gEdit</tt> (you can launch it from the menu bar or by typing <tt>gedit</tt> at a terminal window) to modify the above script to say "Hello, World".  We're leaving off the "!" since it is a bit confusing to print due to its special meaning in the shell (it lists the history, or previous commands, you have typed-- <tt>!!</tt> gives all commands in the history, <tt>!cd</tt> will repeat the most recent command you gave that starts with <tt>cd</tt>).  
+
+<p>Make sure to include a comment on the <b>second line</b> with your name (the first line has the <tt>#!</tt> line).  Comments in shell are, like Python, preceded by a <tt>#</tt>.
+
+<p> Once you have a shell script that will print <tt>Hello, World</tt>, see the <a href="ps.html">Programming Problem List</a>.
 
 
 </div>
