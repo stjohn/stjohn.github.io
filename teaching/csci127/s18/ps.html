@@ -854,65 +854,19 @@ AccountNameGoesHere
 	
 		<p>Note:  it takes a few minutes for a newly created github account to be visible.  If you submit to gradescope and get a message that the account doesn't exist, wait a few minutes and try again.
 	
-<br>
-<br>
-<hr>
-<i>More to come...</i>
-<hr>
+
 	
 
-<!--
 	<li > <b>Due Date: 13 April</b> 	
 	<b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
 
-		<p>Fill in the missing function, <tt>monthString()</tt>, in the program, <a href="months.py">months.py</a>.  The function should take number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
+		<p>Fill in the missing function, <tt>monthString()</tt>, in the program, <tt>months.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
+	https://github.com/stjohn/csci127</a>).  The function should take number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
 
 		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, since instead of running the entire program, the scripts are "unit testing" the function-- that is, calling that function, in isolation, with differrent inputs to verify that it performs correctly.  
 		
 
 		<p><i>Hint:  See notes from Lecture 7 and <a href="lab8.html">Lab 8</a>.</i>
-		
-
-
-
-
-
-		<p> Write a program that has a <tt>main()</tt> function...
-		<p> Have one for CitiBike-- based on end of lecture?  Write a program that uses computes distance to nearest station?  Have open-end design question in class?  Computing the center of a set of points 
-	
-
-
-
-		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
-		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
-		<ul>
-			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
-			
-			<li> If the number of rides is 3 or more, then do the following computation:
-			<ul>
-				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
-				<li> 7-day cost of ride is $31.00/number of rides.
-			</ul>
-			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
-			<p>
-			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
-		</ul>
-
- 	<p> Here's a sample run of the program:
- <pre style ="background-color:lavender;width:400px">
- How many rides? 2
- You should buy a regular ticket. </pre>
-	
-	
-	<p> And another run of the program:
- <pre style ="background-color:lavender;width:400px">
- How many rides? 30
- You should buy a 7-day ticket. </pre>	
-
-	
-
-	
-
 	
 
 	<li > <b>Due Date: 16 April</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
@@ -939,12 +893,40 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
 		
 		<p> <i>Hint: See <a href="lab8.html">Lab 8</a> for accessing and analyzing structured data.</a></i>
 	
+	<li > <b>Due Date: 17 April</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
 
-	
+		<p> Write two functions, <tt>triangle()</tt> and <tt>nestedTriangle()</tt>.  Both functions take two parameters: a turtle and an edge length.  The pseudocode for <tt>triangle()</tt> is:
+
+<pre>
+    triangle(t, length):
+    1.  If length > 10:
+    2.     Repeat 3 times:
+    3.         Move t, the turtle, forward length steps.
+    4.         Turn t left 120 degrees.
+    5.     Call triangle with t and length/2.
+</pre>
+
+<p>The pseudocode for <tt>nestedTriangle()</tt> is very similar:
+<pre>
+    nestedTriangle(t, length):
+    1.  If length > 10:
+    2.     Repeat 3 times:
+    3.         Move t, the turtle, forward length steps.
+    4.         Turn t left 120 degrees.
+    5.         Call triangle with t and length/2.
+</pre>
 		
+		<p>A template program, <tt>nestingTrianges.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the function names must match exactly (else, the scripts cannot find it). 
 
-	<li > <b>Due Date: 17 April</b>  
+		<p>A sample run:
+<pre style = "background-color:lavender;width:400px">
+Enter edge length:  160
+</pre>
+		<p>which would produce:
 
+<p><img height=200 src="triangles.png">
 
 
 <a id="set9"></a>
@@ -966,7 +948,7 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
 		Using folium (see <a href="lab9.html">Lab 9</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
 		
 		<p>A sample run:
-<pre>
+<pre style = "background-color:lavender;width:400px">
 Enter CSV file name:  collisionsThHunterBday.csv
 Enter output file:  thMap.html
 </pre>
@@ -983,7 +965,13 @@ Enter output file:  thMap.html
 	
 		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
 
-		
+<br>
+<br>
+<hr>
+<i>More to come...</i>
+<hr>
+
+<!--		
 	<li > <b>Due Date: 20 April</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>	
 
 		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
@@ -1015,7 +1003,6 @@ The fare is 11.5
 		
 		
 		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
-
 
 
 
@@ -1105,6 +1092,42 @@ Enter output file: recyc.html
 
 		<p><i>Hint:  See notes from Lecture 9.</i>
 
+		<p> Write a program that has a <tt>main()</tt> function...
+		<p> Have one for CitiBike-- based on end of lecture?  Write a program that uses computes distance to nearest station?  Have open-end design question in class?  Computing the center of a set of points 
+	
+
+
+
+		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
+		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
+		<ul>
+			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
+			
+			<li> If the number of rides is 3 or more, then do the following computation:
+			<ul>
+				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
+				<li> 7-day cost of ride is $31.00/number of rides.
+			</ul>
+			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
+			<p>
+			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
+		</ul>
+
+ 	<p> Here's a sample run of the program:
+ <pre style ="background-color:lavender;width:400px">
+ How many rides? 2
+ You should buy a regular ticket. </pre>
+	
+	
+	<p> And another run of the program:
+ <pre style ="background-color:lavender;width:400px">
+ How many rides? 30
+ You should buy a 7-day ticket. </pre>	
+
+	
+
+	
+
 
 
 
@@ -1148,7 +1171,7 @@ Enter output file: recyc.html
 		<p> Write a program that asks the user to enter a string. If the user enters an empty string, your program should continue prompting the user for a new string until they enter a non-empty string. Your program should then print out the string entered.	
 		
 		<p> A sample run of your program:
-<pre>
+<pre style = "background-color:lavender;width:400px">
 Enter a non-empty string: 
 That was empty.  Try again.
 Enter a non-empty string: 
@@ -1167,6 +1190,9 @@ You entered: Mihi cura futuri
 <a id="set11"></a>
 <hr>
 	
+How could you make a script that counted the number of .py files in the directory?
+
+
 
 	<li > <b>Due Date: 30 April</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
 
@@ -1384,7 +1410,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 6 February 2018.)</i><br>
+<i style="float:right">(This file was last modified on 11 February 2018.)</i><br>
 </div>
 </body>
 </html>

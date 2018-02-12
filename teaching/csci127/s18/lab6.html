@@ -276,6 +276,18 @@ In the shell, the different types of quotes have similar, but different, <a href
 
 <p> Use <tt>gEdit</tt> (you can launch it from the menu bar or by typing <tt>gedit</tt> at a terminal window) to modify the above script to say "Hello, World".  We're leaving off the "!" since it is a bit confusing to print due to its special meaning in the shell (it lists the history, or previous commands, you have typed-- <tt>!!</tt> gives all commands in the history, <tt>!cd</tt> will repeat the most recent command you gave that starts with <tt>cd</tt>).  
 
+<p>Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
+	<pre style = "background-color:lavender;width:450px">
+chmod +x helloScript
+</pre>
+	(changes the "mode" of the file <tt>helloScript</tt> to be executable-- if you name it something else, replace the name in <tt>chmod</tt> command above).
+	
+	<li> To run your first shell script, you can now type its name at the terminal:
+	<pre style = "background-color:lavender;width:450px">
+./helloScript
+</pre>
+
+
 <p>Make sure to include a comment on the <b>second line</b> with your name (the first line has the <tt>#!</tt> line).  Comments in shell are, like Python, preceded by a <tt>#</tt>.
 
 <p> Once you have a shell script that will print <tt>Hello, World</tt>, see the <a href="ps.html">Programming Problem List</a>.
