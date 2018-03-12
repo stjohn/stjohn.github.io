@@ -783,7 +783,7 @@ Enter output file: logoLL.png
 <img src="logoLL.png" width = 200 >
 
 
-		<p> <i>Hint:  See sample programs from Lecture 7.</i>		
+		<p> <i>Hint:  See sample programs from Lectures 4 and 6.</i>		
 		
 
 		<p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
@@ -974,31 +974,35 @@ Enter output file:  thMap.html
 <!--		
 	<li > <b>Due Date: 20 April</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>	
 
-		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
+		
+		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Long Island Railroad fare.
 		<ul>
-			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
-			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
-			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
-			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
-			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
-			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+			<li> If the zone is 1 and the ticket type is "peak", the fare is 8.75.
+			<li> If the zone is 1 and the ticket type is "off-peak", the fare is 6.25.			
+			<li> If the zone is 2 or 3 and the ticket type is "peak", the fare is 10.25.
+			<li> If the zone is 2 or 3 and the ticket type is "off-peak", the fare is 7.50.			
+			<li> If the zone is 4 and the ticket type is "peak", the fare is 12.00.
+			<li> If the zone is 4 and the ticket type is "off-peak", the fare is 8.75.	
+			<li> If the zone is 5, 6, or 7 and the ticket type is "peak", the fare is 13.50.			
+			<li> If the zone is 5, 6, or 7 and the ticket type is "off-peak", the fare is 9.75.
+			<li> If the zone is greater than 8, return a negative number (since your calculator does not handle inputs that high).
 		</ul>
 		
-		<p>A template program, <tt>copenhagenTransit.py</tt>, is available on the 
+		<p>A template program, <tt>LIRRtransit.py</tt>, is available on the 
 		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
 		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the name of the function must match exactly (else, the scripts cannot find it). 
 
 		<p>A sample run:
 <pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 3
-Enter the ticket type (adult/child): Adult
-The fare is 34.5
+Enter the number of zones: 4
+Enter the ticket type (peak/off-peak): off-peak
+The fare is 8.75
 </pre>
 		<p> And another:
 <pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 2
-Enter the ticket type (adult/child): child
-The fare is 11.5
+Enter the number of zones: 6
+Enter the ticket type (peak/off-peak): peak
+The fare is 13.5
 </pre>		
 		
 		
@@ -1091,45 +1095,7 @@ Enter output file: recyc.html
 		The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them). 
 
 		<p><i>Hint:  See notes from Lecture 9.</i>
-
-		<p> Write a program that has a <tt>main()</tt> function...
-		<p> Have one for CitiBike-- based on end of lecture?  Write a program that uses computes distance to nearest station?  Have open-end design question in class?  Computing the center of a set of points 
 	
-
-
-
-		<p>Write a program that asks the user the number of times they plan to ride the subway or bus this week.  Your program should then tell the user if it is cheaper to buy a regular fare (single ride) metro card or  7-day unlimited cards.  (Note: the rates increased as of 15 March 2017).  
-		<p>First, compute the cost per ride for the 7-day unlimited metroCard ($31.00 divided by the number of rides) and for the regular fares with bonus.  Next:
-		<ul>
-			<li> If number of rides is 1 or 2, print out the message:  <tt>You should buy a regular ticket.</tt>
-			
-			<li> If the number of rides is 3 or more, then do the following computation:
-			<ul>
-				<li> Single cost of ride is $2.48 (cost with bonus for buying more than $5.50).
-				<li> 7-day cost of ride is $31.00/number of rides.
-			</ul>
-			If the single costs is less, print out the message:  <tt>You should buy a regular ticket.</tt>
-			<p>
-			Otherwise, print out the message:  <tt>You should buy a 7-day ticket.</tt>
-		</ul>
-
- 	<p> Here's a sample run of the program:
- <pre style ="background-color:lavender;width:400px">
- How many rides? 2
- You should buy a regular ticket. </pre>
-	
-	
-	<p> And another run of the program:
- <pre style ="background-color:lavender;width:400px">
- How many rides? 30
- You should buy a 7-day ticket. </pre>	
-
-	
-
-	
-
-
-
 
 <a id="set10"></a>
 <hr>			
@@ -1142,7 +1108,7 @@ Enter output file: recyc.html
 		<p> A sample run of your program:
 <p> <img src="../f17/randomWalk.png" height=200>
 
-	<li > <b>Due Date: 26 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>		
+	<li > <b>Due Date: 26 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/toctree.html">Debugging Code</a></b><br>		
 		
 		<p>The program, 
 		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
@@ -1152,7 +1118,7 @@ Enter output file: recyc.html
 
 
 		
-	<li > <b>Due Date: 27 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>	
+	<li > <b>Due Date: 27 April</b>  <b style="float:right">Reading: <a href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Terminal Reference Sheet</a></b><br>	
 
 	
 		<p>Write an Unix shell script that does the following: 
@@ -1168,6 +1134,39 @@ Enter output file: recyc.html
 		<p><i>Hint:  See  <a href="lab10.html">Lab 10</a>.</i>
 		
 		
+
+
+
+
+
+<a id="set11"></a>
+<hr>
+	
+
+
+
+
+	<li > <b>Due Date: 30 April</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
+
+		<p> Write a <b>simplified machine language program</b> that prints:  <tt>I love Python</tt>
+		
+		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
+		
+		<p> <i>Hint:  You may find the following table useful:</i>
+		<p>
+		<img src ="../f17/ASCIITable.png" height=400>
+		<br><i>(Image from wikimedia commons)</i>
+	
+	<li > <b>Due Date: 1 May</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
+
+		<p>Write a <b>simplified machine language program</b> that has register <tt>$s0</tt> loop through 
+		the numbers 10, 8, 6, ..., 2, 0.
+
+		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
+
+
+	<li > <b>Due Date: 2 May</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>	
+
 		<p> Write a program that asks the user to enter a string. If the user enters an empty string, your program should continue prompting the user for a new string until they enter a non-empty string. Your program should then print out the string entered.	
 		
 		<p> A sample run of your program:
@@ -1183,44 +1182,6 @@ You entered: Mihi cura futuri
 		<p><i>Hint:  See <a href="lab10.html">Lab 10</a>.</i>
 		
 
-
-
-
-
-<a id="set11"></a>
-<hr>
-	
-
-
-
-
-	<li > <b>Due Date: 30 April</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
-
-		<p> Write a <b>simplified machine language program</b> that prints the motto:  <tt>I love Python</tt>
-		
-		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
-		
-		<p> <i>Hint:  You may find the following table useful:</i>
-		<p>
-		<img src ="../f17/ASCIITable.png" height=400>
-		<br><i>(Image from wikimedia commons)</i>
-	
-	<li > <b>Due Date: 1 May</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
-
-		<p>Write a <b>simplified machine language program</b> that has register <tt>$s0</tt> loop through 
-		the numbers 10, 8, ..., 2, 0.
-
-		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
-
-
-	<li > <b>Due Date: 2 May</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>	
-
-How could you make a script that counted the number of .py files in the directory?
-
-		<p>Modify the <b>simplified machine language program</b>, "Interactive", to compute your age with respect to 2017 (the demonstration program currently uses 2013).
-
-		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
-		
 
 		
 		
@@ -1246,10 +1207,15 @@ How could you make a script that counted the number of .py files in the director
 
 	<li > <b>Due Date: 8 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-		<p>Write a <b>C++ program</b> that will print the Hunter College motto ("Mihi cura futuri" which translates to: "The care of the future is mine") 15 times.   
+		<p>Write a <b>C++ program</b> that will print the Hunter College motto ("Mihi cura futuri" which translates to: "The care of the future is mine") 20 times.   
 	
 		<p>The output of your program should be:
 <pre style ="background-color:lavender;width:400px">
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
 Mihi cura futuri
 Mihi cura futuri
 Mihi cura futuri
@@ -1285,12 +1251,12 @@ Mihi cura futuri
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
 Enter a number:  6
-*
-**
-***
-****
-*****
 ******
+*****
+****
+***
+**
+*
 </pre>
 
 
@@ -1300,27 +1266,28 @@ Enter a number:  6
 
 	<li > <b>Due Date: 11 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-		<p> Write a <b>C++ program</b>  that asks the user for the hour of the day (in 24 hour time), and prints 
+		<p> Write a <b>C++ program</b>  that asks the user for the month of the year (as a number), and prints 
 		<ul>
-			<li>"Good Morning" if it is strictly before 12, 
-			<li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and 
-			<li> "Good Evening" otherwise.
+			<li>"Happy Winter" if it is strictly before 3 or strictly larger than 11, 
+			<li> "Happy Spring" if it is 3 or greater, but strictly before 7, and 
+			<li> "Happy Summer" if it is 7 or greater, but strictly before 9, and
+			<li> "Happy Fall" otherwise.
 		</ul>
 		
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  11
-Good Morning
+Enter month (as a number):  12
+Happy Winter
 </pre>
 		<p>Another sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  20
-Good Evening
+Enter month (as a number):  8
+Happy Summer
 </pre>
 		<p>And another run:
 <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  15
-Good Afternoon
+Enter month (as a number):  11
+Happy Fall
 </pre>
 
 
@@ -1328,7 +1295,7 @@ Good Afternoon
 		
 	<li > <b>Due Date: 14 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 	
-		<p> Write a <b>C++ program</b>  that asks the user for the starting amount, and prints out the yearly balance of a savings account, assuming 10% interest, until the amount has doubled.
+		<p> Write a <b>C++ program</b>  that asks the user for the starting amount, and prints out the yearly balance of a savings account, assuming 10% interest, for the first five years.
 		
 		<p> A sample run:
 <pre style ="background-color:lavender;width:400px">
@@ -1338,13 +1305,8 @@ Year 2  1210.00
 Year 3  1331.00
 Year 4  1464.10
 Year 5  1610.51
-Year 6  1771.56
-Year 7  1948.72
-Year 8  2143.59
 </pre>
-		<p> <i>Hint:  Use an indefinite loop.</i>
-
-
+	
 
 
 
@@ -1373,7 +1335,7 @@ You entered your age as: 100
 <ol>
     <li> Ask the user for a number, n.
 	<li> If the number is negative, print a 1 and let x = 32 + n.
-	<li> If the number is positive, print a 0 and let x = n.
+	<li> If the number is not negative, print a 0 and let x = n.
 	<li> Let b = 16.
 	<li> While b > 0.5:
 		<ol>
@@ -1412,7 +1374,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 11 February 2018.)</i><br>
+<i style="float:right">(This file was last modified on 11 March 2018.)</i><br>
 </div>
 </body>
 </html>
@@ -1460,18 +1422,7 @@ Stages   Susceptible   Infected  Recovered
 		</pre>
 		
 	
-	<li > <b>Due Date: 11 May</b>  <b style="float:right">Reading: <a href="">??</a></b><br>
-	
-		<p> Write a <b>C++ program</b> program that asks the user for a number larger than 0.  If the user enters 0 or a negative number, your program should continue prompting the user for a new number until they enter a positive number. Your program should then print out the number entered.	
-		
-		<p> A sample run of your program:
-<pre style ="background-color:lavender;width:400px">
-Please enter a positive number:  -3
-Not positive.  Enter again:  0
-Not positive.  Enter again:  -43.2
-Not positive.  Enter again:  42
-Thank you!  You entered: 42
-</pre>
+
 
 
 	
