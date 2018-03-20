@@ -50,4 +50,4 @@ mapZones.geo_json(geo_path='zoningIDs.json',
 
 
 #Create the html file with the map:
-mapZones.save(outfile='zoning.html')
+mapZones.save(outfile='zoning2.html')
