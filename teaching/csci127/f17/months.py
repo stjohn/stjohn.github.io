@@ -13,11 +13,6 @@ def monthString(monthNum):
      
      monthString = ""
 
-     if monthNum == 1:
-          monthString = "January"
-     elif monthNum == 2:
-          monthString = "February"
-
      ###################################
      ### FILL IN YOUR CODE HERE      ###
      ### Other than your name above, ###

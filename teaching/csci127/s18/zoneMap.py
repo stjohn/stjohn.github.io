@@ -25,7 +25,7 @@ print(zones)
 
 
 
-#Define a function that will filter zone districts into categories:
+#Define a function that will filter zone districts into categmanories:
     
 def filterDist(dist):
     #If has a residential designation:
