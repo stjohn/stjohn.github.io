@@ -201,19 +201,7 @@ In ASCII:
 
 	<li > <b>Due Date: 24 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
 	
-		<p>Write a program that prompts the user for a DNA string, and then prints the length and GC-content (percent of the string that is C or G, written as a decimal).
-		
-		<p>A sample run of your program should look like:
-<pre style ="background-color:lavender;width:400px">
-Enter a DNA string:  ACGCCCGGGATG
-Length is 12
-GC-content is 0.75
-</pre>	
 
-
-		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>
-
-	<li > <b>Due Date: 25 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
 	
 		<p>Write a program that prompts the user to enter a word and then prints out the word with each letter <b>shifted left</b> by 1 (i.e. shifted right by -1).  That is, 'a' becomes 'z', 'b' becomes 'a', ... 'y' becomes 'x', and 'z' becomes 'y'.  
 	
@@ -230,6 +218,21 @@ ydapz
 		<p> <i>Hint:  See the example programs from Lecture 2.</i>
 
 
+
+	<li > <b>Due Date: 25 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
+
+
+		<p>Write a program that prompts the user for a DNA string, and then prints the length and GC-content (percent of the string that is C or G, written as a decimal).
+		
+		<p>A sample run of your program should look like:
+<pre style ="background-color:lavender;width:400px">
+Enter a DNA string:  ACGCCCGGGATG
+Length is 12
+GC-content is 0.75
+</pre>	
+
+
+		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a>.</i>
 
 		
 	<li > <b>Due Date: 26 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
@@ -255,49 +258,65 @@ ydapz
 	
 	<li > <b>Due Date: 27 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/toctree.html">9</a></b><br>	
 
-
-		<p>Write a program that asks the user for a message and then prints the message out, one character per line, in reverse order.
-
-<p>A sample run of your program should look like:
-<pre style ="background-color:lavender;width:400px">
-Enter a message:  I love Python!
-!
-n
-o
-h
-t
-y
-P
-
-e
-v
-o
-l
-
-I
-</pre>	
-	
-		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a> or Lecture 2 notes.</i>
-	
-<hr>
-<i>More to come...</i>
-<hr>
-
-<!--
-
-	<li > <b>Due Date: 28 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
-
-		<p>Modify the program from <a href="lab3.html">Lab 3</a> to show the shades of green.
+		<p>Modify the program from <a href="lab3.html">Lab 3</a> to show the shades of blue.
 	
 		<p>
 		Your output should look similar to:
 		<br>
-		<img src="shadesOfGreen.png" height=200>	
-			
+		<img src="../f17/shadesOfBlue.png" height=200>	
+		
 
+	<li > <b>Due Date: 28 September</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
+
+		<p>Write a program that asks the user for a name of an image .png file and the name of an output file.  Your program should create a new image that has only the blue channel of the original image.
 		
 		
-	<li > <b>Due Date: 1 October</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>			
+		<p> A sample run of your program should look like:
+
+<pre style ="background-color:lavender;width:400px">
+Enter name of the input file:  csBridge.png
+Enter name of the output file:  blueH.png
+</pre>	
+
+<p> Sample input and resulting output files:
+
+<p>
+<img src="../f17/csBridge.png" width = 300>		
+<img src="../f17/blueH.png" width = 300 >
+
+
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
+
+		<p> <i>Hint:  See <a href="lab3.html">Lab 3</a>.</i>
+
+
+	<li > <b>Due Date: 1 October</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
+
+		<p>Write a program that asks the user for a message and then prints the message out, two copies of each character per line.
+
+<p>A sample run of your program should look like:
+<pre style ="background-color:lavender;width:400px">
+Enter a message:  I love Python!
+II
+
+ll
+oo
+vv
+ee
+
+PP
+yy
+tt
+hh
+oo
+nn
+!!
+</pre>	
+	
+		<p> <i>Hint:  See <a href="lab2.html">Lab 2</a> or Lecture 2 notes.</i>
+
+
+	<li > <b>Due Date: 2 October</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
 
 		<p>Write a program that asks the user for the hexcode of a color and then displays a turtle that color.  
 		
@@ -313,57 +332,88 @@ Enter a hex string:  #A922A9
 		<p> <i>Hint:  See <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/InstancesAHerdofTurtles.html">Section 4.3</a> for setting the background color and <a href="lab3.html">Lab 3</a> for colors.</i>
 
 
-	<li > <b>Due Date: 2 October</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="https://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
 
 
-
-
-		<p>Write a program that asks the user for a name of an image .png file and the name of an output file.  Your program should create a new image that has only the green channel of the original image.
-		
-		
-		<p> A sample run of your program should look like:
-
-<pre style ="background-color:lavender;width:400px">
-Enter name of the input file:  csBridge.png
-Enter name of the output file:  greenH.png
-</pre>	
-
-<p> Sample input and resulting output files:
-
-<p>
-<img src="../f17/csBridge.png" width = 300>		
-<img src="greenH.png" width = 300 >
-
-
-	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
 
 	
 	<li > <b>Due Date: 3 October</b>  <b style="float:right">Think CS: <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>	
 	
-		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a binary number and print out the corresponding decimal number.
+		Implement the following piece of pseudocode as a complete program:
 		
 		<pre>
-    Ask user for input, and store in the string, binString.
-    Set decNum = 0.
-    For each c in binString,
-        Set n to be int(c)
-        Double decNum and add n to it (decNum = 2 * decNum + n)
-    Print decNum
+    1.  Prompt the user to enter a string and call it s.
+    2.  Let l be the length of s.
+    3.  For i from 0 upto l-1:
+    4.     print s[0:i]
+    5.  For i from 0 upto l-1:
+    6.     print s[i:l]
+    5.  Print a closing statement
 		</pre>
-		
-<p> A sample run of the program:
-<pre style ="background-color:lavender;width:400px">
-Enter binary number: 10
-Your number in decimal is 2
-</pre>
-	
-		<p> And another sample run of the program:
-<pre style ="background-color:lavender;width:400px">
-Enter binary number: 1111
-Your number in decimal is 15
-</pre>
 
-		<p>Note:  here's a quick <a href="https://www.mathsisfun.com/binary-number-system.html">review</a> of binary numbers.
+<p>A sample run of your program should look like:
+<pre style ="background-color:lavender;width:400px">
+Enter string: a man a plan a canal panama
+
+a		
+a 
+a m
+a ma
+a man
+a man 
+a man a
+a man a 
+a man a p
+a man a pl
+a man a pla
+a man a plan
+a man a plan 
+a man a plan a
+a man a plan a 
+a man a plan a c
+a man a plan a ca
+a man a plan a can
+a man a plan a cana
+a man a plan a canal
+a man a plan a canal 
+a man a plan a canal p
+a man a plan a canal pa
+a man a plan a canal pan
+a man a plan a canal pana
+a man a plan a canal panam
+a man a plan a canal panama
+ man a plan a canal panama
+man a plan a canal panama
+an a plan a canal panama
+n a plan a canal panama
+ a plan a canal panama
+a plan a canal panama
+ plan a canal panama
+plan a canal panama
+lan a canal panama
+an a canal panama
+n a canal panama
+ a canal panama
+a canal panama
+ canal panama
+canal panama
+anal panama
+nal panama
+al panama
+l panama
+ panama
+panama
+anama
+nama
+ama
+ma
+a		
+
+Thank you for using my program!</pre>
+
+	
+	
+	
+
 
 <a id="set4"></a>						
 <hr>
@@ -377,11 +427,73 @@ Your number in decimal is 15
 		
 		<p>See <a href="lab4.html">Lab 4</a> for designing Input-Process-Output programs.
 
+	
+
+	
+
 
 	<li > <b>Due Date: 5 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a> & 
 	<a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>		
+	
+	
+		<p>	
+		Write a program that prints an opening statement and then 
+		asks the user for a number and prints that many stars, one per line.
+		
+		<p>For example:
+<pre style ="background-color:lavender;width:400px">
+The fault is in our stars...
+Please enter a number:  2
+*
+*
+</pre>
+		<p>Another sample run:
+<pre style ="background-color:lavender;width:400px">
+The fault is in our stars...
+Please enter a number:  5
+*
+*
+*
+*
+*
+</pre>
 
-		<p>Write a program that implements the pseudocode below:
+		
+	<li > <b>Due Date: 9 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">7</a></b><br>			
+
+		<p>Modify the flood map of NYC from <a href="lab4.html">Lab 4</a> to color the region of the map with elevation greater than 6 feet and less than or equal 20 feet above sea level the color grey (50% red, 50% green, and 50% blue).
+		
+		<p> Your resulting map should look like:
+		<p> <img src="../f17/floodMap2.png" width=300>
+		<p> and be saved to a file called <tt>floodMap.png</tt>.	
+
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.		
+
+
+	<li > <b>Due Date: 10 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">7</a></b><br>	
+	
+		<p>
+		Write a program that asks the user for 5 whole (integer) numbers.  For each number, turn the turtle left the degrees entered and then the turtle should move forward 100.
+		
+		<p>A sample run of your program should look like:
+<pre style ="background-color:lavender;width:400px">
+Enter a number: 270
+Enter a number: 100
+Enter a number: 190
+Enter a number: 200
+Enter a number: 80
+</pre>		
+
+		<p>and the output should look similar to:
+		<br>
+		<img src="../s18/5turns.png" style="padding:25px" height=200>	
+
+		
+	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/2DimensionalIterationImageProcessing.html">Think CS: Section 8.10</a></b><br>	
+	
+
+
+<p>Write a program that implements the pseudocode below:
 <pre>
 1.  Ask the user for the number of hours until the weekend.
 2.  Print out the days until the weekend (days = hours // 24)
@@ -403,57 +515,8 @@ Hours: 4
 </pre>
 
 		<p><i>Hint: See <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a>.</i>
-
-
-		
-		
-
-	<li > <b>Due Date: 9 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">7</a></b><br>	
 	
-		<p>
-		Write a program that asks the user for 5 whole (integer) numbers.  For each number, turn the turtle left the degrees entered and then the turtle should move forward 100.
-		
-		<p>A sample run of your program should look like:
-<pre style ="background-color:lavender;width:400px">
-Enter a number: 270
-Enter a number: 100
-Enter a number: 190
-Enter a number: 200
-Enter a number: 80
-</pre>		
 
-		<p>and the output should look similar to:
-		<br>
-		<img src="5turns.png" style="padding:25px" height=200>	
-		
-
-	
-	<li > <b>Due Date: 10 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> & <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">7</a></b><br>	
-
-		<p>Modify the flood map of NYC from <a href="lab4.html">Lab 4</a> to color the region of the map with elevation greater than 6 feet and less than or equal 20 feet above sea level the color grey (50% red, 50% green, and 50% blue).
-		
-		<p> Your resulting map should look like:
-		<p> <img src="../f17/floodMap2.png" width=300>
-		<p> and be saved to a file called <tt>floodMap.png</tt>.	
-
-	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
-
-	
-	<li > <b>Due Date: 11 October</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/2DimensionalIterationImageProcessing.html">Think CS: Section 8.10</a></b><br>	
-
-
-		<p> Modify the map-mapking program from <a href="lab4.html">Lab 4</a> to create a map that outlines the coastline.  Your program should create a new image, called <tt>coast.png</tt> with the pixels colored as follows:
-		<ul>
-			<li> If the elevation is less than or equal to 0, color the pixel 50% blue (and 0% red and 0% green).
-			<li> If the elevation is exactly 1, color the pixel 75% red, 75% green, and 75% blue.
-			<li> Otherwise, the pixel should be colored 50% red, 50% green, and 50% blue.
-		</ul>
-
-		<p> Your resulting map should look like:
-		<p> <img src="coast.png" width=300>
-		<p> and be saved to a file called <tt>coast.png</tt>.	
-	
-	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
 
 
 
@@ -467,7 +530,7 @@ Enter a number: 80
 
 	<li > <b>Due Date: 12 October</b> <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br> 
 	
-		<p>Write a program that asks the user for the name of a png file and print the number of pixels that are nearly white (the fraction of red, the fraction of green, and the fraction of blue are all above 0.75).
+		<p>Following  <a href="lab5.html">Lab 5</a>, write a program that asks the user for the name of a png file and print the number of pixels that are nearly white (the fraction of red, the fraction of green, and the fraction of blue are all above 0.75).
 
 		<p>For example, if your file was of the snow pack in the Sierra Nevada mountains in California in September 2014:
 		
@@ -481,7 +544,7 @@ Snow count is 38010</pre>
 		
 		<p> Note:  for this program, you only need to compute the snow count.  Showing the image will confuse the grading script, since it's only expecting the snow count.  
 
-		<p> <i>Hint: See <a href="lab5.html">Lab 5</a></i>.
+		
 
 	<li > <b>Due Date: 15 October</b>  <b style="float:right">Reading: <a href="http://www.toves.org/books/logic/">Burch's Logic & Circuits</a></b><br>
 
@@ -497,6 +560,8 @@ Snow count is 38010</pre>
 		See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
 
 
+
+
 	<li > <b>Due Date: 16 October</b>  <b style="float:right">Reading: <a href="http://www.toves.org/books/logic/">Burch's Logic & Circuits</a></b><br>
 
 		Build a circuit that has the same behavior as a <tt>nor</tt> gate (i.e. for the same inputs, gives identical output) using only <tt>and</tt>, <tt>or</tt>, and <tt>not</tt> gates.
@@ -507,12 +572,30 @@ Snow count is 38010</pre>
 		See <a href="lab5.html">Lab 5</a> for the format for submitting logical expressions to Gradescope.
 
 
+		<p>Note:  here's a quick <a href="https://www.mathsisfun.com/binary-number-system.html">review</a> of binary numbers.
+
 	
-	
+
 
 	
 	<li > <b>Due Date: 17 October</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/toctree.html">Chapters 2</a> & 
 	<a href="http://interactivepython.org/runestone/static/thinkcspy/PythonTurtle/toctree.html">4</a></b><br>
+	
+Write a program that prompts the user to enter a list of names. Each person's name is separated from the next by a semi-colon (`;') and the names are entered lastName, firstName. Your program should then print out the names, one per line, with the first names first followed by the last names. Here is a sample interaction:
+Please enter your list of names:  Falcon, Claudio; Ford, Eric; Owen, Megan; Rogers, Josh; St. John, Katherine
+		
+You entered:
+
+Claudio Falcon
+Eric Ford
+Megan Owen
+Josh Rogers
+Katherine St. John
+		
+Thank you for using my name organizer! 
+		
+
+Hint: Do this problem in parts: first, split the list by person (what should the delimiter be?). Then, split each of person's name into first and last name (what should the delimiter be here?).		
 
 		<p>The program <a href="../f17/turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
 		<ul>
@@ -574,6 +657,25 @@ Enter a whole number: -1
 
 		<br>
 		<p><i>Hint:  See <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a> of the Python textbook and Lecture 4 notes.</i>
+
+
+<hr>
+<i>More to come...</i>
+<hr>
+
+
+		<p> Modify the map-mapking program from <a href="lab4.html">Lab 4</a> to create a map that outlines the coastline.  Your program should create a new image, called <tt>coast.png</tt> with the pixels colored as follows:
+		<ul>
+			<li> If the elevation is less than or equal to 0, color the pixel 50% blue (and 0% red and 0% green).
+			<li> If the elevation is exactly 1, color the pixel 75% red, 75% green, and 75% blue.
+			<li> Otherwise, the pixel should be colored 50% red, 50% green, and 50% blue.
+		</ul>
+
+		<p> Your resulting map should look like:
+		<p> <img src="coast.png" width=300>
+		<p> and be saved to a file called <tt>coast.png</tt>.	
+	
+	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.	
 
 
 
@@ -782,6 +884,29 @@ Fraction of your list that is plural is 1.0
 
 
 
+		<p>  <b>Move this to while loops, keep dividing by 2, while > 0</b>
+		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a decimal number and print out the corresponding binary number.
+		
+		<pre>
+    Ask user for input, and store in the integer, decNum.
+    Set binString = "".
+    While ,
+        Set n to be int(c)
+        Double decNum and add n to it (decNum = 2 * decNum + n)
+    Print decNum
+		</pre>
+		
+<p> A sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter binary number: 10
+Your number in decimal is 2
+</pre>
+	
+		<p> And another sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter binary number: 1111
+Your number in decimal is 15
+</pre>
 
 		
 			

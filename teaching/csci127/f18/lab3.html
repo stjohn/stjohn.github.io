@@ -240,50 +240,6 @@ When you have figured out the answer, see the <a href="ps.html">Programming Prob
 
 </div>
 
-<div>
-<h3> More on Files & Command Line Interface</h3>
-
-<p> 
-The terminal has its own set of commands (separate from Python) that we can use to communicate with the operating system.  It's often called the <b>command line interface</b> or shell.  It predates the graphical interface that is now available and is incredibly useful for automating tasks and working on remote servers.  We will slowly introduce shell commands over the course of the semester and eventually incorporate them into some programming assignments.
-
-<p>
-We have already used the shell in the previous two labs.  When you typed:
-<pre style = "background-color:lavender;width:400px">
-idle3
-</pre>
-you were asking the operating system to launch the program <tt>idle3</tt>.  The laptop was configured to first look in folders containing applications, and then to check your home folder, and then to check the current folder you are using to find an application by that name.  
-
-<p>
-Let's create a new <b>directory</b>, or folder, to hold your images (using the shell or command line).  Where it says <tt>thomasH</tt> below, replace with your name.  It is easier if you avoid spaces in the names:
-<ul>
-	<li>  Open a new terminal window (go to the upper left menu icon, search for terminal and click, or if you already have terminal, you can click on its menu to create a new window).
-	<li>  In the terminal window, type:
-	<pre style = "background-color:lavender;width:400px">
-pwd</pre>
-	This tell you the <b>path</b>, or location, of your current working directory.  To see what is in the folder, you request a 'listing':
-	<pre style = "background-color:lavender;width:400px">
-ls</pre>
-	<li> To add a new directory, we type:
-	<pre style = "background-color:lavender;width:400px">
-mkdir thomasH</pre>
-	(replace <tt>thomasH</tt> with your name to create a directory for you!).
-	
-	<p>
-	Now, when we list the current directory, we should new item (namely the  directory with your name):
-<pre style = "background-color:lavender;width:400px">
-ls</pre>	
-	
-	<li> Let's change directories:
-<pre style = "background-color:lavender;width:400px">
-cd thomasH</pre>
-	If we ask for a listing (<tt>ls</tt>), we will now see the contents of your directory.	
-</ul>
-The graphical interface and shell are operating on the same underlying system, so, changes you make with one can be seen by the other.  If you open up the file
-icon (on left hand menu bar) and click the <tt>Home</tt> directory, you will see the folder you just created.
-
-<p> In the next lab, we will explain how to copy and move files between directories.
-
-</div>
 
 
 <div>
@@ -365,6 +321,53 @@ When you have figured out the answer, see the <a href="ps.html">Programming Prob
 
 
 
+<div>
+<h3> More on Files & Command Line Interface</h3>
+
+<p> 
+The terminal has its own set of commands (separate from Python) that we can use to communicate with the operating system.  It's often called the <b>command line interface</b> or shell.  It predates the graphical interface that is now available and is incredibly useful for automating tasks and working on remote servers.  We will slowly introduce shell commands over the course of the semester and eventually incorporate them into some programming assignments.
+
+
+
+<p>
+We have already used the shell in the previous two labs.  When you typed:
+<pre style = "background-color:lavender;width:400px">
+idle3
+</pre>
+you were asking the operating system to launch the program <tt>idle3</tt>.  The laptop was configured to first look in folders containing applications, and then to check your home folder, and then to check the current folder you are using to find an application by that name.  
+
+<p>
+Let's create a new <b>directory</b>, or folder, to hold your images (using the shell or command line).  Where it says <tt>thomasH</tt> below, replace with your name.  It is easier if you avoid spaces in the names:
+<ul>
+	<li>  Open a new terminal window (go to the upper left menu icon, search for terminal and click, or if you already have terminal, you can click on its menu to create a new window).
+	<li>  In the terminal window, type:
+	<pre style = "background-color:lavender;width:400px">
+pwd</pre>
+	This tell you the <b>path</b>, or location, of your current working directory.  To see what is in the folder, you request a 'listing':
+	<pre style = "background-color:lavender;width:400px">
+ls</pre>
+	<li> To add a new directory, we type:
+	<pre style = "background-color:lavender;width:400px">
+mkdir thomasH</pre>
+	(replace <tt>thomasH</tt> with your name to create a directory for you!).
+	
+	<p>
+	Now, when we list the current directory, we should new item (namely the  directory with your name):
+<pre style = "background-color:lavender;width:400px">
+ls</pre>	
+	
+	<li> Let's change directories:
+<pre style = "background-color:lavender;width:400px">
+cd thomasH</pre>
+	If we ask for a listing (<tt>ls</tt>), we will now see the contents of your directory.	
+</ul>
+The graphical interface and shell are operating on the same underlying system, so, changes you make with one can be seen by the other.  If you open up the file
+icon (on left hand menu bar) and click the <tt>Home</tt> directory, you will see the folder you just created.
+
+<p> In the next lab, we will explain how to copy and move files between directories.
+
+</div>
+
 
 
 <div>
@@ -393,6 +396,24 @@ sudo apt-get install spyder3
 
 
 </div>
+
+<div>
+<h3>Unix Shell on Your Computer</h3>
+
+<p> If you are working at home, here's directions for accessing a Unix shell environment:
+<ul>
+	<li> Linux machines:  This is what we have in the labs.  You can launch a terminal by clicking on the icon for a terminal (or using the search feature to find it).
+	<li> Macintosh (OSX) machines:  The OSX operating system, run by modern mac computers, is based on Unix (albeit a slightly different one than Linux).  You can bring up a terminal window by using Spotlight or search for "terminal".
+	<li> Windows machines:  The underlying terminal uses commands that are differnt from Unix (they're based on the Microsoft Disk Operating System, or MS-DOS).  There are several on-line emulators of Unix that you can use via the browser, such as:  <a href="https://www.tutorialspoint.com/unix_terminal_online.php">tutorialspoint online terminal</a>:
+	<p>
+<iframe src="https://www.tutorialspoint.com/unix_terminal_online.php"
+width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+	<li> Phones/Tablets:  Since most do not run Unix (or allow access to a terminal), the best is to use a web-based terminal enumator above.
+</ul>
+
+<p>Note that the on-line terminals are very generic and do not have Python 3 or IDLE as part of the emulation.
+</div>
+
 
 
 </html>
