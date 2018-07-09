@@ -17,9 +17,9 @@ Fall 2018<br><br>
 <div>
 
 <p>
-Today's lab will focus on accessing formatted data using Pandas, writing Unix shell scripts, and accessing files from github.  
+Today's lab will focus on accessing formatted data using Pandas, writing Unix shell scripts, and accessing files from github.
 
-<p>Software tools needed:  web browser and Python IDLE programming 
+<p>Software tools needed:  web browser and Python IDLE programming
 environment with the Pandas package installed.
 
 
@@ -75,13 +75,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 </pre>
 
-We used <tt>matplotlib</tt> in the <a href="lab3.html">Lab 3</a> and <a href="lab4.html">Lab 4</a> for plotting.  The <tt>as plt</tt> allows us to use 
-the plotting commands without having to write <tt>matplotlib.pyplot</tt> everytime, instead we just write <tt>plt</tt>.  Similarly, 
+We used <tt>matplotlib</tt> in the <a href="lab3.html">Lab 3</a> and <a href="lab4.html">Lab 4</a> for plotting.  The <tt>as plt</tt> allows us to use
+the plotting commands without having to write <tt>matplotlib.pyplot</tt> everytime, instead we just write <tt>plt</tt>.  Similarly,
 The <tt>as pd</tt> allows us to use pandas commands without writing out <tt>pandas</tt> everytime-- we just write <tt>pd</tt>.
 
 <p>
-Next, save the <a href="../f17/nycHistPop.csv">NYC historical population data</a> to the same directory as your program.  
-This is a "comma separated values" file-- which is a plain text file containging spreadsheet data, with commas separating the different columns (thus, the name).
+Next, save the <a href="../f17/nycHistPop.csv">NYC historical population data</a> to the same directory as your program.
+This is a "<i>comma separated values</i>" file-- which is a plain text file containing spreadsheet data, with commas separating the different columns (thus, the name).
 Here's the first 10 lines of the file:
 <pre style = "background-color:lavender;width:600px">
 Source:  https://en.wikipedia.org/wiki/Demographics_of_New_York_City,,,,,,
@@ -142,12 +142,12 @@ which did the following:
 There are useful built-in statistics functions for the dataframes in pandas.  For example, if you would like to know the maximum value for the series "Bronx", you apply the <tt>max()</tt> function to that series:
 
 <pre style = "background-color:lavender;width:575px">
-print("The largest number living in the Bronx is", pop["Bronx"].max()) 
+print("The largest number living in the Bronx is", pop["Bronx"].max())
 </pre>
 
 Similarly the average (mean) population for Queens can be computed:
 <pre style = "background-color:lavender;width:575px">
-print("The average number living in the Queens is", pop["Queens"].mean()) 
+print("The average number living in the Queens is", pop["Queens"].mean())
 </pre>
 
 <h4>Challenges</h4>
@@ -155,8 +155,8 @@ print("The average number living in the Queens is", pop["Queens"].mean())
 <ul>
 	<li> What happens if you leave off the <tt>x = "Year"</tt>?  Why?
 	<li> What happens if you add in <tt>x = "Year", y = "Bronx"</tt>?
-	<li> What does the series functions:  <tt>.min()</tt>, <tt>.std()</tt>, and 
-	<tt>.count()</tt> do?  
+	<li> What does the series functions:  <tt>.min()</tt>, <tt>.std()</tt>, and
+	<tt>.count()</tt> do?
 </ul>
 
 
@@ -175,7 +175,7 @@ Each column in the original spreadsheet is a column, or <tt>series</tt>.  We can
 How would you look at the one for Brooklyn?
 
 <p>
-A nice thing about series is that you can do basic arithmetic with them.  For example, 
+A nice thing about series is that you can do basic arithmetic with them.  For example,
 <pre style = "background-color:lavender;width:450px">
     print(pop['Bronx']*2)
 </pre>
@@ -235,7 +235,7 @@ How can you modify the program to let the user specify the borough to compute th
 <div>
 <h3> More on the Command Line Interface</h3>
 
-<p>You can write programs in the Unix shell scripting language.  Often called <i>scripts</i>, they are typically used for tying together input and output from different programs.  
+<p>You can write programs in the Unix shell scripting language.  Often called <i>scripts</i>, they are typically used for tying together input and output from different programs.
 
 <p> Let's look at a sample script (from <a href="https://www.panix.com/~elflord/unix/bash-tute.html">elf lord's tutorials on linux</a>):
 
@@ -248,22 +248,22 @@ ls  # list files
 
 Looking at this script line-by-line:
 <ul>
-	<li> 
+	<li>
 	<pre style = "background-color:lavender;width:450px">
 #!/bin/bash
 </pre>
 
-<p>  It's standard to include as the first line of your scripts that specifies the program that's running (this is often called the "shebang" line).  There's different variants of shell scripts.  We're using the default for Ubuntu (the type of Unix running on the lab laptops, called <tt>bash</tt>, so, we start our script by specifying that we want to use the <tt>bash</tt> shell to evaluate it.
+<p>  It's standard to include as the first line of your scripts that specifies the program that's running (this is often called the "shebang" line).  There's different variants of shell scripts.  We're using the default for Ubuntu (the type of Unix running on the lab laptops) called <tt>bash</tt>, so, we start our script by specifying that we want to use the <tt>bash</tt> shell to evaluate it.
 
-	<li> The command <tt>echo</tt> is similar to <tt>print()</tt> in Python.  It 
+	<li> The command <tt>echo</tt> is similar to <tt>print()</tt> in Python.  It
 		writes a message to the terminal:
 <pre style = "background-color:lavender;width:450px">
 echo "hello, $USER. I wish to list some files of yours"
 echo "listing files in the current directory, $PWD"
 </pre>
 
-		<p> <tt>$USER</tt> is a built-in variable that store the name of the current user.  Similarly, the built-in variable, <tt>$PWD</tt>, stores the current directory (folder) that you are in.  
-		
+		<p> <tt>$USER</tt> is a built-in variable that store the name of the current user.  Similarly, the built-in variable, <tt>$PWD</tt>, stores the current directory (folder) that you are in.
+
 	<li> Lastly, our scripts can include any of the Unix commands that you have already learned.  The last line of this file lists the files in the current directory using the <tt>ls</tt> command:
 
 <pre style = "background-color:lavender;width:450px">
@@ -272,16 +272,16 @@ ls  # list files
 </ul>
 
 <p>
-In the shell, the different types of quotes have similar, but different, <a href="https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html">meanings</a>.  We'll use the double quotes since strings in double quotes will have special characters (like <tt>\n</tt> for newline) interpreted as in Python and C++.  
+In the shell, the different types of quotes have similar, but different, <a href="https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html">meanings</a>.  We'll use the double quotes since strings in double quotes will have special characters (like <tt>\n</tt> for newline) interpreted as in Python and C++.
 
-<p> Use <tt>gEdit</tt> (you can launch it from the menu bar or by typing <tt>gedit</tt> at a terminal window) to modify the above script to say "Hello, World".  We're leaving off the "!" since it is a bit confusing to print due to its special meaning in the shell (it lists the history, or previous commands, you have typed-- <tt>!!</tt> gives all commands in the history, <tt>!cd</tt> will repeat the most recent command you gave that starts with <tt>cd</tt>).  
+<p> Use <tt>gEdit</tt> (you can launch it from the menu bar or by typing <tt>gedit</tt> at a terminal window) to modify the above script to say "Hello, World".  Note that we're leaving off the "!" since it is a bit confusing to print due to its special meaning in the shell (it lists the history, or previous commands, you have typed; for example: <tt>!!</tt> gives all commands in the history, <tt>!cd</tt> will repeat the most recent command you gave that starts with <tt>cd</tt>).
 
 <p>Next, we'll change the permissions on the file, so that we can run it directly, by just typing its name:
 	<pre style = "background-color:lavender;width:450px">
 chmod +x helloScript
 </pre>
 	(changes the "mode" of the file <tt>helloScript</tt> to be executable-- if you name it something else, replace the name in <tt>chmod</tt> command above).
-	
+
 	<li> To run your first shell script, you can now type its name at the terminal:
 	<pre style = "background-color:lavender;width:450px">
 ./helloScript
@@ -298,7 +298,7 @@ chmod +x helloScript
 <div>
 <h3>github</h3>
 
-<a href="https://github.com"><img height=150 src="Octocat.png"></a>
+<a href="https://github.com"><img height=150 src="../s18/Octocat.png"></a>
 
 <a href="https://github.com">github</a> is the standard way to share and collaborate on code.  It functions much as Google docs does for documents.
 We will use it as a place (<b>repository</b> or "repo") for programs and lab exercises.
@@ -306,17 +306,17 @@ We will use it as a place (<b>repository</b> or "repo") for programs and lab exe
 <ol>
 	<li> If you do not already have an account, create an account on <a href="https://github.com">github</a>.  <tt>github</tt> will be used in future classes (and by employers), so, choose an account name that you can use for years to come.
 	<li> Work through the <a href="http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1">github for beginners</a> tutorial.
-	<li> Work through the 
+	<li> Work through the
 		<a href="https://guides.github.com/activities/hello-world/">github Hello World</a> tutorial.
 </ol>
 
-<p> From Program #35 onward, all sample programs are available at the class 
+<p> From Program #35 onward, all sample programs are available at the class
 repository (repo):
 <blockquote>
 	<a href="https://github.com/stjohn/csci127">
 	https://github.com/stjohn/csci127</a>
 </blockquote>
-You can access programs by going to the website, or, using the command line (see <a href="lab9.html">Lab 9</a> for details).
+You can access programs by going to the website, or, using the command line (see <a href="lab8.html">Lab 8</a> for details).
 
 </div>
 
