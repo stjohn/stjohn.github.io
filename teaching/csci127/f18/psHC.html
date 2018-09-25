@@ -196,40 +196,38 @@ Fall 2018<br><br>
 
 	<hr>
 
-  <hr>
-<i>More details on HC 7-12 to come...</i>
-  <hr>
 
-  <hr>
-<!--
 
 	<li > <b>HC 7:  Highlighted Map
 	</b> <b style="float:right">Due Date: 19 October</b>  <br>
 
 
+    <p><img src="hunterSatMap.png" height = 300>
+    <img src="hiLight.png" height = 300>
 
 		<p>
-    For this program, we will create a highlighted map around your station, with the region within a half-mile radius at full brightness, the region that is half-mile to a mile from your station at 60% brightness, and locations farther than a mile at 30% brightness.
+    For this program, we will create a highlighted map around your station, with the region within about a 1/4 mile box at full brightness, the region that outside that box at 50% brightness.
 
 		<p> To do this:
 		<ul>
 			<li> Create a .png file of a satellite map, centered on your L-station (Google maps works well for this, but you can use any mapping site to create your base map).
-			<li> Write a Python program that reads in an image and sets all pixels to 60% brightness (Hint:  see sample programs for turning images a single color in Lecture 3).  Run your program and fix any bugs.
-			<li> Modify the program to only turn the points within half-mile to 60% brightness.  By trial-and-error, figure out the coordinates of your station in your image,
+			<li> Write a Python program that reads in an image and saves the image to another file.  Run your program to make sure the reading and saving of an image works.
+      <li> Set the upper region of the image to 50% brightness (hint:  uses slices and see example in Lecture 3 and 4).  Run your program to make sure it has dimmed up the upper region and adjust to get the correct dimenssions.
+      <li> Set the lower region of the image to 50% brightness (hint:  think about what negative numbers mean as indices).  Run your program and fix any bugs.
+			<li> Next, dim the side regions (hint:  think about what parts of the image have not been dimmed and change only those regions.)
 		</ul>
 
-		<p>Some things that might be useful:
-		<ul>
-			<li> The change in vegetation is primilarily on the green channel of the image (similarly the change in temperature is encoded on the blue channel).
-			<li> To make an array that has only the green channel of the numpy array <tt>vegImg</tt>, you could type:  <tt>grChannel = vegImg[:,:,1]</tt>.
-			<li> To compare the individual points of each, you may want just a list of all the values (in the same order for both). There's a function, <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.ndarray.flatten.html">flatten()</a> that will take arrays (for example the <tt>grChannel</tt>) and make a very long array
-			(<a href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">DataCamp's tutorial</a> on numpy).
-		</ul>
-
-
-		<p> Submit your answer as a .pdf file.
+		<p> Submit your answer as a .pdf file to gradescope.
 
 	<hr>
+
+  <hr>
+<i>More details on HC 8-12 to come...</i>
+  <hr>
+
+  <hr>
+
+<!--
 
 	<li > <b>HC 8:  Turnstile Entries by Station</b> <b style="float:right">Due Date: 26 October</b>  <br>
 
