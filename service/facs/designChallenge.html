@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Design Challenge, FACS PD, 26 September 2018</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+</head>
+<body>
+<div id="header">
+
+<h2><br>
+Design Challenge<br>
+Professional Development<br>
+NSF DRK-12 FACS Grant<br>
+Hunter College-- CUNY<br>
+26 September 2018<br><br>
+</h2>
+</div>
+
+
+
+
+
+<div>
+<h3>Storm Flooding</h3>
+
+<b>Image of NYC in hurricane Sandy</b>
+
+<p>For today's design question, we're focusing on the question:
+
+  <blockquote>
+  <i>How much of New York City (and surrounds) will be flooded in the next big storm?</i>
+  </blockquote>
+
+<p>Some questions to discuss with your group to get started:
+<ul>
+  <li>What is the input?  What data would you need to determine flooding?
+  <li>What is the output?  How can you best present your results?  Below, we'll focus on visually presenting the information (as a map) but there are many other options (see <a href="https://www.usgs.gov/news/hurricane-florence-water-footprint-data-visualization">USGS</a>)
+</ul>
+</div>
+
+<div>
+<h3>Elevation Data & Flood Maps</h3>
+
+
+<p>The US National Oceanic and Atmospheric Administration (NOAA) provides a searchable database of <a href="https://maps.ngdc.noaa.gov/viewers/wcs-client/">elevation data</a>.
+
+<p> We used their grid extract option on the New York City region:
+
+<p><img src="../../teaching/csci127/f17/gridExtract.png" width=600>
+
+<p>to download the elevations for the box bounded by the red dotted line (in 3-second resolution mode).  We then removed the top lines of metadata to create a file, <a href="../../teaching/csci127/f17/elevationsNYC.txt">elevationsNYC.txt</a> of 417 rows with 469 values in each row.
+
+<p>Using a standard Python package, <tt>numpy</tt>, we can view the data under a default `color map' that assigns blue to smaller values in the grid (or array) and red to the larger values:
+  <p>
+  <img src="../../teaching/csci127/f17/elevColorMap.png" height=350>
+
+
+<!--
+<ol>
+	<li> Create a folder to hold your work (see <a href="lab2.html">Lab 2</a> for directions for doing so from the command line).
+	<li> Download <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> and save to your folder (you may need to move it from your <tt>Downloads</tt> folder).
+	<li> Open IDLE, and create the following short program:
+	<pre style = "background-color:lavender;width:600px">
+# Name:  ... your name here ...
+# Date:  September 2017
+# Takes elevation data of NYC and displays using the default color map
+
+#Import the libraries for arrays and displaying images:
+import numpy as np
+import matplotlib.pyplot as plt
+
+#Read in the data to an array, called elevations:
+elevations = np.loadtxt('elevationsNYC.txt')
+#Load the array into matplotlib.pyplot:
+plt.imshow(elevations)
+#Display the plot:
+plt.show()
+	</pre>
+	Save the file in your folder.
+	<li> Run your program.  A graphics window should appear showing the data stored in elevations.
+</ol>
+-->
+
+<p> You can see the Hudson River and New York Harbor (bright blue) and the ridges of the Palisades along the Hudson and mountains in Staten Island and western New Jersey in yellow and red.
+
+<p> <b>Challenge:</b>  What would be a better assignment of colors to this grid of numbers?
+
+</div>
+
+<div>
+<h3>Exploring the Data</h3>
+
+On your worksheet, shade all the elevations that are above 0 green ('land') and all the rest shade blue ('water'):
+
+<br><br>
+<table style = "border: 1px solid black; border-collapse: collapse" border = 1>
+<tr><td>
+110</td> <td> 108</td> <td> 107</td> <td> 96</td> <td> 87</td> <td> 6</td> <td>  0</td> <td> -3</td> <td> -4</td> <td>  -5 </tr>
+<tr><td>
+109</td> <td> 108</td> <td> 107</td> <td> 94</td> <td> 8</td> <td> 2</td> <td>  0</td> <td> -3</td> <td> -4</td> <td>  -5 </tr>
+<tr><td>
+106</td> <td> 107</td> <td> 101</td> <td> 89</td> <td> 76</td> <td>  0</td> <td> -2</td> <td> -4</td> <td> -5</td> <td> -5 </tr>
+<tr><td>
+101</td> <td> 96</td> <td> 91</td> <td> 82</td> <td> 6</td> <td>  0</td> <td> -3</td> <td> -4</td> <td> -5</td> <td> -6 </tr>
+<tr><td>
+92</td> <td> 87</td> <td> 80</td> <td> 70</td> <td> 7</td> <td>  0</td> <td> -4</td> <td> -4</td> <td> -5</td> <td>   -6 </tr>
+<tr><td>
+86</td> <td> 81</td> <td> 76</td> <td> 3</td> <td>  0</td> <td> -2</td> <td> -4</td> <td> -5</td> <td> -5</td> <td>  -6 </tr>
+<tr><td>
+85</td> <td> 78</td> <td> 66</td> <td> 5</td> <td>  0</td> <td> -4</td> <td> -4</td> <td> -5</td> <td> -5</td> <td>  -6 </tr>
+<tr><td>
+83</td> <td> 76</td> <td> 53</td> <td> 2</td> <td>  0</td> <td> -4</td> <td> -4</td> <td> -5</td> <td> -6</td> <td>   -6 </tr>
+<tr><td>
+81</td> <td> 76</td> <td> 48</td> <td> 3</td> <td>  0</td> <td> -4</td> <td> -5</td> <td> -5</td> <td> -6</td> <td>   -6 </tr>
+<tr><td>
+79</td> <td> 55</td> <td> 4</td> <td>  0</td> <td> -4</td> <td> -4</td> <td> -5</td> <td> -5</td> <td> -6</td> <td>  -6 </tr>
+</table>
+
+<p> Choose an elevation for the storm surge. If you shade regions likely to be flooded red, what changes above?
+
+
+<h3>Design & Python Implementation</h3>
+<p>
+We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">NYT map</a>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
+
+<pre style = "background-color:lavender;width:600px">
+	if elevation <= 0:
+	    #Below sea level
+	    Color the pixel blue
+	elif elevation <= 6:
+	    #Below the storm surge of Hurricane Sandy (flooding likely)
+	    Color the pixel red
+	else:
+	    #Above the 6 foot storm surge and didn't flood
+	    Color the pixel green
+</pre>
+
+
+
+<p> To give us complete control of the coloring, we will create a new array that will hold the colors for each pixel.  Here's an outline of our program:
+<ol>
+	<li> Import the libraries to manipulate and display arrays.
+	<li> Read in the NYC data and store in the variable, <tt>elevations</tt>
+	<li> Create a new array, <tt>floodMap</tt>, to hold our colors for the map.
+	<li> For each element in <tt>elevations</tt>, make a pixel colored by the schema above.
+	<li> Load our image into <tt>pyplot</tt>.
+	<li> Display the image.
+</ol>
+
+<p>We'll use a very simple (but a bit garish) color scheme, with our "blue" being 0% red, 0% green, and 100% blue.  And similarly, the "red" and the "green" we'll use will be 100% of each, 0% of the others, giving a map like:
+
+<p>
+<img src = "../../teaching/csci127/f17/floodMap.png">
+
+
+<p>Here's the code, implementing our outline below.  Note: it expects that the file <a href="../../teaching/csci127/f17//elevationsNYC.txt">elevationsNYC.txt</a> is in the same directory as your program and the libraries <tt>numpy</tt> and <tt>matplotlib</tt> to be installed.
+<pre style = "background-color:lavender;width:600px">
+# Name:  ... your name here ...
+# Date:  September 2018
+# Takes elevation data of NYC and displays using the default color map
+
+
+#Import the libraries for arrays and displaying images:
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+#Read in the data to an array, called elevations:
+elevations = np.loadtxt('elevationsNYC.txt')
+
+#Take the shape (dimensions) of the elevations
+#  and add another dimension to hold the 3 color channels:
+mapShape = elevations.shape + (3,)
+
+#Create a blank image that's all zeros:
+floodMap = np.zeros(mapShape)
+
+for row in range(mapShape[0]):
+    for col in range(mapShape[1]):
+        if elevations[row,col] <= 0:
+            #Below sea level
+           floodMap[row,col,2] = 1.0     #Set the blue channel to 100%
+        elif elevations[row,col] <= 6:
+            #Below the storm surge of Hurricane Sandy (flooding likely)
+           floodMap[row,col,0] = 1.0     #Set the red channel to 100%
+        else:
+            #Above the 6 foot storm surge and didn't flood
+            floodMap[row,col,1] = 1.0   #Set the green channel to 100%
+
+#Load the flood map image into matplotlib.pyplot:
+plt.imshow(floodMap)
+
+#Display the plot:
+plt.show()
+
+#Save the image:
+plt.imsave('floodMap.png', floodMap)
+
+</pre>
+
+
+</div>
+
+
+
+
+
+
+
+</html>
