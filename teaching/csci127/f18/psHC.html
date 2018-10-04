@@ -219,34 +219,56 @@ Fall 2018<br><br>
 
 		<p> Submit your answer as a .pdf file to gradescope.
 
-	<hr>
 
-  <hr>
-<i>More details on HC 8-12 to come...</i>
-  <hr>
 
   <hr>
 
-<!--
 
-	<li > <b>HC 8:  Turnstile Entries by Station</b> <b style="float:right">Due Date: 26 October</b>  <br>
 
-		<p> In <a href="lab7.html">Lab 7</a> (19 March), we introduced
-		<a href="https://opendata.cityofnewyork.us">NYC OpenData</a>, and in
-		<a href="lab8.html">Lab 8</a> (26 March), we explored binning data.
+	<li > <b>HC 8:  Turnstile Entries</b> <b style="float:right">Due Date: 26 October</b>  <br>
 
-		<p> Using the programming techniques developed there, determine
-		what were the 10 most pressing complaints to the 311 in your neighborhood last year (focus on a single zip code and filter the date to be only 2017 to limit the size of the data set).
+    <p><img src="turnstileEntries.png" height=200>
+      <img src="turnstileExits.png" height=200>
+      <img src="turnstileDiff.png" height=200>
+      <br>(Entries, exits, and difference via turnstile #1 at 68th Street-Hunter College station for the week ending 1 September 2018)
 
-		<p> Also, include a tally of the number of complaints by agency (that is, how many were for DOT, how many were for NYPD, etc.).  A useful command is <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html">count_values()</a>
 
-		<p>  Since the code is very similar to the labs, submit only a .pdf file that contains:
-		<ul>
-			<li> The top 10 311 "Complaint Type"s for your favorite neighbohood, and
-			<li> The counts, by agency, of the complaints.
-		</ul>
+		<p> In <a href="lab7.html">Lab 7</a> (24 October), we introduced
+		<a href="https://opendata.cityofnewyork.us">NYC OpenData</a>.
 
-		<p> Submit your answer as a .pdf file.
+		<p> THe MTA keeps track of the number of people entering and exiting each station via the <a href="http://web.mta.info/developers/turnstile.html">turnstiles</a>.  Readings of how many people entered and exited are measured every 4 hours.
+    Some stations measure the numbers at midnight, 4am, 8am, noon, 4pm, and 8pm.  Others are measured on slightly shifted schedules, but always 4 hours apart.  For example, the 68th Street-Hunter College station has each turnstile measured at 1am, 5am, 9am, 1pm, 5pm, and 9pm.  These numbers are recorded as running totals.  For example, here is the data from the 68th Street-Hunter College station for September 22:
+
+<pre>
+C/A,UNIT,SCP,STATION,LINENAME,DIVISION,DATE,TIME,DESC,ENTRIES,EXITS
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,01:00:00,REGULAR,0026638604,0015384642
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,05:00:00,REGULAR,0026638606,0015384646
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,09:00:00,REGULAR,0026638640,0015384847
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,13:00:00,REGULAR,0026638946,0015385117
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,17:00:00,REGULAR,0026639543,0015385340
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,21:00:00,REGULAR,0026639975,0015385496
+R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/23/2018,01:00:00,REGULAR,0026640099,0015385542
+</pre>
+
+    <p> The last two entries on the lines are the entries and exits for that turnstile (in this case, the numbered <tt>00-00-00</tt>).  At 1am, the entry total was <tt>0026638604</tt> and the exit total was <tt>0015384642</tt>.  Four hours later, the entry total was <tt>0026638606</tt> and the exit total was <tt>0015384646</tt>.  So, over that 4-hour period, <tt>0026638606-0026638604 = 2</tt> people entered the station via that turnstile.  Similarly, 4 people left the station via that turnstile.
+
+    <p>Pick a turnstile in your station and make a plot of the number of entries and a plot of the number of exits for the week ending <a href="http://web.mta.info/developers/data/nyct/turnstile/turnstile_180901.txt">1 September 2018</a>.
+
+    <p>Some useful tips:
+    <ul>
+       <li> If you have your turnstile data stored in a variable, <tt>turnsData</tt>, you can select the data for a single station (for example, <tt>68TH-HUNTER CO</tt>) with the command:
+         <pre>
+           turnsData[ turnsData["STATION"] == "68ST-HUNTER CO" ]
+         </pre>
+        You can similarly select a single turns(for example, <tt>00-00-01</tt>) with <tt>turnsHunter</tt> and the column name <tt>SCP</tt>.
+      <li> Some of the data files had extra spaces after "EXITS".  Pandas thinks those spaces are part of the name of your column.  You can either include the spaces (i.e. "EXITS   ") or you can edit the CSV file and remove the trailing spaces and safe the file.
+      <li> You can create a column that contains the difference between the entries and exits at each time point with:
+        <pre>
+          myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]
+        </pre>
+    </ul>
+
+		<p> Submit your answer as a .pdf file.  Include in your .pdf:  the 3 plots and the total number of people who entered via your turnstile as well as the total number who exited via your turnstile over the week.
 
 	<hr>
 
@@ -274,6 +296,15 @@ Fall 2018<br><br>
 
 	<hr>
 
+
+
+  <hr>
+<i>More details on HC 10-12 to come...</i>
+  <hr>
+
+    <hr>
+
+<!--
 	<li > <b>HC 10:  L-Train Demand During Morning Commute</b> <b style="float:right">Due Date: 9 November</b>  <br>
 
 		<br>
@@ -369,7 +400,7 @@ Fall 2018<br><br>
 
 
 <div>
-<i style="float:right">(This file was last modified on 16 August 2018.)</i><br>
+<i style="float:right">(This file was last modified on 3 October 2018.)</i><br>
 </div>
 </body>
 </html>
