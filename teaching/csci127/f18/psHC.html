@@ -264,7 +264,7 @@ turnsHunter = turnsData[ turnsData["STATION"] == "68ST-HUNTER CO" ]</pre>
       <li> You can create a column that contains the difference between the entries and exits at each time point with:
         <pre>
 myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
-      <li> The above plots, use the <a href="https://seaborn.pydata.org">Seaborn</a> package (can be downloaded as part of the Anaconda distribution or following the directions on their downloads page).  If you would like to use a similar palette, including the line with your imports:
+      <li> Since the default colors for pyplot are a bit garish, the above plots use the <a href="https://seaborn.pydata.org">Seaborn</a> package (can be downloaded as part of the Anaconda distribution or following the directions on their downloads page).  It's totally optional, but if you would like to use a similar palette, including the line with your imports:
         <pre>
           import seaborn as sns</pre>
       will then change the default colors and templates to Seaborn.
@@ -311,7 +311,7 @@ myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
 
 
 
-	<li > <b>HC 10:  L-Train Demand During Morning Commute</b> <b style="float:right">Due Date: 9 November</b>  <br>
+	<li > <b>HC 10: Morning Commute Snapshot</b> <b style="float:right">Due Date: 9 November</b>  <br>
 
     <p><img src="turnstileEntryTotals.png" height=300>
       <img src="turnstileExitTotals.png" height=300>
@@ -384,7 +384,7 @@ en = entries.to_frame().reset_index()</pre>
 
 
 
-	<li > <b>HC 12: Cachements for L-Train Stations</b> <b style="float:right">Due Date: 21 November</b>  <br>
+	<li > <b>HC 12: Catchments for L-Train Stations</b> <b style="float:right">Due Date: 21 November</b>  <br>
 
 
       <p>A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping access to public resources and transit.
