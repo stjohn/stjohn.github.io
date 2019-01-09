@@ -18,7 +18,7 @@ Spring 2019<br><br>
 
 <p>
 Today's lab will introduce strings and lists
-in Python.
+in Python and some simple Unix commands.
 
 <p>Software tools needed:  web browser and Python IDLE programming
 environment.
@@ -31,10 +31,9 @@ environment.
 <div>
 <h3>In-class Quiz</h3>
 
-During lab, there is an <a href="quizzes.html">in-class quiz</a>.  The password to access the quiz will be given during lab.  To complete the quiz, log on to Blackboard (see <a href="lab1.html">Lab 1</a> for details on using Blackboard).
+During lab, there is a quiz (for topics, see the <a href="quizzes.html">quizzes page</a>).  <b>It is closed notes and computers.</b>  No use of notes, books, computers, or other electronic devices.  Put everything away except pens/pencils to take the quiz.
 
 </div>
-
 
 <div>
 <h3>Using Python, Gradescope, and Blackboard</h3>
@@ -280,6 +279,57 @@ where the number between the square brackets is the index of the character, in t
 </div>
 
 
+
+
+
+<div>
+<h3> More on Files & Command Line Interface</h3>
+
+<p>
+The terminal has its own set of commands (separate from Python) that we can use to communicate with the operating system.  It's often called the <b>command line interface</b> or shell.  It predates the graphical interface that is now available and is incredibly useful for automating tasks and working on remote servers.  We will slowly introduce shell commands over the course of the semester and eventually incorporate them into some programming assignments.
+
+
+
+<p>
+We have already used the shell in the previous lab.  When you typed:
+<pre style = "background-color:lavender;width:400px">
+$  idle3
+</pre>
+you were asking the operating system to launch the program <tt>idle3</tt>.  The laptop was configured to first look in folders containing applications, and then to check your home folder, and then to check the current folder you are using to find an application by that name.
+
+<p>
+Let's create a new <b>directory</b>, or folder, to hold your images (using the shell or command line).  Where it says <tt>thomasH</tt> below, replace with your name.  It is easier if you avoid spaces in the names:
+<ul>
+	<li>  Open a new terminal window (go to the upper left menu icon, search for terminal and click, or if you already have terminal, you can click on its menu to create a new window).
+	<li>  In the terminal window, type:
+	<pre style = "background-color:lavender;width:400px">
+$ pwd</pre>
+	(The <tt>$</tt> represents the prompt at the command line-- no need to type it.)
+	
+	<p>This tell you the <b>path</b>, or location, of your current working directory.  To see what is in the folder, you request a 'listing':
+	<pre style = "background-color:lavender;width:400px">
+$ ls</pre>
+	<li> To add a new directory, we type:
+	<pre style = "background-color:lavender;width:400px">
+$ mkdir thomasH</pre>
+	(replace <tt>thomasH</tt> with your name to create a directory for you!).
+
+	<p>
+	Now, when we list the current directory, we should new item (namely the  directory with your name):
+<pre style = "background-color:lavender;width:400px">
+$ ls</pre>
+
+	<li> Let's change directories:
+<pre style = "background-color:lavender;width:400px">
+$ cd thomasH</pre>
+	If we ask for a listing (<tt>ls</tt>), we will now see the contents of your directory.
+</ul>
+The graphical interface and shell are operating on the same underlying system, so, changes you make with one can be seen by the other.  If you open up the file
+icon (on left hand menu bar) and click the <tt>Home</tt> directory, you will see the folder you just created.
+
+<p> In the next lab, we will explain how to copy and move files between directories.
+
+</div>
 
 
 
