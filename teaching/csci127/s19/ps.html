@@ -256,7 +256,7 @@ Your word in code is:
 mroen
 </pre>
 
-<b>add in another sample run</b>
+
 
 
 		<p> <i>Hint:  See the example programs from Lecture 2.</i>
@@ -751,93 +751,9 @@ AccountNameGoesHere
 
 		<p>Note:  it takes a few minutes for a newly created github account to be visible.  If you submit to gradescope and get a message that the account doesn't exist, wait a few minutes and try again.
 
-<!--
-
-	<li > <b>Due Date: 20 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
 
-<p><b>Change this to hiding an image inside the image.  Write program in lecture-- assignment is to write the unmerge program.  Put merge program up on github?  Use something like:  https://towardsdatascience.com/steganography-hiding-an-image-inside-another-77ca66b2acb1</b>
-
-
-  <p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the lower left quarter of the image to the output file specified by the user.
-
-  <p>A sample run of your program should look like:
-  <pre style ="background-color:lavender;width:400px">
-Enter image file name: hunterLogo.png
-Enter output file: logoLL.png
-</pre>
-
-  <p>which would have as input and output:
-  <p>
-  <img src="../s18/hunterLogo2.png" width = 400>
-  <img src="../s18/logoLL.png" width = 200 >
-
-
-  <p> <i>Hint:  See sample programs from Lectures 4 and 6.</i>
-
-
-  <p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
-
-
-
-	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/mainfunction.html">Section 6.7</a></b><br>
-
-
-    <p> Modify the program from <a href="lab7.html">Lab 7</a> that displays shelter population over time to:
-		<ul>
-			<li> ask the user to specify the input file,
-			<li> ask the user to specify the output file,
-			<li> make a plot of the fraction of the total population that are children over time from the data in input file, and
-			<li> store the plot in the output file the user specified.
-		</ul>
-
-		<p>A sample run of the program:
-<pre style ="background-color:lavender;width:400px">
-Enter name of input file:  DHS_2015_2016.csv
-Enter name of output file:  dhsPlot.png
-</pre>
-		<p> which produces an output:
-
-		<p><img src="../f17/dhsPlot.png" height = 300>
-
-		<p> Note:  The grading script is expecting that the label (i.e. name of your new column) is "Fraction Children".
-
-	<li > <b>Due Date: 22 March</b><b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>
-
-
-    	<p> Write a program, using a function <tt>main()</tt> that prints "Hello, World!" to the screen.   See <a href="lab7.html">Lab 7</a>.
-
-
-
-  	<li > <b>Due Date: 25 March</b>  <b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/StringsandLists.html?highlight=split">Section 10.24</a></b><br>
-
-      	<p>Write a program that prompts the user to enter a list of names. Each person's name is separated from the next by a semi-colon and a space ('; ') and the names are entered <tt>lastName, firstName</tt> (i.e. separated by ', '). Your program should then print out the names, one per line, with the first names first followed by the last names.
-
-      	<p>A sample run of your program should look like:
-      		<pre style ="background-color:lavender">
-Please enter your list of names:  Cohn, Mildred; Dolciani, Mary P.; Rees, Mina; Teitelbaum, Ruth; Yalow, Rosalyn
-
-You entered:
-
-Mildred Cohn
-Mary P. Dolciani
-Mina Rees
-Ruth Teitelbaum
-Rosalyn Yalow 
-
-Thank you for using my name organizer!
-      </pre>
-
-      <p><i>Hint: See <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/StringsandLists.html?highlight=split">Section 10.24</a> for a quick overview of <tt>split()</tt>.  Do this problem in parts: first, split the list by person (what should the delimiter be?). Then, split each of person's name into first and last name (what should the delimiter be here?).</i>
-
-
-
-
-
-
-
-
-	<li > <b>Due Date: 26 March</b>  <b style="float:right">Reading:  Think CS:  <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
+	<li > <b>Due Date: 20 March</b>  <b style="float:right">Reading:  Think CS:  <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
     <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
     <ul>
     <li>"Good Morning" if it is strictly before 12,
@@ -863,8 +779,35 @@ Good Afternoon
 
 
 
+	<li > <b>Due Date: 21 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-	<li > <b>Due Date: 27 March</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+    <p> Modify the program from <a href="lab7.html">Lab 7</a> that displays shelter population over time to:
+		<ul>
+			<li> ask the user to specify the input file,
+			<li> ask the user to specify the output file,
+			<li> make a plot of the fraction of the total population that are children over time from the data in input file, and
+			<li> store the plot in the output file the user specified.
+		</ul>
+
+		<p>A sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter name of input file:  DHS_2015_2016.csv
+Enter name of output file:  dhsPlot.png
+</pre>
+		<p> which produces an output:
+
+		<p><img src="../f17/dhsPlot.png" height = 300>
+
+		<p> Note:  The grading script is expecting that the label (i.e. name of your new column) is "Fraction Children".
+
+	<li > <b>Due Date: 22 March</b> 	<b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/mainfunction.html">Section 6.7</a></b><br>
+
+
+    	<p> Write a program, using a function <tt>main()</tt> that prints "Hello, World!" to the screen.   See <a href="lab7.html">Lab 7</a>.
+
+  	<li > <b>Due Date: 25 March</b>  <b style="float:right">Reading: <a href="http://www.toves.org/books/logic/">Burch's Logic & Circuits</a></b><br>
+  	
+
 
 		<p> Logical gates can be used to do arithmetic on binary numbers.  For example, we can write a logical circuit whose output is one more than the inputted number.  Our inputs are <tt>in1</tt> and <tt>in2</tt> and the outputs are stored in <tt>out1</tt>, <tt>out2</tt>, and <tt>out3</tt>.
 		
@@ -911,8 +854,72 @@ out3 = ...
 		
 		<p>Note:  here's a quick <a href="https://www.mathsisfun.com/binary-number-system.html">review</a> of binary numbers.
 		
+
+  		<li > <b>Due Date: 26 March</b> 
+  		
+  		<b style="float:right">Reading: <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/StringsandLists.html?highlight=split">Section 10.24</a></b><br>
+
+      	<p>Write a program that prompts the user to enter a list of names. Each person's name is separated from the next by a semi-colon and a space ('; ') and the names are entered <tt>lastName, firstName</tt> (i.e. separated by ', '). Your program should then print out the names, one per line, with the first names first followed by the last names.
+
+      	<p>A sample run of your program should look like:
+      		<pre style ="background-color:lavender">
+Please enter your list of names:  Cohn, Mildred; Dolciani, Mary P.; Rees, Mina; Teitelbaum, Ruth; Yalow, Rosalyn
+
+You entered:
+
+Mildred Cohn
+Mary P. Dolciani
+Mina Rees
+Ruth Teitelbaum
+Rosalyn Yalow 
+
+Thank you for using my name organizer!
+      </pre>
+
+      <p><i>Hint: See <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/StringsandLists.html?highlight=split">Section 10.24</a> for a quick overview of <tt>split()</tt>.  Do this problem in parts: first, split the list by person (what should the delimiter be?). Then, split each of person's name into first and last name (what should the delimiter be here?).</i>
+
+
+
+<!--
+
+
+
+
+  		<li > <b>Due Date: 27 March</b> <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+
+<p><b>Change this to hiding an image inside the image.  Write program in lecture-- assignment is to write the unmerge program.  Put merge program up on github?  Use something like:  https://towardsdatascience.com/steganography-hiding-an-image-inside-another-77ca66b2acb1</b>
+
+
+  <p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the lower left quarter of the image to the output file specified by the user.
+
+  <p>A sample run of your program should look like:
+  <pre style ="background-color:lavender;width:400px">
+Enter image file name: hunterLogo.png
+Enter output file: logoLL.png
+</pre>
+
+  <p>which would have as input and output:
+  <p>
+  <img src="../s18/hunterLogo2.png" width = 400>
+  <img src="../s18/logoLL.png" width = 200 >
+
+
+  <p> <i>Hint:  See sample programs from Lectures 4 and 6.</i>
+
+
+  <p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
+
+
+	 
+  	
+  	
+ 
+
+ 
 		
-		<li > <b>Due Date: 28 March</b>  <b style="float:right">Reading: <a href="https://guides.github.com/activities/hello-world/">Github Guide</a></b><br>
+		<li > <b>Due Date: 28 March</b>  
+		<b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>
+
 
 		<p> Modify the parking ticket program from <a href="lab8.html">Lab 8</a> to do the following:
 		<ul>
@@ -1467,7 +1474,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 25 January 2019.)</i><br>
+<i style="float:right">(This file was last modified on 15 February 2019.)</i><br>
 </div>
 </body>
 </html>
