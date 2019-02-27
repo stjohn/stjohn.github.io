@@ -481,7 +481,7 @@ If it sounds like a cat and moves like a cat, it probably is a cat.
 <p><i>
 Hint:  Here's a way to approach the problem:
 <ol>
-	<li> Create a variable, <tt>templateString</tt> and store the string 
+	<li> Create a variable, <tt>template</tt> and store the string 
 		<tt>"If it VERB1 like a NOUN and VERB2 like a NOUN, it probably is a NOUN."</tt> in it.
 	<li> Ask the user for a noun and store it in a variable, <tt>noun</tt>.
 	<li> Replace the placeholder in the <tt>template</tt> with the noun the user entered (i.e.  <tt>template = template.replace("NOUN", noun)</tt>).
@@ -520,6 +520,8 @@ Enter output file: stripes50.png
 
 
 	<p> Note:  before submitting your program for grading, remove the commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
+	
+	<p><i>Hint:  See notes from Lecture 3.</i>
 
 
 	<li > <b>Due Date: 1 March</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a></b><br>
@@ -879,26 +881,25 @@ Thank you for using my name organizer!
       <p><i>Hint: See <a href="http://interactivepython.org/runestone/static/thinkcspy/Lists/StringsandLists.html?highlight=split">Section 10.24</a> for a quick overview of <tt>split()</tt>.  Do this problem in parts: first, split the list by person (what should the delimiter be?). Then, split each of person's name into first and last name (what should the delimiter be here?).</i>
 
 
-<!--
+
 
 
   		<li > <b>Due Date: 27 March</b> <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-<p><b>Change this to hiding an image inside the image.  Write program in lecture-- assignment is to write the unmerge program.  Put merge program up on github?  Use something like:  https://towardsdatascience.com/steganography-hiding-an-image-inside-another-77ca66b2acb1</b>
 
 
-  <p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the lower left quarter of the image to the output file specified by the user.
+  			<p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the lower right quarter of the image to the output file specified by the user.
 
   <p>A sample run of your program should look like:
   <pre style ="background-color:lavender;width:400px">
 Enter image file name: hunterLogo.png
-Enter output file: logoLL.png
+Enter output file: logoUR.png
 </pre>
 
   <p>which would have as input and output:
   <p>
   <img src="../s18/hunterLogo2.png" width = 400>
-  <img src="../s18/logoLL.png" width = 200 >
+  <img src="logoUR.png" width = 200 align="right">
 
 
   <p> <i>Hint:  See sample programs from Lectures 4 and 6.</i>
@@ -909,13 +910,9 @@ Enter output file: logoLL.png
 
 	 
   	
-  	
- 
-
- 
-		
+	
 		<li > <b>Due Date: 28 March</b>  
-		<b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>
+		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
 
 		<p> Modify the parking ticket program from <a href="lab8.html">Lab 8</a> to do the following:
@@ -965,10 +962,10 @@ Name: Vehicle Year, dtype: int64
 	<li > <b>Due Date: 29 March</b>
 	<b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
 
-		<p>Fill in the missing function, <tt>monthString()</tt>, in the program, <tt>months.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
-	https://github.com/stjohn/csci127</a>).  The function should take number between 1 and 12 as a parameter and returns the corresponding month as a string.  For example, if the parameter is 1, your function should return <tt>"January"</tt>.  If the parameter is 2, your function should return out <tt>"February"</tt>, etc.
+		<p>Fill in the missing function, <tt>num2String()</tt>, in the program, <tt>months.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
+	https://github.com/stjohn/csci127</a>).  The function should take number between 0 and 9 as a parameter and returns the corresponding number as a string.  For example, if the parameter is 0, your function should return <tt>"one"</tt>.  If the parameter is 1, your function should return out <tt>"two"</tt>, etc.
 
-		<p>Note:  The grading scripts are expecting that your function is called <tt>monthString()</tt>.  You need to use that name, since instead of running the entire program, the scripts are "unit testing" the function-- that is, calling that function, in isolation, with differrent inputs to verify that it performs correctly.
+		<p>Note:  The grading scripts are expecting that your function is called <tt>num2String()</tt>.  You need to use that name, since instead of running the entire program, the scripts are "unit testing" the function-- that is, calling that function, in isolation, with differrent inputs to verify that it performs correctly.
 
 
 		<p><i>Hint:  See notes from Lecture 7 and <a href="lab8.html">Lab 8</a>.</i>
@@ -1036,7 +1033,47 @@ Enter edge length:  160
 
 
 
-	<li > <b>Due Date: 3 April</b>  <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+	<li > <b>Due Date: 3 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
+
+
+		
+		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Long Island Railroad fare.
+		<ul>
+			<li> If the zone is 1 and the ticket type is "peak", the fare is 8.75.
+			<li> If the zone is 1 and the ticket type is "off-peak", the fare is 6.25.			
+			<li> If the zone is 2 or 3 and the ticket type is "peak", the fare is 10.25.
+			<li> If the zone is 2 or 3 and the ticket type is "off-peak", the fare is 7.50.			
+			<li> If the zone is 4 and the ticket type is "peak", the fare is 12.00.
+			<li> If the zone is 4 and the ticket type is "off-peak", the fare is 8.75.	
+			<li> If the zone is 5, 6, or 7 and the ticket type is "peak", the fare is 13.50.			
+			<li> If the zone is 5, 6, or 7 and the ticket type is "off-peak", the fare is 9.75.
+			<li> If the zone is greater than 8, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+		
+		<p>A template program, <tt>LIRRtransit.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the name of the function must match exactly (else, the scripts cannot find it). 
+
+		<p>A sample run:
+<pre style = "background-color:lavender;width:400px">
+Enter the number of zones: 4
+Enter the ticket type (peak/off-peak): off-peak
+The fare is 8.75
+</pre>
+		<p> And another:
+<pre style = "background-color:lavender;width:400px">
+Enter the number of zones: 6
+Enter the ticket type (peak/off-peak): peak
+The fare is 13.5
+</pre>		
+		
+		
+		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
+
+	
+	
+	
+	<li > <b>Due Date: 4 April</b>  <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
 		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
 
@@ -1044,7 +1081,8 @@ Enter edge length:  160
 
 
 
-	<li > <b>Due Date: 4 April</b>  <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+	 <li > <b>Due Date: 8 April</b>  
+	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
 		<p>
 		Using folium (see <a href="lab9.html">Lab 9</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
@@ -1068,46 +1106,18 @@ Enter output file:  thMap.html
 		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
 
 
-	<li > <b>Due Date: 8 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
-
-		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the MetroNorth Railroad fare.
-		<ul>
-			<li> If the zone is 1 and the ticket type is "peak", the fare is 6.75.
-			<li> If the zone is 1 and the ticket type is "off-peak", the fare is 5.00.
-      <li> If the zone is 1 and the ticket type is "senior", the fare is 3.25.
-			<li> If the zone is 2 and the ticket type is "peak", the fare is 7.50.
-			<li> If the zone is 2 and the ticket type is "off-peak", the fare is 5.75.
-      <li> If the zone is 2 and the ticket type is "senior", the fare is 3.75.
-			<li> If the zone is 3 and the ticket type is "peak", the fare is 9.25.
-			<li> If the zone is 3 and the ticket type is "off-peak", the fare is 7.00.
-      <li> If the zone is 3 and the ticket type is "senior", the fare is 4.50.
-			<li> If the zone is greater than 3, return a negative number (since your calculator does not handle inputs that high).
-		</ul>
-
-		<p>A template program, <tt>MNRtransit.py</tt>, is available on the
-		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
-		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the name of the function must match exactly (else, the scripts cannot find it).
-
-		<p>A sample run:
-<pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 2
-Enter the ticket type (peak/off-peak): off-peak
-The fare is 5.75
-</pre>
-		<p> And another:
-<pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 6
-Enter the ticket type (peak/off-peak): peak
-The fare is -1
-</pre>
+	  
 
 
-		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
+	<li > <b>Due Date: 9 April</b>  
+	<b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/toctree.html#">Chapter 3</a></b><br>
 
-
-
-
-	<li > <b>Due Date: 9 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+		<p>The program,
+		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
+		<p><i>Hint:  See  <a href="lab9.html">Lab 9</a>.</i>
+	
+	<li > <b>Due Date: 10 April</b> 	
+	<b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
 		<p> Fill in the following functions in a program that maps GIS data from NYC OpenData CSV files and marks the current location and closest point:
 		<ul>
@@ -1156,11 +1166,7 @@ Enter output file: recyc.html
 
 
 
-	<li > <b>Due Date: 10 April</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/toctree.html#">Chapter 3</a></b><br>
-
-		<p>The program,
-		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
-		<p><i>Hint:  See  <a href="lab9.html">Lab 9</a>.</i>
+ 
 
 	<li > <b>Due Date: 11 April</b> <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b> <br>
 
@@ -1253,7 +1259,7 @@ You entered: Mihi cura futuri
 	<li > <b>Due Date: 29 April</b>  
 	<b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
 
-		<p> Write a <b>simplified machine language program</b> that prints:  <tt>Mihi Cura Futuri</tt>
+		<p> Write a <b>simplified machine language program</b> that prints:  <tt>Hello World!</tt>
 
 		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
 
@@ -1266,7 +1272,7 @@ You entered: Mihi cura futuri
 
 
 		<p>Write a <b>simplified machine language program</b> that has register <tt>$s0</tt> loop through
-		the numbers 10, 20, 30, ..., 100.
+		the numbers 0, 5, 10, ..., 50.
 
 		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
 
@@ -1293,10 +1299,19 @@ You entered: Mihi cura futuri
 
 	<li > <b>Due Date: 4 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-		<p>Write a <b>C++ program</b> that will print "Mihi cura futuri" 10 times.
+		<p>Write a <b>C++ program</b> that will print "Mihi cura futuri" 19 times.
 
 		<p>The output of your program should be:
 <pre style ="background-color:lavender;width:400px">
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
+Mihi cura futuri
 Mihi cura futuri
 Mihi cura futuri
 Mihi cura futuri
@@ -1322,53 +1337,53 @@ Mihi cura futuri
 
 	<li > <b>Due Date: 7 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-		<p> Write a <b>C++ program</b> program that asks the user for a number and draws a triangle of that height and width using 'character graphics'.
+		<p> Write a <b>C++ program</b> program that asks the user for a number and draws a grid of zeros and ones of that height and width using 'character graphics'.
 
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
 Enter a number:  6
-*
-**
-***
-****
-*****
-******
+010101
+101010
+010101
+101010
+010101
+101010
 </pre>
 
 		<p>Another sample run:
 <pre style ="background-color:lavender;width:400px">
 Enter a number:  3
-*
-**
-***
+010
+101
+010
 </pre>
 
+	<p><i>Hint: use nested loops with index variables, i and j, and print the remainder of (i+j) divided by 2 (alternates between 0 and 1).</i>
 
 
 	<li > <b>Due Date: 8 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-		<p> Write a <b>C++ program</b>  that asks the user for the month of the year (as a number), and prints
+		<p> Write a <b>C++ program</b>  that asks the user for the hour of the day (in 24 hour time), and prints 
 		<ul>
-			<li>"Happy Winter" if it is strictly before 3 or strictly larger than 11,
-			<li> "Happy Spring" if it is 3 or greater, but strictly before 7, and
-			<li> "Happy Summer" if it is 7 or greater, but strictly before 9, and
-			<li> "Happy Fall" otherwise.
+			<li>"Good Morning" if it is strictly before 12, 
+			<li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and 
+			<li> "Good Evening" otherwise.
 		</ul>
-
+		
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter month (as a number):  12
-Happy Winter
+Enter hour (in 24 hour time):  11
+Good Morning
 </pre>
 		<p>Another sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter month (as a number):  8
-Happy Summer
+Enter hour (in 24 hour time):  20
+Good Evening
 </pre>
 		<p>And another run:
 <pre style ="background-color:lavender;width:400px">
-Enter month (as a number):  11
-Happy Fall
+Enter hour (in 24 hour time):  15
+Good Afternoon
 </pre>
 
 
@@ -1376,19 +1391,22 @@ Happy Fall
 
 	<li > <b>Due Date: 9 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-    <p> Write a <b>C++ program</b> that asks the user for the year born, and continue asking until the number entered that is 2018 or earlier.
-
+		<p> Write a <b>C++ program</b> that asks the user for their age, and continue asking until the number entered positive (that is, greater than 0).  <!--That is, write the <a href="http://pythontutor.com/visualize.html#code=age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Awhile%20age%20%3C%200%3A%0A%20%20%20%20print%28'Entered%20a%20negative%20number.'%29%0A%20%20%20%20age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Aprint%28'You%20entered%20your%20age%20as%3A',%20age%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22-3%22,%223%22%5D&textReferences=false">Python program</a> 
+		from <a href="lab10.html">Lab 10</a> in C++.-->
+		
 		<p>A sample run:
 <pre style ="background-color:lavender;width:400px">
-Please enter year born: 2019
-Entered a future year
-Please enter year born: 2025
-Entered a future year
-Please enter year born: 2000
-You entered:  2000
-</pre>
+Please enter age: -6
+Entered a negative number.
+Please enter age: -50
+Entered a negative number.
+Please enter age: 100
+You entered your age as: 100
+</pre>		
 
-		<p> <i>Hint: See <a href="lab10.html">Lab 10</a> for similar programs in Python.  Rewrite in C++.</i>
+		<p> <i>Hint: Rewrite the <a href="http://pythontutor.com/visualize.html#code=age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Awhile%20age%20%3C%200%3A%0A%20%20%20%20print%28'Entered%20a%20negative%20number.'%29%0A%20%20%20%20age%20%3D%20int%28input%28'Please%20enter%20age%3A%20'%29%29%0Aprint%28'You%20entered%20your%20age%20as%3A',%20age%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22-3%22,%223%22%5D&textReferences=false">Python program</a> 
+		from <a href="lab10.html">Lab 10</a> in C++.</i>
+
 
 
 
@@ -1396,24 +1414,22 @@ You entered:  2000
 
 	<li > <b>Due Date: 13 May</b>  <b style="float:right">Reading: <a href="http://www.cplusplus.com/files/tutorial.pdf">Cplusplus Tutorial</a></b><br>
 
-    <p> Write a complete <b>C++ program</b> that prints the change in population of the the United States:
-<pre>
-    p = p + Bp - Dp
-</pre>
-where p is the population, B is the birth rate of 12.4 births for every 1000 people (12.4/1000) each
-year, and D is the death rate of 8.4 for every 1000 people (8.4/1000). In 2017, the population
-of United States was 325.7 million. Your program should ask the user for the number of years and print expected population over those years starting from 2017. Each line should have: the year and the population (in millions).
-
-
+		<p> Write a <b>C++ program</b>  that asks the user for the starting amount, and prints out the yearly balance of a savings account, assuming 10% interest, until the amount has doubled.
+		
 		<p> A sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter number of years:  5
-Year 2017  325.7
-Year 2018
-Year 2019
-Year 2020
-Year 2021
+Please enter the starting amount: 1000
+Year 1  1100.00
+Year 2  1210.00
+Year 3  1331.00
+Year 4  1464.10
+Year 5  1610.51
+Year 6  1771.56
+Year 7  1948.72
+Year 8  2143.59
 </pre>
+		<p> <i>Hint:  Use an indefinite loop.</i>
+
 
 
 
@@ -1447,7 +1463,6 @@ Enter a number: -1
 111111
 </pre>
 
--->
 
 
 
@@ -1471,7 +1486,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 15o  February 2019.)</i><br>
+<i style="float:right">(This file was last modified on 26  February 2019.)</i><br>
 </div>
 </body>
 </html>
