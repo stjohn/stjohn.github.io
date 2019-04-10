@@ -368,8 +368,7 @@ The course has lectures on Tuesday mornings and recitation sections offered thro
 		<td rowspan=2><b>#10</b></td>
 		<td><b>Lecture:</b><br>9 April</td>
 		<td>Indefinite Loops; Simulations; <br>
-		Design Patterns:  Max & Searching; <br>
-		Python Recap<br>
+		Design Patterns:  Max; <br>
 		<br>
 		Final Exam Overview, Part 1
 		</td>
@@ -377,7 +376,6 @@ The course has lectures on Tuesday mornings and recitation sections offered thro
 
 		<a href="http://pythontutor.com/visualize.html#code=%23Spring%202012%20Final%20Exam,%20%238%0A%0Anums%20%3D%20%5B1,4,0,6,5,2,9,8,12%5D%20%0Aprint%28nums%29%0Ai%3D0%0Awhile%20i%20%3C%20len%28nums%29-1%3A%0A%20%20%20%20if%20nums%5Bi%5D%20%3C%20nums%5Bi%2B1%5D%3A%0A%20%20%20%20%20%20%20%20nums%5Bi%5D,%20nums%5Bi%2B1%5D%20%3D%20nums%5Bi%2B1%5D,%20nums%5Bi%5D%0A%20%20%20%20i%3Di%2B1%20%0A%20%20%20%20%20%20%20%20%0Aprint%28nums%29%0A%0A&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">Nums & While</a>,<br>
 		<a href="http://pythontutor.com/visualize.html#code=nums%20%3D%20%5B1,4,10,6,5,42,9,8,12%5D%20%0A%0AmaxNum%20%3D%200%0Afor%20n%20in%20nums%3A%0A%20%20%20%20if%20n%20%3E%20maxNum%3A%0A%20%20%20%20%20%20%20%20maxNum%20%3D%20n%0Aprint%28'The%20max%20is',%20maxNum%29&cumulative=false&curInstr=26&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">Max Num</a>,<br>
-		<a href="http://pythontutor.com/visualize.html#code=def%20search%28nums,%20locate%29%3A%0A%20%20%20%20found%20%3D%20False%0A%20%20%20%20i%20%3D%200%0A%20%20%20%20while%20not%20found%20and%20i%20%3C%20len%28nums%29%3A%0A%20%20%20%20%20%20%20%20print%28nums%5Bi%5D%29%0A%20%20%20%20%20%20%20%20if%20locate%20%3D%3D%20nums%5Bi%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20found%20%3D%20True%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20i%20%3D%20i%2B1%0A%20%20%20%20return%28found%29%0A%20%20%20%20%0Anums%3D%20%5B1,4,10,6,5,42,9,8,12%5D%0Aif%20search%28nums,6%29%3A%0A%20%20%20%20print%28'Found%20it!%206%20is%20in%20the%20list!'%29%0Aelse%3A%0A%20%20%20%20print%28'Did%20not%20find%206%20in%20the%20list.'%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">Search</a>, <br>
 		
 		<a href="s19/csci127S19Lecture10.pdf">Lecture notes</a></td>
 		<td></td>
@@ -395,9 +393,10 @@ The course has lectures on Tuesday mornings and recitation sections offered thro
 	<tr>
 		<td rowspan=2><b>#11</b></td>
 		<td><b>Lecture:</b><br>16 April</td>
-		<td>
+		<td><br>
+		Python Recap;<br>
 		Simplified Machine Language;<br>
-		Design Patterns:  Sorting;<br><br>
+		Design Patterns:  Searching;<br><br>
 		<br>
 		<br>
 		CS Survey: Anna Whitney, Storage Infrastructure Team, Google NYC
@@ -405,8 +404,10 @@ The course has lectures on Tuesday mornings and recitation sections offered thro
 		
 		</td>
 		
-		<td><a href="http://rivoire.cs.sonoma.edu/cs351/wemips/">WeMIPS Emulator</a>,<br>
-		<!--<a href="s19/csci127S19Lecture11.pdf">Lecture notes</a>--></td>
+		<td>
+		<a href="http://pythontutor.com/visualize.html#code=def%20search%28nums,%20locate%29%3A%0A%20%20%20%20found%20%3D%20False%0A%20%20%20%20i%20%3D%200%0A%20%20%20%20while%20not%20found%20and%20i%20%3C%20len%28nums%29%3A%0A%20%20%20%20%20%20%20%20print%28nums%5Bi%5D%29%0A%20%20%20%20%20%20%20%20if%20locate%20%3D%3D%20nums%5Bi%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20found%20%3D%20True%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20i%20%3D%20i%2B1%0A%20%20%20%20return%28found%29%0A%20%20%20%20%0Anums%3D%20%5B1,4,10,6,5,42,9,8,12%5D%0Aif%20search%28nums,6%29%3A%0A%20%20%20%20print%28'Found%20it!%206%20is%20in%20the%20list!'%29%0Aelse%3A%0A%20%20%20%20print%28'Did%20not%20find%206%20in%20the%20list.'%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false">Search</a>, <br>
+		<a href="http://rivoire.cs.sonoma.edu/cs351/wemips/">WeMIPS Emulator</a>,<br>
+		<a href="s19/csci127S19Lecture11.pdf">Lecture notes</a></td>
 		<td></td>
 		<td rowspan=2>
 		<a href="http://www.mrc.uidaho.edu/mrc/people/jff/digital/MIPSir.html">U Idaho reference sheet</a>,
@@ -525,5 +526,5 @@ The course has lectures on Tuesday mornings and recitation sections offered thro
 </div>
 
 <div>
-<i style="float:right">(This file was last modified on 8 April 2019.)</i><br>
+<i style="float:right">(This file was last modified on 9 April 2019.)</i><br>
 </div>
