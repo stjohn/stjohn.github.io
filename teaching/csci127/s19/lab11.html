@@ -62,7 +62,7 @@ Let's start by looking at a program that will print "Hello World":
 	We are using 13, because to allow enough room to store the message "Hello World" (plus a null character to signal the end of the string).
 	<li> The next line, <tt>SB $t0, 0($sp)</tt> moves the number we stored to the register <tt>$t0</tt> to the stack pointer address (with 0 offset).  Since it is moving a byte of information, <tt>SB</tt> stands for "Store Byte".
 	<li> We repeat with each letter in our message, loading it to register <tt>$t0</tt> and then moving the contents of that register to the next empty memory location.  This contninues until the entire message is loaded.
-	<li> Next, we place 4 into the register <tt>$t0</tt>.  That register is used to tell the simulator what type of system call we would like to make.  4 is used for printing strings.
+	<li> Next, we place 4 into the register <tt>$v0</tt>.  That register is used to tell the simulator what type of system call we would like to make.  4 is used for printing strings.
 	<li> Next, we place the location of the start of our message in <tt>$a0</tt> (that's where the system looks for the location of the string to print).
 	<li> Lastly, we call <tt>syscall</tt>.  Since we have loaded 4 into <tt>$v0</tt>, it will print whatever string starts at the memory location in <tt>$a0</tt>.
 	<li> If the messages are not displaying, toggle to the "Log".  You will see the message in green on the stack.
