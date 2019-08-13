@@ -777,30 +777,31 @@ AccountNameGoesHere
 		<p>Note:  it takes a few minutes for a newly created github account to be visible.  If you submit to gradescope and get a message that the account doesn't exist, wait a few minutes and try again.
 
 
-<!--
 
-   		<li > <b>Due Date: 24 October</b>    
+
+   		<li > <b>Due Date: 24 October</b>      		
       	<b  style="float:right">Reading: Think CS:  <a href="https://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7</a></b><br>
 
 
-
- <p>
-<b>CHANGE-- add program to github</b>
 	
-       <p>The program <a href="../f17/turtleString.py">turtleString.py</a> takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
+       <p>The program, <tt>turtleString.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
+	https://github.com/stjohn/csci127</a>) takes a string as input and uses that string to control what the turtle draws on the screen (inspired by <a href="https://code.org/curriculum/course2/1/Teacher">code.org's graph paper programming</a>).  Currently, the program processes the following commands:
         <ul>
           <li> 'F':  moves the turtle forward 50 steps
           <li> 'L':  turns the turtle 90 degrees to the left
           <li> 'R':  turns the turtle 90 degrees to the right
           <li> '^':  lifts the pen
           <li> 'v':  lowers the pen
+          <li> 'B':  moves the turtle backwards 50 steps
+		  <li> 'r':	         #turn red
+		  <li> 'g':          #turn green
+		  <li> 'b':          #turn blue
         </ul>
         For example, if the user enters the string "FLFLFLFL^FFFvFLFLFLFL", the turtle would move forward and then turn left.  It repeats this 4 times, drawing a square.  Next, it lifts the pen and move forward 3, puts the pen back down and draw another square.
 
         <p>
         Modify this program to allow the user also to specify with the following symbols:
         <ul>
-          <li> 'B':  moves the turtle backwards 50 steps
           <li> 'S':  makes the turtle stamp
           <li> 'l':  turns the turle 45 degrees to the left
           <li> 'r':  turns the turtle 45 degrees to the right
@@ -811,45 +812,49 @@ AccountNameGoesHere
 
 
 
-
-<b>Add in a pandas program that doubles a recipe.</b>
-
-
-	<li > <b>Due Date: 25 October</b>  <b style="float:right">Reading:  Think CS:  <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
-
-<p>    
-<b>CHANGE</b> 
+	<li > <b>Due Date: 25 October</b>     		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+   		
+   		<p>
+   		Using <tt>pandas</tt>, write a program that asks the user for a recipe (in comma separated value (CSV) format), reads in the corresponding CSV file and prints out quantities and ingredients needed to make a double batch.  Assume that the CSV files have the columns:  <tt>"Amount"</tt>, <tt>"Measurement"</tt>, and <tt>"Ingredient"</tt>.
+	
+		<p>	
+		For example if the CSV file, <tt>meringues.csv</tt>, contained:
 
 <p>
-<b>NEED A FIXING ERRORS PROGRAM</b>
+<table border=1>
+	<tr>
+		<th>Amount</th><th>Measurement</th><th>Ingredient</th>
+	</tr>
+	<tr>
+		<td>150</td><td>grams</td><td>chocolate chips</td>
+	</tr>
+	<tr>
+		<td>4</td><td>whites of</td><td>eggs</td>
+	</tr>
+	<tr>
+		<td>.25</td><td>teaspoon</td><td>vanilla</td>
+	</tr>
+	<tr>
+		<td>.25</td><td>teaspoon</td><td>cream of tartar</td>
+	</tr>
+<table>
 
-<p> <b>Add in a double-the-recipe program</b>
-
-    
-    <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
-    <ul>
-    <li>"Good Morning" if it is strictly before 12,
-    <li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and
-    <li> "Good Evening" otherwise.
-    </ul>
-
-    <p>A sample run:
-    <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  11
-Good Morning
+	<p>A sample run of your program would be:
+	    <pre style ="background-color:lavender;width:400px">
+Enter recipe name: meringues.csv
+Double your recipe is:
+       Amount Measurement       Ingredient
+    0   300.0       grams  chocolate chips
+    1     8.0   whites of             eggs
+    2     0.5    teaspoon          vanilla
+    3     0.5    teaspoon  cream of tartar
 </pre>
-    <p>Another sample run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  20
-Good Evening
-</pre>
-    <p>And another run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  15
-Good Afternoon
-</pre>
 
 
+
+
+
+<!--
 
 	<li > <b>Due Date: 28 October</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
@@ -930,6 +935,35 @@ out3 = ...
 		
 
   		<li > <b>Due Date: 1 November</b> 
+
+ <b style="float:right">Reading:  Think CS:  <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
+
+<p>    
+<b>CHANGE</b> 
+
+    
+    <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
+    <ul>
+    <li>"Good Morning" if it is strictly before 12,
+    <li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and
+    <li> "Good Evening" otherwise.
+    </ul>
+
+    <p>A sample run:
+    <pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  11
+Good Morning
+</pre>
+    <p>Another sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  20
+Good Evening
+</pre>
+    <p>And another run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  15
+Good Afternoon
+</pre>
 
 
 
@@ -1091,6 +1125,8 @@ Enter edge length:  160
 	<li > <b>Due Date: 11 November</b>  <b style="float:right">Reading: Think CS: <a href="http://interactivepython.org/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
 
 <b>CHANGE</b>
+<p>
+<b>NEED A FIXING ERRORS PROGRAM</b>
 		
 		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Long Island Railroad fare.
 		<ul>
@@ -1566,7 +1602,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 9 August 2019.)</i><br>
+<i style="float:right">(This file was last modified on 11 August 2019.)</i><br>
 </div>
 </body>
 </html>
