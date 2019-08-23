@@ -17,14 +17,16 @@ Fall 2019<br><br>
 <div>
 
 <p>
-Today's lab will focus on using OpenData, top-down design with functions, and and using git from the command line.
+Today's lab will focus on mapping data, using pandas, numpy, and folium, and regular expressions at the command line.
 
 <p>Software tools needed:  web browser and Python IDLE programming
-environment with the pandas and matplotlib packages installed.
+environment with the pandas, numpy, and folium package installed.
 
 
 
 </div>
+
+
 
 <div>
 <h3>Quizzes & Code Reviews</h3>
@@ -37,491 +39,378 @@ See the <a href="quizzes.html">quiz & code review page</a> for details of the wo
 <div>
 <h3>Using Python, Gradescope, and Blackboard</h3>
 
-<p>See <a href="lab1.html">Lab 1</a> for details on using Python, Gradescope, and Blackboard.
+<p>See the <a href="lab0.html">introductory lab</a> for details on using Python, Gradescope, and Blackboard.
 </p>
+
 </div>
 
 
 <div>
-<h3>Binning Data:  Parking Tickets</h3>
+<h3>World Maps</h3>
 
-<a href="https://data.cityofnewyork.us"><img height=200 src="../s18/openDataLogo.png"></a>
-
-
-
-<p>
-Via the <a href="https://data.cityofnewyork.us">NYC Open Data</a> project, you can access data from almost every city agency.  Today, we will look at the parking tickets issues by New York City.  We will use a small version (1000 lines) for today's lab (see below).  But you are welcome to use any neighborhood in the city.  To download data for a given neighborhood (and restricted to just fiscal year 2018, since the data sets can be quite large):
+<p>We are going to use Python to make maps.  Let's start by mapping cities of the world.
+Locations in the world are usually indicated by their latitude and longitude.
 <ul>
-	<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page">useful tool</a>).
-	<li>
-	<a href= "https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2018/pvqr-7yc4/data">Fiscal year 2018 (FY2018) parking tickets</a> for your precinct:  download the data set as a CSV, filtering by "Violation Precinct".  For example, Hunter College is located in the 19th Precinct, so, you would enter <tt>19</tt> on the filter.
-
+	<li> <b>Latitude</b> measures the number of degrees north or south of the equator.  When written as a number, it ranges from -90 (the south pole) to +90 (the north pole).
+	<li> <b>Longitude</b> measures the number of degrees east or west of the prime meridian.  When written as a number, it ranges from -180 to +180.
 </ul>
 
-<p>A simple, but very powerful, technique is "binning data"-- that is grouping data into the number of occurrences for each categories.  The category values can often show patterns that individual data points do not.  For example, binning population by zipcode can show patterns in density that's difficult to see with individual data points.  Below, we will bin parking tickets by different attributes.
-</div>
+We will use those ranges to be our coordinates:  (-90, -180) to (90,180).  Let's map some cities:
 
-<div>
-<h3>CSV Data Files</h3>
-
-CSV files store tabular information in readable text files.  The files downloaded above have information separated by commas (using tabs as delimiters is also common).  Here is a sample line:
-<pre style = "background-color:lavender;width:1300px">
-1335632335,L040HZ,FL,PAS,06/09/2015,46,SUBN,NISSA,X,35430,14510,15710,0,0020,20,74,921167,E074,0000,1213P,1207P,NY,O,4,WEST 83 ST,,0,408,C,,BBBBBBB,ALL,ALL,RED,0,0,-,0,,,,,
-</pre>
-<p>
-All lines are formatted similarly: they start with the
-summons number, then the license plate, registration state, plate Type, date, and continue with the information about the location and type of violation, and sometimes additional information such as the who issued the ticket and the color of the car. The first line of the file gives the entries in the order they occur in the rows.
-
-<p>
-The sample entry above gives details for a ticket issues on June 9, 2015 to a passenger car with Florida plates, L040HZ.  The red Nissan SUV received the ticket on West 83rd Street.  Each entry also begins with a unique identifier that can be used to look up the parking ticket.
-
-<p>Since there were over 196,000 tickets for the FY 2016 for the 20th precinct, here is truncated version of that data, containing just the first 1000 lines:  <a href="../f17/tickets.csv">tickets.csv</a>.
-
-
-<p>
-Here are some questions we can ask about the data:
+<p> In the trinket below, map the following cities (GIS coordinates are rounded to the nearest whole number):
 <ul>
-	<li> Which car got the most tickets?
-	<li> What color of car is most likely to get a ticket?
-	<li> What type of license gets the most tickets?
-	<li> Which location yields the most tickets?
+	<li> New York City (longitude: -74, latitude: 41),
+	<li> Los Angeles (longitude: -118, latitude: 34),
+	<li> Paris, France (longitude: 2, latitude:49),
+	<li> Tokyo, Japan (longitude: 140, latitude: 35), and
+	<li> Rio de Janeiro, Brazil (longitude: -43, latitude: -23) .
 </ul>
-
-For each of these questions, we can traverse the file and count the occurrences as we go.
+<p>
+<iframe src="https://trinket.io/embed/python/7705126110?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 </div>
 
 <div>
-<h3>Counting Tickets per Car</h3>
-
-<p> How can tell which car got the most tickets?  First, we need to figure out a unique way to identify different cars.  Luckily, cars almost always have license plates-- with each state having a unique number.  (For this simple exercise, we'll assume that each license plate is unique on its own-- not an unreasonable assumption since every state has a different schema for assigning numbers, but to be more accurate we should keep track of license plate number and issuing state.)
-
-<p>Open up the CSV file and look at the columns.  Which column contains the license plate number?  Here's all the column names (first line of <a href="../f17/tickets.csv">tickets.csv</a>):
-<pre style = "background-color:lavender;width:1300px">
-Summons Number,Plate ID,Registration State,Plate Type,Issue Date,Violation Code,Vehicle Body Type,Vehicle Make,Issuing Agency,Street Code1,Street Code2,Street Code3,Vehicle Expiration Date,Violation Location,Violation Precinct,Issuer Precinct,Issuer Code,Issuer Command,Issuer Squad,Violation Time,Time First Observed,Violation County,Violation In Front Of Or Opposite,House Number,Street Name,Intersecting Street,Date First Observed,Law Section,Sub Division,Violation Legal Code,Days Parking In Effect    ,From Hours In Effect,To Hours In Effect,Vehicle Color,Unregistered Vehicle?,Vehicle Year,Meter Number,Feet From Curb,Violation Post Code,Violation Description,No Standing or Stopping Violation,Hydrant Violation,Double Parking Violation
-</pre>
-
-It's the second column:  <tt>Plate ID</tt>.  Scanning the CSV file, it looks like most cars got one or two tickets.  How can we get the worst offenders (i.e. those cars that got the most parking tickets)?
-
-<p> Let's use Pandas to read in the CSV file, following the same pattern as last lab:
-<pre style = "background-color:lavender;width:750px">
-#CSci 127 Teaching Staff
-#October 2018
-#Count which cars got the most parking tickets
-
-#Import pandas for reading and analyzing CSV data:
-import pandas as pd
-
-csvFile = "tickets.csv"			#Name of the CSV file
-tickets = pd.read_csv(csvFile)		#Read in the file to a dataframe
-print(tickets) 				#Print out the dataframe
-</pre>
+<h3>Folium</h3>
 
 <p>
-Try running your program.  It should print out all the information about all the tickets issued.  Let's focus in on just licence plates.  Change the last line of your program to be:
-<pre style = "background-color:lavender;width:750px">
-print(tickets["Plate ID"])	#Print out licence plates
-</pre>
-<p>When you run the program again, you should just see the row number and licence plate recorded for each row.
-
-<p> We want to refine this further to print how many tickets each car got.  Pandas has a function just for counting occurrences, called <tt>value_counts()</tt>.  Let's modify our last line again to use it:
-<pre style = "background-color:lavender;width:750px">
-print(tickets["Plate ID"].value_counts())	#Print out plates & number of tickets each got
-</pre>
-<p>Rerunning the program, there are a lot of cars that got only a single ticket.  If you scroll back up the Python shell, you will see the cars with the most tickets are listed first.  Let's just print out the 10 cars that got the most tickets.  We can do this by slicing to <tt>[:10]</tt>:
-<pre style = "background-color:lavender;width:750px">
-print(tickets["Plate ID"].value_counts()[:10])	#Print 10 worst & number of tickets
-</pre>
-<p>
-Even with only 1000 lines of ticket information, there is a car (with plate <tt>TOPHAT5</tt>) that got more than 5 tickets.
-<p>Let's make our program a bit more general, to allow the user to enter their own file name:
-<pre style = "background-color:lavender;width:750px">
-#CSci 127 Teaching Staff
-#October 2018
-#Count which cars got the most parking tickets
-
-#Import pandas for reading and analyzing CSV data:
-import pandas as pd
-
-csvFile = input('Enter CSV file name: ')         #Name of the CSV file
-tickets = pd.read_csv(csvFile)     #Read in the file to a dataframe
-print("The 10 worst offenders are:")
-print(tickets["Plate ID"].value_counts()[:10]) #Print out the dataframe
-</pre>
-
-<p>And run it on all tickets for the 20th precinct for January 2016 (14,000 tickets):
-<a href="../f17/Parking_Violations_Jan_2016.csv">Parking_Violations_Jan_2016.csv</a>.
-
-<p>You should see output:
-<pre style = "background-color:lavender;width:750px">
-Enter CSV file name: Parking_Violations_Jan_2016.csv
-The 10 worst offenders are:
-63044JM    52
-63277JM    46
-63540JM    42
-93503JT    36
-42816JM    35
-97223JE    35
-62150JM    35
-31420MG    32
-23246MA    31
-AP113R     30
-Name: Plate ID, dtype: int64
-</pre>
-<p>For just the month of January 2016, there were 9 cars that got more than a ticket a day.
-
-
-<h4>Binning Other Data</h4>
-
-<p>Now that you have a program to use as a basic template, answer the following questions:
-<ul>
-	<li> What color of car is most likely to get a ticket?
-	<li> What type of license gets the most tickets?
-	<li> Which location yields the most tickets?
-</ul>
-(Remember to check the CSV file for the name used for the columns and use that as the index.)
-
-</div>
-
-
-<div>
-<h3>Top Down Design</h3>
+<a href="https://pypi.python.org/pypi/folium">Folium</a> is a Python package that uses the javascript <a href="http://leafletjs.com">Leaflet.js</a> library to make interactive maps. Instead of popping up a <tt>matplotlib</tt> window, folium creates an <b>.html</b> file that you can open (and view interactively) with a browser.  After the program runs, open the corresponding <tt>.html</tt> file in a web browser to see your map.
 
 <p>
-Functions are used to design programs and provide an elegant
-way to divide work among several programmers.  A standard technique,
-called <b>top-down design</b>, consists of breaking a program into multiple
-function calls (covered in more detail in <a href="https://interactivepython.org/runestone/static/thinkcspy/Functions/ProgramDevelopment.html">Section 6.8</a>).
-Each function is written separately and then tested, before
-the next function is written.
+(Folium is installed on the lab machines,  To check to see if your home machine has it, type at the Python prompt:
+<tt>
+import folium
+</tt>
+<br>
+If you get an error, go to the terminal, and download it:
+<pre style = "background-color:lavender;width:450px">
+pip install folium
+</pre>
+and the package will download and install.)
+
+<h4>Our First Map</h4>
 
 <p>
-<img src="../f17/herd.png" height=300>
 
-<p>In today's lab, we will write a program to draw images using turtles.  We will focus on breaking down the problem into functions, and then implementing (and testing!) each function separately.  Here's a basic outline of our program:
-
-<pre style = "background-color:lavender;width:675px">
-#Intro Programming Lab:  A program with a herd of turtles
-
-import turtle
-
-def main():
-    welcomeMessage()            #Writes a welcome message to the shell
-    numTurtles = getInput()     #Ask for number of turles
-    w = setUpScreen()           #Set up a green turtle window
-    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
-    for i in range(10):
-        moveForward(turtleList) #Move each turtle in the list forward
-        stamp(turtleList)       #Stamp where the turtle stopped
+<iframe src="../f17/world.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 
-if __name__ == "__main__":
-    main()
-</pre>
-We will fill in each function, one-by-one, using the comments as guidance.
-If you run the program above, you will get errors saying that it does not recognize <tt>welcomeMessage()</tt>, since it is not pre-defined function, but instead a function that we are designing.  To avoid these errors and to allow testing of each part as we write it, we will add in empty functions (often called ``stubs'') that we will fill in as we go:
 
-<pre style = "background-color:lavender;width:675px">
-#Intro Programming Lab:  A program with a herd of turtles
-
-import turtle
-
-def welcomeMessage():
-    #Empty placeholder until function is defined
-    return()
-
-def getInput():
-    #Empty placeholder until function is defined
-    return()
-
-def setUpScreen():
-    #Empty placeholder until function is defined
-    return()
-
-def setUpTurtles(num):
-    #Empty placeholder until function is defined
-    return()
-
-def moveForward(tList):
-    #Empty placeholder until function is defined
-    return()
-
-def stamp(tList):
-    #Empty placeholder until function is defined
-    return()
-
-def main():
-    welcomeMessage()            #Writes a welcome message to the shell
-    numTurtles = getInput()     #Ask for number of turles
-    w = setUpScreen()           #Set up a green turtle window
-    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
-    for i in range(10):
-        moveForward(turtleList) #Move each turtle in the list forward
-        stamp(turtleList)       #Stamp where the turtle stopped
-
-
-if __name__ == "__main__":
-    main()
-</pre>
-
-
-<p>
-The first function should welcome the user to the program:
-<pre style = "background-color:lavender;width:675px">
-def welcomeMessage():
-    print()
-    print("Welcome to our herd of turtles demonstration!")
-    print()
-</pre>
-Add it to the program above (replace the empty function with this one) and run it to make sure there are no typos or
-errors.
-
-<p>Next, let's ask the user for the number of turtles.  Since the function call
-is on the right hand side of an equals sign, it returns a value (namely, the number
-of turtles) that we will use later in the program.  So, our function will ask
-the user for the number and then use a <tt>return</tt> statement to send that
-value back to the calling function:
-<pre style = "background-color:lavender;width:675px">
-def getInput():
-    n = eval(input("Please enter the number of turtles: "))
-    return(n)
-</pre>
-When we add these in, we now have the program:
-<pre style = "background-color:lavender;width:675px">
-#Intro Programming Lab:  A program with herd of turtles
-
-import turtle
-
-
-def welcomeMessage():
-    print()
-    print("Welcome to our herd of turtles demonstration!")
-    print()
-
-def getInput():
-    n = eval(input("Please enter the number of turtles: "))
-    return n
-
-def setUpScreen():
-    #Empty placeholder until function is defined
-    return()
-
-def setUpTurtles(num):
-    #Empty placeholder until function is defined
-    return()
-
-def moveForward(tList):
-    #Empty placeholder until function is defined
-    return()
-
-def stamp(tList):
-    #Empty placeholder until function is defined
-    return()
-
-
-def main():
-    welcomeMessage()            #Writes a welcome message to the shell
-    numTurtles = getInput()     #Ask for number of turles
-    w = setUpScreen()           #Set up a green turtle window
-    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
-    for i in range(10):
-        moveForward(turtleList) #Move each turtle in the list forward
-        stamp(turtleList)       #Stamp where the turtle stopped
-
-
-if __name__ == "__main__":
-    main()
-</pre>
-
-We still need to set up the turtle window and make it green.  The
-turtle command to change the background color is <tt>bgcolor</tt> and
-colors can be referred by their names or the percentage of red, green,
-and blue ('RGB') in the color.  Let's use the name to change the window
-color:
-<pre style = "background-color:lavender;width:675px">
-def setUpScreen():
-    w = turtle.Screen()
-    w.bgcolor("green")
-    return w
-</pre>
-Next, we need to set up a list of turtles.  From the function invocation in the
-<tt>main()</tt> we know it has the outline:
-<pre style = "background-color:lavender;width:675px">
-def setUpTurtles(n):
-    #Create a list of turtles
-    #Make each turtle appear turtle-shaped
-    #Change the color and default direction (so they don't run over each other)
-    return tList
-</pre>
-To set up our list, we will follow our outline from the strings and lists chapter:
+<p>To make a map in folium, the process is:
 <ol>
-	<li> Create an empty list
-	<li> Make a new item
-
+	<li> Write a program in Python, using folium.
+	<li> Run the program, which outputs an <tt>.html</tt> file.
+	<li> Open the <tt>.html</tt> file in a browser.
 </ol>
-For our turtles, this looks like:
-<pre style = "background-color:lavender;width:675px">
-def setUpTurtles(n):
-    tList = []
-    #Create turtles:
-    for i in range(n):
-        t = turtle.Turtle()
-        t.shape("turtle")       #Make the turtle appear turtle-shaped
-        tList.append(t)
 
-    return tList
-</pre>
-Lastly for this function, we need to change the color and direction.  We will use the `red-blue-green' (`RGB') values to give each turtle a different color.  To keep the turtle color from clashing with the green background, we will set the red and green parts of the color to 0, and just allow the blue to change from 50% to 100%.  To spread the turtles out, we'll divide the circle into even angles:
-<pre style = "background-color:lavender;width:675px">
-def setUpTurtles(n):
-    tList = []
-    #Create turtles:
-    for i in range(n):
-        t = turtle.Turtle()
-        t.shape("turtle")       #Make the turtle appear turtle-shaped
-        tList.append(t)
+<p> Here's our first program:
+<pre style = "background-color:lavender;width:500px">
+#Import the folium package for making maps
+import folium
 
-    #Change their color from the blue default and default direction
-    for i in range(n):
-        tList[i].color(0,0,i/(2*n)+.5)
-        tList[i].right(i*360/n)
+#Create a map, centered (0,0), and zoomed out a bit:
+mapWorld = folium.Map(location=[0, 0],zoom_start=3)
 
-    return tList
-</pre>
-If you run your program, you will see the turtles arranged pointing outwards from
-a center point, in different shapes of blue.
-
-<p>The next functions of the program are straightforward.  We will move each turtle forward using a for-loop.  We chose 30 by experimenting with window size.  If it does not fit well on your screen, change the forward distance to something that does.  To make a stamp of where the turtle has been, we use the Turtle graphics function, <tt>stamp()</tt>
-<pre style = "background-color:lavender;width:675px">
-def moveForward(tList):
-    for t in tList:
-        t.forward(30)
-
-def stamp(tList):
-    for t in tList:
-        t.stamp()
+#Save the map:
+mapWorld.save(outfile='tempMap.html')
 </pre>
 
-Putting all the pieces together, we get:
-<pre style = "background-color:lavender;width:675px">
-#Intro Programming Lab:  A program with herd of turtles
+<p>
+Save this file and run it.  It will create a file called <tt>tempMap.html</tt>.
+Open your favorite browser (Chrome, Firefox, IE, etc.) and choose "Open File" and then choose the file <tt>tempMap.html</tt>.  You should see a map of the world.
 
-import turtle
+<h4>Map of New York City</h4>
 
+<!--<p>
+<img src="hunterMap.png" height=400>
 
-def welcomeMessage():
-    print()
-    print("Welcome to our herd of turtles demonstration!")
-    print()
+<p>
+<b>UPDATE!!</b>-->
 
-def getInput():
-    n = eval(input("Please enter the number of turtles: "))
-    return n
+<p>
+Let's make another map, focused on New York City.  To do that, when we set up the map object, we need to reset the location to New York City and the increase the zoom level:
+<pre style = "background-color:lavender;width:500px">
+import folium
 
+mapCUNY = folium.Map(location=[40.75, -74.125], zoom_start=10)
+</pre>
 
-def setUpScreen():
-    w = turtle.Screen()
-    w.bgcolor("green")
-    return w
+<p> Let's add in a marker for Hunter College:
+<pre style = "background-color:lavender;width:725px">
+folium.Marker(location = [40.768731, -73.964915], popup = "Hunter College").add_to(mapCUNY)
+</pre>
 
-def setUpTurtles(n):
-    tList = []
-    #Create turtles:
-    for i in range(n):
-        t = turtle.Turtle()
-        t.shape("turtle")       #Make the turtle appear turtle-shaped
-        tList.append(t)
+<p>and create the .html file:
+<pre style = "background-color:lavender;width:500px">
+mapCUNY.save(outfile='nycMap.html')
+</pre>
 
-    #Change their color from the blue default and default direction
-    for i in range(n):
-        tList[i].color(0,0,i/(2*n)+.5)
-        tList[i].right(i*360/n)
+Save your commands to a file and run via IDLE.  Your program will create an HTML file called, <tt>nycMap.html</tt>.  Open it in your favorite browser to make sure it creates a map of NYC with a marker for Hunter College.  When you have a running program, see the <a href="ps.html">Programming Problem List</a>.
 
-    return tList
-
-def moveForward(tList):
-    for t in tList:
-        t.forward(30)
-
-def stamp(tList):
-    for t in tList:
-        t.stamp()
-
-def main():
-    welcomeMessage()            #Writes a welcome message to the shell
-    numTurtles = getInput()     #Ask for number of turles
-    w = setUpScreen()           #Set up a green turtle window
-    turtleList = setUpTurtles(numTurtles) #Make a list of turtles, different colors
-    for i in range(10):
-        moveForward(turtleList) #Move each turtle in the list forward
-        stamp(turtleList)       #Stamp where the turtle stopped
+</div>
 
 
-if __name__ == "__main__":
+<div>
+<h3>Plotting from Files</h3>
+
+We can combine the mapping of folium with the tools we have used for CSV files.
+
+<p>
+<iframe width="600" height="400" frameborder="0" src="../f17/cunyLocations.html"></iframe>
+
+<p>Let's make an interactive map of the CUNY campuses.  We can download a CSV file from data.ny.gov:
+<ul>
+	<li> <a href="https://data.ny.gov/Education/City-University-of-New-York-CUNY-University-Campus/i5b5-imzn/data">CUNY Campuses</a>
+</ul>
+(Export as a <b>.csv</b> file and save in the same directory as your programs.) Open the file to make sure you have all the lines (should be 23) and to check if the column headings occur in the first row (they do, so no need to skip rows when reading in the file).
+
+<p>
+Let's use Pandas to read in the file.  We will need to import pandas and folium:
+<pre style = "background-color:lavender;width:450px">import folium
+import pandas as pd
+</pre>
+
+<p>To read in the CSV file, we'll use pandas' CSV reader.  We'll print out the campus locations to make sure that all were read in:
+<pre style = "background-color:lavender;width:450px">
+cuny = pd.read_csv('cunyLocations.csv')
+print(cuny["Campus"])
+</pre>
+Note:  we saved our CSV file to <tt>cunyLocations.csv</tt>.  If you saved it to a different name, change the input parameters for <tt>read_csv()</tt> to the name of your file.
+
+
+<p>Next, let's set up a map, centered on Hunter College:
+<pre style = "background-color:lavender;width:450px">
+mapCUNY = folium.Map(location=[40.768731, -73.964915])
+</pre>
+
+<p>
+We need to add markers for each campus.  We're going to iterate through the rows of dataframe to create the markers:
+<pre style = "background-color:lavender;width:450px">
+for index,row in cuny.iterrows():
+    lat = row["Latitude"]
+    lon = row["Longitude"]
+    name = row["Campus"]
+    newMarker = folium.Marker([lat, lon], popup=name)
+    newMarker.add_to(mapCUNY)
+</pre>
+For each row in the file, we find the latitude, longitude, and name of the campus, and use those to create a new marker which we add to our map.  We repeat for each row, until we have made markers for all 23 campuses in the file.
+<!--(Note:  we're using an older way to add markers (since it's simpler), and  some versions of folium will give a warning to use the newer version).
+(Note:  this isn't the most efficient way to plot points.  We'll discuss a better way-- creating a geoJSON layer-- next week.)-->
+
+<p>Lastly, let's save our map:
+<pre style = "background-color:lavender;width:450px">
+mapCUNY.save(outfile='cunyLocations.html')
+</pre>
+
+<p>
+To view your map, open a browser.  From the browser, open the file:  <tt>cunyLocations.html</tt>.
+
+
+</div>
+
+
+
+
+<div>
+<h3>Finding Errors</h3>
+
+Finding, and fixing errors, in your programs is a very useful skill.  Let's look at a program with lots of errors and work through how to identify the issues and fix them.  If you cloned the repo above, you will have a copy of <a href="https://github.com/stjohn/csci127/blob/master/errors.py">errors.py</a> on your computer (you can also download from the webpage).  When loaded into IDLE, it does not run:
+<pre style = "background-color:lavender;width:650px"># errors.py is based on dateconvert2.py from Chapter 5 of the Zelle textbook
+#     Converts day month and year numbers into two date formats
+
+def main()
+    # get the day month and year
+    day, month year = eval(input("Please enter day, month, and year numbers: ")
+
+    date1 = str(month)"/"+str(day)+"/"+str(year)
+
+    months = ["January", "February", "March", "April",
+              "May", "June", "July", "August",
+              "September", "October", "November", "December"]
+    monthStr = months[-1]
+    date2 = monthStr+" " + str(day) + ",  + str(year)
+
+    print("The date is" date1, "or", date2+".")
+
+main()
+</pre>
+Instead, a dialog box pops up and says "invalid syntax":<br>
+<br>
+<img src="../../cmp/cmp230/f14/errorWindow1.jpg">
+<br>
+
+<p>The red line indicates where the intepreter has found an error.  Can you tell what it is?  Syntax is another word for grammar, so, it most likely missing `punctuation' or a misspelling of some sort.  We have spelled <tt>def</tt> correctly and have the right number of parenthesis, so, what else is missing?
+
+<p>The answer is after the parenthesis on a function definition, a colon is required.  Add that in:
+<pre style = "background-color:lavender;width:450px">
+    def main():
+</pre>
+and try to run the program again.
+
+<p>Again, we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow2.jpg"><br>
+<br>Instead of the whole line being highlighted, only the word <tt>year</tt> is.  The Python intepreter was not expecting <tt>year</tt> and says there is a grammatical mistake.  Since <tt>year</tt> does not include any grammatical constructs, we need to look <i>before</i> the message to see where the error is.
+Do you see it?
+
+<p>The answer is lists of variables need commas in between them to distinguish one from the next.  Add the comma in:
+<pre style = "background-color:lavender;width:450px">
+    day, month, year = ...
+</pre>
+and try to run the program again.
+
+<p>
+Once more we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow3.jpg"><br>
+
+<p>It has highlighted the first item, <tt>date1</tt> on the line.  That is a name and looks fine.  So, as above, let's look before the highlighted error to see if there's a problem.  The line above it is:
+<pre style = "background-color:lavender;width:450px">
+    day, month, year = eval(input("Please enter day, month, and year numbers: ")
+</pre>
+It did not highlight this line, so, the problem must be at the end.  Do you see it?
+
+<p>The answer is we are missing a closing parenthesis.  The line has two left parenthesis but only one right parenthesis.  Add the right parenthesis in:
+<pre style = "background-color:lavender;width:450px">
+    ... and year numbers: "))
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow4.jpg"><br>
+
+<p>The intepreter does not understand the second " on the line.  Why?  What is this line doing?  It's constructing a string and storing it in the variable <tt>date1</tt>.  How do you build a string out of smaller strings?
+
+<p>The answer is to put smaller strings together (called concatenation) we need to use the plus sign (+).  The line is missing a plus sign right before the quotes.  Add the plus sign in:
+<pre style = "background-color:lavender;width:450px">
+    date1 = str(month) + "/" ...
+</pre>
+and try to run the program again.
+
+<p>
+Again, we get a dialog box, but this one has a different message:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow5.jpg"><br>
+
+<p><tt>EOL</tt> means "End of the line", so, the message says that the end of the line was reached before you finished defining the string.  How can you fix this?
+
+<p>The answer is to end the string, using quotation marks.  The line is missing a quotation mark at the very end.  Add the quotation mark :
+<pre style = "background-color:lavender;width:450px">
+    ...+ ",  + str(year)"
+</pre>
+and try to run the program again.
+
+<p>
+Our familiar dialog box returns:<br><br>
+<img src="../../cmp/cmp230/f14/errorWindow6.jpg"><br>
+
+<p>We have seen this type of error before.  How do you fix it?
+
+<p>The answer is lists of arguments need commas in between them to distinguish one from the next.  Add the comma in:
+<pre style = "background-color:lavender;width:450px">
+    ... date is", date1 ...
+</pre>
+and try to run the program again.
+
+<p>It runs!  Now let's make sure it works.  Type in at the prompt:
+<pre style = "background-color:lavender;width:450px">
+Please enter day, month, and year numbers: 31, 12, 2014
+</pre>
+Uh oh, instead of output, we get the following messages:
+<pre style = "color: red">
+Traceback (most recent call last):
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 18, in <module>
     main()
+  File "/Users/stjohn/public_html/teaching/cmp/cmp230/f14/errors.py", line 13, in main
+    monthStr = months[month+1]
+IndexError: list index out of range
 </pre>
-Try running your program.  What happens?  How could you modify it to make green
-turtles on a blue background?  What would you need to modify to make the turtles
-make a circle each time?
+<p>When you see messages like this, go to the very last line:
+<pre style = "color: red">
+IndexError: list index out of range
+</pre>
+It says that the index for our list is out of range.  An index is the item of the list that we're accessing.  For example, <tt>months[1]</tt> has index <tt>1</tt> and will give us <tt>February</tt>.  The range of the index for a list is <tt>0</tt> to one less than the length of the list.  In the case of <tt>months</tt>, the range is <tt>[0,1,2,...,11]</tt>.  What went wrong when we entered <tt>12</tt> for our month?
 
 
-</div>
-
-
-
-
-
-
-
-<!--
-<div>
-<h3>Plotting from Input</h3>
-
-<p>Let's write a program that plots 5 locations that the user enters.
-
-<p> Write with a function?
-
-<p> See <a href="ps.html">Programming Problem List</a>.
-
-</div>
--->
-
-
-
-<div>
-
-<h3>Command Line <tt>git</tt></h3>
-
-<a href="https://github.com"><img height=150 src="../s18/Octocat.png"></a>
-
-<p> In <a href="lab6.html">Lab 6</a>, we introduced github which can be used to share and store code, websites, etc. (roughly, a "Google Docs" for programs).  The website for this course as well as all the programs are stored in repositories (or "repos") at github.  For this course, we will only retrieve code from existing repos (in future courses, they will introduce how to share your code and merge your changes with others).
-
-<p> The github site has both a web browser interface (which we used in <a href="lab6.html">Lab 6</a>), and the option to use the command line interface to interact with the site.
-
-<p> From Program #35 onward, all sample programs are available at the class
-repository (repo):
-<blockquote>
-	<a href="https://github.com/stjohn/csci127">
-	https://github.com/stjohn/csci127</a>
-</blockquote>
-You can access programs by going to the website, or, using the following git command at the command line:
-
+<p>The answer is we used <tt>month+1 = 12 + 1 = 13</tt> as the index:
 <pre style = "background-color:lavender;width:450px">
-$ git clone https://github.com/stjohn/csci127
+    monthStr = months[month+1]
 </pre>
-
-This command will make a copy of all the programs in the class repo in directory called, <tt>csci127</tt>, in your current working directory.
-
-<p> If you have that directory already and would like to update it with new files that have been (we periodically update the repo), you can 'fetch' the changes:
+which is out of range.  What do we want instead?  Instead of adding <tt>1</tt>, we should subtract <tt>1</tt>.  Change it in the program:
 <pre style = "background-color:lavender;width:450px">
-$ git fetch https://github.com/stjohn/csci127
+    monthStr = months[month-1]
+</pre>
+and try to run the program again.
+
+<p>It still runs, but does it work?  Let's try the same input again:
+<pre style = "background-color:lavender;width:450px">
+Please enter day, month, and year numbers: 31, 12, 2014
+The date is 12/31/14 or December 31,  + str(year).
 </pre>
 
+<p>Something odd is happening at the end-- <tt>str(year)</tt> does not look right.  Let's look at the print statement:
+<pre style = "background-color:lavender;width:450px">
+date2 = monthStr+" " + str(day) + ",  + str(year)"
+</pre>
+The intepreter is treating <tt>",  + str(year)"</tt> as a string (instead of evaluating <tt>str(year)</tt>), so, we must have put the quotation mark in the wrong place before.  Let's move it:
+<pre style = "background-color:lavender;width:450px">
+date2 = monthStr+" " + str(day) + ","  + str(year)
+</pre>
+and try to run the program again.
+
+<p>Success!  But try a few other inputs, just to make sure.  It is always good to try cases that are near the `boundary' of what's allowed, since those are the places we are most likely to make mistakes:
+<pre style = "background-color:lavender;width:450px">
+Please enter day, month, and year numbers: 1,1,2015
+The date is 1/1/2015 or January 1,2015.
+
+Please enter day, month, and year numbers: 1, 2, 2003
+The date is 2/1/03 or February 1,2003.
+
+Please enter day, month, and year numbers: 4, 7, 1976
+The date is 7/4/1976 or July 4,1976.
+</pre>
+
+<p>We have removed all the errors, and the program now runs correctly!
 
 </div>
 
+<div>
+<h3> More on the Command Line Interface:  Regular Expressions</h3>
 
+<p>Often it's useful to find strings that match a pattern instead of spelling out the exact names of things.  For example, if you wanted to know all the Python programs in your directory that are <tt>.py</tt> files, you could list out all the files and then look through visually to find them:
+<pre style = "background-color:lavender;width:500px">
+$ ls
+</pre>
+But an easier way would be to specify that only the files that end in <tt>.py</tt> be printed.  To do that, you can use the "wildcard" or * operator that:
+<pre style = "background-color:lavender;width:500px">
+$ ls *.py
+</pre>
 
+The <tt>*.py</tt> says match any file that starts with any number (including 0) of characters and ends with <tt>.py</tt>.
+
+<p>You can use the wildcard operator in multiple places.  For example, if your directory contained:
+<pre style = "background-color:lavender;width:550px">
+$ ls -l 
+-rw-r--r--@ 1 stjohn  staff      5308 Mar 21 14:38 quizzes.html
+-rw-r--r--  1 stjohn  staff     54013 Apr 20 18:57 zoneDist.csv
+-rw-r--r--@ 1 stjohn  staff      1519 Apr 22 15:14 zoneMap.py
+-rw-r--r--  1 stjohn  staff  16455174 Mar 20 19:02 zoning2.html
+-rw-r--r--  1 stjohn  staff  17343896 Mar 20 18:58 zoningIDS.json
+</pre>
+Then the following command:
+<pre style = "background-color:lavender;width:500px">
+$ ls z*
+</pre>
+prints all files that start with  <tt>z</tt> and are followed by any number of characters.
+
+<p>Similarly, 
+<pre style = "background-color:lavender;width:500px">
+$ ls *zz*
+</pre>
+would all files that start with any number of characters, followed by <tt>zz</tt>, and end with any number of characters.  The only file that contains this "pattern" of <tt>zz</tt> is <tt>quizzes.html</tt>.
+
+<p>There are additional ways to write down patterns that fall into the category of "regular expressions".  If you're interested in finding more complex patterns, Unix has a built-in function for "global regular expression printing", called <tt>grep</tt>.  We will not cover it this term but for an overview see 
+the <a href="https://en.wikipedia.org/wiki/Grep">grep wiki page</a>.
+
+</div>
 
 
 <div>

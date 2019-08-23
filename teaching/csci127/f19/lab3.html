@@ -5,7 +5,6 @@
     <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
 </head>
 <body>
-
 <div id="header">
 
 <h2>Lab 3<br>CSci 127: Introduction to Computer Science<br>
@@ -17,12 +16,10 @@ Fall 2019<br><br>
 <div>
 
 <p>
-Today's lab will focus on image files and colors
-in Python and Unix commands for copying and renaming files.
+Today's lab will focus on getting numerical input and decisions in Python to make augment elevation maps and relative paths in the Unix operating system.
 
 <p>Software tools needed:  terminal (command line), web browser and Python IDLE programming
 environment.
-
 
 </div>
 
@@ -36,351 +33,378 @@ See the <a href="quizzes.html">quiz & code review page</a> for details of the wo
 <div>
 <h3>Using Python, Gradescope, and Blackboard</h3>
 
-<p>See <a href="lab1.html">Lab 1</a> for details on using Python, Gradescope, and Blackboard.
+<p>See the <a href="lab0.html">introductory lab</a> for details on using Python, Gradescope, and Blackboard.
 </p>
 </div>
 
+
+
+
+
 <div>
-<h3>Colors</h3>
+<h3>Getting Numbers as Input</h3>
 
 <p>
-There are several different ways to specify colors.  We will use colors:
+The simplest way to get input for our programs is via the console.  In <a href="lab2.html">Lab 2</a>, we used the <tt>input()</tt> command to get string input from the command line.
+
+<p>Since Python doesn't know what you will be entering (number, words, etc.), it stores everything as a string, and leaves it to the user to convert it to what they want.  For example, if we wanted a number, we need to convert the letters the user used into a number.  The basic conversion functions are:
 <ul>
-	<li> by name,
-	<li> by percentage,
-	<li> by absolute amount of color (`255' mode), and
-	<li> by absolute amount of color (hexadecimal format).
+	<li> <tt>int()</tt>:  converts a string (series of letters) into the corresponding integer (whole number).
+	<li> <tt>float()</tt>: converts a string (series of letters) into the corresponding floating point number (real number).
+	<li> <tt>str()</tt>: converts a number into the corresponding sequence of letters.
 </ul>
-</p>
 
+<p>
+Work through the examples in <a href="http://interactivepython.org/courselib/static/thinkcspy/SimplePythonData/Typeconversionfunctions.html">2.3 Type conversion functions</a> and
+<a href="http://interactivepython.org/courselib/static/thinkcspy/SimplePythonData/Variables.html">2.4 Variables</a>.  Try the quizzes at the end of the section to test your understanding.
+
+<p>
+<h4>Converter Program</h4>
+
+Let's work through a problem that takes numerical input from the user, does a calculation, and prints out the result.
+Here is the
+problem:
+<blockquote>
+	Daniel has started to train for triathalons.  Unfortunately, his bike computer only reads out distances in kilometers.  Write a conversion program for him that 	takes as input kilometers and outputs the corresponding distance in miles.
+</blockquote>
+Our first step is to design the algorithm.  It follows a standard pattern:  <i>Input, Process, Output (IPO)</i>.
+
+<p>
+In a text window in IDLE, write out what the input is, what the process is, and what the output is.
+
+<p>
+Here is one possible design:
+<pre>
+1. Input the distance in kilometers (call it km)
+2. Calculate the distance in miles as ?
+3. Output miles
+</pre>
+
+
+<p>Above, we are missing an important part-- the formula to calculate miles from kilometers.  By typing <tt>1 km = miles</tt> into google, we find that 1 km = 0.621371 miles.  So, we can add
+that to our file:
+<pre style = "background-color:lavender;width:450px">
+#1. Input the distance in kilometers (call it km)
+#2. Calculate the distance in miles as 0.621371*km
+#3. Output miles
+</pre>
+Note that we're preceding the items in our outline by '#', so they can be used as comments for our final program.
+
+<p>If you have not done so already, now would be a good time to save your work as the file,
+<tt>km2miles.py</tt>.
+
+<p>
+Now, we are ready to convert our outline of the algorithm to Python.  Begin by adding a comment to the beginning of the file:
+<pre style = "background-color:lavender;width:450px">
+#Name:  your name
+#Email: your email
+#Date:  September 2019
+#Converter example program from Lab 4
+
+
+#1. Input the distance in kilometers (call it km)
+#2. Calculate the distance in miles as 0.621371*km
+#3. Output miles
+</pre>
+Next, let's print a welcome message:
+<pre style = "background-color:lavender;width:450px">
+#Name:  your name
+#Email: your email
+#Date:  September 2019
+#Converter example program from Lab 4
+
+
+print("Welcome to Daniel's calculator!")
+#1. Input the distance in kilometers (call it km)
+#2. Calculate the distance in miles as 0.621371*km
+#3. Output miles
+</pre>
+Make sure that there are no typos by saving and running your program ('Run Module' in the Run menu).
+
+<p>Next, fill in the program line by line.  First, ask the user for their input:
+<pre style = "background-color:lavender;width:450px">
+#Name:  your name
+#Email: your email
+#Date:  September 2019
+#Converter example program from Lab 4
+
+
+print("Welcome to Daniel's calculator!")
+#1. Input the distance in kilometers (call it km)
+km = float(input('Enter distance in kilometers: '))
+#2. Calculate the distance in miles as 0.621371*km
+#3. Output miles
+
+</pre>
+Test to make sure that the program runs.  Note that it will ask for the input but since no messages after that (we still need to fill those in).
+
+<p>Python cares about spacing and distinguishes between spaces and tabs.  If you get an error above, check that each of the lines beneath the definition is indented using a TAB.
+
+<p>Now, process the input (i.e. do the conversion):
+<pre style = "background-color:lavender;width:450px">
+#Name:  your name
+#Email: your email
+#Date:  September 2019
+#Converter example program from Lab 4
+
+
+print("Welcome to Daniel's calculator!")
+#1. Input the distance in kilometers (call it km)
+km = float(input('Enter distance in kilometers: '))
+#2. Calculate the distance in miles as 0.621371*km
+miles = 0.621371*km
+#3. Output miles
+</pre>
+Save and run your program again.  It will ask for input but does not yet produce output.
+
+<p>Finally, add the print statement that shows the output:
+<pre style = "background-color:lavender;width:450px">
+#Name:  your name
+#Email: your email
+#Date:  September 2019
+#Converter example program from Lab 4
+
+
+print("Welcome to Daniel's calculator!")
+#1. Input the distance in kilometers (call it km)
+km = float(input('Enter distance in kilometers: '))
+#2. Calculate the distance in miles as 0.621371*km
+miles = 0.621371*km
+#3. Output miles
+print("The miles are", miles)
+</pre>
+Save and run your program again.  This time, it will produce output.  Try it with some simple values
+to make sure that it gets the right answer.  For example, if you input 0 km, the output should also
+be 0.  If you input 1 km, you should output 0.621371 miles.
+See the <a href="ps.html">Programming Problem List</a>.
+
+<p>
+In addition to multiplication ('*'), Python has addition ('+'), subtraction ('-'), exponentation ('**'), division ('/'), and modulus/remainder ('%') built-in.  See <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a> in the textbook:  there are some short quiz examples to test yourself at the bottom of textbook page.
 </div>
 
-<div>
-<h4>Names for Colors</h4>
-
-<p>
-For common colors, you can give the name of the color, as a string.  For example, run the program (click the triangle) to see two turtles, drawing in different colors:
-
-<p>
-<iframe src="https://trinket.io/embed/python/b594e53e4a" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-</p>
-
-<br>
-<p> There are more than 100 colors that we can use by name.  Here are the ones available in most web browsers and Python turtle packages:
-
-<p>
-<iframe src="https://en.wikipedia.org/wiki/Web_colors#X11_color_names" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-</p>
-<br>
-<p>Some are obvious, like ("red" or "blue"), others are a bit more obscure (like
-"mediumorchid" or "chartreuse").  What color is "mediumorchid"?  Change the color of one of the turtles in the coding window above to find out.  Add in a new turtle and make it your favorite color.  Draw a few lines to demonstrate its color.
-</p>
-
-</div>
 
 <div>
-<h4>Colors by Decimals</h4>
+<h3>Decisions</h3>
 
-<p>
-As we saw above, the turtle package recognizes many common colors by name.  If your favorite color is not on that list, you can make a new color by specifying how much of the <span style="color:red">red</span>, <span style="color:green">green</span>, and <span style="color:blue">blue</span> ('<span style="color:red">R</span><span style="color:green">G</span><span style="color:blue">B</span>') light intensity you would like. The range for each is from 0 (no light) to 255 (100% light).  For example, if all the light intensities are 255 (100% of the possible), then the color is white.
-</p>
+<p>Python has a built-in control structure for making decisions.  It's basic form is:
 
-<p> Read the code below and guess what color each turtle is.  Check your guess by running the program:
-<br><br>
-</p>
-
-<p>
-<iframe src="https://trinket.io/embed/python/11f1644654" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-</p>
-
-<p>Let's look at some of the shades of red that are available.  Here's our plan (or <a href="http://en.wikipedia.org/wiki/Pseudocode">pseudocode</a>):
-<ol>
-	<li> Create a turtle, <tt>tess</tt>.
-	<li> For 10, 20, 30, ..., 250,
-	<li> &nbsp;&nbsp; Move forward 10 steps
-	<li> &nbsp;&nbsp; Make the turtle a bit larger each time
-	<li> &nbsp;&nbsp; Make the turtle a bit more red each time
-</ol>
-
-Let's change each piece of our "To Do" list into Python code:
-<ol>
-	<li> Create a turtle, <tt>tess</tt>.
-
-		<p> We've done this before.  We import the turtle module and set up the turtle.  One new thing we need to do, is to tell the turtle library that we would like to represent colors as decimal numbers:
-<pre style = "background-color:lavender;width:650px">
-#A program that demonstrates the shades of red
-#Fall 2017
-
-import turtle			#Import the turtle drawing package
-
-turtle.colormode(255)		#Allows colors to be given as 0...255
-tess = turtle.Turtle()		#Create a turtle
+	if <i>test or conditional</i>:
+	    if true do this block
+	elif <i>another test or conditional</i>:
+	    if this next test is true, do this block
+	elif <i>yet another test or conditional</i>:
+	    if this yet another test is true, do this block
+	....
+	else:
+	     only do this block, if all the previous tests failed.
 </pre>
+The tests are expressions that evaluate to either true or false.  The blocks of code can be as long as you would like-- the only caveat is the block be indented, since that indicates what's part of the block and what is not.
 
-		<p> To keep our drawing from running off the screen, we'll move <tt>tess</tt> backwards before we start our loop:
+<h4>Complementary DNA Strands</h4>
 
-<pre style = "background-color:lavender;width:650px">
-tess.backward(100)		#Move her backwards, to give more space to draw
-</pre>
+<!--
+<tt>Compute the complement of DNA strand- include images from wiki.  Use if-statements.</tt>-->
 
-	<li> For 10, 20, 30, ..., 250,
-
-		<p>This can be done with a <tt>for</tt>-loop and a <tt>range</tt> that starts at 10, stops at 255, and steps up by 10 each time:
-
-<pre style = "background-color:lavender;width:650px">
-for i in range(0,255,10):
-</pre>
-	<li> &nbsp;&nbsp; Move forward 10 steps
-<pre style = "background-color:lavender;width:650px">
-     tess.forward(10)		#Move forward
-</pre>
-	<li> &nbsp;&nbsp; Make the turtle a bit larger each time
-<pre style = "background-color:lavender;width:650px">
-     tess.pensize(i)		#Set the drawing size to be i (larger each time)
-</pre>
-	<li> &nbsp;&nbsp; Make the turtle a bit more red each time
-<pre style = "background-color:lavender;width:650px">
-     tess.color(i,0,0)		#Set the red channel to be i (brighter each time)
-</pre>
-</ol>
-
-<p>Here's the whole program altogether.  Copy it over to an idle file window and try running it:
-
-<pre style = "background-color:lavender;width:700px">
-#A program that demonstrates the shades of red
-#Fall 2017
-
-import turtle				#Import the turtle drawing package
-
-turtle.colormode(255)		#Allows colors to be given as 0...255
-tess = turtle.Turtle()		#Create a turtle
-tess.shape("turtle")		#Make it turtle shaped
-tess.backward(100)			#Move her backwards, to give more space to draw
-
-#For 0,10,20,...,250
-for i in range(0,255,10):
-     tess.forward(10)		#Move forward
-     tess.pensize(i)		#Set the drawing size to be i (larger each time)
-     tess.color(i,0,0)		#Set the red channel to be i (brighter each time)
-</pre>
-
-<p>
-The resulting graphics window is:
-<p>
-<img height=400 src="../f17/shadesOfRed.png">
-
-<p>
-How would you show shades of blue?  When you have figured out the answer, see the <a href="ps.html">Programming Problem List</a>.
-
-</div>
-
-<div>
-<h4>Colors by Hexadecimal</h4>
-
-<p>
-A common way to represent colors is using hexadecimal numbers.  Our traditional decimal, or base-10 numbers, use 10 symbols for each digit:  0, 1, 2, 3, ..., 9.  Hexadecimal, or base-16 numbers, use 16 symbols.  In addition to 0, 1, 2, ..., 9, the letters A, B, C, D, E, and F are also used.
-
-<p> A good way to think about it is to think about what the world would be like if everyone had 8 fingers on each hand, instead of 5.  When we count, on 10 fingers, we can use the symbols 0, 1, 2, ..., 9 to label each finger:
-
-<p>
-<img src="../f17/hands10.png" style="padding:25px">
-<br>
-(from <a href ="http://www.i-programmer.info/babbages-bag/478-hexadecimal.html">i-programmer.info</a>)
-
-<p>
-Doing the same for 16 fingers, we use 0, 1, 2, ..., 9, and then A, B, ..., E when we run out of the normal symbols for numbers:
-
-<p>
-<img src="../f17/hands16.png" style="padding:25px">
-<br>
-(from <a href ="http://www.i-programmer.info/babbages-bag/478-hexadecimal.html">i-programmer.info</a>)
-
-<p>
-The first 9 numbers are the same in both decimal and hexadecimal, but larger numbers are different.  For example, counting to 10 on our 8-fingered hands gives the symbol A.  So, the decimal number 10 is the single digit hexadecimal number, A.
-
-<p> Going in the other direction, the hexadecimal number 11, is counting through all the (8-fingered hands) fingers (16) plus one more, yielding 17.
-
-<p>  Why does this matter?  Our color values range in decimal from 0 to 255.  If we write these in hexadecimal, the range is 0 to FF.  FF is the largest two-digit hexadecimal number, so, this range of values fits perfectly in two-digit hexadecimal numbers.  Triples of these hexadecimal values are an extremely common way to represent colors.
-
-<p>For example, here are some shades of blue, given with their name and hexadecimal value:
-<p>
-<a href="http://www.w3schools.com/colors/colors_hex.asp"><img src="../f17/blues.png" ></a>
-</p>
-
-<p>
-The leading hash sign ('#') is used to indicate that this is a hexadecimal number:
+<p>Let's do an example to illustrate a decision, or <tt>if</tt>-statement in Python.  In <a href="lab2.html">Lab 2</a>, we examined the initial segment of a DNA strand for insulin in humans.  DNA is double-stranded molecule.  Given one strand of the molecule, we can figure out the complementary strand by the following rules:
 <ul>
-	<li> The next two digits are for the amount of red.
-	<li> The middle two digits are for the amount of green.
-	<li> The last two digits are for the amount of blue.
+	<li> If the nucleotide is an A, its complement is a T.
+	<li> If the nucleotide is an C, its complement is a G.
+	<li> If the nucleotide is an G, its complement is a C.
+	<li> If the nucleotide is an T, its complement is an A.
 </ul>
-<p>
-The first color on the list has <tt>00</tt> or 0% red, <tt>00</tt> or 0% green, and <tt>00</tt> or 0% red, and represents the color black.  These shades of blue all have no red (first two digits are <tt>00</tt>) and no green (middle two digits are <tt>00</tt>).  By varying the values of the last two digits, we have a dark, navy blue (<tt>80</tt> in the last two digits) to a bright blue (<tt>FF</tt> in the last two digits).
 
-<p>
-We can set the color of turtles using hexcodes.  For example, to create a turtle, named <tt>thea</tt>, and set her color to the medium blue (using the hex code from the above list), we can:
-<pre style = "background-color:lavender;width:400px">
-import turtle
-
-thea = turtle.Turtle()
-thea.shape("turtle")
-thea.color("#0000CD")
+Since if the nucleotide is an A, we don't need to check if it's also a C, G, or T (and similarly for the other possible values), we can rewrite this as:
+<pre style = "background-color:lavender;width:450px">
+  if nucleotide == "A":
+      newNucleotide = "T"
+  elif nucleotide == "C":
+      newNucleotide = "G"
+  elif nucleotide == "G":
+      newNucleotide = "C"
+  elif nucleotide == "T":
+      newNucleotide = "A"
+  else:
+      print("Error:  not a valid value!")
 </pre>
 
-<p>
-producing a graphics window with:
-<p>
-<img src="../f17/medBlueTurtle.png" style="padding:25px">
+<p>Here is a demonstration of our code:
 
 <p>
-The code above always produces a medium blue turtle.  How would you modify the program to let the user specify a hex code for the color of the turtle?
-When you have figured out the answer, see the <a href="ps.html">Programming Problem List</a>.
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=nucleotide%20%3D%20input%28'Enter%20a%20nucleotide%3A%20'%29%0A%0Aif%20nucleotide%20%3D%3D%20%22A%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22T%22%0Aelif%20nucleotide%20%3D%3D%20%22C%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22G%22%0Aelif%20nucleotide%20%3D%3D%20%22G%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22C%22%0Aelif%20nucleotide%20%3D%3D%20%22T%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22A%22%20%20%20%20%0Aelse%3A%0A%20%20%20%20print%28%22Error%3A%20%20not%20a%20valid%20value!%22%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22T%22%5D&textReferences=false"> </iframe>
 
 </div>
 
 
 
+
+
 <div>
-<h3>Images</h3>
-
-
-There are many different formats to store images.  Some store the information about the color of every <i>pixel</i> ("picture element" or dot on the screen).  Others store end points of lines or boundaries of regions and the colors of each.  We focus on the former, and in particular, use the <tt>png</tt> (portable network graphics) file format, which is popular for storing images captured from cameras and is `lossless' (every pixel captured is stored, so, can also be quite large).
+<h3>Elevation Data & Flood Maps</h3>
 
 <p>
+For the last part of the lab, let's combine what we have learned about images and decisions to make a flood map of the New York metropolitian area.  The US National Oceanic and Atmospheric Administration (NOAA) provides a searchable database of <a href="https://maps.ngdc.noaa.gov/viewers/wcs-client/">elevation data</a>.
 
-The <a href="http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/2DimensionalIterationImageProcessing.html">textbook</a> has a lovely visualization and explanation:
+<p> We used their grid extract option on the New York City region:
 
-<p>
-<img src="../f17/thinkGrid.png">
+<p><img src="../f17/gridExtract.png" width=600>
 
-<p> To specify a given pixel, you give its row, <tt>r</tt>, and column, <tt>c</tt>, in the grid.  Counting from the upper left hand corner which has index 0,0.  This is unlike standard Cartesian (math) coordinates but echos how
-matrices are often accessed.
+<p>to download the elevations for the box bounded by the red dotted line (in 3-second resolution mode).  We then removed the top lines of metadata to create a file, <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> of 417 rows with 469 values in each row.
 
-<p><img src="../f17/sic-imageplanes.png" height= 300 align="right">
-Each pixel is represented by its the percentage of red, green, and blue ("RGB") values. Images are stored as a grid of red values, a grid of green values, and a grid of blue
-values.
+<p>Using <tt>numpy</tt>, we can look at the data with a default 'color map' that assigns blue to smaller values in the grid (or array) and red to the larger values:
 
-<p>
-For example, if we stored our image in the variable, <tt>img</tt>, we could access the red
-value by:
-<pre style = "background-color:lavender;width:400px">
-print "Upper left has red:", img[0,0,0]
-</pre>
-and the amount of green:
-<pre style = "background-color:lavender;width:400px">
-print "Upper left has green:", img[0,0,1]
-</pre>
-and the amount of blue:
-<pre style = "background-color:lavender;width:400px">
-print "Upper left has blue:", img[0,0,2]
-</pre>
-Any point can be accessed via its coordinates <tt>(i,j)</tt> and the color channel (0 for red, 1 for green, and 2 for blue).  In our example above,
-with the picture stored in the variable, <tt>img</tt>:
-<pre style = "background-color:lavender;width:400px">
-img[r,c,chan]
-</pre>
-where the <tt>r</tt> is the row and <tt>c</tt> is the column of the pixel and <tt>chan</tt> is the color channel (0 for red, 1 for green, and 2 for blue). Note that when we are accessing parts of our images, we use the square brackets ('[' and ']'), just as we did for lists.  The round parenthesis ('(' and ')') are used for functions (like <tt>print()</tt> and <tt>right()</tt>).
+<ol>
+	<li> Create a folder to hold your work (see <a href="lab2.html">Lab 2</a> for directions for doing so from the command line).
+	<li> Download <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> and save to your folder (you may need to move it from your <tt>Downloads</tt> folder).
+	<li> Open IDLE, and create the following short program:
+	<pre style = "background-color:lavender;width:600px">
+# Name:  ... your name here ...
+# Email: ... your email here ...
+# Date:  September 2019
+# Takes elevation data of NYC and displays using the default color map
 
-
-<p>
-Let's write a program that manipulates an image.  Read through the code first, and then try on your computer.  What does it do?  Note:  this program assumes that you have a file called <a href="../f17/csBridge.png">csBridge.png</a> in the same directory.  You can use that file, or substitute one of your own.
-<pre style = "background-color:lavender;width:650px">
-#Name:  CSci 127 Teaching Staff
-#Date:  Fall 2017
-#This program loads an image, displays it, and then creates, displays,
-#    and saves a new image that has only the red channel displayed.
-
-#Import the packages for images and arrays:
-import matplotlib.pyplot as plt
+#Import the libraries for arrays and displaying images:
 import numpy as np
+import matplotlib.pyplot as plt
 
+#Read in the data to an array, called elevations:
+elevations = np.loadtxt('elevationsNYC.txt')
+#Load the array into matplotlib.pyplot:
+plt.imshow(elevations)
+#Display the plot:
+plt.show()
+	</pre>
+	Save the file in your folder.
+	<li> Run your program.  A graphics window should appear showing the data stored in elevations.
+</ol>
 
-img = plt.imread('csBridge.png')   #Read in image from csBridge.png
-plt.imshow(img)		           #Load image into pyplot
-plt.show()                         #Show the image (waits until closed to continue)
+<p>Comparing the NOAA image with the one you created:
 
-img2 = img.copy()        #make a copy of our image
-img2[:,:,1] = 0          #Set the green channel to 0
-img2[:,:,2] = 0          #Set the blue channel to 0
+<p><img src="../f17/gridExtract.png" height=350>
+<img src="../f17/elevColorMap.png" height=350>
 
-plt.imshow(img2)         #Load our new image into pyplot
-plt.show()               #Show the image (waits until closed to continue)
-
-plt.imsave('reds.png', img2)  #Save the image we created to the file: reds.png
-</pre>
+<p> you can see the Hudson River and New York Harbor (bright blue) and the ridges of the Palisades along the Hudson and mountains in Staten Island and western New Jersey in yellow and red.
 
 <p>
-The code above always produces an image with only the red channel displayed.  How would you modify the program to display only the blue channel?
-When you have figured out the answer, see the <a href="ps.html">Programming Problem List</a>.
+We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">NYT map</a>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
+
+<pre style = "background-color:lavender;width:600px">
+	if elevation <= 0:
+	    #Below sea level
+	    Color the pixel blue
+	elif elevation <= 6:
+	    #Below the storm surge of Hurricane Sandy (flooding likely)
+	    Color the pixel red
+	else:
+	    #Above the 6 foot storm surge and didn't flood
+	    Color the pixel green
+</pre>
 
 
+
+<p> To give us complete control of the coloring, we will create a new array that will hold the colors for each pixel.  Here's an outline of our program:
+<ol>
+	<li> Import the libraries to manipulate and display arrays.
+	<li> Read in the NYC data and store in the variable, <tt>elevations</tt>
+	<li> Create a new array, <tt>floodMap</tt>, to hold our colors for the map.
+	<li> For each element in <tt>elevations</tt>, make a pixel colored by the schema above.
+	<li> Load our image into <tt>pyplot</tt>.
+	<li> Display the image.
+</ol>
+
+<p>We'll use a very simple (but a bit garish) color scheme, with our "blue" being 0% red, 0% green, and 100% blue.  And similarly, the "red" and the "green" we'll use will be 100% of each, 0% of the others, giving a map like:
+
+<p>
+<img src = "../f17/floodMap.png">
+
+
+<p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> is in the same directory as your program.
+<pre style = "background-color:lavender;width:600px">
+# Name:  ... your name here ...
+# Email: ... your email here ...
+# Date:  September 2019
+# Takes elevation data of NYC and displays using the default color map
+
+
+#Import the libraries for arrays and displaying images:
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+#Read in the data to an array, called elevations:
+elevations = np.loadtxt('elevationsNYC.txt')
+
+#Take the shape (dimensions) of the elevations
+#  and add another dimension to hold the 3 color channels:
+mapShape = elevations.shape + (3,)
+
+#Create a blank image that's all zeros:
+floodMap = np.zeros(mapShape)
+
+for row in range(mapShape[0]):
+    for col in range(mapShape[1]):
+        if elevations[row,col] <= 0:
+            #Below sea level
+           floodMap[row,col,2] = 1.0     #Set the blue channel to 100%
+        elif elevations[row,col] <= 6:
+            #Below the storm surge of Hurricane Sandy (flooding likely)
+           floodMap[row,col,0] = 1.0     #Set the red channel to 100%
+        else:
+            #Above the 6 foot storm surge and didn't flood
+            floodMap[row,col,1] = 1.0   #Set the green channel to 100%
+
+#Load the flood map image into matplotlib.pyplot:
+plt.imshow(floodMap)
+
+#Display the plot:
+plt.show()
+
+#Save the image:
+plt.imsave('floodMap.png', floodMap)
+
+</pre>
+
+<p> What would you change to make a more fine-grained map?  Namely, modify your program to color the region just above the Sandy storm surge (6 feet) and less than or equal to 20 feet the color grey (50% red, 50% green, 50% blue).  Also, modify your program to not show any graphics windows (<tt>plt.show()</tt>) but instead just compute and save the map to <tt>floodMap.png</tt>.  See
+<a href="ps.html">Programming Problem List</a>.
+
+<p>
+<img src = "../f17/floodMap2.png">
 
 </div>
-
 
 
 <div>
-<h3> More on Files & Command Line Interface</h3>
+<h3> More on the Command Line Interface:  Relative Paths</h3>
 
-<p>
-<p><a href="lab2.html">Last lab</a>, we introduced the Unix shell commands:
+<p>Today, we will explore more about how to navigate the file system from the command line.  Recall in <a href="lab2.html">Lab 2</a>, at a terminal window, we had typed:
+<pre style = "background-color:lavender;width:400px">
+$ mkdir thomasH
+$ cd thomasH
+$ pwd
+</pre>
+which created a new directory, changed the current directory to it, and shows us what directory we were in.
+
+<p>In addition to changing to a directory, we can also change back to its "parent" directory by typing:
+<pre style = "background-color:lavender;width:400px">
+$ cd ../
+</pre>
+which says go to the parent of my current location.  It's often called a <i>relative path</i> since your destination is relative to your current location.  Typing
+<pre style = "background-color:lavender;width:400px">
+$ pwd
+</pre>
+will show the current working directory.  Using <tt>cd ../</tt> and <tt>pwd</tt>, answer the following:
 <ul>
-	<li> <tt>cd</tt>: change directories (or folders),
-	<li> <tt>mkdir</tt>: make a directory,
-	<li> <tt>ls</tt>: list the contents of a directory, and
-	<li> <tt>pwd</tt>: show the path (location) of the current working directory.
+	<li> What is the parent of your current directory?
+	<li> Change to the parent directory.  What is the parent of your current directory?
+	<li> How many times can your repeat this?
+	<li> Which directory has no parent (i.e. "ancestor" to all the other directories?)?
 </ul>
 
-<p>The <tt>ls</tt> command has many options to give more information about what is in a folder.  For example, 
-<pre style = "background-color:lavender;width:500px">
-$ ls -l
-</pre>
-is the "long" format of <tt>ls</tt> and gives additional information such as permissions (who is allowed to <b>r</b>ead, <b>w</b>rite, or e<b>x</b>ecute the file), the owner and owner's group, the size, and the date of creation. For example, if our folder had a single directory, <tt>thomasH</tt> (like we created in <a href="lab2.html">Lab 2</a>), when you type the command, you will see output similar to:
-<pre style = "background-color:lavender;width:500px">
-$ ls -l
-drwxr-xr-x  2 stjohn  wheel  68 Jan  7 21:00 thomasH/
-</pre>
 
-<p>
-Two useful commands are <tt>cp</tt> and <tt>mv</tt> which copy and rename (move) files.  If we have a folder with:
-<pre style = "background-color:lavender;width:500px">
-$ ls
-p1.py     p2.py     programs/
-</pre>
-We can make a copy of a file by using the <tt>cp</tt> and the name of the old file and the new file:
-<pre style = "background-color:lavender;width:500px">
-$ cp p2.py p3.py
-</pre>
-The result would be:
-<pre style = "background-color:lavender;width:500px">
-$ ls
-p1.py     p2.py     p3.py     programs/
-</pre>
-Renaming a file follows the same format:
-<pre style = "background-color:lavender;width:500px">
-$ mv p1.py prog1.py
-</pre>
-The result would be:
-<pre style = "background-color:lavender;width:500px">
-$ ls
-p2.py     p3.py     prog1.py  programs/
-</pre>
-You can also move programs into a folder by giving the directory's name as the last input to the <tt>mv</tt> command:
-<pre style = "background-color:lavender;width:500px">
-$ mv p3.py programs
-</pre>
-The result would be:
-<pre style = "background-color:lavender;width:500px">
-$ ls
-p2.py     p3.py     programs/
-</pre>
-If we look inside the <tt>programs</tt> folder, we see:
-<pre style = "background-color:lavender;width:500px">
-$ ls programs
-prog1.py
-</pre>
-
+<p>This simple <tt>cd ../</tt> gives a powerful way to navigate the directories (especially when we are working on a server without a graphical user interface or automating a process).  Next lab, we will introduce <i>absolute paths</i> that change directories to the same place each time (independent of your current working directory).
 </div>
+
+
+
 
 
 <div>
@@ -389,40 +413,6 @@ prog1.py
 
 <p>If you finish the lab early, now is a great time to get a head start on the programming problems due early next week.  There's instructors to help you, and you already have Python up and running.  The <a href="ps.html">Programming Problem List</a> has problem descriptions, suggested reading, and due dates next to each problem.
 
-</div>
-
-<div>
-<h3>Using Python on Your Computer</h3>
-
-<p>Today's lab introduced several packages that are freely available but do not always come bundled with Python.  If you are using anaconda at home, then most are included.  See the directions below for other installations. (To install Python at home, see <a href="lab1.html">Lab 1</a> for directions.)
-
-
-<p>
-If you have a Linux machine and would like to match the environment on the lab machines, at a terminal window, type the following commands:
-<pre style = "background-color:lavender;width:450px">
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get install python3 python3-pip idle3
-pip3 install numpy pandas folium image matplotlib scipy
-sudo apt-get install spyder3
-</pre>
-
-
-</div>
-
-<div>
-<h3>Unix Shell on Your Computer</h3>
-
-<p> If you are working at home, here's directions for accessing a Unix shell environment:
-<ul>
-	<li> Linux machines:  This is what we have in the labs.  You can launch a terminal by clicking on the icon for a terminal (or using the search feature to find it).
-	<li> Macintosh (OSX) machines:  The OSX operating system, run by modern mac computers, is based on Unix (albeit a slightly different one than Linux).  You can bring up a terminal window by using Spotlight or search for "terminal".
-	<li> Windows machines:  The underlying terminal uses commands that are differnt from Unix (they're based on the Microsoft Disk Operating System, or MS-DOS).  There are several on-line emulators of Unix that you can use via the browser, such as:  <a href="https://www.tutorialspoint.com/unix_terminal_online.php">tutorialspoint online terminal</a>.
-	<li> Phones/Tablets:  Since most do not run Unix (or allow access to a terminal), the best is to use a web-based terminal emulator above.
-</ul>
-
-<p>Note that the on-line terminals are very generic and do not have Python 3 or IDLE as part of the emulation.  If you would like to run Python on your phone or tablet, a simple option is to use <a href="http://pythontutor.com">PythonTutor</a> or for turtle programs,
-<a href="https://trinket.io">Trinket</a>.
 </div>
 
 

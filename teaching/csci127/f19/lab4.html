@@ -5,6 +5,7 @@
     <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
 </head>
 <body>
+
 <div id="header">
 
 <h2>Lab 4<br>CSci 127: Introduction to Computer Science<br>
@@ -16,12 +17,14 @@ Fall 2019<br><br>
 <div>
 
 <p>
-Today's lab will focus on getting numerical input and decisions in Python to make augment elevation maps and relative paths in the Unix operating system.
+Today's lab will focus on logical expressions and circuits and absolute paths in the Unix operating system.
 
-<p>Software tools needed:  terminal (command line), web browser and Python IDLE programming
-environment.
+<p>Software tools needed:  web browser and Python IDLE programming
+environment with numpy and matplotlib packages installed.
+
 
 </div>
+
 
 <div>
 <h3>Quizzes & Code Reviews</h3>
@@ -33,374 +36,368 @@ See the <a href="quizzes.html">quiz & code review page</a> for details of the wo
 <div>
 <h3>Using Python, Gradescope, and Blackboard</h3>
 
-<p>See <a href="lab1.html">Lab 1</a> for details on using Python, Gradescope, and Blackboard.
+<p>See the <a href="lab0.html">introductory lab</a> for details on using Python, Gradescope, and Blackboard.
 </p>
 </div>
 
 
+<div>
+<h3>Logical Expressions</h3>
 
+<p> Last week, we introduced decisions (if-statements).  These relied on the "test" which was an expression that evaluated to true or false.
 
+<p> We can build up more complicated logical expressions using built-in operators, <tt>and</tt>, <tt>or</tt>, and </tt>not</tt>.  A standard way to summaries these operators is with <b>truth tables</b>.  A truth table lists all the possible inputs and gives the output for each combination.
+
+<p>For example, here is the truth table for
+the <tt>and</tt> operator:
+
+<p>
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>in2</tt></th> <th><tt>in1 and in2</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td><td>False</td>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td><td>False</td>
+	</tr>
+	<tr>
+		<td>False</td><td>False</td><td>False</td>
+	</tr>
+</table>
+
+<p>It lists all the possible combinations of values for the inputs, <tt>in1</tt> and <tt>in2</tt> and what <tt>and</tt> would give as output.  For example, if <tt>in1</tt> is <tt>True</tt> and <tt>in2</tt> is <tt>False</tt>, the value of
+<tt>in1 and in2</tt> can be read off the last column of the third line of the truth table as <tt>False</tt>.
+
+<p>Similarly here is the truth table for <tt>or</tt>:
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>in2</tt></th> <th><tt>in1 or in2</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td><td>True</td>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td><td>True</td>
+	</tr>
+	<tr>
+		<td>False</td><td>False</td><td>False</td>
+	</tr>
+</table>
+
+<p>For example, if <tt>in1</tt> is <tt>True</tt> and <tt>in2</tt> is <tt>False</tt>, the value of
+<tt>in1 or in2</tt> can be read off the last column of the third line of the truth table as <tt>True</tt>.
+
+<p> The <tt>not</tt> operator changes the input from false to true, or true to false.  That is, <tt>not True</tt> is false and <tt>not False</tt> is true.  We can write this in the table format above:
+
+<p>
+<table border="1px">
+	<tr>
+		<th><tt>in1</tt></th> <th><tt>not in1</tt></th>
+	</tr>
+	<tr>
+		<td>True</td><td>False</td>
+	</tr>
+	<tr>
+		<td>False</td><td>True</td>
+	</tr>
+</table>
+
+<p>
+These logical operators are useful building complex tests for our <tt>if</tt>-statements (as well as other control structures that will be introduced later).
+
+</div>
 
 <div>
-<h3>Getting Numbers as Input</h3>
+<h4>Snow Pack in California</h4>
 
 <p>
-The simplest way to get input for our programs is via the console.  In <a href="lab2.html">Lab 2</a>, we used the <tt>input()</tt> command to get string input from the command line.
-
-<p>Since Python doesn't know what you will be entering (number, words, etc.), it stores everything as a string, and leaves it to the user to convert it to what they want.  For example, if we wanted a number, we need to convert the letters the user used into a number.  The basic conversion functions are:
-<ul>
-	<li> <tt>int()</tt>:  converts a string (series of letters) into the corresponding integer (whole number).
-	<li> <tt>float()</tt>: converts a string (series of letters) into the corresponding floating point number (real number).
-	<li> <tt>str()</tt>: converts a number into the corresponding sequence of letters.
-</ul>
+As an example of logical expressions, we will use them to estimate the snow pack level in California over the last drought using satellite imagery.
 
 <p>
-Work through the examples in <a href="http://interactivepython.org/courselib/static/thinkcspy/SimplePythonData/Typeconversionfunctions.html">2.3 Type conversion functions</a> and
-<a href="http://interactivepython.org/courselib/static/thinkcspy/SimplePythonData/Variables.html">2.4 Variables</a>.  Try the quizzes at the end of the section to test your understanding.
-
-<p>
-<h4>Converter Program</h4>
-
-Let's work through a problem that takes numerical input from the user, does a calculation, and prints out the result.
-Here is the
-problem:
+Landsat Satellite Program is a joint program of USGS and NASA that has provided continuous images of the earth since 1972. The data is publicly available through the USGS-EROS site and has been invaluable in mapping changes in the earth. Today, we will use data images from the USGS remote sensing gallery:
 <blockquote>
-	Daniel has started to train for triathalons.  Unfortunately, his bike computer only reads out distances in kilometers.  Write a conversion program for him that 	takes as input kilometers and outputs the corresponding distance in miles.
+<a href="http://remotesensing.usgs.gov/gallery/">http://remotesensing.usgs.gov/gallery/</a>
 </blockquote>
-Our first step is to design the algorithm.  It follows a standard pattern:  <i>Input, Process, Output (IPO)</i>.
 
-<p>
-In a text window in IDLE, write out what the input is, what the process is, and what the output is.
+<p> The <a href="https://earthobservatory.nasa.gov/IOTD/view.php?id=89738">snow pack in the Sierra Nevada mountains</a> provide almost a third of the water used by California.  As a first estimate of snow pack, the number of pixels that are (nearly) white are counted.
+How much change has their been in the Sierra Nevada snowpack during the past drought in California?  Here are images from before and during the worst years of the drought:
+<table>
+	<tr>
+		<td><img src="../f17/CaliforniaDrought_02232011_md.png" width=300></td>
+		<td><img src="../f17/CaliforniaDrought_02122013_md.png" width=300></td>
+		<td><img src="../f17/CaliforniaDrought_02232014_md.png" width=300></td>
+	</tr>
+	<tr>
+		<td><a href="../f17/CaliforniaDrought_02232011_md.png">February 2011</a></td>
+		<td><a href="../f17/CaliforniaDrought_02122013_md.png">February 2013</a></td>
+		<td><a href="../f17/CaliforniaDrought_02232014_md.png">February 2014</a></td>
+	</tr>
+</table>
 
-<p>
-Here is one possible design:
-<pre>
-1. Input the distance in kilometers (call it km)
-2. Calculate the distance in miles as ?
-3. Output miles
-</pre>
-
-
-<p>Above, we are missing an important part-- the formula to calculate miles from kilometers.  By typing <tt>1 km = miles</tt> into google, we find that 1 km = 0.621371 miles.  So, we can add
-that to our file:
-<pre style = "background-color:lavender;width:450px">
-#1. Input the distance in kilometers (call it km)
-#2. Calculate the distance in miles as 0.621371*km
-#3. Output miles
-</pre>
-Note that we're preceding the items in our outline by '#', so they can be used as comments for our final program.
-
-<p>If you have not done so already, now would be a good time to save your work as the file,
-<tt>km2miles.py</tt>.
-
-<p>
-Now, we are ready to convert our outline of the algorithm to Python.  Begin by adding a comment to the beginning of the file:
-<pre style = "background-color:lavender;width:450px">
-#Name:  your name
-#Email: your email
-#Date:  September 2019
-#Converter example program from Lab 4
-
-
-#1. Input the distance in kilometers (call it km)
-#2. Calculate the distance in miles as 0.621371*km
-#3. Output miles
-</pre>
-Next, let's print a welcome message:
-<pre style = "background-color:lavender;width:450px">
-#Name:  your name
-#Email: your email
-#Date:  September 2019
-#Converter example program from Lab 4
-
-
-print("Welcome to Daniel's calculator!")
-#1. Input the distance in kilometers (call it km)
-#2. Calculate the distance in miles as 0.621371*km
-#3. Output miles
-</pre>
-Make sure that there are no typos by saving and running your program ('Run Module' in the Run menu).
-
-<p>Next, fill in the program line by line.  First, ask the user for their input:
-<pre style = "background-color:lavender;width:450px">
-#Name:  your name
-#Email: your email
-#Date:  September 2019
-#Converter example program from Lab 4
-
-
-print("Welcome to Daniel's calculator!")
-#1. Input the distance in kilometers (call it km)
-km = float(input('Enter distance in kilometers: '))
-#2. Calculate the distance in miles as 0.621371*km
-#3. Output miles
-
-</pre>
-Test to make sure that the program runs.  Note that it will ask for the input but since no messages after that (we still need to fill those in).
-
-<p>Python cares about spacing and distinguishes between spaces and tabs.  If you get an error above, check that each of the lines beneath the definition is indented using a TAB.
-
-<p>Now, process the input (i.e. do the conversion):
-<pre style = "background-color:lavender;width:450px">
-#Name:  your name
-#Email: your email
-#Date:  September 2019
-#Converter example program from Lab 4
-
-
-print("Welcome to Daniel's calculator!")
-#1. Input the distance in kilometers (call it km)
-km = float(input('Enter distance in kilometers: '))
-#2. Calculate the distance in miles as 0.621371*km
-miles = 0.621371*km
-#3. Output miles
-</pre>
-Save and run your program again.  It will ask for input but does not yet produce output.
-
-<p>Finally, add the print statement that shows the output:
-<pre style = "background-color:lavender;width:450px">
-#Name:  your name
-#Email: your email
-#Date:  September 2019
-#Converter example program from Lab 4
-
-
-print("Welcome to Daniel's calculator!")
-#1. Input the distance in kilometers (call it km)
-km = float(input('Enter distance in kilometers: '))
-#2. Calculate the distance in miles as 0.621371*km
-miles = 0.621371*km
-#3. Output miles
-print("The miles are", miles)
-</pre>
-Save and run your program again.  This time, it will produce output.  Try it with some simple values
-to make sure that it gets the right answer.  For example, if you input 0 km, the output should also
-be 0.  If you input 1 km, you should output 0.621371 miles.
-See the <a href="ps.html">Programming Problem List</a>.
-
-<p>
-In addition to multiplication ('*'), Python has addition ('+'), subtraction ('-'), exponentation ('**'), division ('/'), and modulus/remainder ('%') built-in.  See <a href="https://interactivepython.org/runestone/static/thinkcspy/SimplePythonData/OperatorsandOperands.html">Section 2.7</a> in the textbook:  there are some short quiz examples to test yourself at the bottom of textbook page.
-</div>
-
-
-<div>
-<h3>Decisions</h3>
-
-<p>Python has a built-in control structure for making decisions.  It's basic form is:
-
-	if <i>test or conditional</i>:
-	    if true do this block
-	elif <i>another test or conditional</i>:
-	    if this next test is true, do this block
-	elif <i>yet another test or conditional</i>:
-	    if this yet another test is true, do this block
-	....
-	else:
-	     only do this block, if all the previous tests failed.
-</pre>
-The tests are expressions that evaluate to either true or false.  The blocks of code can be as long as you would like-- the only caveat is the block be indented, since that indicates what's part of the block and what is not.
-
-<h4>Complementary DNA Strands</h4>
-
-<!--
-<tt>Compute the complement of DNA strand- include images from wiki.  Use if-statements.</tt>-->
-
-<p>Let's do an example to illustrate a decision, or <tt>if</tt>-statement in Python.  In <a href="lab2.html">Lab 2</a>, we examined the initial segment of a DNA strand for insulin in humans.  DNA is double-stranded molecule.  Given one strand of the molecule, we can figure out the complementary strand by the following rules:
-<ul>
-	<li> If the nucleotide is an A, its complement is a T.
-	<li> If the nucleotide is an C, its complement is a G.
-	<li> If the nucleotide is an G, its complement is a C.
-	<li> If the nucleotide is an T, its complement is an A.
-</ul>
-
-Since if the nucleotide is an A, we don't need to check if it's also a C, G, or T (and similarly for the other possible values), we can rewrite this as:
-<pre style = "background-color:lavender;width:450px">
-  if nucleotide == "A":
-      newNucleotide = "T"
-  elif nucleotide == "C":
-      newNucleotide = "G"
-  elif nucleotide == "G":
-      newNucleotide = "C"
-  elif nucleotide == "T":
-      newNucleotide = "A"
-  else:
-      print("Error:  not a valid value!")
-</pre>
-
-<p>Here is a demonstration of our code:
-
-<p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=nucleotide%20%3D%20input%28'Enter%20a%20nucleotide%3A%20'%29%0A%0Aif%20nucleotide%20%3D%3D%20%22A%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22T%22%0Aelif%20nucleotide%20%3D%3D%20%22C%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22G%22%0Aelif%20nucleotide%20%3D%3D%20%22G%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22C%22%0Aelif%20nucleotide%20%3D%3D%20%22T%22%3A%0A%20%20%20%20newNucleotide%20%3D%20%22A%22%20%20%20%20%0Aelse%3A%0A%20%20%20%20print%28%22Error%3A%20%20not%20a%20valid%20value!%22%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%22T%22%5D&textReferences=false"> </iframe>
-
-</div>
-
-
-
-
-
-<div>
-<h3>Elevation Data & Flood Maps</h3>
-
-<p>
-For the last part of the lab, let's combine what we have learned about images and decisions to make a flood map of the New York metropolitian area.  The US National Oceanic and Atmospheric Administration (NOAA) provides a searchable database of <a href="https://maps.ngdc.noaa.gov/viewers/wcs-client/">elevation data</a>.
-
-<p> We used their grid extract option on the New York City region:
-
-<p><img src="../f17/gridExtract.png" width=600>
-
-<p>to download the elevations for the box bounded by the red dotted line (in 3-second resolution mode).  We then removed the top lines of metadata to create a file, <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> of 417 rows with 469 values in each row.
-
-<p>Using <tt>numpy</tt>, we can look at the data with a default 'color map' that assigns blue to smaller values in the grid (or array) and red to the larger values:
-
-<ol>
-	<li> Create a folder to hold your work (see <a href="lab2.html">Lab 2</a> for directions for doing so from the command line).
-	<li> Download <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> and save to your folder (you may need to move it from your <tt>Downloads</tt> folder).
-	<li> Open IDLE, and create the following short program:
-	<pre style = "background-color:lavender;width:600px">
-# Name:  ... your name here ...
-# Email: ... your email here ...
-# Date:  September 2019
-# Takes elevation data of NYC and displays using the default color map
-
-#Import the libraries for arrays and displaying images:
-import numpy as np
-import matplotlib.pyplot as plt
-
-#Read in the data to an array, called elevations:
-elevations = np.loadtxt('elevationsNYC.txt')
-#Load the array into matplotlib.pyplot:
-plt.imshow(elevations)
-#Display the plot:
-plt.show()
-	</pre>
-	Save the file in your folder.
-	<li> Run your program.  A graphics window should appear showing the data stored in elevations.
-</ol>
-
-<p>Comparing the NOAA image with the one you created:
-
-<p><img src="../f17/gridExtract.png" height=350>
-<img src="../f17/elevColorMap.png" height=350>
-
-<p> you can see the Hudson River and New York Harbor (bright blue) and the ridges of the Palisades along the Hudson and mountains in Staten Island and western New Jersey in yellow and red.
-
-<p>
-We can use this data to make a flood map of New York City.  When Hurricane Sandy hit New York City in 2012, sea level rose 6 feet above normal, causing extensive flooding in low lying areas  (<a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">NYT map</a>).  For our flood map, we can incorporate the storm surge into our coloring scheme:
-
-<pre style = "background-color:lavender;width:600px">
-	if elevation <= 0:
-	    #Below sea level
-	    Color the pixel blue
-	elif elevation <= 6:
-	    #Below the storm surge of Hurricane Sandy (flooding likely)
-	    Color the pixel red
-	else:
-	    #Above the 6 foot storm surge and didn't flood
-	    Color the pixel green
-</pre>
-
-
-
-<p> To give us complete control of the coloring, we will create a new array that will hold the colors for each pixel.  Here's an outline of our program:
+<p>How much snow is there?  We will use the number of pixels that are nearly white as an estimate of the snow.  We can add in a new variable, <tt>countSnow</tt> to keep track of each time a pixel is nearly white.
+Here's an outline of our program:
 <ol>
 	<li> Import the libraries to manipulate and display arrays.
-	<li> Read in the NYC data and store in the variable, <tt>elevations</tt>
-	<li> Create a new array, <tt>floodMap</tt>, to hold our colors for the map.
-	<li> For each element in <tt>elevations</tt>, make a pixel colored by the schema above.
-	<li> Load our image into <tt>pyplot</tt>.
-	<li> Display the image.
+	<li> Read in the California image and store in the variable, <tt>ca</tt>.
+	<li> Create a new variable, <tt>countSnow</tt>, to keep track of the number of pixels that are nearly white.
+	<li> For each element in elevations,
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; If the pixel is nearly white
+	<li> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			<tt>countSnow = countSnow + 1</tt>
+	<li> Print out <tt>countSnow</tt>.
 </ol>
 
-<p>We'll use a very simple (but a bit garish) color scheme, with our "blue" being 0% red, 0% green, and 100% blue.  And similarly, the "red" and the "green" we'll use will be 100% of each, 0% of the others, giving a map like:
+<p>When is a pixel white?  It's when the red, green, and blue values are close to 100%.  In code, we would have:
+<pre style = "background-color:lavender;width:675px">
+t = 0.75    #Threshold for almost white-- can adjust between 0.0 and 1.0
 
-<p>
-<img src = "../f17/floodMap.png">
-
-
-<p>Here's the code, implementing our outline below.  Copy it into an IDLE window and run it.  It expects that the file <a href="../f17/elevationsNYC.txt">elevationsNYC.txt</a> is in the same directory as your program.
-<pre style = "background-color:lavender;width:600px">
-# Name:  ... your name here ...
-# Email: ... your email here ...
-# Date:  September 2019
-# Takes elevation data of NYC and displays using the default color map
-
-
-#Import the libraries for arrays and displaying images:
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-#Read in the data to an array, called elevations:
-elevations = np.loadtxt('elevationsNYC.txt')
-
-#Take the shape (dimensions) of the elevations
-#  and add another dimension to hold the 3 color channels:
-mapShape = elevations.shape + (3,)
-
-#Create a blank image that's all zeros:
-floodMap = np.zeros(mapShape)
-
-for row in range(mapShape[0]):
-    for col in range(mapShape[1]):
-        if elevations[row,col] <= 0:
-            #Below sea level
-           floodMap[row,col,2] = 1.0     #Set the blue channel to 100%
-        elif elevations[row,col] <= 6:
-            #Below the storm surge of Hurricane Sandy (flooding likely)
-           floodMap[row,col,0] = 1.0     #Set the red channel to 100%
-        else:
-            #Above the 6 foot storm surge and didn't flood
-            floodMap[row,col,1] = 1.0   #Set the green channel to 100%
-
-#Load the flood map image into matplotlib.pyplot:
-plt.imshow(floodMap)
-
-#Display the plot:
-plt.show()
-
-#Save the image:
-plt.imsave('floodMap.png', floodMap)
-
+...
+for i in range(ca.shape[0]):
+    for j in range(ca.shape[1]):
+        if (ca[i,j,0] > t) and (ca[i,j,1] > t) and (ca[i,j,2] > t):
+             countSnow = countSnow + 1
 </pre>
 
-<p> What would you change to make a more fine-grained map?  Namely, modify your program to color the region just above the Sandy storm surge (6 feet) and less than or equal to 20 feet the color grey (50% red, 50% green, 50% blue).  Also, modify your program to not show any graphics windows (<tt>plt.show()</tt>) but instead just compute and save the map to <tt>floodMap.png</tt>.  See
-<a href="ps.html">Programming Problem List</a>.
+Let's translate that into Python.  Open up a new IDLE window and copy over the outline.  Using the image programs from <a href="lab4.html">last lab</a> as a template, fill in as much as possible before looking at the program below:
 
-<p>
-<img src = "../f17/floodMap2.png">
+<pre style = "background-color:lavender;width:675px">
+#Name:  CSci 127 Teaching Staff
+#Email: hunterCSci127help@gmail.com
+#Date:  Fall 2017
+#This program loads an image, counts the number of pixels that are
+#    nearly white as an estimate for snow pack.
+
+#Import the packages for images and arrays:
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+ca = plt.imread('CaliforniaDrought_02232011_md.png')   #Read in image
+countSnow = 0            #Number of pixels that are almost white
+t = 0.75                 #Threshold for almost white-- can adjust between 0.0 and 1.0
+
+#For every pixel:
+for i in range(ca.shape[0]):
+     for j in range(ca.shape[1]):
+          #Check if red, green, and blue are > t:
+          if (ca[i,j,0] > t) and (ca[i,j,1] > t) and (ca[i,j,2] > t):
+               countSnow = countSnow + 1
+
+print("Snow count is", countSnow)
+</pre>
+
+<p>This program assumes that you have downloaded and saved <a href="../f17/CaliforniaDrought_02232011_md.png">CaliforniaDrought_02232011_md.png</a>
+to the same directory as your program.
+
+<p>How can you modify your program to let the user specify the input file?
+See
+<a href="ps.html">Programming Problem List</a>.
 
 </div>
 
 
 <div>
-<h3> More on the Command Line Interface:  Relative Paths</h3>
+<h3>Logical Circuits</h3>
 
-<p>Today, we will explore more about how to navigate the file system from the command line.  Recall in <a href="lab2.html">Lab 2</a>, at a terminal window, we had typed:
-<pre style = "background-color:lavender;width:400px">
-$ mkdir thomasH
-$ cd thomasH
-$ pwd
-</pre>
-which created a new directory, changed the current directory to it, and shows us what directory we were in.
+<p>The logical expressions above are useful not only in designing decisions and selecting data in Python, but the same concept underlies much of the hardware of computers.  The <tt>and</tt>, <tt>or</tt>, and <tt>not</tt> can all be simulated in hardware via <a href="https://en.wikipedia.org/wiki/Logic_gate">logic gates</a>.  These gates take inputs (usually 0 or 1) and output a value, based on the logical operator it is simulating.
 
-<p>In addition to changing to a directory, we can also change back to its "parent" directory by typing:
-<pre style = "background-color:lavender;width:400px">
-$ cd ../
-</pre>
-which says go to the parent of my current location.  It's often called a <i>relative path</i> since your destination is relative to your current location.  Typing
-<pre style = "background-color:lavender;width:400px">
-$ pwd
-</pre>
-will show the current working directory.  Using <tt>cd ../</tt> and <tt>pwd</tt>, answer the following:
+
+<p>Here is a simulator for circuits.  Let's see an <tt>AND</tt> gate in action:
+<p>
+<a href="http://www.neuroproductions.be/logic-lab/index.php?id=78962" target="_blank">
+<img src="../f17/andGate.png" height=200><br>
+(click to launch new window with circuit builder-- you may need to allow the page to open Flash to see the simulator)</a>
+
+<!--
+<iframe width="800" height="600" frameborder="0" src="http://www.neuroproductions.be/logic-lab/index.php?id=78962"> </iframe>
+-->
+
 <ul>
-	<li> What is the parent of your current directory?
-	<li> Change to the parent directory.  What is the parent of your current directory?
-	<li> How many times can your repeat this?
-	<li> Which directory has no parent (i.e. "ancestor" to all the other directories?)?
+	<li> Try toggling (clicking on) the switches on the left of the canvas.  What happens?
+	<li> When does the light turn red?
+	<li> When does the light turn off?
 </ul>
 
+<p>
+Try making a circuit with an <tt>OR</tt> gate:
+	<li> From the left hand menu, pull over two switches (the little boxes with a toggle switch on them) to the canvas.
+	<li> Scroll down to the next menu, and choose <tt>OR</tt> from the Logic ports and
+	drag it over to canvas.
+	<li> Each switch has an output (little circle with an outward pointing arrow).  Click on the output of the first switch and link to the inward pointing arrow of the <tt>OR</tt> gate.
+	<li> Repeat with the other switch to connect it to the other input of the AND gate.
+	<li> Scroll down to the bottom of the left hand menu, and choose the output
+	with the single red circle.
+	<li> Connect the output of the <tt>OR</tt> to the input of the red output gate.
+	<li> Toggle (click) on the switches.  What happens to the red output light?
+</ul>
 
-<p>This simple <tt>cd ../</tt> gives a powerful way to navigate the directories (especially when we are working on a server without a graphical user interface or automating a process).  Next lab, we will introduce <i>absolute paths</i> that change directories to the same place each time (independent of your current working directory).
+<p> What is different between the behavior of the <tt>OR</tt> and <tt>AND</tt> gates?
+
+</div>
+
+<div>
+<h4>Majority of 3 Inputs</h4>
+
+<p>
+Now, let's build a circuit, or collection of gates, that takes
+majority of 3 inputs, called <tt>in1</tt>, <tt>in2</tt>, <tt>in3</tt>:
+<ul>
+	<li> If two or more of the inputs are <tt>True</tt>, then your expression should evaluate to  <tt>True</tt>.
+	<li> Otherwise (two or more of the inputs are <tt>False</tt>), then your expression should evaluate to <tt>False</tt>.
+</ul>
+
+<p>
+<a href="http://www.neuroproductions.be/logic-lab/" target="_blank">
+Here's a window</a> for building your circuit (if running from home, you may need to allow the browser to run flash-- what the circuit app uses for graphics).  Directions (with images) are below:
+<!--
+<p> <iframe width="800" height="600" frameborder="0" src="https://www.neuroproductions.be/logic-lab/"> </iframe>
+-->
+<p>Build your circuit as you read the instructions below:
+<ol>
+	<li>  The question asks for 3 inputs-- let's use switches since those are easy to test out whether it works.
+	<li>  We are going to need to check if any pair of inputs is True.  An easy way to do this is to check that:
+	<ul>
+		<li> <tt>in1</tt> and <tt>in2</tt> are both true, or
+		<li> <tt>in1</tt> and <tt>in3</tt> are both true, or
+		<li> <tt>in2</tt> and <tt>in3</tt> are both true
+	</ul>
+	An easy way to do this is to "split the signal" of each input, so, we can use it in multiple places.
+	<br>
+	Go to the "Extras" menu (may need to scroll down) and pick up 3 splitters (has 1 input, 3 outputs) and hook one up to each of the inputs:<br>
+	<img src="../f17/maj1.png" height=200>.
+	<li> We'll build up our circuits in stages:
+	<ul>
+		<li> To check that <tt>in1</tt> and <tt>in2</tt> are both true, hook both of them up to an <tt>AND</tt> gate (in the Logic ports menu).
+		<li> To check that <tt>in1</tt> and <tt>in3</tt> are both true, hook both of them up to an <tt>AND</tt> gate (in the Logic ports menu).
+		<li> To check that <tt>in2</tt> and <tt>in3</tt> are both true, hook both of them up to an <tt>AND</tt> gate (in the Logic ports menu).
+	</ul>
+	<img src="../f17/maj2.png" height=200> <img src="../f17/maj3.png" height=200>
+	<img src="../f17/maj4.png" height=200><br>
+	You can check the wiring by toggling any two switches-- when you toggle the first and the second, the wires going to the first <tt>AND</tt> gate should be highlighted in green.  Check the first and the third, and second and third as well, to make sure all is connected right.
+
+	<li> We have each of the three things done in our to-do list above.  The list is connected by "or", so, we need to do the same with our outputs:<br>
+	<img src="../f17/maj5.png" height=200> <img src="../f17/maj6.png" height=200>.
+
+	<li> And lastly, let's add an output light that will glow when true:<br>
+	<img src="../f17/maj7.png" height=200>
+</ol>
+
+Test the circuit you just built:
+<ul>
+	<li> if two or more switches are on, is the output light on?
+	<li> if two or more switches are off, is the output light off?
+</ul>
+Adjust your circuit until it only lights up when two switches are on.
+
+<h4>Translating Logical Circuits to Logical Expressions</h4>
+
+How do
+we represent this as a logical expression?  Let's work backwards from the output light:  <br>
+<img src="../f17/maj7.png" height=200>
+
+<p>
+Our last gate is an or, so we will write down an <tt>or</tt>
+<pre style = "background-color:lavender;width:650px">
+	(lotsOfStuff1) or (lotsOfStuff2)
+</pre>
+We'll use parenthesis to keep things neat.  Now,  let's look at the left hand side <tt>(lotsOfStuff1)</tt>.  It also has an <tt>or</tt>, so we can write it down:
+<pre style = "background-color:lavender;width:650px">
+	((lotsOfStuff3) or (lotsOfStuff4)) or (lotsOfStuff2)
+</pre>
+Let's keep refining our expressions <tt>(lotsOfStuff3)</tt> has an <tt>AND</tt>
+at the top, so, we will replace it with:
+<pre style = "background-color:lavender;width:650px">
+	(((lotsOfStuff5) and (lotsOfStuff6)) or (lotsOfStuff4)) or (lotsOfStuff2)
+</pre>
+<tt><tt>(lotsOfStuff5)</tt> is just a wire back to the first input, so, we can
+write that instead:
+<pre style = "background-color:lavender;width:650px">
+	((in1 and (lotsOfStuff6)) or (lotsOfStuff4)) or (lotsOfStuff2)
+</pre>
+and similarly, (lotsOfStuff6)</tt> is just a wire back to the second input, so, we can write that instead:
+<pre style = "background-color:lavender;width:650px">
+	((in1 and in2) or (lotsOfStuff4)) or (lotsOfStuff2)
+</pre>
+That looks better!  If look at <tt>lotsOfStuff4</tt>, we see an <tt>AND</tt> gate with wires back to the first and third inputs:
+<pre style = "background-color:lavender;width:650px">
+	((in1 and in2) or (in1 and in3)) or (lotsOfStuff2)
+</pre>
+Similarly, we can replace <tt>lotsOfStuff2</tt> with:
+<pre style = "background-color:lavender;width:650px">
+	((in1 and in2) or (in1 and in3)) or (in2 and in3)
+</pre>
+
+Save this line to a text file (you can use any text editor, just make sure to save it as plain text, with no formatting):
+<pre style = "background-color:lavender;width:650px">
+#Name: Your name here
+#Date: 16 October 2017
+#Program #23:  Computes the majority of 3 inputs
+
+out = ((in1 and in2) or (in1 and in3)) or (in2 and in3)
+</pre>
+(your expression, preceded by <tt>out = </tt>).
+For the logical expressions homework, you submit just a text file with the logical expressions.  The grading script evaluates the expression, testing it with different inputs.  See the <a href="ps.html">Programming Problem List</a>.
+
+</div>
+
+<div>
+<h4>More Exotic Gates</h4>
+
+<p>In addition the <tt>AND</tt>, <tt>OR</tt>, and <tt>NOT</tt> gates, there are several other standard gates.  For each, we can build a circuit using just <tt>AND</tt>, <tt>OR</tt>, and <tt>NOT</tt> gates that gives the same output.
+
+<p>What does a <tt>NAND</tt> gate do?
+<p><img src="../f17/nandGate.png">
+
+<p>
+<a href="http://www.neuroproductions.be/logic-lab/index.php?id=78961" target="_blank">
+Toggle the inputs</a> to figure out what the gate does.
+
+<!--<p> <iframe width="800" height="600" frameborder="0" src="https://www.neuroproductions.be/logic-lab/index.php?id=78961"> </iframe>-->
+<p>Now, build a circuit that has the same behavior as a <tt>nand</tt> gate (i.e. for the same inputs, both give identical output) using only <tt>AND</tt>, <tt>OR</tt>, and <tt>NOT</tt> gates.
+
+<p>
+When you have the answer, label your inputs in1 and in2, save the answer in a file:
+<pre style = "background-color:lavender;width:650px">
+#Name: Your name here
+#Email:  Your email here
+#Program:  Computes NAND of two inputs, using only AND, OR, and NOT gates
+
+out = ...
+</pre>
+(where <tt>...</tt> is replaced by your answer).  See the <a href="ps.html">Programming Problem List</a>.
+
+</div>
+
+
+<div>
+<h3> More on the Command Line Interface:  Absolute Paths</h3>
+
+<p><a href="lab4.html">Last lab</a>, we introduced relative paths for navigating the directories via the shell.  Relative paths (e.g. <tt>cd ../</tt>) used the current location when executing.  We can also use <i>absolute paths</i> that are independent of your location.  For example,
+<pre style = "background-color:lavender;width:400px">
+$ cd /usr/bin
+$ pwd
+$ ls
+</pre>
+will change your working directory to one of the machine's standard <tt>bin</tt> directories which is filled with programs, or binaries.  The next two commands show the path to the working directory and list its contents.  These binaries are in a central location to make them easier to find and use.
+
+<p>Since it is nice to be able to return to your default, or home directory, there is a built-in short-cut for home (<tt>~</tt>).  Try
+<pre style = "background-color:lavender;width:400px">
+$ cd ~
+$ pwd
+$ ls
+</pre>
+The first command will return you to your home directory, no matter where you started.
+
+<p>Next lab, we will introduce scripts, or files of shell commands, that we can execute at the command line.
+
 </div>
 
 
