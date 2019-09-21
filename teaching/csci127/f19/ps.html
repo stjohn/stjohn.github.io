@@ -930,80 +930,18 @@ out1 = ...
 out2 = ...
 out3 = ...
 </pre>
-		Where "..." is replaced by your logical expression (see <a href="lab5.html">Lab 5</a>).
+		Where "..." is replaced by your logical expression (see <a href="lab4.html">Lab 4</a>).
 		
 		
 		<p>Note:  here's a quick <a href="https://www.mathsisfun.com/binary-number-system.html">review</a> of binary numbers.
 		
-<!--
+
   		<li > <b>Due Date: 1 November</b> 
 
- <b style="float:right">Reading:  Think CS:  <a href="http://runestone.academy/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
-
-<p>    
-<b>CHANGE</b> 
-<b>Add in a simple webpage page (github markup language) as program!!</b>  	
-<b>CHANGE</b>
-<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles-- fill in the missing functions</b>
-    
-    <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
-    <ul>
-    <li>"Good Morning" if it is strictly before 12,
-    <li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and
-    <li> "Good Evening" otherwise.
-    </ul>
-
-    <p>A sample run:
-    <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  11
-Good Morning
-</pre>
-    <p>Another sample run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  20
-Good Evening
-</pre>
-    <p>And another run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  15
-Good Afternoon
-</pre>
-
-
-
-  		<li > <b>Due Date: 4 November</b> <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
-
-<b>CHANGE</b>
-
-  			<p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the upper right quarter of the image to the output file specified by the user.
-
-  <p>A sample run of your program should look like:
-  <pre style ="background-color:lavender;width:400px">
-Enter image file name: hunterLogo.png
-Enter output file: logoUR.png
-</pre>
-
-  <p>which would have as input and output:
-  <p>
-  <img src="../s18/hunterLogo2.png" width = 400>
-  <img src="logoUR.png" width = 200 align="right">
-
-
-  <p> <i>Hint:  See sample programs from Lectures 3 and 6.</i>
-
-
-  <p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
-
-
-	 
-  	
-	
-		<li > <b>Due Date: 5 November</b>  
 		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-<b>CHANGE</b>
 
-		<p> Modify the parking ticket program from <a href="lab8.html">Lab 8</a> to do the following:
+		<p> Modify the parking ticket program from <a href="lab7.html">Lab 7</a> to do the following:
 		<ul>
 			<li> Ask the user for the name of the input file.
 			<li> Ask the user for the attribute (column header) to search by.
@@ -1047,23 +985,9 @@ Name: Vehicle Year, dtype: int64
 
 
 
-	<li > <b>Due Date: 6 November</b>
-	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
+  		<li > <b>Due Date: 4 November</b> 
+  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-<b>CHANGE</b>
-
-		<p>Fill in the missing function, <tt>num2string()</tt>, in the program, <tt>numsConvert.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
-	https://github.com/stjohn/csci127</a>).  The function should take number between 0 and 9 as a parameter and returns the corresponding number as a string.  For example, if the parameter is 0, your function should return <tt>"zero"</tt>.  If the parameter is 1, your function should return out <tt>"one"</tt>, etc.
-
-		<p>Note:  The grading scripts are expecting that your function is called <tt>num2string()</tt>.  You need to use that name, since instead of running the entire program, the scripts are "unit testing" the function-- that is, calling that function, in isolation, with differrent inputs to verify that it performs correctly.
-
-
-		<p><i>Hint:  See notes from Lecture 7 and <a href="lab8.html">Lab 8</a>.</i>
-
-
-	<li > <b>Due Date: 7 November</b>  <b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
-
-<b>CHANGE</b>
 
 		<p> Write a program that asks the user for a CSV of collision data (see note below about obtaining reported collisions from NYC OpenData).  Your program should then list the top three contributing factors for the primary vehichle of collisions ("CONTRIBUTING FACTOR VEHICLE 1") in the file.
 
@@ -1084,7 +1008,94 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
 		</blockquote>
 		Since the files are quite large, use the "Filter" option and choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.  We will use this data set for future programs, so, instead of downloading the test files multiple times, save a copy for future use.
 
-		<p> <i>Hint: See <a href="lab8.html">Lab 8</a> for accessing and analyzing structured data.</a></i>
+		<p> <i>Hint: See <a href="lab7.html">Lab 7</a> for accessing and analyzing structured data.</a></i>
+  		
+  		
+ <!-- 	
+ 
+ 		<li > <b>Due Date: 5 November</b>  
+		
+<b>CHANGE</b>
+
+Write a program that asks the user for a CSV file containing filming permit requests for NYC, and prints out the 10 most popular locations (stored in the {\tt 'ParkingHeld'} column).
+ 
+  		
+  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+
+<b>CHANGE</b>
+ <b style="float:right">Reading:  Think CS:  <a href="http://runestone.academy/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
+
+<p>    
+<b>CHANGE</b> 
+<b>Add in a simple webpage page (github markup language) as program!!</b>  	
+<b>CHANGE</b>
+<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles-- fill in the missing functions</b>
+    
+    <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
+    <ul>
+    <li>"Good Morning" if it is strictly before 12,
+    <li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and
+    <li> "Good Evening" otherwise.
+    </ul>
+
+    <p>A sample run:
+    <pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  11
+Good Morning
+</pre>
+    <p>Another sample run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  20
+Good Evening
+</pre>
+    <p>And another run:
+<pre style ="background-color:lavender;width:400px">
+Enter hour (in 24 hour time):  15
+Good Afternoon
+</pre>
+
+
+
+  			<p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the upper right quarter of the image to the output file specified by the user.
+
+  <p>A sample run of your program should look like:
+  <pre style ="background-color:lavender;width:400px">
+Enter image file name: hunterLogo.png
+Enter output file: logoUR.png
+</pre>
+
+  <p>which would have as input and output:
+  <p>
+  <img src="../s18/hunterLogo2.png" width = 400>
+  <img src="logoUR.png" width = 200 align="right">
+
+
+  <p> <i>Hint:  See sample programs from Lectures 3 and 6.</i>
+
+
+  <p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
+
+
+	 
+  	
+	
+
+
+	<li > <b>Due Date: 6 November</b>
+	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
+
+
+
+		<p>Fill in the missing function, <tt>num2string()</tt>, in the program, <tt>numsConvert.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
+	https://github.com/stjohn/csci127</a>).  The function should take number between 0 and 9 as a parameter and returns the corresponding number as a string.  For example, if the parameter is 0, your function should return <tt>"zero"</tt>.  If the parameter is 1, your function should return out <tt>"one"</tt>, etc.
+
+		<p>Note:  The grading scripts are expecting that your function is called <tt>num2string()</tt>.  You need to use that name, since instead of running the entire program, the scripts are "unit testing" the function-- that is, calling that function, in isolation, with differrent inputs to verify that it performs correctly.
+
+
+		<p><i>Hint:  See notes from Lecture 7 and <a href="lab8.html">Lab 8</a>.</i>
+
+
+	<li > <b>Due Date: 7 November</b>  
 
 	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: Think CS <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
 
