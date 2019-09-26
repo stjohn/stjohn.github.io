@@ -163,7 +163,7 @@ Fall 2019<br><br>
 
 		<p> To do this:
 		<ul>
-			<li> Create a .png file of a satellite map, centered on your L-station (Google maps works well for this, but you can use any mapping site to create your base map).
+			<li> Create a .png file of a satellite map, centered on your neighborhood (Google maps works well for this, but you can use any mapping site to create your base map).
 			<li> Write a Python program that reads in an image and saves the image to another file.  Run your program to make sure the reading and saving of an image works.
       <li> Set the upper region of the image to 50% brightness (hint:  uses slices and see example in Lecture 3 and 4).  Run your program to make sure it has dimmed up the upper region and adjust to get the correct dimenssions.
       <li> Set the lower region of the image to 50% brightness (hint:  think about what negative numbers mean as indices).  Run your program and fix any bugs.
@@ -178,7 +178,7 @@ Fall 2019<br><br>
 
 <!--
 	
-  <li > <b>HC 5:  </b> <b style="float:right">Due Date: 2 October</b>  <br>
+  <li > <b>HC 5:  </b> <b style="float:right">Due Date: 7 October</b>  <br>
 
 	How many stations?  For your neighborhood, how many CitiBike stations would be optimal?  Add in readings on the appropriate density?  Maybe have a lead-up assignment of what are the most popular destinations in the neighbhorhood (work, schools, hospitals, tourist destinations, etc.)
 
@@ -186,7 +186,7 @@ Fall 2019<br><br>
 	<hr>
 	<li > <b>HC 6:  Neighborhood geoJSON Map
 
-	</b> <b style="float:right">Due Date: 7 October</b>  <br>
+	</b> <b style="float:right">Due Date: 15 October</b>  <br>
 
   <p><href="http://geojson.org"><img src="geoJSON.png" height = 200></a>
 
@@ -204,14 +204,14 @@ Fall 2019<br><br>
 		<p> Submit a screenshot of your map as a .pdf file.
 
 	<hr>
-  <li > <b>HC 7:  </b> <b style="float:right">Due Date: 14 October</b>  <br>
+  <li > <b>HC 7:  </b> <b style="float:right">Due Date: 21 October</b>  <br>
 
 Add in: read the JSON feed of citibike
 
 voronoi diagrams of your potential stations
 	<hr>
 
-	<li > <b>HC 8:  Turnstile Entries</b> <b style="float:right">Due Date: 21 October</b>  <br>
+	<li > <b>HC 8:  Turnstile Entries</b> <b style="float:right">Due Date: 28 October</b>  <br>
 
     <p><img src="turnstileEntries.png" height=200>
       <img src="turnstileExits.png" height=200>
@@ -269,7 +269,7 @@ myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
         </ul>
 	<hr>
 
-	<li > <b>HC 9:  Webpage</b> <b style="float:right">Due Date: 28 October</b>  <br>
+	<li > <b>HC 9:  Webpage</b> <b style="float:right">Due Date: 4 November</b>  <br>
 
 	<br>
 
@@ -297,14 +297,14 @@ myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
 
 
 
-	<li > <b>HC 10: Morning Commute Snapshot</b> <b style="float:right">Due Date: 4 November</b>  <br>
+	<li > <b>HC 10: Morning Commute Snapshot</b> <b style="float:right">Due Date: 11 November</b>  <br>
 
     <p><img src="turnstileEntryTotals.png" height=300>
       <img src="turnstileExitTotals.png" height=300>
       <br>(Entries and exits (all turnstiles) at 68th Street-Hunter College station for morning commute for the week ending 1 September 2018.)
 
 
-		<p> Write a program that takes a weekly turnstile data file and makes a graph of <i>all the entries</i> and a graph of <i>all the exits</i> during the morning commute for your L-train station for that data.  The x-axis of your histogram should be the days of the week.  The bars in your plot should be the number of people entering the station between 5am and 9am (i.e. subtract the cumulative total at 5am from the cumulative total at 9am, or the closest 4-hour block measured for your station).  Similarly, the bars in the second plot should be the exits from your station over the week.
+		<p> Write a program that takes a weekly turnstile data file and makes a graph of <i>all the entries</i> and a graph of <i>all the exits</i> during the morning commute for a station in your neighborhood for that data.  The x-axis of your histogram should be the days of the week.  The bars in your plot should be the number of people entering the station between 5am and 9am (i.e. subtract the cumulative total at 5am from the cumulative total at 9am, or the closest 4-hour block measured for your station).  Similarly, the bars in the second plot should be the exits from your station over the week.
 
     <p> Hints:
       <ul>
@@ -336,7 +336,7 @@ en = entries.to_frame().reset_index()</pre>
 
 	<hr>
 
-	<li > <b>HC 11: Project Plan</b> <b style="float:right">Due Date: 11 November</b>  <br>
+	<li > <b>HC 11: Project Plan</b> <b style="float:right">Due Date: 18 November</b>  <br>
 
     <p><a href="https://streeteasy.com/blog/the-l-train-shutdown-explained-dates-details-closures/"><img height=300 src="LTrain_Impact_StreetEasy.jpg"><br>
       StreetEasy</a>
@@ -370,7 +370,7 @@ en = entries.to_frame().reset_index()</pre>
 
 
 
-	<li > <b>HC 12: Catchments for L-Train Stations</b> <b style="float:right">Due Date: 18 November</b>  <br>
+	<li > <b>HC 12: Catchments for L-Train Stations</b> <b style="float:right">Due Date: 25 November</b>  <br>
 
 
       <p>A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping access to public resources and transit.
@@ -413,7 +413,7 @@ en = entries.to_frame().reset_index()</pre>
 
 	<hr>
 
-	<li > <b>HC 13: Project Webpage</b> <b style="float:right">Due Date: 25 November</b>  <br>
+	<li > <b>HC 13: Project Webpage</b> <b style="float:right">Due Date: 2 December</b>  <br>
 
 		<p> Submit the URL of your group presentation (the two slides for the presentation)  as part of a .pdf file.  If you have plans to add more to the website, include in the .pdf file any changes you have planned but didn't have a chance to enter yet.
 
@@ -429,7 +429,7 @@ en = entries.to_frame().reset_index()</pre>
 
         <p><img height=300 src="csci127HonorsF18.jpg">
 
-		<p> (This is included for completeness, since the forms will be passed out and returned in section on 5 December.  After you have commented on others group presentations, we will distribute the forms, so that groups can use these to improve their slides and webpages for the final presentation the following week. )
+		<p> (This is included for completeness, since the forms will be passed out and returned in section on 6 December.  After you have commented on others group presentations, we will distribute the forms, so that groups can use these to improve their slides and webpages for the final presentation the following week. )
 
 
 -->
