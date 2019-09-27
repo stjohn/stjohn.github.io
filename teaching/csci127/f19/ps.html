@@ -489,7 +489,7 @@ Seconds: 2
 
 <p>and another sample run:
 <pre style ="background-color:lavender;width:400px">
-Enter number of hours:  4000
+Enter number of seconds:  4000
 Hours: 1
 Minutes: 6
 Seconds: 40
@@ -983,26 +983,30 @@ The 10 worst offenders are:
 Name: Vehicle Year, dtype: int64
 </pre>
 
-
 <!--
+
   		<li > <b>Due Date: 4 November</b> 
   		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-<b>CHANGE!</b>
 
-		<p> Write a program that asks the user for a CSV of collision data (see note below about obtaining reported collisions from NYC OpenData).  Your program should then list the top three contributing factors for the primary vehichle of collisions ("CONTRIBUTING FACTOR VEHICLE 1") in the file.
+
+		<p> Write a program that asks the user for a CSV of the NYC OpenData Film Permits (see note below about obtaining reported collisions from NYC OpenData):
+		<ul>
+			<li> A sample data file to test your program: <a href="filmPermitsAugust2019.csv">filmPermitsAugust2019.csv</a>
+		</ul>
+		
+		Your program should also ask for the user for borough. Your program should then prints out the fraction of film permits issued to that borough, as well as the most  popular street location in that and :
 
 		<p>A sample run:
 <pre style = "background-color:lavender;width:400px">
-Enter CSV file name:  collisionsNewYears2016.csv
-Top three contributing factors for collisions:
-Driver Inattention/Distraction    136
-Unspecified                       119
-Following Too Closely              37
-Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
+Enter CSV file name:  filmPermitsAugust2019.csv
+Which borough: Staten Island
+
+Fraction of film permits in your borough:
+Most popular street for filming:
 </pre>
 
-		<p> This assignment uses collision data collected and made publicly by
+		<p> This assignment uses film permit data collected and made publicly by
 		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
 		<blockquote>
 			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
@@ -1014,8 +1018,33 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
   		
   	
  
- 		<li > <b>Due Date: 5 November</b>  	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b><br>
+ 		<li > <b>Due Date: 5 November</b>  	 <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/TraversalandtheforLoopByItem.html">Section 9.10</a></b> <br>
 
+		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a binary number and print out the corresponding decimal number.
+		
+		<pre>
+    Ask user for input, and store in the string, binString.
+    Set decNum = 0.
+    For each c in binString,
+        decNum = decNum * 2
+        if c is 1, then
+            decNum = decNum + 1
+    Print decNum
+		</pre>
+		
+<p> A sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter binary number: 10
+Your number in decimal is 2
+</pre>
+
+		<p> And another sample run of the program:
+<pre style ="background-color:lavender;width:400px">
+Enter binary number: 1111
+Your number in decimal is 15
+</pre>
+
+	<li > <b>Due Date: 6 November</b>  <b style="float:right">Reading: Think CS <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
 
 
 		<p>Fill in the missing function, <tt>num2string()</tt>, in the program, <tt>numsConvert.py</tt> (available at:  <a href="https://github.com/stjohn/csci127">
@@ -1026,111 +1055,24 @@ Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
 
 		<p><i>Hint:  See notes from Lecture 7 and <a href="lab7.html">Lab 7</a>.</i>
 
- 
-
-		
-
-
-	<li > <b>Due Date: 6 November</b>
-
-
-  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
-
-<b>CHANGE</b>
-		<p> Write a program that asks the user for a CSV of collision data (see note below about obtaining reported collisions from NYC OpenData).  Your program should then list the top three contributing factors for the primary vehichle of collisions ("CONTRIBUTING FACTOR VEHICLE 1") in the file.
-
-		<p>A sample run:
-<pre style = "background-color:lavender;width:400px">
-Enter CSV file name:  collisionsNewYears2016.csv
-Top three contributing factors for collisions:
-Driver Inattention/Distraction    136
-Unspecified                       119
-Following Too Closely              37
-Name: CONTRIBUTING FACTOR VEHICLE 1, dtype: int64
-</pre>
-
-		<p> This assignment uses collision data collected and made publicly by
-		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
-		<blockquote>
-			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
-		</blockquote>
-		Since the files are quite large, use the "Filter" option and choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.  We will use this data set for future programs, so, instead of downloading the test files multiple times, save a copy for future use.
-
-		<p> <i>Hint: See <a href="lab7.html">Lab 7</a> for accessing and analyzing structured data.</a></i>
- 
-
-Write a program that asks the user for a CSV file containing filming permit requests for NYC, and prints out the 10 most popular locations (stored in the {\tt 'ParkingHeld'} column).
-
-https://data.cityofnewyork.us/City-Government/Film-Permits/tg4x-b46p
- 
-  		
-  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
-
-<b>CHANGE</b>
- <b style="float:right">Reading:  Think CS:  <a href="http://runestone.academy/runestone/static/thinkcspy/Selection/ConditionalExecutionBinarySelection.html">Section 7.4</a></b>
-
-<p>    
-<b>CHANGE</b> 
-<b>Add in a simple webpage page (github markup language) as program!!</b>  	
-<b>CHANGE</b>
-<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles-- fill in the missing functions</b>
-    
-    <p> Write a program that asks the user for the hour of the day (in 24 hour time), and prints
-    <ul>
-    <li>"Good Morning" if it is strictly before 12,
-    <li> "Good Afternoon" if it is 12 or greater, but strictly before 17, and
-    <li> "Good Evening" otherwise.
-    </ul>
-
-    <p>A sample run:
-    <pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  11
-Good Morning
-</pre>
-    <p>Another sample run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  20
-Good Evening
-</pre>
-    <p>And another run:
-<pre style ="background-color:lavender;width:400px">
-Enter hour (in 24 hour time):  15
-Good Afternoon
-</pre>
-
-
-
-  			<p>Write a program that asks the user for the name of an image, the name of an output file.  Your program should then save the upper right quarter of the image to the output file specified by the user.
-
-  <p>A sample run of your program should look like:
-  <pre style ="background-color:lavender;width:400px">
-Enter image file name: hunterLogo.png
-Enter output file: logoUR.png
-</pre>
-
-  <p>which would have as input and output:
-  <p>
-  <img src="../s18/hunterLogo2.png" width = 400>
-  <img src="logoUR.png" width = 200 align="right">
-
-
-  <p> <i>Hint:  See sample programs from Lectures 3 and 6.</i>
-
-
-  <p> Note:  before submitting your program for grading, remove any commands that show the image (i.e. the ones that pop up the graphics window with the image).  The program is graded on a server on the cloud and does not have a graphics window, so, the <tt>plt.show()</tt> and <tt>plt.imshow()</tt> commands will give an error.  Instead, the files your program produces are compared pixel-by-pixel to the answer to check for correctness.
-
-
-	 
-  	
-	
 
 
 
 	<li > <b>Due Date: 7 November</b>  
+	
+ 		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
+
+<p>
+<b>CHANGE</b>
+
+Pandas:  make a graph with time series data, similar to shelter data.
+	
+	
+
+	
 
 	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: Think CS <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
 
-<b>CHANGE</b>
 
 		<p> Write two functions, <tt>triangle()</tt> and <tt>nestedTriangle()</tt>.  Both functions take two parameters: a turtle and an edge length.  The pseudocode for <tt>triangle()</tt> is:
 
@@ -1207,25 +1149,39 @@ The fare is 13.5
 		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
 
 	
-	
+
+
+ 		
 	
 	<li > <b>Due Date: 12 November</b>  <b style="float:right">Reading: <a href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+	
+<p>
 
+<p>    
 <b>CHANGE</b>
+<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles-- fill in the missing functions</b>
+    
+ 
+ 
+	 <li > <b>Due Date: 13 November</b>  
+	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br> 
+
+<p>
+<b>CHANGE</b>  Add map
 
 		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
 
-		<p> <i>Hint:  See <a href="lab9.html">Lab 9</a>.</i>
+		<p> <i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
 
 
 
-	 <li > <b>Due Date: 13 November</b>  
+	 <li > <b>Due Date: 14 November</b>  
 	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
 
 <b>CHANGE</b>
 
 		<p>
-		Using folium (see <a href="lab9.html">Lab 9</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
+		Using folium (see <a href="lab8.html">Lab 8</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
 
 		<p>A sample run:
 <pre style = "background-color:lavender;width:400px">
@@ -1249,8 +1205,13 @@ Enter output file:  thMap.html
 	  
 
 
-	<li > <b>Due Date: 14 November</b>  
-	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Debugging/toctree.html#">Chapter 3</a></b><br>
+ 
+	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Debugging/toctree.html#">Chapters 3</a> & <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">6</a></b> <br>
+
+		<p>The program,
+		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
+		<p><i>Hint:  See  <a href="lab8.html">Lab 8</a>.</i>
+
 
 	
 	<li > <b>Due Date: 15 November</b> 	
@@ -1302,20 +1263,13 @@ Enter output file: recyc.html
 		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
 		The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them).
 
-		<p><i>Hint:  See <a href="lab9.html">Lab 9</a>.</i>
+		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
 
 
 
  
 
-	<li > <b>Due Date: 18 November</b> <b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b> <br>
-
-<b>CHANGE</b>
-
-		<p>The program,
-		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
-		<p><i>Hint:  See  <a href="lab9.html">Lab 9</a>.</i>
-
+	<li > <b>Due Date: 18 November</b> 
 
 
 <b>CHANGE</b>
@@ -1650,7 +1604,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 23 September 2019.)</i><br>
+<i style="float:right">(This file was last modified on 27 September 2019.)</i><br>
 </div>
 </body>
 </html>
