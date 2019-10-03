@@ -983,7 +983,7 @@ The 10 worst offenders are:
 Name: Vehicle Year, dtype: int64
 </pre>
 
-<!--
+
 
   		<li > <b>Due Date: 4 November</b> 
   		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
@@ -992,26 +992,43 @@ Name: Vehicle Year, dtype: int64
 
 		<p> Write a program that asks the user for a CSV of the NYC OpenData Film Permits (see note below about obtaining reported collisions from NYC OpenData):
 		<ul>
-			<li> A sample data file to test your program: <a href="filmPermitsAugust2019.csv">filmPermitsAugust2019.csv</a>
+			<li> A sample data file to test your program: <a href="filmPermitsAugust2019.csv">filmPermitsJune2019.csv</a>
 		</ul>
 		
-		Your program should also ask for the user for borough. Your program should then prints out the fraction of film permits issued to that borough, as well as the most  popular street location in that and :
+		Your program should then print out:
+		<ul>
+			<li> the total number of permits in the file, 
+			<li> the count of permits for each borough, and
+			<li> the five most popular locations (stored in the column: "Parking Held").
+		</ul>
 
 		<p>A sample run:
-<pre style = "background-color:lavender;width:400px">
-Enter CSV file name:  filmPermitsAugust2019.csv
-Which borough: Staten Island
+<pre style = "background-color:lavender">
+Enter file name: filmPermitsJune2019.csv
 
-Fraction of film permits in your borough:
-Most popular street for filming:
+There were 643 film permits.
+Manhattan        336
+Brooklyn         165
+Queens            70
+Staten Island     42
+Bronx             30
+Name: Borough, dtype: int64
+
+The five most popular filming locations were:
+WEST   48 STREET between 6 AVENUE and 7 AVENUE                                                                                                                                       25
+EAST  140 STREET between LOCUST AVENUE and WALNUT AVENUE,  WALNUT AVENUE between EAST  139 STREET and EAST  140 STREET,  EAST  139 STREET between WALNUT AVENUE and LOCUST AVENUE    15
+FROST STREET between DEBEVOISE AVENUE and MORGAN AVENUE,  DEBEVOISE AVENUE between FROST STREET and RICHARDSON STREET                                                                11
+ASHLAND PLACE between LAFAYETTE AVENUE and HANSON PLACE                                                                                                                              10
+EAST   11 STREET between 3 AVENUE and 4 AVENUE,  3 AVENUE between EAST   11 STREET and EAST   12 STREET                                                                               9
+Name: ParkingHeld, dtype: int64
 </pre>
 
 		<p> This assignment uses film permit data collected and made publicly by
 		<a href="https://nycopendata.socrata.com">New York City Open Data</a>, and can be found at:
 		<blockquote>
-			<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>.
+			<a href="https://data.cityofnewyork.us/City-Government/Film-Permits/tg4x-b46p">https://data.cityofnewyork.us/City-Government/Film-Permits/tg4x-b46p</a>.
 		</blockquote>
-		Since the files are quite large, use the "Filter" option and choose your birthday in 2016 and "Export" (in CSV format) all collisions for that day.  We will use this data set for future programs, so, instead of downloading the test files multiple times, save a copy for future use.
+		Since the files are quite large, use the "Filter" option and a range of dates for "StartDateTime" and "Export" (in CSV format) all permits for those dates.  
 
 		<p> <i>Hint: See <a href="lab7.html">Lab 7</a> for accessing and analyzing structured data.</a></i>
   		
@@ -1056,7 +1073,7 @@ Your number in decimal is 15
 		<p><i>Hint:  See notes from Lecture 7 and <a href="lab7.html">Lab 7</a>.</i>
 
 
-
+<!--
 
 	<li > <b>Due Date: 7 November</b>  
 	
@@ -1072,6 +1089,9 @@ Pandas:  make a graph with time series data, similar to shelter data.
 	
 
 	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: Think CS <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
+
+
+<p> Put transit fares here!
 
 
 		<p> Write two functions, <tt>triangle()</tt> and <tt>nestedTriangle()</tt>.  Both functions take two parameters: a turtle and an edge length.  The pseudocode for <tt>triangle()</tt> is:
@@ -1112,7 +1132,8 @@ Enter edge length:  160
 
 	<li > <b>Due Date: 11 November</b>  <b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
 
-<b>CHANGE</b>
+<p>
+<b>CHANGE</b>  koalas
 
 		
 		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Long Island Railroad fare.
@@ -1158,8 +1179,10 @@ The fare is 13.5
 <p>
 
 <p>    
-<b>CHANGE</b>
-<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles-- fill in the missing functions</b>
+<b>CHANGE</b>  fractal triangles?
+
+
+<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles fill in the missing functions</b>
     
  
  
