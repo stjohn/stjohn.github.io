@@ -990,7 +990,7 @@ Name: Vehicle Year, dtype: int64
 
 
 
-		<p> Write a program that asks the user for a CSV of the NYC OpenData Film Permits (see note below about obtaining reported collisions from NYC OpenData):
+		<p> Write a program that asks the user for a CSV of the NYC OpenData Film Permits:
 		<ul>
 			<li> A sample data file to test your program: <a href="filmPermitsAugust2019.csv">filmPermitsJune2019.csv</a>
 		</ul>
@@ -1035,7 +1035,7 @@ Name: ParkingHeld, dtype: int64
   		
   	
  
- 		<li > <b>Due Date: 5 November</b>  	 <b style="float:right">Reading: Think CS <a href="http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> and <a href="http://interactivepython.org/runestone/static/thinkcspy/Strings/TraversalandtheforLoopByItem.html">Section 9.10</a></b> <br>
+ 		<li > <b>Due Date: 5 November</b>  	 <b style="float:right">Reading: Think CS <a href="https://runestone.academy/runestone/static/thinkcspy/Selection/toctree.html">Chapter 7 </a> and <a href="https://runestone.academy/runestone/static/thinkcspy/Strings/TraversalandtheforLoopByItem.html">Section 9.10</a></b> <br>
 
 		<p> Write a program that implements the pseudcode below.  Your program should ask the user for a binary number and print out the corresponding decimal number.
 		
@@ -1073,10 +1073,50 @@ Your number in decimal is 15
 		<p><i>Hint:  See notes from Lecture 7 and <a href="lab7.html">Lab 7</a>.</i>
 
 
-<!--
 
 	<li > <b>Due Date: 7 November</b>  
+
+<b style="float:right">Reading: Think CS <a <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="https://runestone.academy/runestone/static/thinkcspy/Selection/toctree.html">Chapters 7</a> </b><br>	
+
+		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Copenhagen Transit fare.
+		<ul>
+			<li> If the zone is 2 or smaller and the ticket type is "adult", the fare is 23.
+			<li> If the zone is 2 or smaller and the ticket type is "child", the fare is 11.5.
+			<li> If the zone is 3 and the ticket type is "adult", the fare is 34.5.
+			<li> If the zone is 3 or 4 and the ticket type is "child", the fare is 23.
+			<li> If the zone is 4 and the ticket type is "adult", the fare is 46.
+			<li> If the zone is greater than 4, return a negative number (since your calculator does not handle inputs that high).
+		</ul>
+		
+		<p>A template program, <tt>copenhagenTransit.py</tt>, is available on the 
+		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the name of the function must match exactly (else, the scripts cannot find it). 
+
+		<p>A sample run:
+<pre style = "background-color:lavender;width:400px">
+Enter the number of zones: 3
+Enter the ticket type (adult/child): Adult
+The fare is 34.5
+</pre>
+		<p> And another:
+<pre style = "background-color:lavender;width:400px">
+Enter the number of zones: 2
+Enter the ticket type (adult/child): child
+The fare is 11.5
+</pre>		
+		
+		
+		<p><i>Hint:  See <a href="lab7.html">Lab 7</a>.</i>
+
+
+
 	
+<!--	
+
+	
+
+	<li > <b>Due Date: 8 November</b>  
+
  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
 <p>
@@ -1084,14 +1124,8 @@ Your number in decimal is 15
 
 Pandas:  make a graph with time series data, similar to shelter data.
 	
-	
 
-	
-
-	<li > <b>Due Date: 8 November</b>  <b style="float:right">Reading: Think CS <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a></b>
-
-
-<p> Put transit fares here!
+	<li > <b>Due Date: 11 November</b>  <b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
 
 
 		<p> Write two functions, <tt>triangle()</tt> and <tt>nestedTriangle()</tt>.  Both functions take two parameters: a turtle and an edge length.  The pseudocode for <tt>triangle()</tt> is:
@@ -1130,172 +1164,14 @@ Enter edge length:  160
 
 
 
-	<li > <b>Due Date: 11 November</b>  <b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> </b><br>
-
-<p>
-<b>CHANGE</b>  koalas
-
-		
-		<p> Write a function, <tt>computeFare()</tt>, that takes as two parameters: the zone and the ticket type, and returns the Long Island Railroad fare.
-		<ul>
-			<li> If the zone is 1 and the ticket type is "peak", the fare is 8.75.
-			<li> If the zone is 1 and the ticket type is "off-peak", the fare is 6.25.			
-			<li> If the zone is 2 or 3 and the ticket type is "peak", the fare is 10.25.
-			<li> If the zone is 2 or 3 and the ticket type is "off-peak", the fare is 7.50.			
-			<li> If the zone is 4 and the ticket type is "peak", the fare is 12.00.
-			<li> If the zone is 4 and the ticket type is "off-peak", the fare is 8.75.	
-			<li> If the zone is 5, 6, or 7 and the ticket type is "peak", the fare is 13.50.			
-			<li> If the zone is 5, 6, or 7 and the ticket type is "off-peak", the fare is 9.75.
-			<li> If the zone is greater than 8, return a negative number (since your calculator does not handle inputs that high).
-		</ul>
-		
-		<p>A template program, <tt>LIRRtransit.py</tt>, is available on the 
-		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
-		The grading script does not run the whole program, but instead tests your function separately ('unit tests') to determine correctness.  As such, the name of the function must match exactly (else, the scripts cannot find it). 
-
-		<p>A sample run:
-<pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 4
-Enter the ticket type (peak/off-peak): off-peak
-The fare is 8.75
-</pre>
-		<p> And another:
-<pre style = "background-color:lavender;width:400px">
-Enter the number of zones: 6
-Enter the ticket type (peak/off-peak): peak
-The fare is 13.5
-</pre>		
-		
-		
-		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
-
 	
 
 
- 		
-	
-	<li > <b>Due Date: 12 November</b>  <b style="float:right">Reading: <a href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
-	
-<p>
-
-<p>    
-<b>CHANGE</b>  fractal triangles?
-
-
-<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles fill in the missing functions</b>
-    
- 
- 
-	 <li > <b>Due Date: 13 November</b>  
-	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br> 
-
-<p>
-<b>CHANGE</b>  Add map
-
-		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
-
-		<p> <i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
-
-
-
-	 <li > <b>Due Date: 14 November</b>  
-	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
-
-<b>CHANGE</b>
-
-		<p>
-		Using folium (see <a href="lab8.html">Lab 8</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
-
-		<p>A sample run:
-<pre style = "background-color:lavender;width:400px">
-Enter CSV file name:  collisionsThHunterBday.csv
-Enter output file:  thMap.html
-</pre>
-		<p>which would produce the html file:
-
-		<p><iframe src="../f17/th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
-		<p>(The demo above is for October 18, 2016 using the time the collision occurred ("TIME") to label each marker and changed the underlying map with the option:
-		<tt>tiles="Cartodb Positron"</tt> when creating the map.)
-
-		<p> This assignment uses collision data collected and made publicly by
-		<a href="https://nycopendata.socrata.com">New York City Open Data</a>.
-		See Programming Problem #39 for details on this data set.  When creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".
-
-		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
-
-
-	  
-
-
- 
-	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Debugging/toctree.html#">Chapters 3</a> & <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">6</a></b> <br>
-
-		<p>The program,
-		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
-		<p><i>Hint:  See  <a href="lab8.html">Lab 8</a>.</i>
-
 
 	
-	<li > <b>Due Date: 15 November</b> 	
-	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
-
-<b>CHANGE</b>
+	<li > <b>Due Date: 12 November</b>  <b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">Chapter 6</a> and <a href="http://runestone.academy/runestone/static/thinkcspy/MoreAboutIteration/2DimensionalIterationImageProcessing.html">Section 8.10</a></b><br>
 
 
-		<p> Fill in the following functions in a program that maps GIS data from NYC OpenData CSV files and marks the current location and closest point:
-		<ul>
-			<li> <tt>getData()</tt> that asks the user for the name of the CSV and returns a dataframe of the contents.
-			<li> <tt>getColumnNames()</tt> that asks the user for the exact name of the columns that contains the latitude and longitude and returns those values as a tuple.  Since the NYC OpenData files use different names for the columns in different datasets (such as "Lat", "Latitude", "LATITUDE" for latitude), the program asks for the name of the column as well as the name of the data file.
-			<li> <tt>getLocale()</tt> asks the user for latitude and longitude of the user's current location and returns those floating points numbers.
-			<li> <tt>computeDist()</tt> that computes the squared distance
-			between two points <tt>(x1,y1)</tt> and <tt>(x2,y2)</tt>:
-				<blockquote>
-					<tt>(x1-x2)<sup>2</sup> + (y1-y2)<sup>2</sup></tt>
-				</blockquote>
-		</ul>
-
-		<p> A sample run to find the closest CUNY campus to the Brooklyn Navy Yard:
-<pre style ="background-color:lavender;width:400px">
-Enter CSV file name: cunyLocations.csv
-Enter column name for latitude: Latitude
-Enter column name for longitude: Longitude
-Enter current latitude: 40.7021
-Enter current longitude: -73.9708
-Enter output file: closestCUNY.html
-</pre>
-		<p>which would produce the html file:
-
-		<p><iframe src="../f17/closestCUNY.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
-		<p> Another sample run to find the closest recycling bin to Roosevelt Island (using the list of recycling bins from <a href="https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y">https://data.cityofnewyork.us/Environment/Litter-Basket-Inventory/es7t-6u8y</a>):
-<pre style ="background-color:lavender;width:400px">
-Enter CSV file name: recyclingBins.csv
-Enter column name for latitude: Latitude
-Enter column name for longitude: Longitude
-Enter current latitude: 40.7605
-Enter current longitude: -73.951
-Enter output file: recyc.html
-</pre>
-		<p>which would produce the html file:
-
-		<p><iframe src="../f17/recyc.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-
-
-		<p>A template program, <tt>closestPoint.py</tt>, is available on the
-		<a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
-		The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them).
-
-		<p><i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
-
-
-
- 
-
-	<li > <b>Due Date: 18 November</b> 
-
-
-<b>CHANGE</b>
 
 		<p>Fill in the missing functions:
 
@@ -1329,6 +1205,71 @@ Enter output file: recyc.html
 		The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them).
 
 		<p><i>Hint:  See notes from Lecture 8.</i>
+
+
+	
+
+
+    
+ 
+ 
+	 <li > <b>Due Date: 13 November</b>  
+	 
+<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles fill in the missing functions</b><br>	 
+
+
+	 <li > <b>Due Date: 14 November</b> 	 
+	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br> 
+
+<p>
+<b>CHANGE</b>  Add map
+
+		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
+
+		<p> <i>Hint:  See <a href="lab8.html">Lab 8</a>.</i>
+
+
+
+ 	<li > <b>Due Date: 15 November</b> 	 
+	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+
+
+
+		<p>
+		Using folium (see <a href="lab8.html">Lab 8</a>), write a program that asks the user for the name of a CSV file, name of the output file, and creates a map with markers for all the traffic collisions from the input file.
+
+		<p>A sample run:
+<pre style = "background-color:lavender;width:400px">
+Enter CSV file name:  collisionsThHunterBday.csv
+Enter output file:  thMap.html
+</pre>
+		<p>which would produce the html file:
+
+		<p><iframe src="../f17/th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+		<p>(The demo above is for October 18, 2016 using the time the collision occurred ("TIME") to label each marker and changed the underlying map with the option:
+		<tt>tiles="Cartodb Positron"</tt> when creating the map.)
+
+		<p> This assignment uses collision data collected and made publicly by
+		<a href="https://nycopendata.socrata.com">New York City Open Data</a>.
+		
+		
+		<p><b>ADD IN SAMPLE DATA SET</b>
+		<p>See Programming Problem #39 for details on this data set.  When creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".
+
+		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
+
+
+	  
+
+
+	<li > <b>Due Date: 18 November</b> 
+	<b style="float:right">Reading: Think CS: <a href="http://runestone.academy/runestone/static/thinkcspy/Debugging/toctree.html#">Chapters 3</a> & <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">6</a></b> <br>
+
+		<p>The program,
+		<a href="https://github.com/stjohn/csci127/blob/master/errorsHex.py">errorsHex.py</a>, has lots of errors.  Fix the errors and submit the modified program.
+		<p><i>Hint:  See  <a href="lab8.html">Lab 8</a>.</i>
+
 
 
 	<li > <b>Due Date: 19 November</b>  <b style="float:right">Reading: <a href="http://runestone.academy/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>
@@ -1627,7 +1568,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 3 October 2019.)</i><br>
+<i style="float:right">(This file was last modified on 5 October 2019.)</i><br>
 </div>
 </body>
 </html>
