@@ -1107,16 +1107,38 @@ The fare is 11.5
 
 		<p><i>Hint:  See <a href="lab7.html">Lab 7</a>.</i>
 
-<!--
+
 
 	<li > <b>Due Date: 8 November</b>
 
  		<b style="float:right">Reading: <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10-mins to Pandas</a>, <a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python#gs.hnyRaik">DataCamp Pandas</a></b><br>
 
-<p>
-<b>CHANGE</b>
 
-Pandas:  make a graph with time series data, similar to shelter data.  Include sample file-- look at daily attendance-- as well as a hint that the code is similar to before but need to match the output exactly.
+
+<p>
+	In <a href="lab6.html">Lab 6</a>, we worked through a program that displayed the homeless shelter occupancy over time.  The same approach can be used for displaying any dataset where the date and time are stored.   For this program, use the lab as a starting point to display <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">public school attendance</a> from NYC OpenData. If you would like to test your program on other data, you can filter for an individual school by viewing the data and filtering on the school number ("School DBN"). Export the file as CSV and save.  Here is a sample file for the <a href="http://www.mhshs.org/hunter-college.html">high school</a> on campus:
+	<a href="dailyAttendanceManHunt2019.csv">dailyAttendanceManHunt2019.csv</a>
+	
+   <p> Modify the program from <a href="lab6.html">Lab 6</a> that displays shelter population over time to:
+		<ul>
+			<li> ask the user to specify the input file,
+			<li> ask the user to specify the output file,
+			<li> make a plot of the percentage of the total population that are children over time from the data in input file, and
+			<li> store the plot in the output file the user specified.
+		</ul>
+
+		<p>A sample run of the program:
+<pre style ="background-color:lavender;width:500px">
+Enter name of input file:  dailyAttendanceManHunt2019.csv
+Enter name of output file:  manHunt.png
+</pre>
+		<p> which produces an output:
+
+<p>
+	<img src="manHunterPlot.png" height = 300>
+
+		<p> Note:  The grading script is expecting that the label (i.e. name of your new column) is "% Attending" and the range of values be between a percentage between 0 and 100 (hint: would do you multiply by to convert a fraction into a percentage?).
+
 
 
 
@@ -1207,7 +1229,7 @@ Enter edge length:  160
 
 
 
-
+<!--
 
 	 <li > <b>Due Date: 13 November</b>
 
@@ -1565,7 +1587,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 10 October 2019.)</i><br>
+<i style="float:right">(This file was last modified on 11 October 2019.)</i><br>
 </div>
 </body>
 </html>
