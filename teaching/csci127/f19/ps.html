@@ -1120,10 +1120,13 @@ The fare is 11.5
 	
    <p> Modify the program from <a href="lab6.html">Lab 6</a> that displays shelter population over time to:
 		<ul>
-			<li> ask the user to specify the input file,
-			<li> ask the user to specify the output file,
-			<li> make a plot of the percentage of the total population that are children over time from the data in input file, and
-			<li> store the plot in the output file the user specified.
+			<li> Ask the user to specify the input file,
+			<li> Ask the user to specify the output file,
+			<li> Convert the date column (which is stored as 'YYYYMMDD') to a datetime format recognized by pandas, for example if your dataframe is <tt>df</tt>, overwrite the 'Date' column to be:
+			<pre>
+df["Date"] = pd.to_datetime(df["Date"].apply(str)	</pre>
+			<li> Make a plot of the percentage of the total population that are children over time from the data in input file, and
+			<li> Store the plot in the output file the user specified.
 		</ul>
 
 		<p>A sample run of the program:
