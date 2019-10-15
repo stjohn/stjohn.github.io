@@ -1116,7 +1116,7 @@ The fare is 11.5
 
 <p>
 	In <a href="lab6.html">Lab 6</a>, we worked through a program that displayed the homeless shelter occupancy over time.  The same approach can be used for displaying any dataset where the date and time are stored.   For this program, use the lab as a starting point to display <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">public school attendance</a> from NYC OpenData. If you would like to test your program on other data, you can filter for an individual school by viewing the data and filtering on the school number ("School DBN"). Export the file as CSV and save.  Here is a sample file for the <a href="http://www.mhshs.org/hunter-college.html">high school</a> on campus:
-	<a href="dailyAttendanceManHunt2019.csv">dailyAttendanceManHunt2019.csv</a>
+	<a href="dailyAttendanceManHunt2018.csv">dailyAttendanceManHunt2018.csv</a>
 	
    <p> Modify the program from <a href="lab6.html">Lab 6</a> that displays shelter population over time to:
 		<ul>
@@ -1124,7 +1124,7 @@ The fare is 11.5
 			<li> Ask the user to specify the output file,
 			<li> Convert the date column (which is stored as 'YYYYMMDD') to a datetime format recognized by pandas, for example if your dataframe is <tt>df</tt>, overwrite the 'Date' column to be:
 			<pre>
-df["Date"] = pd.to_datetime(df["Date"].apply(str)	</pre>
+df["Date"] = pd.to_datetime(df["Date"].apply(str))	</pre>
 			<li> Make a plot of the percentage of the total population that are children over time from the data in input file, and
 			<li> Store the plot in the output file the user specified.
 		</ul>
@@ -1226,12 +1226,7 @@ Enter edge length:  160
 
 		<p><i>Hint:  See notes from Lecture 8.</i>
 
-
-
-
 <!--
-
-
 
 	 <li > <b>Due Date: 13 November</b>
 
@@ -1242,7 +1237,7 @@ Enter edge length:  160
 
 	 <li > <b>Due Date: 14 November</b>
 <p>
-<b>CHANGE</b>  Add map
+		<p><iframe src="nycMap.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
 
