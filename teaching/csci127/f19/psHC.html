@@ -225,9 +225,9 @@ Fall 2019<br><br>
 
 	</b> <b style="float:right">Due Date: 21 October</b>  <br>
 
-  <p><href="http://geojson.org"><img src="geoJSON.png" height = 200></a>
+  <p><href="http://geojson.org"><img src="../f18/geoJSON.png" height = 200></a>
 
-		<p> Using the geoJSON mapper (see <a href="geoJSONnotes.html">geoJSON notes</a>), make a JSON file that includes the following features:
+		<p> Using the geoJSON mapper (see <a href="../f18/geoJSONnotes.html">geoJSON notes</a>), make a JSON file that includes the following features:
 		<ul>
 			<li> Your neighborhood marked as a region (e.g. polygon),
       		<li> Any subway lines (marked as a line: color code to match the MTA colors, e.g. the A line is blue, the 1 line is red, 4-5-6 lines are green),
@@ -239,95 +239,9 @@ Fall 2019<br><br>
 		<p> Submit a screenshot of your map as a .pdf file.
 	<hr>
 
-	<li > <b>HC 8:  </b> <b style="float:right">Due Date: 28 October</b>  <br>
+	<li > <b>HC 9:  Webpage</b> <b style="float:right">Due Date: 28 October</b>  <br>
 
-  <p><href="http://geojson.org"><img src="geoJSON.png" height = 200></a>
-
-		<p> Move this later-- needs to be after 23 October since need
-
-		<p> Using the geoJSON mapper (see <a href="geoJSONnotes.html">geoJSON notes</a>), make a JSON file that includes the following features:
-		<ul>
-			<li> Your neighborhood marked as a region (e.g. polygon),
-      		<li> Any subway lines (marked as a line: color code to match the MTA colors, e.g. the A line is blue, the 1 line is red, 4-5-6 lines are green),
-			<li> Other major transportation corridors (e.g. major bus routes or major roads) marked as lines, and
-			<li> Transit stops on your subway lines and major bus routes (marked as points).
-		</ul>
-		<p> Commit to github, and view using the github preview button (you should see you encoding rendered graphically on a map).
-
-		<p> Submit a screenshot of your map as a .pdf file.
-
-
-
-Add in: read the JSON feed of citibike
-
-voronoi diagrams of your potential stations
-
-
-
-	<p>Turnstile Entries
-
-    <p><img src="turnstileEntries.png" height=200>
-      <img src="turnstileExits.png" height=200>
-      <img src="turnstileDiff.png" height=200>
-      <br>(Entries, exits, and difference via turnstile #1 at 68th Street-Hunter College station for the week ending 1 September 2018)
-
-
-		<p> In <a href="lab7.html">Lab 7</a>, we introduced
-		<a href="https://opendata.cityofnewyork.us">NYC OpenData</a>.  As part of the OpenData initiative, the <a href="https://data.cityofnewyork.us/Transportation/MTA-Data/mmu8-8w8b">MTA</a> releases information about the subways, buses, and commuter trains.  To access the real-time data, MTA provides feeds (requires registration).  We will focus on the historical data stored about stations.
-
-		<p> THe MTA keeps track of the number of people entering and exiting each station via the <a href="http://web.mta.info/developers/turnstile.html">turnstiles</a>.  Readings of how many people entered and exited are measured every 4 hours.
-    Some stations measure the numbers at midnight, 4am, 8am, noon, 4pm, and 8pm.  Others are measured on slightly shifted schedules, but always 4 hours apart.  For example, the 68th Street-Hunter College station has each turnstile measured at 1am, 5am, 9am, 1pm, 5pm, and 9pm.  These numbers are recorded as cumulative running totals.  For example, here is some of the data from the 68th Street-Hunter College station for September 22:
-
-<pre>
-C/A,UNIT,SCP,STATION,LINENAME,DIVISION,DATE,TIME,DESC,ENTRIES,EXITS
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,01:00:00,REGULAR,0026638604,0015384642
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,05:00:00,REGULAR,0026638606,0015384646
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,09:00:00,REGULAR,0026638640,0015384847
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,13:00:00,REGULAR,0026638946,0015385117
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,17:00:00,REGULAR,0026639543,0015385340
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/22/2018,21:00:00,REGULAR,0026639975,0015385496
-R246,R177,00-00-00,68ST-HUNTER CO,6,IRT,09/23/2018,01:00:00,REGULAR,0026640099,0015385542
-</pre>
-
-    <p> The last two entries on the lines are the entries and exits for that turnstile (in this case, the numbered <tt>00-00-00</tt>).  At 1am, the entry total was <tt>0026638604</tt> and the exit total was <tt>0015384642</tt>.  Four hours later, the entry total was <tt>0026638606</tt> and the exit total was <tt>0015384646</tt>.  So, over that 4-hour period from 1am to 5am, <tt>0026638606-0026638604 = 2</tt> people entered the station via that turnstile.  Similarly, 4 people left the station via that turnstile.
-
-    <p>Pick a turnstile in your station and make a plot of the number of entries and a plot of the number of exits for the week ending <a href="http://web.mta.info/developers/data/nyct/turnstile/turnstile_180901.txt">1 September 2018</a>.
-
-    <p>Some useful tips:
-    <ul>
-       <li> If you have your turnstile data stored in a variable, <tt>turnsData</tt>, you can select the data for a single station (for example, <tt>68TH-HUNTER CO</tt>) with the command:
-         <pre>
-turnsHunter = turnsData[ turnsData["STATION"] == "68ST-HUNTER CO" ]</pre>
-        You can similarly select a single turns(for example, <tt>00-00-01</tt>) with <tt>turnsHunter</tt> and the column name <tt>SCP</tt>.
-      <li> Some of the data files had extra spaces after "EXITS".  Pandas thinks those spaces are part of the name of your column.  You can either include the spaces (i.e. "EXITS   ") or you can edit the CSV file and remove the trailing spaces and save the revised file.
-      <li> You can create a column that contains the difference between the entries and exits at each time point with:
-        <pre>
-myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
-      <li> Since the default colors for pyplot are a bit garish, the above plots use the <a href="https://seaborn.pydata.org">Seaborn</a> package (can be downloaded as part of the Anaconda distribution or following the directions on their downloads page).  It's totally optional, but if you would like to use a similar palette, including the line with your imports:
-        <pre>
-          import seaborn as sns</pre>
-      will then change the default colors and templates to Seaborn.
-    </ul>
-
-		<p> Submit a .pdf file that includes the following:
-        <ul>
-          <li> The name of your station and the name of the turnstile you are using for your plots.
-          <li> Three plots for the week's data:
-              <ul>
-                  <li> the cumulative number of entries,
-                  <li> the cumulative number of exits, and
-                  <li> the difference of entries and exits.
-                </ul>
-          <li> Any patterns you noticed in the data (e.g. the plots above for turnstile <tt>00-00-00</tt> show that over the weekend it had similar number of people using it for entry and exit, but during the week if was used much more for entries).
-        </ul>
-	<hr>
-
-	<li > <b>HC 9:  Webpage</b> <b style="float:right">Due Date: 4 November</b>  <br>
-
-	<br>
-
-
-
+ 
 
 		<p> We are going to be using github to make webpages for your projects.  There will be only one site for each project, but we want everyone to set up there own page as a warm-up exercise.
 
@@ -347,50 +261,12 @@ myTurns["Entries - Exits"] = myTurns["ENTRIES"] - myTurns["EXITS"]</pre>
 
 
 	<hr>
+ 
 
 
+	<li > <b>HC 10:  Project Plan</b> <b style="float:right">Due Date: 4 November</b>  <br>
 
-	<li > <b>HC 10: Morning Commute Snapshot</b> <b style="float:right">Due Date: 11 November</b>  <br>
-
-    <p><img src="turnstileEntryTotals.png" height=300>
-      <img src="turnstileExitTotals.png" height=300>
-      <br>(Entries and exits (all turnstiles) at 68th Street-Hunter College station for morning commute for the week ending 1 September 2018.)
-
-
-		<p> Write a program that takes a weekly turnstile data file and makes a graph of <i>all the entries</i> and a graph of <i>all the exits</i> during the morning commute for a station in your neighborhood for that data.  The x-axis of your histogram should be the days of the week.  The bars in your plot should be the number of people entering the station between 5am and 9am (i.e. subtract the cumulative total at 5am from the cumulative total at 9am, or the closest 4-hour block measured for your station).  Similarly, the bars in the second plot should be the exits from your station over the week.
-
-    <p> Hints:
-      <ul>
-          <li> In HC 8, we focused on a single turnstile.  This program asks for <b>all the turnstiles</b> at your station aggegated together.
-            That is, for the morning commute of each day, you need the total number of entries (and exits) summed up across all the turnstiles.  Look at the dataFrame and identify the rows that you will need to compute this and select those to another dataFrame (like what we did in HC 8).
-          <li> Once you have retricted to your station, make two separate data frames, one containing the 5am rows for each turnstile (i.e. rows that have value <tt>== "5:00:00"</tt>) and the other containing the 9am, in a similar fashion to above.
-          <li> Some new pandas commands that are incredibly useful are:
-            <ul>
-              <li> <tt>groupby()</tt>:  which you can use to group rows with the same values
-              <li> <tt>sum()</tt>: will sum up the groups by your chosen columns
-            </ul>
-            For example,
-            <pre>
-entries = turnsHunter9.groupby(by = ['DATE'])['ENTRIES'].sum()-turnsHunter5.groupby(by = ['DATE'])['ENTRIES'].sum()</pre>
-            creates a new series (list) of those who entered each day at 9am and then subtracts off those who entered at 5am (assuming that <tt>turnsHunter9</tt> and <tt>turnsHunter5</tt> were selected as suggested above).
-
-            <li> Two more useful commands:
-              <ul>
-              <li> <tt>to_frame()</tt>:  will take the series (list) that results from <tt>sum()</tt> and convert it into a dataFrame (so we can then plot it in pretty ways)
-              <li> <tt>reset_index()</tt>:  fixes the column labels after the frame is created.
-            </ul>
-            For example,
-            <pre>
-en = entries.to_frame().reset_index()</pre>
-            converts the series above into a dataFrame and then resets the index.  Once done, the techniques for plotting dataFrames can be used for <tt>en</tt>.
-      </ul>
-
-		<p> Submit a .pdf file that contains the name of your station, as well as the plots for the morning commute entries and exits.
-
-	<hr>
-
-	<li > <b>HC 11: Project Plan</b> <b style="float:right">Due Date: 18 November</b>  <br>
-
+	<br>
     <p><a href="https://streeteasy.com/blog/the-l-train-shutdown-explained-dates-details-closures/"><img height=300 src="LTrain_Impact_StreetEasy.jpg"><br>
       StreetEasy</a>
 
@@ -419,11 +295,19 @@ en = entries.to_frame().reset_index()</pre>
 			<li> A paragraph outlining what services (e.g. additional buses, ferries, bikes, temporary road reconfigurations or restrictions) your neighborhoods would need to mitigate the effects.
 		</ul>
 
+
+
+
+
+	<li > <b>HC 11: Citibike Map</b> <b style="float:right">Due Date: 11 November</b>  <br>
+
+ 
 	<hr>
 
 
 
-	<li > <b>HC 12: Catchments for L-Train Stations</b> <b style="float:right">Due Date: 25 November</b>  <br>
+
+	<li > <b>HC 12: Catchments for Proposed  Stations</b> <b style="float:right">Due Date: 18 November</b>  <br>
 
 
       <p>A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping access to public resources and transit.
@@ -466,7 +350,7 @@ en = entries.to_frame().reset_index()</pre>
 
 	<hr>
 
-	<li > <b>HC 13: Project Webpage</b> <b style="float:right">Due Date: 2 December</b>  <br>
+	<li > <b>HC 13: Project Webpage</b> <b style="float:right">Due Date: 25 November</b>  <br>
 
 		<p> Submit the URL of your group presentation (the two slides for the presentation)  as part of a .pdf file.  If you have plans to add more to the website, include in the .pdf file any changes you have planned but didn't have a chance to enter yet.
 
@@ -493,7 +377,7 @@ en = entries.to_frame().reset_index()</pre>
 
 
 <div>
-<i style="float:right">(This file was last modified on 2 October 2019.)</i><br>
+<i style="float:right">(This file was last modified on 15 October 2019.)</i><br>
 </div>
 </body>
 </html>

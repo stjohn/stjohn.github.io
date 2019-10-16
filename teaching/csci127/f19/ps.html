@@ -1226,17 +1226,42 @@ Enter edge length:  160
 
 		<p><i>Hint:  See notes from Lecture 8.</i>
 
-<!--
 
-	 <li > <b>Due Date: 13 November</b>
+	 <li > <b>Due Date: 13 November</b> <b style="float:right">Reading: Think CS: <a href="https://runestone.academy/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> and <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">6</a></b>
+	 
+	 <p><img src="irmaScreenshot.png" width=400>
 
-<p><b>Riff on the nifty hurricane tracker to write a function-based program, using CSV's and turtles fill in the missing functions</b><br>
-
-
+	 <p>Fill in the missing function to animate hurricane data (inspired by the 2018 <a href="http://nifty.stanford.edu/2018/ventura-hurricane-tracker/nifty-hurricanes.html">Nifty Hurricane Program</a> by Phil Ventura).  Your function, <tt>animate(t,lat,lon,wind)</tt> takes as input:
+	 <ul>
+	 	<li> <tt>t</tt>: a turtle,
+	 	<li> <tt>lat</tt>: an integer storing the current latitude,
+	 	<li> <tt>lon</tt>: an integer storing the current longitude, and
+	 	<li> <tt>wind</tt>: the current wind speed in miles per hour.
+	 </ul>
+	 
+	 Your function should move to the turtle to the current location (longitude, latitude), and then based on the  
+<a href="https://www.nhc.noaa.gov/aboutsshws.php">Saffir-Simpson Hurricane Wind Scale</a>, change the turtle to be:
+	 <ul>
+	 	<li> Red and pen size 5 for Category 5 (windspeed > 157 mph)
+    	<li> Orange and pen size 4 for Category 4  (windspeed in 130-156 mph)
+    	<li> Yellow and pen size 3 for Category 3   (windspeed in 111-129 mph)
+    	<li> Green and pen size 2 for Category 2   (windspeed in 96-110 mph)
+    	<li> Blue and pen size 1 for Category 1   (windspeed in 74-95 mph)
+    	<li> White and pen size 1 if not hurricane strength
+	 </ul>
+	 
+	 <p>A template program, <tt>hurricane.py</tt>, is available on the
+	 <a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
+	 The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them).
+	 
+	 <p>Two test files (<a href="irma.csv">irma.csv</a> and <a href="jose.csv">jose.csv</a>) are from the <a href="http://nifty.stanford.edu/2018/ventura-hurricane-tracker/nifty-hurricanes.html">Nifty site</a>.  Additional CSV files are available there.
+	 
 
 
 	 <li > <b>Due Date: 14 November</b>
-<p>
+	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
+	 
+	
 		<p><iframe src="nycMap.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
@@ -1269,10 +1294,10 @@ Enter output file:  thMap.html
 
 		<p> This assignment uses collision data collected and made publicly by
 		<a href="https://nycopendata.socrata.com">New York City Open Data</a>.
+		A sample file, <a href="collisionsThHunterBday.csv">collisionsThHunterBday.csv</a> from 18 October 2016 was downloaded and can be used to test your program.
 
 
-		<p><b>ADD IN SAMPLE DATA SET</b>
-		<p>See Programming Problem #39 for details on this data set.  When creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".
+		<p>Note:  when creating datasets to test your program, you will need to filter for both date (to keep the files from being huge) and that there's a location entered.  The former is explained above; to check the latter, add the additional filter condition of "LONGITUDE is not blank".
 
 		<p><i>Hint:  For this data set, the names of the columns are "LATITUDE" and "LONGITUDE" (unlike the previous map problem, where the data was stored with "Latitude" and "Longitude"). </i>
 
@@ -1290,7 +1315,6 @@ Enter output file:  thMap.html
 
 	<li > <b>Due Date: 19 November</b>  <b style="float:right">Reading: <a href="http://runestone.academy/runestone/static/thinkcspy/MoreAboutIteration/toctree.html">Chapter 8</a></b><br>
 
-<b>CHANGE</b>
 
 		<p> Modify the program from <a href="lab10.html">Lab 10</a> that makes a turtle walk 100 times.  Each "walk" is 30 steps forward and the turtle can turn left 0,10,20,...,350 degrees (chosen randomly) at the beginning of each walk.
 
@@ -1344,7 +1368,7 @@ You entered: 19
 
 		<p> Write a <b>simplified machine language program</b> that prints:  <tt>I love Python!</tt>
 
-		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
+		<p> See <a href="lab10.html">Lab 10</a> for details on submitting the simplified machine language programs.
 
 		<p> <i>Hint:  You may find the following table useful:</i>
 		<p>
@@ -1355,13 +1379,11 @@ You entered: 19
 
 	<li > <b>Due Date: 25 November</b>  <b style="float:right">Reading: <a href="https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats">MIPS Wikibooks</a></b><br>
 
-<b>CHANGE</b>
-
 
 		<p>Write a <b>simplified machine language program</b> that has register <tt>$s0</tt> loop through
-		the numbers 0, 5, 10, ..., 50.
+		the numbers 2, 4, 6, 8, ..., 20.
 
-		<p> See <a href="lab11.html">Lab 11</a> for details on submitting the simplified machine language programs.
+		<p> See <a href="lab10.html">Lab 10</a> for details on submitting the simplified machine language programs.
 
 
 
@@ -1372,7 +1394,7 @@ You entered: 19
 
 		<p>Using Unix shell commands, write a script that counts the number of <tt>.py</tt> files in current working directory.
 
-		<p><i>Hint:  See <a href="lab11.html">Lab 11</a>.</i>
+		<p><i>Hint:  See <a href="lab10.html">Lab 10</a>.</i>
 
 
 
@@ -1560,16 +1582,17 @@ Enter a number: -1
 </pre>
 
 
--->
+
 
 </ol>
 
-
+<!--
 <br>
 <hr>
 <i>More to come...</i>
 <hr>
 <br>
+-->
 
 </div>
 
@@ -1582,7 +1605,7 @@ Here's <a href="http://xkcd.com">xkcd</a> on the simplicity of Python:
 
 
 <div>
-<i style="float:right">(This file was last modified on 11 October 2019.)</i><br>
+<i style="float:right">(This file was last modified on 15 October 2019.)</i><br>
 </div>
 </body>
 </html>
