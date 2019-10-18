@@ -16,7 +16,7 @@
 	</div>
 
 
-	<a class="forward" href="session3_3a.html">
+	<a class="forward" href="session3_ec.html">
 		<img src="assets/icons/forward.svg" width="50px"/>
 	</a>
 
@@ -26,14 +26,14 @@
 	<!-- END HERE -->
 
 	<div class="content">
-		<h1>Parsing USGS Data</h1>
+		<h2>Session 3, #4:  Parsing USGS Data</h2>
 		<hr>
 
 
 
 		<a href="http://www.amnh.org/exhibitions/permanent-exhibitions/rose-center-for-earth-and-space/david-s.-and-ruth-l.-gottesman-hall-of-planet-earth/why-are-there-ocean-basins-continents-and-mountains/plate-tectonics/earthquakes-and-plate-tectonics">
 		<img src="earthquakes-and-plate-tectonics_dynamic_lead_slide.jpg"></a>
-		
+
 		<p>
 		Python has some built-in commands for breaking down complicated lines like those in the CSV file:
 		<pre>
@@ -42,21 +42,21 @@
   2017-01-17T11:48:48.530Z,5.4319,94.6079,54.55,5.6,mb,,67,2.338,1,us,us10007tps,2017-01-17T12:14:46.732Z,"80km W of Banda Aceh, Indonesia",earthquake,7.4,5.8,0.045,173,reviewed,us,us
 		</pre>
 		(each line is so long, it goes off the edge of the window...)
-		
+
 		<p>
 		Let's focus in on the second line:
 		<pre>
   obsData = '2017-01-17T11:48:48.530Z,5.4319,94.6079,54.55,5.6,mb,,67,2.338,1,us,us10007tps,2017-01-17T12:14:46.732Z,"80km W of Banda Aceh, Indonesia",earthquake,7.4,5.8,0.045,173,reviewed,us,us'
 		</pre>
-		We will give this data about the observed earthquake a name, <tt>obsData</tt>, to make it easier to refer and use.  In Python, named items are called <b>variables</b>.  All of our turtles (<tt>teddy</tt>, <tt>tommy</tt>, and friends) are variables in our programs. 
-		
-		<p>Our goal is plot thousands of earthquake observerations, so, it would be helpful to automatically extract the longitude and latitude from each line.  Here's the steps we need: 
+		We will give this data about the observed earthquake a name, <tt>obsData</tt>, to make it easier to refer and use.  In Python, named items are called <b>variables</b>.  All of our turtles (<tt>teddy</tt>, <tt>tommy</tt>, and friends) are variables in our programs.
+
+		<p>Our goal is plot thousands of earthquake observerations, so, it would be helpful to automatically extract the longitude and latitude from each line.  Here's the steps we need:
 		<ol>
 			<li> Split up a line into the columns, and </li>
 			<li> Convert those columns (which are stored as words) to numbers
 			<!--<li> rounding those numbers (which could be decimal or floating point numbers) to whole numbers (also called integers).--></li>
 		</ol>
-		To do this in Python, we use the <tt>split()</tt> command to split up the line, breaking on commas:  
+		To do this in Python, we use the <tt>split()</tt> command to split up the line, breaking on commas:
 		<ol>
 			<li> Split up a line into the columns:<br><br>
 			<i>We use <tt>split()</tt> to split up the line, breaking on commas:</i><br>
@@ -77,12 +77,12 @@
 			lon = float(columns[2])
 			</pre>
 		</ol>
-		
+
 		<p> We can then use the numbers stored in the variables <tt>lon</tt> and <tt>lat</tt> to mark the longitude and latitude from the file to the world map:
 		<p>
 		<iframe src="https://trinket.io/embed/python/733f2a6be5?start=result" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-		
 
+		<p class=challenge><br><b>Challenge:</b> At the bottom of the program, there are two variables, <tt>obsData2</tt> and <tt>obsData3</tt>, that contain the next two lines of USGS data.  Stamp the points stored in  <tt>obsData2</tt> and <tt>obsData3</tt> on the map.<br><br></p>
 	</div>
 
 </body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Session 1: Turtles in Python</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session1b.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="session1.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+		
+		<h2>Turtles</h2>
+		<hr>
+		
+		<p>
+		To draw to the screen, we will use the <tt>turtle</tt> library of Python. A library is an extra chunk of code, on top of what Python already has in it, that allows us to do specific, fancier things. Some libraries are built-in to Python, and some are designed by users which you can download separately.
+		</p>
+		
+		<p class="challenge" > 
+		<br>
+		<b>Challenge:</b>
+		
+			What happens if you change the <tt>45</tt> in the <tt>left()</tt> command to <tt>90</tt>?   Try changing it and click the Run button to see what happens.
+			<br>
+			<br>
+		</p>   
+		<p>
+		<iframe src="https://trinket.io/embed/python/ac4636801e" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		</p>   
+		
+		<p>
+		Let's look at the program line by line:
+		
+		
+		<p>
+		<table bgcolor="lightblue">
+			<tr><th>1</th>
+				<td><tt>import turtle</tt></td>
+				<td>Directs Python to load the turtle package, so, we can use the commands in it.</td></tr>
+			<tr><th>2</th>
+				<td><tt></tt></td>
+				<td>Blank lines are ignored by Python.</td></tr>
+			<tr><th>3</th>
+				<td><tt>teddy = turtle.Turtle()</tt></td>
+				<td>Creates a variable called <tt>teddy</tt>.  Variables store information while our program is running.  <tt>teddy</tt> keeps track of the location and the direction facing.</td></tr>
+			<tr><th>4</th>
+				<td><tt>teddy.forward(100)</tt></td>
+				<td>Since <tt>teddy</tt> is a Turtle object, we can use built-in actions, like <tt>forward()</tt>.</td></tr>
+			<tr><th>5</th><td><tt>teddy.left(45)</tt></td><td>Another built-in function of the Turtle class is <tt>left(x)</tt> which turns our turtle.</td></tr>
+			<tr><th>5</th>
+				<td><tt>teddy.forward(100)</tt></td>
+				<td>We can repeat commands. Here, we use the <tt>forward()</tt> to move forward 100 steps.</td></tr>
+		</table>
+		
+
+	</div>
+
+</body>
+</html>	
+

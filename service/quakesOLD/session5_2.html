@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style/main.css">
+	<title>Numbers from Files</title>
+</head>
+<body>
+
+	<!-- START HERE -->
+	<div class="banner">
+		<img src="assets/icons/amnh-logo.png" class="amnh-logo"/>
+		<a href="toc.html">
+			<img src="assets/icons/toc.svg"/ class="toc"/>
+		</a>
+
+	</div>
+
+
+	<a class="forward" href="session5_3.html">
+		<img src="assets/icons/forward.svg" width="50px"/>
+	</a>
+
+	<a class="backward" href="session5_1.html">
+		<img src="assets/icons/backward.svg" width="50px"/>
+	</a>
+	<!-- END HERE -->
+
+	<div class="content">
+		<h1>Numbers From Files</h1>
+		<hr>
+
+		<p>So far, we have used a program to read in colors from a file.  Lines from a file are read in  words or <b>strings</b> (sequences of letters or other characters).  Even if the characters look like a number, we need to tell Python to store them as a number (the default is to keep the values as strings unless told otherwise).  </p>
+		
+		<p>The way to convert a string to a number is with the command, <tt>float()</tt>:<p>
+		<pre>
+	num = float(line)
+		</pre>
+		where <tt>line</tt> is a line of text from the file.  Python will convert it to a number and store it the variable <tt>num</tt>.  The name <tt>float</tt> comes from "floating point numbers" or another way to describe real number (roughly, numbers with decimal points).
+		
+		<p>
+		<iframe src="https://trinket.io/embed/python/d8990cf55d" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+		 
+		 <p>
+		<p class=challenge><br><b>Challenge:</b> Make a new file of distances.  To create a file, click on the <tt>+</tt> button.  Write one number per line and make sure to change the main program to open your new file.  <br><br>
+
+	</div>
+</body>
+</html>
+

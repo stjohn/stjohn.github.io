@@ -1,0 +1,19 @@
+Coding Science
+
+	Coding Climate Change
+	Coding Quakes
+	
+Other possible ones (based on modules used in high school curriculum):
+
+	Coding Disease Spread:  basic epidemiology, could either go towards the contact graphs or SIR models-- often question glancing on topic but not sure if either is in 6-8 Scope & Sequence.
+	
+	Coding Ecology:  Focus on growth models for ecology: exponential growth, logistic growth, predator-prey.  
+	
+	Something on topo maps-- use PIL like was done in coding climate change and have students color code by height, write code to fill in topo lines (adjust if statements to make differing amount of lines); do "hill climbing" to find local optima.
+	Who would have height of region as an array?  
+	
+	
+	
+	
+	
+	

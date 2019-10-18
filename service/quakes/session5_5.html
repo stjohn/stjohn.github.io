@@ -16,7 +16,7 @@
 	</div>
 
 
-	<a class="forward" href="more.html">
+	<a class="forward" href="toc.html">
 		<img src="assets/icons/forward.svg" width="50px"/>
 	</a>
 
@@ -26,17 +26,17 @@
 	<!-- END HERE -->
 
 	<div class="content">
-		<h1>Shading by Magnitude</h1>
+		<h2>Session 5, #6:  Additional Challenges: Shading by Magnitude</h2>
 		<hr>
 		<p>
-		Where an earthquake occurs is one piece of information collected.  Another is the magnitude, the size based on the quantity of energy released (measured on the Richter Scale).  For the USGS data files, magnitude is stored in the fourth column.  
-		
+		Where an earthquake occurs is one piece of information collected.  Another is the magnitude, the size based on the quantity of energy released (measured on the Richter Scale).  For the USGS data files, magnitude is stored in the fourth column.
+
 		<p>Let's use color to indicate the magnitude of the quake. We will set
-		the <span style="color:red">red</span> to be the magnitude times 40 (since magnitudes usually range from near 0 to about 6, but colors range from 0 to 255).  For example, 
+		the <span style="color:red">red</span> to be the magnitude times 40 (since magnitudes usually range from near 0 to about 6, but colors range from 0 to 255).  For example,
 		<ul>
 			<li> if the magnitude is <tt>0.5</tt>, then the amount of red shown will be <tt>0.5 * 40 = 20</tt> (very dark red).  </li>
 			<li> If the magnitude is very large number like <tt>6.0</tt>, then the color will be <tt>6.0 * 40 = 240</tt> (a very bright red).
-		</ul>  
+		</ul>
 		<p>
 		The Python code is:
 		</p>
@@ -46,13 +46,13 @@
 		<p>
 		Remember colors can be specified by (<span style="color:red"><b>R</b>ed</span>, <span style="color:green"><b>G</b>reen</span>, <span style="color:blue"><b>B</b>lue</span>) values.
 		</p>
-		
+
 		<p class="challenge"><br><b>Challenges:</b>
 		<br> &bull; Change <tt>teddy</tt> to be circular or turtle shaped to make the earthquakes more visible on the map.
 		<br> &bull; Change the coloring from shades of red to shades of purples.
 		<br>
 		<br>
-			
+
 		<p>
 		<iframe src="https://trinket.io/embed/python/c06d30262b" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 		</p>

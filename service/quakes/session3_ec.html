@@ -20,30 +20,30 @@
 		<img src="assets/icons/forward.svg" width="50px"/>
 	</a>
 
-	<a class="backward" href="session3_3a.html">
+	<a class="backward" href="session3_3.html">
 		<img src="assets/icons/backward.svg" width="50px"/>
 	</a>
 	<!-- END HERE -->
 
 	<div class="content">
-		<h1>Additional Challenges</h1>
+		<h2>Session 3, #5: Additional Challenges:   Labeling Earthquakes</h2>
 		<hr>
 
-	
-		<i>These are engaging exercises that are not needed for the flow of the course but for students who finished the first parts early.</i>	
-		
+
+		<i>These are engaging exercises that are not needed for the flow of the course but for students who finished the first parts early.</i>
+
 		<p>The USGS data also includes the location of the earthquake in the column after the 13th comma:
 		<p>
 		<tt>
 		obsData = '2017-01-17T11:48:48.530Z,5.4319,94.6079,54.55,5.6,mb,,67,2.338,1,us,us10007tps,2017-01-17T12:14:46.732Z,<span style="color:red">"80km W of Banda Aceh, Indonesia"</span>,earthquake,7.4,5.8,0.045,173,reviewed,us,us'
 		</tt>
-		
+
 		We can locate that in a similar way to getting latitude and longitude.  Since we want words (and not numbers as we did for latitude and longitude), it is a bit easier:
 		<pre>
 			columns = line.split(',')
 			location = columns[13]
 		</pre>
-		
+
 		<p class=challenge><br><br><b>Challenge:</b>  Mark the three earthquakes with their locations, using the <tt>write()</tt> command:
 		<br>
 		<br>
