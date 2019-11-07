@@ -1115,9 +1115,9 @@ The fare is 11.5
 
 
 <p>
-	In <a href="lab6.html">Lab 6</a>, we worked through a program that displayed the homeless shelter occupancy over time.  The same approach can be used for displaying any dataset where the date and time are stored.   For this program, use the lab as a starting point to display <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">public school attendance</a> from NYC OpenData. If you would like to test your program on other data, you can filter for an individual school by viewing the data and filtering on the school number ("School DBN"). Export the file as CSV and save.  There is a sample file for the <a href="http://www.mhshs.org/hunter-college.html">high school</a> on campus on 
+	In <a href="lab6.html">Lab 6</a>, we worked through a program that displayed the homeless shelter occupancy over time.  The same approach can be used for displaying any dataset where the date and time are stored.   For this program, use the lab as a starting point to display <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">public school attendance</a> from NYC OpenData. If you would like to test your program on other data, you can filter for an individual school by viewing the data and filtering on the school number ("School DBN"). Export the file as CSV and save.  There is a sample file for the <a href="http://www.mhshs.org/hunter-college.html">high school</a> on campus on
 	<a href="https://github.com/stjohn/csci127">github</a>
-	
+
    <p> Modify the program from <a href="lab6.html">Lab 6</a> that displays shelter population over time to:
 		<ul>
 			<li> Ask the user to specify the input file,
@@ -1228,7 +1228,7 @@ Enter edge length:  160
 
 
 	 <li > <b>Due Date: 13 November</b> <b style="float:right">Reading: Think CS: <a href="https://runestone.academy/runestone/static/thinkcspy/PythonTurtle/toctree.html">Chapters 4</a> and <a href="http://runestone.academy/runestone/static/thinkcspy/Functions/toctree.html">6</a></b>
-	 
+
 	 <p><img src="irmaScreenshot.png" width=400>
 
 	 <p>Fill in the missing function to animate hurricane data (inspired by the 2018 <a href="http://nifty.stanford.edu/2018/ventura-hurricane-tracker/nifty-hurricanes.html">Nifty Hurricane Program</a> by Phil Ventura).  Your function, <tt>animate(t,lat,lon,wind)</tt> takes as input:
@@ -1238,9 +1238,9 @@ Enter edge length:  160
 	 	<li> <tt>lon</tt>: an integer storing the current longitude, and
 	 	<li> <tt>wind</tt>: the current wind speed in miles per hour.
 	 </ul>
-	 
+
 	 <p>
-	 Your function should move to the turtle to the current location (longitude, latitude), and then based on the  
+	 Your function should move to the turtle to the current location (longitude, latitude), and then based on the
 <a href="https://www.nhc.noaa.gov/aboutsshws.php">Saffir-Simpson Hurricane Wind Scale</a>, change the turtle to be:
 	 <ul>
 	 	<li> red and pen size 5 for Category 5 (windspeed > 157 mph)
@@ -1250,20 +1250,20 @@ Enter edge length:  160
     	<li> blue and pen size 1 for Category 1   (windspeed in 74-95 mph)
     	<li> white and pen size 1 if not hurricane strength
 	 </ul>
-	 
+
 	 <p>A template program, <tt>hurricane.py</tt>, and background image, <tt>mapNASA.gif</tt>, are available on the
 	 <a href="https://github.com/stjohn/csci127">CSci 127 repo on github</a>.
 	 The grading script does not run the whole program, but instead runs each of your functions separately ('unit tests') to determine correctness.  As such, the names of the functions must match exactly the ones listed above (else, the scripts cannot find them).
-	 
+
 	 <p>Two test files (<a href="irma.csv">irma.csv</a> and <a href="jose.csv">jose.csv</a>) are from the <a href="http://nifty.stanford.edu/2018/ventura-hurricane-tracker/nifty-hurricanes.html">Nifty site</a>.  Additional CSV files are available there.
-	 
+
 	 <p>
 	 <i>Hint:  You may find the following turtle commands useful:  <tt>color()</tt>, <tt>goto()</tt>, and <tt>pensize()</tt>.</i>
 
 	 <li > <b>Due Date: 14 November</b>
 	 <b style="float:right">Reading: <a href="http://python-visualization.github.io/folium/docs-master/quickstart.html#Getting-Started">Folium Tutorial</a></b><br>
-	 
-	
+
+
 		<p><iframe src="nycMap.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
 		<p> Write a program that uses folium to make a map of New York City.  Your map should be centered at (40.75, -74.125) and include a marker for the main campus of Hunter College.  The HTML file your program creates should be called: <tt>nycMap.html</tt>
@@ -1440,11 +1440,10 @@ I love C++
 
 		<p> Write a <b>C++ program</b> that converts farenheit to celsius.  Your program should prompt the user for the degrees in farenheit and then print out the temperature in celsius.
 
-		<p> A useful formula:  <i> celsius = (farenheit - 32) * (5/9)</i>.
+		<p> A useful formula:  <i> celsius = (farenheit - 32.0) * (5.0/9.0)</i>.
+    <p> Please <u>include the decimal digit</u> in your formula (.0) and output with <code> cout << fixed << ... </code> to enforce output with decimal places even when 0</p>
 
 		<p>See <a href="lab3.html">Lab 3</a> for designing Input-Process-Output programs and <a href="lab11.html">Lab 11</a> for getting started with C++.
-
-
 
 
 
