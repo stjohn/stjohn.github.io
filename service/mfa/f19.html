@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  	<title>@MfA: Python in the City</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	10px ;
+  }
+  </style>
+</head>
+<body>
+
+<div>
+<div style =  "float:right">
+<a href="https://www.mathforamerica.org">
+<img style =  "height:60" src="mfaLogo.png"></a>
+</div>
+
+
+<h1>MfA Workshop: Python in the City<h1>
+<h3>
+<a href=""https://www.mathforamerica.org/pdcatalog>Fall 2019</a></h3>
+
+<p><i>What's the noisiest street in the city?  And which streets have the most collisions?  What trees are most commonly planted in the streets in your neighborhood?  What parts of the city are above the 100-year flood level?   We will explore these and related questions using Python and publicly available data about New York City.  This mini-course is organized into three sessions, each focused on a challenge, that introduces intermediate programming concepts using the Python programming language and popular packages that allow the analysis of structured data and the visualization via graphs and HTML navigable maps.  The workshop, via the challenges and variations, provides a multitude of scalable projects for use in the classroom.
+
+<p>
+<b>Prerequisites:</b> Assumes basic knowledge of Python:  familiarity with basic variable types (integers, real numbers, characters, strings and lists), input/output, definite loops (for-loop), and decisions.</i>
+
+
+</div>
+
+<div>
+<h2>Session 1: Elevation Maps (Arrays & Images)</h2>
+<h3> Wednesday, 6 November 2019</h3>
+
+<p><img src="floodMap.png" width = "50%">
+
+<p>Our first challenge is to build a 'flood map' of New York City metro area.  We start by exploring what data is needed and how to present the information, and then introduce the numerical analysis package, numpy,  to store grids (2 dimensional arrays) of elevations of the region.  We then use loops and decisions to traverse the array and create an image reflecting waterways and flood regions of the metropolitan are.   We introduce red-green-blue color codes to construct our flood maps.  The session ends with variations on the theme of maps based on elevations, slicing (accessing subsections of arrays), and representing colors in hexadecimal codes.
+
+
+
+<ul>
+	<li> <b>Slides:</b> <a href="mfa20191106.pdf">Session 1</a>
+	<li> <b>Concepts covered:</b>   creating and traversing 2-dimensional arrays, decisions, data representation of colors (red-green-blue codes and hexadecimal codes).
+	<li> <b>Packages used:</b>  <a href="https://numpy.org">numpy</a>, <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html">matplotlib.pyplot</a>, both part of the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda </a> release of Python.	
+	<li> <b>Data used:</b>
+		<ul>
+			<li> <a href="">Elevation data</a> from US National Oceanic and Atmospheric Administration (NOAA) <br>
+				(Save as text, and remove 5 lines of metadata at top of file before using).
+			<li> Cleaned dataset of NYC:  <a href="../../teaching/csci127/f17/elevationsNYC.txt">elevationsNYC.txt</a>.
+		</ul>
+	<li> <b>References:</b>
+		<ul>
+			<li> The flood maps exercise is based on an on-line lab for our introductory programming course (scroll halfway down):  <a href="../../teaching/csci127/f19/lab3.html">Lab 3</a>.
+			<li> It was inspired by a Nifty program on <a href="http://nifty.stanford.edu/2016/franke-mountain-paths/">mountain paths</a> by Baker Franke.
+			<li>  A lovely <a href="http://www.nytimes.com/newsgraphics/2012/1120-sandy/survey-of-the-flooding-in-new-york-after-the-hurricane.html?mcubz=1">visualization</a> of Hurricane Sandy flooding by the New York Times.
+		</ul>
+</ul>
+
+</div>
+
+<div>
+<h2>Session 2: Analyzing City Data (Structured data & File I/O)</h2>
+<h3> Wednesday, 20 November 2019</h3>
+
+<p><img src="../../teaching/csci127/f17/nycHist.png" width="50%">
+
+<p>The focus for the second meeting is analyzing structured data.  We will start with opening spreadsheets (CSV files) and graphing the data (a la Excel).  The opening challenge is on historical population data of New York City and answering questions such as:  how has the population changed over time?   What fraction of the population lives in your borough?  As well as demonstrating some of the basic statistics that are included (e.g. minimum, mean, correlation).  We then look at some data sets from <a href="https://opendata.cityofnewyork.us">NYC OpenData</a>:  daily school attendance, homeless shelter populations, parking tickets and 311 data.  Our follow-up questions include:  what days have the highest attendance at your school?  what color cars get the most parking tickets in your neighborhood?  What is the most common 311 complaint?  
+
+
+<ul>
+	<li> <b>Slides:</b> <i>(will be uploaded on 11/20)</i>
+	<li> <b>Concepts covered:</b>   file I/O, list (series) manipulation, basic statistics, analytic reasoning (if time:  binning data).
+	<li> <b>Packages used:</b>  <a href="https://pandas.pydata.org">pandas</a>, <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html">matplotlib.pyplot</a>, both part of the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda </a> release of Python.	
+	<li> <b>Data used:</b>  New York City historical population (wiki) and several datasets from NYC OpenData:   daily attendance,  homeless shelter data, 311 calls, and parking tickets.
+<!--	
+		<ul>
+			<li> 
+			<li> 2018-2019 Daily Attendance:
+				<ul>
+					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
+					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
+				</ul>
+			<li> Homeless Shelter:
+				<ul>
+					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
+					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
+				</ul>
+			<li> 311 Calls:
+				<ul>
+					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
+					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
+				</ul>
+			<li> Parking Tickets:
+				<ul>
+					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
+					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
+				</ul>				
+		</ul>
+	<li> <b>References:</b>
+		<ul>
+			<li> LINK
+			<li> LINK
+		</ul>
+</ul>
+-->
+
+</div>
+
+<div>
+<h2>Session 3: Mapping City Data (using objects, mapping coordinates)</h2>
+<h3> Wednesday, 11 December 2019</h3>
+
+<p><img src="collisions18Oct2016.png" width = "50%">
+
+<p>Our opening challenge is: where do collisions occur?  For this last session, we focus on mapping GIS coordinates.  We begin with a review latitude and longitude and mapping NYC landmarks with turtle graphics.  We then introduce the folium package (a Python wrapper for leaflet.js) that makes interactive maps that be viewed in a browser (like google maps).  We then move onto collisions, and work through filtering the data, and plotting collisions by GIS locations and color coding by vehicles involved (did it involve a taxi?  a commercial vehicle?) and time.  Our follow-up questions involve transferring these mapping techniques to other open NYC data sets.
+
+<ul>
+	<li> <b>Slides:</b> <i>(will be uploaded on 12/11)</i>
+	<li> <b>Concepts covered:</b>  Using objects (instantiating and altering attributes), traversing data from files, review of coordinate systems and latitude and longitude.   
+	<li> <b>Packages used:</b>  
+	turtle, pandas, & folium.  turtle is part of every Python distribution; 
+	<a href="https://pandas.pydata.org">pandas</a> is included in the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda</a> release of Python.	
+	<a href="https://pypi.org/project/folium/">folium</a>, a Python-wrapper for leaflet.js, is freely available.
+
+	
+	<li> <b>Data used:</b>  Locations of CUNY campuses, NYC libraries, and NYC collision data (all from NY State or NYC open data projects).
+	<!--
+		<ul>
+			<li> 
+			<li> Cleaned dataset:
+		</ul>
+	<li> <b>References:</b>
+		<ul>
+			<li> LINK
+			<li> LINK
+		</ul>
+	-->
+</ul>
+
+
+
+</div>
+
+
+
+</html>
