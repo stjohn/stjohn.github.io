@@ -295,16 +295,134 @@ Fall 2019<br><br>
 		</ul>
 
 
-
-  <!--
+	<hr>
 
 	<li > <b>HC 11: Citibike Map</b> <b style="float:right">Due Date: 11 November</b>  <br>
+
+
+
+<p>
+<iframe src="bikeLocations.html" style="width: 95%; height: 700px" name="internal"></iframe>
+
+<p>New York City's bike share program, CitiBike, provides extensive <a href="https://www.citibikenyc.com/system-data">data about their system</a>.  
+The data is stored in the <a href="https://www.json.org">JSON format</a>.  In addition to directly reading in CSV files, Pandas has a built-in function for reading in JSON files.  
+
+<p>
+Citibike includes a real-time feed of the status of stations in the system.  
+The feed is in JSON.  Here's the beginning of the file:
+
+<pre style ="background-color:lavender;width:1500px">
+{"executionTime":"2017-03-21 10:37:12 PM",
+"stationBeanList":[
+{"id":72,"stationName":"W 52 St & 11 Ave","availableDocks":18,"totalDocks":39,"latitude":40.76727216,"longitude":-73.99392888, "statusValue":"In Service",
+"statusKey":1,"availableBikes":19,"stAddress1":"W 52 St & 11 Ave","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:36:30 PM","landMark":""},
+{"id":79,"stationName":"Franklin St & W Broadway","availableDocks":31,"totalDocks":33,"latitude":40.71911552,"longitude":-74.00666661,"statusValue":"In Service",
+"statusKey":1,"availableBikes":0,"stAddress1":"Franklin St & W Broadway","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:33:23 PM","landMark":""},
+{"id":82,"stationName":"St James Pl & Pearl St","availableDocks":23,"totalDocks":27,"latitude":40.71117416,"longitude":-74.00016545,"statusValue":"In Service",
+"statusKey":1,"availableBikes":4,"stAddress1":"St James Pl & Pearl St","stAddress2":"","city":"","postalCode":"","location":"","altitude":"","testStation":false,
+"lastCommunicationTime":"2017-03-21 10:34:12 PM","landMark":""},
+</pre>
+
+<p>It begins with the time the file was created, followed by information about each station in a field marked <tt>stationBeanList</tt>.  Each entry is organized as dictionary with (key:value) pairs.  Let's look at the bean list entry for the first station:
+<pre style ="background-color:lavender;width:500px">
+   {"id":72,
+   "stationName":"W 52 St & 11 Ave",
+   "availableDocks":18,
+   "totalDocks":39,
+   "latitude":40.76727216,
+   "longitude":-73.99392888, 
+   "statusValue":"In Service",
+   "statusKey":1,
+   "availableBikes":19,
+   "stAddress1":"W 52 St & 11 Ave",
+   "stAddress2":"",
+   "city":"",
+   "postalCode":"",
+   "location":"",
+   "altitude":"",
+   "testStation":false,
+   "lastCommunicationTime":"2017-03-21 10:36:30 PM",
+   "landMark":""}
+</pre>
+
+<p>
+Which ones are useful for making a map?  We need latitude and longitude.  For our popup message, it would also be good to give location as well as the number of bikes available and number of docks.  If we called the stationBeanList entry for a station, <tt>beanList</tt>, these entries would be:
+<pre style ="background-color:lavender;width:500px">
+   beanList['latitude']
+   beanList['longitude']
+   beanList['name']
+   beanList['availableBikes']
+   beanList['totalDocks']
+</pre>
+
+
+<p>
+To build our map, we need to:
+<ol>
+	<li> Read in the json file.
+	<li> Create a map object (variable).
+	<li> Extract the location, name, and bike information for each dock.
+	<li> Add a marker for each dock to our map.
+	<li> Save our map.
+</ol>
+<p>
+
+<p>The new part is reading in a <tt>json</tt> file, but pandas has a built-in method to do that for us:  <tt>read_json()</tt>:
+<pre style ="background-color:lavender;width:650px">stations = pd.read_json('https://feeds.citibikenyc.com/stations/stations.json')
+</pre>
+
+<p>The second step, creating a map object, is the same as before:
+<pre style ="background-color:lavender;width:650px">
+mapBikes = folium.Map(location=[40.75, -73.99],tiles="Cartodb Positron",zoom_start=14)
+</pre>
+
+<p>Extracting the information from each row has an added level, since the information is stored in the dictionary, <tt>stationBeanList</tt>.  To make the lines more readable, we will save <tt>row['stationBeanList']</tt> as the variable <tt>beanList</tt>.  The rest of the <tt>for</tt> is the same as previous prorgrams:
+
+<pre style ="background-color:lavender;width:1200px">
+for i,row in stations.iterrows():
+    beanList = row['stationBeanList']
+    lat = beanList['latitude']
+    lon = beanList['longitude']
+    name = beanList['stationName'] + ": " + str(beanList['availableBikes']) + " bikes available of " + str(beanList['totalDocks']) + " total bikes"
+    print(name)
+    if beanList['statusValue'] == 'Not In Service':
+        name = beanList['stationName'] + ": Not In Service"
+        i = folium.Icon(color='lightgray')
+    else:
+        name = beanList['stationName'] + ": " + str(beanList['availableBikes']) + " bikes available of " + str(beanList['totalDocks']) + " total bikes"
+        if beanList['availableBikes'] < 2:
+            i = folium.Icon(color='red')
+        else:
+            i = folium.Icon(color='green')
+    folium.Marker([lat,lon],popup = name,icon = i).add_to(mapBikes)
+
+
+#Create the html file with the map:
+mapBikes.save(outfile='bikeLocations.html')
+
+</pre>
+
+<p>Putting this altogether gives the python program, <a href="cbStations.py">cbStations.py</a>.
+
+<p>Note:  You can directly read from a URL, as we did in this program, or if you would like to work off-line, you can download the JSON file, save it locally, and use it as before.
+
+<p>Modify the program in the following way:
+	<ul>
+		<li> Modify the popup message to give the percent full the station is
+		(i.e. the percentage of docks full at a station).  <br> <i>Hint: compute the percentage and then add it to your message-- remember to cast/convert it to string.</i>	
+		<li> Modify the program to only show a red marker if there are less than 25% of the bikes available (currently, it shows it for < 2).
+	</ul>
+	
+<p>
+Submit a .pdf that contains a screenshot of your map on the first page and the Python program that produces it on the next page.
 
 
 	<hr>
 
 
-
+<!--
 
 	<li > <b>HC 12: Catchments for Proposed  Stations</b> <b style="float:right">Due Date: 18 November</b>  <br>
 
@@ -363,8 +481,6 @@ Fall 2019<br><br>
 
 	<li > <b>HC 15: Feedback Forms</b> <b style="float:right">Due Date: 6 December</b>  <br>
 
-        <p><img height=300 src="csci127HonorsF18.jpg">
-
 		<p> (This is included for completeness, since the forms will be passed out and returned in section on 6 December.  After you have commented on others group presentations, we will distribute the forms, so that groups can use these to improve their slides and webpages for the final presentation the following week. )
 
 
@@ -376,7 +492,7 @@ Fall 2019<br><br>
 
 
 <div>
-<i style="float:right">(This file was last modified on 15 October 2019.)</i><br>
+<i style="float:right">(This file was last modified on 6 November 2019.)</i><br>
 </div>
 </body>
 </html>
