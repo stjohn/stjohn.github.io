@@ -437,8 +437,8 @@ Submit a .pdf that contains a screenshot of your map on the first page and the P
 
       <p>To make our map, we
       <ol>
-      	<li> First extract the relevant station data from the Citibike real-time feed of the status of stations in the system we used in the previous assignment.
-             Because the feed is in JSON, we extract the relevant data into a new dataframe.
+      	<li> First extract the relevant station data from the Citibike real-time feed we used in the previous assignment.
+             Because the feed is in JSON, we extract the relevant data into a new dataframe to facilitate the addition of new stations.
         <li> Next take station locations and calculate the Voronoi diagram (using the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html">scipy</a> package).
       	<li> While going row by row to get the station locations, add markers to the map (we're adding them as separate markers, not a MarkerCluster, since we don't want them to collapse when zooming out).
       	<li> Show the plot in a matplotlib window to make sure its working (note:  if you have a separate matplotlib window you may need to close it, since the rest of the program is waiting until it's done to continue).
