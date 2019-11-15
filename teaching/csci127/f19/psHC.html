@@ -304,11 +304,11 @@ Fall 2019<br><br>
 <p>
 <iframe src="bikeLocations.html" style="width: 95%; height: 700px" name="internal"></iframe>
 
-<p>New York City's bike share program, CitiBike, provides extensive <a href="https://www.citibikenyc.com/system-data">data about their system</a>.  
-The data is stored in the <a href="https://www.json.org">JSON format</a>.  In addition to directly reading in CSV files, Pandas has a built-in function for reading in JSON files.  
+<p>New York City's bike share program, CitiBike, provides extensive <a href="https://www.citibikenyc.com/system-data">data about their system</a>.
+The data is stored in the <a href="https://www.json.org">JSON format</a>.  In addition to directly reading in CSV files, Pandas has a built-in function for reading in JSON files.
 
 <p>
-Citibike includes a real-time feed of the status of stations in the system.  
+Citibike includes a real-time feed of the status of stations in the system.
 The feed is in JSON.  Here's the beginning of the file:
 
 <pre style ="background-color:lavender;width:1500px">
@@ -332,7 +332,7 @@ The feed is in JSON.  Here's the beginning of the file:
    "availableDocks":18,
    "totalDocks":39,
    "latitude":40.76727216,
-   "longitude":-73.99392888, 
+   "longitude":-73.99392888,
    "statusValue":"In Service",
    "statusKey":1,
    "availableBikes":19,
@@ -411,10 +411,10 @@ mapBikes.save(outfile='bikeLocations.html')
 <p>Modify the program in the following way:
 	<ul>
 		<li> Modify the popup message to give the percent full the station is
-		(i.e. the percentage of docks full at a station).  <br> <i>Hint: compute the percentage and then add it to your message-- remember to cast/convert it to string.</i>	
+		(i.e. the percentage of docks full at a station).  <br> <i>Hint: compute the percentage and then add it to your message-- remember to cast/convert it to string.</i>
 		<li> Modify the program to only show a red marker if there are less than 25% of the bikes available (currently, it shows it for < 2).
 	</ul>
-	
+
 <p>
 Submit a .pdf that contains a screenshot of your map on the first page and the Python program that produces it on the next page.
 
@@ -422,24 +422,25 @@ Submit a .pdf that contains a screenshot of your map on the first page and the P
 	<hr>
 
 
-<!--
-
-	<li > <b>HC 12: Catchments for Proposed  Stations</b> <b style="float:right">Due Date: 18 November</b>  <br>
 
 
-      <p>A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping access to public resources and transit.
+	<li > <b>HC 12: Catchments for Proposed  Bike Stations</b> <b style="float:right">Due Date: 18 November</b>  <br>
 
-      <p>The sample program builds a Voronoi diagram will be for libraries across the city (using the
-      library data set from  <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">NYC Library Locations</a> (download as CSV file).
-      Our map highlights the regions closest to each library:
+
+      <p>A <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> divides a region based on the distance to a set of input points.  This simple idea has many applications, one of the most famous was the <a href="http://johnsnowbicentenary.lshtm.ac.uk/about-john-snow/">work of John Snow</a> to study the 1854 cholera outbreak.  Our focus will be on mapping current and proposed CitiBike stations.
+
+      <p>The sample program builds a Voronoi diagram for the existing CitiBike stations.
+      The map highlights the regions closest to each station:
 
       <p>
-      <iframe src="../../seminar4/s17/libVor.html" style="width: 95%; height: 700px" name="internal"></iframe>
+      <iframe src="libVorBike.html" style="width: 95%; height: 600px" name="internal"></iframe>
 
       <p>To make our map, we
       <ol>
-      	<li> First take library locations and calculate the Voronoi diagram (using the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html">scipy</a> package).
-      	<li> While going row by row to get the library locations, add markers to the map (we're adding them as separate markers, not a MarkerCluster, since we don't want them to collapse when zooming out).
+      	<li> First extract the relevant station data from the Citibike real-time feed we used in the previous assignment.
+             Because the feed is in JSON, we extract the relevant data into a new dataframe to facilitate the addition of new stations.
+        <li> Next take station locations and calculate the Voronoi diagram (using the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html">scipy</a> package).
+      	<li> While going row by row to get the station locations, add markers to the map (we're adding them as separate markers, not a MarkerCluster, since we don't want them to collapse when zooming out).
       	<li> Show the plot in a matplotlib window to make sure its working (note:  if you have a separate matplotlib window you may need to close it, since the rest of the program is waiting until it's done to continue).
       	<li> Then write out the locations as a geojson file (using the <a href="https://pypi.python.org/pypi/geojson">geojson</a>).
       	<li> Load the regions in as a geoJSON layer in folium.
@@ -451,31 +452,32 @@ Submit a .pdf that contains a screenshot of your map on the first page and the P
       	pip install geojson
       </pre>
 
-      <p> The program, <a href="../../seminar4/s17/makeVor.py">makeVor.py</a>, is a bit rambling, but contains all the steps above (a better design would be to split into separate functions or files for the different tasks).  Try running it on the library dataset (assumes that it is in the same folder as the program).
+      <p> The program, <a href="makeVorBikes.py">makeVorBikes.py</a>, is a bit rambling, but contains all the steps above (a better design would be to split into separate functions or files for the different tasks).
 
-      <p>Note that it does very well in dense regions but has odd behavior on the edges of the map since we didn't include in the <tt>.json</tt> file any point at infinity and didn't clip the maps to the city boundaries.
+      <p>Try running it. Note that it does very well in dense regions but has odd behavior on the edges of the map since we didn't include in the <tt>.json</tt> file any point at infinity and didn't clip the maps to the city boundaries.
 
-      <p>Modify the program to make to make two Voronoi diagrams:
+      <p><b>Modify the program as follows:</b>
       <ul>
-      	<li> Make a Voronoi diagram of the <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49">NYC subway stations</a>
-          (download as CSV).  (Despite the name of the file suggesting that it's from 2010, the file contains the new Second Avenue Subway stops).
-        <li> Make a Voronoi diagram of the <a href="https://data.cityofnewyork.us/Transportation/Subway-Stations/arq3-7z49">NYC subway stations</a>
-            <b>without the L-train stations that east of the tunnel</b> in the input file.
-      </ul>
+      	<li> <a href = "https://www.latlong.net/">Find the latidude and longitude</a> for each of the bike stations you proposed in HC 8 (first choice only).
+        <li> Add rows in the stations dataframe for the stations you propose. You can call your stations Proposed1 ... Proposedn and set their 'statusValue' to 'Proposed'
+        <li> Change the color of the markers on the map based on the 'statusValue' and set it to 'lightgray' if the staus is 'Not In Service', 'red' if the staus is 'Proposed' and 'green' for all other.
 
-		<p> Submit a .pdf file with a screen capture image of your first HTML map (with all subway stations) and your second HTML map (without L-train stations east of the tunnel).  For each map, center the view on your station.
+      </ul>
+      <p> Run the program now and observe how your proposed bike stations cover your neighborhood.
+		<p> <b>Submit</b> a .pdf file with the name of your neighborhood and a screen capture image of the HTML map generated with your modifications on the first page  and a copy of your modfied program on the second page.
 
 	<hr>
 
+
 	<li > <b>HC 13: Project Webpage</b> <b style="float:right">Due Date: 25 November</b>  <br>
 
-		<p> Submit the URL of your group presentation (the two slides for the presentation)  as part of a .pdf file.  If you have plans to add more to the website, include in the .pdf file any changes you have planned but didn't have a chance to enter yet.
+		<p> Submit the URL of your group webpage poster/presentation as part of a .pdf file. If you have plans to add more to the website, include in the .pdf file any changes you have planned but didn't have a chance to enter yet.
 
 	<hr>
 
 	<li > <b>HC 14: Draft Presentations</b> <b style="float:right">Due Date: 2 December</b>  <br>
 
-		<p> Submit the slides of your group presentation (two slides) as  a .pdf file.  Your slides should include who is on the team, the neighborhood you chose, and a brief description of your solution to how much additional housing, and what additional services would be needed.
+		<p> Submit the slides of your group presentation (two slides total) as  a .pdf file.  Your slides should include who is on the team, the neighborhood you chose, and a brief description of your proposed citibike expansion and how it will affect your neighborhoods.
 
 	<hr>
 
@@ -484,7 +486,7 @@ Submit a .pdf that contains a screenshot of your map on the first page and the P
 		<p> (This is included for completeness, since the forms will be passed out and returned in section on 6 December.  After you have commented on others group presentations, we will distribute the forms, so that groups can use these to improve their slides and webpages for the final presentation the following week. )
 
 
--->
+
 </ul>
 </div>
 
