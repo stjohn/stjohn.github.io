@@ -71,41 +71,73 @@
 
 
 <ul>
-	<li> <b>Slides:</b> <i>(will be uploaded on 11/20)</i>
-	<li> <b>Concepts covered:</b>   file I/O, list (series) manipulation, basic statistics, analytic reasoning (if time:  binning data).
-	<li> <b>Packages used:</b>  <a href="https://pandas.pydata.org">pandas</a>, <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html">matplotlib.pyplot</a>, both part of the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda </a> release of Python.	
+	<li> <b>Slides:</b> <a href="mfa20191120.pdf">Session 2</a>
+	<li> <b>Concepts covered:</b>   file I/O, list (series) manipulation, basic statistics, binning data.
+	<li> <b>Packages used:</b>  <a href="https://pandas.pydata.org">pandas</a>, <a href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html">matplotlib.pyplot</a>, both part of the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda </a> release of Python.	 <br>
+	Optional:  <a href="https://seaborn.pydata.org">seaborn</a> for lovely statistical data visualization.
 	<li> <b>Data used:</b>  New York City historical population (wiki) and several datasets from NYC OpenData:   daily attendance,  homeless shelter data, 311 calls, and parking tickets.
-<!--	
+	
 		<ul>
-			<li> 
+			<li> Historical Population of New York City:
+				<ul>
+					<li> Wiki:  <a href="https://en.wikipedia.org/wiki/Demographic_history_of_New_York_City">Demographic history of New York City</a>
+					<li> Cleaned data:  <a href="../../teaching/csci127/f17/nycHistPop.csv">nycHistPop.csv</a> 
+				</ul>
 			<li> 2018-2019 Daily Attendance:
 				<ul>
-					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
+					<li> Hosted at NYC OpenData: <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j</a>
 					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
 				</ul>
-			<li> Homeless Shelter:
+			<li> Homeless Shelter:  <i>Did not have time to cover in slides, but included below for extra challenges:</i>
 				<ul>
-					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
-					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
+					<li> Go to: NYC OpenData: <a href="https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m">https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m</a>
+					<li>
+					Click on the "Explore Data/View Data" button.  To keep the data set from being very large (and avoid some missing values in 2014), we are going filter the data to be all counts after January 1, 2018.  To do this:
+<ul>
+	<li> Click on the "Filter" button.
+	<li> On the menu that pops us, click on "Add a New Filter Condition".
+	<li> Choose "Date of Census" but change the "is" to be "is after".
+	<li> Click in the box below and a calendar will pop up.  Highlight January 1, 2018.
+	<li> Click the check box to the left of the data.
+	<li> It will take a few seconds (it's a large file) but the rows on the left
+	will be filtered to be all counts after January 1, 2018.
+</ul>
+To download the file,
+<ul>
+	<li> Click on the "Export" button.
+	<li> Under "Download", choose "CSV".
+	<li> The download will begin automatically (files are usually stored in "Downloads" folder).
+</ul>
+
 				</ul>
-			<li> 311 Calls:
-				<ul>
-					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
-					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
-				</ul>
+
 			<li> Parking Tickets:
 				<ul>
-					<li> Hosted at <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>
-					<li> <a href="https://github.com/stjohn/csci127/blob/master/dailyAttendanceManHunt2018.csv">Filtered data set</a> (for <a href="http://www.mhshs.org/hunter-college.html">Manhattan Hunter HS</a>)
-				</ul>				
+					<li> Hosted at NYC OpenData: <a  href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2020/pvqr-7yc4/data">https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2020/pvqr-7yc4/data</a>
+					<li> Small sample file to work with:  <a href= "../../teaching/csci127/f17/tickets.csv">tickets.csv</a>
+					<li> To download data for a given neighborhood (and restricted to just a single month or year, since the data sets can be quite large):
+			<ul>
+				<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page">useful tool</a>).
+				<li> Download the data set as a CSV, filtering by "Violation Precinct".  For example, Hunter College is located in the 19th Precinct, so, you would enter <tt>19</tt> on the filter.
+
+</ul>
+
+				</ul>
+			<li> 311 Calls:  <i>Did not have time to cover in slides, but included below for extra challenges:</i>
+				<ul>
+					<li> Hosted at NYC Open Data: <a href=https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data">https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data</a>
+
+				</ul>					
 		</ul>
+<!--		
 	<li> <b>References:</b>
 		<ul>
 			<li> LINK
 			<li> LINK
 		</ul>
-</ul>
 -->
+</ul>
+
 
 </div>
 
@@ -132,11 +164,14 @@
 			<li> 
 			<li> Cleaned dataset:
 		</ul>
+		
+	
 	<li> <b>References:</b>
 		<ul>
 			<li> LINK
 			<li> LINK
 		</ul>
+		
 	-->
 </ul>
 
