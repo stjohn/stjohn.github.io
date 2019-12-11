@@ -123,6 +123,12 @@ To download the file,
 </ul>
 
 				</ul>
+				
+			<li> NYC Film Permits:
+				<ul>
+					<li> Hosted at NYC OpenData:
+					<li> Filtered data set
+				</ul>
 			<li> 311 Calls:  <i>Did not have time to cover in slides, but included below for extra challenges:</i>
 				<ul>
 					<li> Hosted at NYC Open Data: <a href=https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data">https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data</a>
@@ -147,11 +153,13 @@ To download the file,
 
 <p><img src="collisions18Oct2016.png" width = "50%">
 
-<p>Our opening challenge is: where do collisions occur?  For this last session, we focus on mapping GIS coordinates.  We begin with a review latitude and longitude and mapping NYC landmarks with turtle graphics.  We then introduce the folium package (a Python wrapper for leaflet.js) that makes interactive maps that be viewed in a browser (like google maps).  We then move onto collisions, and work through filtering the data, and plotting collisions by GIS locations and color coding by vehicles involved (did it involve a taxi?  a commercial vehicle?) and time.  Our follow-up questions involve transferring these mapping techniques to other open NYC data sets.
+<p>Our opening challenge is: where do collisions occur?  For this last session, we focus on mapping GIS coordinates.  We introduce the folium package (a Python wrapper for leaflet.js) that makes interactive maps that be viewed in a browser (like <a href="https://maps.google/com">Google maps</a>).  We then discuss how to filter data to build maps of the locations, starting with the NYC public libraries.
+
+We then work filtering the data, and plotting collisions by GIS locations and color coding by vehicles involved (did it involve a taxi?  a commercial vehicle?) and time.  <!--Our follow-up questions involve transferring these mapping techniques to other open NYC data sets.-->  Our second theme focuses on comparing and clustering based on distances between the data.  Using the collion datasets, we will suggest where k tow trucks should be placed at the start of rush hour to minimize delays (using k-means clustering).  We will then explore how distances change to the  closest subway stops in terms of two common distances:  Euclidean (L2 metric) and taxicab (L1) metrics.  We end with sketching more elaborate analysis catchment areas (Voronoi diagrams) and k-means clustering.
 
 <ul>
-	<li> <b>Slides:</b> <i>(will be uploaded on 12/11)</i>
-	<li> <b>Concepts covered:</b>  Using objects (instantiating and altering attributes), traversing data from files, review of coordinate systems and latitude and longitude.   
+	<li> <b>Slides:</b> <a href="mfa20191211.pdf">Session 3</a>
+	<li> <b>Concepts covered:</b>  Using objects (instantiating and altering attributes), traversing data from files, review of coordinate systems and latitude and longitude, visualizing data (Voronoi diagrams and k-means clustering).   
 	<li> <b>Packages used:</b>  
 	turtle, pandas, & folium.  turtle is part of every Python distribution; 
 	<a href="https://pandas.pydata.org">pandas</a> is included in the freely-distributed <a href="https://www.anaconda.com/distribution/">anaconda</a> release of Python.	
@@ -159,9 +167,9 @@ To download the file,
 
 	
 	<li> <b>Data used:</b>  Locations of CUNY campuses, NYC libraries, and NYC collision data (all from NY State or NYC open data projects).
-	<!--
+
 		<ul>
-			<li> 
+			<li> Sample folium-generated map:  <a href="../../teaching/csci127/f19/nycMap.html">Hunter map</a>
 			<li> Cleaned dataset:
 		</ul>
 		
@@ -172,7 +180,7 @@ To download the file,
 			<li> LINK
 		</ul>
 		
-	-->
+
 </ul>
 
 
