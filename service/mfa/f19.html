@@ -118,7 +118,7 @@ To download the file,
 					<li> To download data for a given neighborhood (and restricted to just a single month or year, since the data sets can be quite large):
 			<ul>
 				<li> Instead of neighborhood name or zipcode, parking tickets are classified by the police precinct that issued the ticket.  First, figure out the precinct (here's a <a href="http://www1.nyc.gov/site/nypd/bureaus/patrol/find-your-precinct.page">useful tool</a>).
-				<li> Download the data set as a CSV, filtering by "Violation Precinct".  For example, Hunter College is located in the 19th Precinct, so, you would enter <tt>19</tt> on the filter.
+				<li> Download the data set as a CSV, filtering by "Violation Precinct."  For example, Hunter College is located in the 19th Precinct, so, you would enter <tt>19</tt> on the filter.
 
 </ul>
 
@@ -127,8 +127,15 @@ To download the file,
 			<li> NYC Film Permits:
 				<ul>
 					<li> Hosted at NYC OpenData:
-					<li> Filtered data set
+						<a href="https://data.cityofnewyork.us/City-Government/Film-Permits/tg4x-b46p">https://data.cityofnewyork.us/City-Government/Film-Permits/tg4x-b46p</a>.
+					<li> Since the files are quite large, use the "Filter" option and a range of dates for "StartDateTime" and "Export" (in CSV format) all permits for those dates.					
+					<li> Filtered data set available on <a href="https://github.com/stjohn/csci127">github</a>.
 				</ul>
+
+
+				
+				
+				
 			<li> 311 Calls:  <i>Did not have time to cover in slides, but included below for extra challenges:</i>
 				<ul>
 					<li> Hosted at NYC Open Data: <a href=https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data">https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9/data</a>
@@ -155,7 +162,11 @@ To download the file,
 
 <p>Our opening challenge is: where do collisions occur?  For this last session, we focus on mapping GIS coordinates.  We introduce the folium package (a Python wrapper for leaflet.js) that makes interactive maps that be viewed in a browser (like <a href="https://maps.google/com">Google maps</a>).  We then discuss how to filter data to build maps of the locations, starting with the NYC public libraries.
 
-We then work filtering the data, and plotting collisions by GIS locations and color coding by vehicles involved (did it involve a taxi?  a commercial vehicle?) and time.  <!--Our follow-up questions involve transferring these mapping techniques to other open NYC data sets.-->  Our second theme focuses on comparing and clustering based on distances between the data.  Using the collion datasets, we will suggest where k tow trucks should be placed at the start of rush hour to minimize delays (using k-means clustering).  We will then explore how distances change to the  closest subway stops in terms of two common distances:  Euclidean (L2 metric) and taxicab (L1) metrics.  We end with sketching more elaborate analysis catchment areas (Voronoi diagrams) and k-means clustering.
+We then work filtering the data, and plotting collisions by GIS locations and color coding by vehicles involved (did it involve a taxi?  a commercial vehicle?) and time.  <!--Our follow-up questions involve transferring these mapping techniques to other open NYC data sets.-->  Our second theme focuses on comparing and clustering based on distances between the data.  
+We start with a challenge of finding catchment areas (Voronoi diagrams) for an
+increasing number of libraries, and discuss different algorithms and their time complexity.  
+We explore how the results change in terms of two common distances:  Euclidean (L2 metric) and taxicab (L1) metrics.  
+Using the collion datasets, we next consider where k tow trucks should be placed at the start of rush hour to minimize delays (using k-means clustering).  
 
 <ul>
 	<li> <b>Slides:</b> <a href="mfa20191211.pdf">Session 3</a>
@@ -166,18 +177,67 @@ We then work filtering the data, and plotting collisions by GIS locations and co
 	<a href="https://pypi.org/project/folium/">folium</a>, a Python-wrapper for leaflet.js, is freely available.
 
 	
-	<li> <b>Data used:</b>  Locations of CUNY campuses, NYC libraries, and NYC collision data (all from NY State or NYC open data projects).
+	<li> <b>Data used:</b>  Locations of collisions in NYC, state math scores for NYC, NYC libraries (all from NY State or NYC open data projects).
 
 		<ul>
-			<li> Sample folium-generated map:  <a href="../../teaching/csci127/f19/nycMap.html">Hunter map</a>
-			<li> Cleaned dataset:
+			<li> Sample folium-generated map:  
+			<p>
+			<iframe src="../../teaching/csci127/f19/nycMap.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+			
+			<li> Collisions:
+				<ul>
+					<li>  Hosted at: <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95</a>
+					
+					<li>A sample file, <a href="../../teaching/csci127/f19/collisionsThHunterBday.csv">collisionsThHunterBday.csv</a> from 18 October 2016 was downloaded and can be used to test your program.
+					<li> Map of the sample file (used <tt>tiles="Cartodb Positron"</tt> when creating the map.)
+
+					<p><iframe src="../../teaching/csci127/f17/th.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					
+					<li>And the same file using markers:
+					<p><iframe src="thMark.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</ul>
+			<li> NYC Math Test Scores:
+				<ul>
+					<li> A geoJSON file with the NYC school district boundaries available from 
+	<p><a href="https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">Open Data NYC Planning</a><p>
+	(scroll down to "School, Police, Health & Fire" and export as geoJSON).
+	
+	<p>
+	(If you have troubles downloading, here's the file:  <a href="../../teaching/seminar4/f17/schoolDistricts.json">schoolDistricts.json</a>).
+	
+	
+					<li> Test scores for public schools available from:  
+	<p><a href="http://schools.nyc.gov/Accountability/data/TestResults/ELAandMathTestResults">NYC Department of Education</a>
+	<p>
+	(download the <b>District</b> scores).
+					<li> A choropleth map for NYC math scores by school district:
+					<p>
+					<p><iframe src="../../teaching/seminar4/s17/testScores.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</ul>	
+			<li> Libraries in NYC:
+				<ul>
+					<li> Hosted at NYC OpenData:  <a href = "https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">https://data.cityofnewyork.us/Business/Library/p4pf-fyc4</a>
+					<li>Voronoi diagram of libraries, overlaid on folium map:
+					<p><iframe src="../../teaching/seminar4/s17/libVor.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</ul>	
+			<li> Data2Go:  <i>Did not have time to cover in slides, but included below for extra challenges:</i>
+				<ul>
+					<li> <a href="https://data2go.nyc">Data2Go</a>: an impressive collection of NYC data and maps (free but requires login)
+					<li> <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page">Community District Boundaries:</a> scroll down and download the geoJSON file.
+					<li> NYC Community Districts, shaded by population:
+					<p><iframe src="../../teaching/seminar4/s17/cd.html" width="600" height="400" frameborder="0" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<li> A sample program, <a href="../../teaching/seminar4/s17/cd.py">cd.py</a>, that makes a choropleth map based on the city's geoJSON map of community district boundaries and community district populations. The sample program adds extra rows for open space/parks since the geoJSON includes them, but almost all community district data files do not. The sample program includes some useful functions for aligning data from different sources.
+				</ul>
 		</ul>
 		
 	
 	<li> <b>References:</b>
 		<ul>
-			<li> LINK
-			<li> LINK
+			<li> Voronoi diagrams: <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">overview (wiki)</a>	and <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.Voronoi.html">scipy implementation</a>	
+			<li> Fortune's algorithm:  <a href="https://link.springer.com/article/10.1007/BF01840357">original paper</a> and <a href="https://en.wikipedia.org/wiki/Fortune%27s_algorithm">overview (wiki)</a>
+			<li> <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation"> Delaunay Triangulations (wiki)</a>
+			<li> Compare & contrast of <a href="https://iquantny.tumblr.com/post/137259799714/almost-one-third-of-nyc-is-not-patrolled-by-the">NYC Precinct Boundaries and Catchment Areas</a>
+			<li> A  <a href="https://pythonprogramming.net/flat-clustering-machine-learning-python-scikit-learn/">walk-through</a> of k-means clustering in sk-learn
 		</ul>
 		
 
