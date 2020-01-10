@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  	<title>Challenges, DuckieTown@Hunter, January 2020</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	10px ;
+  }
+  </style>
+</head>
+<body>
+
+<div>
+<div style =  "float:right">
+<img style =  "height:100" src="duckie.png"><br>
+<!--<p style = "float:right"> <em><small>(Image: everythingbranded.com)</small></em>-->
+</div>
+
+
+<h1>Challenges<h1>
+<h2>DuckieTown Workshop<br>
+Hunter College<br>
+January 2020</h2>
+</div>
+
+
+<div>
+The challenges below are part of the DuckieTown@Hunter workshop in January 2020.
+The four-day, hands-on workshop introduces challenges in autonomous navigation with Duckietown. <a href="http://duckietown.org">Duckietown</a> is a colorful, realistic, internationally used platform that makes research issues in autonomous driving accessible. This workshop was made possible by a <a href="http://services.google.com/fh/files/misc/2019_explorecsr_grantees.pdf">Google Award for Undergraduate Computer Science Research Focused Workshops for Women</a>.
+</div>
+
+<div>
+<a id="monAM"></a>
+<h3>Monday Morning</h3>
+<hr>
+<h2>Getting Started: Calibrations & Test Runs</h2>
+<hr>
+
+<p><b>Goal:</b> To drive a calibrated robot through both towns, using the joystick program.
+<p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
+
+<hr>
+<h3>Setting Up Your Laptop</h3>
+
+<p>
+Check out a laptop, log in-- password is on whiteboard. 
+
+<p>
+Make sure you are on the wifi, <tt>duckieworkshop</tt>; the password is on the  whiteboard.  The duckiebots are connected to that wifi.
+
+<p>
+Open up two terminal windows.   
+Opening a duckietown shell (dts) on the linux laptop (note: use terminal + chrome browser),
+
+<h3>Setting Up DuckieBots</h3>
+
+<p>Check out a duckieBot, ping the duckieBot, monitor the containers loaded, 
+<ul>
+	<li> Remember to remove the lens cap off and put in box.
+	<li> Plug in the battery.
+	<li> Double click the side button if it doesn't automatically already turns on.
+</ul>	
+	
+
+<p>
+
+<h3>Calibrating Cameras</h3>
+Calibrating cameras (using dts commands)...
+
+<h3>Calibrating Wheels</h3>
+Calibrating wheels (using dts commands)...
+
+<h3>Driving with Joystick</h3>
+
+Launching app, use the camera dts, launching joystick, need to use the arrow keys.
+
+
+<hr>
+<h3>Extra Challenges</h3>
+
+<ul>
+	<li><b>What does the camera see?</b>  what does the camera see?  Launch the video debug feed.  Taking a photo (can this be done just from dts, or do we need to load a program?)
+
+	<li><b>Other Demos:</b>
+</ul>
+ 
+</div>
+
+<div>
+<a id="monPM"></a>
+<h3>Monday Afternoon</h3>
+<hr>
+<h2>Development Pipeline:  Using Git, Docker, Containers, and Python</h2>
+<hr>
+<p><b>Goal:</b> Create a program, package it into a container, load on your bot, and run the program.
+<p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
+<hr>
+
+<h3>Overview of Software Architecture</h3>
+
+
+First duckieTown programs:
+Basics of programs in duckieTown:  software architecture (extra layers of containers & downloading to robots),  using git to pull down repos, set-up, how to edit, building and installing on robots (2 high-level slides (5 minutes) and then work through Jacopo’s intro (45 minutes)
+Hello World: Run a program via the docker that says: Hello World (Unit C-5, Section 5.5, https://docs.duckietown.org/DT19/opmanual_duckiebot/out.pdf) https://github.com/duckietown/rpi-duckiebot-simple-python/blob/master18/hello.py  Better description in Jacopo’s class notes: https://docs.duckietown.org/daffy/duckietown-robotics-development/out/python_programs_environments.html
+Work through:  https://docs.duckietown.org/DT19/software_devel/out/ros_commands.html
+First duckieTown program:  go straight for 60 centimeters (one square) and stop.
+Modify to include turns:  make at least 4 turns and return to the same spot.
+Write out the commands to travel the entire track (only using turning, no camera capture).
+
+
+<hr>
+<h3>Extra Challenges</h3>
+</div>
+
+<div>
+<a id="tueAM"></a>
+<h3>Tuesday Morning</h3>
+<hr>
+<h2></h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+2.1 (Tuesday):  Line-following
+Line-following demo-- download onto duckie
+Modify to go a fixed amount of time, stop, and make a U-turn.
+2.2 (Tuesday):  
+2.3 (Tuesday):
+<hr>
+<h3>Extra Challenges</h3>
+</div>
+
+<div>
+<a id="tuePM"></a>
+<h3>Tuesday Afternoon</h3>
+<hr>
+<h2>Development Pipeline</h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+
+<h3>Extra Challenges</h3></div>
+</div>
+
+<div>
+<a id="wedAM"></a>
+<h3>Wednesday Morning</h3>
+<hr>
+<h2>Vision</h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+3.1 (Paper, Wednesday morning):  Human Vision:
+What do you see?  Several images of duck town-- describe everything you see in the image.
+3.2 (Paper, Wednesday morning):  Robot Vision:
+What can a robot see?  Same images-- but now think in terms of the vision system of the duckiebots.  
+3.3 (Ducks, Wednesday morning):  Vision challenge with ducks
+<hr>
+<h3>Extra Challenges</h3></div>
+
+<div>
+<a id="wedPM"></a>
+<h3>Wedneseday Afternoon</h3>
+<hr>
+<h2>Vision</h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+3.4 (Paper, Wednesday afternoon):
+3.5 (Ducks, Wednesday afternoon):  Find the pedestrian ducks (aka VisionZero:  don’t hit the ducks).
+
+There's a demo:  
+https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenience-packages/duckietown_demos/launch/obstacle_avoid.launchSoftware/
+<hr>
+<h3>Extra Challenges</h3></div>
+</div>
+
+<div>
+<a id="thuAM"></a>
+<h3>Thursday Morning</h3>
+<hr>
+<h2>Machine Learning & Ethics</h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+
+<hr>
+<h3>Extra Challenges</h3></div>
+
+<div>
+<a id="thuPM"></a>
+<h3>Thursday Afternoon</h3>
+<hr>
+<h2>Machine Learning & Ethics</h2>
+<hr>
+<p><b>Goal:</b>
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+
+<hr>
+<h3>Extra Challenges</h3></div>
+</div>
+
+
+
+
+
+<div>
+<i>Last updated 10 January 2020.</i>
+</div>
+
+</html>
