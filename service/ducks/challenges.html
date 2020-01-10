@@ -41,13 +41,40 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 <p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
 
 <hr>
-<h3>Setting Up Your Laptop</h3>
+<h3>Setting Up Your Laptop & DuckieTown Account</h3>
 
 <p>
 Check out a laptop, log in-- password is on whiteboard. 
 
+<p>We have the software loaded, so, we're skipping ahead in the Duckiebot assembly and setup.
+<p>Go to the documennation  page  for creating a  duckieTown account:
+
+<blockquote>
+<tt>
+https://docs.duckietown.org/DT19/opmanual_duckiebot/out/dt_account.html
+</tt>
+</blockquote>
+Our regional community is New York.  Make sure to include your institution as Hunter College.   
+Having an account allows you to create tokens to use the dashboard (next section).  You can copy the token by highlighting it and then clicking CTRL-Shift-C (and pasting by CTRL-Shift-V).
+
+To set up your token:
+<blockquote>
+<tt>
+dts tok set
+</tt>
+</blockquote>
+
+
+<p>You can check to see that authentication worked, by typing at the terminal:
+<blockquote>
+<tt>
+dts challenges info
+</tt>
+</blockquote>
+
 <p>
 Make sure you are on the wifi, <tt>duckieworkshop</tt>; the password is on the  whiteboard.  The duckiebots are connected to that wifi.
+
 
 <p>
 Open up two terminal windows.   
@@ -62,6 +89,25 @@ Opening a duckietown shell (dts) on the linux laptop (note: use terminal + chrom
 	<li> Double click the side button if it doesn't automatically already turns on.
 </ul>	
 	
+<p>Check to see the robot is turned on and on the wifi:
+<blockquote>
+<tt>
+ping hunterbotXX.local
+</tt>
+</blockquote>
+where XX is the number of your bot.   To stop the messages, type CTRL-C.
+
+<p>
+To launch the dashboard, open up Chrome (Firefox will work but flicker a bit):
+<ul>
+	<li> Click on + key to open a new tab.
+	<li> At the navigation bar, type:  hunterbotXX.local
+	<li> You will be prompted for your token, cut-and-paste it into the text-area.
+	<li> Click on the <tt>Mission Control</tt> tab.   Open the default mission.
+</ul>
+You should see several graphs and the camera output, but we need to load more onto the bot to be able to move.
+
+	
 
 <p>
 
@@ -74,6 +120,9 @@ Calibrating wheels (using dts commands)...
 <h3>Driving with Joystick</h3>
 
 Launching app, use the camera dts, launching joystick, need to use the arrow keys.
+
+<p>
+When you're done with your robot, gently disconnect the battery cables.
 
 
 <hr>
