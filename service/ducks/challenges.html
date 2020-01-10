@@ -50,8 +50,9 @@ Check out a laptop, log in-- password is on whiteboard.
 <p>Go to the documennation  page  for creating a  duckieTown account:
 
 <blockquote>
-<tt>
-https://docs.duckietown.org/DT19/opmanual_duckiebot/out/dt_account.html
+Duckie Op Manual C-2: <a href="
+https://docs.duckietown.org/DT19/opmanual_duckiebot/out/dt_account.html">
+docs.duckietown.org/DT19/opmanual_duckiebot/out/dt_account.html</a>
 </tt>
 </blockquote>
 Our regional community is New York.  Make sure to include your institution as Hunter College.   
@@ -92,34 +93,68 @@ Opening a duckietown shell (dts) on the linux laptop (note: use terminal + chrom
 <p>Check to see the robot is turned on and on the wifi:
 <blockquote>
 <tt>
-ping hunterbotXX.local
+ping DUCKIEBOT_NAME.local
 </tt>
 </blockquote>
-where XX is the number of your bot.   To stop the messages, type CTRL-C.
+where DUCKIEBOT_NAME is <tt>hunterbotXX</tt> with XX as the number of your bot.   To stop the messages, type CTRL-C.
 
 <p>
 To launch the dashboard, open up Chrome (Firefox will work but flicker a bit):
 <ul>
 	<li> Click on + key to open a new tab.
-	<li> At the navigation bar, type:  hunterbotXX.local
+	<li> At the navigation bar, type:  DUCKIEBOT_NAME.local
 	<li> You will be prompted for your token, cut-and-paste it into the text-area.
 	<li> Click on the <tt>Mission Control</tt> tab.   Open the default mission.
 </ul>
 You should see several graphs and the camera output, but we need to load more onto the bot to be able to move.
 
-	
+<p>To make the duckieBot move, we're following the directions:
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/rc_control.html">
+Duckie Op Manual C-7: Making your Duckiebot move</a>
+</blockquote>
+
+<p>
+After you tested the joy stick, go on to loading the camera software:
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/read_camera_data.html">
+Duckie Op Manual C-8: Duckie Op Manual C-8: See what your DuckieBot sees</a>
+</blockquote>
 
 <p>
 
 <h3>Calibrating Cameras</h3>
-Calibrating cameras (using dts commands)...
+
+<p>
+Now, we can calibrate the camera.  To do so, you will need a calibration sheet (checkerboard patterned laminated paper).  
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/camera_calib.html">
+Duckie Op Manual C-9:  Camera calibration and validation</a>
+</blockquote>
+
+Notes on how to speed up calibration of cameras:
+<ul>
+	<li> Use a clipboard to hold the calibration sheet flat.
+	<li> Put duckiebot at the edge of the table to get the "low" calibration points and makes it easier to get the far left and right.  
+	<li> It won't turn green until all regions have a reading-- Move the calibration as high as possible (and still have highlighted colors on grid), as low, to far left and to far right as possible.   Also do the 4 "corners" of where it can see.  
+	<li> Repeat this cycle 2 or 3 times, until calibration button lights up.
+	<li> Hold the calibration sheet at each point for a count of 3 (too fast and it doesn’t read it).
+</ul>
+
+
+
 
 <h3>Calibrating Wheels</h3>
-Calibrating wheels (using dts commands)...
+
+Now, we can calibrate the wheels.  To do so, you will a long straight track (we have two marked in masking tape.  
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/wheel_calibration.html">
+Duckie Op Manual C-10:  Wheel calibration</a>
+</blockquote>
 
 <h3>Driving with Joystick</h3>
 
-Launching app, use the camera dts, launching joystick, need to use the arrow keys.
+Now that everything is calibrated, use the joystick to make a complete lap of both tracks.  Be careful not to run into other bots.
 
 <p>
 When you're done with your robot, gently disconnect the battery cables.
@@ -149,6 +184,9 @@ When you're done with your robot, gently disconnect the battery cables.
 <h3>Overview of Software Architecture</h3>
 
 
+<p>Add in somewhere portainers:  DUCKIEBOT_NAME.local:9000
+
+<p>
 First duckieTown programs:
 Basics of programs in duckieTown:  software architecture (extra layers of containers & downloading to robots),  using git to pull down repos, set-up, how to edit, building and installing on robots (2 high-level slides (5 minutes) and then work through Jacopo’s intro (45 minutes)
 Hello World: Run a program via the docker that says: Hello World (Unit C-5, Section 5.5, https://docs.duckietown.org/DT19/opmanual_duckiebot/out.pdf) https://github.com/duckietown/rpi-duckiebot-simple-python/blob/master18/hello.py  Better description in Jacopo’s class notes: https://docs.duckietown.org/daffy/duckietown-robotics-development/out/python_programs_environments.html
