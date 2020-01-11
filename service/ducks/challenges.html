@@ -44,7 +44,7 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 <h3>Setting Up Your Laptop & DuckieTown Account</h3>
 
 <p>
-We are using the linux laptops from the 1001E laboratory (the CSci 127 lab).  Those from cart 1 have been the duckieTown softare already installed.  Check out a laptop and log in with the <tt>csguest</tt> account.  The password is on whiteboard. 
+We are using the linux laptops from the 1001E laboratory (the CSci 127 lab).  Those from cart 1 have been the duckieTown softare already installed.  The laptops run Ubuntu Linux operating system. When you open the laptop, choose the "Computer Science Guest" account (the password is on the whiteboard).  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).  
 
 <p> For the morning session, we are following <a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/index.html">Duckiebot operation manual</a>.
 We have the software loaded, so, we're skipping ahead in the Duckiebot assembly and setup.
@@ -59,23 +59,20 @@ Duckie Op Manual C-2: Duckietown account</a>
 Our regional community is New York.  Make sure to include your institution as Hunter College.   
 Having an account allows you to create tokens to use the dashboard (next section).  You can copy the token by highlighting it and then clicking CTRL-Shift-C (and pasting by CTRL-Shift-V).
 
-<p>Launch a terminal window...
+<p>Much of our work will done via the terminal window.  Click the icon on the left for the terminal (looks like a computer).  It will launch a terminal window in which you can type commands.
 
 <p>
-To set up your token, type at the terminal (all but the '$'-- that's the symbol we use to indicate that you're typing into a terminal window).:
-<blockquote>
-<tt>
-$ dts tok set
-</tt>
-</blockquote>
+To set up your token, type at the terminal:
+
+	<pre style = "background-color:lavender;width:400px">
+$ dts tok set</pre>
+	(The <tt>$</tt> represents the prompt at the command line-- no need to type it.)
 
 
 <p>You can check to see that authentication worked, by typing at the terminal:
-<blockquote>
-<tt>
-$ dts challenges info
-</tt>
-</blockquote>
+	<pre style = "background-color:lavender;width:400px">
+$ dts challenges info</pre>
+
 
 <p>
 Make sure you are on the wifi, <tt>duckieworkshop</tt>; the password is on the  whiteboard.  The duckiebots are connected to that wifi.
@@ -89,24 +86,25 @@ Opening a duckietown shell (dts) on the linux laptop (note: use terminal + chrom
 
 <p>Check out a duckieBot, ping the duckieBot, monitor the containers loaded, 
 <ul>
-	<li> Remember to remove the lens cap off and put in box.
+	<li> Remember to take the lens cap off and put in box.
 	<li> Gently plug in the two battery cables.
 	<li> If the lights don't automatically already turns on, double click the side button 
 </ul>	
 	
 <p>Check to see the robot is turned on and on the wifi:
-<blockquote>
+
+<p style = "background-color:lavender;width:400px">
 <tt>
-ping <span style="color:purple">DUCKIEBOT_NAME</span>.local
+$ping <span style="color:indigo">DUCKIEBOT_NAME</span>.local
 </tt>
-</blockquote>
-where <span style="color:purple">DUCKIEBOT_NAME</span> is <tt>hunterbotXX</tt> with XX as the number of your bot.   To stop the messages, type CTRL-C.
+</p>
+where <span style="color:indigo">DUCKIEBOT_NAME</span> is <tt>hunterbotXX</tt> with XX as the number of your bot.   To stop the messages, type CTRL-C.
 
 <p>
 To launch the dashboard, open up Chrome (Firefox will work but flicker a bit):
 <ul>
 	<li> Click on + key to open a new tab.
-	<li> At the navigation bar, type:  <span style="color:purple">DUCKIEBOT_NAME</span>.local
+	<li> At the navigation bar, type:  <span style="color:indigo">DUCKIEBOT_NAME</span>.local
 	<li> You will be prompted for your token, cut-and-paste it into the text-area.
 	<li> Click on the <tt>Mission Control</tt> tab.   Open the default mission.
 </ul>
@@ -181,7 +179,7 @@ When you're done with your robot, gently disconnect the battery cables.
 <hr>
 <h2>Lane Following Demos</h2>
 <hr>
-<p><b>Goal:</b>
+<p><b>Goal:</b> Run and understand the structure of the lane following demo.
 
 <p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
 <hr>
