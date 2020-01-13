@@ -38,6 +38,10 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 			<li> <a href="#monPM">Monday Afternoon:   Lane Following Demos</a>
 		</ul>
 	<li> Tuesday:  Navigation
+		<ul>
+			<li> <a href="#tueAM">Tuesday Morning:  Motor Control & Navigation</a>
+			<li> <a href="#tuePM">Tuesday Afternoon:  </a>
+		</ul>	
 	<li> Wednesday: Vision
 	<li> Thursday: Machine Learning & Ethics
 </ul>
@@ -57,13 +61,25 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 <p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
 
 <hr>
+
+
+<h3>Setting Up DuckieBots</h3>
+
+<p>When you get a duckieBot, 
+<ul>
+	<li> Gently plug in the two battery cables.
+	<li> If the lights don't automatically already turns on, double click the side button.
+	<li> Remember to take the lens cap off and put in box.	
+</ul>	
+It will take a few minutes for the duckieBot to boot up, so, in the meantime, we will start up the dashboard.	
+
 <h3>Setting Up Your Laptop & DuckieTown Account</h3>
 
 <p>
 We are using the linux laptops from the 1001E laboratory (the CSci 127 lab).  Cart 1 laptops have the duckieTown software already installed.  The laptops run Ubuntu Linux operating system.   When you open the laptop, choose the "Computer Science Guest" account (the password is on the whiteboard).  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).  
 
 <p> For the morning session, we are following <a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/index.html">Duckiebot operation manual</a>.
-We have the software loaded, so, we're skipping ahead in the Duckiebot assembly and setup.
+We have the software loaded, so, we're skipping ahead to the Duckiebot assembly and setup.
 <p>Go to the documentation  page  for creating a  duckieTown account:
 
 <blockquote>
@@ -93,16 +109,6 @@ $ dts challenges info</pre>
 <p>
 Make sure you are on the wifi, <tt>duckieworkshop</tt>; the password is on the  whiteboard.  The duckiebots are connected to that wifi.
 
-
-<h3>Setting Up DuckieBots</h3>
-
-<p>When you get a laptop, 
-<ul>
-	<li> Gently plug in the two battery cables.
-	<li> If the lights don't automatically already turns on, double click the side button.
-	<li> Remember to take the lens cap off and put in box.	
-</ul>	
-	
 <p>Check to see the robot is turned on and on the wifi:
 
 <p style = "background-color:lavender;width:400px">
@@ -124,15 +130,50 @@ To launch the dashboard, open up Chrome browser window (Firefox will work but fl
 	<li> You will be prompted for your token; cut-and-paste it into the text-area.
 	<li> Once the dashboard launches, click on the <tt>Mission Control</tt> tab.   Open the default mission.
 </ul>
-You should see several graphs and a region for the camera output-- no worries if nothing shows up in that region, we're going to work on that next.  To see what your duckiebot sees, follow the directions in:
+You should see several graphs and a region for the camera output-- no worries if nothing shows up in that region, we're going to work on that later.  
+
+
+<h3>Driving with Joystick</h3>
+
+<p>We can run the duckieBot via the joystick demo.  It's a nice example of using the duckieTown shell (<tt>dts</tt>) and also used as the control for other demos, so, good to try:
+
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/rc_control.html">
+Duckie Op Manual C-7: Making your Duckiebot move</a>
+</blockquote>
+
+<p>
+Now that everything is calibrated, use the joystick to make a complete lap of both tracks.  Be careful not to run into other bots.
+
+<p>
+Let's test that we can move the duckieBot through the dashboard:
+<ul>
+	<li> Go to the dashboard (inside the Chrome window), and in the upper right hand corner, flip the switch "Take Over".
+	<li> Using the arrow keys (lower right hand corner on your keyboard), you can move your duckieBot forward (up-arrow), backwards (down-arrow), left (left-arrow), and right (right-arrow).
+	<li> Try moving your duckieBot in a square.
+	<li> Before going on to the next step, make sure to flip back the switch "Take Over".
+</ul>
+
+<p>
+When you're done with your robot, gently disconnect the battery cables so that the batteries last longer between charges.
+
+
+
+
+
+
+
+
+<h3>Calibrating Cameras</h3>
+
+<p>
+To see what your duckiebot sees, follow the directions in:
 <blockquote>
 <a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/read_camera_data.html">
 Duckie Op Manual C-8: Duckie Op Manual C-8: See what your DuckieBot sees</a>
 </blockquote>
 This will launch an additional window that has a camera input, filtered in different ways.
 <p>
-
-<h3>Calibrating Cameras</h3>
 
 <p>
 Now, we can calibrate the camera.  To do so, you will need a calibration sheet (checkerboard patterned laminated paper).  
@@ -161,28 +202,6 @@ Now, we can calibrate the wheels.  To do so, you will a long straight track (we 
 Duckie Op Manual C-10:  Wheel calibration</a>
 </blockquote>
 
-<h3>Driving with Joystick</h3>
-
-Let's test that we can move the duckieBot:
-<ul>
-	<li> Go to the dashboard (inside the Chrome window), and in the upper right hand corner, flip the switch "Take Over".
-	<li> Using the arrow keys (lower right hand corner on your keyboard), you can move your duckieBot forward (up-arrow), backwards (down-arrow), left (left-arrow), and right (right-arrow).
-	<li> Try moving your duckieBot in a square.
-	<li> Before going on to the next step, make sure to flip back the switch "Take Over".
-</ul>
-
-<p>We can also run the duckieBot via the joystick demo.  It's a nice example of using the duckieTown shell (<tt>dts</tt>) and also used as the control for other demos, so, good to try:
-
-<blockquote>
-<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/rc_control.html">
-Duckie Op Manual C-7: Making your Duckiebot move</a>
-</blockquote>
-
-<p>
-Now that everything is calibrated, use the joystick to make a complete lap of both tracks.  Be careful not to run into other bots.
-
-<p>
-When you're done with your robot, gently disconnect the battery cables.
 
 
 <hr>
@@ -197,7 +216,7 @@ When you're done with your robot, gently disconnect the battery cables.
 	<blockquote>
 	<tt><span style="color:indigo">DUCKIEBOT_NAME</span>.local:9000</tt>
 	</blockquote>
-	How many containers on your duckieBot?  What is there status?  We will be adding more containers in later sessions.
+	How many containers on your duckieBot?  What is their status?  We will be adding more containers in later sessions.
 
 </ul>
  
@@ -274,41 +293,61 @@ As it runs, it generates multiple image views that highlight the lines, signs, a
 <h3>Tuesday Morning</h3>
 <hr>
 <h2></h2>
-<h2>First DuckieBot Programs:  Straight Lines & Circles </h2>
+<h2>First Program:  Motor Control</h2>
 <hr>
-<p><b>Goal:</b>  Create a program, via the AIDO framework, load on your bot, and run the program.
+<p><b>Goals:</b>  Create and run a program, via the AIDO framework. 
 <p><b>Equipment needed:</b>  department linux laptop and duckieBot
 <hr>
 
-<p> Build on the AIDO competition framework.  Their first challenge is lane following.  Modified the submission template to go straight at a slow speed.   
+<p> The <a href="https://www.duckietown.org/research/ai-driving-olympics">AI Driving Olympics</a> (AI-DO) is an autonomous navigation competition for mobile robotics.  The competition uses the the Duckietown platform and has a series of increasingly difficult challenges, starting with lane following for a single bot to the more complex task of managinig a fleet of bots on the road.  While we won't be submitting to the competition (the last one was in December in conjunction with the NeurIPS 2019 conference in Zurich), we will use their framework.
+The AI-DO framework is set up so that participants will not need to be physically present at any stage of the competition, just need to submit their source code remotely. If the submitted code does well in simulation, it is run on real duckieBots.  
+
+<p> Our first program is a (slightly-modified) version of the <a href="https://docs.duckietown.org/DT19/AIDO/out/minimal_template.html">lane following template</a> from the AI-DO2 (using the dt19 software).  It goes straight forward, at a leisurely pace.  Work through the following steps to download the code and run the code:
+<ol>
+	<li> Download the <a href="duckieTemplate.zip">zip file</a> (right click and save to your desktop).
+	<li> Double click on the zip file to "unpack" it.  It will create a folder named <tt>duckieTemplate</tt> on your desktop.
+	<li> Open up a terminal window (left hand menu) and change directories to the new folder:
+	<p style = "background-color:lavender;width:600px">
+<tt>
+$ cd  ~/Desktop/duckieTemplate
+</tt>
+</p>
+	<li> To run the template on a duckieBot:
+	<p style = "background-color:lavender;width:600px">
+<tt>
+$ dts challenges evaluate --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span> 
+</tt>
+</p>
+	<li> Next, let's look at the code that the duckieBot is running.  At the  terminal window type
+<p style = "background-color:lavender;width:800px">
+<tt>
+$ gedit & 
+</tt>
+</p>
+	to open the built-in graphical editor and run in the background (so we can continue to use the terminal to type).
+	<li> In <tt>gedit</tt>, open the file <tt>solutions.py</tt> from the <tt>duckieTemplate</tt> folder.
+	<li> The file, <tt>solutions.py</tt>, is the Python code that does the lane following.  This file is very simplistic:  it ignores everything it sees and just goes forward. Put in code for on_received_get_commands()
+</ol>
+
+
+
+
 
 <p> First program is straight line
 
 <p> Challenge:  Make your bot go in a wide circle.
 
+<p> Challenge:  Turn in place.
+
 <p> Challenge:  What does the default template do?  Try on your robot and read throught the python file, <tt>solutions.py</tt>.  What lines control it's motion?
 
-<p> When is A*?  
+<p> Challenge:  Make a spiral.
 
-<p>
-  Using Git, Docker, Containers, and Python
+<p> Challenge:  Make a figure 8.  
 
-2.1 (Tuesday):  Line-following
-Line-following demo-- download onto duckie
-Modify to go a fixed amount of time, stop, and make a U-turn.
-2.2 (Tuesday):  
-2.3 (Tuesday):
 
-<h3>Overview of Software Architecture</h3>
 
-<p>
-First duckieTown programs:
-Basics of programs in duckieTown:  software architecture (extra layers of containers & downloading to robots),  using git to pull down repos, set-up, how to edit, building and installing on robots (2 high-level slides (5 minutes) and then work through Jacopo’s intro (45 minutes)
-Hello World: Run a program via the docker that says: Hello World (Unit C-5, Section 5.5, https://docs.duckietown.org/DT19/opmanual_duckiebot/out.pdf) https://github.com/duckietown/rpi-duckiebot-simple-python/blob/master18/hello.py  Better description in Jacopo’s class notes: https://docs.duckietown.org/daffy/duckietown-robotics-development/out/python_programs_environments.html
-Work through:  https://docs.duckietown.org/DT19/software_devel/out/ros_commands.html
-First duckieTown program:  go straight for 60 centimeters (one square) and stop.
-Modify to include turns:  make at least 4 turns and return to the same spot.
-Write out the commands to travel the entire track (only using turning, no camera capture).
+
 
 <hr>
 <h3>Extra Challenges</h3>
@@ -318,12 +357,26 @@ Write out the commands to travel the entire track (only using turning, no camera
 <a id="tuePM"></a>
 <h3>Tuesday Afternoon</h3>
 <hr>
-<h2>Development Pipeline:  First ROS Program</h2>
+<h2>Navigation</h2>
 <hr>
-<p><b>Goal:</b> Write a ROS program that moves your bot in simple loop and stops gracefully.
+<p><b>Goal:</b>  Understand the A* algorithm.
 <p><b>Equipment needed:</b>  department linux laptop and duckieBot
 
-<h3>Extra Challenges</h3></div>
+<hr>
+<h3>Navigation</h3>
+
+<p> Right after A* algorithm is covered, work through example (see email from Susan) 
+
+
+<hr>
+<h3>Extra Challenges</h3>
+
+<ul>
+	<li> Work through any remaining challenges from the morning.
+	<li> How do you make your robot move backwards?
+</ul>
+
+
 </div>
 
 <div>
