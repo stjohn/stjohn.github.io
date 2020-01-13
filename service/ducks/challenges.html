@@ -27,7 +27,23 @@ January 2020</h2>
 
 <div>
 The challenges below are part of the DuckieTown@Hunter workshop in January 2020.
-The four-day, hands-on workshop introduces challenges in autonomous navigation with Duckietown. <a href="http://duckietown.org">Duckietown</a> is a colorful, realistic, internationally used platform that makes research issues in autonomous driving accessible. This workshop was made possible by a <a href="http://services.google.com/fh/files/misc/2019_explorecsr_grantees.pdf">Google Award for Undergraduate Computer Science Research Focused Workshops for Women</a>.
+The four-day, hands-on workshop introduces challenges in autonomous navigation with Duckietown. <a href="http://duckietown.org">Duckietown</a> is a colorful, realistic, internationally used platform that makes research issues in autonomous driving accessible. 
+
+
+
+<ul>
+	<li> Monday:  Introduction to Robotics
+		<ul>
+			<li> <a href="#monAM">Monday Morning:  Getting Started: Calibrations & Test Runs</a>
+			<li> <a href="#monPM">Monday Afternoon:   Lane Following Demos</a>
+		</ul>
+	<li> Tuesday:  Navigation
+	<li> Wednesday: Vision
+	<li> Thursday: Machine Learning & Ethics
+</ul>
+
+<p><i>This workshop was made possible by a <a href="http://services.google.com/fh/files/misc/2019_explorecsr_grantees.pdf">Google Award for Undergraduate Computer Science Research Focused Workshops for Women</a>  and the <a href="http://www.hunter.cuny.edu/provost">Office of the Provost</a> at Hunter College.</i>
+
 </div>
 
 <div>
@@ -44,7 +60,7 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 <h3>Setting Up Your Laptop & DuckieTown Account</h3>
 
 <p>
-We are using the linux laptops from the 1001E laboratory (the CSci 127 lab).  Those from cart 1 have been the duckieTown softare already installed.  The laptops run Ubuntu Linux operating system. When you open the laptop, choose the "Computer Science Guest" account (the password is on the whiteboard).  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).  
+We are using the linux laptops from the 1001E laboratory (the CSci 127 lab).  Cart 1 laptops have the duckieTown software already installed.  The laptops run Ubuntu Linux operating system.   When you open the laptop, choose the "Computer Science Guest" account (the password is on the whiteboard).  On the left hand side is a bar of icons, including icons for a browser (for accessing webpages) and the terminal window (for writing commands and launching programs).  
 
 <p> For the morning session, we are following <a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/index.html">Duckiebot operation manual</a>.
 We have the software loaded, so, we're skipping ahead in the Duckiebot assembly and setup.
@@ -78,51 +94,42 @@ $ dts challenges info</pre>
 Make sure you are on the wifi, <tt>duckieworkshop</tt>; the password is on the  whiteboard.  The duckiebots are connected to that wifi.
 
 
-<p>
-Open up two terminal windows.   
-Opening a duckietown shell (dts) on the linux laptop (note: use terminal + chrome browser),
-
 <h3>Setting Up DuckieBots</h3>
 
-<p>Check out a duckieBot, ping the duckieBot, monitor the containers loaded, 
+<p>When you get a laptop, 
 <ul>
-	<li> Remember to take the lens cap off and put in box.
 	<li> Gently plug in the two battery cables.
-	<li> If the lights don't automatically already turns on, double click the side button 
+	<li> If the lights don't automatically already turns on, double click the side button.
+	<li> Remember to take the lens cap off and put in box.	
 </ul>	
 	
 <p>Check to see the robot is turned on and on the wifi:
 
 <p style = "background-color:lavender;width:400px">
 <tt>
-$ping <span style="color:indigo">DUCKIEBOT_NAME</span>.local
+$ ping <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span>.local
 </tt>
 </p>
 where <span style="color:indigo">DUCKIEBOT_NAME</span> is <tt>hunterbotXX</tt> with XX as the number of your bot.   To stop the messages, type CTRL-C.
 
 <p>
-To launch the dashboard, open up Chrome (Firefox will work but flicker a bit):
+To launch the dashboard, open up Chrome browser window (Firefox will work but flicker a bit):
 <ul>
-	<li> Click on + key to open a new tab.
-	<li> At the navigation bar, type:  <span style="color:indigo">DUCKIEBOT_NAME</span>.local
-	<li> You will be prompted for your token, cut-and-paste it into the text-area.
-	<li> Click on the <tt>Mission Control</tt> tab.   Open the default mission.
+	<li> Click on + key to open a new tab (the first chrome window launched defaults to private priviledges that doesn't work well well the dashboard; subsequent windows/tabs are fine).
+	<li> At the navigation bar, type:  
+	<blockquote>
+	<tt><span style="color:indigo">DUCKIEBOT_NAME</span>.local </tt>
+	</blockquote>
+	where <span style="color:indigo">DUCKIEBOT_NAME</span> is the name of your bot.
+	<li> You will be prompted for your token; cut-and-paste it into the text-area.
+	<li> Once the dashboard launches, click on the <tt>Mission Control</tt> tab.   Open the default mission.
 </ul>
-You should see several graphs and the camera output, but we need to load more onto the bot to be able to move.
-
-<p>To make the duckieBot move, we're following the directions:
-<blockquote>
-<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/rc_control.html">
-Duckie Op Manual C-7: Making your Duckiebot move</a>
-</blockquote>
-
-<p>
-After you tested the joy stick, go on to loading the camera software:
+You should see several graphs and a region for the camera output-- no worries if nothing shows up in that region, we're going to work on that next.  To see what your duckiebot sees, follow the directions in:
 <blockquote>
 <a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/read_camera_data.html">
 Duckie Op Manual C-8: Duckie Op Manual C-8: See what your DuckieBot sees</a>
 </blockquote>
-
+This will launch an additional window that has a camera input, filtered in different ways.
 <p>
 
 <h3>Calibrating Cameras</h3>
@@ -156,6 +163,22 @@ Duckie Op Manual C-10:  Wheel calibration</a>
 
 <h3>Driving with Joystick</h3>
 
+Let's test that we can move the duckieBot:
+<ul>
+	<li> Go to the dashboard (inside the Chrome window), and in the upper right hand corner, flip the switch "Take Over".
+	<li> Using the arrow keys (lower right hand corner on your keyboard), you can move your duckieBot forward (up-arrow), backwards (down-arrow), left (left-arrow), and right (right-arrow).
+	<li> Try moving your duckieBot in a square.
+	<li> Before going on to the next step, make sure to flip back the switch "Take Over".
+</ul>
+
+<p>We can also run the duckieBot via the joystick demo.  It's a nice example of using the duckieTown shell (<tt>dts</tt>) and also used as the control for other demos, so, good to try:
+
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/rc_control.html">
+Duckie Op Manual C-7: Making your Duckiebot move</a>
+</blockquote>
+
+<p>
 Now that everything is calibrated, use the joystick to make a complete lap of both tracks.  Be careful not to run into other bots.
 
 <p>
@@ -167,8 +190,15 @@ When you're done with your robot, gently disconnect the battery cables.
 
 <ul>
 	<li><b>Dashboard Measures</b>  What do the monitors on the dashboard measure?  With the joystick controls, drive your duckie.  Which monitor measure velocity?  What happens when you drive "backwards"?
-	<li><b>What does the camera see?</b>  what does the camera see?  Launch the video debug feed.  Taking a photo (can this be done just from dts, or do we need to load a program?)
-	<li><b>Portainers:</b>
+	
+	<li><b>What does the camera see?</b>  Turn your back to the duckieBot, and drive only using the camera feed (no looking at track).  <!--the Launch the video debug feed.  Taking a photo (can this be done just from dts, or do we need to load a program?)-->
+	
+	<li><b>Portainers:</b>  The code for the duckieBots is loaded in "containers."  You can monitor which containers are on your duckiebot, by opening a new browser window and typing into a the navigation bar:
+	<blockquote>
+	<tt><span style="color:indigo">DUCKIEBOT_NAME</span>.local:9000</tt>
+	</blockquote>
+	How many containers on your duckieBot?  What is there status?  We will be adding more containers in later sessions.
+
 </ul>
  
 </div>
@@ -181,13 +211,95 @@ When you're done with your robot, gently disconnect the battery cables.
 <hr>
 <p><b>Goal:</b> Run and understand the structure of the lane following demo.
 
-<p><b>Equipment needed:</b>  Department linux laptop and duckieBot.
+<p><b>Equipment needed:</b>  Department linux laptop and duckieBot.  Paper and pencil for analyzing code structure.
 <hr>
 
+<h3>Running Demo Programs</h3>
+
+<p>DuckieTown comes with several pre-built demostration programs.  We saw the joystick demo this morning.  Several other programs use it as their "front end" and operation is done via its interface.  One such demo is the lane following, where the ducks move forward, adjusting their direction to keep the white line on their right and the yellow dotted line in the middle.
+
+<p style = "background-color:lavender;width:800px">
+<tt>
+$ dts duckiebot demo --demo_name lane_following --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span> --package_name duckietown_demos
+</tt>
+</p>
+
+<p>You can run the lane following demo, by clicking on the joystick controls and typing 'a' for autonomous navigation, and 's' for stop.  You can toggle between driving manually with the arrow keys and allowing the lane following code to drive the duckieBot.
+
+<p>The lane following demo does best with a continuous lanes that does not have breaks for intersections, so, try driving first on the small town and then try on the larger town. 
+
+<p>
+Next, let's look at the line filtering (as the duckieBot sees it) and tune the parameters to keep the duckies from cutting corners in the larger town.  Start at Step 2 of:
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_lane_following.html">
+Duckie Op Manual E-4: Lane Following</a>
+</blockquote>
+As it runs, it generates multiple image views that highlight the lines, signs, and obstacles detected as it moves (you can toggle through these on  <tt>rqt_image_view</tt>).  How does the bot read a sign?  Brainstorm on what ROS nodes are loaded and sketch the diagram of how the nodes interact.
+
+<hr>
+<h3>Structure of the Lane Following Program</h3>
+
+<p> Now that you have run the lane following program, let's examine how it works.  Here is an overview of the ROS code from <a href="https://idsc.ethz.ch/education/lectures/duckietown.html">Autonomous Mobility on Demand: From Car to Fleet</a> course at ETH Zurich:
+
+<img src = "2019_ETH_autonomyCourse_LF_ROS_slide.png" width="70%">
+
+<p>
+In the diagram, 
+<ul>
+	<li> Ovals represent nodes-- these include the sensors (camera) and the actuators (motors) as well as the executables (parts of the program that "does things"). Nodes can subscribe to topics, process the information there, and publish the results to a topic. 
+	<li> Rectangles represent "topics" which nodes can publish (i.e. write) information and subscribe (i.e. read) information
+	<li> If a node publishes to a topic, there is an arrow starting at the node and pointing to the topic.
+	<li> If a node subscribes to a topic, there is an arrow starting at the topic and pointing to the node.
+</ul>
+
+<p>With your team, come up with a one-line description of what each node and topic represent in diagram.  Make your best guess based on the names and your experience with the bot and feel free to ask questions!
+
+<hr>
+<h3>Extra Challenges</h3>
+
+<p>If you have time, try the indefinite navigation demo.  In addition to lane following, it will stop at intersections and recognize signs that are placed on the town.
+<blockquote>
+<a href="https://docs.duckietown.org/DT19/opmanual_duckiebot/out/demo_indefinite_navigation.html">
+Duckie Op Manual E-5: Indefinite Navigation</a>
+</blockquote>
+As it runs, it generates multiple image views that highlight the lines, signs, and obstacles detected as it moves (you can toggle through these on the <tt>rqt_image_view</tt>).  How does the bot read a sign?  Brainstorm on what ROS nodes are loaded and sketch the diagram of how the nodes interact.
+
+
+</div>
+
+<!--
+
+<div>
+<a id="tueAM"></a>
+<h3>Tuesday Morning</h3>
+<hr>
+<h2></h2>
+<h2>First DuckieBot Programs:  Straight Lines & Circles </h2>
+<hr>
+<p><b>Goal:</b>  Create a program, via the AIDO framework, load on your bot, and run the program.
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<hr>
+
+<p> Build on the AIDO competition framework.  Their first challenge is lane following.  Modified the submission template to go straight at a slow speed.   
+
+<p> First program is straight line
+
+<p> Challenge:  Make your bot go in a wide circle.
+
+<p> Challenge:  What does the default template do?  Try on your robot and read throught the python file, <tt>solutions.py</tt>.  What lines control it's motion?
+
+<p> When is A*?  
+
+<p>
+  Using Git, Docker, Containers, and Python
+
+2.1 (Tuesday):  Line-following
+Line-following demo-- download onto duckie
+Modify to go a fixed amount of time, stop, and make a U-turn.
+2.2 (Tuesday):  
+2.3 (Tuesday):
+
 <h3>Overview of Software Architecture</h3>
-
-
-<p>Add in somewhere portainers:  DUCKIEBOT_NAME.local:9000
 
 <p>
 First duckieTown programs:
@@ -198,28 +310,6 @@ First duckieTown program:  go straight for 60 centimeters (one square) and stop.
 Modify to include turns:  make at least 4 turns and return to the same spot.
 Write out the commands to travel the entire track (only using turning, no camera capture).
 
-
-<hr>
-<h3>Extra Challenges</h3>
-</div>
-
-<div>
-<a id="tueAM"></a>
-<h3>Tuesday Morning</h3>
-<hr>
-<h2></h2>
-<h2>Development Pipeline:  Using Git, Docker, Containers, and Python</h2>
-<hr>
- Create a program, package it into a container, load on your bot, and run the program.
-<hr>
-<p><b>Goal:</b>
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
-<hr>
-2.1 (Tuesday):  Line-following
-Line-following demo-- download onto duckie
-Modify to go a fixed amount of time, stop, and make a U-turn.
-2.2 (Tuesday):  
-2.3 (Tuesday):
 <hr>
 <h3>Extra Challenges</h3>
 </div>
@@ -228,9 +318,9 @@ Modify to go a fixed amount of time, stop, and make a U-turn.
 <a id="tuePM"></a>
 <h3>Tuesday Afternoon</h3>
 <hr>
-<h2>Development Pipeline</h2>
+<h2>Development Pipeline:  First ROS Program</h2>
 <hr>
-<p><b>Goal:</b>
+<p><b>Goal:</b> Write a ROS program that moves your bot in simple loop and stops gracefully.
 <p><b>Equipment needed:</b>  department linux laptop and duckieBot
 
 <h3>Extra Challenges</h3></div>
@@ -299,11 +389,11 @@ https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenienc
 </div>
 
 
-
+-->
 
 
 <div>
-<i>Last updated 11 January 2020.</i>
+<i>Last updated 13 January 2020.</i>
 </div>
 
 </html>
