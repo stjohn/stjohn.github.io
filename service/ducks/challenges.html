@@ -260,7 +260,7 @@ As it runs, it generates multiple image views that highlight the lines, signs, a
 
 <p> Now that you have run the lane following program, let's examine how it works.  Here is an overview of the ROS code from <a href="https://idsc.ethz.ch/education/lectures/duckietown.html">Autonomous Mobility on Demand: From Car to Fleet</a> course at ETH Zurich:
 
-<img src = "2019_ETH_autonomyCourse_LF_ROS_slide.png" width="70%">
+<img src = "2019_ETH_autonomyCourse_LF_ROS_slide.png" width=100%>
 
 <p>
 In the diagram, 
@@ -286,7 +286,7 @@ As it runs, it generates multiple image views that highlight the lines, signs, a
 
 </div>
 
-<!--
+
 
 <div>
 <a id="tueAM"></a>
@@ -296,7 +296,7 @@ As it runs, it generates multiple image views that highlight the lines, signs, a
 <h2>First Program:  Motor Control</h2>
 <hr>
 <p><b>Goals:</b>  Create and run a program, via the AIDO framework. 
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot.
 <hr>
 
 <p> The <a href="https://www.duckietown.org/research/ai-driving-olympics">AI Driving Olympics</a> (AI-DO) is an autonomous navigation competition for mobile robotics.  The competition uses the the Duckietown platform and has a series of increasingly difficult challenges, starting with lane following for a single bot to the more complex task of managinig a fleet of bots on the road.  While we won't be submitting to the competition (the last one was in December in conjunction with the NeurIPS 2019 conference in Zurich), we will use their framework.
@@ -304,19 +304,21 @@ The AI-DO framework is set up so that participants will not need to be physicall
 
 <p> Our first program is a (slightly-modified) version of the <a href="https://docs.duckietown.org/DT19/AIDO/out/minimal_template.html">lane following template</a> from the AI-DO2 (using the dt19 software).  It goes straight forward, at a leisurely pace.  Work through the following steps to download the code and run the code:
 <ol>
-	<li> Download the <a href="duckieTemplate.zip">zip file</a> (right click and save to your desktop).
-	<li> Double click on the zip file to "unpack" it.  It will create a folder named <tt>duckieTemplate</tt> on your desktop.
+	<li> Download the <a href="slowWALK.zip">zip file</a> (right click and save to your desktop).
+	<li> Double click on the zip file to "unpack" it.  It will create a folder named <tt>slowWalk</tt> on your desktop.
 	<li> Open up a terminal window (left hand menu) and change directories to the new folder:
 	<p style = "background-color:lavender;width:600px">
 <tt>
-$ cd  ~/Desktop/duckieTemplate
+$ cd  ~/Desktop/slowWalk
 </tt>
 </p>
 	<li> To run the template on a duckieBot:
 	<p style = "background-color:lavender;width:600px">
 <tt>
-$ dts challenges evaluate --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span> 
+$ dts duckiebot evaluate --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span> 
 </tt>
+It will ask you to confirm the key fingerprint (type: yes) and for the duckie login's password (<tt>quackquack</tt>).   
+The first time you download a program will take 3-5 minutes to load the competition framework onto the robot.  Future downloads will still ask for the  password but will be very quick.
 </p>
 	<li> Next, let's look at the code that the duckieBot is running.  At the  terminal window type
 <p style = "background-color:lavender;width:800px">
@@ -325,32 +327,42 @@ $ gedit &
 </tt>
 </p>
 	to open the built-in graphical editor and run in the background (so we can continue to use the terminal to type).
-	<li> In <tt>gedit</tt>, open the file <tt>solutions.py</tt> from the <tt>duckieTemplate</tt> folder.
-	<li> The file, <tt>solutions.py</tt>, is the Python code that does the lane following.  This file is very simplistic:  it ignores everything it sees and just goes forward. Put in code for on_received_get_commands()
+	<li> In <tt>gedit</tt>, open the file <tt>solution.py</tt> from the <tt>duckieTemplate</tt> folder.
+
 </ol>
 
+<p>The file, <tt>solution.py</tt>, is the Python code that does the lane following.  This particular file is very simplistic:  it ignores everything it sees and just goes forward. The two functions that we will work with are:
+<ul>
+	<li> <tt>on_received_observations()</tt> which reads an image whenever it becomes available, and
+	<li> <tt>on_received_get_commands()</tt> which generates commands for the duckieBot.
+</ul>
 
+<p>We will start with the latter:
+<p>
+<img src="slowWalk.png" width=600 border=1>
+<p> The function: 
+	<ul> 
+		<li> Starts by setting the power of the motors (<tt>pwm_left</tt> and <tt>pwm_right</tt>) to be constantly 10% power.  
+		<li> It sets the commands:  the <tt>led_commands</tt> are set to gray and the <tt>pwd_commands</tt> are set to 10%.  
+		<li>It then writes the commands for the LEDs and motors.
+		<li> Updates the count, <tt>self.n</tt>.
+	</ul>
+When the camera takes a new image, this function is called.  Each time, it does exactly the same thing:  keeping two motors at 0.10.  
 
+<p> <b>Challenge:</b>  Make your duckieBot go a  bit faster:  0.25 instead of 0.10.  Modify the <tt>solution.py</tt> and load on to your duckieBot following the same procedure as above.
 
+<p> <b>Challenge:</b>  Make your duckieBot go in a wide circle.  Modify the <tt>solution.py</tt> and load on to your duckieBot following the same procedure as above.
 
-<p> First program is straight line
-
-<p> Challenge:  Make your bot go in a wide circle.
-
-<p> Challenge:  Turn in place.
-
-<p> Challenge:  What does the default template do?  Try on your robot and read throught the python file, <tt>solutions.py</tt>.  What lines control it's motion?
-
-<p> Challenge:  Make a spiral.
-
-<p> Challenge:  Make a figure 8.  
-
-
-
-
+<p> <b>Challenge:</b>  What does the default template do?  Try on your robot and read throught the python file, <tt>solutions.py</tt>.  What lines control it's motion?
 
 <hr>
 <h3>Extra Challenges</h3>
+
+<p> <b>Extra Challenge:</b>  Modify your program to make a spiral (goes in increasingly large circles).
+
+<p> <b>Extra Challenge:</b>  Modify your program to make a figure 8.  
+
+
 </div>
 
 <div>
@@ -360,20 +372,31 @@ $ gedit &
 <h2>Navigation</h2>
 <hr>
 <p><b>Goal:</b>  Understand the A* algorithm.
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<p><b>Equipment needed:</b>  pen/pencil and paper worksheet.  For challenges: department linux laptop and duckieBot. 
 
 <hr>
+
+<p>
+<img src="run2level6_14by14.png" height=200>
+<img src="run6level6_14by14.png" width=200>
+
+
 <h3>Navigation</h3>
 
-<p> Right after A* algorithm is covered, work through example (see email from Susan) 
+<p>Using the A* search algorithm discussed in the slides, work through the examples on the handout.  An overview of A* is available on <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">wiki</a>. 
 
+
+
+
+<p> <b>Challenge:</b>   Work through any remaining challenges from the morning.
+
+<p> <b>Challenge:</b>  The original package that our slow walk is based had the file, <a href="https://github.com/duckietown/challenge-aido_LF-template-random/blob/aido2/solution.py">solution.py</a>.  What happens if you use this file instead of the one we had in slow walk?
 
 <hr>
 <h3>Extra Challenges</h3>
 
-<ul>
-	<li> Work through any remaining challenges from the morning.
-	<li> How do you make your robot move backwards?
+<p> <b>Extra Challenge:</b>  Modify our slow walk program from this morning to make your duckie turn in place.
+(Hint: how do you make your robot move backwards?)
 </ul>
 
 
