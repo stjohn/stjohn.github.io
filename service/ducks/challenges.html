@@ -304,7 +304,7 @@ The AI-DO framework is set up so that participants will not need to be physicall
 
 <p> Our first program is a (slightly-modified) version of the <a href="https://docs.duckietown.org/DT19/AIDO/out/minimal_template.html">lane following template</a> from the AI-DO2 (using the dt19 software).  It goes straight forward, at a leisurely pace.  Work through the following steps to download the code and run the code:
 <ol>
-	<li> Download the <a href="slowWALK.zip">zip file</a> (right click and save to your desktop).
+	<li> Download the <a href="slowWalk.zip">zip file</a> (right click and save to your desktop).
 	<li> Double click on the zip file to "unpack" it.  It will create a folder named <tt>slowWalk</tt> on your desktop.
 	<li> Open up a terminal window (left hand menu) and change directories to the new folder:
 	<p style = "background-color:lavender;width:600px">
@@ -402,23 +402,80 @@ When the camera takes a new image, this function is called.  Each time, it does 
 
 </div>
 
-<!--
+
 <div>
 <a id="wedAM"></a>
 <h3>Wednesday Morning</h3>
 <hr>
 <h2>Vision</h2>
 <hr>
-<p><b>Goal:</b>
+<p><b>Goal:</b>  Manipulate the LEDs on the duckieBot
 <p><b>Equipment needed:</b>  department linux laptop and duckieBot
 <hr>
-3.1 (Paper, Wednesday morning):  Human Vision:
-What do you see?  Several images of duck town-- describe everything you see in the image.
-3.2 (Paper, Wednesday morning):  Robot Vision:
-What can a robot see?  Same images-- but now think in terms of the vision system of the duckiebots.  
-3.3 (Ducks, Wednesday morning):  Vision challenge with ducks
+
+<h3>Human vs. Computer Vision</h3>
+
+Work through the handout on what you see in an image and what a duckieBot sees.
+
+<h3>LEDs on the duckieBots</h3>
+
+<p> The duckieBots have 5 LEDs that can be turned on and off, set to different colors, and blink.  They are numbered as:
+
+<table>
+	<tr>
+		<td>Index</td><td>Position</td>
+	</tr>
+	<tr>
+		<td>0</td><td>Front Left</td>
+	</tr>	
+	<tr>
+		<td>1</td><td>Rear Left</td>
+	</tr>	
+	<tr>
+		<td>2</td><td>Top (Middle Front)</td>
+	</tr>	
+	<tr>
+		<td>3</td><td>Rear Right</td>
+	</tr>	
+	<tr>
+		<td>4</td><td>Front Right</td>
+	</tr>	
+</table>
+
+From ROS interface, check how to do this in the Python interface:
+<pre>
+A pattern is specified via 5 parameters:
+	•	its name
+	•	frequency: blinking frequency in Hz, should be set to 0 for a solid (non-blinking) behavior
+	•	color_list: a list of 5 colour names (see below), one for each LED ordered as above, or a single string with a single color name that would be applied to all LEDs
+	•	frequency_mask: a list of 5 binary flags (0 or 1) that specify which of the LEDs should be blinking, used only if the frequency is not 0. The LEDs with the flag set to 0, will maintain their solid color.
+</pre>
+
+<p>
+Download the template for this morning:  <a href="blinky.zip">blinky.zip</a>.
+Run the program on your duck (see directions from <a href="#tueAM">yesterday morning</a>).  What does it do?
+
+<p>
+We are working with the same template as yesterday, with the function ??? replaced by:
+
+<p>
+<img src=""> Put image of code here
+
+<p><b>Challenge:</b>
+Modify the <tt>solution.py</tt> program to do:
+<ul>
+	<li> Make the tail lights (rear lights) constantly red.
+	<li> Make the head lights (front lights) constantly white.
+	<li> Make the center light blink blue.
+</ul>
+Do each one separately, test to make sure it works, before going on to the next  one.
 <hr>
+
 <h3>Extra Challenges</h3></div>
+
+<p><b>Extra Challenge:</b> Using the random driving program from yesterday, ...
+
+
 
 <div>
 <a id="wedPM"></a>
@@ -426,14 +483,22 @@ What can a robot see?  Same images-- but now think in terms of the vision system
 <hr>
 <h2>Vision</h2>
 <hr>
-<p><b>Goal:</b>
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<p><b>Goal:</b>  Analyze camera data to turn on headlights in the dark (and turn off when light again).
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot.
 <hr>
-3.4 (Paper, Wednesday afternoon):
-3.5 (Ducks, Wednesday afternoon):  Find the pedestrian ducks (aka VisionZero:  don’t hit the ducks).
+
+Our next challenge is to use camera data to inform the behavior of the duckieBot.  To be a safe duckieBot, we want it to turn on its headlights in the  dark and turn the headlights back off when it is light.
+
+<p>
+To do this, we need to analyze the images from the camera for how dark/light
+
+<!--
+Still like to do, but a bit too much for 4-day workshop
+Find the pedestrian ducks (aka VisionZero:  don’t hit the ducks).
 
 There's a demo:  
 https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenience-packages/duckietown_demos/launch/obstacle_avoid.launchSoftware/
+-->
 <hr>
 <h3>Extra Challenges</h3></div>
 </div>

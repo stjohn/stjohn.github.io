@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  	<title>Challenges, DuckieTown@Hunter, January 2020</title>
+    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+  <style type="text/css">
+  	li {
+  		  padding-bottom:	10px ;
+  }
+  </style>
+</head>
+<body>
+
+<h1>Vision Challenges<h1>
+<h2>DuckieTown Workshop, Hunter, January 2020</h2>
+</div>
+
+
+<div>
+Run the A*-search algorithm on the following grids from the robot (R) to the goal (G) where shaded squares are obstables.
+
+<p> Fill in the squares with their distance back to the robot and the estimated distance to the goal if there was no obstables (use "taxi-cab"/Manhattan distances).
+
+<p>
+<img src="simpleMap.png" width=65%">
+
+<p> For example, for the first map, we start at the robot, and mark all squares that we can reach by walking one city block from the robot (left image).  We then process a node with best estimated distance (we could choose either of those with score 7), and compute the estimated distance for its 3 unvisited neigbors (right image):
+
+<p>
+
+<img src="simpleMap0.png" width=35%">&nbsp&nbsp&nbsp&nbsp
+
+<img src="simpleMap1.png" width=35%">
+
+<p> We continue the process, of computing the estimated distance for the current best scoring nodes, and repeating until we reach the goal (or have visited the whole space and given up).
+
+<h3>Challenges</h3>
+
+<ul> 
+	<li>  Finish up the example above.   What is the minimal distance from R to G (avoiding obstables)?  What is a minimal path?
+
+	<li> Do the same for:
+
+<p>
+
+<img src="Ariadnegrid.jpg" width=65%">
+
+</ul>
+</html>
