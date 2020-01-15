@@ -35,15 +35,23 @@ The four-day, hands-on workshop introduces challenges in autonomous navigation w
 	<li> Monday:  Introduction to Robotics
 		<ul>
 			<li> <a href="#monAM">Monday Morning:  Getting Started: Calibrations & Test Runs</a>
-			<li> <a href="#monPM">Monday Afternoon:   Lane Following Demos</a>
+			<li> <a href="#monPM">Monday Afternoon:  Lane Following Demos</a>
 		</ul>
 	<li> Tuesday:  Navigation
 		<ul>
-			<li> <a href="#tueAM">Tuesday Morning:  Motor Control & Navigation</a>
-			<li> <a href="#tuePM">Tuesday Afternoon:  </a>
+			<li> <a href="#tueAM">Tuesday Morning:  First Program:  Motor Control</a>
+			<li> <a href="#tuePM">Tuesday Afternoon:  Navigation &  the A* Search Algorithm  </a>
 		</ul>	
 	<li> Wednesday: Vision
+		<ul>
+			<li> <a href="#wedAM">Wednesday Morning:  Color Detection</a>
+			<li> <a href="#wedPM">Wednesday Afternoon:  Analyziing Images  & DuckieTown with Traffic Control</a>
+		</ul>		
 	<li> Thursday: Machine Learning & Ethics
+		<ul>
+			<li> <a href="#thuAM">Thursday Morning:  Edge Detection</a>
+			<!--<li> <a href="#tuePM">Tuesday Afternoon:  Navigation &  A* Search Algorithm  </a>-->
+		</ul>		
 </ul>
 
 <p><i>This workshop was made possible by a <a href="http://services.google.com/fh/files/misc/2019_explorecsr_grantees.pdf">Google Award for Undergraduate Computer Science Research Focused Workshops for Women</a>  and the <a href="http://www.hunter.cuny.edu/provost">Office of the Provost</a> at Hunter College.</i>
@@ -369,7 +377,7 @@ When the camera takes a new image, this function is called.  Each time, it does 
 <a id="tuePM"></a>
 <h3>Tuesday Afternoon</h3>
 <hr>
-<h2>Navigation</h2>
+<h2>Navigation & the A* Search Algorithm </h2>
 <hr>
 <p><b>Goal:</b>  Understand the A* algorithm.
 <p><b>Equipment needed:</b>  pen/pencil and paper worksheet.  For challenges: department linux laptop and duckieBot. 
@@ -402,87 +410,61 @@ When the camera takes a new image, this function is called.  Each time, it does 
 
 </div>
 
-<!--
+
 
 <div>
 <a id="wedAM"></a>
 <h3>Wednesday Morning</h3>
 <hr>
-<h2>Vision</h2>
+<h2>Vision:  Color Detection</h2>
 <hr>
-<p><b>Goal:</b>  Manipulate the LEDs on the duckieBot
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<p><b>Goal:</b>  
+<p><b>Equipment needed:</b>  department linux laptop and duckieBot, sheets of different color paper.
 <hr>
 
-<h3>Human vs. Computer Vision</h3>
+<h3>Calibration</h3>
 
-Work through the handout on what you see in an image and what a duckieBot sees.
+We would like to run the duckieTown city demo today (where ducks follow the traffic light, signs, and rules of the road).   This works much better with calibrated bots.
+Start today by recalibrating the cameras (do both the intrinsic and extrinsic calibrations) as well as the wheels.  It will be much faster with fewer machines connected to the router (if you are not connecting to a duckieBot, use HunterNet, instead of duckieWorkshop).
 
-<h3>LEDs on the duckieBots</h3>
+<h3>Measuring Color</h3>
 
-<p> The duckieBots have 5 LEDs that can be turned on and off, set to different colors, and blink.  They are numbered as:
+We have two challenges for today:  slowing down when you enter a dark tunnel and turning when the roadway changes colors.  For both, we need to measure how your
+duckieBot preceives color.    
 
-<table>
-	<tr>
-		<td>Index</td><td>Position</td>
-	</tr>
-	<tr>
-		<td>0</td><td>Front Left</td>
-	</tr>	
-	<tr>
-		<td>1</td><td>Rear Left</td>
-	</tr>	
-	<tr>
-		<td>2</td><td>Top (Middle Front)</td>
-	</tr>	
-	<tr>
-		<td>3</td><td>Rear Right</td>
-	</tr>	
-	<tr>
-		<td>4</td><td>Front Right</td>
-	</tr>	
-</table>
-
-From ROS interface, check how to do this in the Python interface:
-<pre>
-A pattern is specified via 5 parameters:
-	¥	its name
-	¥	frequency: blinking frequency in Hz, should be set to 0 for a solid (non-blinking) behavior
-	¥	color_list: a list of 5 colour names (see below), one for each LED ordered as above, or a single string with a single color name that would be applied to all LEDs
-	¥	frequency_mask: a list of 5 binary flags (0 or 1) that specify which of the LEDs should be blinking, used only if the frequency is not 0. The LEDs with the flag set to 0, will maintain their solid color.
-</pre>
-
-<p>
-Download the template for this morning:  <a href="blinky.zip">blinky.zip</a>.
-Run the program on your duck (see directions from <a href="#tueAM">yesterday morning</a>).  What does it do?
-
-<p>
-We are working with the same template as yesterday, with the function ??? replaced by:
-
-<p>
-<img src=""> Put image of code here
-
-<p><b>Challenge:</b>
-Modify the <tt>solution.py</tt> program to do:
+<p>To do that, you need:
 <ul>
-	<li> Make the tail lights (rear lights) constantly red.
-	<li> Make the head lights (front lights) constantly white.
-	<li> Make the center light blink blue.
+	<li> The worksheet with the grid for storing your color measurements, 
+	<li> 4 different colors of paper (white plus 3 others of your choosing), and
+	<li> The program in <a href="colorMeas.zip">colorMeas.zip</a>.
 </ul>
-Do each one separately, test to make sure it works, before going on to the next  one.
-<hr>
 
-<h3>Extra Challenges</h3></div>
+<p><b>Challenge: </b> Using the data you collected, choose two colors that are easy to distinguish from the black tile.  Modify the program so that:
+<ul>
+	<li> The bot goes straight forward, at a leisurely pace, on the black tile.
+	<li> When it sees paper of the first color, it turns left and stops.
+	<li> When it sees paper of the second color, it turns right and stops.
+</ul>
 
-<p><b>Extra Challenge:</b> Using the random driving program from yesterday, ...
+<p><i>Hint: you may find the thresholds approach from counting snowpack in CSci 127 <a href="https://stjohn.github.io/teaching/csci127/f19/lab4.html">Lab 4</a> useful.</i>
 
 
+<h3>Extra Challenges</h3>
+
+<p><b>Extra Challenge:</b> Modify the program so that the color averages are only for the bottom half of the image (the part dominated by the roadway/color blocks).  
+
+<p><i>Hint:  Find the height and width (<tt>_rgb.shape[0]</tt> and (<tt>_rgb.shape[1]</tt>) and use slices before taking the average.</i>
+<p>
+<img src = "csBridgeIndexed.png" width="40%">&nbsp &nbsp
+<img src = "csBridgeShaded.png" width="40%">
+
+</div>
 
 <div>
 <a id="wedPM"></a>
 <h3>Wedneseday Afternoon</h3>
 <hr>
-<h2>Vision</h2>
+<h2>Vision:  Analyzing Images & DuckieTown with Traffic Control</h2>
 <hr>
 <p><b>Goal:</b>  Analyze camera data to turn on headlights in the dark (and turn off when light again).
 <p><b>Equipment needed:</b>  department linux laptop and duckieBot.
@@ -491,29 +473,29 @@ Do each one separately, test to make sure it works, before going on to the next 
 Our next challenge is to use camera data to inform the behavior of the duckieBot.  To be a safe duckieBot, we want it to turn on its headlights in the  dark and turn the headlights back off when it is light.
 
 <p>
-To do this, we need to analyze the images from the camera for how dark/light
+Using the programs from this morning, measure the color readings of the tunnel.  How does that differ from the regular track?  Pick a threshold value for which the values in the tunnel are less than it and those outside the tunnel are greater than that.
 
-<!--
-Still like to do, but a bit too much for 4-day workshop
-Find the pedestrian ducks (aka VisionZero:  donÕt hit the ducks).
+<p><b>Challenge: </b>  Write a program that your robot moves at a moderate speed and then slows down to a crawl when entering a tunnel.  Make sure to test and adjust your motor speeds so that your bot goes relatively straight before testing in the tunnel. 
 
-There's a demo:  
-https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenience-packages/duckietown_demos/launch/obstacle_avoid.launchSoftware/
--->
+
 <hr>
-<h3>Extra Challenges</h3></div>
-</div>
+<h3>Extra Challenges</h3>
 
+<p><b>Extra Challenge:</b>  Instead of barcodes on the floor (like the Amazon warehouse), lets use color regions to indicate change in directions.  Building on the program from this morning, set up a series of color coded regions, where the first color has your bot turn left, the second color has your bot turn right, and the last color has your bot stop.
+</div>
+<!--
 <div>
 <a id="thuAM"></a>
 <h3>Thursday Morning</h3>
 <hr>
-<h2>Machine Learning & Ethics</h2>
+<h2>Simplified Edge Detection</h2>
 <hr>
 <p><b>Goal:</b>
-<p><b>Equipment needed:</b>  department linux laptop and duckieBot
+<p><b>Equipment needed:</b>  Department linux laptop and duckieBot. Measurements from yesterday.
 <hr>
 
+<p>
+The goal for this morning is to keep the bots moving forward on a track that is half black tiles and half white paper.  
 <hr>
 <h3>Extra Challenges</h3></div>
 
@@ -536,7 +518,7 @@ https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenienc
 
 
 <div>
-<i>Last updated 13 January 2020.</i>
+<i>Last updated 14 January 2020.</i>
 </div>
 
 </html>
