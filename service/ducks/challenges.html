@@ -323,8 +323,9 @@ $ cd  ~/Desktop/slowWalk
 	<li> To run the template on a duckieBot:
 	<p style = "background-color:lavender;width:600px">
 <tt>
-$ dts duckiebot evaluate --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME</span> 
-</tt>
+$ dts duckiebot evaluate --duckiebot_name <span style="color:indigo;background-color:white">DUCKIEBOT_NAME  --duration 20</span> 
+</tt> 
+to run for 20 seconds (you can change the 20 to something bigger if you would like to run longer).
 It will ask you to confirm the key fingerprint (type: yes) and for the duckie login's password (<tt>quackquack</tt>).   
 The first time you download a program will take 3-5 minutes to load the competition framework onto the robot.  Future downloads will still ask for the  password but will be very quick.
 </p>
@@ -483,22 +484,39 @@ Using the programs from this morning, measure the color readings of the tunnel. 
 
 <p><b>Extra Challenge:</b>  Instead of barcodes on the floor (like the Amazon warehouse), lets use color regions to indicate change in directions.  Building on the program from this morning, set up a series of color coded regions, where the first color has your bot turn left, the second color has your bot turn right, and the last color has your bot stop.
 </div>
-<!--
+
 <div>
 <a id="thuAM"></a>
 <h3>Thursday Morning</h3>
 <hr>
 <h2>Simplified Edge Detection</h2>
 <hr>
-<p><b>Goal:</b>
+<p><b>Goal:</b>  Make your bot follow a lane on a simplified track.
 <p><b>Equipment needed:</b>  Department linux laptop and duckieBot. Measurements from yesterday.
 <hr>
 
 <p>
-The goal for this morning is to keep the bots moving forward on a track that is half black tiles and half white paper.  
+We have modified the small track to have the outer lane covered in white paper and the inner line the normal black tile.  The goal is to keep the bots moving forward and centered on the track:  that is, the bot should be half on the black tile and half on the white paper.  We will do this in a series of challenges:
+
+<p><b>Challenge:</b> Modify the color measurement program to measure the fraction of white pixels (those that are above your threshold from yesterday for being on white paper) that the camera sees.  You may want to create a new instance variable (i.e. set up a variable in the <tt>init()</tt> to be used later between different functions).
+
+<p><b>Challenge:</b> Modify your program to measure the fraction of white pixels  that the camera sees on the right side of the image.  
+
+<p><b>Challenge:</b> Modify your program to turn left if the fraction of white pixels is significantly over two thirds, and turn right if the number is less than a third.
+
+<p><b>Challenge:</b> Modify your program to move forward staying centered on the line.   
+
+
 <hr>
 <h3>Extra Challenges</h3></div>
 
+<p><b>Extra Challenge:</b> Adjust your thresholds for determining turning  (and color) to improve performance.
+
+<p><b>Extra Challenge:</b> Adjust your thresholds so that the white paper is always a quarter of the view (instead of half).
+
+
+
+<!--
 <div>
 <a id="thuPM"></a>
 <h3>Thursday Afternoon</h3>
