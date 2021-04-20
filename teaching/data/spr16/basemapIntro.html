@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Introduction to basemap, Data Science at Lehman College, CUNY, Spring 2016</title>
-    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
     </head>
 
 <body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
@@ -38,7 +38,7 @@ and <a href="http://www.numpy.org">numpy</a> separately.
 <pre>
 from mpl_toolkits.basemap import Basemap
 </pre>
-it will give you the exact command to download basemap.  You can also download 
+it will give you the exact command to download basemap.  You can also download
 <a href="http://matplotlib.org/basemap/users/installing.html">basemap</a> directly:
 <pre>
 conda install -c https://conda.anaconda.org/anaconda basemap
@@ -53,14 +53,14 @@ The downloads will take about 15-30 minutes, depending on the internet speed.  Y
 <div>
 <h3><tt>basemap</tt> in <tt>matplotlib</tt></h3>
 
-<p>Today, we will use one small part, <tt>basemap</tt>, of the <tt>matplotlib</tt> library.  It is a very popular for presenting results in 2D plots to be used in papers and presentations.  
+<p>Today, we will use one small part, <tt>basemap</tt>, of the <tt>matplotlib</tt> library.  It is a very popular for presenting results in 2D plots to be used in papers and presentations.
 The <tt>basemap</tt> package of <tt>matplotlib</tt> allows you to customize maps and then plot them using the standard <tt>matplotlib</tt> library.  Let's first draw some maps, using the build-in projections, and then add points to represent the GIS coordinates of the specimen information from the database.
 
 
 <h4>Drawing Maps</h4>
 
 <p>
-The <tt>basemap</tt> package follows a familiar format:  it stores information in an object and provides functions for manipulating that object.  For <tt>basemap</tt>, the objects are maps (from the <tt>Basemap</tt> class).  The <tt>Basemap</tt> functions include the ability to change projections, regions, borders, and colors. 
+The <tt>basemap</tt> package follows a familiar format:  it stores information in an object and provides functions for manipulating that object.  For <tt>basemap</tt>, the objects are maps (from the <tt>Basemap</tt> class).  The <tt>Basemap</tt> functions include the ability to change projections, regions, borders, and colors.
 
 <p>To get started, let's draw a simple map of the world.  It takes a bit for it to run (you will get a warning telling you this):
 <pre>
@@ -75,7 +75,7 @@ plt.show()
 To continue, close the map window.
 
 <p>
-To make the map more interesting, let's add some color.  We can do this by using the <tt>fillcontinents()</tt> function: 
+To make the map more interesting, let's add some color.  We can do this by using the <tt>fillcontinents()</tt> function:
 <pre>
 m.fillcontinents(color='darkgreen',lake_color='darkblue')
 </pre>
@@ -99,10 +99,10 @@ and etopo relief (<tt>etopo()</tt>).  Try these various `backgrounds'
 
 <h4>Changing Projections and Regions</h4>
 <p>
-There are also options to change the region of the map displayed as well as the projection.  The function that constructs the map object has many, many options that control the region projected, the type of projection, and the resolution of coastlines and other features.  
+There are also options to change the region of the map displayed as well as the projection.  The function that constructs the map object has many, many options that control the region projected, the type of projection, and the resolution of coastlines and other features.
 
 <p>
-For example, 
+For example,
 <pre>
 map = Basemap(projection='ortho',lat_0=45,lon_0=-100,resolution='l')
 </pre>
@@ -138,7 +138,7 @@ We'll first plot a single point, the location of New York City, and then move on
 <p>The coordinates for New York City are:  40.7127 N, 74.0059 W.  To use in this package, we use the following conversion:
 <ul>
 	<li> Longitudes are the <tt>y-coordinates</tt>.
-	<li> Latitudes are the <tt>x-coordinates</tt>.	
+	<li> Latitudes are the <tt>x-coordinates</tt>.
 	<li> <tt>N</tt> is a positive number (above the equator).
 	<li> <tt>S</tt> is a negative number (below the equator).
 	<li> <tt>E</tt> is a positive number (to the right of the prime meridian).
@@ -164,4 +164,3 @@ The <tt>'ro'</tt> is a <tt>matplotlib</tt> option to plot red circles and <tt>ma
 </ul>
 
 </div>
-

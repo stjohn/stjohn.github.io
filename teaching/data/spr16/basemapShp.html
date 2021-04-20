@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>shapefiles & basemap, Data Science at Lehman College, CUNY, Spring 2016</title>
-    <link type="text/css" rel="stylesheet" href="../../lehman.css" />
+    <link type="text/css" rel="stylesheet" href="../../../lehman.css" />
     </head>
 <body style = "background-color: #EEF1D4;" link = "#0B220B" vlink= "#1F5D1F">
 
@@ -26,14 +26,14 @@ Spring 2016</h3>
 
 <h3>Plotting Data from Files:</h3>
 
-Often there is too much data to type into your program.  In these cases, it is easier to read in the information from a file.  Below is a mixture of novel and previously used commands for accessing file from data and strings.  Try to puzzle each one out on paper and then try in Python. 
+Often there is too much data to type into your program.  In these cases, it is easier to read in the information from a file.  Below is a mixture of novel and previously used commands for accessing file from data and strings.  Try to puzzle each one out on paper and then try in Python.
 
 <p><i>The data file <a href="../amnh/statesSummary.csv">statesSummary.csv</a> is from the <a href="http://www.cdc.gov/lyme/stats/tables.html#modalIdString_CDCTable_1">CDC</a>.  Before starting the program, open up the csv file and see what it looks like.</i>
 
 <ul>
 	<li> Use the pyplot and csv libraries as well as numpy (nice math library):
 <pre>
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import numpy as np
 import csv
 </pre>
@@ -52,23 +52,23 @@ yearLine = reader.next()
 years = [int(w) for w in yearLine[1:]]
 </pre>
 
-	<li> Next, take the first 5 lines of the file, split them into individual numbers, and store to be used in the plot.  Note that the first column has the name of the state and should be stored separately from the data to make plotting easier.  
+	<li> Next, take the first 5 lines of the file, split them into individual numbers, and store to be used in the plot.  Note that the first column has the name of the state and should be stored separately from the data to make plotting easier.
 
 <pre>
 for i in range(5):
      line = reader.next()
      stateName = line[0]
      stateValues = [int(w) for w in line[1:]]
-     color = (0.0, i/5.0, 0.0)   
+     color = (0.0, i/5.0, 0.0)
      plt.scatter(years, stateValues,
            c=color, label=stateName)
 </pre>
 
 	<li> Lastly, set up and display the plot:
 <pre>
-plt.title("Cases of Lyme Disease") 
-plt.xlabel('Years')                
-plt.ylabel('Number of Cases')      
+plt.title("Cases of Lyme Disease")
+plt.xlabel('Years')
+plt.ylabel('Number of Cases')
 plt.legend(loc = 2, fontsize = 'x-small')
 plt.show()
 </pre>
@@ -81,7 +81,7 @@ plt.show()
 	<pre>
 color = (1.0,0.0,i/5.0)	#Color tuple:  100% red, 0% green, and blue increasing with i</pre>
 		What happens?
-	<li> Modify your program so that it will make a (very crowded) plot of all 50 states.  
+	<li> Modify your program so that it will make a (very crowded) plot of all 50 states.
 </ul>
 </div>
 
@@ -92,14 +92,14 @@ color = (1.0,0.0,i/5.0)	#Color tuple:  100% red, 0% green, and blue increasing w
 Since the plot of all 50 states was quite crowded, let's plot the colors to a map.  We will use <tt>basemap</tt>, as we did last week.  In addition, we will need the outline of the states, which are stored in 3 files in the <tt>basemap</tt> examples directory:  <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.dbf">st99_d00.dbf</a>, <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.shp">st99_d00.shp</a>, and <a href="https://github.com/matplotlib/basemap/raw/master/examples/st99_d00.shx">st99_d00.shx</a>.
 
 <p>
-The <tt>basemap</tt> webpage has an example of coloring in states by population, 
+The <tt>basemap</tt> webpage has an example of coloring in states by population,
 <a href="https://github.com/matplotlib/basemap/blob/master/examples/fillstates.py">fillstates.py</a>.  Once you have the 3 files with the shapes of the states, you can run this program to see the map (don't worry to much about all the details, we will go through a simpler one first).
 
 <p>
-We will use a simpler version of it to map the Lyme Disease data, <a href="../amnh/statesFilled.py">statesFilled.py</a>.  
+We will use a simpler version of it to map the Lyme Disease data, <a href="../amnh/statesFilled.py">statesFilled.py</a>.
 <ul>
-	<li> Try running it.  What happens?  
-	<li> Choose two more states and fill in colors for them. 
+	<li> Try running it.  What happens?
+	<li> Choose two more states and fill in colors for them.
 	<li> How can we represent the Lyme disease data on a map?
 </ul>
 
@@ -115,7 +115,7 @@ Let's combine the two programs together so that we're filling in states with a c
 <p>
 For each state, we will need the total number of incidences.  We start out as before:
 <pre>
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import numpy as np
 import csv
 infile = open('statesSummary.csv','r')
@@ -162,7 +162,7 @@ for shape_dict in map.states_info:
     names.append(shape_dict['NAME'])
 </pre>
 
-What changes is how we add colors to each state.  The line <tt>c = ... </tt> sets the color to be 100% red, a percentage of green that's based on the scaled totals, and 100% blue.  When the scaled total for a state is low, this is close 
+What changes is how we add colors to each state.  The line <tt>c = ... </tt> sets the color to be 100% red, a percentage of green that's based on the scaled totals, and 100% blue.  When the scaled total for a state is low, this is close
 to 100% red, 100% green, and 100% blue, which is white (on the computer, colors mix like light, instead of the traditional paint-- that is, as you add more, instead of getting darker (like paint), it gets lighter).  When the scaled total for a state is high, the color is still 100% red and blue but the green decreases, so, the color appears more purple:
 <pre>
 #For each state that we have Lyme Disease data:
@@ -172,8 +172,8 @@ for i in range(len(stateNames)):
      c = (1.0,1.0-scaledTotals[i],1.0)
      poly = Polygon(seg, facecolor=c,edgecolor='black')
      ax.add_patch(poly)
-     
-plt.show()   
+
+plt.show()
 </pre>
 
 (The whole file is in <a href="../amnh/lymeMapped.py">lymeMapped.py</a>).
@@ -181,22 +181,19 @@ plt.show()
 <h4>Challenges:</h4>
 
 <ul>
-	<li> Make plots for the data only from the last year in the file: 2011.  
+	<li> Make plots for the data only from the last year in the file: 2011.
 	<li> Make a plot that shows the net increase in cases from 2010 to 2011 for each state.<br>
 	Hint:  Look at the CSV file and describe the steps you would need to compute this, then translate into Python.
 	<br>
-	
-	Some states might have a decrease (which will give a negative number 
-	for the difference).  There are several ways to handle this: 
+
+	Some states might have a decrease (which will give a negative number
+	for the difference).  There are several ways to handle this:
 	<ul>
 		<li> Take the absolute value (<tt>abs()</tt>) and just map the change.
 		<li> Set any negative values to 0.  To do this with a list comprehension: <tt>[0 if i < 0 else i for i in myList]</tt>
 		<li> Check for negative values when setting the color.  If the change is negative, use a red scaled color to fill in the state, and if positive use a green scaled color.
-	</ul>  
+	</ul>
 	<li> (Optional):  Normalize the data by population size.  That is, plot for each state the per capita incidence rates (<a href="https://github.com/matplotlib/basemap/blob/master/examples/fillstates.py">fillstates.py</a> has population for each state).
 </ul>
 
 </div>
-
-
-
