@@ -6,7 +6,8 @@
   <title>CSci 39542: Data Science, Hunter College</title>
 </head>
 <STYLE>A {text-decoration: none;}
-th, td { padding: 5px; }</STYLE>
+th, td { padding: 5px; border: 1px solid black}
+table { border: 1px solid black; border-collapse: collapse}</STYLE>
 <body>
 
 
@@ -47,7 +48,7 @@ Fall 2021<br><br>
 <br>
 <h3>Calendar:</h3>
 
-<table class="handouts" border="1">
+<table >
 	<tr>
 		<th style="text-align: left">&nbsp;<b>Theme:</b></th>
 		<th style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -90,13 +91,14 @@ Fall 2021<br><br>
 	<tr>
 		<td><b>#3: </b>Thursday,<br> 2 September</td>
 		<td>
-      Probability Sampling, Introduction to Models
-      <br><br>
-      Classwork:  Are Senators older than Represenatives?<br>
+      Probability Sampling, Introduction to Models,
       Generalizing From Data: Data Sampling, Probability Sampling
       <br><br>
+      Classwork:  Are Senators older than Represenatives?<br>
+
+    <br>
         Code Demo:  Python: Revisiting Python Functions:  Defaults, Keywords, Unpacking Argument Lists;
-        Textbook:  Restaurant Tips
+
     </td>
     <td></td>
   		<td rowspan=1><a href="http://www.textbook.ds100.org/ch/03/modeling_intro.html">DS 100: Chapter 3</a> (Modeling Intro),<br>
@@ -112,13 +114,15 @@ Fall 2021<br><br>
 
 	<tr>
 		<td><b>#4: </b>Thursday,<br> 9 September</td>
-		<td>Loss functions
+		<td>Loss functions, Absolute and Huber Loss
     <br><br>Code Demo:
-        Revisiting Python Functions:  Lambda Expressions, Applying Functions to Tables & Documentation Strings
+        Revisiting Python Functions:  Lambda Expressions, Applying Functions to Tables & Documentation Strings;  Textbook:  Restaurant Tips
     </td>
 		<td>
 		</td>
     <td>
+      <a href=
+      "http://www.textbook.ds100.org/ch/03/modeling_loss_functions.html">DS 100, Sections 3.2-3.4</a> (Loss Functions)<br>
       <a href="https://inferentialthinking.com/chapters/08/1/Applying_a_Function_to_a_Column.html">ds8: Section 8.1</a> (Applying Functions to Tables)
     </td>
 
@@ -131,11 +135,16 @@ Fall 2021<br><br>
 	<tr>
 		<td><b>#5: </b>Monday,<br> 13 September</td>
 
-		<td>Modeling and Estimation, part II
-    <br><br>Classwork:
+		<td>More on Modeling and Estimation, Data Representation
+    <br><br>Classwork: Predicting distance of taxi trips (NYC OpenData 2019 Yellow & Green Taxi Trip data)
+    <!--https://data.cityofnewyork.us/Transportation/2019-Yellow-Taxi-Trip-Data/2upf-qytp-->
     </td>
     <td></td>
     <td>
+      <a href=
+      "http://www.textbook.ds100.org/ch/03/modeling_loss_functions.html">DS 100, Sections 3.2-3.4</a> (Loss Functions)<br>
+      <a href=
+      "http://www.textbook.ds100.org/ch/07/repr_intro.html">DS 100, Chapter 7</a> (Data Representation)
     </td>
 	</tr>
 
@@ -154,7 +163,7 @@ Fall 2021<br><br>
     Code Demo: SQL in Python</td>
 		<td>
 		</td>
-    <td>Chapter on data rep, chapter on SQL</td>
+    <td><a href="http://www.textbook.ds100.org/ch/05/sql_intro.html">DS 100: Chapter 5</a> (Relational Databases & SQL)</td>
 	</tr>
 
 
@@ -162,23 +171,24 @@ Fall 2021<br><br>
 
 	<tr>
 		<td><b>#7: </b>Thursday,<br>23 September</td>
-		<td>Relational Databases and SQL<br><br>
-    Classwork:  work with code developed/distributed prior to class</td>
+		<td>Relational Databases and SQL<!--<br><br>
+    Classwork:  work with code developed/distributed prior to class--></td>
 		<td></td>
-		<td rowspan=2>More on data quality & rectangular data</td>
+		<td rowspan=1></td>
 	</tr>
 	<tr>
 		<td><b>#8: </b>Monday, <br>27 September</td>
-		<td>Tables in Python (Pandas)<br>
-    Code Demo: SF Bike Share (ds 8, chapter 8)</td>
+		<td>Tables in Python (Pandas)<br><br>
+    Code Demo: SF Bike Share</td>
 		<td></td>
+    <td> <!--(ds 8, chapter 8)--></td>
 	</tr>
 
 
 	<tr>
 		<td><b>#9: </b>Thursday,<br>30 September</td>
-		<td>Tables in Python (Pandas)<br><br>
-    Classwork: CitiBike & BikeAngels (work with code developed/distributed prior to class)</td>
+		<td>More on Tables in Python<br><br>
+    Classwork: CitiBike & BikeAngels</td>
 		<td></td>
 		<td></td>
 	</tr>
@@ -220,14 +230,15 @@ Fall 2021<br><br>
 		<td><b>#13: </b>Monday, <br>18 October</td>
 		<td></td>
 		<td></td>
-		<td rowspan=2></td>
+		<td rowspan=1></td>
 
 	</tr>
 
 	<tr>
 		<td><b>#14: </b>Thursday,<br>21 October</td>
-		<td>Add in DS 8 John Snow as reading/intro? </td>
+		<td><!--Add in DS 8 John Snow as reading/intro?--> </td>
 		<td></td>
+    <td></td>
 	</tr>
 
 	<tr>
@@ -235,13 +246,14 @@ Fall 2021<br><br>
 		<td><b>#15: </b>Monday,<br>25 October</td>
 		<td></td>
 		<td></td>
-		<td rowspan=2></td>
+		<td rowspan=1></td>
 	</tr>
 
 	<tr>
 		<td><b>#16: </b>Thursday,<br>28 October</td>
-		<td> Causality & Experiments</td>
+		<td> <!--Causality & Experiments--></td>
 		<td></td>
+    <td></td>
 	</tr>
 
 
@@ -250,11 +262,12 @@ Fall 2021<br><br>
 		<td><b>#17: </b>Monday,<br>1 November</td>
 		<td></td>
 		<td></td>
-		<td rowspan=2></td>
+		<td rowspan=></td>
 	</tr>
 	<tr>
 		<td><b>#18: </b>Thursday,<br>4 November</td>
 		<td></td>
+    <td></td>
 		<td>
 		</td>
 	</tr>
@@ -264,12 +277,14 @@ Fall 2021<br><br>
 		<td><b>#19: </b>Monday,<br>8 November</td>
 		<td></td>
 		<td></td>
-		<td rowspan=2></td>
+		<td rowspan=1></td>
+
 	</tr>
 	<tr>
 		<td><b>#20: </b>Thursday,<br>11 November</td>
 		<td></td>
 		<td></td>
+    <td></td>
 	</tr>
 
 
@@ -278,12 +293,13 @@ Fall 2021<br><br>
 		<td><b>#21: </b>Monday,<br>15 November</td>
 		<td></td>
 		<td></td>
-		<td rowspan=2></td>
+		<td rowspan=1></td>
 	</tr>
 	<tr>
-		<td><b>#22: </b>Monday,<br>19 November</td>
+		<td><b>#22: </b>Thursday,<br>18 November</td>
 		<td></td>
 		<td></td>
+    <td></td>
 	</tr>
 
 
@@ -357,5 +373,5 @@ Fall 2021<br><br>
 </div>
 
 <div>
-<i style="float:right">(This file was last modified on 28 April 2021.)</i><br>
+<i style="float:right">(This file was last modified on 3 May 2021.)</i><br>
 </div>
