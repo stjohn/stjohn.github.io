@@ -54,14 +54,21 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
   Hunter College regards acts of academic dishonesty (e.g., plagiarism, cheating on examinations, obtaining unfair advantage, and falsification of records and official documents) as serious offenses against the values of intellectual honesty. The College is committed to enforcing the CUNY Policy on Academic Integrity and will pursue cases of academic dishonesty according to the Hunter College Academic Integrity Procedures.</i>
   </blockquote>
 
+  <p><a name="q2"><b>Quiz 2</b></a> <i>(Due 4pm, Tuesday, 31 August):</i>  The second quiz focuses on the Python Recap: basics and standard packages (pandas, numpy,  matplotlib, & seaborn) and list comprehensions from Lecture 1.
+
+<p><a name="q3"><b>Quiz 3</b></a> <i>(Due 4pm, Friday, 3 September):</i>
+  The quiz covers data sampling from the third lecture and the reading: <a href="http://www.textbook.ds100.org/ch/02/design_intro.html">DS 100: Chapter 2</a> (Design Intro) .
+
+<p><a name="q4"><b>Quiz 4</b></a> <i>(Due 4pm, Friday, 10 September):</i>
+  The quiz covers loss functions from the fourth lecture and the reading: <a href=
+  "http://www.textbook.ds100.org/ch/03/modeling_loss_functions.html">DS 100, Sections 3.2-3.4</a> (Loss Functions).
 
 <p>
   <i>More to come...</i>
 <!--
-<p><a name="q2"><b>Quiz 2</b></a> <i>(Due 4pm, Tuesday, 31 August):</i>  Focuses
-  on the python recap from Lecture 1.
-<p><a name="q3"><b>Quiz 3</b></a> <i>(Due 4pm, Friday, 3 September):</i>
-<p><a name="q4"><b>Quiz 4</b></a> <i>(Due 4pm, Friday, 10 September):</i>
+
+
+
 <p><a name="q5"><b>Quiz 5</b></a> <i>(Due 4pm, Tuesday, 14 September):</i>
 <p><a name="q6"><b>Quiz 6</b></a> <i>(Due 4pm, Tuesday, 21 September):</i>
 <p><a name="q7"><b>Quiz 7</b></a> <i>(Due 4pm, Friday, 24 September):</i>
@@ -103,13 +110,45 @@ To get full credit for a program, the file must include in the opening comment:
     <li> A list of any resources you used for the program.  Include classmates and tutors that you worked with, along with any websites or tutorials that you used.
 </ul>
 
-<p><a name="p1"><b>Program 1</b></a> <i>(Due noon, Monday, 30 August):</i>  Submit a Python program that prints:  <tt>Hello, world!</tt>
+<p><a name="p1"><b>Program 1</b></a> <i>(Due noon, Friday, 27 August):</i>  Submit a Python program that prints:  <tt>Hello, world!</tt>
 
-<p><a name="p2"><b>Program 2</b></a> <i>(Due noon, Wednesday, 1 September):</i>
-Submit a .txt file that contains the standard heading information from above and the last line of the file contains the login name of the github account you plan to use this term.
+<p><a name="p2"><b>Program 2</b></a> <i>(Due noon, Monday, 30 August):</i>
+Write a program, using the <tt>pandas</tt> package that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and <tt>birthday</tt> to a file with the output file name provided by the user.
+
+<p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
+
+<div style="background-color:lightgray;width:100%">
+<pre>
+last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
+Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
+Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell
+</pre>
+</div>
+Then a sample run of the program:
+<div style="background-color:lightgray;width:100%">
+<pre>
+Enter input file name: legislators-current.csv
+Enter output file name:  senatorBday.csv
+</pre>
+</div>
+
+And the first three lines of <tt>senatorBday.csv</tt> would be:
+<div style="background-color:lightgray;width:100%">
+<pre>
+first_name,birthday
+Sherrod,1952-11-09
+Maria,1958-10-13
+</pre>
+</div>
+Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
 
 <!--
 <p><a name="p3"><b>Program 3</b></a> <i>(Due noon, Thursday, 2 September):</i>
+
+
+<p><a name="p5"><b>Program 5</b></a> <i>(Due noon, Wednesday, 1 September):</i>
+Submit a .txt file that contains the standard heading information from above and the last line of the file contains the login name of the github account you plan to use this term.
+
 -->
 
   <p>
