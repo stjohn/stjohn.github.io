@@ -126,7 +126,7 @@ To get full credit for a program, the file must include in the opening comment:
 <p><a name="p1"><b>Program 1</b></a> <i>(Due noon, Friday, 27 August):</i>  Submit a Python program that prints:  <tt>Hello, world!</tt>
 
 <p><a name="p2"><b>Program 2</b></a> <i>(Due noon, Monday, 30 August):</i>
-Write a program, using the <tt>pandas</tt> package that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and <tt>birthday</tt> to a file with the output file name provided by the user.
+Write a program, using the <tt>pandas</tt> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and <tt>last_name</tt> to a file with the output file name provided by the user.
 
 <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
 
@@ -141,27 +141,54 @@ Then a sample run of the program:
 <div style="background-color:lightgray;width:100%">
 <pre>
 Enter input file name: legislators-current.csv
-Enter output file name:  senatorBday.csv
+Enter output file name:  senatorNames.csv
 </pre>
 </div>
 
-And the first three lines of <tt>senatorBday.csv</tt> would be:
+And the first three lines of <tt>senatorNames.csv</tt> would be:
 <div style="background-color:lightgray;width:100%">
 <pre>
-first_name,birthday
-Sherrod,1952-11-09
-Maria,1958-10-13
+first_name,last_name
+Sherrod,Brown
+Maria,Cantwell
 </pre>
 </div>
 Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
 
-<!--
 <p><a name="p3"><b>Program 3</b></a> <i>(Due noon, Wednesday, 1 September):</i>
-Quick question about list comprehensions & basic packages
+Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and compute the <tt>age</tt> based on the <tt>birthday</tt> field as of the first of the year.  Your program should write out a new CSV file (with the name provided by the user) with the two columns:  <tt>first_name</tt> and <tt>age</tt>.
+
+<p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
+
+<div style="background-color:lightgray;width:100%">
+<pre>
+last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
+Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
+Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell
+</pre>
+</div>
+Then a sample run of the program:
+<div style="background-color:lightgray;width:100%">
+<pre>
+Enter input file name: legislators-current.csv
+Enter output file name:  senatorAge.csv
+</pre>
+</div>
+
+And the first three lines of <tt>senatorAge.csv</tt> would be:
+<div style="background-color:lightgray;width:100%">
+<pre>
+first_name,age
+Sherrod,68
+Maria,62
+</pre>
+</div>
+since that was their ages as of January 1, 2021.
+<p>
+Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+<!--
 
 <p><a name="p4"><b>Program 4</b></a> <i>(Due noon, Thursday, 2 September):</i>
-String methods:  compute birthdays for input file (to use in lecture with senator data set and sampling)
-
 To lead into lecture #3:  sample vs. census of a large data set-- book uses Obama vs. Romney.  Add in a question about cluster and stratified sampling?  Wait until random packages discussed?  Or just use the basic Python one?
 
 
