@@ -208,9 +208,50 @@ Maria,62
 since that was their ages as of January 1, 2021.
 <p>
 Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
-<!--
 
-<p><a name="p4"><b>Program 4</b></a> <i>(Due noon, Thursday, 2 September):</i>
+
+<!--
+<p><a name="p4"><b>Program 4</b></a> <i>(Due noon, Thursday, 2 September):</i>  Finish up the class exercise and compute the error on age prediction, using the ages computed from Program 3 and the textbook's estimates.  Some names do not appear in the SSN name data (such as "Sherrod"), since it only keeps track of the top 1000 names for any given year.  Keep track of the number of names you cannot predict so that when you compute the average error, you only divide through by the number for which you can comptue the value.
+
+<p><a name="p5"><b>Program 5</b></a> <i>(Due noon, Friday, 3 September):</i>
+Write a program, tailored to the NYC OpenData Yellow Taxi Trip Data, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should copy the input file and create two new columns:  <tt>percent_tip</tt>, which is <tt>100*tip_amount/fare_amount</tt> and <tt>percent_fare</tt>, which is <tt>100*fare_amount/total_amount</tt>.  Your program should write out a new CSV file (with the name provided by the user) with the original columns as well as the two newly computed ones.
+
+<p>For example, if the file was the first 10 days in January 2019 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2019-Yellow-Taxi-Trip-Data/2upf-qytp">2019 Yellow Taxi Trip Data</a> (about 2.2 million entries) with the first 3 lines of:
+
+<div style="background-color:lightgray;width:100%">
+<pre>
+  VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
+  2,01/01/2001 12:02:08 AM,01/01/2001 01:00:02 AM,1,0.43,1,N,151,151,1,3.5,0.5,0.5,0,0,0.3,4.8,0
+  2,01/01/2001 12:09:39 AM,01/01/2001 06:39:54 AM,1,3.22,1,N,48,148,2,13.5,0,0.5,0,0,0.3,16.8,2.5
+  2,02/02/2001 02:55:07 PM,02/02/2001 03:07:27 PM,1,0,1,N,193,193,2,2.5,0.5,0.5,0,0,0.3,3.8,
+</pre>
+</div>
+Then a sample run of the program:
+<div style="background-color:lightgray;width:100%">
+<pre>
+Enter input file name: taxi_10_days_in_Jan2019.csv
+Enter output file name:  taxi_Jan2019_with_percents.csv
+</pre>
+</div>
+
+And the first three lines of <tt>senatorAge.csv</tt> would be:
+<div style="background-color:lightgray;width:100%">
+<pre>
+  VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge,percent_tip,percent_fare
+  2,01/01/2001 12:02:08 AM,01/01/2001 01:00:02 AM,1,0.43,1,N,151,151,1,3.5,0.5,0.5,0,0,0.3,4.8,0,0.0,72.9
+  2,01/01/2001 12:09:39 AM,01/01/2001 06:39:54 AM,1,3.22,1,N,48,148,2,13.5,0,0.5,0,0,0.3,16.8,2.5,0.0,80.4
+  2,02/02/2001 02:55:07 PM,02/02/2001 03:07:27 PM,1,0,1,N,193,193,2,2.5,0.5,0.5,0,0,0.3,3.8,0.0,65.8
+</pre>
+</div>
+<p> You should round the values stored in your new columns to the nearest tenth.
+
+
+
+
+P5:
+
+Add in a data cleaning applying to data frames-- very easy, but make sure all can do this before assuming this is a basic step in larger programs.  Code demo of 9 Sept, so, have 2 programs after that.
+
 Wait on the background for the Obama v. Romney, and instead have a several data cleaning example just using string methods.  One that needs to check for empty entries.  Another that combines multiple columns into a new one.  maybe the 311 or NYPD data (since often missing GIS coordinates).
 
 To lead into lecture #3:  sample vs. census of a large data set-- book uses Obama vs. Romney.  Add in a question about cluster and stratified sampling?  Wait until random packages discussed?  Or just use the basic Python one?
