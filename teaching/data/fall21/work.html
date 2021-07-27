@@ -6,7 +6,8 @@
   <title>Coursework, CSci 39542: Data Science, Hunter College</title>
 </head>
 <STYLE>A {text-decoration: none;}
-th, td { padding: 5px; }</STYLE>
+th, td { padding: 5px; }
+</STYLE>
 <body>
 
 
@@ -146,6 +147,7 @@ Set 1:  The first set of programs recaps familiar Python constructs and packages
 <hr>
 
 <p><a name="p1"><b>Program 1</b></a> <i>(Due noon, Friday, 27 August):</i>  Submit a Python program that prints:  <tt>Hello, world!</tt>
+<br>
 
 <p><a name="p2"><b>Program 2</b></a> <i>(Due noon, Monday, 30 August):</i>
 Write a program, using the <tt>pandas</tt> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and <tt>last_name</tt> to a file with the output file name provided by the user.
@@ -176,6 +178,7 @@ Maria,Cantwell
 </pre>
 </div>
 Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+<br>
 
 <p><a name="p3"><b>Program 3</b></a> <i>(Due noon, Wednesday, 1 September):</i>
 Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and compute the <tt>age</tt> based on the <tt>birthday</tt> field as of the first of the year.  Your program should write out a new CSV file (with the name provided by the user) with the two columns:  <tt>first_name</tt> and <tt>age</tt>.
@@ -208,12 +211,48 @@ Maria,62
 since that was their ages as of January 1, 2021.
 <p>
 Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+<br>
 
+<p><a name="p4"><b>Program 4</b></a> <i>(Due noon, Thursday, 2 September):</i>
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should select rows where the field <tt>Grade</tt> is equal to 3 and the <tt>Year</tt> is equal to 2019 and write all rows that match that criteria to a new CSV file.
 
-<!--
-<p><a name="p4"><b>Program 4</b></a> <i>(Due noon, Thursday, 2 September):</i>  Finish up the class exercise and compute the error on age prediction, using the ages computed from Program 3 and the textbook's estimates.  Some names do not appear in the SSN name data (such as "Sherrod"), since it only keeps track of the top 1000 names for any given year.  Keep track of the number of names you cannot predict so that when you compute the average error, you only divide through by the number for which you can comptue the value.
+  <p>For example, if the file was <tt>school-ela-results-2013-2019.csv</tt> (extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a>) with the first lines of the output file would be:
+
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
+01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
+01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</pre>
+  </div>
 
 <p><a name="p5"><b>Program 5</b></a> <i>(Due noon, Friday, 3 September):</i>
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Your program should include a function, <tt>extractDistrict()</tt> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <tt>School</tt> field, converts those into a digit, and stores the results in a new column, <tt>District</tt>.
+  The results should be written to a new CSV file, name provided by the user.
+
+  <p> For example, if the <tt>School</tt> is <tt>"01M015"</tt>, the entry in the new column would be <tt>1</tt> (stored as a number, not a string).
+
+
+<p><a name="p6"><b>Program 6</b></a> <i>(Due noon, Thursday, 9 September):</i>
+
+<p><a name="p7"><b>Program 7</b></a> <i>(Due noon, Friday, 10 September):</i>
+
+<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i>
+
+<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i>
+
+<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i>
+
+<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i>
+
+<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i>
+
+<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i>
+
+<!--
+  Finish up the class exercise and compute the error on age prediction, using the ages computed from Program 3 and the textbook's estimates.  Some names do not appear in the SSN name data (such as "Sherrod"), since it only keeps track of the top 1000 names for any given year.  Keep track of the number of names you cannot predict so that when you compute the average error, you only divide through by the number for which you can comptue the value.
+
+
 Write a program, tailored to the NYC OpenData Yellow Taxi Trip Data, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Next, the program should copy the input file and create two new columns:  <tt>percent_tip</tt>, which is <tt>100*tip_amount/fare_amount</tt> and <tt>percent_fare</tt>, which is <tt>100*fare_amount/total_amount</tt>.  Your program should write out a new CSV file (with the name provided by the user) with the original columns as well as the two newly computed ones.
 
 <p>For example, if the file was the first 10 days in January 2019 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2019-Yellow-Taxi-Trip-Data/2upf-qytp">2019 Yellow Taxi Trip Data</a> (about 2.2 million entries) with the first 3 lines of:
@@ -250,11 +289,147 @@ And the first three lines of <tt>senatorAge.csv</tt> would be:
 
 P5:
 
+<p>Ideas:
+<pre>
 Add in a data cleaning applying to data frames-- very easy, but make sure all can do this before assuming this is a basic step in larger programs.  Code demo of 9 Sept, so, have 2 programs after that.
 
 Wait on the background for the Obama v. Romney, and instead have a several data cleaning example just using string methods.  One that needs to check for empty entries.  Another that combines multiple columns into a new one.  maybe the 311 or NYPD data (since often missing GIS coordinates).
 
 To lead into lecture #3:  sample vs. census of a large data set-- book uses Obama vs. Romney.  Add in a question about cluster and stratified sampling?  Wait until random packages discussed?  Or just use the basic Python one?
+
+Need several questions on correlation-- maybe set 3 or 4?
+From Lehman's DS course:  HW5:  Are collisions correlated with temperature?
+
+Regex questions:  different spellings of same name in baby name SSN data (HW 5 from Lehman)
+
+A/B Testing-- do as part of quizzes when we do Bayes Theorem
+
+Image processing:  a bit too simple, but something like:  HW 7
+The USGS collected images before and after the Both: New Year's flooding: New Year's flooding (saved as png for December, 2015 and for January, 2016). Write a program that produces an image with flooded regions marked in red (that is, any pixel that is not "blue" in 2015 but is in the 2016 image).
+
+GIS Data:  HW 8:
+
+Plot the locations of the campuses of the City University of New York on a satelitte image of the city. Make sure to include in the title of your plot the date plotted.
+
+#1: Submit your Python program as a .py file.
+#2: Submit a screen shot of the graphics window containing the plot.
+
+Hint: Use the drawcounties() option in basemap and show only the region including New York City. Use the csv module to extract the latitude and longitude from the downloaded NYC data file.
+
+Make a plot that includes all the WiFi locations within one hundredth of a degree of a location of your choice. For example, Lehman College is at 40.8725 degrees North and 73.8939 degrees West. For this location, you would include all hotspots that within 0.01 in either direction (since the plot will be square). Your plot should color the inside hotspots blue and the outside hotspots green (GIS location as well as type available in the CSV file of hotspots). Make sure to include in your title of the plot the region of the city you are plotting.
+
+#5: Submit your Python program as a .py file.
+#6: Submit a screen shot of the graphics window containing the plot.
+
+#3: Submit your Python program as a .py file.
+#4: Submit a screen shot of the graphics window containing the plot.
+
+Classifer:  Lehman HW 5:
+Write a classifer program that predicts if a name is boy or girl's name based on the last letters of the name.
+#2: Write a Python program that takes as input a Social Security Administration name file (see above for files and format) and outputs three files. The first file should have 26 lines (one for each letter of the alphabet). Each line contains three values: the letter, the fraction of boys' names ends in that letter in the training set (inputted file), the fraction of girls' names that in that letter in the training set. For example: a possible file could start:
+a, 0.023, 0.451
+b, 0.010, 0.008
+...
+The second file computes the fraction of boys and girls names that has the second to last letter specified.
+The third file computes the fraction of boys and girls names that has the third to last letter specified.
+#2: Submit your Python program that computes correlation and produces the graph as a .py file.
+
+#3: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
+
+#4: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
+
+#5: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
+
+#6: Modify the Naive Bayes spam filter program to reads in the three files generated above as well as a fourth file of test data (use another year's data such as yob2010.txt). Instead of multiplying together word occurrences, your program should multiply use the last letter, second-to-last letter, and third-to-last letter that you computed above. Your program should classify each name in the test data (similar to the Naive Bayes filter from the book) and report back the percentage of names your correctly predicted as well as the names you predicted incorrectly.
+Submit your Python program as a .py file.
+
+#7: Submit the output of your file (the percentage you correctly predicted along with the names you predicted incorrectly) as a .txt file.
+
+Covariance:  HW 9:  Analyse the NY Fed's Labor Market Data for Recent Graduates (see link above) using a Principal Components Analysis. There are three parts to this exercise:
+Compute and display the covariance matrix for the data,
+Generate a 3D plot of the data under the first three axis of a Principal Components Analysis. On this plot, highlight (using a different color) the computer science and mathematics majors, and
+Include the Python code that you used to generate your plots.
+Make sure to include in the title of your plot the date plotted.
+
+#1: Submit your Python program as a .py file.
+#2: Submit a text file or screen shot that includes the covariance matrix.
+#3: Submit a screen shot of the graphics window containing the plot.
+
+Using the New York City data for district test scores, shade your map above by percentage of students proficient in mathematics (i.e. scored a 3 or 4 on the exam-- the last column in the CSV file).
+
+#6: Submit your Python program as a .py file.
+#7: Submit a screen shot of the graphics window containing the plot.
+
+#6: Using the New York City data for district test scores, compute the covariance matrix for District 1 schools across grades (that is, rows 8 to 28, columns G onward). Which rows are most highly correlated? Submit a typeset or neatly handwritten image of your answer.
+
+#7: Compute the first and second axis of a Principal Components Analysis using the covariance matrix above. Submit a typeset or neatly handwritten image of your answer.
+
+When do mapping, something with litter baskets:  https://data.cityofnewyork.us/dataset/DSNY-Litter-Basket-Map-/d6m8-cwh9
+
+Need some programs on displaying, time-series data, something like the standard stocks example.  Here's bokeh: https://docs.bokeh.org/en/0.10.0/docs/gallery/stocks.html
+Find on altair
+
+HW 12:  The file landmarkDistances.txt contains a distance matrix for 10 landmarks in New York City. The file landmarks.txt contains the names of 9 of the landmarks. The last name is "mystery". Use multidimensional scaling to display all 10 points on the screen with landmarks labeled. Using your displayed information, identify the last mystery landmark.
+(Based on the inspired homework from dasGupta's machine learning course at UCSD.)
+
+Make sure to include in the title of your plot the date plotted.
+
+#1: Submit your Python program as a .py file.
+#2: Submit a screen shot of the graphics window containing the plot.
+#3: Does the plot look right? If not, how can you re-orient so that it does? What is the mystery landmark? Include your answer in a .txt or a scan of a neatly handwritten paper.
+
+
+HW 12:  Using the 311 Pothole data (described above), use logistic regression analysis of time versus status: "Closed" versus "Open" (any non-"Closed" values of the status include in the "Open" category) to create a model that predicts if a pothole has been repaired, given the date reported.
+You may want to use the textbook's code (described above)-- if you do, modify to take only 1 input parameter (instead of the 2 it currently takes). This is a very small change (just change the starting beta_0 to match the dimension of the data and be [1,1].)
+
+#4: Submit your Python program as a .py file.
+#5: Submit a screen shot of the graphics window containing a plot of the data points (a scatterplot of (date,status) where status is 0 if closed and 1 otherwise) with the logistic curve that you fit to the data.
+
+
+HW 12:  Using bokeh, display the unemployment data (described above) as a scatter plot of the data with a 6-month running average.
+Note: The bokeh part is straightforward (very similar to the stock example-- you need to modify the #prepare some data section (as well as titles and labels)). The work here is setting up your data to be plotted. The dates need to be datetime objects for the stretching and scaling of the x-axis to work.
+
+Make sure to include a title in your plot.
+
+#6: Submit your Python program as a .py file.
+#7: Submit a screen shot of your program as an .png or .jpg file. (This homework originally asked for the .html file, but Blackboard is stripping the HTML formatting out of submitted files.)
+
+
+HW 12:  Modeling question-- not sure when to integrate into topics:
+Given the data:
+x	0	1	2	4	5	7	8	9	12	15
+y	0	0	0	1	1	0	1	0	1	1
+
+and two possible logistic functions:
+
+f(x) = 1/(1 +e^{-(6+.75x)})
+g(x) = 1/(1 +e^{-(-8+x)})
+#6: Which function predicts more of the data correctly? That is, out of the 10 input values, how many values were predicted to be 1 with greater than 50% probability were actually 1 (true positives), were actually 0 (false positives); how many values were predicted to be 0 with greater than 50% probability were actually 0 (true negatives), were actually 1 (false negatives)?
+
+Submit a typeset or neatly handwritten answer.
+
+
+#7: Use the book's logistic regression code to fit a logistic function to the data above.
+Note: The book's code assumes that 3 dimensional data while we have only 2 dimensions. The code is well-written and can be easily modified to handle only 2 dimensions by entering 2 dimensional data for data and modifying the starting value of beta_0 to be the [1,1].
+
+Submit a screenshot of a graph with the true points, your predicted curve (i.e. the logistic function with your computed beta_hat, and the f and g functions above. Include a legend or labels for your curves.
+
+</pre>
+
+
+<p><i>Extras:</i>  These problems are not submitted or graded, but are suggestions for those who would like more Python experience or more practice on the concepts of the section.  These problems also have possible tools for the course project and practice for quizzes and the final exam.
+
+<ul>
+  <li>List Comprehensions:</li>
+  <li>Functions & Pandas: Using apply(), manipulating DataFrames  </li>
+  <li>Matplotlib Basics:</li>
+  <li>Seaborn:</li>
+  <li>String Methods:</li>
+  <li>Loss Functions:</li>
+  <li>Lambda Functions:</li>
+  <li>Unpacking Argument Lists & Keywords:</li>
+</ul>
+
 
 <br>
 <hr>
@@ -286,10 +461,196 @@ Submit a .txt file that contains the standard heading information from above and
 <!--
 <p><a name="proj1"><b>Milestone 1</b></a> <i>(Due ??):</i>
 <p><a name="proj2"><b>Milestone 2</b></a> <i>(Due ??):</i>
+
+
+<h3>Milestones</h3>
+
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed in the right hand column.
+
+<p>
+<table class="handouts" border="1">
+<tr>
+	<th>Deadline:</th><th>Deliverables:</th><th>Points:</th>
+</tr>
+<tr>
+	<td>Saturday, 2 April, noon</td><td><a href="#proposal">Title & Proposal</a></td><td>20</td>
+</tr>
+<tr>
+	<td>Saturday, 2 April, noon</td><td><a href="#peerReview">Peer Review #1</a></td><td>10</td>
+</tr>
+<tr>
+	<td>Saturday, 16 April, noon</td><td><a href="#timeline">Timeline</a></td><td>10</td>
+</tr>
+<tr>
+	<td>Saturday, 23 April, noon</td><td><a href="#timeline">Data Collection</a></td><td>20</td>
+</tr>
+<tr>
+	<td>Wednesday, 4 May, noon</td><td><a href="#timeline">Analysis</a></td><td>30</td>
+</tr>
+<tr>
+	<td>Saturday, 7 May, noon</td><td><a href="#timeline">Visualization</a></td><td>20</td>
+</tr>
+
+<tr>
+	<td>Saturday, 7 May, noon</td><td><a href="#slides">Draft Presentation Slides</a></td><td>20</td>
+</tr>
+<tr>
+	<td>Saturday, 2 April, noon</td><td><a href="#peerReview">Peer Review #2</a></td><td>10</td>
+</tr>
+<tr>
+	<td>Saturday, 14 May, noon</td><td><a href="#complete">Complete Project Website</a></td><td>50</td>
+</tr>
+<tr>
+	<td>Monday, 16 May, 9am</td><td><a href="#abstract">Abstract</a></td><td>10</td>
+</tr>
+
+
+
+<tr>
+	<td>Tuesday, 17 May, in class</td><td><a href="#presentation">Project Video</a></td><td>50</td>
+</tr>
+<tr>
+	<th colspan=2>Total Points:</th><td>250</td>
+</tr>
+
+
+</table>
+
+
+<h3>Proposal</h3>
+<a name="proposal"></a>
+
+A short statement that includes:
+<ul>
+	<li> Proposed topics or questions you would like to address,
+	<li> Why you are interested in this topic (in your own words-- copying someone else's words is plagiarism),
+	<li> What data sets you plan to use (must use at least 2 distinct data sets per team member in meaningful ways in your project), and
+	<li> What techniques and tools you are thinking about using.
+</ul>
+
+
+<h3>Timeline</h3>
+<a name="timeline"></a>
+
+<p>
+Your plan of attack to complete this project on time, including what you will have completed by the check-ins for Data Collection, Analysis, and Visualization.  You should view the timeline as a contract with specifics of what the "deliverables" are at each milestone.
+
+<p>
+<ul>
+</ul>
+
+
+
+<div>
+<h3>Presentation Slides</h3>
+<a name="slides"></a>
+
+REWRITE-- need 30 second preview (recorded) + grading rubric of others?  Maybe have feed back from other students earlier in the process?
+
+
+The presentation .  The first part consists of a "sneak preview" of your project where your group speaks for 90 seconds about what they did.  After every group has given their sneak preview, each group will display their project on a lab computer (see below for more details).
+
+<p>
+For the sneak preview, every group submits 2 slides with
+<ul>
+	<li> Slide 1: the front image and title from website, as well as the names of group members
+	<li> Slide 2:  discoveries & conclusions (with images)
+</ul>
+</div>
+
+<div>
+<h3>Data Collection</h3>
+<a name="slides"></a>
+
+<p>
+For the data collection milestone, you must submit:
+<ul>
+	<li> a list (with links) of all data sources used,
+	<li> for each data source:
+		<ul>
+			<li> a description of what and why you are using that source,
+			<li> how you extracted the data from the source (i.e. detail how you downloaded/scraped the data as well as the file processing needed), and
+			<li> any issues you had or forsee with the analysis of the data.
+		</ul>
+</ul>
+
+
+</div>
+
+<div>
+<h3>Analysis</h3>
+<a name="slides"></a>
+
+<p>
+For the analysis milestone, you must submit:
+<ul>
+	<li> the results of the initial analysis for each data set, and
+	<li> details of at least one data set per group member (that is, each group member submits the details of a different data set used).
+</ul>
+
+</div>
+
+<div>
+<h3>Visualization</h3>
+<a name="slides"></a>
+
+<p>
+For the visualization milestone, you must submit:
+<ul>
+	<li> draft images that you plan to use in your project presentation, and
+	<li> detailed description of the creation of at least one image per group member (that is, each group member submits the details of a different image from the project).
+</ul>
+
+</div>
+
+<div>
+<h3>Complete Project</h3>
+<a name="complete"></a>
+
+<p> The project must be submitted as a webpage (use google sites or other pre-built if you're not comfortable writing html).  The project website must include:
+<ul>
+	<li> a front image and title that summarizes your project,
+	<li> an overview paragraph on what you did:  what was your underlying hypothesis?  what data, methods, and tools did you use to test and explore it?
+	<li> links to your github repository with your code for the project,
+	<li> a team section describing how each person contributed to the project,
+	<li> a data section with a paragraph detailing each data set,
+	<li> a techniques section with a paragraph detailing,
+	the process and tools you usedeach technique use,
+	<li> a citations section with links to all data sources, code sources, publications used.
+</li>
+</div>
+
+
+<div>
+<h3>Project Presentations</h3>
+<a name="presentation"></a>
+
+<p>
+The project presentations are on the last day of class and consist of two parts:
+<ul>
+	<li> 90 second sneak preview of your project (slide requirements described above), and
+	<li> interactive demo (on lab computers) where each group member explains the overall process of creating the project as well as their individual contributions.
+
+</div>
+
+<div>
+<h3>Grading</h3>
+
+
+<p>
+Half of the points are awarded for the work-in-process milestones during the semester, and half are awarded for the final project and presentation.
+
+<h3>Examples</h3>
+
+<p>
+This course has not been taught at Lehman College before, so, no previous student projects exist.  Below is a sampled list of stellar student projects from other data science programs:
+<ul>
+	<li> <a href="http://cs109hubway.github.io/classp/">Predicting Hubway (Boston's Citibike) Station Status</a>:  a group project from Harvard's data science class.  Includes excellent presentation of the motivation as well as data visualizations.
+	<li> <a href="http://www.michaelhintze.com/tv-series/">Longest Running TV Series</a>:  a class project by Lehman alum, Michael Hintze, for one of his masters courses at <a href="http://www.ischool.berkeley.edu/courses/i247">UC Berkeley School of Information</a>.
+	<li> <a href="http://isoscope.martinvonlupin.de">Isoscope</a>:  a group project comparing modes of transportation for the masters degree program at the <a href="http://idl.fh-potsdam.de">University of Applied Sciences, Potsdam, Germany</a>.
+
+</ul>
 -->
-
-
-
 
 </div>
 </body>
