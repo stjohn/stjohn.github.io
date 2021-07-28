@@ -238,28 +238,69 @@ School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level
 <hr>
 
 <p><a name="p5"><b>Program 5</b></a> <i>(Due noon, Friday, 3 September):</i>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Your program should include a function, <tt>extractDistrict()</tt> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <tt>School</tt> field, converts those into a digit, and stores the results in a new column, <tt>District</tt>.
-  The results should be written to a new CSV file, name provided by the user.
+  Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <tt>re</tt> package in Python) to find all links in the input file and store the link text and URL as columns:  <tt>Title</tt> and <tt>URL</tt> in the CSV file specified by the user.  For the URL, strip off the leading "<tt>https://</tt>" or "<tt>http://</tt>" and any trailing slashes ("/"):
 
-  <p> For example, if the <tt>School</tt> is <tt>"01M015"</tt>, the entry in the new column would be <tt>1</tt> (stored as a number, not a string).
+  <p>For example, if the input file is:
 
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+  &lt;html>
+  &lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
+
+  &lt;body>
+    &lt;p> Here's a link for &lt;a href="http://www.hunter.cuny.edu/csci">Hunter CS Department&lt;/a>
+    and for &lt;a href="https://stjohn.github.io/teaching/data/fall21/index.html">CSci 39542&lt;/a>.  &lt;/p>
+
+    &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
+  &lt;/body>
+  &lt;/html></pre>
+  </div>
+  Then a sample run of the program:
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+Enter input file name: simple.html
+Enter output file name:  links.csv</pre>
+  </div>
+
+  And the <tt>links.csv</tt> would be:
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+Title,URL
+Hunter CS Department,www.hunter.cuny.edu/csci
+CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
+google,www.google.com</pre>
+  </div>
+</p>
+  <br>
+
+</p>
 
 <p><a name="p6"><b>Program 6</b></a> <i>(Due noon, Thursday, 9 September):</i>  <i>SQL warm-up</i>
 </p>
 
-<p><a name="p7"><b>Program 7</b></a> <i>(Due noon, Friday, 10 September):</i> <i>SQL follow-up</i>
+<p><a name="p7"><b>Program 7</b></a> <i>(Due noon, Friday, 10 September):</i> <i>SQL</i>
 </p>
 
-<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i>
+
+<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i> <i>SQL</i>
 </p>
 
-<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i>
+<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i> <i>SQL Joins?</i
 </p>
 
 <p><a name="p10"><b>Program 10</b></a> <i>(Due noon, Monday, 20 September):</i>
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.  Your program should include a function, <tt>extractDistrict()</tt> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <tt>School</tt> field, converts those into a digit, and stores the results in a new column, <tt>District</tt>.
+  The results should be written to a new CSV file, name provided by the user.</p>
+
+  <p> For example, if the <tt>School</tt> is <tt>"01M015"</tt>, the entry in the new column would be <tt>1</tt> (stored as a number, not a string).
 </p>
 
 <p><a name="p11"><b>Program 11</b></a> <i>(Due noon, Tuesday, 21 September):</i>
+Your program should build on the classwork from Monday, 20 September to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
+</p>
+
+<p>
+<i>Fill in examples</i>
 </p>
 
 <p><a name="p12"><b>Program 12</b></a> <i>(Due noon, Thursday, 22 September):</i>
@@ -304,6 +345,24 @@ Set 4:  The fourth set of programs introduces modeling and estimation, focusing 
 </p>
 
 <p><a name="p21"><b>Program 21</b></a> <i>(Due noon, Friday, 8 October):</i>
+</p>
+
+<p><a name="p22"><b>Program 22</b></a> <i>(Due noon, Thursday, 14 October):</i>
+</p>
+
+<p><a name="p23"><b>Program 23</b></a> <i>(Due noon, Friday, 15 October):</i>
+</p>
+
+<p><a name="p24"><b>Program 24</b></a> <i>(Due noon, Monday, 18 October):</i>
+</p>
+
+<p><a name="p25"><b>Program 25</b></a> <i>(Due noon, Tuesday, 19 October):</i>
+</p>
+
+<p><a name="p26"><b>Program 26</b></a> <i>(Due noon, Thursday, 21 October):</i>
+</p>
+
+<p><a name="p27"><b>Program 27</b></a> <i>(Due noon, Friday, 22 October):</i>
 </p>
 
 <!--
