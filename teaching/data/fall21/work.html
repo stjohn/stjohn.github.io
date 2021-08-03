@@ -276,17 +276,78 @@ google,www.google.com</pre>
 
 </p>
 
-<p><a name="p6"><b>Program 6</b></a> <i>(Due noon, Thursday, 9 September):</i>  <i>SQL warm-up</i>
+<p><a name="p6"><b>Program 6</b></a> <i>(Due noon, Thursday, 9 September):</i>
+  Use regular expressions (covered in Lecture 3 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to clean <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets that we will use in later SQL programs.
+
+  <!--
+  <i>Add in small dataset to use for testing</i>
+  Add in sample run: either as functions or as the resulting CSV.
+  Process:
+1. Take input csv_file_name and output_file_name,
+2. run requested operations on the input data and save it into a csv file under the output_file_name,
+3. save work into new csv.
+  -->
+  Your program should:
+  <ul>
+    <li> Ask the user for names of an input file and output file.  You can assume that the input file is a CSV file with column names from the <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets.  Your program should open the named CSV input file and save the results in the named output file.
+    <li>With the phone column, please use regex to parse out the given 10 digit phone number XXXXXXXXXX and re-concatenate it back into a 11 digit format: 1-digit country code (as 1), 3-digit area code, and a 7-digit telephone number, so that the final output looks like: +1-XXX-XXX-XXXX.
+
+    <li> With the inspection date column, please use regex to break out the year, month, and day component, then re concatenate the MM/DD/YYYY to YYYY/MM/DD.
+
+    <li> With the restaurant name column DBA, please create a new column called "restaurant_name" which reformats the data in the original column from all upper case to camel case. Separately, create a new boolean column that flags True if the word Thai (not case sensitive) appears in the original restaurant name.
+  </ul>
 </p>
 
-<p><a name="p7"><b>Program 7</b></a> <i>(Due noon, Friday, 10 September):</i> <i>SQL</i>
+<p><a name="p7"><b>Program 7</b></a> <i>(Due noon, Friday, 10 September):</i>
+  Using SQL (see <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.2</a>), extract the following information from a <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> dataset:
+  <ul>
+    <li> Save all rows in table where Grade = A to the output file <tt>prefix+"A.csv"</tt> where <tt>prefix</tt> holds the value specified by the user. <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
+    <li> Save all rows in table where Score > 90 to the output file <tt>prefix+"90.csv"</tt>.</li>
+    <li> Save all rows in table where IN (10002, 10027, 10036) to the output file <tt>prefix+"ZIP.csv"</tt></li>
+    <li> Save columns DBA, Cuisine Description, Boro, and Grade for all in table where Zipcode = 11103. Rename DBA AS 'restaurant_name', Cuisine Description as cuisine_description, Boro as borough. where Grade = A, Score > 90 and Zipcode IN (10002, 10027, 10036) to the output file <tt>prefix+"All.csv"</tt>.
+  </ul>
+Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, "restaurantJuly2020.csv" for the input and "selected" for the output prefix.  The program should create 4 files: <tt>selectedA.csv</tt>, <tt>selected90.csv</tt>, <tt>selectedZIP.csv</tt>, and <tt>selectedAll.csv</tt>.
 </p>
 
 
-<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i> <i>SQL</i>
+<p><a name="p8"><b>Program 8</b></a> <i>(Due noon, Monday, 13 September):</i>
+<!--
+  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. GROUP BYs),
+
+
+Return a unique column of distinct restaurants (note: return the restaurant names, not the count)
+How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
+
+Return a unique column of distinct cuisines where zipcode = 11224.
+
+Return 2 columns. the cuisine, and the count of unique restaurants per cuisine). Where zipcode = 11224.
+
+For each boro, return unique count of cuisines per boro; also return unique count of restaurants per boro. Return 3 columns. Sort results by boro name ASC.
+
+-->
 </p>
 
-<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i> <i>SQL Joins?</i
+<p><a name="p9"><b>Program 9</b></a> <i>(Due noon, Tuesday, 14 September):</i>
+<!--
+  Learning Objective:
+The exercises in this program will build up to help students conceptualize and finally create a JOIN between the health inspection table and the NTA table. This is to reinforce the learning done in the last 2 SQL lectures.
+
+Datasets:
+
+same restaurant inspection dataset as used in P7 and P8
+also import the NTA code table detailed in this card
+Based on the dataset above, please create the following exercises, in this particular order:
+
+On Health Inspection Table Alone:
+- Write SQL for returning just the NTA column in the health inspection table
+- Write SQL for returning the count of unique NTAs in the health inspection table
+- Write SQL for returning 3 columns. the unique NTAs, and the count of restaurants under each NTA in the health inspection table. sort ASC by NTA.
+On NTA Table Alone:
+- Write SQL for returning the number of rows in the NTA table and the number of unique NTAs in the NTA table.
+On Health + NTA Tables Both:
+- Write the SQL for creating a LEFT JOIN (health LEFT JOIN NTA), return 3 columns: NTA code from health table, NTA description from NTA table, and the restaurant name from health table. join on NTA code.
+- Build upon the previous exercise ^, keep the JOIN as is, do one more level of aggregation, so that the end result contains 3 columns (unique NTA code, unique NTA description, and the count distinct restaurants as grouped by the first 2 columns)
+-->
 </p>
 
 <p><a name="p10"><b>Program 10</b></a> <i>(Due noon, Monday, 20 September):</i>
@@ -317,7 +378,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 <hr>
 
 <p><a name="p13"><b>Program 13</b></a> <i>(Due noon, Friday, 23 September):</i>
-  In lecture, we used the Pandas' function, <tt>rolling()</tt> to compute a 7-day average of subway ridership.  For this program, write three functions that take as input a Pandas' series (e.g. a column of a DataFrame) and:</p>
+  In lecture, we used the Pandas' function, <tt>rolling()</tt> to compute a 7-day average of subway ridership for the visualization of ridership in 2020.  For this program, write three functions that take as input a Pandas' series (e.g. a column of a DataFrame) that highlights different patterns in the data:</p>
   <ul>
     <li> <tt>cumulativeAverage(column)</tt>:  Assumes the input is a Series of numerical data. Returns a Series with the cumulative (running) average of the values.  For example, if the first 5 entries are <tt>10,20,30,40,20</tt>, the Series that is returned would start out as <tt>10,15,20,25,24</tt> (since 10/1 = 10, (10+20)/2 = 15, (10+20+30)/3 = 20, (10+20+30+40)/4 = 25, (10+20+30+40+20)/5 = 24).  Note that it is different that <tt>rolling()</tt> we used in class, since this function creates a value for all entries and averages across all values seen.
     <li> <tt>cyclicAverage(column)</tt>:  Assumes the input is a Series of numerical data. Returns a Series with the average of the current day with, if they exist, the value from 7 days previously and 14 days previously.  That is, if they exist, for entry at index <tt>i</tt>, take the average of the values at indices <tt>i-offset</tt>, <tt>i-2*offset</tt>, and <tt>i-3*offset</tt>, as the computation.  Since ridership is highly dependent on the day of the week, this averages the values of the same day in past weeks.
@@ -328,14 +389,28 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 </p>
 
 <p><a name="p14"><b>Program 14</b></a> <i>(Due noon, Monday, 27 September):</i>
-<!--
-  Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).
-  Clean the library file:  need two functions to apply to the table, one that extracts the lat and lon, and another that pulls out the names from the html, to use on labeling for the vis.
+  Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
+POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
+POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1
+</pre>
+</div>
+
+
+  Each function takes as input a row of the table:
+  <ul>
+    <li> <tt>extractLatLon(row)</tt>:  This function takes the column <tt>the_geom</tt> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
+    <li> <tt>extractTitle(row)</tt>:  This function concatenates the NAME, CITY, and ZIP code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
+    For example, when applying this function to the first data row, the return value would be:
+    "115th Street, New York, 10026"
+  </ul>
 
 
   <p>
-  Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import your functions for testing.
--->
+  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.
+
 </p>
 
 
@@ -384,6 +459,18 @@ Set 4:  The fourth set of programs introduces modeling and estimation, focusing 
 </p>
 
 <p><a name="p27"><b>Program 27</b></a> <i>(Due noon, Friday, 22 October):</i>
+</p>
+
+<p><a name="p28"><b>Program 28</b></a> <i>(Due noon, Monday, 25 October):</i>
+</p>
+
+<p><a name="p29"><b>Program 29</b></a> <i>(Due noon, Tuesday, 26 October):</i>
+</p>
+
+<p><a name="p30"><b>Program 30</b></a> <i>(Due noon, Thursday, 28 October):</i>
+</p>
+
+<p><a name="p31"><b>Program 31</b></a> <i>(Due noon, Friday, 29 October):</i>
 </p>
 
 <!--
