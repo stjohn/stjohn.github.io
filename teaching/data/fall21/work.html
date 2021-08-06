@@ -374,7 +374,7 @@ On Health + NTA Tables Both:
 -->
 </p>
 
-<p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; Due noon, Monday, 20 September.
+<p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.
   <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
   <p>
   Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Your program should include a function, <tt>extractDistrict()</tt> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <tt>School</tt> field, converts those into a digit, and stores the results in a new column, <tt>District</tt>.
@@ -393,7 +393,7 @@ On Health + NTA Tables Both:
 <i>Fill in examples</i>
 </p>
 
-<p><a name="p12"><b>Program 12: MTA Ridership.</b></b> &emsp; <i>Due noon, Thursday, 22 September.</i>
+<p><a name="p12"><b>Program 12: MTA Ridership.</b></b> &emsp; <i>Due noon, Thursday, 23 September.</i>
   <br>(Learning Objective: .)
 
   <p>Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user, which you can assume will include the column names: <tt>date</tt>, <tt>entries</tt>, and <tt>exit</tt>.  You should create a new file that has one entry for each date that consists of the sum of all entries and the sum of all exits that occur on the date.  This aggegrate data should be stored in the output CSV and should contain only the three columns:  <tt>date</tt>, <tt>entries</tt>, and <tt>exit</tt>, even if there are additional columns in the input CSV file.</p>
@@ -407,7 +407,7 @@ On Health + NTA Tables Both:
 Set 3:  The third set of programs integrates visualization techniques with analyzing structured data sets.  While the programs do not cover every visualization technique, the practice these programs provide will be directly relevant to your project.
 <hr>
 
-<p><a name="p13"><b>Program 13: Column Summaries.</b></b> &emsp; Due noon, Friday, 23 September.
+<p><a name="p13"><b>Program 13: Column Summaries.</b></b> &emsp; <i>Due noon, Friday, 24 September.
   <br>(Learning Objective: .)
 
   <p>In lecture, we used the Pandas' function, <tt>rolling()</tt> to compute a 7-day average of subway ridership for the visualization of ridership in 2020.  For this program, write three functions that take as input a Pandas' series (e.g. a column of a DataFrame) that highlights different patterns in the data:</p>
@@ -420,7 +420,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
   Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import your functions for testing.
 </p>
 
-<p><a name="p14"><b>Program 14: Plotting Challenge.</b></b> &emsp; Due noon, Monday, 27 September.
+<p><a name="p14"><b>Program 14: Plotting Challenge.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
   <br>(Learning Objective: .)
 
   <p>
@@ -428,14 +428,24 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 
 
 
-<p><a name="p15"><b>Program 15: Choropleth Maps.</b></b> &emsp; Due noon, Tuesday, 28 September.
+<p><a name="p15"><b>Program 15: Choropleth Maps.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
   <br>(Learning Objective: .)
 
+  <!-- Folium tutorial:  https://autogis-site.readthedocs.io/en/latest/notebooks/L5/02_interactive-map-folium.html
+  Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
+  https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
+  Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
   <p>
   </p>
 
-<p><a name="p16"><b>Program 16: Library Cleaning.</b></b> &emsp; Due noon, Thursday, 30 September.
+<p><a name="p16"><b>Program 16: Library Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
   <br>(Learning Objective: .)
+
+  <!-- Fortune's algorithm:  https://en.wikipedia.org/wiki/Fortune%27s_algorithm
+  GeoJSON tutorial:  https://developer.here.com/blog/run-circles-around-geojson-beginner-to-advanced-with-here-xyz
+  https://developer.here.com/blog/great-guide-to-generating-good-geojson
+  Drawing lines in folium:  http://qingkaikong.blogspot.com/2016/06/using-folium-4-draw-lines-plot-san.html
+-->
 
   <p>
   Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
@@ -462,13 +472,13 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 
   </p>
 
-<p><a name="p17"><b>Program 17: Library Catchment Areas.</b></b> &emsp; Due noon, Friday, 1 October.
+<p><a name="p17"><b>Program 17: Library Catchment Areas.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
   <br>(Learning Objective: .)
 
   <p>
   </p>
 
-<p><a name="p18"><b>Program 18: Altair Interactive Chart.</b></b> &emsp; Due noon, Monday, 4 October.
+<p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
   <br>(Learning Objective: .)
 
   <p>
@@ -482,7 +492,7 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 Set 4:  The fourth set of programs introduces modeling and estimation, focusing on loss functions and linear modeling.
 <hr>
 
-<p><a name="p19"><b>Program 19: Taxi Data.</b></b> &emsp; Due noon, Tuesday, 5 October.
+<p><a name="p19"><b>Program 19: Taxi Data.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
   <br>(Learning Objective: .)
 
   <p>
