@@ -486,14 +486,18 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 
 
 <p><a name="p15"><b>Program 15: Choropleth Maps.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
-  <br>(Learning Objective: .)
+  <br>(Learning Objective: to gain competency cleaning and aggregating data using the <tt>groupby()</tt> and <tt>agg()</tt> functions.)
 
-  <p>This program uses the school district files used in <a href="#p11">Program 11</a> to make a choropleth map of the test scores in New York City.
-  Given a CSV file from NYC school data, and column name, save a choropleth map of that column information by school districts in the HTML file specified.  To do this:
+  <p>In lecture, we wrote a program uses the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top math scores, by district, in New York City.  For this program, modify the <a href="schoolsChoropleth.py">schoolsChoropleth.py</a> program to allow the user to specify the column and shade the map by the average of those column values, averaged by district.
+
+  Given a CSV file from NYC school data (with an additional column, "District", as produced by <a href="#p10">Program 10</a>), and column name, create a choropleth map of that averages the column information by school districts and save it in the HTML file specified.  To do this:
   <ul>
     <li> Ask user for input and output file names, as well as the name of the column to display,
     <li> Group the scores by district and compute the average score,
-    <li> Use the average score to shade the districts.
+    <li> Create a Folium map centered at Hunter College (40.7678&deg; N, 73.9645&deg; W),
+    <li> Use the <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj">NYC School Districts</a> (download as GeoJSON) for your layers,
+      and
+    <li> Save the resulting HTML in the output name specified by the user.
   </ul>
   A sample run of the program:
   <p>
@@ -534,18 +538,20 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 
   </p>
 
-<p><a name="p17"><b>Program 17: Altair Challenge.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
-  <br>(Learning Objective: gain competency in using the Altair/Vega declarative visualization grammar.)
-
-  <p>
-  </p>
-
-
-
-<p><a name="p18"><b>Program 18: Library Catchment Areas.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
+<p><a name="p17"><b>Program 17: Catchment Areas.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
   <br>(Learning Objective: to gain deeper understanding of the JSON and GeoJSON formats and their use as "layers" in map visualizations.)
 
   <p>
+  We have used GeoJSON files as layers in our folium maps.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <tt>Lat</tt> and <tt>Lon</tt>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
+
+  <p>give sample input
+  <p>add in resulting image loaded onto the map
+
+  You should assume:
+  <ul>
+      <li> The three points have coodinates (Lon,Lat) and -180 &lt; lon &lt; 180 and
+        -90 &lt; lat &lt; 90 for each point.
+  </ul>
     <!-- Fortune's algorithm:  https://en.wikipedia.org/wiki/Fortune%27s_algorithm
     GeoJSON tutorial:  https://developer.here.com/blog/run-circles-around-geojson-beginner-to-advanced-with-here-xyz
     https://developer.here.com/blog/great-guide-to-generating-good-geojson
@@ -553,12 +559,21 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
   -->
   </p>
 
-<br>
-<br>
-<br>
-<hr>
-Set 4:  The fourth set of programs introduces modeling and estimation, focusing on loss functions and linear modeling.
-<hr>
+
+
+<p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
+  <br>(Learning Objective: gain competency in using the Altair/Vega declarative visualization grammar.)
+
+  <p>
+  </p>
+
+
+  <br>
+  <br>
+  <br>
+  <hr>
+  Set 4:  The fourth set of programs introduces modeling and estimation, focusing on loss functions and linear modeling.
+  <hr>
 
 <p><a name="p19"><b>Program 19: Modeling Restaurant Tips.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
   <br>(Learning Objective: .)
@@ -604,14 +619,32 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     <p>
     </p>
 
+    <p><a name="p22"><b>Program 22: Dice Simulator.</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
+      <br>(Learning Objective: students will be able to apply their knowledge of the built-in random package to generate simulations of simple phenomena.)
+      <p>
+
+      Write a function:
+      <ul>
+        <li> <tt>diceSim(D1,D2,trials)</tt> that takes as input the number of sides on die 1 (D1) and die2 (D2) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and D1 and 1 and D2 and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
+      </ul>
+
+      <p>
+      Since the numbers are chosen at random, the fractions will differ some from run to run. One run of the function <tt>print(p22.diceSim(6,6,10000))</tt> resulted in:
+      <pre>
+[0.     0.     0.0259 0.0615 0.0791 0.1086 0.139  0.1633 0.1385 0.114  0.0833 0.0587 0.0281]</pre>
+
+      or displayed using the code from <a href="http://www.textbook.ds100.org/ch/15/prob_random_vars.html">Section 15.1.1.</a>:
+      <p>
+      <img src="dice_6_6.png" height=200>
+      </p>
+      <p>
+      Note:  you should submit a file with only the standard comments at the top and the function.  The grading scripts will then import your function for testing.
+      </p>
 <!--
 
 
 
-<p><a name="p22"><b>Program 22: .</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
+
 
 <p><a name="p23"><b>Program 23: .</b></b> &emsp; <i>Due noon, Friday, 15 October.</i>
   <br>(Learning Objective: .)
