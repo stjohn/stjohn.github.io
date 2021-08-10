@@ -379,6 +379,22 @@ Your program should ask for the input file name (must include .csv) and then for
   <p>
   Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <tt>GROUP BY</tt>'s), this program find distinct restaurant names and distinct cuisines by locale.
 <!--
+The source data from P6 Trello card here can be mostly re-used for this exercise. However, please note that the filtering down to <30 rows should not apply to the dataset for this program because that will give us too little data for aggregation purposes.
+
+Based on the dataset above, please create the following exercises:
+
+Return a unique column of distinct restaurants (note: return the restaurant names, not the count)
+How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
+
+Return a unique column of distinct cuisines where zipcode = 11224.
+
+Return 2 columns. the cuisine, and the count of unique restaurants per cuisine). Where zipcode = 11224.
+
+For each boro, return unique count of cuisines per boro; also return unique count of restaurants per boro. Return 3 columns. Sort results by boro name ASC.
+
+Note: each of the exercises above should be returned separately. For the ones where the answer is a single value, just printing the value as output is good to go. For the ones returning data whether a single or multiple columns, this needs to be in table format (pandas dataframe -> csv).
+
+
   <ul>
     <li>Return a unique column of distinct restaurants (note: return the restaurant names, not the count)
     <li> How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
@@ -473,21 +489,35 @@ Set 3:  The third set of programs integrates visualization techniques with analy
   Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import your functions for testing.
 </p>
 
-<p><a name="p14"><b>Program 14: Plotting Challenge.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
-  <br>(Learning Objective: to explore and master <tt>matplotlib.pyplot</tt> commands to create data visualizations.)
+<p><a name="p14"><b>Program 14: Library Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
+  <br>(Learning Objective: to strengthen data processing skills via regular expressions and standard string methods.)
 
   <p>
-  The goal is to create a plot of <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95">NYC OpenData Motor Vehicle Collisions</a> that follows this <a href="https://www.dataquest.io/blog/making-538-plots/">style</a>.  For example, here is the plot for <a href="Motor_Vehicle_Collisions_Mar_2020.csv">January 2020</a> dataset:
+  Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+  <div style="background-color:lightgray;width:100%">
+  <pre>
+the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
+POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
+POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1
+</pre>
+</div>
+
+
+  Each function takes as input a row of the table:
+  <ul>
+    <li> <tt>extractLatLon(row)</tt>:  This function takes the values from the column <tt>the_geom</tt> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
+    <li> <tt>extractTitle(row)</tt>:  This function concatenates the values from the columns <tt>NAME</tt>, <tt>CITY</tt>, and <tt>ZIP</tt> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
+    For example, when applying this function to the first data row, the return value would be:
+    "115th Street, New York, 10026"
+  </ul>
 
   <p>
-  <img src="col_Mar2020.png" height=300>
+  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called <tt>p16.py</tt>
+  and the CSV file is called <tt>LIBRARY.csv</tt> is <a href="test14.py">test14.py</a>.
 
-  <p>
-  Your program should begin by asking the user for input and output files.  It should be written to take any dataset from the <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95">NYC OpenData Motor Vehicle Collisions</a> and produce an image that matches this <a href="https://www.dataquest.io/blog/making-538-plots/">style</a>.  The resulting image should be saved to the output file specified by the user.
+  </p>
 
 
-
-</p>
 
 
 
@@ -516,33 +546,25 @@ Set 3:  The third set of programs integrates visualization techniques with analy
   <p>
   </p>
 
-<p><a name="p16"><b>Program 16: Library Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
-  <br>(Learning Objective: to strengthen data processing skills via regular expressions and standard string methods.)
+<p><a name="p16"><b>Program 16:   Plotting Challenge.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
+  <br>(Learning Objective: to explore and master <tt>matplotlib.pyplot</tt> commands to create data visualizations.)
 
   <p>
-  Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
-  <div style="background-color:lightgray;width:100%">
+  The goal is to create a plot of <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95">NYC OpenData Motor Vehicle Collisions</a> that follows this <a href="https://www.dataquest.io/blog/making-538-plots/">style</a>.  For example, here is the plot for <a href="Motor_Vehicle_Collisions_Mar_2020.csv">January 2020</a> dataset:
+
+  <p>
+  <img src="col_Mar2020.png" height=300>
+
+  <p>
+  Your program should begin by asking the user for input and output files.  It should be written to take any dataset from the <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95">NYC OpenData Motor Vehicle Collisions</a> and produce an image that matches this <a href="https://www.dataquest.io/blog/making-538-plots/">style</a>.  The resulting image should be saved to the output file specified by the user.
+
+  <p><i>Hint:  to transform the data into separate columns (i.e. "unstack"/pivot the groups to be columns) for the daily number of collisions for each borough:</i>
   <pre>
-the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
-POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
-POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1
+boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().transpose()
 </pre>
-</div>
+  <i>where <tt>df</tt> is the DataFrame with the collisions dagta</i></p>
 
-
-  Each function takes as input a row of the table:
-  <ul>
-    <li> <tt>extractLatLon(row)</tt>:  This function takes the values from the column <tt>the_geom</tt> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
-    <li> <tt>extractTitle(row)</tt>:  This function concatenates the values from the columns <tt>NAME</tt>, <tt>CITY</tt>, and <tt>ZIP</tt> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
-    For example, when applying this function to the first data row, the return value would be:
-    "115th Street, New York, 10026"
-  </ul>
-
-  <p>
-  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called <tt>p16.py</tt>
-  and the CSV file is called <tt>LIBRARY.csv</tt> is <a href="test16.py">test16.py</a>.
-
-  </p>
+</p>
 
 <p><a name="p17"><b>Program 17: Catchment Areas.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
   <br>(Learning Objective: to gain deeper understanding of the JSON and GeoJSON formats and their use as "layers" in map visualizations.)
