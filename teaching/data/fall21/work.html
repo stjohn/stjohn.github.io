@@ -521,16 +521,16 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 
 
 
-<p><a name="p15"><b>Program 15: Choropleth Maps.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
+<p><a name="p15"><b>Program 15: Choropleth Attendance Cleaning.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
   <br>(Learning Objective: to gain competency cleaning data using pandas functions.)
 
-  <p>In lecture, we wrote a program, <a href="schoolsChoropleth.py">schoolsChoropleth.py</a>, uses the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top English Languange Arts scores, by district, in New York City:
+  <p>In lecture, we wrote a program, <a href="schoolsChoropleth.py">schoolsChoropleth.py</a>, uses the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top English Languange Arts scores, by <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj">district</a>, in New York City:
 
     <p>
     <iframe src="ela2019choropleth.html" style="width: 60%; height: 550px" name="internal"></iframe>
 
 
-  <p> For this program, write a program that will clean school attendance data so that we can use the same visualization to see attendance for different districts.
+  <p> For this program, write a program that will clean <a href="https://infohub.nyced.org/reports/school-quality/information-and-data-overview/end-of-year-attendance-and-chronic-absenteeism-data">district school attendance data</a> so that we can use the same visualization to see attendance for different districts.
 
   <p>Your stand-alone program should ask the user for the input file name, the output file name, as well as the grade and school year to use as filters.  For example,
   a sample run of the program:
@@ -602,10 +602,15 @@ boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().tr
   <br>(Learning Objective: to gain deeper understanding of the JSON and GeoJSON formats and their use as "layers" in map visualizations.)
 
   <p>
-  We have used GeoJSON files as layers in our folium maps.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <tt>Lat</tt> and <tt>Lon</tt>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
+  We have used GeoJSON files as layers in our folium maps and created some manually in lecture.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <tt>Lat</tt> and <tt>Lon</tt>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
 
   <p>give sample input
   <p>add in resulting image loaded onto the map
+
+  <p>Pseudocode:
+    <ul>
+      <li>
+    </ul>
 
   You should assume:
   <ul>
@@ -679,12 +684,12 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     <p>
     </p>
 
-    <p><a name="p22"><b>Program 22: Dice Simulator.</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
-      <br>(Learning Objective: students will be able to apply their knowledge of the built-in random package to generate simulations of simple phenomena.)
-      <p>
+<p><a name="p22"><b>Program 22: Dice Simulator.</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
+    <br>(Learning Objective: students will be able to apply their knowledge of the built-in random package to generate simulations of simple phenomena.)
+    <p>
 
-      Write a function:
-      <ul>
+    Write a function:
+    <ul>
         <li> <tt>diceSim(D1,D2,trials)</tt> that takes as input the number of sides on die 1 (D1) and die2 (D2) and the number of trials.  Your function should repeatedly sum pairs of random numbers between 1 and D1 and 1 and D2 and keep track of how many times each sum occurs. The function returns a numpy array with the fraction each sum of rolls occured.
       </ul>
 
@@ -700,6 +705,47 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
       <p>
       Note:  you should submit a file with only the standard comments at the top and the function.  The grading scripts will then import your function for testing.
       </p>
+
+
+<p><a name="p43"><b>Program 43: Component Retention.</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
+    <br>(Learning Objective: to employ programming skills to evaluate the number of principal components to use in dimensionality reduction.)</p>
+    <p>
+    In lecture and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
+
+    <ul>
+      <li> <tt>captures85(arr):</tt> Takes an array <tt>arr</tt> (in decreasing order), computes
+          the captured variance (<tt>cv = (arr**2)/sum(arr**2)</tt>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <tt>arr</tt> is
+          <pre>array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+        24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+         1.95,   0.04])</pre>
+          Then <tt>cv</tt> would be
+          <pre>array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
+       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</pre>
+          and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76+15%=91% of the variance.
+      <li> <tt>averageEigenvalue(arr):</tt> Takes an array <tt>arr</tt> (in decreasing order), computes
+          the average (<tt>avg = sum(arr)/len(arr)</tt>) and returns the number of elements greater than <tt>avg</tt>.  Using the example from the textbook, if <tt>arr</tt> is
+          <pre>array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+        24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+         1.95,   0.04])</pre>
+          Then <tt>avg</tt> would be 75.07,
+          and the function would return 3 since the first three coordinates are larger than the average.
+    </ul>
+
+    </p>
+    <p>
+    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing. 
+
+
+<p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
+    <br>(Learning Objective: .)</p>
+    <p>
+    </p>
+
+<p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+    <br>(Learning Objective: .)</p>
+    <p>
+    </p>
+
 <!--
 
 
@@ -806,20 +852,13 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
   <p>
   </p>
 
-<p><a name="p43"><b>Program 43: .</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
-  <br>(Learning Objective: .)</p>
+
+
+
   <p>
   </p>
 
-<p><a name="p44"><b>Program 44: .</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
 
-<p><a name="p45"><b>Program 45: .</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
 
 <p><a name="p46"><b>Program 46: .</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
   <br>(Learning Objective: .)</p>
@@ -869,29 +908,6 @@ From Lehman's DS course:  HW5:  Are collisions correlated with temperature?
 
 A/B Testing-- do as part of quizzes when we do Bayes Theorem
 
-Image processing:  a bit too simple, but something like:  HW 7
-The USGS collected images before and after the Both: New Year's flooding: New Year's flooding (saved as png for December, 2015 and for January, 2016). Write a program that produces an image with flooded regions marked in red (that is, any pixel that is not "blue" in 2015 but is in the 2016 image).
-
-Hint: Use the drawcounties() option in basemap and show only the region including New York City. Use the csv module to extract the latitude and longitude from the downloaded NYC data file.
-
-Make a plot that includes all the WiFi locations within one hundredth of a degree of a location of your choice. For example, Lehman College is at 40.8725 degrees North and 73.8939 degrees West. For this location, you would include all hotspots that within 0.01 in either direction (since the plot will be square). Your plot should color the inside hotspots blue and the outside hotspots green (GIS location as well as type available in the CSV file of hotspots). Make sure to include in your title of the plot the region of the city you are plotting.
-
-
-Classifer:  Lehman HW 5:
-Write a classifer program that predicts if a name is boy or girl's name based on the last letters of the name.
-#2: Write a Python program that takes as input a Social Security Administration name file (see above for files and format) and outputs three files. The first file should have 26 lines (one for each letter of the alphabet). Each line contains three values: the letter, the fraction of boys' names ends in that letter in the training set (inputted file), the fraction of girls' names that in that letter in the training set. For example: a possible file could start:
-a, 0.023, 0.451
-b, 0.010, 0.008
-...
-The second file computes the fraction of boys and girls names that has the second to last letter specified.
-The third file computes the fraction of boys and girls names that has the third to last letter specified.
-#2: Submit your Python program that computes correlation and produces the graph as a .py file.
-
-#3: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
-
-#4: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
-
-#5: Run your program with yob2009.txt and submit the first file generated by your program (that is, the fractions for the last letter of the name). Submit your file as a .txt file.
 
 #6: Modify the Naive Bayes spam filter program to reads in the three files generated above as well as a fourth file of test data (use another year's data such as yob2010.txt). Instead of multiplying together word occurrences, your program should multiply use the last letter, second-to-last letter, and third-to-last letter that you computed above. Your program should classify each name in the test data (similar to the Naive Bayes filter from the book) and report back the percentage of names your correctly predicted as well as the names you predicted incorrectly.
 Submit your Python program as a .py file.
