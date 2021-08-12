@@ -489,7 +489,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
   Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import your functions for testing.
 </p>
 
-<p><a name="p14"><b>Program 14: Library Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
+<p><a name="p14"><b>Program 14: Library Cleaning.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
   <br>(Learning Objective: to strengthen data processing skills via regular expressions and standard string methods.)
 
   <p>
@@ -578,7 +578,7 @@ District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attenda
   <p>
   </p>
 
-<p><a name="p16"><b>Program 16:   Plotting Challenge.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
+<p><a name="p16"><b>Program 16:   Plotting Challenge.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
   <br>(Learning Objective: to explore and master <tt>matplotlib.pyplot</tt> commands to create data visualizations.)
 
   <p>
@@ -604,6 +604,7 @@ boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().tr
   <p>
   We have used GeoJSON files as layers in our folium maps and created some manually in lecture.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <tt>Lat</tt> and <tt>Lon</tt>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
 
+<!--
   <p>give sample input
   <p>add in resulting image loaded onto the map
 
@@ -617,6 +618,7 @@ boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().tr
       <li> The three points have coodinates (Lon,Lat) and -180 &lt; lon &lt; 180 and
         -90 &lt; lat &lt; 90 for each point.
   </ul>
+-->
     <!-- Fortune's algorithm:  https://en.wikipedia.org/wiki/Fortune%27s_algorithm
     GeoJSON tutorial:  https://developer.here.com/blog/run-circles-around-geojson-beginner-to-advanced-with-here-xyz
     https://developer.here.com/blog/great-guide-to-generating-good-geojson
@@ -721,7 +723,7 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
           Then <tt>cv</tt> would be
           <pre>array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
        0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</pre>
-          and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76+15%=91% of the variance.
+          and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
       <li> <tt>averageEigenvalue(arr):</tt> Takes an array <tt>arr</tt> (in decreasing order), computes
           the average (<tt>avg = sum(arr)/len(arr)</tt>) and returns the number of elements greater than <tt>avg</tt>.  Using the example from the textbook, if <tt>arr</tt> is
           <pre>array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
@@ -733,11 +735,14 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
 
     </p>
     <p>
-    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing. 
+    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.
 
 
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
     <br>(Learning Objective: .)</p>
+    <p>
+    In lecture, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
+    <p>
     <p>
     </p>
 
