@@ -521,64 +521,9 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 
 
 
-<p><a name="p15"><b>Program 15: Choropleth Attendance Cleaning.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
-  <br>(Learning Objective: to gain competency cleaning data using pandas functions.)
-
-  <p>In lecture, we wrote a program, <a href="schoolsChoropleth.py">schoolsChoropleth.py</a>, uses the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top English Languange Arts scores, by <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj">district</a>, in New York City:
-
-    <p>
-    <iframe src="ela2019choropleth.html" style="width: 60%; height: 550px" name="internal"></iframe>
+<p><a name="p15"><b>Program 15: Plotting Challenge.</b></b> &emsp; <i>Due noon, Tuesday, 28 September.</i>
 
 
-  <p> For this program, write a program that will clean <a href="https://infohub.nyced.org/reports/school-quality/information-and-data-overview/end-of-year-attendance-and-chronic-absenteeism-data">district school attendance data</a> so that we can use the same visualization to see attendance for different districts.
-
-  <p>Your stand-alone program should ask the user for the input file name, the output file name, as well as the grade and school year to use as filters.  For example,
-  a sample run of the program:
-  <div style="background-color:lightgray;width:100%">
-  <pre>
-Enter input file name: public-district-attendance-results-2014-2019.csv
-Enter output file name: attendanceThirdGrade2019.csv
-Enter grade: 3
-Enter year: 2018-19
-</pre>
-</div>
-  If the input file starts as:
-  <div style="background-color:lightgray;width:100%">
-  <pre>
-District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attendance,# Contributing 20+ Total Days,# Chronically Absent,% Chronically Absent
-1,All Grades,2013-14,All Students,2088851,187879,1900972,91.0,12617,3472,27.5
-1,All Grades,2014-15,All Students,2064610,171200,1893410,91.7,12295,3160,25.7
-1,All Grades,2015-16,All Students,1995704,169094,1826610,91.5,12137,3206,26.4
-1,All Grades,2016-17,All Students,1946012,161756,1784256,91.7,11916,3110,26.1
-1,All Grades,2017-18,All Students,1946527,167998,1778529,91.4,11762,3244,27.6
-1,All Grades,2018-19,All Students,1925995,175153,1750842,90.9,11593,3364,29.0
-</pre>
-</div>
-  then the output file would start:
-  <div style="background-color:lightgray;width:100%">
-  <pre>
-District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attendance,# Contributing 20+ Total Days,# Chronically Absent,% Chronically Absent
-1,3,2018-19,All Students,149871,10601,139270,92.9,876,228,26.0
-2,3,2018-19,All Students,491432,21170,470262,95.7,2844,278,9.8
-3,3,2018-19,All Students,254506,15395,239111,94.0,1488,274,18.4
-</pre>
-</div>
-
-<p><i>Hints:
-  <ul>
-      <li> In the CSV file, <tt>Grade</tt> can contain both numbers and strings.  Since "3" is different from the number 3, you may want to convert to strings before comparison.</li>
-      <li> The output CSV should not contain the internal index and should be saved without it.
-  </ul>
-</i>
-
-  <!-- Folium tutorial:  https://autogis-site.readthedocs.io/en/latest/notebooks/L5/02_interactive-map-folium.html
-  Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
-  https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
-  Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
-  <p>
-  </p>
-
-<p><a name="p16"><b>Program 16:   Plotting Challenge.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
   <br>(Learning Objective: to explore and master <tt>matplotlib.pyplot</tt> commands to create data visualizations.)
 
   <p>
@@ -597,8 +542,65 @@ boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().tr
   <i>where <tt>df</tt> is the DataFrame with the collisions dagta</i></p>
 
 </p>
+<p><a name="p16"><b>Program 16:   Choropleth Attendance Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
+<br>(Learning Objective: to gain competency cleaning data using pandas functions.)
 
-<p><a name="p17"><b>Program 17: Catchment Areas.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
+<p>In lecture, we wrote a program, <a href="schoolsChoropleth.py">schoolsChoropleth.py</a>, uses the school district files used in <a href="#p10">Programs 10 & 11</a> to make a choropleth map of top English Languange Arts scores, by <a href="https://data.cityofnewyork.us/Education/School-Districts/r8nu-ymqj">district</a>, in New York City:
+
+  <p>
+  <iframe src="ela2019choropleth.html" style="width: 60%; height: 550px" name="internal"></iframe>
+
+
+<p> For this program, write a program that will clean <a href="https://infohub.nyced.org/reports/school-quality/information-and-data-overview/end-of-year-attendance-and-chronic-absenteeism-data">district school attendance data</a> so that we can use the same visualization to see attendance for different districts.
+
+<p>Your stand-alone program should ask the user for the input file name, the output file name, as well as the grade and school year to use as filters.  For example,
+a sample run of the program:
+<div style="background-color:lightgray;width:100%">
+<pre>
+Enter input file name: public-district-attendance-results-2014-2019.csv
+Enter output file name: attendanceThirdGrade2019.csv
+Enter grade: 3
+Enter year: 2018-19
+</pre>
+</div>
+If the input file starts as:
+<div style="background-color:lightgray;width:100%">
+<pre>
+District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attendance,# Contributing 20+ Total Days,# Chronically Absent,% Chronically Absent
+1,All Grades,2013-14,All Students,2088851,187879,1900972,91.0,12617,3472,27.5
+1,All Grades,2014-15,All Students,2064610,171200,1893410,91.7,12295,3160,25.7
+1,All Grades,2015-16,All Students,1995704,169094,1826610,91.5,12137,3206,26.4
+1,All Grades,2016-17,All Students,1946012,161756,1784256,91.7,11916,3110,26.1
+1,All Grades,2017-18,All Students,1946527,167998,1778529,91.4,11762,3244,27.6
+1,All Grades,2018-19,All Students,1925995,175153,1750842,90.9,11593,3364,29.0
+</pre>
+</div>
+then the output file would start:
+<div style="background-color:lightgray;width:100%">
+<pre>
+District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attendance,# Contributing 20+ Total Days,# Chronically Absent,% Chronically Absent
+1,3,2018-19,All Students,149871,10601,139270,92.9,876,228,26.0
+2,3,2018-19,All Students,491432,21170,470262,95.7,2844,278,9.8
+3,3,2018-19,All Students,254506,15395,239111,94.0,1488,274,18.4
+</pre>
+</div>
+
+<p><i>Hints:
+<ul>
+    <li> In the CSV file, <tt>Grade</tt> can contain both numbers and strings.  Since "3" is different from the number 3, you may want to convert to strings before comparison.</li>
+    <li> The output CSV should not contain the internal index and should be saved without it.
+</ul>
+</i>
+
+<!-- Folium tutorial:  https://autogis-site.readthedocs.io/en/latest/notebooks/L5/02_interactive-map-folium.html
+Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
+https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
+Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
+<p>
+</p>
+
+
+<p><a name="p17"><b>Program 17: Catchment Areas.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
   <br>(Learning Objective: to gain deeper understanding of the JSON and GeoJSON formats and their use as "layers" in map visualizations.)
 
   <p>
@@ -628,7 +630,7 @@ boroDF = df.groupby(['BOROUGH','CRASH DATE']).count()['CRASH TIME'].unstack().tr
 
 
 
-<p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
+<p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
   <br>(Learning Objective: gain competency in using the Altair/Vega declarative visualization grammar.)
 
   <p>
