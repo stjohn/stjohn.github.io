@@ -719,21 +719,22 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     In lecture and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
 
     <ul>
-      <li> <tt>captures85(arr):</tt> Takes an array <tt>arr</tt> (in decreasing order), computes
-          the captured variance (<tt>cv = (arr**2)/sum(arr**2)</tt>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <tt>arr</tt> is
+      <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
+          the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <code class="inline">arr</code> is
           <pre>array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
         24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
          1.95,   0.04])</pre>
-          Then <tt>cv</tt> would be
-          <pre>array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
-       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</pre>
+          Then <code class="inline">cv</code> would be:
+          <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ,
+       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
           and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
-      <li> <tt>averageEigenvalue(arr):</tt> Takes an array <tt>arr</tt> (in decreasing order), computes
-          the average (<tt>avg = sum(arr)/len(arr)</tt>) and returns the number of elements greater than <tt>avg</tt>.  Using the example from the textbook, if <tt>arr</tt> is
-          <pre>array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+      <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
+        <code class="inline">arr</code> (in decreasing order), computes
+          the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.  Using the example from the textbook, if <code class="inline">arr</code> is:
+          <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
         24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-         1.95,   0.04])</pre>
-          Then <tt>avg</tt> would be 75.07,
+         1.95,   0.04])</code></pre>
+          Then <code class="inline">avg</code> would be 75.07,
           and the function would return 3 since the first three coordinates are larger than the average.
     </ul>
 
