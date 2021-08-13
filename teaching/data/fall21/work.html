@@ -7,6 +7,27 @@
 </head>
 <STYLE>A {text-decoration: none;}
 th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
 </STYLE>
 <body>
 
@@ -61,8 +82,8 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
   </blockquote>
 </p>
 
-  <p><a name="q2"><b>Quiz 2: </b></b> &emsp; <i>Due 4pm, Tuesday, 31 August. </i>&emsp;
-     The second quiz focuses on the Python Recap: basics and standard packages (pandas, numpy,  matplotlib, & seaborn) and list comprehensions from Lecture 1.</p>
+<p><a name="q2"><b>Quiz 2: </b></b> &emsp; <i>Due 4pm, Tuesday, 31 August. </i>&emsp;
+  The second quiz focuses on the Python Recap: basics and standard packages (pandas, numpy,  matplotlib, & seaborn) and list comprehensions from Lecture 1.</p>
 
 <p><a name="q3"><b>Quiz 3: </b></b> &emsp; <i>Due 4pm, Friday, 3 September.</i>&emsp;
   The quiz covers data sampling from the third lecture and the reading: <a href="http://www.textbook.ds100.org/ch/02/design_intro.html">DS 100: Chapter 2</a> (Design Intro).</p>
@@ -72,19 +93,11 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
   and <a href="http://www.textbook.ds100.org/ch/06/pandas_intro.html">DS 100: Chapter 6</a> (Data Tables in Python).
 </p>
 
-
 <p><a name="q5"><b>Quiz 5: </b></b> &emsp; <i>Due 4pm, Tuesday, 14 September.</i>&emsp;
   This is a <b>coding quiz on HackerRank</b> focusing on the Python constructs and package from the first two weeks. You will be sent an invitation to the email you use for Gradescope for this quiz.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.
 
-
-
-
 <p><a name="q6"><b>Quiz 6: </b></b> &emsp; <i>Due 4pm, Tuesday, 21 September.</i>&emsp;
   Today's topic is regular expressions from Lecture #3 and <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-12.3</a> (Regular Expressions).</p>
-
-
-
-
 
 <p><a name="q7"><b>Quiz 7: </b></b> &emsp; <i>Due 4pm, Friday, 24 September.</i>&emsp;
   This quiz covers SQL from Lectures #6 & #7 and <a href="http://www.textbook.ds100.org/ch/05/sql_intro.html">DS 100: Chapter 5</a> (Relational Databases & SQL).</p>
@@ -177,15 +190,13 @@ To get full credit for a program, the file must include in the opening comment:
 </ul>
 
 For example, for the student, Thomas Hunter, the opening comment of his first program might be:
-<div style="background-color:lightgray;width:100%">
-<pre>
+<pre><code class="blockcode">
 """
 Name:  Thomas Hunter
 Email: thomas.hunter.</i>1870@hunter.</i>cuny.edu
 Resources:  Used python.org as a reminder of Python 3 print statements.
 """
-</pre>
-</div>
+</pre></code>
 and then followed by his Python program.
 
 <br>
@@ -198,92 +209,87 @@ Set 1:  The first set of programs recaps familiar Python constructs and packages
 <p><a name="p1"><b>Program 1: Hello, World.</b></b> &emsp; <i>Due noon, Friday, 27 August.</i>
   <br>(Learning Objective:  students are able to use a Python IDE on their computer and successfully submit the work to the Gradescope system.)
 
-  <p>Submit a Python program that prints:  <tt>Hello, world!</tt>
+  <p>Submit a Python program that prints:  <code class = "inline">Hello, world!</code>
 </p>
 
 <p><a name="p2"><b>Program 2: Senators' Names.</b></b> &emsp; <i>Due noon, Monday, 30 August.</i>
   <br>(Learning Objective: students can successfully read and write CSV files and use the Pandas package to select rows, filtered by boolean expression.)
 
   <p>
-Write a program, using the <tt>pandas</tt> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and <tt>last_name</tt> to a file with the output file name provided by the user.</i>
+Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and <code class = "inline">last_name</code> to a file with the output file name provided by the user.
 
 <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
-
-<div style="background-color:lightgray;width:100%">
-<pre>
+<pre><code class=datablock>
 last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
 Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
 Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell
-</pre>
-</div>
-Then a sample run of the program:
-<div style="background-color:lightgray;width:100%">
-<pre>
-Enter input file name: legislators-current.csv
-Enter output file name:  senatorNames.csv
-</pre>
-</div>
+</code></pre>
 
-And the first three lines of <tt>senatorNames.csv</tt> would be:
-<div style="background-color:lightgray;width:100%">
-<pre>
+Then a sample run of the program:
+
+<pre><code class="blockcode">Enter input file name: legislators-current.csv
+Enter output file name:  senatorNames.csv
+</code></pre>
+
+And the first three lines of <code class = "inline">senatorNames.csv</code> would be:
+<pre><code class=datablock>
 first_name,last_name
 Sherrod,Brown
 Maria,Cantwell
-</pre>
-</div>
-Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+</code></pre>
+
+Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
 <br>
 
 <p><a name="p3"><b>Program 3: Senators' Ages.</b></b> &emsp; <i>Due noon, Wednesday, 1 September.</i>
   <br>(Learning Objective: students read use Pandas to create new columns from existing columns of formatted data.)</p><p>
-Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Next, the program should select rows where the field <tt>senate_class</tt> is non-empty and write the <tt>first_name</tt> and compute the <tt>age</tt> based on the <tt>birthday</tt> field as of the first of the year.  Your program should write out a new CSV file (with the name provided by the user) with the two columns:  <tt>first_name</tt> and <tt>age</tt>.
+Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and compute the <code class = "inline">age</code> based on the <code class = "inline">birthday</code> field as of the first of the year.  Your program should write out a new CSV file (with the name provided by the user) with the two columns:  <code class = "inline">first_name</code> and <code class = "inline">age</code>.
 
 <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
 
-<div style="background-color:lightgray;width:100%">
-<pre>
+<pre><code class="datablock">
 last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
 Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
 Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell
-</pre>
-</div>
-Then a sample run of the program:
-<div style="background-color:lightgray;width:100%">
-<pre>
-Enter input file name: legislators-current.csv
-Enter output file name:  senatorAge.csv
-</pre>
-</div>
+</code></pre>
 
-And the first three lines of <tt>senatorAge.csv</tt> would be:
-<div style="background-color:lightgray;width:100%">
-<pre>
+Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: legislators-current.csv
+Enter output file name:  senatorAge.csv
+</code></pre>
+
+And the first three lines of <code class="inline">senatorAge.csv</code> would be:
+<pre><code class="datablock">
 first_name,age
 Sherrod,68
 Maria,62
-</pre>
-</div>
+</code></pre>
 since that was their ages as of January 1, 2021.
 <p>
-Note:  if you use the legislators CSV above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
 <br>
 
 <p><a name="p4"><b>Program 4: ELA Proficiency.</b></b> &emsp; <i>Due noon, Thursday, 2 September.</i>
   <br>(Learning Objective: students can filter formatted data using standard Pandas operations for selecting data.)
 
   <p>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Next, the program should select rows where the field <tt>Grade</tt> is equal to 3 and the <tt>Year</tt> is equal to 2019 and write all rows that match that criteria to a new CSV file.
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+  Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
 
-  <p>For example, if the file was <tt>school-ela-results-2013-2019.csv</tt> (extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a>) with the first lines of the output file would be:
+  <p>
+  Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
+Enter output file name:  ela2013.csv
+</code></pre>
+  where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a>). The first lines of the output file would be:
 
-  <div style="background-color:lightgray;width:100%">
-  <pre>
+<pre><code class="datablock">
 School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
 01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
 01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
-01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</pre>
-  </div>
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1
+</code></pre>
 
 <br>
 <br>
@@ -296,12 +302,11 @@ School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level
   <br>(Learning Objective: to use regular expressions with simple patterns to filter column data in a canonical example-- scrubbing a website of URL's.)
 
   <p>
-  Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <tt>re</tt> package in Python) to find all links in the input file and store the link text and URL as columns:  <tt>Title</tt> and <tt>URL</tt> in the CSV file specified by the user.</i>  For the URL, strip off the leading "<tt>https://</tt>" or "<tt>http://</tt>" and any trailing slashes ("/"):
+  Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
 
   <p>For example, if the input file is:
 
-  <div style="background-color:lightgray;width:100%">
-  <pre>
+<pre><code class="datablock">
   &lt;html>
   &lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
 
@@ -311,30 +316,27 @@ School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level
 
     &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
   &lt;/body>
-  &lt;/html></pre>
-  </div>
-  Then a sample run of the program:
-  <div style="background-color:lightgray;width:100%">
-  <pre>
-Enter input file name: simple.html
-Enter output file name:  links.csv</pre>
-  </div>
+  &lt;/html>
+</code></pre>
 
-  And the <tt>links.csv</tt> would be:
-  <div style="background-color:lightgray;width:100%">
-  <pre>
+  Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: simple.html
+Enter output file name:  links.csv
+</code></pre>
+
+  And the <code class="inline">links.csv</code> would be:
+<pre><code class="datablock">
 Title,URL
 Hunter CS Department,www.hunter.</i>cuny.edu/csci
 CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
-google,www.google.com</pre>
-  </div>
+google,www.google.com</code></pre>
 </p>
   <br>
 
 </p>
 
 <p><a name="p6"><b>Program 6: Regex on Restaurant Inspection Data.</b></b> &emsp; <i>Due noon, Thursday, 9 September.</i>
-  <br>(Learning Objective: The two learning objectives of this exercise are a) to give the students an opportunity to practice their newfound regex skills and b) familiarize them with the restaurant inspection dataset which would be used again in the latter SQL programs.)
+  <br>(Learning Objective: The two learning objectives of this exercise are a) to give the students an opportunity to practice their newfound regular expressions (regex) skills and b) familiarize them with the restaurant inspection dataset which would be used again in the latter SQL programs.)
 
   <p>
   Use regular expressions (covered in Lecture 3 & <a href="http://www.textbook.ds100.org/ch/12/text_regex.html">DS 100: Sections 12.2-3</a>) to clean <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets that we will use in later SQL programs.
@@ -748,10 +750,6 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     <p>
     </p>
 
-<p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
-    <br>(Learning Objective: .)</p>
-    <p>
-    </p>
 
 <!--
 
@@ -859,6 +857,10 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
   <p>
   </p>
 
+  <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
 
 
 
