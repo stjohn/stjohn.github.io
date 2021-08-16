@@ -896,7 +896,6 @@ P5:
 
 <p>Ideas:
 <pre>
-Add in a data cleaning applying to data frames-- very easy, but make sure all can do this before assuming this is a basic step in larger programs.  Code demo of 9 Sept, so, have 2 programs after that.
 
 Wait on the background for the Obama v. Romney, and instead have a several data cleaning example just using string methods.  One that needs to check for empty entries.  Another that combines multiple columns into a new one.  maybe the 311 or NYPD data (since often missing GIS coordinates).
 
@@ -907,11 +906,8 @@ From Lehman's DS course:  HW5:  Are collisions correlated with temperature?
 
 A/B Testing-- do as part of quizzes when we do Bayes Theorem
 
-
 #6: Modify the Naive Bayes spam filter program to reads in the three files generated above as well as a fourth file of test data (use another year's data such as yob2010.txt). Instead of multiplying together word occurrences, your program should multiply use the last letter, second-to-last letter, and third-to-last letter that you computed above. Your program should classify each name in the test data (similar to the Naive Bayes filter from the book) and report back the percentage of names your correctly predicted as well as the names you predicted incorrectly.
 Submit your Python program as a .py file.
-
-#7: Submit the output of your file (the percentage you correctly predicted along with the names you predicted incorrectly) as a .txt file.
 
 Covariance:  HW 9:  Analyse the NY Fed's Labor Market Data for Recent Graduates (see link above) using a Principal Components Analysis. There are three parts to this exercise:
 Compute and display the covariance matrix for the data,
@@ -919,18 +915,9 @@ Generate a 3D plot of the data under the first three axis of a Principal Compone
 Include the Python code that you used to generate your plots.
 Make sure to include in the title of your plot the date plotted.
 
-#1: Submit your Python program as a .py file.
-#2: Submit a text file or screen shot that includes the covariance matrix.
-#3: Submit a screen shot of the graphics window containing the plot.
-
 Using the New York City data for district test scores, shade your map above by percentage of students proficient in mathematics (i.e. scored a 3 or 4 on the exam-- the last column in the CSV file).
 
-#6: Submit your Python program as a .py file.
-#7: Submit a screen shot of the graphics window containing the plot.
-
 #6: Using the New York City data for district test scores, compute the covariance matrix for District 1 schools across grades (that is, rows 8 to 28, columns G onward). Which rows are most highly correlated? Submit a typeset or neatly handwritten image of your answer.</i>
-
-#7: Compute the first and second axis of a Principal Components Analysis using the covariance matrix above. Submit a typeset or neatly handwritten image of your answer.</i>
 
 When do mapping, something with litter baskets:  https://data.cityofnewyork.us/dataset/DSNY-Litter-Basket-Map-/d6m8-cwh9
 
@@ -940,28 +927,9 @@ Find on altair
 HW 12:  The file landmarkDistances.txt contains a distance matrix for 10 landmarks in New York City. The file landmarks.txt contains the names of 9 of the landmarks. The last name is "mystery". Use multidimensional scaling to display all 10 points on the screen with landmarks labeled. Using your displayed information, identify the last mystery landmark.
 (Based on the inspired homework from dasGupta's machine learning course at UCSD.)
 
-Make sure to include in the title of your plot the date plotted.
-
-#1: Submit your Python program as a .py file.
-#2: Submit a screen shot of the graphics window containing the plot.
-#3: Does the plot look right? If not, how can you re-orient so that it does? What is the mystery landmark? Include your answer in a .txt or a scan of a neatly handwritten paper.</i>
-
 
 HW 12:  Using the 311 Pothole data (described above), use logistic regression analysis of time versus status: "Closed" versus "Open" (any non-"Closed" values of the status include in the "Open" category) to create a model that predicts if a pothole has been repaired, given the date reported.
 You may want to use the textbook's code (described above)-- if you do, modify to take only 1 input parameter (instead of the 2 it currently takes). This is a very small change (just change the starting beta_0 to match the dimension of the data and be [1,1].)
-
-#4: Submit your Python program as a .py file.
-#5: Submit a screen shot of the graphics window containing a plot of the data points (a scatterplot of (date,status) where status is 0 if closed and 1 otherwise) with the logistic curve that you fit to the data.
-
-
-HW 12:  Using bokeh, display the unemployment data (described above) as a scatter plot of the data with a 6-month running average.
-Note: The bokeh part is straightforward (very similar to the stock example-- you need to modify the #prepare some data section (as well as titles and labels)). The work here is setting up your data to be plotted. The dates need to be datetime objects for the stretching and scaling of the x-axis to work.
-
-Make sure to include a title in your plot.
-
-#6: Submit your Python program as a .py file.
-#7: Submit a screen shot of your program as an .png or .jpg file. (This homework originally asked for the .html file, but Blackboard is stripping the HTML formatting out of submitted files.)
-
 
 HW 12:  Modeling question-- not sure when to integrate into topics:
 Given the data:
@@ -974,16 +942,10 @@ f(x) = 1/(1 +e^{-(6+.75x)})
 g(x) = 1/(1 +e^{-(-8+x)})
 #6: Which function predicts more of the data correctly? That is, out of the 10 input values, how many values were predicted to be 1 with greater than 50% probability were actually 1 (true positives), were actually 0 (false positives); how many values were predicted to be 0 with greater than 50% probability were actually 0 (true negatives), were actually 1 (false negatives)?
 
-Submit a typeset or neatly handwritten answer.</i>
-
-
 #7: Use the book's logistic regression code to fit a logistic function to the data above.
 Note: The book's code assumes that 3 dimensional data while we have only 2 dimensions. The code is well-written and can be easily modified to handle only 2 dimensions by entering 2 dimensional data for data and modifying the starting value of beta_0 to be the [1,1].
 
 Submit a screenshot of a graph with the true points, your predicted curve (i.e. the logistic function with your computed beta_hat, and the f and g functions above. Include a legend or labels for your curves.
-
-</pre>
-
 
 <p><i>Extras:</i>  These problems are not submitted or graded, but are suggestions for those who would like more Python experience or more practice on the concepts of the section.  These problems also have possible tools for the course project and practice for quizzes and the final exam.
 
@@ -998,14 +960,7 @@ Submit a screenshot of a graph with the true points, your predicted curve (i.e. 
   <li>Unpacking Argument Lists & Keywords:</li>
 </ul>
 
-
-
-
-
-
 Include in each data set a prediction question (building on tools known at the time)-- focus on NYC data, leading up to more open-ended (aka Kaggle-style) one in November/December
-
-Submit a .txt file that contains the standard heading information from above and the last line of the file contains the login name of the github account you plan to use this term.
 
 -->
 
@@ -1018,16 +973,15 @@ Submit a .txt file that contains the standard heading information from above and
 </a>
 
 <p>
-  <i>More to come...</i>
-
-<!--
-<p><a name="proj1"><b>Milestone 1: .</b></b> &emsp; <i>Due ??.
-<p><a name="proj2"><b>Milestone 2: .</b></b> &emsp; <i>Due ??.
-
+The learning objectives of the required final project are to define a topic, identify appropriate open source datasets, and synthesize the skills aquired in the course to analyze and visualize the chosen data to address your topic.
+</p>
 
 <h3>Milestones</h3>
 
-The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed in the right hand column.
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 25% of the final grade.  The point breakdown is listed in the right hand column.
+
+
+
 
 <p>
 <table class="handouts" border="1">
@@ -1035,41 +989,42 @@ The project is broken down into smaller pieces that must be submitted by the dea
 	<th>Deadline:</th><th>Deliverables:</th><th>Points:</th>
 </tr>
 <tr>
-	<td>Saturday, 2 April, noon</td><td><a href="#proposal">Title & Proposal</a></td><td>20</td>
+	<td>Wednesday, 6 October, noon</td><td><a href="#proposal">Title & Proposal</a></td><td>20</td>
 </tr>
 <tr>
-	<td>Saturday, 2 April, noon</td><td><a href="#peerReview">Peer Review #1</a></td><td>10</td>
+	<td>Wednesday, 13 October, noon</td><td><a href="#peerReview">Peer Review #1</a></td><td>10</td>
 </tr>
 <tr>
-	<td>Saturday, 16 April, noon</td><td><a href="#timeline">Timeline</a></td><td>10</td>
+	<td>Wednesday, 20 October, noon</td><td><a href="#timeline">Timeline</a></td><td>10</td>
 </tr>
 <tr>
-	<td>Saturday, 23 April, noon</td><td><a href="#timeline">Data Collection</a></td><td>20</td>
+	<td>Wednesday, 3 November, noon</td><td><a href="#dataCollection">Data Collection</a></td><td>20</td>
 </tr>
 <tr>
-	<td>Wednesday, 4 May, noon</td><td><a href="#timeline">Analysis</a></td><td>30</td>
+	<td>Wednesday, 10 November, noon</td><td><a href="#analysis">Analysis</a></td><td>30</td>
 </tr>
 <tr>
-	<td>Saturday, 7 May, noon</td><td><a href="#timeline">Visualization</a></td><td>20</td>
+	<td>Wednesday, 17 November, noon</td><td><a href="#visualization">Visualization</a></td><td>20</td>
+</tr>
+
+<tr>
+	<td>Wednesday, 1 December, noon</td><td><a href="#slides">Draft Abstract & Website</a></td><td>20</td>
+</tr>
+<tr>
+	<td>Monday, 6 December, noon</td><td><a href="#peerReview2">Peer Review #2</a></td><td>10</td>
 </tr>
 
 <tr>
-	<td>Saturday, 7 May, noon</td><td><a href="#slides">Draft Presentation Slides</a></td><td>20</td>
+	<td>Thursday, 9 December, noon</td><td><a href="#abstract">Abstract</a></td><td>10</td>
 </tr>
+
 <tr>
-	<td>Saturday, 2 April, noon</td><td><a href="#peerReview">Peer Review #2</a></td><td>10</td>
-</tr>
-<tr>
-	<td>Saturday, 14 May, noon</td><td><a href="#complete">Complete Project Website</a></td><td>50</td>
-</tr>
-<tr>
-	<td>Monday, 16 May, 9am</td><td><a href="#abstract">Abstract</a></td><td>10</td>
+	<td>Friday, 10 December, noon</td><td><a href="#completeSite">Complete Project Website</a></td><td>50</td>
 </tr>
 
 
-
 <tr>
-	<td>Tuesday, 17 May, in class</td><td><a href="#presentation">Project Video</a></td><td>50</td>
+	<td>Monday, 13 December, noon</td><td><a href="#presentation">Project Video</a></td><td>50</td>
 </tr>
 <tr>
 	<th colspan=2>Total Points:</th><td>250</td>
@@ -1078,9 +1033,13 @@ The project is broken down into smaller pieces that must be submitted by the dea
 
 </table>
 
+<!--
 
 <h3>Proposal</h3>
 <a name="proposal"></a>
+
+<p><a name="proj1"><b>Milestone 1: .</b></b> &emsp; <i>Due ??.
+<p><a name="proj2"><b>Milestone 2: .</b></b> &emsp; <i>Due ??.
 
 A short statement that includes:
 <ul>
@@ -1101,9 +1060,6 @@ Your plan of attack to complete this project on time, including what you will ha
 <ul>
 </ul>
 
-
-
-<div>
 <h3>Presentation Slides</h3>
 <a name="slides"></a>
 
@@ -1184,7 +1140,7 @@ For the visualization milestone, you must submit:
 
 
 <div>
-<h3>Project Presentations</h3>
+<h3>Project Presentation Video</h3>
 <a name="presentation"></a>
 
 <p>
@@ -1213,6 +1169,9 @@ This course has not been taught at Lehman College before, so, no previous studen
 
 </ul>
 -->
+
+<p>
+  <i>More to come...</i>
 
 </div>
 </body>
