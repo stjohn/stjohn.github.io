@@ -173,13 +173,13 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
   "http://www.textbook.ds100.org/ch/07/repr_intro.html">DS 100, Chapter 7</a> (Data Representation).</p>
 
 -->
-
+<br><br><br><br>
 <hr>
 
 <a name="hw">
 <h2>Homework</h2>
 </a>
-Unless otherwise noted, programs are submitted on the course's gradescope site.  All students registered by Monday, 23 August will be sent a registration invitation to the email on record on their Blackboard account.  If you did not receive the email or would like to use a different account, contact us with your name (as it appears in Blackboard/CUNYFirst), your EmpID, and the preferred email, and we will manually generate an invitation.  As a default, we use your name as it appears in Blackboard/CUNYFirst (to update CUNYFirst, see <a href="https://hunter.</i>cuny.edu/students/registration/records-and-transcripts/changing-your-personal-information/">changing your personal information</a>).  If you prefer a different name for Gradescope, include it in the email and we will update the Gradescope registration.
+Unless otherwise noted, programs are submitted on the course's Gradescope site.  All students registered by Monday, 23 August will be sent a registration invitation to the email on record on their Blackboard account.  If you did not receive the email or would like to use a different account, contact us with your name (as it appears in Blackboard/CUNYFirst), your EmpID, and the preferred email, and we will manually generate an invitation.  As a default, we use your name as it appears in Blackboard/CUNYFirst (to update CUNYFirst, see <a href="https://hunter.</i>cuny.edu/students/registration/records-and-transcripts/changing-your-personal-information/">changing your personal information</a>).  If you prefer a different name for Gradescope, include it in the email and we will update the Gradescope registration.
 
 <p>
 To get full credit for a program, the file must include in the opening comment:
@@ -213,7 +213,7 @@ Set 1:  The first set of programs recaps familiar Python constructs and packages
 </p>
 
 <p><a name="p2"><b>Program 2: Senators' Names.</b></b> &emsp; <i>Due noon, Monday, 30 August.</i>
-  <br>(Learning Objective: students can successfully read and write CSV files and use the Pandas package to select rows, filtered by boolean expression.)
+  <br>(Learning Objective: students can successfully read and write CSV files and use the Pandas package to select rows, filtered by boolean expressions.)
 
   <p>
 Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
@@ -243,7 +243,7 @@ Note:  if you use the legislators CSV file above, your output file should have 1
 <br>
 
 <p><a name="p3"><b>Program 3: Senators' Ages.</b></b> &emsp; <i>Due noon, Wednesday, 1 September.</i>
-  <br>(Learning Objective: students read use Pandas to create new columns from existing columns of formatted data.)</p><p>
+  <br>(Learning Objective: to refresh students' knowledge of Pandas' functionality to create new columns from existing columns of formatted data.)</p><p>
 Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.</i>  Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and compute the <code class = "inline">age</code> based on the <code class = "inline">birthday</code> field as of the first of the year.  Your program should write out a new CSV file (with the name provided by the user) with the two columns:  <code class = "inline">first_name</code> and <code class = "inline">age</code>.
 
 <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
@@ -271,7 +271,7 @@ Note:  if you use the legislators CSV file above, your output file should have 1
 <br>
 
 <p><a name="p4"><b>Program 4: ELA Proficiency.</b></b> &emsp; <i>Due noon, Thursday, 2 September.</i>
-  <br>(Learning Objective: students can filter formatted data using standard Pandas operations for selecting data.)
+  <br>(Learning Objective: students can successfully filter formatted data using standard Pandas operations for selecting data.)
 
   <p>
   Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
@@ -299,7 +299,7 @@ School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level
 <hr>
 
 <p><a name="p5"><b>Program 5: URL Collection.</b></b> &emsp; <i>Due noon, Friday, 3 September.</i>
-  <br>(Learning Objective: to use regular expressions with simple patterns to filter column data in a canonical example-- scrubbing a website of URL's.)
+  <br>(Learning Objective: to use regular expressions with simple patterns to filter column data in a canonical example: scraping a website of URL's.)
 
   <p>
   Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
@@ -352,36 +352,73 @@ google,www.google.com</code></pre>
   Your program should:
   <ul>
     <li> Ask the user for names of an input file and output file.  You can assume that the input file is a CSV file with column names from the <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets.  Your program should open the named CSV input file and save the results in the named output file.
-    <li>With the phone column, please use regex to parse out the given 10 digit phone number XXXXXXXXXX and re-concatenate it back into a 11 digit format: 1-digit country code (as 1), 3-digit area code, and a 7-digit telephone number, so that the final output looks like: +1-XXX-XXX-XXXX.
+    <li>With the phone column, please use regex to parse out the given 10 digit phone number <code class="inline">XXXXXXXXXX</code> and re-concatenate it back into a 11 digit format: 1-digit country code (as 1), 3-digit area code, and a 7-digit telephone number, so that the final output looks like: <code class="inline">+1-XXX-XXX-XXXX</code>.
 
-    <li> With the inspection date column, please use regex to break out the year, month, and day component, then re concatenate the MM/DD/YYYY to YYYY/MM/DD.
+    <li> With the inspection date column, use regex to break out the year, month, and day component, then re concatenate the <code class="inline">MM/DD/YYYY</code> to <code class="inline">YYYY/MM/DD</code>.
 
-    <li> With the restaurant name column DBA, please create a new column called "restaurant_name" which reformats the data in the original column from all upper case to camel case. Separately, create a new boolean column that flags True if the word Thai (not case sensitive) appears in the original restaurant name.
+    <li> With the restaurant name column <code class="inline">DBA</code>, please create a new column called "restaurant_name" which reformats the data in the original column from all upper case to camel case. Separately, create a new boolean column that flags <code class="inline">True</code> if the word <code class="inline">Thai</code> (not case sensitive) appears in the original restaurant name.
   </ul>
+
+  <p>For example, if the file was <a href="">july30.csv</a> with the first 3 lines of:
+
+  <pre><code class="datablock">
+CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA
+41178124,CAFE 57,Manhattan,300,WEST   57 STREET,10019,2126492729,American,7/30/2021,Violations were cited in the following area(s).,09C,Food contact surface not properly maintained.,Not Critical,4,A,7/30/2021,8/1/2021,Cycle Inspection / Initial Inspection,40.76643902,-73.98332508,104,3,13900,1025451,1010477502,MN15
+50111450,CASTLE CHICKEN,Bronx,5987A,BROADWAY,10471,9178562047,Chicken,7/30/2021,Violations were cited in the following area(s).,05D,Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.,Critical,41,N,,8/1/2021,Pre-permit (Operational) / Initial Inspection,40.88993027,-73.89805316,208,11,28500,2084208,2058011033,BX29
+40699339,NICK GARDEN COFFEE SHOP,Bronx,2953,WEBSTER AVENUE,10458,7183652277,Coffee/Tea,7/30/2021,Violations were cited in the following area(s).,08A,Facility not vermin proof. Harborage or conditions conducive to attracting vermin to the premises and/or allowing vermin to exist.,Not Critical,31,,,8/1/2021,Cycle Inspection / Initial Inspection,40.86759042,-73.88308647,207,11,41500,2016446,2032800061,BX05
+</code></pre>
+
+  Then a sample run of the program:
+  <pre><code class="blockcode">
+Enter input file name: july30.csv
+Enter output file name:  july30filtered.csv
+  </code></pre>
+
+  And the first three lines of <code class="inline">july30filtered.csv</code> would be:
+<pre><code class="datablock">
+CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA,restaurant_name,thai_boolean
+41178124,CAFE 57,Manhattan,300,WEST   57 STREET,10019,+1-212-649-2729,American,21/07/30,Violations were cited in the following area(s).,09C,Food contact surface not properly maintained.,Not Critical,4,A,7/30/2021,8/1/2021,Cycle Inspection / Initial Inspection,40.76643902,-73.98332508,104,3,13900,1025451,1010477502,MN15,Cafe 57 ,False
+50111450,CASTLE CHICKEN,Bronx,5987A,BROADWAY,10471,+1-917-856-2047,Chicken,21/07/30,Violations were cited in the following area(s).,05D,Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.,Critical,41,N,,8/1/2021,Pre-permit (Operational) / Initial Inspection,40.88993027,-73.89805316,208,11,28500,2084208,2058011033,BX29,Castle Chicken ,False
+40699339,NICK GARDEN COFFEE SHOP,Bronx,2953,WEBSTER AVENUE,10458,+1-718-365-2277,Coffee/Tea,21/07/30,Violations were cited in the following area(s).,08A,Facility not vermin proof. Harborage or conditions conducive to attracting vermin to the premises and/or allowing vermin to exist.,Not Critical,31,,,8/1/2021,Cycle Inspection / Initial Inspection,40.86759042,-73.88308647,207,11,41500,2016446,2032800061,BX05,Nick Garden Coffee Shop ,False
+</code></pre>
+
+  <p>
+
+
 </p>
 
 <p><a name="p7"><b>Program 7: Restaurant SQL Queries.</b></b> &emsp; <i>Due noon, Friday, 10 September.</i>
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice their newfound SQL skills.)
 
+  <p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected90.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
   <p>
   Using SQL (see <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.2</a>), extract the following information from a <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> dataset:
   <ul>
-    <li> Save all rows in table where Grade = A to the output file <tt>prefix+"A.csv"</tt> where <tt>prefix</tt> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-    <li> Save all rows in table where Score > 90 to the output file <tt>prefix+"90.csv"</tt>.</li>
-    <li> Save all rows in table where IN (10002, 10027, 10036) to the output file <tt>prefix+"ZIP.csv"</tt></li>
-    <li> Save columns DBA, Cuisine Description, Boro, and Grade for all in table where Zipcode = 11103. Rename DBA AS 'restaurant_name', Cuisine Description as cuisine_description, Boro as borough. where Grade = A, Score > 90 and Zipcode IN (10002, 10027, 10036) to the output file <tt>prefix+"All.csv"</tt>.
+    <li> Save all rows in table where <code class="inline">Grade = A</code> to the output file <code class="inline">prefix+"A.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
+    <li> Save all rows in table where <code class="inline">SCORE > 90</code> to the output file <tt>prefix+"90.csv"</tt>.</li>
+    <li> Save all rows in table where <code class="inline">ZIPCODE IN (10002, 10027, 10036)</code> to the output file <code class="inline">prefix+"ZIP.csv"</code></li>
+    <li> Save columns
+      <code class="inline">DBA</code>,
+      <code class="inline">CUISINE DESCRIPTION</code>,
+      <code class="inline">BORO</code>, and
+      <code class="inline">GRADE</code> for all in table where <code class="inline">ZIPCODE = 11103</code>.
+      Rename
+      <code class="inline">DBA</code> as <code class="inline">restaurant_name</code>, <code class="inline">CUISINE DESCRIPTION</code> as <code class="inline">cuisine_description</code>,
+      <code class="inline">BORO</code> as <code class="inline">borough</code>.
+      And select only those entries with:
+      <code class="inline">GRADE = A, SCORE > 90 and ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
   </ul>
-Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <tt>restaurantJuly2020.csv</tt> for the input and <tt>selected</tt> for the output prefix.  The program should create 4 files: <tt>selectedA.csv</tt>, <tt>selected90.csv</tt>, <tt>selectedZIP.csv</tt>, and <tt>selectedAll.csv</tt>.
+
 </p>
 
-
+<!--
 <p><a name="p8"><b>Program 8: Aggregating Restaurant Data (SQL).</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
-  <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. GROUP BYs) on a familiar dataset.)
+  <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. <code class="inline">GROUP BY</code>'s) on a familiar dataset.)
 
   <p>
-  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <tt>GROUP BY</tt>'s), this program find distinct restaurant names and distinct cuisines by locale.
+  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.
+-->
 <!--
-The source data from P6 Trello card here can be mostly re-used for this exercise. However, please note that the filtering down to <30 rows should not apply to the dataset for this program because that will give us too little data for aggregation purposes.
 
 Based on the dataset above, please create the following exercises:
 
@@ -409,11 +446,12 @@ Note: each of the exercises above should be returned separately. For the ones wh
     </ul>
 -->
 </p>
-
+<!--
 <p><a name="p9"><b>Program 9: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
-  <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a JOIN between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
+  <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a <code class="inline">JOIN</code> between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
 
   <p>
+-->
 <!--
 
 Datasets:
@@ -433,14 +471,14 @@ On Health + NTA Tables Both:
 - Build upon the previous exercise ^, keep the JOIN as is, do one more level of aggregation, so that the end result contains 3 columns (unique NTA code, unique NTA description, and the count distinct restaurants as grouped by the first 2 columns)
 -->
 </p>
-
+<!--
 <p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
   <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
   <p>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <tt>extractDistrict()</tt> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <tt>School</tt> field, converts those into a digit, and stores the results in a new column, <tt>District</tt>.
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.
   The results should be written to a new CSV file, name provided by the user.</i></p>
 
-  <p> For example, if the <tt>School</tt> is <tt>"01M015"</tt>, the entry in the new column would be <tt>1</tt> (stored as a number, not a string).
+  <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
 </p>
 
 <p><a name="p11"><b>Program 11: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
@@ -467,10 +505,10 @@ District Subject
 <p><a name="p12"><b>Program 12: MTA Ridership.</b></b> &emsp; <i>Due noon, Thursday, 23 September.</i>
   <br>(Learning Objective: .)
 
-  <p>Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user, which you can assume will include the column names: <tt>date</tt>, <tt>entries</tt>, and <tt>exit</tt>.  You should create a new file that has one entry for each date that consists of the sum of all entries and the sum of all exits that occur on the date.  This aggegrate data should be stored in the output CSV and should contain only the three columns:  <tt>date</tt>, <tt>entries</tt>, and <tt>exit</tt>, even if there are additional columns in the input CSV file.</p>
-
+  <p>Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user, which you can assume will include the column names: <code class="inline">date</code>, <code class="inline">entries</code>, and <code class="inline">exit</code>.  You should create a new file that has one entry for each date that consists of the sum of all entries and the sum of all exits that occur on the date.  This aggegrate data should be stored in the output CSV and should contain only the three columns:  <code class="inline">date</code>, <code class="inline">entries</code>, and <code class="inline">exit</code>, even if there are additional columns in the input CSV file.</p>
+-->
 <!-- URL of cleaned data:  https://qri.cloud/nyc-transit-data/turnstile_daily_counts_2020 and presented:  https://observablehq.com/@benoldenburg/nyc-transit-turnstile-data  -->
-
+<!--
 <br>
 <br>
 <br>
@@ -587,11 +625,12 @@ District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attenda
     <li> The output CSV should not contain the internal index and should be saved without it.
 </ul>
 </i>
-
+-->
 <!-- Folium tutorial:  https://autogis-site.readthedocs.io/en/latest/notebooks/L5/02_interactive-map-folium.html
 Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
 https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
 Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
+<!--
 <p>
 </p>
 
@@ -601,7 +640,7 @@ Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
 
   <p>
   We have used GeoJSON files as layers in our folium maps and created some manually in lecture.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <code class="inline">Lat</code> and <code class="inline">Lon</code>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
-
+-->
 <!--
   <p>give sample input
   <p>add in resulting image loaded onto the map
@@ -624,7 +663,7 @@ Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
   -->
   </p>
 
-
+<!--
 
 <p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
   <br>(Learning Objective: gain competency in using the Altair/Vega declarative visualization grammar.)
@@ -735,13 +774,15 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
     <br>(Learning Objective: .)</p>
     <p>
-    In lecture, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>.
+    In lecture, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
     <p>
+    <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+      <img src="sklearn_digits.png" height=400>
+    </a>
     <p>
     </p>
 
 
-<!--
 
 
 
@@ -812,47 +853,108 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
   <p>
   </p>
 
+  --------- Regression on Probabilities; The Logistic Model
+
+  # P35
+  import data
+  create your own Y = 0, 1 from a continuous Y variable (?)
+  value_counts of Y
+  cross tabulate against X1, X2, etc. -> visualize as table
+
 <p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
+
+  # P36
+  same data as P35
+  plot (jittered) Y against each X
+  draw sigmoid?  or just conceptualize when this is different from linear
 
 <p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
 
+  --------- A Loss Function for the Logistic Model; Using Logistic Regression
+
+  # P37
+  fit a simple logistic regression using out of box:
+  from sklearn.linear_model import LogisticRegression
+  Y ~ X1
+  compare accuracy of this against accuracy of always predicting 0 or 1
+
 <p><a name="p38"><b>Program 38: .</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
+
+  # P38
+  using same data as P37, do train/test split (with seeding)
+  Y ~ X1 + X2 ... (possibly with one-hot encoding)
+  compare accuracy of this against bsaeline of always predicting 0 or 1
+  compare accuracy of test vs train
 
 <p><a name="p39"><b>Program 39: .</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
 
+  --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
+
+  # P39
+  train/test split
+  fit logistic regression
+  compute accuracy, precision, recall
+  record CPU time and wall time
+
 <p><a name="p40"><b>Program 40: .</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
 
+  # P40
+  same data as P39
+  train/test split
+  fit stochastic gradient descent
+  tune hyperparameters (are we doing different search methods?)
+  compare results to P39.  which one would you choose?
+
 <p><a name="p41"><b>Program 41: .</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
-  <br>(Learning Objective: .)</p>
+  <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
   <p>
   </p>
 
+  --------- Evaluating Logistic Models; Multiclass Classification
+
+  P41
+  re-use one of the previous examples to create a binary logit classifier
+  then use sklearn built in functions to calculate confusion matrix
+  also use sklearn built in functions to calculate and then plot AUC
+
+
+
 <p><a name="p42"><b>Program 42: .</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
-  <br>(Learning Objective: .)</p>
+  <br>(Learning Objective: to create a multilabel classifer using sklearn.)</p>
   <p>
   </p>
+
+  P42
+  create a multilabel classifier
+  use sklearn built in functions to calculate confusion matrix and AUC
+  but then ... write your OWN function to output the exact same confusion matrix & AUC (too much?)
+
 
   <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
+Links to sklearn MDS:  https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html
+https://scikit-learn.org/stable/auto_examples/manifold/plot_mds.html
 
-
+How much do we want to go into affine transformations?
+https://stackabuse.com/affine-image-transformations-in-python-with-numpy-pillow-and-opencv/
+https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
   <p>
   </p>
@@ -963,10 +1065,11 @@ Submit a screenshot of a graph with the true points, your predicted curve (i.e. 
 Include in each data set a prediction question (building on tools known at the time)-- focus on NYC data, leading up to more open-ended (aka Kaggle-style) one in November/December
 
 -->
-
+<br><br>
   <p>
     <i>More to come...</i>
 
+<br><br><br><br><br><br>
 <hr>
 <a name="project">
 <h2>Project</h2>
