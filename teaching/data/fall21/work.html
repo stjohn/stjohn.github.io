@@ -356,10 +356,10 @@ google,www.google.com</code></pre>
 
     <li> With the inspection date column, use regex to break out the year, month, and day component, then re concatenate the <code class="inline">MM/DD/YYYY</code> to <code class="inline">YYYY/MM/DD</code>.
 
-    <li> With the restaurant name column <code class="inline">DBA</code>, please create a new column called "restaurant_name" which reformats the data in the original column from all upper case to camel case. Separately, create a new boolean column that flags <code class="inline">True</code> if the word <code class="inline">Thai</code> (not case sensitive) appears in the original restaurant name.
+    <li> With the restaurant name column <code class="inline">DBA</code>, please create a new column called "restaurant_name" which reformats the data in the original column from all upper case to camel case. Separately, create a new Boolean column that flags <code class="inline">True</code> if the word <code class="inline">Thai</code> (not case sensitive) appears in the original restaurant name.
   </ul>
 
-  <p>For example, if the file was <a href="">july30.csv</a> with the first 3 lines of:
+  <p>For example, if the file was <a href="">restaurants30July.csv</a> with the first 3 lines of:
 
   <pre><code class="datablock">
 CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA
@@ -370,7 +370,7 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
   Then a sample run of the program:
   <pre><code class="blockcode">
-Enter input file name: july30.csv
+Enter input file name: restaurants30July.csv
 Enter output file name:  july30filtered.csv
   </code></pre>
 
@@ -392,7 +392,7 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
   <p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected90.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
   <p>
-  Using SQL (see <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.2</a>), extract the following information from a <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> dataset:
+  Using SQL (see <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.2</a>), extract the following information from a <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> dataset (a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a>):
   <ul>
     <li> Save all rows in table where <code class="inline">Grade = A</code> to the output file <code class="inline">prefix+"A.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
     <li> Save all rows in table where <code class="inline">SCORE > 90</code> to the output file <tt>prefix+"90.csv"</tt>.</li>
@@ -415,7 +415,7 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. <code class="inline">GROUP BY</code>'s) on a familiar dataset.)
 
   <p>
-  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.
+  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.  For testing, a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a>.
 
   <p>Your program should ask for two input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedRestaurants.csv</code>, <code class="inline">selectedCuisines11224.csv</code>, <code class="inline">selectedCounts11224.csv</code>, and <code class="inline">selectedBoro.csv</code>.
   </p>
@@ -436,43 +436,47 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-
-<!--
 <p><a name="p9"><b>Program 9: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
   <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a <code class="inline">JOIN</code> between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
 
-  <p>Your program should ask for two input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">nta.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 5 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected90.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
+  <p>For testing, a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a> and the Neighborhood Tabulation Areas (NTA):
+  <a href="nta.csv">nta.csv</a>.
+
+
+  <p>Your program should ask for two input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">nta.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 6 files:
+    <code class="inline">selected1.csv</code>,
+    <code class="inline">selected2.csv</code>,
+    <code class="inline">selected3.csv</code>,
+    <code class="inline">selected4.csv</code>,
+    <code class="inline">selected5.csv</code>, and
+    <code class="inline">selected6.csv</code>.
   <p>
--->
-<!--
-
-Datasets:
-
-same restaurant inspection dataset as used in P7 and P8
-also import the NTA code table detailed in this card
-Based on the dataset above, please create the following exercises, in this particular order:
-
-On Health Inspection Table Alone:
-- Write SQL for returning just the NTA column in the health inspection table
-- Write SQL for returning the count of unique NTAs in the health inspection table
-- Write SQL for returning 3 columns. the unique NTAs, and the count of restaurants under each NTA in the health inspection table. sort ASC by NTA.
-On NTA Table Alone:
-- Write SQL for returning the number of rows in the NTA table and the number of unique NTAs in the NTA table.
-On Health + NTA Tables Both:
-- Write the SQL for creating a LEFT JOIN (health LEFT JOIN NTA), return 3 columns: NTA code from health table, NTA description from NTA table, and the restaurant name from health table. join on NTA code.
-- Build upon the previous exercise ^, keep the JOIN as is, do one more level of aggregation, so that the end result contains 3 columns (unique NTA code, unique NTA description, and the count distinct restaurants as grouped by the first 2 columns)
--->
+    <ol>
+      <li> Save the NTA column from the restaurant inspection table to the output file <code class="inline">prefix+"1.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i>
+      <li> Save the count of unique NTAs in the restaurant health inspection table to the output file <code class="inline">prefix+"2.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.  (Note this will have a single column and a single value.)
+      <li> Save the NTA column and the count of the distinct restaurants from the restaurant inspection table to the output file <code class="inline">prefix+"3.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.  (Hint:  how can you use <code class="inline">GROUP BY</code> to organize the output?)
+      <li> Save the number of rows in the <b>NTA table</b> and the number of unique NTAs in the NTA table to the output file <code class="inline">prefix+"4.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.
+      (Note this will have a two rows and two columns.)
+      <li> Save the restaurant name and its NTA which can be found via  a <code class="inline">LEFT JOIN</code> of the restaurant inspection table and NTA table from the restaurant inspection table to the output file <code class="inline">prefix+"5.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.
+      (Hint: join on the NTA code found in both (but using slightly different names).  Your output should have two columns.)
+      <li> Building on the result from 5) above, keep the <code class="inline">LEFT JOIN</code> as is, do one more level of aggregation, so that the end result contains 3 columns (unique NTA code, unique NTA description, and the count distinct restaurants as grouped by the first 2 columns).  Save result to the output file <code class="inline">prefix+"6.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.
+    </ol>
 </p>
-<!--
+
 <p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
   <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
   <p>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.
-  The results should be written to a new CSV file, name provided by the user.</i></p>
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
+
+  <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
+</code></pre>
 
   <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
+
+  <p> The results should be written to a new CSV file, name provided by the user.</i></p>
 </p>
 
+<!--
 <p><a name="p11"><b>Program 11: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
   <br>(Learning Objective: to successfully combine information from multiple input files and display the results using a pivot table.)
 
