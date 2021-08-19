@@ -83,7 +83,7 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
 </p>
 
 <p><a name="q2"><b>Quiz 2: </b></b> &emsp; <i>Due 4pm, Tuesday, 31 August. </i>&emsp;
-  The second quiz focuses on the Python Recap: basics and standard packages (pandas, numpy,  matplotlib, & seaborn) and list comprehensions from Lecture 1.</p>
+  The second quiz focuses on the Python Recap: basics and standard packages (pandas, numpy,  matplotlib, & seaborn), zips, and list comprehensions from Lecture 1.</p>
 
 <p><a name="q3"><b>Quiz 3: </b></b> &emsp; <i>Due 4pm, Friday, 3 September.</i>&emsp;
   The quiz covers data sampling from the third lecture and the reading: <a href="http://www.textbook.ds100.org/ch/02/design_intro.html">DS 100: Chapter 2</a> (Design Intro).</p>
@@ -411,45 +411,37 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-<!--
 <p><a name="p8"><b>Program 8: Aggregating Restaurant Data (SQL).</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. <code class="inline">GROUP BY</code>'s) on a familiar dataset.)
 
   <p>
   Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.
--->
-<!--
 
-Based on the dataset above, please create the following exercises:
-
-Return a unique column of distinct restaurants (note: return the restaurant names, not the count)
-How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
-
-Return a unique column of distinct cuisines where zipcode = 11224.
-
-Return 2 columns. the cuisine, and the count of unique restaurants per cuisine). Where zipcode = 11224.
-
-For each boro, return unique count of cuisines per boro; also return unique count of restaurants per boro. Return 3 columns. Sort results by boro name ASC.
-
-Note: each of the exercises above should be returned separately. For the ones where the answer is a single value, just printing the value as output is good to go. For the ones returning data whether a single or multiple columns, this needs to be in table format (pandas dataframe -> csv).
+  <p>Your program should ask for two input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedRestaurants.csv</code>, <code class="inline">selectedCuisines11224.csv</code>, <code class="inline">selectedCounts11224.csv</code>, and <code class="inline">selectedBoro.csv</code>.
+  </p>
+    <ul>
+      <li> Save a unique column of distinct restaurants (note: return the restaurant names, not the count)  to the output file <code class="inline">prefix+"Restaurants.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
+      <li> Save a unique column of distinct cuisines (note: return the cuisine names, not the count) where <code class="inline">ZIPCODE = 11224</code> to the output file <code class="inline">prefix+"Cuisines11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
+      <li> Save 2 columns, the cuisine and the count of unique restaurants per cuisine,  where <code class="inline">ZIPCODE = 11224</code> (note: return the cuisine names, not the count) to the output file <code class="inline">prefix+"Counts11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
+      <li> Save 3 columns: the borough name (<code class="inline">ASC</code>), the unique count of cuisines per borough and the unique count of restaurants per boroughs. The results should be sorted results by the borough name (<code class="inline">ASC</code>) and saved to the output file <code class="inline">prefix+"Boro.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
 
 
-  <ul>
-    <li>Return a unique column of distinct restaurants (note: return the restaurant names, not the count)
-    <li> How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
+      <!-- Not sure if this one is tested for, so, leaving out:
+      <li> How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
+      -->
 
-    <li> Return a unique column of distinct cuisines where zipcode = 11224.
 
-    <li> Return 2 columns. the cuisine, and the count of unique restaurants per cuisine). Where zipcode = 11224.
 
-    <li> For each boro, return unique count of cuisines per boro; also return unique count of restaurants per boro. Return 3 columns. Sort results by boro name ASC.
     </ul>
--->
+
 </p>
+
+
 <!--
 <p><a name="p9"><b>Program 9: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
   <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a <code class="inline">JOIN</code> between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
 
+  <p>Your program should ask for two input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">nta.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 5 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected90.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
   <p>
 -->
 <!--
