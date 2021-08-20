@@ -476,35 +476,42 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
   <p> The results should be written to a new CSV file, name provided by the user.</i></p>
 </p>
 
-<!--
+
 <p><a name="p11"><b>Program 11: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
   <br>(Learning Objective: to successfully combine information from multiple input files and display the results using a pivot table.)
 
-  <p>Your program should build on the classwork from Monday, 20 September to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
+  <p>Your program should build on the classwork from Lecture #6 to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
 </p>
 
-<pre>
-Enter file containing ELA scores:
-Enter file containing MATH scores:
+
+Then a sample run of the program with files truncated to a few schools per district for testing (<a href="ela_trunc.csv">ela_trunc.csv</a> and <a href="ela_math.csv">ela_math.csv</a>) starts as:
+
+<pre><code class="blockcode">Enter file containing ELA scores: ela_trunc.csv
+Enter file containing MATH scores: math_trunc.csv
                     Proficiency                      School Name
 District Subject
 01       ELA        91.891892  THE EAST VILLAGE COMMUNITY SCHOOL
          MATH       84.615385               P.S. 184M SHUANG WEN
 02       ELA        96.825397           P.S. 77 LOWER LAB SCHOOL
          MATH       98.412698           P.S. 77 LOWER LAB SCHOOL
-</pre>
-
-<p>
-<i>Fill in examples</i>
+</code></pre>
+and continues with top scoring schools for each test and each district printed.
 </p>
 
 <p><a name="p12"><b>Program 12: MTA Ridership.</b></b> &emsp; <i>Due noon, Thursday, 23 September.</i>
-  <br>(Learning Objective: .)
+  <br>(Learning Objective: to reinforce Pandas skills via use for data aggregating and data cleaning.)
+
+  <p>In the next lecture, we will be summarizing time-series data and using a
+  <a href="https://qri.cloud/nyc-transit-data/">cleaned version</a> of MTA subway and bus ridership, inspired by Oldenburg's <a href="https://observablehq.com/@benoldenburg/nyc-transit-turnstile-data">NYC Transit Turnstile Data</a>.
 
   <p>Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user, which you can assume will include the column names: <code class="inline">date</code>, <code class="inline">entries</code>, and <code class="inline">exit</code>.  You should create a new file that has one entry for each date that consists of the sum of all entries and the sum of all exits that occur on the date.  This aggegrate data should be stored in the output CSV and should contain only the three columns:  <code class="inline">date</code>, <code class="inline">entries</code>, and <code class="inline">exit</code>, even if there are additional columns in the input CSV file.</p>
--->
+
+  <p>
+
 <!-- URL of cleaned data:  https://qri.cloud/nyc-transit-data/turnstile_daily_counts_2020 and presented:  https://observablehq.com/@benoldenburg/nyc-transit-turnstile-data  -->
-<!--
+
+
+
 <br>
 <br>
 <br>
@@ -513,7 +520,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 <hr>
 
 <p><a name="p13"><b>Program 13: Column Summaries.</b></b> &emsp; <i>Due noon, Friday, 24 September.</i>
-  <br>(Learning Objective: .)
+  <br>(Learning Objective: to strengthen function-writing skills and examine alternate ways to summarize time-series data.)
 
   <p>In lecture, we used the Pandas' function, <code class = "inline">rolling()</code> to compute a 7-day average of subway ridership for the visualization of ridership in 2020.  For this program, write three functions that take as input a Pandas' series (e.g. a column of a DataFrame) that highlights different patterns in the data:</p>
   <ul>
@@ -526,7 +533,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
 </p>
 
 <p><a name="p14"><b>Program 14: Library Cleaning.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
-  <br>(Learning Objective: to strengthen data processing skills via regular expressions and standard string methods.)
+  <br>(Learning Objective: to strengthen data processing skills using regular expressions and standard string methods.)
 
   <p>
   Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
@@ -577,6 +584,9 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
   <i>where <tt>df</tt> is the DataFrame with the collisions data.</i></p>
 
 </p>
+
+
+
 <p><a name="p16"><b>Program 16:   Choropleth Attendance Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 30 September.</i>
 <br>(Learning Objective: to gain competency cleaning data using pandas functions.)
 
@@ -621,7 +631,7 @@ District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attenda
     <li> The output CSV should not contain the internal index and should be saved without it.
 </ul>
 </i>
--->
+
 <!-- Folium tutorial:  https://autogis-site.readthedocs.io/en/latest/notebooks/L5/02_interactive-map-folium.html
 Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
 https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
