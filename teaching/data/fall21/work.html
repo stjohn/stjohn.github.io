@@ -357,7 +357,8 @@ google,www.google.com</code></pre>
   Your program should:
   <ul>
     <li> Ask the user for names of an input file and output file.  You can assume that the input file is a CSV file with column names from the <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> datasets.  Your program should open the named CSV input file and save the results in the named output file.
-    <li>With the phone column, please use regex to parse out the given 10 digit phone number <code class="inline">XXXXXXXXXX</code> and re-concatenate it back into a 11 digit format: 1-digit country code (as 1), 3-digit area code, and a 7-digit telephone number, so that the final output looks like: <code class="inline">+1-XXX-XXX-XXXX</code>.
+
+    <li>There are many invalid phone numbers in the data set. Instead of 10 digits, e.g. <code class="inline">2125551212</code>, some entries have extra characters and not enough digits, e.g. <code class="inline">212-555-12</code>.  First, use regex to check that 10 digits were entered.  If not, set the value to <code class="inline">""</code> (empty string) since the current data is corrupt.  If the phone number does have 10 digits, use regex to parse out the given 10 digit phone number <code class="inline">DDDDDDDDDD</code> and re-concatenate it back into a 11 digit format: 1-digit country code (as 1), 3-digit area code, and a 7-digit telephone number, so that the final output looks like: <code class="inline">+1-DDD-DDD-DDDDD</code>.
 
     <li> With the inspection date column, use regex to break out the year, month, and day component, then re concatenate the <code class="inline">MM/DD/YYYY</code> to <code class="inline">YYYY/MM/DD</code>.
 
@@ -382,9 +383,9 @@ Enter output file name:  july30filtered.csv
   And the first three lines of <code class="inline">july30filtered.csv</code> would be:
 <pre><code class="datablock">
 CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE,ACTION,VIOLATION CODE,VIOLATION DESCRIPTION,CRITICAL FLAG,SCORE,GRADE,GRADE DATE,RECORD DATE,INSPECTION TYPE,Latitude,Longitude,Community Board,Council District,Census Tract,BIN,BBL,NTA,restaurant_name,thai_boolean
-41178124,CAFE 57,Manhattan,300,WEST   57 STREET,10019,+1-212-649-2729,American,21/07/30,Violations were cited in the following area(s).,09C,Food contact surface not properly maintained.,Not Critical,4,A,7/30/2021,8/1/2021,Cycle Inspection / Initial Inspection,40.76643902,-73.98332508,104,3,13900,1025451,1010477502,MN15,Cafe 57 ,False
-50111450,CASTLE CHICKEN,Bronx,5987A,BROADWAY,10471,+1-917-856-2047,Chicken,21/07/30,Violations were cited in the following area(s).,05D,Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.,Critical,41,N,,8/1/2021,Pre-permit (Operational) / Initial Inspection,40.88993027,-73.89805316,208,11,28500,2084208,2058011033,BX29,Castle Chicken ,False
-40699339,NICK GARDEN COFFEE SHOP,Bronx,2953,WEBSTER AVENUE,10458,+1-718-365-2277,Coffee/Tea,21/07/30,Violations were cited in the following area(s).,08A,Facility not vermin proof. Harborage or conditions conducive to attracting vermin to the premises and/or allowing vermin to exist.,Not Critical,31,,,8/1/2021,Cycle Inspection / Initial Inspection,40.86759042,-73.88308647,207,11,41500,2016446,2032800061,BX05,Nick Garden Coffee Shop ,False
+41178124,CAFE 57,Manhattan,300,WEST  57 STREET,10019,+1-212-649-2729,American,2021/07/30,Violations were cited in the following area(s).,09C,Food contact surface not properly maintained.,Not Critical,4,A,7/30/2021,8/1/2021,Cycle Inspection / Initial Inspection,40.76643902,-73.98332508,104,3,13900,1025451,1010477502,MN15,Cafe 57 ,False
+50111450,CASTLE CHICKEN,Bronx,5987A,BROADWAY,10471,+1-917-856-2047,Chicken,2021/07/30,Violations were cited in the following area(s).,05D,Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.,Critical,41,N,,8/1/2021,Pre-permit (Operational) / Initial Inspection,40.88993027,-73.89805316,208,11,28500,2084208,2058011033,BX29,Castle Chicken ,False
+40699339,NICK GARDEN COFFEE SHOP,Bronx,2953,WEBSTER AVENUE,10458,+1-718-365-2277,Coffee/Tea,2021/07/30,Violations were cited in the following area(s).,08A,Facility not vermin proof. Harborage or conditions conducive to attracting vermin to the premises and/or allowing vermin to exist.,Not Critical,31,,,8/1/2021,Cycle Inspection / Initial Inspection,40.86759042,-73.88308647,207,11,41500,2016446,2032800061,BX05,Nick Garden Coffee Shop ,False
 </code></pre>
 
   <p>
@@ -395,12 +396,12 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 <p><a name="p7"><b>Program 7: Restaurant SQL Queries.</b></b> &emsp; <i>Due noon, Friday, 10 September.</i>
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice their newfound SQL skills.)
 
-  <p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected90.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
+  <p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected70.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
   <p>
   Using SQL (see <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.2</a>), extract the following information from a <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data">restaurant inspection</a> dataset (a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a>):
   <ul>
     <li> Save all rows in table where <code class="inline">Grade = A</code> to the output file <code class="inline">prefix+"A.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-    <li> Save all rows in table where <code class="inline">SCORE > 90</code> to the output file <tt>prefix+"90.csv"</tt>.</li>
+    <li> Save all rows in table where <code class="inline">SCORE > 70</code> to the output file <tt>prefix+"70.csv"</tt>.</li>
     <li> Save all rows in table where <code class="inline">ZIPCODE IN (10002, 10027, 10036)</code> to the output file <code class="inline">prefix+"ZIP.csv"</code></li>
     <li> Save columns
       <code class="inline">DBA</code>,
@@ -411,7 +412,7 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
       <code class="inline">DBA</code> as <code class="inline">restaurant_name</code>, <code class="inline">CUISINE DESCRIPTION</code> as <code class="inline">cuisine_description</code>,
       <code class="inline">BORO</code> as <code class="inline">borough</code>.
       And select only those entries with:
-      <code class="inline">GRADE = A, SCORE > 90 and ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
+      <code class="inline">GRADE = A, SCORE > 70 and ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
   </ul>
 
 </p>
