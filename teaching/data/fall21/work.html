@@ -417,7 +417,24 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-<p><a name="p8"><b>Program 8: Aggregating Restaurant Data (SQL).</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
+<p><a name="p8"><b>Program 8: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
+
+  <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
+  <p>
+  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
+
+  <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
+</code></pre>
+
+  <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
+
+  <p> The results should be written to a new CSV file, name provided by the user.</i></p>
+</p>
+
+<p><a name="p9"><b>Program 9: Aggregating Restaurant Data (SQL).
+  </b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
+
+
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. <code class="inline">GROUP BY</code>'s) on a familiar dataset.)
 
   <p>
@@ -442,7 +459,8 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-<p><a name="p9"><b>Program 9: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
+<p><a name="p10"><b>Program 10: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
+
   <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a <code class="inline">JOIN</code> between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
 
   <p>For testing, a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a> and the Neighborhood Tabulation Areas (NTA):
@@ -469,18 +487,6 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
     </ol>
 </p>
 
-<p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
-  <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
-  <p>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
-
-  <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
-</code></pre>
-
-  <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
-
-  <p> The results should be written to a new CSV file, name provided by the user.</i></p>
-</p>
 
 
 <p><a name="p11"><b>Program 11: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
