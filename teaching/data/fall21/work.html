@@ -431,15 +431,11 @@ print(waitList)
     <li> Save all rows in table where <code class="inline">SCORE > 70</code> to the output file <tt>prefix+"70.csv"</tt>.</li>
     <li> Save all rows in table where <code class="inline">ZIPCODE IN (10002, 10027, 10036)</code> to the output file <code class="inline">prefix+"ZIP.csv"</code></li>
     <li> Save columns
-      <code class="inline">DBA</code>,
-      <code class="inline">CUISINE DESCRIPTION</code>,
-      <code class="inline">BORO</code>, and
-      <code class="inline">GRADE</code> for all in table where <code class="inline">ZIPCODE = 11103</code>.
-      Rename
-      <code class="inline">DBA</code> as <code class="inline">restaurant_name</code>, <code class="inline">CUISINE DESCRIPTION</code> as <code class="inline">cuisine_description</code>,
-      <code class="inline">BORO</code> as <code class="inline">borough</code>.
-      And select only those entries with:
-      <code class="inline">GRADE = A, SCORE > 70 and ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
+      <code class="inline">DBA</code> renamed as <code class="inline">restaurant_name</code>,
+      <code class="inline">CUISINE DESCRIPTION</code> renamed as <code class="inline">cuisine_description</code>,
+      <code class="inline">BORO</code> renamed as <code class="inline">borough</code>, and
+      <code class="inline">GRADE</code> and select only those entries with:
+      <code class="inline">GRADE = A</code> and <code class="inline">ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
   </ul>
 
 </p>
