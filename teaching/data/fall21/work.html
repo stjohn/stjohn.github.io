@@ -392,8 +392,36 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 </strike>
 
 
-<p><a name="p7"><b>Program 7: Restaurant SQL Queries.</b></b> &emsp; <i>Due noon, Friday, 10 September.</i>
+<p><a name="p7"><b>Program 7: Neighborhood Tabulation Areas</b></b> &emsp; <i>Due noon, Friday, 10 September.</i>
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice their newfound SQL skills.)
+
+  <p>
+  The package <a href="https://pypi.org/project/pandasql/">pandasql</a> provides an easy way to use SQL queries directly on a Pandas DataFrame.  (You may need to install it in your hierarchy (e.g. <code class="inline">pip install pandasql</code> or <code class="inline">pip install pandasql</code>).
+
+  <p>
+  Once installed, you can run queries via the function  <code class="inline">sqldf(queryName)</code>.  For example, you could filter for all students in the <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/01/roster.csv">roster.csv</a> on the waitlist by:
+
+<pre><code class=blockcode>
+import pandas as pd
+import pandasql as psql
+roster = pd.read_csv('roster.csv')
+
+q = 'SELECT * FROM roster WHERE Role = "Waitlist Student"'
+waitList = psql.sqldf(q)
+
+print(waitList)
+</code>
+</pre>
+
+  <p>For this program, ask the user for the input and output file names.
+  You should assume that the input file contains the New York City
+  <a href="https://data.cityofnewyork.us/City-Government/2010-Neighborhood-Tabulation-Areas-NTAs-/cpf4-rkhq">Neighborhood Tabulation Areas</a> such as
+  <a href="">nta.csv</a>.
+  Use <code class="inline">sqldf(queryName)</code> to filter the dataset to return the <code class="inline">NTACode</code> and
+  <code class="inline">NTAName</code> columns, labeled as
+  <code class="inline">NTA</code> and <code class="inline">NTA_Name</code>, respectively.  You should save the result as a CSV in the output file named by the user.
+
+<p><a name="p8"><b>Program 8: Restaurant SQL Queries.</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
 
   <p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> for the input and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedA.csv</code>, <code class="inline">selected70.csv</code>, <code class="inline">selectedZIP.csv</code>, and <code class="inline">selectedAll.csv</code>.
   <p>
@@ -416,19 +444,7 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-<p><a name="p8"><b>Program 8: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 13 September.</i>
 
-  <br>(Learning Objective: successfully write and apply functions to DataFrames, as well as practice regex skills to clean data.)
-  <p>
-  Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
-
-  <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
-</code></pre>
-
-  <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
-
-  <p> The results should be written to a new CSV file, name provided by the user.</i></p>
-</p>
 
 <p><a name="p9"><b>Program 9: Aggregating Restaurant Data (SQL).
   </b></b> &emsp; <i>Due noon, Tuesday, 14 September.</i>
@@ -458,7 +474,22 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 </p>
 
-<p><a name="p10"><b>Program 10: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
+<p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
+    <br>(Learning Objective: successfully write and apply functions to DataFrames to clean data.)
+    <p>
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
+
+    <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
+  </code></pre>
+
+    <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
+
+    <p> The results should be written to a new CSV file, name provided by the user.</i></p>
+  </p>
+
+
+
+<p><a name="p11"><b>Program 11: Joining Restaurant & NTA Data.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
 
   <br>(Learning Objective: The exercises in this program will build up to help students conceptualize and finally create a <code class="inline">JOIN</code> between the health inspection table and the NTA table.  This is to reinforce the learning done in the last 2 SQL lectures.)
 
@@ -488,28 +519,9 @@ CAMIS,DBA,BORO,BUILDING,STREET,ZIPCODE,PHONE,CUISINE DESCRIPTION,INSPECTION DATE
 
 
 
-<p><a name="p11"><b>Program 11: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Tuesday, 21 September.</i>
-  <br>(Learning Objective: to successfully combine information from multiple input files and display the results using a pivot table.)
-
-  <p>Your program should build on the classwork from Lecture #6 to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
-</p>
-
-
-Then a sample run of the program with files truncated to a few schools per district for testing (<a href="ela_trunc.csv">ela_trunc.csv</a> and <a href="ela_math.csv">ela_math.csv</a>) starts as:
-
-<pre><code class="blockcode">Enter file containing ELA scores: ela_trunc.csv
-Enter file containing MATH scores: math_trunc.csv
-                    Proficiency                      School Name
-District Subject
-01       ELA        91.891892  THE EAST VILLAGE COMMUNITY SCHOOL
-         MATH       84.615385               P.S. 184M SHUANG WEN
-02       ELA        96.825397           P.S. 77 LOWER LAB SCHOOL
-         MATH       98.412698           P.S. 77 LOWER LAB SCHOOL
-</code></pre>
-and continues with top scoring schools for each test and each district printed.
-</p>
-
 <p><a name="p12"><b>Program 12: MTA Ridership.</b></b> &emsp; <i>Due noon, Thursday, 23 September.</i>
+
+
   <br>(Learning Objective: to reinforce Pandas skills via use for data aggregating and data cleaning.)
 
   <p>In the next lecture, we will be summarizing time-series data and using a
@@ -647,37 +659,34 @@ District,Grade,Year,Category,# Total Days,# Days Absent,# Days Present,% Attenda
 Layers on folium:  https://blog.prototypr.io/interactive-maps-with-python-part-1-aa1563dbe5a9
 https://automating-gis-processes.github.io/2017/lessons/L5/interactive-map-folium.html
 Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
-<!--
+
 <p>
 </p>
 
+<p><a name="p17"><b>Program 17: Grouping ELA/Math by Districts.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
+  <br>(Learning Objective: to successfully combine information from multiple input files and display the results using a pivot table.)
 
-<p><a name="p17"><b>Program 17: Catchment Areas.</b></b> &emsp; <i>Due noon, Friday, 1 October.</i>
-  <br>(Learning Objective: to gain deeper understanding of the JSON and GeoJSON formats and their use as "layers" in map visualizations.)
 
-  <p>
-  We have used GeoJSON files as layers in our folium maps and created some manually in lecture.  For this program, ask the user for a CSV containing at least 3 sets of GIS coordinates (with columns <code class="inline">Lat</code> and <code class="inline">Lon</code>) and the name of the output file.  Your program should create a GeoJSON file that has 3 polygons, one for the first three rows of the CSV file:
--->
-<!--
-  <p>give sample input
-  <p>add in resulting image loaded onto the map
 
-  <p>Pseudocode:
-    <ul>
-      <li>
-    </ul>
 
-  You should assume:
-  <ul>
-      <li> The three points have coodinates (Lon,Lat) and -180 &lt; lon &lt; 180 and
-        -90 &lt; lat &lt; 90 for each point.
-  </ul>
--->
-    <!-- Fortune's algorithm:  https://en.wikipedia.org/wiki/Fortune%27s_algorithm
-    GeoJSON tutorial:  https://developer.here.com/blog/run-circles-around-geojson-beginner-to-advanced-with-here-xyz
-    https://developer.here.com/blog/great-guide-to-generating-good-geojson
-    Drawing lines in folium:  http://qingkaikong.blogspot.com/2016/06/using-folium-4-draw-lines-plot-san.html
-  -->
+  <p>Your program should build on the classwork from Lecture #6 to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
+</p>
+
+
+Then a sample run of the program with files truncated to a few schools per district for testing (<a href="ela_trunc.csv">ela_trunc.csv</a> and <a href="ela_math.csv">ela_math.csv</a>) starts as:
+
+<pre><code class="blockcode">Enter file containing ELA scores: ela_trunc.csv
+Enter file containing MATH scores: math_trunc.csv
+                    Proficiency                      School Name
+District Subject
+01       ELA        91.891892  THE EAST VILLAGE COMMUNITY SCHOOL
+         MATH       84.615385               P.S. 184M SHUANG WEN
+02       ELA        96.825397           P.S. 77 LOWER LAB SCHOOL
+         MATH       98.412698           P.S. 77 LOWER LAB SCHOOL
+</code></pre>
+and continues with top scoring schools for each test and each district printed.
+</p>
+
   </p>
 
 <!--
