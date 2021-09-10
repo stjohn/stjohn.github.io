@@ -438,6 +438,7 @@ print(waitList)
       <code class="inline">GRADE = A</code> and <code class="inline">ZIPCODE IN (10002, 10027, 10036)</code> and save to the output file <code class="inline">prefix+"All.csv"</code>.
   </ul>
 
+  <p>Note: The file extension names are case-sensitive, so, the autograder will not except <code class="inline">... ALL.csv</code> for <code class="inline">... All.csv</code>.
 </p>
 
 
@@ -449,34 +450,62 @@ print(waitList)
   <br>(Learning Objective: The learning objective of this exercise is to give the students an opportunity to practice more advanced SQL skills (e.g. <code class="inline">GROUP BY</code>'s) on a familiar dataset.)
 
   <p>
-  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.  For testing, a small file of inspections from 30 July is available: <a href="restaurants30July.csv">restaurants30July.csv</a>.
+  Using the more advanced SQL commands from <a href="http://www.textbook.ds100.org/ch/05/sql_basics.html">DS 100: Section 5.1</a> (e.g. <code class="inline">GROUP BY</code>'s), this program find distinct restaurant names and distinct cuisines by locale.  For testing, a small file of inspections from 1 August is available: <a href="brooklynJuly2021.csv">brooklynJuly2021.csv</a>.
 
-  <p><p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension). For example, with <code class="inline">restaurantJuly2020.csv</code> and <code class="inline">selected</code> for the output prefix.  The program should create 4 files: <code class="inline">selectedRestaurants.csv</code>, <code class="inline">selectedCuisines11224.csv</code>, <code class="inline">selectedCounts11224.csv</code>, and <code class="inline">selectedBoro.csv</code>.
+  <p><p>Your program should ask for the input file name (must include .csv) and then for an output file prefix (must not include any extension).
   </p>
     <ul>
-      <li> Save a unique column of distinct restaurants (note: return the restaurant names, not the count)  to the output file <code class="inline">prefix+"Restaurants.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-      <li> Save a unique column of distinct cuisines (note: return the cuisine names, not the count) where <code class="inline">ZIPCODE = 11224</code> to the output file <code class="inline">prefix+"Cuisines11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-      <li> Save 2 columns, the cuisine and the count of unique restaurants per cuisine,  where <code class="inline">ZIPCODE = 11224</code> (note: return the cuisine names, not the count) to the output file <code class="inline">prefix+"Counts11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-      <li> Save 3 columns: the borough name (<code class="inline">ASC</code>), the unique count of cuisines per borough and the unique count of restaurants per boroughs. The results should be sorted results by the borough name (<code class="inline">ASC</code>) and saved to the output file <code class="inline">prefix+"Boro.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</i> <!--(note: warm-up for SELECT * FROM TABLE WHERE..)--> </li>
-
-
-      <!-- Not sure if this one is tested for, so, leaving out:
-      <li> How many distinct number restaurants are on 5th Avenue? (note: return the count, not the restaurants)
-      -->
-
-
-
+      <li> Save a unique column of distinct restaurants (note: return the restaurant names, not the count)  to the output file <code class="inline">prefix+"Restaurants.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</li>
+      <li> Save a unique column of distinct cuisines (note: return the cuisine names, not the count) where <code class="inline">ZIPCODE = 11224</code> to the output file <code class="inline">prefix+"Cuisines11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user. </li>
+      <li> Save 2 columns, the cuisine and the count of unique restaurants per cuisine,  where <code class="inline">ZIPCODE = 11224</code> (note: return the cuisine names, not the count) to the output file <code class="inline">prefix+"Counts11224.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user. </li>
+      <li> Save 3 columns: the borough name, the unique count of cuisines per borough and the unique count of restaurants per boroughs. The results should be sorted results by the borough name (in ascending order:  <code class="inline">ASC</code>) and saved to the output file <code class="inline">prefix+"Boro.csv"</code> where <code class="inline">prefix</code> holds the value specified by the user.</li>
     </ul>
-
+    <p>
+For example, if you entered <code class="inline">brooklynJuly2021.csv.csv</code> and <code class="inline">selected</code> for the output prefix, the program should create 4 files: <code class="inline">selectedRestaurants.csv</code>, <code class="inline">selectedCuisines11224.csv</code>, <code class="inline">selectedCounts11224.csv</code>, and <code class="inline">selectedBoro.csv</code>.
+The first several lines of <code class="inline">selectedRestaurants.csv</code> are:
+<pre><code class=blockcode>DBA
+1 HOTEL BROOKLYN BRIDGE
+14 OLD FULTON STREET
+98K
+99 CENT PIZZA
+ABURI SUSHI BAR
+</code></pre>
+</p>
+<p>The file <code class="inline">selectedCuisines11224.csv</code> is:
+<pre><code class=blockcode>cnt
+American
+</code></pre>
+(since our test file does not have )
+</p>
+<p>The file <code class="inline">selectedCounts11224.csv</code> is:
+<pre><code class=blockcode>CUISINE DESCRIPTION,COUNT(DISTINCT DBA)
+American,3
+</code></pre>
+</p>
+<p>The file <code class="inline">selectedBoro.csv</code> is:
+<pre><code class=blockcode>borough,cnt_cuisine,cnt_restaurants
+Brooklyn,50,384
+</code></pre>
 </p>
 
 <p><a name="p10"><b>Program 10: Extracting Districts.</b></b> &emsp; <i>Due noon, Monday, 20 September.</i>
     <br>(Learning Objective: successfully write and apply functions to DataFrames to clean data.)
     <p>
-    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string.  The program applies the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Your program should include a function, <code class="inline">extractDistrict()</code> that takes a string as an input and returns the number represented by the first two characters in the string:
+    <pre><code class=blockcode>
+    def extractDistrict(name):
+    '''
+    Extracts the district (first two characters) as an integer.
+    Input:  Character string containing district + school num (e.g. "01M015")
+    Returns:  The first characters as an integer (e.g. 1)
+    '''
 
-    <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)
-  </code></pre>
+      #### Your code goes here ####
+    </code>
+    </pre>
+    Your program should apply the function to each row that takes the first two characters of the <code class="inline">School</code> field, converts those into a digit, and stores the results in a new column, <code class="inline">District</code>.  That is,
+
+    <pre><code class="blockcode">df['District'] = df['DBN'].apply(extractDistrict)</code></pre>
 
     <p> For example, if the <code class="inline">School</code> is <code class="inline">"01M015"</code>, the entry in the new column would be <code class="inline">1</code> (stored as a number, not a string).
 
