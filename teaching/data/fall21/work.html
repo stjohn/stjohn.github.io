@@ -715,7 +715,7 @@ Altair & choropleth:  https://www.districtdatalabs.com/altair-choropleth-viz-->
 
 
 
-  <p>Your program should build on the classwork from Lecture #6 to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
+  <p>Your program should build on the classwork from Lectures #6 and #9 to build a pivot table, grouped by district and test subject, of the percentage of students that are proficient in each (i.e. score 3 or 4 on the exam).  Your program should ask the user for two input CSV files and print a pivot table.
 </p>
 
 
@@ -733,15 +733,56 @@ District Subject
 and continues with top scoring schools for each test and each district printed.
 </p>
 
-  </p>
+<i>
+<p>Hints:
+  <ul>
+    <li> Work first with the math scores and get those scores selected.  Then, repeat with the ELA scores.  Once both have the correct values, combine for the final answer.
+    <li> Look at the names used in the row and column indices, and use similar names for your dataframes to avoid having to rename them later.
+    <li> A very useful aggregate function is <code class="inline">idxmax()</code> which returns the index of the row where the maximum occurs, instead of just the value itself.  For example, if you had a DataFrame <code class="inline">mathdf</code> with the proficiency column already computed, the following will list all the columns for the school with the maximum profiency for each district:
+  <pre><code class="blockcode">mathdf = mathdf.loc[ mathdf.groupby('District')['Proficiency'].idxmax() ]</code></pre>
+</ul>
+</p>
+</i>
 
-<!--
 
-<p><a name="p18"><b>Program 18: Altair Challenge.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
-  <br>(Learning Objective: gain competency in using the Altair/Vega declarative visualization grammar.)
+<p><a name="p18"><b>Program 18: Log Scale.</b></b> &emsp; <i>Due noon, Monday, 4 October.</i>
+  <br>(Learning Objective: gain competency in scaling data via log transformations.)
 
   <p>
+  In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used log scale to visualize data.  Since the logarithm function is not defined on non-positive data, we are first going to write a function that removes any tuple that has a 0 or negative value.  Our second function transformed the cleaned data to its log values.
+
+  <p>
+  Write two functions that to be used to display data on a log-scale.  Each function takes and returns two Series of numeric values:
+
+  Each function takes as input a row of the table:
+  <ul>
+    <li> <code class = "inline">dropNeg(xSer,ySer)</code>:  This function takes two Series, <code class = "inline">xSer</code> and <code class = "inline">ySer</code> of numeric values.  If any entry is not positive in either series, that indexed value is dropped from both series.  The resulting Series are returned as output.  To do this, first zip the series together, drop all the pairs with zero or negative values, and then unzip to return series without nulls.
+
+    <p>For example, if <code class = "inline">xSer</code> contains
+    <code class = "inline">[1,2,0,3,4]</code> and
+    <code class = "inline">ySer</code> contains <code class = "inline">[0,-1.5,4,3,9]</code>, then the <code class = "inline">zip(xSer,ySer)</code> has entries
+    <code class = "inline">[(1,0),(1,-1.5),(0,4),(3,3),(4,9)]</code>.  Dropping all tuples that contain non-positive values yields
+    <code class = "inline">[(3,3),(4,9)]</code>, and the unzipped results, the Series with <code class = "inline">[3,4]</code> and
+    <code class = "inline">[3,9]</code>, that are returned.
+
+    <li> <code class = "inline">logScale(xSer,ySer)</code>:  This function assumes that the inputted series are positive and not null, and returns the <code class = "inline">np.log</code> of each.
+    For example, when applying this function the series with <code class = "inline">[3,4]</code> and with
+    <code class = "inline">[3,9]</code>, the two series with <code class = "inline">[1.098612, 1.386294]</code> and with
+    <code class = "inline">[1.098612,2.19722458]</code> are returned.
+  </ul>
+
+<!--  <p>
+  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called
+  <code class = "inline">p18.py</code>
+  and is <a href="test18.py">test18.py</a>.
   </p>
+
+
+<p><a name="p19"><b>Program 19: Smoothing with Gaussians.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
+  <br>(Learning Objective: increase understanding of smoothing and gain fluidity with using distributions for smoothing.)
+
+  <p>
+  Write a function that
 
 
   <br>
@@ -751,13 +792,6 @@ and continues with top scoring schools for each test and each district printed.
   Set 4:  The fourth set of programs introduces modeling and estimation, focusing on loss functions and linear modeling.
   <hr>
 
-<p><a name="p19"><b>Program 19: Modeling Restaurant Tips.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
-  <br>(Learning Objective: apply the classwork to the restaurant tip data to see if other parameters model the data better.)
-  <p>
-
-  In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
-
-</p>
 
 <p><a name="p20"><b>Program 20: Taxi Cleaning.</b></b> &emsp; <i>Due noon, Thursday, 7 October.</i>
   <br>(Learning Objective: To build up (or refresh) skills at manipulating tabular data, in particular touse arithmetic operations on columns to create new columns.)
@@ -791,6 +825,11 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     <br>(Learning Objective: strengthen competency with linear models and loss functions by applying the techniques to a dataset of taxi trips.)
     <p>
     </p>
+
+      In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+
+    </p>
+
 
 <p><a name="p22"><b>Program 22: Dice Simulator.</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
     <br>(Learning Objective: students will be able to apply their knowledge of the built-in random package to generate simulations of simple phenomena.)

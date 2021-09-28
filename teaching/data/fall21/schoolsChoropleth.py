@@ -25,8 +25,6 @@ df['District'] = df['District'].astype(str)
 #Select only the year's results
 dfSingleYear = df[df['Year'] == year]
 
-#Add the score to be displayed to the geoJSON so that it will be displayed when hovering:
-
 #Center map at Hunter:  40.7678° N, 73.9645° W
 m = folium.Map(location=[40.7678,-73.9645],scale=13,tiles="cartodbpositron")
 
