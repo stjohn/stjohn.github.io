@@ -752,37 +752,38 @@ and continues with top scoring schools for each test and each district printed.
   In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used log scale to visualize data.  Since the logarithm function is not defined on non-positive data, we are first going to write a function that removes any tuple that has a 0 or negative value.  Our second function transformed the cleaned data to its log values.
 
   <p>
-  Write two functions that to be used to display data on a log-scale.  Each function takes and returns two Series of numeric values:
+  Write two functions that to be used to display data on a log-scale.  Each function takes and returns two iterables of numeric values (e.g. a Series, np.array, or list restricted to numeric values).
 
   Each function takes as input a row of the table:
   <ul>
-    <li> <code class = "inline">dropNeg(xSer,ySer)</code>:  This function takes two Series, <code class = "inline">xSer</code> and <code class = "inline">ySer</code> of numeric values.  If any entry is not positive in either series, that indexed value is dropped from both series.  The resulting Series are returned as output.  To do this, first zip the series together, drop all the pairs with zero or negative values, and then unzip to return series without nulls.
+    <li> <code class = "inline">dropNeg(xS,yS)</code>:  This function takes two iterables, <code class = "inline">xS</code> and <code class = "inline">yS</code> of numeric values.  If any entry is not positive in either iterable, that indexed value is dropped from both series.  The results are returned as two separate iterables.  To do this, first zip the series together, drop all the pairs with zero or negative values, and then unzip to return series with only positive values.
 
-    <p>For example, if <code class = "inline">xSer</code> contains
+    <p>For example, if <code class = "inline">xS</code> contains
     <code class = "inline">[1,2,0,3,4]</code> and
-    <code class = "inline">ySer</code> contains <code class = "inline">[0,-1.5,4,3,9]</code>, then the <code class = "inline">zip(xSer,ySer)</code> has entries
+    <code class = "inline">yS</code> contains <code class = "inline">[0,-1.5,4,3,9]</code>, then the <code class = "inline">zip(xS,yS)</code> has entries
     <code class = "inline">[(1,0),(1,-1.5),(0,4),(3,3),(4,9)]</code>.  Dropping all tuples that contain non-positive values yields
-    <code class = "inline">[(3,3),(4,9)]</code>, and the unzipped results, the Series with <code class = "inline">[3,4]</code> and
-    <code class = "inline">[3,9]</code>, that are returned.
+    <code class = "inline">[(3,3),(4,9)]</code>, and the unzipped results, <code class = "inline">[3,4]</code> and
+    <code class = "inline">[3,9]</code>, are returned.
 
-    <li> <code class = "inline">logScale(xSer,ySer)</code>:  This function assumes that the inputted series are positive and not null, and returns the <code class = "inline">np.log</code> of each.
-    For example, when applying this function the series with <code class = "inline">[3,4]</code> and with
-    <code class = "inline">[3,9]</code>, the two series with <code class = "inline">[1.098612, 1.386294]</code> and with
-    <code class = "inline">[1.098612,2.19722458]</code> are returned.
+    <li> <code class = "inline">logScale(xS,yS)</code>:  This function assumes that the inputted iterables contain numeric values, are positive and not null, and returns the <code class = "inline">np.log</code> of each.
+    For example, when applying this function to the inputs <code class = "inline">[3,4]</code> and
+    <code class = "inline">[3,9]</code>, the function returns <code class = "inline">[1.098612, 1.386294]</code> and
+    <code class = "inline">[1.098612,2.19722458]</code>.
   </ul>
 
-<!--  <p>
+<p>
   Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called
   <code class = "inline">p18.py</code>
   and is <a href="test18.py">test18.py</a>.
-  </p>
+</p>
 
 
 <p><a name="p19"><b>Program 19: Smoothing with Gaussians.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
   <br>(Learning Objective: increase understanding of smoothing and gain fluidity with using distributions for smoothing.)
 
+<!--
   <p>
-  Write a function that
+  In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used smoothing to visualize data.
 
 
   <br>
