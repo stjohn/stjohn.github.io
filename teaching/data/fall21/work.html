@@ -781,9 +781,39 @@ and continues with top scoring schools for each test and each district printed.
 <p><a name="p19"><b>Program 19: Smoothing with Gaussians.</b></b> &emsp; <i>Due noon, Tuesday, 5 October.</i>
   <br>(Learning Objective: increase understanding of smoothing and gain fluidity with using distributions for smoothing.)
 
-<!--
+
   <p>
-  In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used smoothing to visualize data.
+  In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used smoothing to visualize data.  For this program, write a function that takes two arguments, an Numpy array of x-axis coordinates, and a list of numeric values, and returns the corresponding y-values for the sum of the gaussian probability distribution functions (pdf's) for each point in the list.
+
+  <ul>
+    <li> <code class = "inline">computeSmoothing(xes,points)</code>:  This function takes a numpy array <code class = "inline">xes</code> and a list, <code class = "inline">points</code>, of numeric values.  For each <code class = "inline">p</code> in <code class = "inline">points</code>, the function should compute the normal probability distribution function with <code class = "inline">scale = 0.5</code>.  The return value is a numpy array of the sum of the pdf's at each point.
+  </ul>
+
+  <p>For example, calling the function:
+    <pre><code class="blockcode">xes = np.linspace(0, 10, 1000)
+density = computeSmoothing(xes,[5])
+plt.plot(xes,density)
+plt.show()</code></pre>
+
+    would give the plot:
+
+    <p><img height=200 src="density5.png">
+
+<p>For example, calling the function:
+  <pre><code class="blockcode">pts = [2,2,5,5,2,3,4,6,7,9]
+xes = np.linspace(0, 10, 1000)
+density = computeSmoothing(xes,pts)
+plt.plot(xes,density)
+plt.fill_between(xes,density)
+plt.show()</code></pre>
+
+would give the plot:
+
+<p><img height=200 src="density_FillBetween.png">
+
+<p>
+    Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import your function for testing. 
+  </p>
 
 
   <br>
@@ -821,6 +851,8 @@ VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distanc
     <p> You should round the values stored in your new columns to the nearest tenth and save your CSV file without the indexing (i.e. <code class="inline">index=False</code>).
 
   </p>
+
+<!--
 
 <p><a name="p21"><b>Program 21: Taxi Models.</b></b> &emsp; <i>Due noon, Friday, 8 October.</i>
     <br>(Learning Objective: strengthen competency with linear models and loss functions by applying the techniques to a dataset of taxi trips.)
