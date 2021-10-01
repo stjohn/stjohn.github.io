@@ -786,7 +786,8 @@ and continues with top scoring schools for each test and each district printed.
   In Lecture #9 and <a href="http://www.textbook.ds100.org/ch/10/viz_principles_2.html">Section 11.5</a>, we used smoothing to visualize data.  For this program, write a function that takes two arguments, an Numpy array of x-axis coordinates, and a list of numeric values, and returns the corresponding y-values for the sum of the gaussian probability distribution functions (pdf's) for each point in the list.
 
   <ul>
-    <li> <code class = "inline">computeSmoothing(xes,points)</code>:  This function takes a numpy array <code class = "inline">xes</code> and a list, <code class = "inline">points</code>, of numeric values.  For each <code class = "inline">p</code> in <code class = "inline">points</code>, the function should compute the normal probability distribution function with <code class = "inline">scale = 0.5</code>.  The return value is a numpy array of the sum of the pdf's at each point.
+    <li> <code class = "inline">computeSmoothing(xes,points)</code>:  This function takes a numpy array <code class = "inline">xes</code> and a list, <code class = "inline">points</code>, of numeric values.  For each <code class = "inline">p</code> in <code class = "inline">points</code>, the function should compute the normal probability distribution function (<code class = "inline">scipy.norm.pdf</code>)
+    centered at <code class = "inline">loc = p</code> with standard deviation <code class = "inline">scale = 0.5</code> for all values in <code class = "inline">xes</code>.  The return value is a numpy array of the sum of these at each point.
   </ul>
 
   <p>For example, calling the function:
@@ -798,6 +799,8 @@ plt.show()</code></pre>
     would give the plot:
 
     <p><img height=200 src="density5.png">
+
+    <p>since there is only one point given (namely 5), the returned value is the probability density function centered at 5 (with <code class = "inline">scale =  0.5</code>) computed for each of the <code class = "inline">xes</code>.
 
 <p>For example, calling the function:
   <pre><code class="blockcode">pts = [2,2,5,5,2,3,4,6,7,9]
@@ -811,8 +814,17 @@ would give the plot:
 
 <p><img height=200 src="density_fillBetween.png">
 
+  <p>since the there are 10 points given, the function computes the probability density function centered at each of the points, across all the values in <code class = "inline">xes</code>.  It then sums up these contributions and returns an array of the same length as <code class = "inline">xes</code>.
+
+
+
+
 <p>
     Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import your function for testing.
+
+<p>
+  <i>Hint:  Include only the function you need (such as <code class = "inline">numpy</code> and <code class = "inline">scipy.stats</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
+  </i>
   </p>
 
 
@@ -823,29 +835,68 @@ would give the plot:
   Set 4:  The fourth set of programs introduces modeling and estimation, focusing on loss functions and linear modeling.
   <hr>
 
-<!--
-<p><a name="p21"><b>Program 20: Loss Functions for Tips.</b></b> &emsp; <i>Due noon, Thursday, 7 October.</i>
-    <br>(Learning Objective: strengthen competency with linear models and loss functions by applying the techniques to a dataset of taxi trips.)
+
+<p><a name="p20"><b>Program 20: Loss Functions for Tips.</b></b> &emsp; <i>Due noon, Thursday, 7 October.</i>
+    <br>(Learning Objective: strengthen competency with loss functions by applying the techniques to a dataset of tips.)
     <p>
     </p>
+    In Lecture #10 and <a href="http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html">Section 4.2</a>, we introduced loss functions to measure how well our estimates fit the data.
 
-    Using the functions mse_loss (http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html) and abs_loss
-    write functions that take in a list of thetas, tips, and occurrences and computes mse_loss for each theta to the data,
-    do the same for absolute loss, and Huber Loss
-    General enough to use for tip data from restaurants as well as taxis
+    <p>
+    Using the functions mean squared loss function <code class = "inline">mse_loss</code>, mean absolute loss function <code class = "inline">abs_loss</code>, and the Huber loss function
+    <code class = "inline">huber_loss</code> (<a href="http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html">Section 4.2</a>),
+    write three separate functions that take in tip data and estimates
+    and returns the respective loss function for each of the estimates to the data.
+
+    <ul>
+      <li> <code class = "inline">mse_estimates(tips,thetas)</code>:  This function takes two iterables of numeric values:
+      <ul>
+          <li> <code class = "inline">tips</code>: the tips observed, assumed to be a  positive percentage, ranging from 0 to 100, and
+          <li> <code class = "inline">thetas</code>: estimates for the population parameter for the percent tips in <code class = "inline">values</code>.
+      </ul>
+      For each <code class = "inline">theta</code> in <code class = "inline">thetas</code>, it should compute the mean squared error between <code class = "inline">theta</code> and <code class = "inline">tips</code>, and return an iterable of those values.
+
+      <li> <code class = "inline">mae_estimates(tips,thetas)</code>:  This function takes two iterables of numeric values:
+      <ul>
+          <li> <code class = "inline">tips</code>: the tips observed, assumed to be a  positive percentage, ranging from 0 to 100, and
+          <li> <code class = "inline">thetas</code>: estimates for the population parameter for the percent tips in <code class = "inline">values</code>.
+      </ul>
+      For each <code class = "inline">theta</code> in <code class = "inline">thetas</code>, it should compute the mean absolute error between <code class = "inline">theta</code> and <code class = "inline">tips</code>, and return an iterable of those values.
+
+      <li> <code class = "inline">huber_estimates(tips,thetas)</code>:  This function takes two iterables of numeric values:
+      <ul>
+          <li> <code class = "inline">tips</code>: the tips observed, assumed to be a  positive percentage, ranging from 0 to 100, and
+          <li> <code class = "inline">thetas</code>: estimates for the population parameter for the percent tips in <code class = "inline">values</code>.
+      </ul>
+      For each <code class = "inline">theta</code> in <code class = "inline">thetas</code>, it should compute the Huber loss between <code class = "inline">theta</code> and <code class = "inline">tips</code>, and return an iterable of those values.
+    </ul>
+
+Note:  for each of these functions, your returned value will be an iterable with the same length as <code class = "inline">thetas</code>.
 
 
+<!--
+    <p>
+    Run on restaurant tips with 20 estimate, plot the results on the curves
+    Run on restaurant tips with estimates of 0 to 25, by steps of 1, plot the curves
 
+    Run again on taxi data  General enough to use for tip data from restaurants as well as taxis
 
-<p><a name="p20"><b>Program 21: Taxi Cleaning.</b></b> &emsp; <i>Due noon, Friday, 8 October.</i>
+    <p>
+        Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import your function for testing.
+
+    <p>
+        <i>Hint:  Include only the function you need (such as <code class = "inline">numpy</code> and <code class = "inline">scipy.stats</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
+        </i>
+    </p>
+
+<p><a name="p21"><b>Program 21: Taxi Cleaning.</b></b> &emsp; <i>Due noon, Friday, 8 October.</i>
   <br>(Learning Objective: To build up (or refresh) skills at manipulating tabular data, in particular touse arithmetic operations on columns to create new columns.)
 
   <p>
     Write a program, tailored to the NYC OpenData Yellow Taxi Trip Data, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Next, the program should copy the input file and create two new columns:  <code class="inline">percent_tip</code>, which is <code class="inline">100*tip_amount/fare_amount</code> and <code class="inline">percent_fare</code>, which is <code class="inline">100*fare_amount/total_amount</code>.  Your program should write out a new CSV file (with the name provided by the user) with the original columns as well as the two newly computed ones.
 
     <p>For example, if the file was the firt of January 2020 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">2020 Yellow Taxi Trip Data</a> (about 170,000 entries) with the first 3 lines of:
-<pre><code class="datablock">
-VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
+<pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
 1,01/01/2020 12:00:00 AM,01/01/2020 12:13:03 AM,1,2.2,1,N,68,170,1,10.5,3,0.5,2.85,0,0.3,17.15,2.5
 2,01/01/2020 12:00:00 AM,01/01/2020 01:08:55 AM,5,1.43,1,N,48,239,2,6.5,0.5,0.5,0,0,0.3,10.3,2.5
 </code></pre>
@@ -855,20 +906,13 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
 </code></pre>
 
     And the first three lines of <tt>taxi_Jan2020_with_percents.csv</tt> would be:
-<pre><code class="datablock">
-VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge,percent_tip,percent_fare
+<pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge,percent_tip,percent_fare
 1.0,01/01/2020 12:00:00 AM,01/01/2020 12:13:03 AM,1.0,2.2,1.0,N,68,170,1.0,10.5,3.0,0.5,2.85,0.0,0.3,17.15,2.5,27.1,61.2
 2.0,01/01/2020 12:00:00 AM,01/01/2020 01:08:55 AM,5.0,1.43,1.0,N,48,239,2.0,6.5,0.5,0.5,0.0,0.0,0.3,10.3,2.5,0.0,63.1
 </code></pre>
     <p> You should round the values stored in your new columns to the nearest tenth and save your CSV file without the indexing (i.e. <code class="inline">index=False</code>).
 
   </p>
-
-<!--
-
-
-
-
 
 
 <p><a name="p22"><b>Program 22: Dice Simulator.</b></b> &emsp; <i>Due noon, Thursday, 14 October.</i>
