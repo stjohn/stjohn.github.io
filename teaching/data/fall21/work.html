@@ -848,14 +848,14 @@ would give the plot:
     and returns the respective loss function for each of the estimates to the data.
 
     <ul>
-      <li> <code class = "inline">mse_estimates(tips,thetas)</code>:  This function takes two iterables of numeric values:
+      <li> <code class = "inline">mse_estimates(thetas,tips)</code>:  This function takes two iterables of numeric values:
       <ul>
           <li> <code class = "inline">thetas</code>: estimates for the population parameter for the percent tips in <code class = "inline">values</code>, and
           <li> <code class = "inline">tips</code>: the tips observed, assumed to be a  positive percentage, ranging from 0 to 100.
       </ul>
       For each <code class = "inline">theta</code> in <code class = "inline">thetas</code>, it should compute the mean squared error between <code class = "inline">theta</code> and <code class = "inline">tips</code>. Return an iterable of the values computed.
 
-      <li> <code class = "inline">mae_estimates(tips,thetas)</code>:  This function takes two iterables of numeric values:
+      <li> <code class = "inline">mae_estimates(thetas,tips)</code>:  This function takes two iterables of numeric values:
         <ul>
             <li> <code class = "inline">thetas</code>: estimates for the population parameter for the percent tips in <code class = "inline">values</code>, and
             <li> <code class = "inline">tips</code>: the tips observed, assumed to be a  positive percentage, ranging from 0 to 100.
