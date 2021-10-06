@@ -68,7 +68,7 @@ Fall 2021<br><br>
 </a>
 Unless otherwise noted, quizzes are available on Blackboard for the 24 hours after lecture.  Blackboard quizzes are 15 minutes long and can be repeated up to the deadline.  The highest score earned on a Blackboard quiz will be reported.  Blackboard access is generated automatically from the registrar.  See the ICIT <a href="http://www.hunter.</i>cuny.edu/it/blackboard/student-documentation-and-support-for-blackboard">Blackboard</a> page for resources and tutorials for using the system.
 
-<p> Five of the quizzes assess your programming skill using HackerRank.  These quizzes are 30 minutes long and cannot be repeated.  Invitations are sent to the email you use for Gradescope-- check your spam filter and junk mail if you do not receive your invitation before the corresponding lecture.
+<p> Five of the quizzes assess your programming skill using HackerRank.  These quizzes are 30 minutes long and cannot be repeated.  Links will be available on Blackboard to access the quiz.
 
 <p>
 There are no make-up quizzes. Instead, your score on the final exam will replace missing quiz grades (the final exam will also replace a quiz grade when you take the quiz but do better on the final exam).  See the <a href="syl.html">syllabus</a> for additional information on how grades are calculated.
@@ -911,12 +911,12 @@ plt.show()</code></pre>
 
 
 <p><a name="p21"><b>Program 21: Taxi Cleaning.</b></b> &emsp; <i>Due noon, Friday, 8 October.</i>
-  <br>(Learning Objective: To build up (or refresh) skills at manipulating tabular data, in particular touse arithmetic operations on columns to create new columns.)
+  <br>(Learning Objective: To build up (or refresh) skills at manipulating tabular data, in particular, to use arithmetic operations on columns to create new columns.)
 
   <p>
     Write a program, tailored to the NYC OpenData Yellow Taxi Trip Data, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user. Next, the program should copy the input file and create two new columns:  <code class="inline">percent_tip</code>, which is <code class="inline">100*tip_amount/fare_amount</code> and <code class="inline">percent_fare</code>, which is <code class="inline">100*fare_amount/total_amount</code>.  Your program should write out a new CSV file (with the name provided by the user) with the original columns as well as the two newly computed ones.
 
-    <p>For example, if the file was the firt of January 2020 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">2020 Yellow Taxi Trip Data</a> (about 170,000 entries) with the first 3 lines of:
+    <p>For example, if the file, <a href="taxi_new_years_day_2020.csv">taxi_new_years_day_2020.csv</a>, was the first of January 2020 entries downloaded from <a href="https://data.cityofnewyork.us/Transportation/2020-For-Hire-Vehicles-Trip-Data/m3yx-mvk4">2020 Yellow Taxi Trip Data</a> (about 170,000 entries) with the first 3 lines of:
 <pre><code class="datablock">VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
 1,01/01/2020 12:00:00 AM,01/01/2020 12:13:03 AM,1,2.2,1,N,68,170,1,10.5,3,0.5,2.85,0,0.3,17.15,2.5
 2,01/01/2020 12:00:00 AM,01/01/2020 01:08:55 AM,5,1.43,1,N,48,239,2,6.5,0.5,0.5,0,0,0.3,10.3,2.5
@@ -960,15 +960,14 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
       </p>
 
 <!--
-
 <p><a name="p23"><b>Program 23: PMF of Senators' Ages.</b></b> &emsp; <i>Due noon, Friday, 15 October.</i>
-    <br>(Learning Objective: .)
+    <br>(Learning Objective: strengthen competency with probability mass functions by analysing ages of public officials.)
     <p>
     Echo the chapter on PMF's but instead use an input file (already have senators' ages calculated from above).  Write as a function?  Use book's plotting function.
     </p>
 
 <p><a name="p24"><b>Program 24: Fitting LM's to Taxi Data.</b></b> &emsp; <i>Due noon, Monday, 18 October.</i>
-    <br>(Learning Objective: .)
+    <br>(Learning Objective: ????.)
     <p>
     Run the linear model with a single parameter on a parameter specified by user.  Set up as a function?  Use the book's plotting to display.  Give small sample file to test on.
 
