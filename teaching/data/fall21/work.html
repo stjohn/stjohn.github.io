@@ -114,10 +114,10 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
   This is a <b>coding quiz on HackerRank</b>. You will be sent an invitation to the email you use for Gradescope for this quiz.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.</p>
 
 <p><a name="q11"><b>Quiz 11: </b> &emsp; <i>Due 4pm, Friday, 8 October.</i>&emsp;
-  The focus in on data visualiation as discussed in Lectures #10 and #11 and <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100: Chapter 11</a> (Data Visualization).</p>
+  The focus in on data visualiation as discussed in Lectures #7, #8 and #9 and <a href="http://www.textbook.ds100.org/ch/11/viz_intro.html">DS 100: Chapter 11</a> (Data Visualization).</p>
 
 <p><a name="q12"><b>Quiz 12: </b> &emsp; <i>Due 4pm, Friday, 15 October.</i>&emsp;
-  The quiz covers loss functions from Lectures #10 & #11 and the reading: <a href=
+  The quiz covers loss functions, correlation, and regression from Lectures #10, #11 & #12 and the reading: <a href=
   "http://www.textbook.ds100.org/ch/04/modeling_loss_functions.html">DS 100, Sections 4.2-4.4</a> (Loss Functions).
 
 
@@ -468,7 +468,7 @@ print(waitList)
     <p>
 For example, if you entered <code class="inline">brooklynJuly2021.csv</code> and <code class="inline">selected</code> for the output prefix, the program should create 4 files: <code class="inline">selectedRestaurants.csv</code>, <code class="inline">selectedCuisines11224.csv</code>, <code class="inline">selectedCounts11224.csv</code>, and <code class="inline">selectedBoro.csv</code>.
 The first several lines of <code class="inline">selectedRestaurants.csv</code> are:
-<pre><code class=blockcode>DBA
+<pre><code class=datablock>DBA
 1 HOTEL BROOKLYN BRIDGE
 14 OLD FULTON STREET
 98K
@@ -477,18 +477,18 @@ ABURI SUSHI BAR
 </code></pre>
 </p>
 <p>The file <code class="inline">selectedCuisines11224.csv</code> is:
-<pre><code class=blockcode>cnt
+<pre><code class=datablock>cnt
 American
 </code></pre>
 (since our test file only has restaurants that serve American food in the 11224 zipcode)
 </p>
 <p>The file <code class="inline">selectedCounts11224.csv</code> is:
-<pre><code class=blockcode>CUISINE DESCRIPTION,COUNT(DISTINCT DBA)
+<pre><code class=datablock>CUISINE DESCRIPTION,COUNT(DISTINCT DBA)
 American,3
 </code></pre>
 </p>
 <p>The file <code class="inline">selectedBoro.csv</code> is:
-<pre><code class=blockcode>borough,cnt_cuisine,cnt_restaurants
+<pre><code class=datablock>borough,cnt_cuisine,cnt_restaurants
 Brooklyn,50,384
 </code></pre>
 </p>
@@ -601,7 +601,7 @@ Set 3:  The third set of programs integrates visualization techniques with analy
     <li> <code class = "inline">exponentialSmoothing(column)</code>:  Assumes the input is a Series of numerical data. Returns a Series with a weighted average of the previous values with the most recent values have higher weight and the older ones have lower weights.  The value for the first entry, <code class = "inline">newCol[0]</code> is <code class = "inline">column[0]</code>.  The value for subsequent entries is <code class = "inline">newCol[t+1] = 0.5*column[t+1] + 0.5*newCol[t]</code>.  For example, if we had the same Series starting the same as above, <code class = "inline">10,20,30,40,20</code>, our new column would start <code class = "inline">10,15,22.5,31.25,25.625</code>
     (since the first entry is the same, 0.5*20+0.5*10 = 15, 0.5*30+0.5*15= 22.5, 0.5*40+0.5*22.5 = 31.25, 0.5*20 + 0.5*31.25 = 25.625).
   </ul>
-  Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import your functions for testing.
+  Note:  you should submit a file with only the standard comments at the top, and these three functions.  The grading scripts will then import the file for testing.
 </p>
 
 <p><a name="p14"><b>Program 14: Library Cleaning.</b></b> &emsp; <i>Due noon, Monday, 27 September.</i>
@@ -627,7 +627,7 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
   </ul>
 
   <p>
-  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called <code class = "inline">p14.py</code>
+  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.  A sample test program that assumes your program is called <code class = "inline">p14.py</code>
   and the CSV file is called <code class = "inline">LIBRARY.csv</code> is <a href="test14.py">test14.py</a>.
 
   </p>
@@ -775,7 +775,7 @@ and continues with top scoring schools for each test and each district printed.
   </ul>
 
 <p>
-  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.  A sample test program that assumes your program is called
+  Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.  A sample test program that assumes your program is called
   <code class = "inline">p18.py</code>
   and is <a href="test18.py">test18.py</a>.
 </p>
@@ -823,7 +823,7 @@ would give the plot:
 
 
 <p>
-    Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import your function for testing.
+    Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.
 
 <p>
   <i>Hint:  Include only the function you need (such as <code class = "inline">numpy</code> and <code class = "inline">scipy.stats</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
@@ -905,7 +905,7 @@ plt.show()</code></pre>
   <p><img height=200 src="loss_tips.png">
 
   <p>
-      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import your function for testing.
+      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.
 
   <p>
     <i>Hint:  Include only the libraries you need (such as <code class = "inline">numpy</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
@@ -959,44 +959,302 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
       <img src="dice_6_6.png" height=200>
       </p>
       <p>
-      Note:  you should submit a file with only the standard comments at the top and the function.  The grading scripts will then import your function for testing.
+      Note:  you should submit a file with only the standard comments at the top and the function.  The grading scripts will then import the file for testing.
       </p>
 
+
+<p><a name="p23"><b>Program 23: Correlation Coefficients.</b></b> &emsp; <i>Due noon, Friday, 15 October.</i>
+    <br>(Learning Objective: to refresh students' knowledge of Pearson's correlation coefficient and to increase fluidity with using statistical functions in Python.)
+    <p>
+    Write a function that will find the columns with highest absolute correlation coefficents in a DataFrame.  Your program should take as inputs the column of interest, a list of possible correlated columns, and the DataFrame.  The function should return the name and Pearson's R correlation coefficent (can be computed using the Pandas function <code class="inline">series1.corr(series2)</code> where
+    <code class="inline">series1</code> and
+    <code class="inline">series2</code> are Pandas Series):
+
+    <ul>
+      <li> <code class = "inline">findHighestCorr(colName,colLst,df)</code>:  This function takes three inputs:
+        <ul>
+            <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
+            <li> <code class = "inline">colList</code>: a list of column names of the specified DataFrame.  It must be a list and assumed to be non-empty.  Can include <code class = "inline">colName</code>, and
+            <li> <code class = "inline">df</code>: a DataFrame including the specified columns.
+        </ul>
+        The function computes the correlation coefficient between <code class = "inline">df[colName]</code> and each column specified in <code class = "inline">colList</code>, and returns the name and the correlation coefficient for the column from the list with the highest absolute value.
+      </ul>
+
+
+    <p>
+    For example, assuming your function <code class="inline">findHighestR()</code> was in the <code class="inline">p23.py</code>:
+    <pre><code class="blockcode">simpleDF = pd.DataFrame({'c1': [1,2,3,4],\
+                         'c2': [0,1,0,1],\
+                         'c3': [1,10,3,20],\
+                         'c4': [-10,-20,-30,-40],})
+print('Testing with c1 and [c3,c4]:')
+print(p23.findHighestCorr('c1',['c3','c4'],simpleDF))
+print(f'c1 has highest absolute r with {p23.findHighestCorr("c1",simpleDF.columns, simpleDF)}.')
+</code></pre>
+    Would give output:
+<pre><code class="datablock">Testing with c1 and [c3,c4]:
+('c4', -1.0)
+c1 has highest absolute r with ('c1', 1.0)
+</code></pre>
+    since the correlation cofficient between <code class="inline">simpleDF['c1']</code>
+    and the other 3 columns is <code class="inline">0.4472135954999579</code>, <code class="inline">0.7520710469952336</code>, and <code class="inline">
+-1.0</code>, respectively and the largest <i>absolute</i> correlation is with <code class="inline">simpleDF['c4']</code>.
+
+  <p> Using the function on the seaborn tips dataset:
+<pre><code class="blockcode">import seaborn as sns
+tips = sns.load_dataset('tips')
+print(f"Correlation coefficient between tips and size is \
+        {tips['tip'].corr(tips['size'])}")
+print(f"For tip, the highest correlation is \
+        {p23.findHighestCorr('tip',['total_bill','size'],tips)}.")
+</code></pre>
+  will print
+<pre><code class="datablock">Correlation coefficient between tips and size is         0.4892987752303577
+For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
+</code></pre>
+    </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import your file for testing.</p>
+
 <!--
-<p><a name="p23"><b>Program 23: Residuals.</b></b> &emsp; <i>Due noon, Friday, 15 October.</i>
-    <br>(Learning Objective: )
+<p><a name="p24"><b>Program 24: Class Lists.</b></b> &emsp; <i>Due noon, Monday, 18 October.</i>
+    <br>(Learning Objective: to use standard Pandas functions to filter rows, aggregates values and create new columns.)
     <p>
 
+    Write a function, <code class="inline">cleanClassList()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by `;`), and returns a DataFrame that
+    <ol>
+        <li> Includes only students taking 3 or more courses, and
+        <li> Replaces the column of current courses, with a column for each course, that contains a boolean value if the student is taking the course or not (see example below).
+      </ol>
 
+      <p>
+      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
+      <pre><code class="blockcode">classDF = pd.DataFrame({'c1': [1,2,3,4],\
+                           'c2': [0,1,0,1],\
+                           'c3': [1,10,3,20],\
+                           'c4': [-10,-20,-30,-40],})
+  print('Testing with c1 and [c3,c4]:')
+  print(p23.findHighestCorr('c1',['c3','c4'],simpleDF))
+  print(f'c1 has highest absolute r with {p23.findHighestCorr("c1",simpleDF.columns, simpleDF)}.')
+  </code></pre>
+      Would give output:
+  <pre><code class="datablock">
+  </code></pre>
+      since ...
+
+    <p> Using the function on the seaborn tips dataset:
+  <pre><code class="blockcode">import seaborn as sns
+  tips = sns.load_dataset('tips')
+  print(f"Correlation coefficient between tips and size is \
+          {tips['tip'].corr(tips['size'])}")
+  print(f"For tip, the highest correlation is \
+          {p23.findHighestCorr('tip',['total_bill','size'],tips)}.")
+  </code></pre>
+    will print
+  <pre><code class="datablock">Correlation coefficient between tips and size is         0.4892987752303577
+For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
+</code></pre>
+      </p>
+
+      <p><i>Hints:
+        <ul>
+          <li> To compute the number of courses taken, count the number ';' and add 1.
+          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
+          <code class="inline">classDF['course'].unique()</code> gives:
+          <pre><code class="datablock">
+          </code></pre>
+        </ul>
+      </i>
     </p>
 
-<p><a name="p24"><b>Program 24: Fitting LM's to Taxi Data.</b></b> &emsp; <i>Due noon, Monday, 18 October.</i>
-    <br>(Learning Objective: .)
-    <p>
-      Run the linear model with a single parameter on a parameter specified by user.  Set up as a function?  Use the book's plotting to display.  Give small sample file to test on.
-
-      Taxi Models.
-      In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
-
-    </p>
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><a name="p25"><b>Program 25: PMF of Senators' Ages.</b></b> &emsp; <i>Due noon, Tuesday, 19 October.</i>
     <br>(Learning Objective: strengthen competency with probability mass functions by analysing ages of public officials.)
     <p>
 
+    In <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1 (Random Variables)</a> of the textbook, a small example of computing the probability mass function of a data set of ages was computed by hand.  Write a function that will automate this process:
 
-    Echo the chapter on PMF's but instead use an input file (already have senators' ages calculated from above).  Write as a function?  Use book's plotting function.
+
+    <p>Your program should take an iterable of positive numbers, representing ages, and return a DataFrame with two columns:  "age" and "pmf" where each age from the input occurs exactly ones, every age has a corresponding value of the pmf (i.e. the fraction of times it occurs), the "pmf" column sums to 1.
+    <p>
+          Echo the chapter on PMF's but instead use an input file (already have senators' ages calculated from above).  Write as a function?  Use book's plotting function.
+
+      Two examples:  the one from the book and senators' ages.  Test on reps ages + random data.
+
+      Check that the column sums to 1.
+
+    </p>
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<p><a name="p26"><b>Program 26: Weekday Entries.</b></b> &emsp; <i>Due noon, Thursday, 21 October.</i>
+    <br>(Learning Objective: to strengthen data cleaning skills and familiarity with standard date/time formats.)
+    <p>
+
+    Use the datetime functionality of Python and pandas to write the following functions:
+    <ul>
+      <li>
+    </ul>
+      Taxi Models.
+      In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+
+
+
     </p>
 
-<p><a name="p26"><b>Program 26: .</b></b> &emsp; <i>Due noon, Thursday, 21 October.</i>
-    <br>(Learning Objective: .)
-    <p>  </p>
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p27"><b>Program 27: MLM's for Taxi Trips.</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
+
+
+<p><a name="p27"><b>Program 27: Fitting OLS</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
     <br>(Learning Objective: .)
     <p>
-    Run the linear model with multiple parameters to build a better model of taxi tips.  Program should ask for input file and return as a file.  Give small sample file to test on.
+
+      Fitting LM's to Taxi Data.
+         Run the linear model with a single parameter on a parameter specified by user.  Set up as a function?  Use the book's plotting to display.  Give small sample file to test on.
+
     </p>
+
+<p><a name="p28"><b>Program 28: HR Style: Summarizing DF's.</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
+    <br>(Learning Objective: .)
+    <p>
+
+      Reinforce HR style function to take DF and summarize columns-- maybe multiple columns into a single col?
+
+    </p>
+
+<p><a name="p29"><b>Program 29: MLM's for Taxi Trips.</b></b> &emsp; <i>Due noon, Tuesday, 26 October.</i>
+    <br>(Learning Objective: .)
+    <p>
+      Run the linear model with multiple parameters to build a better model of taxi tips.  Program should ask for input file and return as a file.  Give small sample file to test on.
+    </p>
+
+<p><a name="p30"><b>Program 30: Sampling Distributions.</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
+    <br>(Learning Objective: .)
+    </p>
+    <p>
+
+    </p>
+
+<p><a name="p31"><b>Program 31: .</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
+      <br>(Learning Objective: .)
+      <p>
+      </p>
+
+<p><a name="p32"><b>Program 32: HR challenge?.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
+      <br>(Learning Objective: .)
+      <p>
+      </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<p><a name="p33"><b>Program 33: .</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
+      <br>(Learning Objective: .)
+      <p>
+      </p>
+
+<p><a name="p34"><b>Program 34: HR Challenge?.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
+      <br>(Learning Objective: .)
+      <p>
+      </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<p><a name="p35"><b>Program 35: .</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      --------- Regression on Probabilities; The Logistic Model
+
+      # P35
+      import data
+      create your own Y = 0, 1 from a continuous Y variable (?)
+      value_counts of Y
+      cross tabulate against X1, X2, etc. -> visualize as table
+
+<p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      # P36
+      same data as P35
+      plot (jittered) Y against each X
+      draw sigmoid?  or just conceptualize when this is different from linear
+
+<p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      --------- A Loss Function for the Logistic Model; Using Logistic Regression
+
+      # P37
+      fit a simple logistic regression using out of box:
+      from sklearn.linear_model import LogisticRegression
+      Y ~ X1
+      compare accuracy of this against accuracy of always predicting 0 or 1
+
+<p><a name="p38"><b>Program 38: .</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      # P38
+      using same data as P37, do train/test split (with seeding)
+      Y ~ X1 + X2 ... (possibly with one-hot encoding)
+      compare accuracy of this against bsaeline of always predicting 0 or 1
+      compare accuracy of test vs train
+
+  <p><a name="p39"><b>Program 39: .</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
+
+      # P39
+      train/test split
+      fit logistic regression
+      compute accuracy, precision, recall
+      record CPU time and wall time
+
+<p><a name="p40"><b>Program 40: .</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+      # P40
+      same data as P39
+      train/test split
+      fit stochastic gradient descent
+      tune hyperparameters (are we doing different search methods?)
+      compare results to P39.  which one would you choose?
+
+  <p><a name="p41"><b>Program 41: Logit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
+      <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
+      <p>
+      </p>
+
+      --------- Evaluating Logistic Models; Multiclass Classification
+
+      P41
+      re-use one of the previous examples to create a binary logit classifier
+      then use sklearn built in functions to calculate confusion matrix
+      also use sklearn built in functions to calculate and then plot AUC
+
+
+
+    <p><a name="p42"><b>Program 42: .</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
+      <br>(Learning Objective: to create a multilabel classifer using sklearn.)</p>
+      <p>
+      </p>
+
+      P42
+      create a multilabel classifier
+      use sklearn built in functions to calculate confusion matrix and AUC
+      but then ... write your OWN function to output the exact same confusion matrix & AUC (too much?)
 
 
 
@@ -1027,7 +1285,7 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
 
     </p>
     <p>
-    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import your functions for testing.
+    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
 
 
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
@@ -1048,137 +1306,6 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
 
 
 
-<p><a name="p28"><b>Program 28: .</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p29"><b>Program 29: .</b></b> &emsp; <i>Due noon, Tuesday, 26 October.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p30"><b>Program 30: .</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p31"><b>Program 31: .</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p32"><b>Program 32: .</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p33"><b>Program 33: .</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p34"><b>Program 34: .</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
-  <br>(Learning Objective: .)
-  <p>
-  </p>
-
-<p><a name="p35"><b>Program 35: .</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  --------- Regression on Probabilities; The Logistic Model
-
-  # P35
-  import data
-  create your own Y = 0, 1 from a continuous Y variable (?)
-  value_counts of Y
-  cross tabulate against X1, X2, etc. -> visualize as table
-
-<p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  # P36
-  same data as P35
-  plot (jittered) Y against each X
-  draw sigmoid?  or just conceptualize when this is different from linear
-
-<p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  --------- A Loss Function for the Logistic Model; Using Logistic Regression
-
-  # P37
-  fit a simple logistic regression using out of box:
-  from sklearn.linear_model import LogisticRegression
-  Y ~ X1
-  compare accuracy of this against accuracy of always predicting 0 or 1
-
-<p><a name="p38"><b>Program 38: .</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  # P38
-  using same data as P37, do train/test split (with seeding)
-  Y ~ X1 + X2 ... (possibly with one-hot encoding)
-  compare accuracy of this against bsaeline of always predicting 0 or 1
-  compare accuracy of test vs train
-
-<p><a name="p39"><b>Program 39: .</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
-
-  # P39
-  train/test split
-  fit logistic regression
-  compute accuracy, precision, recall
-  record CPU time and wall time
-
-<p><a name="p40"><b>Program 40: .</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
-  <br>(Learning Objective: .)</p>
-  <p>
-  </p>
-
-  # P40
-  same data as P39
-  train/test split
-  fit stochastic gradient descent
-  tune hyperparameters (are we doing different search methods?)
-  compare results to P39.  which one would you choose?
-
-<p><a name="p41"><b>Program 41: .</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
-  <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
-  <p>
-  </p>
-
-  --------- Evaluating Logistic Models; Multiclass Classification
-
-  P41
-  re-use one of the previous examples to create a binary logit classifier
-  then use sklearn built in functions to calculate confusion matrix
-  also use sklearn built in functions to calculate and then plot AUC
-
-
-
-<p><a name="p42"><b>Program 42: .</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
-  <br>(Learning Objective: to create a multilabel classifer using sklearn.)</p>
-  <p>
-  </p>
-
-  P42
-  create a multilabel classifier
-  use sklearn built in functions to calculate confusion matrix and AUC
-  but then ... write your OWN function to output the exact same confusion matrix & AUC (too much?)
-
 
   <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
       <br>(Learning Objective: .)</p>
@@ -1196,20 +1323,24 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
 
 
-<p><a name="p46"><b>Program 46: .</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
+<p><a name="p46"><b>Program 46: HR challenge.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
   <br>(Learning Objective: .)</p>
     <p>
     </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><a name="p47"><b>Program 47: .</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
     <br>(Learning Objective: .)</p>
     <p>
     </p>
 
-<p><a name="p48"><b>Program 48: .</b></b> &emsp; <i>Due noon, Thursday, 2 December.</i>
+<p><a name="p48"><b>Program 48: HR challenge.</b></b> &emsp; <i>Due noon, Thursday, 2 December.</i>
         <br>(Learning Objective: .)</p>
         <p>
         </p>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><a name="p49"><b>Program 49: .</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
   <br>(Learning Objective: .)</p>
