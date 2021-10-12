@@ -1039,7 +1039,7 @@ For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
                                           "csci335 csci39542 cla101 dan102"]})
 print(f'Starting df:\n {classDF}')
 print(f'Ending df:\n {p24.computeEnrollments(classDF)}')
-  </code></pre>
+</code></pre>
       Would give output:
   <pre><code class="datablock">Starting df:
       Name  # Credits                     Current Courses
@@ -1057,13 +1057,13 @@ Ending df:
 2    Cara         80           4   3      1
 4    Ella         30           3   2      1
 5  Fatima         90           4   2      2
-  </code></pre>
+</code></pre>
       <p>The resulting DataFrame has only 5 students, since the student, Dara, has fewer than 3 current courses and that row is dropped.
 
 <p><i>Hints:
     <ul>
       <li> While straightforward, this problem is much easier to do in pieces, debugging/printing, as you go.  Add lots of print statements (or work inside a debugger) to make sure each part is correct before building on the next one.
-      <li> To compute the number of courses taken, count the number ' ' and add 1.
+      <li> To compute the number of courses taken, count the number of spaces and add 1.
       <li> Using the string (<code class="inline">.str</code>) methods are an excellent approach, but you may get a <code class="inline">SettingWithCopyWarning</code> since it is concerned that the new column is being set based on a subsetted value (i.e. the particular column).  To explicitly assign the values, use <code class="inline">df.assign</code>.  For example, if you have computed the number of courses and stored them in a Series, <code class="inline">totalCourses</code>, you can then <code class="inline">df = df.assign(NumCourses = totalCourses)</code> to create a new column, <code class="inline">NumCourses</code>, in the DataFrame.
     </ul>
   </i>
@@ -1072,24 +1072,78 @@ Ending df:
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-<!--
+
 <p><a name="p25"><b>Program 25: PMF of Senators' Ages.</b></b> &emsp; <i>Due noon, Tuesday, 19 October.</i>
-    <br>(Learning Objective: strengthen competency with probability mass functions by analysing ages of public officials.)
+    <br>(Learning Objective: build intuition and strengthen competency with probability mass functions by analysing ages of public officials.)
     <p>
 
-    In <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1 (Random Variables)</a> of the textbook, a small example of computing the probability mass function of a data set of ages was computed by hand.  Write a function that will automate this process:
+    <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1 (Random Variables)</a> of the textbook has a small example of computing the probability mass function of a data set of ages was computed by hand.  Write a function that will automate this process:
 
+    <ul>
+      <li> <code class = "inline">pmf(vals)</code>:  This function takes one parameter:
+      <ul>
+          <li> <code class = "inline">vals</code>: an iterable of numeric values, assumed to be positive numbers.
+      </ul>
+      <li> The function should return two iterables of positive numbers:
+        <ul>
+            <li> <code class = "inline">uniqueVals</code>: a sorted list of the unique values from the input parameter <code class = "inline">vals</code>, and
+            <li> <code class = "inline">mass</code>: the fraction that each <code class = "inline">uniqueVals</code> occurs in <code class = "inline">vals</code>.
+          </ul>
+          <li> The order of <code class = "inline">mass</code> should follow that of <code class = "inline">uniqueVals</code>.  That is, the ith element of       <code class = "inline">mass</code> should be the fraction computed for the ith value of <code class = "inline">uniqueVals</code>.
+          <li> The <code class = "inline">sum(mass)</code> should equal 1.
+      </ul>
 
-    <p>Your program should take an iterable of positive numbers, representing ages, and return a DataFrame with two columns:  "age" and "pmf" where each age from the input occurs exactly ones, every age has a corresponding value of the pmf (i.e. the fraction of times it occurs), the "pmf" column sums to 1.
-    <p>
-          Echo the chapter on PMF's but instead use an input file (already have senators' ages calculated from above).  Write as a function?  Use book's plotting function.
 
       Two examples:  the one from the book and senators' ages.  Test on reps ages + random data.
 
-      Check that the column sums to 1.
+      x, y = p25.pmf([50,50,52,54])
+      print(f'The values are: {x}')
+      print(f'The pmf is: {y}')
+      print(f'The sum of the pmf is: {sum(y)}.')
+      plt.bar(x,y)
+      plt.show()
 
     </p>
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+    <p>For example, calling the function on the example from the textbook:
+      <pre><code class="blockcode">x, y = p25.pmf([50,50,52,54])
+print(f'The values are: {x}')
+print(f'The pmf is: {y}')
+print(f'The sum of the pmf is: {sum(y)}.')
+plt.bar(x,y)
+plt.show()</code></pre>
+      would print:
+      <pre><code class="datablock">The values are: (50, 52, 54)
+The pmf is: (0.5, 0.25, 0.25)
+The sum of the pmf is: 1.0.</code></pre>
+
+      and would give the plot:
+
+      <p><img height=200 src="pmf_small_age.png">
+
+    <p>For example, calling the function on the senators' ages from <a href="#p3">Program 3</a>:
+    <pre><code class="blockcode">senators = pd.read_csv('senatorsAges.csv')
+xSen,ySen = p25.pmf(senators['age'])
+plt.bar(xSen,ySen)
+plt.show()</code></pre>
+
+    would give the plot:
+
+    <p><img height=200 src="pmf_senators_age.png">
+
+    <p>
+      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.
+
+
+      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+      <p>
+        <i>Hint:  Include only the libraries you need (such as <code class = "inline">numpy</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
+        </i>
+      </p>
+
+<!--
 
 <p><a name="p26"><b>Program 26: Weekday Entries.</b></b> &emsp; <i>Due noon, Thursday, 21 October.</i>
     <br>(Learning Objective: to strengthen data cleaning skills and familiarity with standard date/time formats.)
@@ -1110,7 +1164,7 @@ Ending df:
 
 
 
-<p><a name="p27"><b>Program 27: Fitting OLS</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
+<p><a name="p27"><b>Program 27: Fitting OLS.</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
     <br>(Learning Objective: .)
     <p>
 
@@ -1119,41 +1173,53 @@ Ending df:
 
     </p>
 
-<p><a name="p28"><b>Program 28: Enrollments</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
+<p><a name="p28"><b>Program 28: CS Courses.</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
     <br>(Learning Objective: to strengthen data cleaning skills using Pandas.)
     <p>
 
-      Reinforce HR style function to take DF, split up column values, and summarize.
-      Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
-      Building on <href="#p24">Program 24</a>,
-    Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
-    <ol>
-        <li> Includes only students taking 3 or more courses, and
-        <li> Replaces the column of current courses with two different columns: the first that counts the number of computer science courses currently taking (all courses that start 'csci') and the second column with the number of other courses the student is taking.
-      </ol>
+      In <a href="#p24">Program 24</a>, we wrote a function that counted courses that students are currently taking.  For this program,
+      write a function that takes a DataFrame and returns a sorted list of the computer science courses taken.  Each course should occur once in the list, no matter how often it occurs in the list of courses taken by the students
+    <ul>
+        <li> <code class="inline">csCourses(df):</code>  This function takes as input a data frame, <code class="inline">df</code>, that contains a column <code class="inline">Current Courses</code>.  It returns a sorted list of unique strings. Each string is a computer science course (i.e. starts with <code class="inline">csci</code>) that occurs in some entry of <code class="inline">df['Current Courses']</code>.
+      </ul>
 
       <p>
-      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
-      <pre><code class="blockcode">
-  </code></pre>
+      For example, assuming your function <code class="inline">csCourses(df)</code> was in the <code class="inline">p28.py</code>:
+      <pre><code class="blockcode">classDF = pd.DataFrame({'Name': ["Ana","Bao","Cara","Dara","Ella","Fatima"],\
+                         '# Credits': [45,50,80,115,30,90],\
+                         'Current Courses': ["csci160 csci235 math160 jpn201",\
+                                             "csci160 csci235 cla101 germn241",\
+                                             "csci265 csci335 csci39542 germn241",\
+                                             "csci49362 csci499",\
+                                             "csci150 csci235 math160",\
+                                             "csci335 csci39542 cla101 dan102"]})
+
+
+print(f'Starting df:\n {classDF}\n')
+print(f'CS courses:\n {p28.csCourses(classDF)}')
+</code></pre>
       Would give output:
-  <pre><code class="datablock">
-  </code></pre>
-      since ...
+  <pre><code class="datablock">Starting df:
+      Name  # Credits                     Current Courses
+0     Ana         45      csci160 csci235 math160 jpn201
+1     Bao         50     csci160 csci235 cla101 germn241
+2    Cara         80  csci265 csci335 csci39542 germn241
+3    Dara        115                   csci49362 csci499
+4    Ella         30             csci150 csci235 math160
+5  Fatima         90     csci335 csci39542 cla101 dan102
 
-    <p> Using the function on the seaborn tips dataset:
-  <pre><code class="blockcode">
-  </code></pre>
-
-      </p>
+CS courses:
+ ['csci150', 'csci160', 'csci235', 'csci265', 'csci335', 'csci39542', 'csci49362', 'csci499']
+</code></pre>
 
       <p><i>Hints:
         <ul>
-          <li> To compute the number of courses taken, count the number ';' and add 1.
-          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
-          <code class="inline">classDF['course'].unique()</code> gives:
-          <pre><code class="datablock">
+          <li> A useful function for this task is <code class="inline">unique()</code> which lists all the values in a Series exactly once.  For example, <code class="inline">classDF['course'].unique()</code> yields:
+          <pre><code class="datablock">['csci160 csci235 math160 jpn201' 'csci160 csci235 cla101 germn241' 'csci265 csci335 csci39542 germn241'
+ 'csci49362 csci499' 'csci150 csci235 math160' 'csci335 csci39542 cla101 dan102']
           </code></pre>
+
+          This list can then be processed to find the individual courses.
         </ul>
       </i>
     </p>
@@ -1181,9 +1247,53 @@ Ending df:
       <p>
       </p>
 
-<p><a name="p32"><b>Program 32: HR challenge?.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
+<p><a name="p32"><b>Program 32: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
       <br>(Learning Objective: .)
       <p>
+
+
+      Reinforce HR style function to take DF, split up column values, and summarize.
+      Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
+      Building on <href="#p24">Program 24</a>,
+    Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
+    <ol>
+        <li> Includes only students taking 3 or more courses, and
+        <li> Replaces the column of current courses with two different columns: the first that counts the number of computer science courses currently taking (all courses that start 'csci') and the second column with the number of other courses the student is taking.
+      </ol>
+
+      <p>
+      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
+      <pre><code class="blockcode">
+  </code></pre>
+      Would give output:
+  <pre><code class="datablock">
+  </code></pre>
+      since ...
+
+    <p> Using the function on the seaborn tips dataset:
+  <pre><code class="blockcode">
+  </code></pre>
+
+      </p>
+
+      <p><i>Hints:
+        <ul>
+          <li> To compute the number of courses taken, count the number of spaces and add 1.
+          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
+          <code class="inline">classDF['course'].unique()</code> gives:
+          <pre><code class="datablock">
+          </code></pre>
+        </ul>
+      </i>
+    </p>
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+    </p>
+
+
+
       </p>
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
@@ -1193,10 +1303,11 @@ Ending df:
       <p>
       </p>
 
-<p><a name="p34"><b>Program 34: HR Challenge?.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
+<p><a name="p34"><b>Program 34: Multiple Locations.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
       <br>(Learning Objective: .)
       <p>
       </p>
+            Write a program that takes a DataFrame of businesses and returns
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
