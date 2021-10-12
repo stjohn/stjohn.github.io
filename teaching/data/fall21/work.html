@@ -1016,59 +1016,63 @@ For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import your file for testing.</p>
 
-<!--
-<p><a name="p24"><b>Program 24: Class Lists.</b></b> &emsp; <i>Due noon, Monday, 18 October.</i>
+
+<p><a name="p24"><b>Program 24: Enrollments.</b></b> &emsp; <i>Due noon, Monday, 18 October.</i>
     <br>(Learning Objective: to use standard Pandas functions to filter rows, aggregates values and create new columns.)
     <p>
 
-    Write a function, <code class="inline">cleanClassList()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by `;`), and returns a DataFrame that
+    Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
     <ol>
         <li> Includes only students taking 3 or more courses, and
-        <li> Replaces the column of current courses, with a column for each course, that contains a boolean value if the student is taking the course or not (see example below).
+        <li> Replaces the column of current courses with three different columns: the first that counts total number of courses the student is taking, the second columns has the number of computer science courses currently taking (all courses that start 'csci') and the third column with the number of other courses the student is taking.
       </ol>
 
-      <p>
-      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
-      <pre><code class="blockcode">classDF = pd.DataFrame({'c1': [1,2,3,4],\
-                           'c2': [0,1,0,1],\
-                           'c3': [1,10,3,20],\
-                           'c4': [-10,-20,-30,-40],})
-  print('Testing with c1 and [c3,c4]:')
-  print(p23.findHighestCorr('c1',['c3','c4'],simpleDF))
-  print(f'c1 has highest absolute r with {p23.findHighestCorr("c1",simpleDF.columns, simpleDF)}.')
+    <p>
+    For example, assuming your function <code class="inline">computeEnrollments()</code> was in the <code class="inline">p24.py</code>:
+      <pre><code class="blockcode">classDF = pd.DataFrame({'Name': ["Ana","Bao","Cara","Dara","Ella","Fatima"],\
+                      '# Credits': [45,50,80,115,30,90],\
+                      'Current Courses': ["csci160 csci235 math160 jpn201",\
+                                          "csci160 csci235 cla101 germn241",\
+                                          "csci265 csci335 csci39542 germn241",\
+                                          "csci49362 csci499",\
+                                          "csci150 csci235 math160",\
+                                          "csci335 csci39542 cla101 dan102"]})
+print(f'Starting df:\n {classDF}')
+print(f'Ending df:\n {p24.computeEnrollments(classDF)}')
   </code></pre>
       Would give output:
-  <pre><code class="datablock">
-  </code></pre>
-      since ...
+  <pre><code class="datablock">Starting df:
+      Name  # Credits                     Current Courses
+0     Ana         45      csci160 csci235 math160 jpn201
+1     Bao         50     csci160 csci235 cla101 germn241
+2    Cara         80  csci265 csci335 csci39542 germn241
+3    Dara        115                   csci49362 csci499
+4    Ella         30             csci150 csci235 math160
+5  Fatima         90     csci335 csci39542 cla101 dan102
 
-    <p> Using the function on the seaborn tips dataset:
-  <pre><code class="blockcode">import seaborn as sns
-  tips = sns.load_dataset('tips')
-  print(f"Correlation coefficient between tips and size is \
-          {tips['tip'].corr(tips['size'])}")
-  print(f"For tip, the highest correlation is \
-          {p23.findHighestCorr('tip',['total_bill','size'],tips)}.")
+Ending df:
+      Name  # Credits  NumCourses  CS  Other
+0     Ana         45           4   2      2
+1     Bao         50           4   2      2
+2    Cara         80           4   3      1
+4    Ella         30           3   2      1
+5  Fatima         90           4   2      2
   </code></pre>
-    will print
-  <pre><code class="datablock">Correlation coefficient between tips and size is         0.4892987752303577
-For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
-</code></pre>
-      </p>
+      <p>The resulting DataFrame has only 5 students, since the student, Dara, has fewer than 3 current courses and that row is dropped.
 
-      <p><i>Hints:
-        <ul>
-          <li> To compute the number of courses taken, count the number ';' and add 1.
-          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
-          <code class="inline">classDF['course'].unique()</code> gives:
-          <pre><code class="datablock">
-          </code></pre>
-        </ul>
-      </i>
+<p><i>Hints:
+    <ul>
+      <li> While straightforward, this problem is much easier to do in pieces, debugging/printing, as you go.  Add lots of print statements (or work inside a debugger) to make sure each part is correct before building on the next one.
+      <li> To compute the number of courses taken, count the number ' ' and add 1.
+      <li> Using the string (<code class="inline">.str</code>) methods are an excellent approach, but you may get a <code class="inline">SettingWithCopyWarning</code> since it is concerned that the new column is being set based on a subsetted value (i.e. the particular column).  To explicitly assign the values, use <code class="inline">df.assign</code>.  For example, if you have computed the number of courses and stored them in a Series, <code class="inline">totalCourses</code>, you can then <code class="inline">df = df.assign(NumCourses = totalCourses)</code> to create a new column, <code class="inline">NumCourses</code>, in the DataFrame.
+    </ul>
+  </i>
     </p>
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
+
+<!--
 <p><a name="p25"><b>Program 25: PMF of Senators' Ages.</b></b> &emsp; <i>Due noon, Tuesday, 19 October.</i>
     <br>(Learning Objective: strengthen competency with probability mass functions by analysing ages of public officials.)
     <p>
@@ -1115,11 +1119,47 @@ For tip, the highest correlation is         ('total_bill', 0.6757341092113641).
 
     </p>
 
-<p><a name="p28"><b>Program 28: HR Style: Summarizing DF's.</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
-    <br>(Learning Objective: .)
+<p><a name="p28"><b>Program 28: Enrollments</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
+    <br>(Learning Objective: to strengthen data cleaning skills using Pandas.)
     <p>
 
-      Reinforce HR style function to take DF and summarize columns-- maybe multiple columns into a single col?
+      Reinforce HR style function to take DF, split up column values, and summarize.
+      Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
+      Building on <href="#p24">Program 24</a>,
+    Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
+    <ol>
+        <li> Includes only students taking 3 or more courses, and
+        <li> Replaces the column of current courses with two different columns: the first that counts the number of computer science courses currently taking (all courses that start 'csci') and the second column with the number of other courses the student is taking.
+      </ol>
+
+      <p>
+      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
+      <pre><code class="blockcode">
+  </code></pre>
+      Would give output:
+  <pre><code class="datablock">
+  </code></pre>
+      since ...
+
+    <p> Using the function on the seaborn tips dataset:
+  <pre><code class="blockcode">
+  </code></pre>
+
+      </p>
+
+      <p><i>Hints:
+        <ul>
+          <li> To compute the number of courses taken, count the number ';' and add 1.
+          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
+          <code class="inline">classDF['course'].unique()</code> gives:
+          <pre><code class="datablock">
+          </code></pre>
+        </ul>
+      </i>
+    </p>
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
     </p>
 
