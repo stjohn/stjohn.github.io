@@ -1121,37 +1121,101 @@ plt.show()</code></pre>
 
     <p><img height=200 src="pmf_senators_age.png">
 
+
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
     <p>
-      Note:  you should submit a file with only the standard comments at the top, and this function.  The grading scripts will then import the file for testing.
-
-
-      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
-
-      <p>
         <i>Hint:  Include only the libraries you need (such as <code class = "inline">numpy</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
         </i>
-      </p>
+    </p>
 
-<!--
 
 <p><a name="p26"><b>Program 26: Weekday Entries.</b></b> &emsp; <i>Due noon, Thursday, 21 October.</i>
     <br>(Learning Objective: to strengthen data cleaning skills and familiarity with standard date/time formats.)
     <p>
 
-    Use the datetime functionality of Python and pandas to write the following functions:
+    Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
     <ul>
-      <li>
+      <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
+      <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
     </ul>
-      Taxi Models.
-      In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
 
+    Give example with green taxi data from seaborn, use first 10 lines, and create new column as well as filter for weekdays.
+    <p>
+    For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">p26.py</code>:
+    <pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+print(taxi.iloc[0:10])  #Print first 10 lines:
+taxi['tripTime'] = taxi.apply(lambda x: p26.tripTime(x['pickup'], x['dropoff']), axis=1)
+print(taxi.iloc[0:10])
+</code></pre>
+    Would give output:
+<pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+
+[10 rows x 14 columns]
+                pickup              dropoff  ...  dropoff_borough        tripTime
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
+
+[10 rows x 15 columns]
+</code></pre>
+
+  <p> Using the function our second function:
+<pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+weekdays = p26.weekdays(taxi,'pickup')
+print(weekdays.iloc[0:10])
+</code></pre>
+  will give output:
+<pre><code class="datablock">
+  pickup              dropoff  ...  pickup_borough  dropoff_borough
+1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
+12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
+13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
+14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
+
+[10 rows x 14 columns]
+</code></pre>
+    note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
+    </p>
+
+
+    <i>Hints:
+        <ul>
+          <li> When read in from the CSV, the columns may be stored as a string.  Cast as <code class = "inline">datetime</code> (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+          <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code>similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>.
+          See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
+        </ul>
+    </i>
 
 
     </p>
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-
+<!--
 
 <p><a name="p27"><b>Program 27: Fitting OLS.</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
     <br>(Learning Objective: .)
@@ -1234,6 +1298,11 @@ CS courses:
 <p><a name="p31"><b>Program 31: .</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
       <br>(Learning Objective: .)
       <p>
+
+        Taxi Models.
+        In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+
+
       </p>
 
 <p><a name="p32"><b>Program 32: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
