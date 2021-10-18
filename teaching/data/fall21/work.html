@@ -123,13 +123,13 @@ There are no make-up quizzes. Instead, your score on the final exam will replace
 
 
 <p><a name="q13"><b>Quiz 13: </b> &emsp; <i>Due 4pm, Tuesday, 19 October.</i>&emsp;
-  The focus of this quiz is probability and risk, covered in Lecture #12,
+  The focus of this quiz is sampling distributions and the Central Limit Theorem, covered in Lectures #11-12,
   <a href="https://inferentialthinking.com/chapters/09/Randomness.html">DS 8: Chapter 9</a> (Randomness), and
     <a href="http://www.textbook.ds100.org/ch/16/prob_and_gen.html">DS 100: Chapter 16</a> (Probability & Generalization).
 </p>
 
 <p><a name="q14"><b>Quiz 14: </b> &emsp; <i>Due 4pm, Friday, 22 October.</i>&emsp;
-  The quiz covers gradient descent from Lecture #13 and the reading: <a href= "http://www.textbook.ds100.org/ch/17/gradient_descent.html">DS 100: Chapter 17</a> (Gradient Descent).
+  The quiz covers linear models, ordinary least squares, and gradient descent from Lectures #11-13 and the reading: <a href= "http://www.textbook.ds100.org/ch/17/gradient_descent.html">DS 100: Chapter 17</a> (Gradient Descent).
 
 </p>
 <p><a name="q15"><b>Quiz 15: </b> &emsp; <i>Due 4pm, Tuesday, 26 October.</i>&emsp;
@@ -1216,15 +1216,78 @@ print(weekdays.iloc[0:10])
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-<!--
+
 <p><a name="p27"><b>Program 27: Fitting OLS.</b></b> &emsp; <i>Due noon, Friday, 22 October.</i>
     <br>(Learning Objective: .)
     <p>
 
+    Write a function, <code class = "inline">compute_r_line()</code>, that takes two iterables of numeric values
+    representing the independent variable (<code class = "inline">xes</code>) and the dependent
+    variable (<code class = "inline">yes</code>) and computes the slope and y-intercept of the
+    linear regression line using ordinary least squares.
+
+    See <a href="https://inferentialthinking.com/chapters/15/2/Regression_Line.html">DS 8:  Chapter 15</a>
+    The pseudocode for this:
+    <ol>
+      <li> Compute the standard deviation of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.  Call these <code class = "inline">sd_x</code> and <code class = "inline">sd_y</code>.
+      <li> Compute the correlation, <code class = "inline">r</code>,  of the <code class = "inline">xes</code> and <code class = "inline">yes</code>.
+      <li> Compute the slope, <code class = "inline">m</code>, as <code class = "inline">m = r*sd_y/sd_x</code>.
+      <li> Compute the y-intercept, <code class = "inline">b</code>, as <code class = "inline">b = yes[0] - m * xes[0]</code>
+      <li> Return <code class = "inline">m</code> and <code class = "inline">b</code>.
+    </ol>
+
+    <p>For example, calling the function on the example from the textbook:
+      <pre><code class="blockcode">s1 = [1,2,3,4,5,6,7,8,9,10]
+s2 = [0,1,1,2,2,3,3,4,4,5,]
+m, b = p27.compute_r_line(s1,s2)
+print(m,b)
+xes = np.array([0,10])
+yes = m*xes + b
+plt.scatter(s1,s2)
+plt.plot(xes,yes)
+plt.title(f'Regression line with m = {m:{4}.{2}} and y-intercept = {b:{4}.{2}}')
+plt.show()</code></pre>
+      would give the plot:
+
+      <p><img height=300 src="rline_simple.png">
+
+    <p>For example, calling the function on the senators' ages from <a href="#p3">Program 3</a>:
+    <pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+m, b = p27.compute_r_line(taxi['total'],taxi['tip'])
+print(m,b)
+xes = np.array([0,175])
+yes = m*xes + b
+plt.scatter(taxi['total'],taxi['tip'])
+plt.plot(xes,yes,color='red')
+plt.title(f'Regression line for total vs. tips with m = {m:{4}.{2}} and y-intercept = {b:{4}.{2}}')
+plt.xlabel('Total Paid')
+plt.ylabel('Tip')
+plt.show()</code></pre>
+
+    would give the plot:
+
+    <p><img height=300 src="rline_taxi.png">
+
+
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+    <p>
+        <i>Hint:  Include only the libraries you need (such as <code class = "inline">numpy</code>) and none of the ones for plotting (such as <code class = "inline">matplotlib.pyplot</code> and <code class = "inline">seaborn</code>) since this function is computing and not plotting.
+        </i>
+    </p>
+
+
+
+<!--
+    Show using the taxi data, green taxi, also plot an estimate of 15% tips in yellow, and use above to give the regression line.
+
       Fitting LM's to Taxi Data.
          Run the linear model with a single parameter on a parameter specified by user.  Set up as a function?  Use the book's plotting to display.  Give small sample file to test on.
 
+      Use sns to do a jointplot:  https://seaborn.pydata.org/tutorial/regression.html
     </p>
+-->
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><a name="p28"><b>Program 28: CS Courses.</b></b> &emsp; <i>Due noon, Monday, 25 October.</i>
     <br>(Learning Objective: to strengthen data cleaning skills using Pandas.)
@@ -1269,8 +1332,7 @@ CS courses:
         <ul>
           <li> A useful function for this task is <code class="inline">unique()</code> which lists all the values in a Series exactly once.  For example, <code class="inline">classDF['course'].unique()</code> yields:
           <pre><code class="datablock">['csci160 csci235 math160 jpn201' 'csci160 csci235 cla101 germn241' 'csci265 csci335 csci39542 germn241'
- 'csci49362 csci499' 'csci150 csci235 math160' 'csci335 csci39542 cla101 dan102']
-          </code></pre>
+ 'csci49362 csci499' 'csci150 csci235 math160' 'csci335 csci39542 cla101 dan102']</code></pre>
 
           This list can then be processed to find the individual courses.
         </ul>
@@ -1282,25 +1344,39 @@ CS courses:
 
     </p>
 
+<!--
 <p><a name="p29"><b>Program 29: MLM's for Taxi Trips.</b></b> &emsp; <i>Due noon, Tuesday, 26 October.</i>
     <br>(Learning Objective: .)
     <p>
       Run the linear model with multiple parameters to build a better model of taxi tips.  Program should ask for input file and return as a file.  Give small sample file to test on.
     </p>
 
-<p><a name="p30"><b>Program 30: Sampling Distributions.</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
+    Do a shaded lmplot for taxi data, or mpg data, and then a 3D one?
+
+
+<p><a name="p30"><b>Program 30: Computing Ranges</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
     <br>(Learning Objective: .)
     </p>
     <p>
 
-    </p>
+    Write a function that takes a DataFrame and the name of a column that returns the range of the data for that column.  Your function should have an optional keyword argument datetime = True to indicate that it's time series data (note it may be stored as a string format, so, you should cast if necessary).
+    If datetime = True, you should return the range in seconds.
+    If it's a string and the datetime is False (the default value), your function should return None.
 
-<p><a name="p31"><b>Program 31: .</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
+
+    </p>
+    <p><i>Hint:  dt.total_seconds() is useful.</i>
+
+<p><a name="p31"><b>Program 31: Sampling Distributions.</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
       <br>(Learning Objective: .)
       <p>
 
-        Taxi Models.
-        In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+      Introduce the df.sample() function and use to make samples of size n, compute mean, and then take the mean of k sample means.
+
+      Include link to UBC fish/non-normal distribution sampling.
+      Demo on large data set for several values of n, same number of k.
+      Use sns to plot multiple distributions at once, but have them just write the functions:  https://seaborn.pydata.org/tutorial/distributions.html#distribution-tutorial
+
 
 
       </p>
@@ -1356,16 +1432,26 @@ CS courses:
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p33"><b>Program 33: .</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
+<p><a name="p33"><b>Program 33: Confidence Intervals.</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
       <br>(Learning Objective: .)
       <p>
+
+      from stack overflow: look up documentation
+      import numpy as np, scipy.stats as st
+
+st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
+
+        Taxi Models.
+        In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+
+
       </p>
 
 <p><a name="p34"><b>Program 34: Multiple Locations.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
       <br>(Learning Objective: .)
       <p>
       </p>
-            Write a program that takes a DataFrame of businesses and returns
+            Write a program that takes a DataFrame of businesses and returns a DataFrame with for each business name in DBA ("Doing Business As") occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a string containing the location addresses separated by semi-colons (";")
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
@@ -1381,6 +1467,8 @@ CS courses:
       create your own Y = 0, 1 from a continuous Y variable (?)
       value_counts of Y
       cross tabulate against X1, X2, etc. -> visualize as table
+
+      https://seaborn.pydata.org/tutorial/regression.html
 
 <p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: .)</p>
