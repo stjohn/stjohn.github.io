@@ -957,7 +957,7 @@ Enter output file name:  taxi_Jan2020_with_percents.csv
       or displayed using the code from <a href="http://www.textbook.ds100.org/ch/16/prob_random_vars.html">Section 16.1.1.</a>:
       <p>
       <img src="dice_6_6.png" height=200>
-      </p>
+    </p>d
       <p>
       Note:  you should submit a file with only the standard comments at the top and the function.  The grading scripts will then import the file for testing.
       </p>
@@ -1344,15 +1344,55 @@ CS courses:
 
     </p>
 
-<!--
-<p><a name="p29"><b>Program 29: MLM's for Taxi Trips.</b></b> &emsp; <i>Due noon, Tuesday, 26 October.</i>
+
+<p><a name="p29"><b>Program 29: Predictions with MLM's.</b></b> &emsp; <i>Due noon, Tuesday, 26 October.</i>
     <br>(Learning Objective: .)
     <p>
-      Run the linear model with multiple parameters to build a better model of taxi tips.  Program should ask for input file and return as a file.  Give small sample file to test on.
-    </p>
+      Write a program that asks the user for the following inputs:
+      <ul>
+          <li> the name of a CSV file that will be loaded into a dataframe,
+          <li> the name of a column to be used as an independent variable in the multiple linear regression,
+          <li> the name of second column to be used as another independent variable in the multiple linear regression,
+          <li> the name of a column to be used as an dependent variable in the multiple linear regression (i.e. what is being predicted),
+          <li> a value for the first variable, and
+          <li> a value for the second variable.
+      </ul>
+      Your program should build a linear model based on the dataframe and two independent variables that will predict the value of the dependent variable. Your program should then predict the dependent variable, based on the two inputted independent variables.
 
-    Do a shaded lmplot for taxi data, or mpg data, and then a 3D one?
+      <p>Use the <code class=inline>LinearRegression()</code> from
+        <code class=inline>scikit-learn</code> to fit the model and predict the value.
+      For example, if you were working with the <code class=inline>mpg</code> dataset from <code class=inline>seaborn</code>:
 
+      <pre><code class="blockcode">from sklearn import linear_model
+regr = linear_model.LinearRegression()
+regr.fit(mpg[['horsepower','weight']], mpg['mpg'])
+</code></pre>
+      would fit the model to the independent variables horsepower and weight to predict the dependent variable mpg.
+
+      <p>To predict, using this model:
+      <pre><code class="blockcode">New_horsepower = 200
+New_year = 3500
+print (f'Predicted mpg: {regr.predict([[New_horsepower ,New_year,New_acc]])[0]}')
+</code></pre>
+
+      <p>
+      A sample run of your program would look like:
+      <pre><code class="blockcode">Enter name of CSV:  mpg.csv
+Enter name of first independent variable: displacement
+Enter name of second independent variable: acceleration
+Enter name of the dependent variable: mpg
+Enter value for first variable for prediction: 100
+Enter value for second variable for prediction: 12.0
+</code></pre>
+      which would output:
+      <pre><code class="blockcode">Predicted mpg:  29.400598924519038
+</code></pre>
+      Your output should contain the dependent variable name followed by a colon and the predicted value.
+
+      <p>Note: your program should ask separately ask for input 6 times, in the order listed above.  Changing the order or combining the inputs into fewer lines will cause the autograder to crash.
+
+
+<!--
 
 <p><a name="p30"><b>Program 30: Computing Ranges</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
     <br>(Learning Objective: .)
@@ -1363,6 +1403,7 @@ CS courses:
     If datetime = True, you should return the range in seconds.
     If it's a string and the datetime is False (the default value), your function should return None.
 
+<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">Pandas' datetime overview</a>
 
     </p>
     <p><i>Hint:  dt.total_seconds() is useful.</i>
@@ -1371,7 +1412,7 @@ CS courses:
       <br>(Learning Objective: .)
       <p>
 
-      Introduce the df.sample() function and use to make samples of size n, compute mean, and then take the mean of k sample means.
+      Introduce the df.sample() function (introduced in Lecture #13) and use to make samples of size n, compute mean, and then take the mean of k sample means.
 
       Include link to UBC fish/non-normal distribution sampling.
       Demo on large data set for several values of n, same number of k.
@@ -1389,8 +1430,8 @@ CS courses:
       Reinforce HR style function to take DF, split up column values, and summarize.
       Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
       Building on <href="#p24">Program 24</a>,
-    Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
-    <ol>
+      Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
+      <ol>
         <li> Includes only students taking 3 or more courses, and
         <li> Replaces the column of current courses with two different columns: the first that counts the number of computer science courses currently taking (all courses that start 'csci') and the second column with the number of other courses the student is taking.
       </ol>
@@ -1455,9 +1496,10 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p35"><b>Program 35: .</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
+<p><a name="p35"><b>Program 35: </b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
+
       </p>
 
       --------- Regression on Probabilities; The Logistic Model
@@ -1470,20 +1512,27 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
 
       https://seaborn.pydata.org/tutorial/regression.html
 
-<p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
+<p><a name="p36"><b>Program 36: Friday Attendance.</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
+      Do NYC public school students attend less on Fridays?  Use datetime features to tease out the data and make nice plot (color Fridays in red).  Compare multiple schools?  Look for correlations?
       </p>
 
-      # P36
-      same data as P35
-      plot (jittered) Y against each X
-      draw sigmoid?  or just conceptualize when this is different from linear
+      https://www.nycenet.edu/PublicApps/Attendance.aspx
+      https://www.schools.nyc.gov/about-us/reports/doe-data-at-a-glance
+      https://infohub.nyced.org/reports/school-quality/information-and-data-overview
+      https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j
 
 <p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
+
+
+      # P36
+      same data as P35
+      plot (jittered) Y against each X
+      draw sigmoid?  or just conceptualize when this is different from linear
 
       --------- A Loss Function for the Logistic Model; Using Logistic Regression
 
@@ -1517,8 +1566,15 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
       compute accuracy, precision, recall
       record CPU time and wall time
 
-<p><a name="p40"><b>Program 40: .</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
+<p><a name="p40"><b>Program 40: HR Challenge.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
       <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+
+
+  <p><a name="p41"><b>Program 41: Logit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
+      <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
       <p>
       </p>
 
@@ -1528,11 +1584,6 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
       fit stochastic gradient descent
       tune hyperparameters (are we doing different search methods?)
       compare results to P39.  which one would you choose?
-
-  <p><a name="p41"><b>Program 41: Logit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
-      <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
-      <p>
-      </p>
 
       --------- Evaluating Logistic Models; Multiclass Classification
 
@@ -1598,12 +1649,6 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
 
 
 
-
-
-
-
-
-
   <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
@@ -1617,7 +1662,6 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
   <p>
   </p>
-
 
 
 <p><a name="p46"><b>Program 46: HR challenge.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
