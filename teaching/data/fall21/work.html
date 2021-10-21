@@ -1371,10 +1371,12 @@ regr.fit(mpg[['horsepower','weight']], mpg['mpg'])
 
       <p>To predict, using this model:
       <pre><code class="blockcode">New_horsepower = 200
-New_year = 3500
-print (f'Predicted mpg: {regr.predict([[New_horsepower ,New_year,New_acc]])[0]}')
+New_weight = 3500
+print (f'Predicted mpg: {regr.predict([[New_horsepower,New_weight]])[0]}')
 </code></pre>
-
+      would print:
+      <pre><code class="blockcode">Predicted mpg: 15.900087446128559
+</code></pre>
       <p>
       A sample run of your program would look like:
       <pre><code class="blockcode">Enter name of CSV:  mpg.csv
