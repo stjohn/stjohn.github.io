@@ -1374,10 +1374,10 @@ regr.fit(mpg[['horsepower','weight']], mpg['mpg'])
       <p>To predict, using this model:
       <pre><code class="blockcode">New_horsepower = 200
 New_weight = 3500
-print (f'Predicted mpg: {regr.predict([[New_horsepower,New_weight]])[0]}')
+print (f'Predicted value: {regr.predict([[New_horsepower,New_weight]])[0]}')
 </code></pre>
       would print:
-      <pre><code class="blockcode">Predicted mpg: 15.900087446128559
+      <pre><code class="blockcode">Predicted value: 15.900087446128559
 </code></pre>
       <p>
       A sample run of your program would look like:
@@ -1396,26 +1396,81 @@ Enter value for second variable for prediction: 12.0
       <p>Note: your program should ask separately ask for input 6 times, in the order listed above.  Changing the order or combining the inputs into fewer lines will cause the autograder to crash.
 
 
-<!--
 
-<p><a name="p30"><b>Program 30: Computing Ranges</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
-    <br>(Learning Objective: .)
+
+<p><a name="p30"><b>Program 30: Computing Ranges.</b></b> &emsp; <i>Due noon, Thursday, 28 October.</i>
+    <br>(Learning Objective: to increase understanding and skills for manipulating numeric and date data.)
     </p>
     <p>
 
-    Write a function that takes a DataFrame and the name of a column that returns the range of the data for that column.  Your function should have an optional keyword argument datetime = True to indicate that it's time series data (note it may be stored as a string format, so, you should cast if necessary).
-    If datetime = True, you should return the range in seconds.
-    If it's a string and the datetime is False (the default value), your function should return None.
+    Write a function that computes the range of values a column takes (i.e. the difference
+    between the maximum and minimum values).  The column contains
+    numeric values, unless the flag <code class = "inline">datetime</code> is set to
+    <code class = "inline">True</code>.  If the datetime flag is true,
+    the input column contains strings representing datetime objects (
+    <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">overview of datetime in Pandas</a>
+) and the function should return the range in seconds.
 
-<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">Pandas' datetime overview</a>
 
-    </p>
-    <p><i>Hint:  dt.total_seconds() is useful.</i>
+
+
+      <ul>
+        <li> <code class = "inline">colRange(df, colName, datetime=False)</code>:
+          This function takes three inputs:
+          <ul>
+              <li> <code class = "inline">df</code>: a DataFrame that
+                  including the specified column.
+              <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
+              <li> <code class = "inline">datetime</code>: a Boolean variable that indicates if the column contains a datetime string.  The default value is False and that the column contains numeric values.  When set to True, the function inteprets the column values as datestring objects.
+          </ul>
+          The function computes the range of the values in the Series <code class = "inline">df[colName]</code> and returns a numeric answer.  If the <code class = "inline">datetime</code> flag is set, the total number of seconds between the minimum and maximum values is returned.
+        </ul>
+
+      <p>
+      For example, assuming your function <code class="inline">colRange()</code> was in the <code class="inline">p30.py</code>:
+      <pre><code class="blockcode">simpleDF = pd.DataFrame({'id': [1,2,3,4],\
+    'checkin': ["2019-03-23 20:21:09","2019-03-23 20:27:24",\
+                "2019-03-22 12:47:13","2019-03-22 12:58:17,1,0,1"],\
+    'total': [32.51,19.99,1.05,20.50]})
+print(f"Testing colRange(simpleDF,'id'): {p30.colRange(simpleDF,'id')}")
+print(f"Testing colRange(simpleDF,'checkin',datetime=True): {p30.colRange(simpleDF,'checkin',datetime=True)}")
+</code></pre>
+      Would give output:
+  <pre><code class="datablock">Testing colRange(simpleDF,'id'): 3
+Testing colRange(simpleDF,'checkin',datetime=True) 114011.0</code></pre>
+
+    <p> Using the function on the 10 lines of seaborn taxis dataset:
+  <pre><code class="blockcode">import seaborn as sns
+taxis = sns.load_dataset('tips').dropna().loc[:10]
+print(f"Testing colRange(taxis,'total'): {p30.colRange(taxis,'total')}")
+print(f"Testing colRange(taxis,'dropoff',datetime=True): {p30.colRange(taxis,'dropoff',datetime=True):}")
+</code></pre>
+    will print
+  <pre><code class="datablock">Testing colRange(taxis,'distance'): 7.21
+Testing colRange(taxis,'dropoff',datetime=True): 2236694.0
+</code></pre>
+      </p>
+
+      <p><i>Hint:  See
+        <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">Pandas' datetime overview</a>.
+A useful function is <code class="inline">dt.total_seconds()</code>
+        which returns the total seconds of a <code class="inline">datetime</code>
+        object.</i>
+
+
+<!--
 
 <p><a name="p31"><b>Program 31: Sampling Distributions.</b></b> &emsp; <i>Due noon, Friday, 29 October.</i>
-      <br>(Learning Objective: .)
+      <br>(Learning Objective: to refresh understanding of normal distributions and introduce sampling standard techniques in Python.)
       <p>
 
+      <p>
+      In Lecture #13, we introduced the <code class="inline">pd.sample()</code>
+      function for sampling rows of a DataFrame.
+
+      <p>
+      Write a function that takes the size <code class="inline">n</code> and the numbers
+      of <code class="inline">trials</code>, and generates samples of size <code class="inline">n</code> and computes...
       Introduce the df.sample() function (introduced in Lecture #13) and use to make samples of size n, compute mean, and then take the mean of k sample means.
 
       Include link to UBC fish/non-normal distribution sampling.
@@ -1426,11 +1481,23 @@ Enter value for second variable for prediction: 12.0
 
       </p>
 
-<p><a name="p32"><b>Program 32: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
-      <br>(Learning Objective: .)
+<p><a name="p32"><b>Program 32: Attendance.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
+      <br>(Learning Objective: to introduce simple feature engineering and reinforce datetime skills.)
       <p>
 
+      In Lecture #15, we introduced several ways to add features to datasets to aid
+      in the analysis.  For this program, we add a new column that indicates the days
+      of the week:  0 for Monday, 1 for Tuesday, ... 6 for Sunday.
 
+      <p>
+      Write a function that takes a DataFrame, and the name of two columns and returns
+      a correlation coefficient.  of strings representing datetime objects and
+      Add features for days of the week and report correlation between days of week and
+      attendance.
+
+
+      <p>
+      Compute Enrollments.
       Reinforce HR style function to take DF, split up column values, and summarize.
       Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
       Building on <href="#p24">Program 24</a>,
@@ -1480,6 +1547,8 @@ Enter value for second variable for prediction: 12.0
 <p><a name="p33"><b>Program 33: Confidence Intervals.</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
       <br>(Learning Objective: .)
       <p>
+
+      check lecture-- either 13 or 14 did confidence intervals.  focus on computing using build-in methods
 
       from stack overflow: look up documentation
       import numpy as np, scipy.stats as st
