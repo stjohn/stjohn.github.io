@@ -1486,47 +1486,36 @@ A useful function is <code class="inline">dt.total_seconds()</code>
           of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
           and generates <code class="inline">n</code>
           samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
-
-
-
-          The function computes the range of the values in the Series <code class = "inline">df[colName]</code> and returns a numeric answer.  If the <code class = "inline">datetime</code> flag is set, the total number of seconds between the minimum and maximum values is returned.
         </ul>
 
-        <p>
-        Give example with very skewed distribution
-        Put up pretty picture with the original histogram, and the samples
-        <p>
-        Demo on large data set for several values of n, same number of k.
-        Use sns to plot multiple distributions at once, but have them just write the functions:  https://seaborn.pydata.org/tutorial/distributions.html#distribution-tutorial
-        </p>
-
       <p>
-      For example, assuming your function <code class="inline">colRange()</code> was in the <code class="inline">p30.py</code>:
-      <pre><code class="blockcode">simpleDF = pd.DataFrame({'id': [1,2,3,4],\
-    'checkin': ["2019-03-23 20:21:09","2019-03-23 20:27:24",\
-                "2019-03-22 12:47:13","2019-03-22 12:58:17,1,0,1"],\
-    'total': [32.51,19.99,1.05,20.50]})
-print(f"Testing colRange(simpleDF,'id'): {p30.colRange(simpleDF,'id')}")
-print(f"Testing colRange(simpleDF,'checkin',datetime=True): {p30.colRange(simpleDF,'checkin',datetime=True)}")
+      For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
+      <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
+ed = [np.random.exponential() for i in range(1000)]
+df = pd.DataFrame({ "nd" : nd, "ed" : ed})
+print(p31.sampleMeans(df, 'ed', k = 5, n=5))
+print(p31.sampleMeans(df, 'ed', k = 5, n=5))
 </code></pre>
-      Would give output:
-  <pre><code class="datablock">Testing colRange(simpleDF,'id'): 3
-Testing colRange(simpleDF,'checkin',datetime=True): 114011.0</code></pre>
-
-    <p> Using the function on the 10 lines of seaborn taxis dataset:
-  <pre><code class="blockcode">import seaborn as sns
-taxis = sns.load_dataset('tips').dropna().loc[:10]
-print(f"Testing colRange(taxis,'total'): {p30.colRange(taxis,'total')}")
-print(f"Testing colRange(taxis,'dropoff',datetime=True): {p30.colRange(taxis,'dropoff',datetime=True):}")
+      would print in a sample run
+<pre><code class="datablock">
+[0.51195248 0.7424049  0.89777461 1.36862745 1.51734957]
+[0.92030482 0.55543257 1.14711133 0.99441556 1.19069015]
 </code></pre>
-    will print
-  <pre><code class="datablock">Testing colRange(taxis,'distance'): 7.21
-Testing colRange(taxis,'dropoff',datetime=True): 2236694.0
+      Continuing the example:
+      <pre><code class="datablock">k_10 = p31.sampleMeans(df, 'ed', k = 10)
+k_20 = p31.sampleMeans(df, 'ed', k = 20)
+k_30 = p31.sampleMeans(df, 'ed', k = 30)
+sns.histplot([ed,k_10,k_20,k_30],element="poly")
+plt.title('Means of 1000 samples of an exponential distribution')
+plt.show()
 </code></pre>
-      </p>
+      would display:
+      <p>
+      <img src="sample_means.png" height=300>
 
       <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
+<!--
 
 <p><a name="p32"><b>Program 32: Attendance.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
       <br>(Learning Objective: to introduce simple feature engineering and reinforce datetime skills.)
@@ -1611,6 +1600,8 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
       create your own Y = 0, 1 from a continuous Y variable (?)
       value_counts of Y
       cross tabulate against X1, X2, etc. -> visualize as table
+
+      For data set:  use parking tickets and plates pas versus commercial?
 
       https://seaborn.pydata.org/tutorial/regression.html
 
