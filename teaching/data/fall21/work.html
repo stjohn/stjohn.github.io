@@ -1213,7 +1213,7 @@ print(weekdays.iloc[0:10])
 
     <i>Hints:
         <ul>
-          <li> When read in from the CSV, the columns may be stored as a string.  Cast as <code class = "inline">datetime</code> (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+          <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
           <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
           See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
         </ul>
@@ -1493,16 +1493,15 @@ A useful function is <code class="inline">dt.total_seconds()</code>
       <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
 ed = [np.random.exponential() for i in range(1000)]
 df = pd.DataFrame({ "nd" : nd, "ed" : ed})
-print(p31.sampleMeans(df, 'ed', k = 5, n=5))
-print(p31.sampleMeans(df, 'ed', k = 5, n=5))
+print(p31.sampleMeans(df, 'nd', k = 5, n=5))
+print(p31.sampleMeans(df, 'nd', k = 10, n=5))
 </code></pre>
       would print in a sample run
-<pre><code class="datablock">
-[0.51195248 0.7424049  0.89777461 1.36862745 1.51734957]
-[0.92030482 0.55543257 1.14711133 0.99441556 1.19069015]
+<pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
+[ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
 </code></pre>
       Continuing the example:
-      <pre><code class="datablock">k_10 = p31.sampleMeans(df, 'ed', k = 10)
+      <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
 k_20 = p31.sampleMeans(df, 'ed', k = 20)
 k_30 = p31.sampleMeans(df, 'ed', k = 30)
 sns.histplot([ed,k_10,k_20,k_30],element="poly")
@@ -1515,52 +1514,59 @@ plt.show()
 
       <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
 
 <p><a name="p32"><b>Program 32: Attendance.</b></b> &emsp; <i>Due noon, Monday, 1 November.</i>
       <br>(Learning Objective: to introduce simple feature engineering and reinforce datetime skills.)
       <p>
+      In Lectures #14 and #15, we discussed the hypothesis that NYC public schools have lower attendance on Fridays.  For this program, write a function that takes a DataFrame of school attendance records (following the format from <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j">NYC OpenData</a>) and returns the correlation coefficent between the day of the week and daily attendance (computed as a percentage of students present of those enrolled at the school).
+      </p>
 
-      In Lectures #14 and #15, we asked do NYC public students attend less on Fridays?  For this program, write a function that takes a DataFrame of school attendance records (following the format from <a href="https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j
-">NYC OpenData</a>) and returns the correlation coefficent between the day of the week and attendance.
+      <ul>
+          <li> <code class = "inline">attendCorr(df)</code>:
+              <ul>
+                <li> This function takes a DataFrame <code class = "inline">df</code>, with columns <code class = "inline">School DBN</code>,
+                  <code class = "inline">Date</code>,
+                  <code class = "inline">Enrolled</code>,
+                  <code class = "inline">Absent</code>, and
+                  <code class = "inline">Present</code>.
+                <li> The function computes the attendance as a percentage of students present over students enrolled, and calculates the day of the week for each date.  The function returns the correlation coefficient of the two.
+          </ul>
+        </ul>
+        <p>
+        For example, assuming your function <code class="inline">attendCorr()</code> was in the <code class="inline">p32.py</code>:
+        <pre><code class="blockcode">df = pd.read_csv('dailyAttendanceManHunt2018.csv')
+print(p32.attendCorr(df))
+</code></pre>
+        would print <code class="inline">-0.014420727967150241</code> for the <a href="dailyAttendanceManHunt2018.csv">sample data set</a> for Manhattan Hunter High School (see lecture notes for obtaining additional datasets).
+        A plot of the data is:
 
+          <p>
+          <img src="attend_manhunt.png" height=300>
 
- Use datetime features to tease out the data and make nice plot (color Fridays in red).  Compare multiple schools?  Look for correlations?
-        </p>
+          <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-        https://www.nycenet.edu/PublicApps/Attendance.aspx
-        https://www.schools.nyc.gov/about-us/reports/doe-data-at-a-glance
-        https://infohub.nyced.org/reports/school-quality/information-and-data-overview
-        https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j
 
       <p>
-      </i>
-      Hints:
-
-
-      </i>
-      <p>
-      Write a function that takes a DataFrame, and the name of two columns and returns
-      a correlation coefficient.  of strings representing datetime objects and
-      Add features for days of the week and report correlation between days of week and
-      attendance.
-
-
       <i>Hints:
           <ul>
-            <li> When read in from the CSV, the columns may be stored as a string.  Cast as <code class = "inline">datetime</code> (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+            <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime()</code>), to use the functionality.  You may need to specify the format, since the DOE stored dates as <code class = "inline">YYYYMMDD</code> (see <a href="https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html">Panda Docs</a>).
             <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
             See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
             <li> In Lecture #15, we introduced several ways to add features to datasets to aid in the analysis.  For this program, add a new column that indicates the days of the week:  0 for Monday, 1 for Tuesday, ... 6 for Sunday (a useful function for this is: <code class = "inline">dt.dayofweek</code>)).
           </ul>
       </i>
 
-
+      <!--
+              https://www.nycenet.edu/PublicApps/Attendance.aspx
+              https://www.schools.nyc.gov/about-us/reports/doe-data-at-a-glance
+              https://infohub.nyced.org/reports/school-quality/information-and-data-overview
+              https://data.cityofnewyork.us/Education/2018-2019-Daily-Attendance/x3bb-kg5j
+      -->
       </p>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-
+<!--
 <p><a name="p33"><b>Program 33: Confidence Intervals.</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
       <br>(Learning Objective: .)
       <p>
@@ -1584,6 +1590,8 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
             Write a program that takes a DataFrame of businesses and returns a DataFrame with for each business name in DBA ("Doing Business As") occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a string containing the location addresses separated by semi-colons (";")
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<!--
 
 <p><a name="p35"><b>Program 35: Categorical Features.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
       <br>(Learning Objective: .)</p>
