@@ -1480,9 +1480,10 @@ A useful function is <code class="inline">dt.total_seconds()</code>
             <li> <code class = "inline">df</code>: a DataFrame that
                   including the specified column.
             <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
-            <li> <code class = "inline">datetime</code>: a Boolean variable that indicates if the column contains a datetime string.  The default value is False and that the column contains numeric values.  When set to True, the function inteprets the column values as datestring objects.
+            <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
+            <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
         </ul>
-        takes the sample size <code class="inline">k</code> and the numbers of samples,
+        <li> It takes the sample size <code class="inline">k</code> and the numbers of samples,
           of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
           and generates <code class="inline">n</code>
           samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
@@ -1567,6 +1568,7 @@ print(p32.attendCorr(df))
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <!--
+
 <p><a name="p33"><b>Program 33: Confidence Intervals.</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
       <br>(Learning Objective: .)
       <p>
@@ -1591,7 +1593,7 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
+
 
 <p><a name="p35"><b>Program 35: Categorical Features.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
       <br>(Learning Objective: .)</p>
@@ -1601,21 +1603,27 @@ st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
         </p>
       </p>
 
-      --------- Regression on Probabilities; The Logistic Model
 
-      # P35
-      import data
-      create your own Y = 0, 1 from a continuous Y variable (?)
-      value_counts of Y
-      cross tabulate against X1, X2, etc. -> visualize as table
 
-      For data set:  use parking tickets and plates pas versus commercial?
+Program 32: Attendance
 
-      https://seaborn.pydata.org/tutorial/regression.html
 
 <p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
+
+        --------- Regression on Probabilities; The Logistic Model
+
+        # P35
+        import data
+        create your own Y = 0, 1 from a continuous Y variable (?)
+        value_counts of Y
+        cross tabulate against X1, X2, etc. -> visualize as table
+
+        For data set:  use parking tickets and plates pas versus commercial?
+
+        https://seaborn.pydata.org/tutorial/regression.html
+
 
 
 <p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
