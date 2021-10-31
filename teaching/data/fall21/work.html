@@ -1456,6 +1456,8 @@ Testing colRange(taxis,'dropoff',datetime=True): 2236694.0
 </code></pre>
       </p>
 
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
       <p><i>Hint:  See
         <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">Pandas' datetime overview</a>.
 A useful function is <code class="inline">dt.total_seconds()</code>
@@ -1483,7 +1485,7 @@ A useful function is <code class="inline">dt.total_seconds()</code>
             <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
             <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
         </ul>
-        <li> It takes the sample size <code class="inline">k</code> and the numbers of samples,
+        It takes the sample size <code class="inline">k</code> and the numbers of samples,
           of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
           and generates <code class="inline">n</code>
           samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
@@ -1565,72 +1567,323 @@ print(p32.attendCorr(df))
       -->
       </p>
 
-  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
 
 <p><a name="p33"><b>Program 33: Confidence Intervals.</b></b> &emsp; <i>Due noon, Tuesday, 2 November.</i>
-      <br>(Learning Objective: .)
+      <br>(Learning Objective: to reinforce concepts from prerequisite statistics course and build corresponding facility in Python.)
       <p>
 
-      check lecture-- either 13 or 14 did confidence intervals.  focus on computing using build-in methods
+      In Lecture #13, we discussed the <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">UBC confidence interval demo</a>, where a normal distribution (of length of fish) was repeated sampled.  For each sample, the confidence interval of the sample mean was computed and stored.  And, for each sample, it was checked if the true mean of the distribution was contained in the confidence interval of the sample mean:
 
-      from stack overflow: look up documentation
-      import numpy as np, scipy.stats as st
+      <p>
+      <iframe src="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm" style="width: 50%; height: 500px" name="internal"></iframe>
 
-st.t.interval(0.95, len(a)-1, loc=np.mean(a), scale=st.sem(a))
+      <p>
+      For this program, echo the UBC confidence interval demo.  Write a function
+      that computes the confidence intervals and tabulates the running successes of the confidence interval of the sample mean capturing the true mean of the population:
+          <ul>
+            <li> <code class = "inline">ciRuns(alpha = 0.95, mu = 0, sigma = 1, size = 10, trials = 100)</code>:
+              <ul>
+              <li>This function takes five inputs:
+              <ul>
+                  <li> <code class = "inline">alpha</code>: the fraction of the distribution contained in the interval (as in <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html">t.interval()</a>).  It has a default value of 95.
+                  <li> <code class = "inline">mu</code>: the mean of the normal distribution sampled.  It has a default value of 0.
+                  <li> <code class = "inline">sigma</code>: the standard deviation of the normal distribution sampled.  It has a default value of 1.
+                  <li> <code class = "inline">size</code>: the size of the samples.  It has a default value of 10.
+                  <li> <code class = "inline">trials</code>: the number of samples.  It has a default value of 100.
+              </ul>
+              <li> This function returns:
+                <ul>
+                    <li> A list of intervals, stored as tuples of their lower and upper values (of length <code class = "inline">trials</code>), and
+                    <li> A list of length <code class = "inline">trials</code> containing the percentage of successful predictions after each trial.  That is, the ith entry has the percent of the first i trials for which the true mean (<code class = "inline">trials</code>) is in the confidence interval computed for the sample.
+                </ul>
+              </ul>
+              </ul>
 
-        Taxi Models.
-        In classwork, work through sklearn linear_model & linear regression.  In this program, apply to restaurant tip data.
+      <p>
+      For example, assuming your function <code class="inline">ciRuns()</code> was in the <code class="inline">p33.py</code>, then a possible run is:
+      <pre><code class="blockcode">intervals, successes = p33.ciRuns(trials = 20)
+print(f"intervals: {intervals}")
+print(f"successes: {successes}")
+      </code></pre>
+            would print in a sample run
+      <pre><code class="datablock">intervals: [(0.0843959275632028, 1.3323778628928307), (-0.146668094360358, 1.5546642787617675), (-1.029505009635772, 0.5272177024225991), (-0.5702633299624739, 0.5144718024588405), (-0.3979475729570697, 1.1005279531825056), (-0.9894141075519297, 0.8070447535623141), (-1.0433450932702595, 0.7059405804735273), (-0.8902508132395719, 0.3772852944801963), (-1.1068858052695578, 0.0816760750250739), (-0.3661920360152307, 1.003198126280235)]
+successes: [0.0, 50.0, 66.66666666666667, 75.0, 80.0, 83.33333333333333, 85.71428571428571, 87.5, 88.88888888888889, 90.0]</code></pre>
+      Since the first inteval doesn't contain the mean <code class = "inline">mu = 0</code>, the first entry in successes is 0.  The next interval does contain the mean, so half or 50 percent of the first two runs have been successful.  Similarly, for each of the remaining runs, the running total of percent successful continues to increase until it reaches 90 percent.  Since we are generating the samples randomly, these numbers will change from run to run, and as we increase the number of trials, the percentage success will converge to <code class = "inline">alpha = 95</code>.
+
+      <p>
+      Another possible run, where we plot the values to see the results better:
+        <pre><code class="blockcode">import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+intervals, successes = p33.ciRuns(mu=500, sigma=100, alpha = .90, trials = 1000)
+xes = np.linspace(1,1000,1000)
+yes = 90*np.ones(1000)
+plt.scatter(xes,successes)
+plt.plot(xes,yes,color='red')
+plt.title('alpha=90, mu = 500, sigma=100, & trials=1000')
+plt.show()</code></pre>
 
 
-      </p>
+            would display:
+            <p>
+            <img src="ciRun_alpha_90.png" height=300>
 
-<p><a name="p34"><b>Program 34: Multiple Locations.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+    <p>
+      <i>Hints:
+        <ul>
+          <li> To generate confidence intervals, you can do by hand (see <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">UBC confidence interval demo</a>) or use the functions from scipy.stats:
+          <pre><code class="blockcode">interval = st.t.interval(alpha,len(sampData)-1, loc=np.mean(sampData),scale=st.sem(sampData))</code></pre>
+          where <code class="inline">alpha</code> is as above, and <code class="inline">sampData</code> is your sample.
+          <li> To generate random samples from a normal distribution, we have been using <code class="inline">np.random.normal</code> (see <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html">numpy documentation</a>), but
+          you can other packages, such as <code class="inline">sklearn</code> if you prefer.
+        </ul>
+      </i>
+<!--
+
+<p><a name="p34"><b>Program 34: Polynomial Features.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
       <br>(Learning Objective: .)
 
-            Write a program that takes a DataFrame of businesses and returns a DataFrame with for each business name in DBA ("Doing Business As") occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a string containing the location addresses separated by semi-colons (";")
+      <p>Following the code demostration in Lecture 16, write a function that
+      takes values of an independent variable and corresponding values of a dependent varaible, and fits polynomial regression models of increasing degree until the MSE falls below error.
 
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+      <p>Put in standard formatting for a function:
+          fitPoly(xes,yes,epsilon=0.01)
+
+          explain input parameters
+
+          should output degree of Polynomial
+
+        Testing:  run on perfect data for linear
+          run on ice cream data set from class
+
+        <p>Write a function that takes values of an independent variable (stored as an iterable of numeric values xes) and values of a dependent varaible (stored as an iterable of numeric values yes), and fits polynomial regression models of increasing degree until the MSE falls below error (default values of 0.01).
 
 
+              <ul>
+                <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
+                  This function takes four inputs:
+                  <ul>
+                      <li> <code class = "inline">df</code>: a DataFrame that
+                            including the specified column.
+                      <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
+                      <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
+                      <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
+                  </ul>
+                  It takes the sample size <code class="inline">k</code> and the numbers of samples,
+                    of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
+                    and generates <code class="inline">n</code>
+                    samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
+                  </ul>
 
-<p><a name="p35"><b>Program 35: Categorical Features.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
+                <p>
+                For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
+                <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
+          ed = [np.random.exponential() for i in range(1000)]
+          df = pd.DataFrame({ "nd" : nd, "ed" : ed})
+          print(p31.sampleMeans(df, 'nd', k = 5, n=5))
+          print(p31.sampleMeans(df, 'nd', k = 10, n=5))
+          </code></pre>
+                would print in a sample run
+          <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
+          [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
+          </code></pre>
+                Continuing the example:
+                <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
+          k_20 = p31.sampleMeans(df, 'ed', k = 20)
+          k_30 = p31.sampleMeans(df, 'ed', k = 30)
+          sns.histplot([ed,k_10,k_20,k_30],element="poly")
+          plt.title('Means of 1000 samples of an exponential distribution')
+          plt.show()
+          </code></pre>
+                would display:
+                <p>
+                <img src="sample_means.png" height=300>
+
+
+      Demo with values from the book chapter.  Link in book chapter.
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+<p><a name="p35"><b>Program 35: Borough Potholes.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
         <p>
-        Put up a one-hot encoding question-- echo lecture #15
+        Put up a one-hot encoding question-- echo lecture #17-- can use DictVectorizer() or dummies()-- which every you prefer.
+
+        https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
         </p>
       </p>
 
+          <ul>
+            <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
+              This function takes four inputs:
+              <ul>
+                  <li> <code class = "inline">df</code>: a DataFrame that
+                        including the specified column.
+                  <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
+                  <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
+                  <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
+              </ul>
+              It takes the sample size <code class="inline">k</code> and the numbers of samples,
+                of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
+                and generates <code class="inline">n</code>
+                samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
+              </ul>
+
+            <p>
+            For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
+            <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
+      ed = [np.random.exponential() for i in range(1000)]
+      df = pd.DataFrame({ "nd" : nd, "ed" : ed})
+      print(p31.sampleMeans(df, 'nd', k = 5, n=5))
+      print(p31.sampleMeans(df, 'nd', k = 10, n=5))
+      </code></pre>
+            would print in a sample run
+      <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
+      [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
+      </code></pre>
+            Continuing the example:
+            <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
+      k_20 = p31.sampleMeans(df, 'ed', k = 20)
+      k_30 = p31.sampleMeans(df, 'ed', k = 30)
+      sns.histplot([ed,k_10,k_20,k_30],element="poly")
+      plt.title('Means of 1000 samples of an exponential distribution')
+      plt.show()
+      </code></pre>
+            would display:
+            <p>
+            <img src="sample_means.png" height=300>
 
 
-Program 32: Attendance
+
+  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-<p><a name="p36"><b>Program 36: .</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
+<p><a name="p36"><b>Program 36: Multiple Locations.</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
 
-        --------- Regression on Probabilities; The Logistic Model
 
-        # P35
-        import data
-        create your own Y = 0, 1 from a continuous Y variable (?)
-        value_counts of Y
-        cross tabulate against X1, X2, etc. -> visualize as table
+        <p>Write a program that takes a DataFrame of businesses and returns a DataFrame with for each business name in DBA ("Doing Business As") occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a list containing the location addresses.
 
-        For data set:  use parking tickets and plates pas versus commercial?
-
-        https://seaborn.pydata.org/tutorial/regression.html
+https://data.cityofnewyork.us/Transportation/Open-Restaurant-Applications/pitm-atqc
 
 
+          Open Restaurant Applications is a dataset of applications from food service establishments seeking authorization to re-open under Phase Two of the State’s New York Forward Plan, and place outdoor seating in front of their business on the sidewalk and/or roadway.
 
-<p><a name="p37"><b>Program 37: .</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
+          For more information please visit NYC DOT Open Restaurants website: nyc.gov/openrestaurants
+
+          For the most up to date Open Restaurant updates, please visit: https://bit.ly/2Z00kn8
+
+        Give an example of multiple locations of coffee shops in Manhattan:
+
+        http://www.textbook.ds100.org/ch/06/pandas_aggregating.html
+
+        Idea is to use the aggregate functions:
+
+        grouped = df.groupby('A')
+
+        df = grouped.agg(lambda x: tuple(x))
+
+
+            <ul>
+              <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
+                This function takes four inputs:
+                <ul>
+                    <li> <code class = "inline">df</code>: a DataFrame that
+                          including the specified column.
+                    <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
+                    <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
+                    <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
+                </ul>
+                It takes the sample size <code class="inline">k</code> and the numbers of samples,
+                  of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
+                  and generates <code class="inline">n</code>
+                  samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
+                </ul>
+
+              <p>
+              For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
+              <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
+        ed = [np.random.exponential() for i in range(1000)]
+        df = pd.DataFrame({ "nd" : nd, "ed" : ed})
+        print(p31.sampleMeans(df, 'nd', k = 5, n=5))
+        print(p31.sampleMeans(df, 'nd', k = 10, n=5))
+        </code></pre>
+              would print in a sample run
+        <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
+        [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
+        </code></pre>
+              Continuing the example:
+              <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
+        k_20 = p31.sampleMeans(df, 'ed', k = 20)
+        k_30 = p31.sampleMeans(df, 'ed', k = 30)
+        sns.histplot([ed,k_10,k_20,k_30],element="poly")
+        plt.title('Means of 1000 samples of an exponential distribution')
+        plt.show()
+        </code></pre>
+              would display:
+              <p>
+              <img src="sample_means.png" height=300>
+
+    Multiple locations-- how many unique locations does each restaurant have?  Dataset has some genuine multiple locations, but also has many of the same location entered multiple times.
+
+        https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.aggregate.html
+        df.groupby("A").agg(
+        ...     b_min=pd.NamedAgg(column="B", aggfunc="min"),
+        ...     c_sum=pd.NamedAgg(column="C", aggfunc="sum"))
+           b_min     c_sum
+        A
+        1      1  0.590715
+        2      3  0.704907
+
+
+More detailed explanation:
+https://www.shanelynn.ie/summarising-aggregation-and-grouping-data-in-python-pandas/
+
+        <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+
+<p><a name="p37"><b>Program 37: Free Throws.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
 
+      Work through the lebron example from textbook (and lecture)
+
+      Make general enough so can run a demo with simulated data:
+      import data
+      create your own Y = 0, 1 from a continuous Y variable (?)
+      value_counts of Y
+      cross tabulate against X1, X2, etc. -> visualize as table
+
+      --------- Regression on Probabilities; The Logistic Model
+
+
+<p><a name="p38"><b>Program 38: Parking Tickets.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+
+Train the model:
+
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+Predict parking tickets by the number given if plates are passenger vs. commercial
+
+      For data set:  use parking tickets and plates pas versus commercial?
+
+      Success is commercial, count number of tickets per plate number
+
+      https://seaborn.pydata.org/tutorial/regression.html
+
+      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
       # P36
       same data as P35
@@ -1645,10 +1898,9 @@ Program 32: Attendance
       Y ~ X1
       compare accuracy of this against accuracy of always predicting 0 or 1
 
-<p><a name="p38"><b>Program 38: .</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
-      <br>(Learning Objective: .)</p>
-      <p>
-      </p>
+
+
+      Maybe something with potholes-- is there an indicator of success?  use number of days open as the independent variable?
 
       # P38
       using same data as P37, do train/test split (with seeding)
@@ -1656,7 +1908,7 @@ Program 32: Attendance
       compare accuracy of this against bsaeline of always predicting 0 or 1
       compare accuracy of test vs train
 
-  <p><a name="p39"><b>Program 39: .</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
+  <p><a name="p39"><b>Program 39: Potholes, Redux.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
@@ -1669,13 +1921,13 @@ Program 32: Attendance
       compute accuracy, precision, recall
       record CPU time and wall time
 
-<p><a name="p40"><b>Program 40: HR Challenge.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
+<p><a name="p40"><b>Program 40: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
       Do this one after doing one-hot encoding in Python
       <p>
-      Compute Enrollments.
+
       Reinforce HR style function to take DF, split up column values, and summarize.
       Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
       Building on <href="#p24">Program 24</a>,
@@ -1738,9 +1990,10 @@ Program 32: Attendance
       then use sklearn built in functions to calculate confusion matrix
       also use sklearn built in functions to calculate and then plot AUC
 
+      <p>explicitly use sklearn.model_selection.train_test_split() in function or example
 
 
-    <p><a name="p42"><b>Program 42: .</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
+    <p><a name="p42"><b>Program 42: Multilabel Classifer.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
       <br>(Learning Objective: to create a multilabel classifer using sklearn.)</p>
       <p>
       </p>
@@ -1750,6 +2003,7 @@ Program 32: Attendance
       use sklearn built in functions to calculate confusion matrix and AUC
       but then ... write your OWN function to output the exact same confusion matrix & AUC (too much?)
 
+      <p>explicitly use sklearn.model_selection.train_test_split() in function or example
 
 
 <p><a name="p43"><b>Program 43: Component Retention.</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
@@ -1834,32 +2088,15 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
   <p>
   </p>
 
-<p><a name="p50"><b>Program 50: .</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
+<p><a name="p50"><b>Program 50: A/B Testing.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
   <br>(Learning Objective: .)</p>
   <p>
+
+    A/B Testing-- do as part of quizzes when we do Bayes Theorem
   </p>
 -->
 
 <!--
-
-
-
-
-
-
-P5:
-
-<p>Ideas:
-<pre>
-
-Wait on the background for the Obama v. Romney, and instead have a several data cleaning example just using string methods.  One that needs to check for empty entries.  Another that combines multiple columns into a new one.  maybe the 311 or NYPD data (since often missing GIS coordinates).
-
-To lead into lecture #3:  sample vs. census of a large data set-- book uses Obama vs. Romney.  Add in a question about cluster and stratified sampling?  Wait until random packages discussed?  Or just use the basic Python one?
-
-Need several questions on correlation-- maybe set 3 or 4?
-From Lehman's DS course:  HW5:  Are collisions correlated with temperature?
-
-A/B Testing-- do as part of quizzes when we do Bayes Theorem
 
 #6: Modify the Naive Bayes spam filter program to reads in the three files generated above as well as a fourth file of test data (use another year's data such as yob2010.txt). Instead of multiplying together word occurrences, your program should multiply use the last letter, second-to-last letter, and third-to-last letter that you computed above. Your program should classify each name in the test data (similar to the Naive Bayes filter from the book) and report back the percentage of names your correctly predicted as well as the names you predicted incorrectly.
 Submit your Python program as a .py file.
@@ -1876,15 +2113,10 @@ Using the New York City data for district test scores, shade your map above by p
 
 When do mapping, something with litter baskets:  https://data.cityofnewyork.us/dataset/DSNY-Litter-Basket-Map-/d6m8-cwh9
 
-Need some programs on displaying, time-series data, something like the standard stocks example.  Here's bokeh: https://docs.bokeh.org/en/0.10.0/docs/gallery/stocks.html
-Find on altair
 
 HW 12:  The file landmarkDistances.txt contains a distance matrix for 10 landmarks in New York City. The file landmarks.txt contains the names of 9 of the landmarks. The last name is "mystery". Use multidimensional scaling to display all 10 points on the screen with landmarks labeled. Using your displayed information, identify the last mystery landmark.
 (Based on the inspired homework from dasGupta's machine learning course at UCSD.)
 
-
-HW 12:  Using the 311 Pothole data (described above), use logistic regression analysis of time versus status: "Closed" versus "Open" (any non-"Closed" values of the status include in the "Open" category) to create a model that predicts if a pothole has been repaired, given the date reported.
-You may want to use the textbook's code (described above)-- if you do, modify to take only 1 input parameter (instead of the 2 it currently takes). This is a very small change (just change the starting beta_0 to match the dimension of the data and be [1,1].)
 
 HW 12:  Modeling question-- not sure when to integrate into topics:
 Given the data:
@@ -1902,20 +2134,7 @@ Note: The book's code assumes that 3 dimensional data while we have only 2 dimen
 
 Submit a screenshot of a graph with the true points, your predicted curve (i.e. the logistic function with your computed beta_hat, and the f and g functions above. Include a legend or labels for your curves.
 
-<p><i>Extras:</i>  These problems are not submitted or graded, but are suggestions for those who would like more Python experience or more practice on the concepts of the section.  These problems also have possible tools for the course project and practice for quizzes and the final exam.
 
-<ul>
-  <li>List Comprehensions:</li>
-  <li>Functions & Pandas: Using apply(), manipulating DataFrames  </li>
-  <li>Matplotlib Basics:</li>
-  <li>Seaborn:</li>
-  <li>String Methods:</li>
-  <li>Loss Functions:</li>
-  <li>Lambda Functions:</li>
-  <li>Unpacking Argument Lists & Keywords:</li>
-</ul>
-
-Include in each data set a prediction question (building on tools known at the time)-- focus on NYC data, leading up to more open-ended (aka Kaggle-style) one in November/December
 
 -->
 <br><br>
