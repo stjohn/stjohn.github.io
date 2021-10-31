@@ -1503,6 +1503,8 @@ print(p31.sampleMeans(df, 'nd', k = 10, n=5))
 <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
 [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
 </code></pre>
+
+<p>
       Continuing the example:
       <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
 k_20 = p31.sampleMeans(df, 'ed', k = 20)
@@ -1642,86 +1644,82 @@ plt.show()</code></pre>
           you can other packages, such as <code class="inline">sklearn</code> if you prefer.
         </ul>
       </i>
-<!--
 
 <p><a name="p34"><b>Program 34: Polynomial Features.</b></b> &emsp; <i>Due noon, Thursday, 4 November.</i>
-      <br>(Learning Objective: .)
+      <br>(Learning Objective: to strenghten understanding of regression models and employ thresholds to decide model fitness.)
 
-      <p>Following the code demostration in Lecture 16, write a function that
-      takes values of an independent variable and corresponding values of a dependent varaible, and fits polynomial regression models of increasing degree until the MSE falls below error.
+      <p>Following the textbook code demostration in Lecture 16, write a function that takes values of an independent variable and corresponding values of a dependent varaible, and fits polynomial regression models of increasing degree until the MSE falls below error.
 
-      <p>Put in standard formatting for a function:
-          fitPoly(xes,yes,epsilon=0.01)
-
-          explain input parameters
-
-          should output degree of Polynomial
-
-        Testing:  run on perfect data for linear
-          run on ice cream data set from class
-
-        <p>Write a function that takes values of an independent variable (stored as an iterable of numeric values xes) and values of a dependent varaible (stored as an iterable of numeric values yes), and fits polynomial regression models of increasing degree until the MSE falls below error (default values of 0.01).
-
-
-              <ul>
-                <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
-                  This function takes four inputs:
-                  <ul>
-                      <li> <code class = "inline">df</code>: a DataFrame that
-                            including the specified column.
-                      <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
-                      <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
-                      <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
-                  </ul>
-                  It takes the sample size <code class="inline">k</code> and the numbers of samples,
-                    of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
-                    and generates <code class="inline">n</code>
-                    samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
-                  </ul>
-
-                <p>
-                For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
-                <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
-          ed = [np.random.exponential() for i in range(1000)]
-          df = pd.DataFrame({ "nd" : nd, "ed" : ed})
-          print(p31.sampleMeans(df, 'nd', k = 5, n=5))
-          print(p31.sampleMeans(df, 'nd', k = 10, n=5))
-          </code></pre>
-                would print in a sample run
-          <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
-          [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
-          </code></pre>
-                Continuing the example:
-                <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
-          k_20 = p31.sampleMeans(df, 'ed', k = 20)
-          k_30 = p31.sampleMeans(df, 'ed', k = 30)
-          sns.histplot([ed,k_10,k_20,k_30],element="poly")
-          plt.title('Means of 1000 samples of an exponential distribution')
-          plt.show()
-          </code></pre>
-                would display:
-                <p>
-                <img src="sample_means.png" height=300>
+      <ul>
+        <li> <code class = "inline">fitPoly(xes,yes,epsilon=0.01)</code>:
+          This function takes three inputs:
+            <ul>
+              <li> <code class = "inline">xes</code>: a DataFrame that
+                              including the specified column.
+              <li> <code class = "inline">yes</code>: a column name of the specified DataFrame,
+              <li> <code class = "inline">epsilon</code>: the size of the sample.  It has a default value of 0.01.
+            </ul>
+          It returns the smallest intger degree >= 1 for which the model yields a MSE of < the specified epsilon.
+      </ul>
 
 
-      Demo with values from the book chapter.  Link in book chapter.
-
-  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/20/icecream.csv
 
 
+      <p>For example, assuming your function <code class="inline">fitPoly()</code> was in the <code class="inline">p34.py</code> and the code is the <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/20/icecream.csv">ice cream ratings example</a> from <a href="http://www.textbook.ds100.org/ch/20/feature_polynomial.html">Chapter 20</a>,
+      <pre><code class="blockcode">df = pd.read_csv('icecream.csv')
+print(f'Starting df:\n {df}')
+eps = 0.5
+deg = p34.fitPoly(df,'sweetness','overall',epsilon=eps)
+print(f'For epsilon = {eps}, poly has degree {deg}.')</code></pre>
+      would print in a sample run:
+      <pre><code class="datablock">Starting df:
+    sweetness  overall
+0        4.1      3.9
+1        6.9      5.4
+2        8.3      5.8
+3        8.0      6.0
+4        9.1      6.5
+5        9.8      6.1
+6       11.0      5.9
+7       11.7      5.5
+8       11.9      5.4
+For epsilon = 0.5, poly has degree 1.</code></pre>
+
+      <p>
+      Continuing the example, if we lower the threshold,
+                  <pre><code class="blockcode">eps= 0.1
+deg = p34.fitPoly(df,'sweetness','overall',epsilon=eps)
+print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
+            would print in a sample run:
+            <pre><code class="datablock">For epsilon = 0.1, poly has degree: 2.</code></pre>
+      <p>
+      If we lower the threshold to the default (0.01),
+                              <pre><code class="blockcode">eps= 0.01
+deg = p34.fitPoly(df,'sweetness','overall')
+print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
+                        would print in a sample run:
+                        <pre><code class="datablock">For default epsilon, poly has degree: 8.</code></pre>
+
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+<!--
 <p><a name="p35"><b>Program 35: Borough Potholes.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to build familiarity with different techniques for encoding categorical data.)</p>
       <p>
         <p>
+        Encode the boroughs in the pothole dataset.
+
+
         Put up a one-hot encoding question-- echo lecture #17-- can use DictVectorizer() or dummies()-- which every you prefer.
 
         https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
         </p>
       </p>
 
-          <ul>
-            <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
-              This function takes four inputs:
+      <ul>
+        <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
+          This function takes four inputs:
               <ul>
                   <li> <code class = "inline">df</code>: a DataFrame that
                         including the specified column.
@@ -1765,20 +1763,22 @@ plt.show()</code></pre>
 
 
 <p><a name="p36"><b>Program 36: Multiple Locations.</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to reinforce data cleaning and aggregation skills for DataFrames.)</p>
       <p>
 
 
-        <p>Write a program that takes a DataFrame of businesses and returns a DataFrame with for each business name in DBA ("Doing Business As") occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a list containing the location addresses.
+        <p>Write a program that takes a DataFrame of restaurnts and returns a DataFrame with each Restaurant occurring exactly once and two new columns: "Number Locations" which contains the number of times that DBA occurs (smallest value is 1) and "Locations" a list containing the location addresses.
+
+        Some restaurants are listed multiple times since they have multiple locations.  Others have duplicate listings for the same location due to applications submitted multiple times or for different kinds of permits (use of sidewalk, use of roadway, both, etc.)
 
 https://data.cityofnewyork.us/Transportation/Open-Restaurant-Applications/pitm-atqc
 
 
-          Open Restaurant Applications is a dataset of applications from food service establishments seeking authorization to re-open under Phase Two of the State’s New York Forward Plan, and place outdoor seating in front of their business on the sidewalk and/or roadway.
+        Open Restaurant Applications is a dataset of applications from food service establishments seeking authorization to re-open under Phase Two of the State’s New York Forward Plan, and place outdoor seating in front of their business on the sidewalk and/or roadway.
 
-          For more information please visit NYC DOT Open Restaurants website: nyc.gov/openrestaurants
+        For more information please visit NYC DOT Open Restaurants website: nyc.gov/openrestaurants
 
-          For the most up to date Open Restaurant updates, please visit: https://bit.ly/2Z00kn8
+        For the most up to date Open Restaurant updates, please visit: https://bit.ly/2Z00kn8
 
         Give an example of multiple locations of coffee shops in Manhattan:
 
@@ -1792,8 +1792,8 @@ https://data.cityofnewyork.us/Transportation/Open-Restaurant-Applications/pitm-a
 
 
             <ul>
-              <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
-                This function takes four inputs:
+              <li> <code class = "inline">restaurantLocs(df, dba="Restaurant", address="Address")</code>:
+                This function takes three inputs:
                 <ul>
                     <li> <code class = "inline">df</code>: a DataFrame that
                           including the specified column.
@@ -1851,19 +1851,16 @@ https://www.shanelynn.ie/summarising-aggregation-and-grouping-data-in-python-pan
 
 
 <p><a name="p37"><b>Program 37: Free Throws.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to introduce logistic regression approaches implemented in sklearn.)</p>
       <p>
       </p>
 
       Work through the lebron example from textbook (and lecture)
 
-      Make general enough so can run a demo with simulated data:
-      import data
-      create your own Y = 0, 1 from a continuous Y variable (?)
-      value_counts of Y
-      cross tabulate against X1, X2, etc. -> visualize as table
+      Do this as part of the example in the spec:  Train the model:
 
-      --------- Regression on Probabilities; The Logistic Model
+      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
 
 
 <p><a name="p38"><b>Program 38: Parking Tickets.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
@@ -1871,11 +1868,14 @@ https://www.shanelynn.ie/summarising-aggregation-and-grouping-data-in-python-pan
       <p>
       </p>
 
-Train the model:
 
-https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
-Predict parking tickets by the number given if plates are passenger vs. commercial
+      Predict parking tickets by the number given if plates are passenger vs. commercial
+
+      Do this as part of the example in the spec:  Train the model:
+
+      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
 
       For data set:  use parking tickets and plates pas versus commercial?
 
@@ -1885,22 +1885,24 @@ Predict parking tickets by the number given if plates are passenger vs. commerci
 
       https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
-      # P36
-      same data as P35
-      plot (jittered) Y against each X
-      draw sigmoid?  or just conceptualize when this is different from linear
 
-      --------- A Loss Function for the Logistic Model; Using Logistic Regression
 
-      # P37
-      fit a simple logistic regression using out of box:
+
+
+
+
+  <p><a name="p39"><b>Program 39: Potholes, Redux.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
+      <br>(Learning Objective: .)</p>
+      <p>
+      </p>
+      Maybe something with potholes-- is there an indicator of success?  use number of days open as the independent variable?
+
+      <p>fit a simple logistic regression using out of box:
       from sklearn.linear_model import LogisticRegression
       Y ~ X1
       compare accuracy of this against accuracy of always predicting 0 or 1
 
 
-
-      Maybe something with potholes-- is there an indicator of success?  use number of days open as the independent variable?
 
       # P38
       using same data as P37, do train/test split (with seeding)
@@ -1908,10 +1910,6 @@ Predict parking tickets by the number given if plates are passenger vs. commerci
       compare accuracy of this against bsaeline of always predicting 0 or 1
       compare accuracy of test vs train
 
-  <p><a name="p39"><b>Program 39: Potholes, Redux.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
-      <br>(Learning Objective: .)</p>
-      <p>
-      </p>
 
       --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
 
@@ -1925,7 +1923,23 @@ Predict parking tickets by the number given if plates are passenger vs. commerci
       <br>(Learning Objective: .)</p>
       <p>
       </p>
-      Do this one after doing one-hot encoding in Python
+      Do this one after doing one-hot encoding in Python:
+
+      >>> movie_entry = [{'category': ['thriller', 'drama'], 'year': 2003},
+...                {'category': ['animation', 'family'], 'year': 2011},
+...                {'year': 1974}]
+>>> vec.fit_transform(movie_entry).toarray()
+array([[0.000e+00, 1.000e+00, 0.000e+00, 1.000e+00, 2.003e+03],
+       [1.000e+00, 0.000e+00, 1.000e+00, 0.000e+00, 2.011e+03],
+       [0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 1.974e+03]])
+>>> vec.get_feature_names_out()
+array(['category=animation', 'category=drama', 'category=family',
+       'category=thriller', 'year'], ...)
+>>> vec.transform({'category': ['thriller'],
+...                'unseen_feature': '3'}).toarray()
+array([[0., 0., 0., 1., 0.]])
+
+https://scikit-learn.org/stable/modules/feature_extraction.html
       <p>
 
       Reinforce HR style function to take DF, split up column values, and summarize.
