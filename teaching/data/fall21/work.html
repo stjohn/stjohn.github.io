@@ -1588,7 +1588,7 @@ print(p32.attendCorr(df))
               <ul>
               <li>This function takes five inputs:
               <ul>
-                  <li> <code class = "inline">alpha</code>: the fraction of the distribution contained in the interval (as in <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html">t.interval()</a>).  It has a default value of 95.
+                  <li> <code class = "inline">alpha</code>: the fraction of the distribution contained in the interval (as in <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html">scipy.stats.t.interval()</a>).  It has a default value of 95.
                   <li> <code class = "inline">mu</code>: the mean of the normal distribution sampled.  It has a default value of 0.
                   <li> <code class = "inline">sigma</code>: the standard deviation of the normal distribution sampled.  It has a default value of 1.
                   <li> <code class = "inline">size</code>: the size of the samples.  It has a default value of 10.
@@ -1637,8 +1637,9 @@ plt.show()</code></pre>
     <p>
       <i>Hints:
         <ul>
-          <li> To generate confidence intervals, you can do by hand (see <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">UBC confidence interval demo</a>) or use the functions from scipy.stats:
-          <pre><code class="blockcode">interval = st.t.interval(alpha,len(sampData)-1, loc=np.mean(sampData),scale=st.sem(sampData))</code></pre>
+          <li> To generate confidence intervals, you can do it by hand (see <a href="https://www.zoology.ubc.ca/~whitlock/Kingfisher/CIMean.htm">UBC confidence interval demo</a>) or use the functions from scipy.stats:
+          <pre><code class="blockcode">import scipy.stats as st
+interval = st.t.interval(alpha,len(sampData)-1, loc=np.mean(sampData),scale=st.sem(sampData))</code></pre>
           where <code class="inline">alpha</code> is as above, and <code class="inline">sampData</code> is your sample.
           <li> To generate random samples from a normal distribution, we have been using <code class="inline">np.random.normal</code> (see <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html">numpy documentation</a>), but
           you can other packages, such as <code class="inline">sklearn</code> if you prefer.
@@ -1715,7 +1716,7 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
 
 
 
-      https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Vehicles/bm4k-52h4
+
 
 
 
@@ -1759,6 +1760,11 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
+  <i>Hints:
+    <ul>
+      <li> Collision data can be found at: <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Vehicles/bm4k-52h4">NYC OpenData</a>.
+    </ul>
+  </i>
 
 <p><a name="p36"><b>Program 36: Multiple Locations.</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: to reinforce data cleaning and aggregation skills for DataFrames.)</p>
