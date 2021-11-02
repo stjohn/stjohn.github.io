@@ -1730,38 +1730,64 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
               </ul>
         The function should add a new column, <code class = "inline">indicator</code> to the DataFrame that takes values 1 when <code class = "inline">indicator</code> is in <code class = "inline">df[colName]</code> and 0 if it has a different value and <code class = "inline">nan</code>otherwise.
       </ul>
-  <!--
 
-Add in an example that has an indicator for NY plates-- just count number for data set
+    <p>
+    For example, assuming your function <code class="inline">addIndicator()</code> was in the <code class="inline">p35.py</code>:
+    <pre><code class="blockcode">df = pd.read_csv('Parking_Violations_Issued_Precinct_19_2021.csv',low_memory=False)
+df['Issue Date'] = pd.to_datetime(df['Issue Date'])
+dff = p35.addIndicator(df)
+print(dff)
+print(f'Of the {len(dff)} violations for first half of 2021 for Upper East Side (PD District 19),\n \
+      {len(dff[dff.NY == 1])} are for cars registered in New York.')</code></pre>
 
-For collisions, add in one for speeding
 
-Add in another example that looks for red cars and tickets and makes a stacked histogram with those values.
-
-</section> and graph a histogram of daily tickets that go to NYC
-
-            <p>
-            For example, assuming your function <code class="inline">addIndicator()</code> was in the <code class="inline">p31.py</code>:
-            <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
-      ed = [np.random.exponential() for i in range(1000)]
-      df = pd.DataFrame({ "nd" : nd, "ed" : ed})
-      print(p31.sampleMeans(df, 'nd', k = 5, n=5))
-      print(p31.sampleMeans(df, 'nd', k = 10, n=5))
       </code></pre>
-            would print in a sample run
-      <pre><code class="datablock">[ 0.18006227 -0.02046562  0.13301251  0.52114451  0.47197969]
-      [ 0.06028354 -0.48566047  0.02343676 -0.28361692  0.25259547]
-      </code></pre>
-            Continuing the example:
-            <pre><code class="blockcode">k_10 = p31.sampleMeans(df, 'ed', k = 10)
-      k_20 = p31.sampleMeans(df, 'ed', k = 20)
-      k_30 = p31.sampleMeans(df, 'ed', k = 30)
-      sns.histplot([ed,k_10,k_20,k_30],element="poly")
-      plt.title('Means of 1000 samples of an exponential distribution')
-      plt.show()
-    </code></pre>
--->
-  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+            would print:
+      <pre><code class="datablock">          Summons Number Plate ID  ... Double Parking Violation NY
+0           1474094223  KDT3875  ...                      NaN  1
+1           1474094600  GTW5034  ...                      NaN  1
+2           1474116280  HXM6089  ...                      NaN  1
+3           1474116310  HRW4832  ...                      NaN  1
+4           1474143209  JPR6583  ...                      NaN  1
+...                ...      ...  ...                      ... ..
+451504      8954357854  JRF3892  ...                      NaN  1
+451505      8955665040   199VP4  ...                      NaN  0
+451506      8955665064   196WL7  ...                      NaN  0
+451507      8970451729  CNK4113  ...                      NaN  1
+451508      8998400418   XJWV98  ...                      NaN  0
+
+[451509 rows x 44 columns]
+Of the 451509 violations for first half of 2021 for Upper East Side (PD District 19),
+       338282 are for cars registered in New York.</code></pre>
+      Continuing the example:
+      <pre><code class="blockcode">dfff = p35.addIndicator(dff, colName = 'Vehicle Color', indicator="RED")
+print(dfff)
+plt.xlim(pd.to_datetime("01/01/21"),pd.to_datetime("06/30/21"))
+sns.histplot(data=dfff, x = 'Issue Date', hue = 'RED', binwidth = 7)
+plt.title('Parking violations for Upper East Side, Jan-Jul 2021')
+plt.show()</code></pre>
+      would print:
+<pre><code class="datablock">Summons Number Plate ID  ... NY RED
+0           1474094223  KDT3875  ...  1   0
+1           1474094600  GTW5034  ...  1   0
+2           1474116280  HXM6089  ...  1   0
+3           1474116310  HRW4832  ...  1   0
+4           1474143209  JPR6583  ...  1   0
+...                ...      ...  ... ..  ..
+451504      8954357854  JRF3892  ...  1   0
+451505      8955665040   199VP4  ...  0   0
+451506      8955665064   196WL7  ...  0   0
+451507      8970451729  CNK4113  ...  1   0
+451508      8998400418   XJWV98  ...  0   0
+
+[451509 rows x 45 columns]</code></pre>
+      would give the plot:
+
+        <p><img height=400 src="parking_red.png">
+
+
+  <p>Note: you should submit a file with only the standard comments at the top, this
+    function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
   <i>Hints:
     <ul>
@@ -1837,8 +1863,7 @@ le cafe coffee                                        5  [1440 broadway, Manhatt
       Hints:
       <ul>
           <li>  Read the textbook's <a href="http://www.textbook.ds100.org/ch/06/pandas_aggregating.html">Chapter 6</a> on aggregating data.
-          <li>  The ideas in that chapter can be applied to multiple columns, via the <code class=inline>pd.NamedAgg</code> function inside the aggregation
-            as in this example from the <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.aggregate.html">pandas documentation</a>:
+          <li>  The ideas in that chapter can be applied to multiple columns, using the the <code class=inline>pd.NamedAgg</code> function inside the aggregation.  In this example from the <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.aggregate.html">pandas documentation</a>, two new columns, <code class=inline>b_min</code> and<code class=inline>c_sum</code>, based on aggregating existing columns:
 
             <pre><code class=blockcode>df.groupby("A").agg(
   ...     b_min=pd.NamedAgg(column="B", aggfunc="min"),
@@ -1849,6 +1874,7 @@ A
 1      1  0.590715
 2      3  0.704907</code></pre>
       </ul>
+          Think about what functions, built-in or ones that you code, that could be used for <code class=inline>aggfunc</code>.
       </i>
 
 
