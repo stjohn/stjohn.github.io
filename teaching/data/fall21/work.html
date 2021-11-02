@@ -1701,7 +1701,7 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
 
     <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
+
 <p><a name="p35"><b>Program 35: Parking Tickets.</b></b> &emsp; <i>Due noon, Friday, 5 November.</i>
       <br>(Learning Objective: to build familiarity with different approaches for encoding categorical data.)</p>
 
@@ -1712,27 +1712,35 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
 
       <p>The data is aggregated across the whole city, what happens when focused on individual neighborhoods?  Similarly, a high fraction of motor vehicle collisions involve cars registered out-of-state (see <a href="https://nyc.streetsblog.org/2021/09/21/out-of-state-cars-causing-mayhema-streetsblog-crash-analysis/">crash analysis</a> by Streetsblog NYC).  How does that affect your neighborhood?
 
-      <p>Write a function that will takes a DataFrame and column and returns a new DataFrame with a column that is 1 if the car was registered in NY or 0 otherwise. Your function should allow the new column name can be customized in the parameter list.
-
+      <p>Write a function that will takes a DataFrame and column and returns a new DataFrame with a column that is 1 if the column contains the indicator or 0 otherwise.  Your function should allow the new column name and indicator value to be customized in the parameter list.  The default values are <code class = "inline">Registration State</code> and <code class = "inline">NY</code> for the parameters <code class = "inline">colName</code> and <code class = "inline">indicator</code>.  You can assume that the column contains the indicator as a value and that each row is blank or contains a single categorical value for each row (i.e. will contain <code class = "inline">NY</code> but never two different values such as <code class = "inline">NY, NJ</code>).  The new column should be named by the indicator value
+      (i.e. <code class = "inline">NY</code> for the default).
 
       <ul>
-        <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
-          This function takes four inputs:
+        <li> <code class = "inline">addIndicator(df, colName = "Registration State", indicator = "NY")</code>:
+        This function takes three inputs:
               <ul>
                   <li> <code class = "inline">df</code>: a DataFrame that
                         including the specified column.
-                  <li> <code class = "inline">colName</code>: a column name of the specified DataFrame,
-                  <li> <code class = "inline">k</code>: the size of the sample.  It has a default value of 10.
-                  <li> <code class = "inline">n</code>: the number of samples.  It has a default value of 1000.
+                  <li> <code class = "inline">colName</code>: a column name of
+                        the  specified DataFrame.  The default value is <code class = "inline">Registration State</code>.
+                  <li> <code class = "inline">indicator</code>: the value used for
+                        the indicator as well as the new column created.
+                        The default value is <code class = "inline">NY</code>.
               </ul>
-              It takes the sample size <code class="inline">k</code> and the numbers of samples,
-                of <code class="inline">n</code>, a DataFrame, <code class="inline">df</code>, and
-                and generates <code class="inline">n</code>
-                samples of size <code class="inline">k</code>, computes the sample mean of each, and returns a numpy array of those means.
-              </ul>
+        The function should add a new column, <code class = "inline">indicator</code> to the DataFrame that takes values 1 when <code class = "inline">indicator</code> is in <code class = "inline">df[colName]</code> and 0 if it has a different value and <code class = "inline">nan</code>otherwise.
+      </ul>
+  <!--
+
+Add in an example that has an indicator for NY plates-- just count number for data set
+
+For collisions, add in one for speeding
+
+Add in another example that looks for red cars and tickets and makes a stacked histogram with those values.
+
+</section> and graph a histogram of daily tickets that go to NYC
 
             <p>
-            For example, assuming your function <code class="inline">sampleMeans()</code> was in the <code class="inline">p31.py</code>:
+            For example, assuming your function <code class="inline">addIndicator()</code> was in the <code class="inline">p31.py</code>:
             <pre><code class="blockcode">nd = [np.random.normal() for i in range(1000)]
       ed = [np.random.exponential() for i in range(1000)]
       df = pd.DataFrame({ "nd" : nd, "ed" : ed})
@@ -1750,13 +1758,16 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
       sns.histplot([ed,k_10,k_20,k_30],element="poly")
       plt.title('Means of 1000 samples of an exponential distribution')
       plt.show()
-      </code></pre>
-
+    </code></pre>
+-->
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
   <i>Hints:
     <ul>
+      <li> See classwork from Lecture 17 on setting up indicators as well as downloading from NYC OpenData.
+      <li> Parking ticket data can be found at:  <a href="https://data.cityofnewyork.us/City-Government/Parking-Violations-Issued-Fiscal-Year-2021/kvfd-bves">NYC OpenData</a>.
       <li> Collision data can be found at: <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Vehicles/bm4k-52h4">NYC OpenData</a>.
+
     </ul>
   </i>
 
@@ -1842,7 +1853,7 @@ A
 
         <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-
+<!--
 
 <p><a name="p37"><b>Program 37: Score Predictor.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
       <br>(Learning Objective: to introduce logistic regression approaches implemented in sklearn.)</p>
