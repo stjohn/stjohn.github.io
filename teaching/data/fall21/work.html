@@ -1715,12 +1715,6 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
       <p>Write a function that will takes a DataFrame and column and returns a new DataFrame with a column that is 1 if the car was registered in NY or 0 otherwise. Your function should allow the new column name can be customized in the parameter list.
 
 
-
-
-
-
-
-
       <ul>
         <li> <code class = "inline">sampleMeans(df, colName, k=10, n=1000)</code>:
           This function takes four inputs:
@@ -1765,6 +1759,7 @@ print(f'For epsilon = {eps}, poly has degree: {deg}.')</code></pre>
       <li> Collision data can be found at: <a href="https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Vehicles/bm4k-52h4">NYC OpenData</a>.
     </ul>
   </i>
+
 
 <p><a name="p36"><b>Program 36: Multiple Locations.</b></b> &emsp; <i>Due noon, Monday, 8 November.</i>
       <br>(Learning Objective: to reinforce data cleaning and aggregation skills for DataFrames.)</p>
@@ -1849,25 +1844,32 @@ A
 
 
 
-<p><a name="p37"><b>Program 37: Free Throws.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
+<p><a name="p37"><b>Program 37: Score Predictor.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
       <br>(Learning Objective: to introduce logistic regression approaches implemented in sklearn.)</p>
       <p>
       </p>
 
       Work through the lebron example from textbook (and lecture)
 
-      Do this as part of the example in the spec:  Train the model:
+      Do this as part of the example in the spec:  Split-Train-Test the model:
 
       https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
 
 
-<p><a name="p38"><b>Program 38: Iris Classification.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
+<p><a name="p38"><b>Program 38: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
 
+      Two stages to this question:
+      <ul>
+        <li> Create a df with the information for vehicles that's invariant across the entries and the count of how many times that vehicle appears in the
+        intial DataFrame.  If the count is more than one a day, DailyTicket is 1.  Otherwise DailyTicket is 0.
+        <li> Build a classifier that predicts if a vehicle will be one that gets a high number of tickets.
+      </ul>
 
+      Split-train-test in the example that calls the functions.  Test how well they do.
 
       Predict parking tickets by the number given if plates are passenger vs. commercial
 
@@ -1920,10 +1922,11 @@ https://data.cityofnewyork.us/Social-Services/311-Pothole-Complaints/j6cm-in3q
 
 
 
-  <p><a name="p39"><b>Program 39: Potholes, Redux.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
+  <p><a name="p39"><b>Program 39: Iris Classification.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
       <br>(Learning Objective: .)</p>
       <p>
       </p>
+      Follow the textbook example on irises
       Maybe something with potholes-- is there an indicator of success?  use number of days open as the independent variable?
 
       <p>fit a simple logistic regression using out of box:
@@ -2014,7 +2017,7 @@ https://scikit-learn.org/stable/modules/feature_extraction.html
 
 
 
-  <p><a name="p41"><b>Program 41: Logit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
+  <p><a name="p41"><b>Program 41: SVM.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
       <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
       <p>
       </p>
@@ -2036,7 +2039,7 @@ https://scikit-learn.org/stable/modules/feature_extraction.html
       <p>explicitly use sklearn.model_selection.train_test_split() in function or example
 
 
-    <p><a name="p42"><b>Program 42: Multilabel Classifer.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
+    <p><a name="p42"><b>Program 42: Multiway SVM.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
       <br>(Learning Objective: to create a multilabel classifer using sklearn.)</p>
       <p>
       </p>
@@ -2212,61 +2215,61 @@ The project is broken down into smaller pieces that must be submitted by the dea
   <td>Gradescope</td>
 </tr>
 <tr>
-	<td>Wednesday, 20 October, noon</td>
+	<td>Wednesday, <strike>20 October,</strike> 3 November, noon</td>
   <td><a href="#proposal">Title & Proposal</a></td>
-  <td>20</td>
+  <td><strike>20</strike> 30</td>
   <td>Blackboard</td>
 </tr>
-<tr>
-	<td>Wednesday, 27 October, noon</td>
-  <td><a href="#peerReview">Peer Review #1</a></td>
-  <td>15</td>
-  <td>Blackboard</td>
+<tr><strike>
+	<td><strike>Wednesday, 27 October, noon</strike></td>
+  <td><strike><a href="#peerReview">Peer Review #1</a></strike></td>
+  <td><strike>15</strike></td>
+  <td><strike>Blackboard</strike></td></strike>
 </tr>
 <tr>
-	<td>Wednesday, 3 November, noon</td>
+	<td>Wednesday, <strike>3 November</strike> 10 November, noon</td>
   <td><a href="#dataCollection">Check-in #1 (Data Collection)</a></td>
   <td>20</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 <tr>
-	<td>Wednesday, 10 November, noon</td>
+	<td>Wednesday, <strike>10 November</strike> 17 November, noon</td>
   <td><a href="#analysis">Check-in #2 (Analysis)</a></td>
   <td>20</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 <tr>
-	<td>Wednesday, 17 November, noon</td>
+	<td>Wednesday, <strike>17 November</strike> 24 November, noon</td>
   <td><a href="#visualization">Check-in #3 (Visualization)</a></td>
   <td>20</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 
 <tr>
 	<td>Wednesday, 1 December, noon</td>
   <td><a href="#slides">Draft Abstract & Website</a></td>
   <td>25</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 <tr>
 	<td>Monday, 6 December, noon</td><td>
   <a href="#peerReview2">Peer Review #2</a></td>
-  <td>15</td>
-  <td>Blackboard</td>
+  <td>20</td>
+  <td>Gradescope</td>
 </tr>
 
 <tr>
 	<td>Thursday, 9 December, noon</td>
   <td><a href="#abstract">Abstract</a></td>
   <td>25</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 
 <tr>
 	<td>Friday, 10 December, noon</td>
   <td><a href="#completeSite">Complete Project Website</a></td>
   <td>50</td>
-  <td></td>
+  <td>Gradescope</td>
 </tr>
 
 
