@@ -1652,12 +1652,13 @@ interval = st.t.interval(alpha,len(sampData)-1, loc=np.mean(sampData),scale=st.s
       <p>Following the textbook code demostration in Lecture 16, write a function that takes values of an independent variable and corresponding values of a dependent varaible, and fits polynomial regression models of increasing degree until the MSE falls below error.
 
       <ul>
-        <li> <code class = "inline">fitPoly(xes,yes,epsilon=0.01)</code>:
-          This function takes three inputs:
+        <li> <code class = "inline">fitPoly(df,xes,yes,epsilon=0.01)</code>:
+          This function takes four inputs:
             <ul>
-              <li> <code class = "inline">xes</code>: a DataFrame that
-                              including the specified column.
-              <li> <code class = "inline">yes</code>: a column name of the specified DataFrame,
+              <li> <code class = "inline">df</code>: a DataFrame that
+                              including the specified columns.
+              <li> <code class = "inline">xes</code>: a column name of the specified DataFrame,
+              <li> <code class = "inline">yes</code>: a column name of the specified DataFrame.
               <li> <code class = "inline">epsilon</code>: the size of the sample.  It has a default value of 0.01.
             </ul>
           It returns the smallest intger degree >= 1 for which the model yields a MSE of < the specified epsilon.
