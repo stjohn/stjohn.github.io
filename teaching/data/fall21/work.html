@@ -1808,13 +1808,13 @@ plt.show()</code></pre>
         <p>Write a program that takes a DataFrame of restaurants and returns a DataFrame with each Restaurant occurring exactly once and two new columns: <code class=inline>Number_Submissions</code> which contains the number of times that restaurant occurs in any entry (smallest value is 1) and <code class=inline>Locations</code>, a list consisting of the unique location addresses.
 
           <ul>
-            <li> <code class = "inline">restaurantLocs(df, dba="Restaurant Name", address="Address")</code>:
+            <li> <code class = "inline">restaurantLocs(df, dba="Restaurant Name", location="Business Address"):</code>:
               This function takes three inputs:
               <ul>
                   <li> <code class = "inline">df</code>: a DataFrame that
                         including the specified columns.
                   <li> <code class = "inline">dba</code>: a column name of the specified DataFrame containing establishment names.  The default value is "Restaurant Name".
-                  <li> <code class = "inline">address</code>:  a column name of the specified DataFrame containing locations.  It has a default value is "Address".
+                  <li> <code class = "inline">address</code>:  a column name of the specified DataFrame containing locations.  It has a default value is "Business Address".
               </ul>
               The function returns a DataFrame with three columns:
               <ul>
@@ -1880,92 +1880,149 @@ A
 
         <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
+
 
 <p><a name="p37"><b>Program 37: Score Predictor.</b></b> &emsp; <i>Due noon, Tuesday, 9 November.</i>
       <br>(Learning Objective: to introduce logistic regression approaches implemented in sklearn.)</p>
+
       <p>
-      </p>
+      In <a href="http://www.textbook.ds100.org/ch/24/classification_prob.html">Chapter 24</a> and Lectures #17 and #18, we worked through a logistic model to predict scoring attempts based on a single independent variable <code class=inline>shot_distance</code>, as well as a second model that used multiple independent variables, <code class=inline>['shot_distance', 'minute', 'action_type', 'shot_type', 'opponent']</code>.  It was noted that the prediction accurracy increased from 0.6 using just <code class=inline>shot_distance</code> to 0.725 using the entire list.  Are all of those additional variables necessary to get the increased accuracy?
 
-      Work through the lebron example from textbook (and lecture)
+      <p>For this program, write a function that identifies which variable increases the accuracy of the oringal model the most.
+        <ul>
+          <li> <code class = "inline">def bestForPredict(df, columns, x_col = "shot_distance", y_col = "shot_made", test_size = 40, random_state = 42):</code>:
+            This function has six inputs:
+            <ul>
+                <li> <code class = "inline">df</code>: a DataFrame that
+                      including the specified columns.
+                <li> <code class = "inline">columns</code>: a list of column names of the specified DataFrame.
+                <li> <code class = "inline">x_col</code>:  a column name of the specified DataFrame containing locations.  It is one of the independent variables for the model (the other is from the list <code class = "inline">columns</code>).  It has a default value is "shot_distance".
+                <li> <code class = "inline">y_col</code>: a column name of the specified DataFrame containing locations.  This is the dependent variable (what's being predicted) in the model.  It has a default value is "shot_made".
+                <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">40</code>.
+                <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">42</code>.
+            </ul>
 
-      Do this as part of the example in the spec:  Split-Train-Test the model:
+            The function returns the highest prediction accuracy found from the columns inputted, as well as the name of the column that increases prediction accuracy the most.
+          </ul>
 
-      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+          <p>
+          For example, assuming your function <code class="inline">bestForPredict()</code> was in the <code class="inline">p37.py</code> for the file <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/24/lebron.csv">lebron.csv</a>, the code:
+          <pre><code class="blockcode">df = pd.read_csv('lebron.csv')
+columns = ['minute', 'action_type', 'shot_type', 'opponent']
+acc,col_name = p37.bestForPredict(df,columns)
+print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')</code></pre>
+          would print:
+          <pre><code class="datablock">The highest accuracy, 0.725, was obtained by including column, action_type.</code></pre>
+
+          <p>Another example with the same DataFrame:
+            <pre><code class="blockcode">columns = ['minute', 'opponent']
+acc,col_name = p37.bestForPredict(df,columns, test_size = 100, random_state = 17)
+print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')
+</code></pre>
+            would print:
+            <pre><code class="datablock">The highest accuracy, 0.6, was obtained by including column, opponent.</code></pre>
 
 
+      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
+      <i>
+      <p>Hints:
+        <ul>
+          <li> Some of the code in the textbook is deprecated. In particular, the
+            <code class=inline>as_matrix</code> and <code class=inline>orient='row'</code> does not work in newer versions.  Omit the former and replace the latter with:
+            <pre><code class="blockcode">rows = df[[x_col,c]].to_dict('records')
+onehot = DictVectorizer(sparse=False).fit(rows)</code></pre>
+            See Lecture #18 for details.
+        </ul>
+      </i>
+
+<!--
 <p><a name="p38"><b>Program 38: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to employ aggregation and data cleaning techniques to prepare data for use in classification.)</p>
       <p>
       </p>
 
-      Two stages to this question:
-      <ul>
-        <li> Create a df with the information for vehicles that's invariant across the entries and the count of how many times that vehicle appears in the
-        intial DataFrame.  If the count is more than one a day, DailyTicket is 1.  Otherwise DailyTicket is 0.
-        <li> Build a classifier that predicts if a vehicle will be one that gets a high number of tickets.
-      </ul>
+      Can you predict which cars will get excessive number of tickets?  In Lectures #15-18 and <a href="http://www.textbook.ds100.org/ch/24/classification_prob.html">Chapter 24</a>, we focused on the building of the classifers.  This question focuses on the prerequisite step:  preparing the data to use in building the model.
+      <ol>
+        <li> Process the data to create a new DataFrame, containing the information for vehicles that's invariant across the entries (e.g. licence plate number, registration state, color) .
+        Some tickets will have multiple values for the invariants after you have aggregated-- count on licence plate, and for all others some cleaning is needed:  make all upper case, for vehicle type, standardize entries to be same types, for vehicle make, take first one, for plate type, can just use as is.  and the count of how many times that vehicle appears in the intial DataFrame
+        <li> Take this DataFrame of vehicles (there should be one entry for each licence plate), drop the rows with empty cells, and
+          If the count is more than one a day, a newly created indicator variable, <code class="inline">DailyTicket</code> is 1.  Otherwise <code class="inline">DailyTicket</code> is 0.
+        <li> Next, build a classifier that predicts if a vehicle will be one that gets a high number of tickets.
+      </ol>
 
+      <p>The resulting DataFrame can then be used to build a classifer on how likely a particular car is to be one that has more than a ticket a day.
+
+
+      Build the classifer into the example code.
       Split-train-test in the example that calls the functions.  Test how well they do.
-
-      Predict parking tickets by the number given if plates are passenger vs. commercial
-
       Do this as part of the example in the spec:  Train the model:
 
       https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
 
-      For data set:  use parking tickets and plates pas versus commercial?
 
-      Success is commercial, count number of tickets per plate number
+        <ul>
+          <li> <code class = "inline">addIndicator(df,numDays,columns=[]):</code>:
+            This function has three inputs and returns a DataFrame:
+            <ul>
+                <li> <code class = "inline">df</code>: a DataFrame that
+                      including the specified columns.
+                <li> <code class = "inline">num_days</code>:  a column name of the specified DataFrame containing locations.  It is one of the independent variables for the model (the other is from the list <code class = "inline">columns</code>).  It has a default value is "shot_distance".
+                <li> <code class = "inline">columns</code>: a list of column names of the specified DataFrame.
+          </ul>
+          Returns the specified columns of the DataFrame with two additional columns:
+          <code class = "inline">count</code> of the number of occurrences of those values and an indicator column <code class = "inline">DailyTicket</code>
+          Describe what function does.
+          <li> <code class = "inline">buildClassifer(df, test_size = 0.25, random_state=42)</code>:
+            This function has three inputs and returns a classifier:
+            <ul>
+                <li> <code class = "inline">df</code>: a DataFrame that
+                    including the specified columns.
+                <li> <code class = "inline">y_col</code>: a column name of the specified DataFrame containing locations.  This is the dependent variable (what's being predicted) in the model.  It has a default value is "shot_made".
+                <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">40</code>.
+                <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">42</code>.
+            </ul>
 
-      https://seaborn.pydata.org/tutorial/regression.html
+            The function returns the highest prediction accuracy found from the columns inputted, as well as the name of the column that increases prediction accuracy the most.
+          </ul>
 
-      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+          <p>
+          For example, assuming your function <code class="inline">bestForPredict()</code> was in the <code class="inline">p37.py</code> for the file <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/24/lebron.csv">lebron.csv</a>, the code:
+          <pre><code class="blockcode">df = pd.read_csv('lebron.csv')
+columns = ['minute', 'action_type', 'shot_type', 'opponent']
+acc,col_name = p37.bestForPredict(df,columns)
+print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')</code></pre>
+          would print:
+          <pre><code class="datablock">The highest accuracy, 0.725, was obtained by including column, action_type.</code></pre>
 
-
-      What fraction of parking tickets go to cars registered outside of New York?
-
-      <p> Write
-
-      <p>This program focuses on the 311 parking ticket data set on OpenData NYC.
-
-
-
-https://data.cityofnewyork.us/Social-Services/311-Pothole-Complaints/j6cm-in3q
-        311 pothole dataset (ADD LINK).
-
-      Build two functions:
-
-      Take a open and closing dates and returns the number of days between them.
-
-      Take a DataFrame, and create additional columns for the boroughs, using either DictVectorizer or get_dummies.  It should return the resulting DataFrame.
+          <p>Another example with the same DataFrame:
+            <pre><code class="blockcode">columns = ['minute', 'opponent']
+acc,col_name = p37.bestForPredict(df,columns, test_size = 100, random_state = 17)
+print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')
+</code></pre>
+            would print:
+            <pre><code class="datablock">The highest accuracy, 0.6, was obtained by including column, opponent.</code></pre>
 
 
-      <p>In Lectures 16 and 17, we discussed encoding categorical data for use in regression analysis.  For this program, encode the boroughs in a dataset about potholes reported to 311 as individual columns that are 1 for the corresponding borough for that row and 0 otherwise.
+      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-      <p>Return the one that's borough that
-
-        <p>
-        Encode the boroughs in the pothole dataset.
-
-
-        Put up a one-hot encoding question-- echo lecture #17-- can use DictVectorizer() or dummies()-- which every you prefer.
-
-        https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
-        </p>
-      </p>
-
-
+      <i>
+      <p>Hints:
+        <ul>
+            <li> This program focuses on the 311 parking ticket data set on OpenData NYC.  Use the datasets from Program 35 or download your own for testing.
+            <li>  See Lectures #17 and #18 for techniques to introduce indicator variables.
+        </ul>
+      </i>
 
 
   <p><a name="p39"><b>Program 39: Iris Classification.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to introduce multiway classification techniques.)</p>
       <p>
       </p>
-      Follow the textbook example on irises
-      Maybe something with potholes-- is there an indicator of success?  use number of days open as the independent variable?
+
+      In Lecture #19 and TEXTBOOK EX, we used multiway classification on the canonical iris data set (add links!).  Repeat here.
+
 
       <p>fit a simple logistic regression using out of box:
       from sklearn.linear_model import LogisticRegression
@@ -1990,7 +2047,7 @@ https://data.cityofnewyork.us/Social-Services/311-Pothole-Complaints/j6cm-in3q
       record CPU time and wall time
 
 <p><a name="p40"><b>Program 40: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to reinforce categorical encoding and aggregation techniques.)</p>
       <p>
       </p>
       Do this one after doing one-hot encoding in Python:
@@ -2011,6 +2068,8 @@ array([[0., 0., 0., 1., 0.]])
 
 https://scikit-learn.org/stable/modules/feature_extraction.html
       <p>
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
 
       Reinforce HR style function to take DF, split up column values, and summarize.
       Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
@@ -2056,7 +2115,7 @@ https://scikit-learn.org/stable/modules/feature_extraction.html
 
 
   <p><a name="p41"><b>Program 41: SVM.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
-      <br>(Learning Objective: to use the tools provided by sklearn to create a binary logit classifer.)</p>
+      <br>(Learning Objective: to use the tools provided by sklearn to create a support vector machine.)</p>
       <p>
       </p>
 
@@ -2121,7 +2180,7 @@ https://scikit-learn.org/stable/modules/feature_extraction.html
 
 
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
-    <br>(Learning Objective: .)</p>
+    <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
     <p>
     In lecture, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
     <p>
@@ -2134,7 +2193,7 @@ https://scikit-learn.org/stable/modules/feature_extraction.html
 
 
   <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
-      <br>(Learning Objective: .)</p>
+      <br>(Learning Objective: to introduce existing tools for multidimensional scaling in sklearn.)</p>
       <p>
       </p>
 Links to sklearn MDS:  https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html
@@ -2149,13 +2208,13 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
 
 <p><a name="p46"><b>Program 46: HR challenge.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
-  <br>(Learning Objective: .)</p>
+  <br>(Learning Objective: to strengthen the use of multiple techniques to address a problem.)</p>
     <p>
     </p>
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p47"><b>Program 47: .</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
+<p><a name="p47"><b>Program 47: Easy clustering?.</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
     <br>(Learning Objective: .)</p>
     <p>
     </p>
@@ -2167,12 +2226,12 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p49"><b>Program 49: .</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
+<p><a name="p49"><b>Program 49: Clustering.</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
   <br>(Learning Objective: .)</p>
   <p>
   </p>
 
-<p><a name="p50"><b>Program 50: A/B Testing.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
+<p><a name="p50"><b>Program 50: Lead-in to A/B Testing.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
   <br>(Learning Objective: .)</p>
   <p>
 
@@ -2181,6 +2240,18 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 -->
 
 <!--
+
+Potholes?
+https://data.cityofnewyork.us/Social-Services/311-Pothole-Complaints/j6cm-in3q
+        311 pothole dataset (ADD LINK).
+      Build two functions:  Take a open and closing dates and returns the number of days between them.
+      Take a DataFrame, and create additional columns for the boroughs, using either DictVectorizer or get_dummies.  It should return the resulting DataFrame.
+      <p>In Lectures 16 and 17, we discussed encoding categorical data for use in regression analysis.  For this program, encode the boroughs in a dataset about potholes reported to 311 as individual columns that are 1 for the corresponding borough for that row and 0 otherwise.
+        Put up a one-hot encoding question-- echo lecture #17-- can use DictVectorizer() or dummies()-- which every you prefer.
+
+
+        </p>
+      </p>
 
 #6: Modify the Naive Bayes spam filter program to reads in the three files generated above as well as a fourth file of test data (use another year's data such as yob2010.txt). Instead of multiplying together word occurrences, your program should multiply use the last letter, second-to-last letter, and third-to-last letter that you computed above. Your program should classify each name in the test data (similar to the Naive Bayes filter from the book) and report back the percentage of names your correctly predicted as well as the names you predicted incorrectly.
 Submit your Python program as a .py file.
@@ -2212,11 +2283,6 @@ and two possible logistic functions:
 f(x) = 1/(1 +e^{-(6+.75x)})
 g(x) = 1/(1 +e^{-(-8+x)})
 #6: Which function predicts more of the data correctly? That is, out of the 10 input values, how many values were predicted to be 1 with greater than 50% probability were actually 1 (true positives), were actually 0 (false positives); how many values were predicted to be 0 with greater than 50% probability were actually 0 (true negatives), were actually 1 (false negatives)?
-
-#7: Use the book's logistic regression code to fit a logistic function to the data above.
-Note: The book's code assumes that 3 dimensional data while we have only 2 dimensions. The code is well-written and can be easily modified to handle only 2 dimensions by entering 2 dimensional data for data and modifying the starting value of beta_0 to be the [1,1].
-
-Submit a screenshot of a graph with the true points, your predicted curve (i.e. the logistic function with your computed beta_hat, and the f and g functions above. Include a legend or labels for your curves.
 
 
 
