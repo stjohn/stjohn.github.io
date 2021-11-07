@@ -1069,6 +1069,8 @@ Ending df:
 </code></pre>
       <p>The resulting DataFrame has only 5 students, since the student, Dara, has fewer than 3 current courses and that row is dropped.
 
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 <p><i>Hints:
     <ul>
       <li> While straightforward, this problem is much easier to do in pieces, debugging/printing, as you go.  Add lots of print statements (or work inside a debugger) to make sure each part is correct before building on the next one.
@@ -1077,9 +1079,6 @@ Ending df:
     </ul>
   </i>
     </p>
-
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
-
 
 
 <p><a name="p25"><b>Program 25: PMF of Senators' Ages.</b></b> &emsp; <i>Due noon, Tuesday, 19 October.</i>
@@ -1210,6 +1209,8 @@ print(weekdays.iloc[0:10])
     note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
     </p>
 
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
     <i>Hints:
         <ul>
@@ -1222,7 +1223,7 @@ print(weekdays.iloc[0:10])
 
     </p>
 
-<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
 
 
@@ -1338,6 +1339,9 @@ CS courses:
  ['csci150', 'csci160', 'csci235', 'csci265', 'csci335', 'csci39542', 'csci49362', 'csci499']
 </code></pre>
 
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
       <p><i>Hints:
         <ul>
           <li> A useful function for this task is <code class="inline">unique()</code> which lists all the values in a Series exactly once.  For example, <code class="inline">classDF['course'].unique()</code> yields:
@@ -1349,7 +1353,6 @@ CS courses:
       </i>
     </p>
 
-  <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
     </p>
@@ -1859,6 +1862,8 @@ THINK COFFEE                                          1              [500 WEST  
 jacks stir brew coffee                                1             [10  10 downing street, Manhattan, NY]
 le cafe coffee                                        5  [1440 broadway, Manhattan, NY, 7  east 14 st, ...</code></pre>
 
+        <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
       <p><i>
       Hints:
       <ul>
@@ -1878,7 +1883,7 @@ A
       </i>
 
 
-        <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
 
 
@@ -1936,86 +1941,109 @@ onehot = DictVectorizer(sparse=False).fit(rows)</code></pre>
         </ul>
       </i>
 
-<!--
-<p><a name="p38"><b>Program 38: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
+
+<p><a name="p38"><b>Program 38: Ticket Prep.</b></b> &emsp; <i>Due noon, Thursday, 11 November.</i>
       <br>(Learning Objective: to employ aggregation and data cleaning techniques to prepare data for use in classification.)</p>
       <p>
       </p>
 
-      Can you predict which cars will get excessive number of tickets?  In Lectures #15-18 and <a href="http://www.textbook.ds100.org/ch/24/classification_prob.html">Chapter 24</a>, we focused on the building of the classifers.  This question focuses on the prerequisite step:  preparing the data to use in building the model.
-      <ol>
-        <li> Process the data to create a new DataFrame, containing the information for vehicles that's invariant across the entries (e.g. licence plate number, registration state, color) .
-        Some tickets will have multiple values for the invariants after you have aggregated-- count on licence plate, and for all others some cleaning is needed:  make all upper case, for vehicle type, standardize entries to be same types, for vehicle make, take first one, for plate type, can just use as is.  and the count of how many times that vehicle appears in the intial DataFrame
-        <li> Take this DataFrame of vehicles (there should be one entry for each licence plate), drop the rows with empty cells, and
-          If the count is more than one a day, a newly created indicator variable, <code class="inline">DailyTicket</code> is 1.  Otherwise <code class="inline">DailyTicket</code> is 0.
-        <li> Next, build a classifier that predicts if a vehicle will be one that gets a high number of tickets.
-      </ol>
+      Can you predict which cars will get excessive number of tickets?  In Lectures #15-18 and <a href="http://www.textbook.ds100.org/ch/24/classification_prob.html">Chapter 24</a>, we focused on the building of the classifers.  This question focuses on the prerequisite step:  preparing the data that is used in building the classifier.
 
-      <p>The resulting DataFrame can then be used to build a classifer on how likely a particular car is to be one that has more than a ticket a day.
+      <p>As a first step, we will group by licence plate number and aggregate the state, vehicle type and color by choosing the first item stored for each:
+      <pre><code class=blockcode>newDF =  df.groupby('Plate ID').agg(NumTickets =
+    pd.NamedAgg(column = 'Plate ID', aggfunc = 'count'),
+    Registration = pd.NamedAgg(column = 'Plate Type', aggfunc = 'first'),
+    State = pd.NamedAgg(column = 'Registration State', aggfunc = 'first'),
+    VehicleColor = pd.NamedAgg(column = 'Vehicle Color', aggfunc = 'first'))</code></pre>
+      <p>While this works well for <code class=inline>State</code>,
+        <code class=inline>Registration</code> and <code class=inline>Vehicle Color</code>:
+      <pre><code class=blockcode>print(f'Registration: {newDF['Registration'].unique()})
+print(f'State: {newDF['State'].unique()})
+print(f'VehicleColor: {newDF['VehicleColor'].unique()})</code></pre>
+      prints expected values for states but many different types of registrations and abbreviations and mispellings for colors:
+      <pre><code class=datablock>Registration: ['PAS' 'COM' 'USC' 'MOT' 'LMB' '999' 'CMB' 'RGL' 'SRF' 'MED' 'APP' 'ORG'
+ 'ITP' 'OMR' 'TRA' 'BOB' 'SPO' 'LMA' 'VAS' 'OML' 'TOW' 'DLR' 'AMB' 'TRC'
+ 'STG' 'AGR' 'NLM' 'ORC' 'IRP' 'TRL' 'MCL' 'OMT' 'SCL' 'SPC' 'CHC' 'HIS'
+ 'SRN' 'RGC' 'PHS' 'PSD' 'MCD' 'NYA' 'JCA' 'SOS' 'CSP' 'OMS' 'CBS' 'OMV'
+ 'HAM']
+State: ['DP' 'NJ' 'PA' 'TX' 'OK' 'NY' 'OH' '99' 'DC' 'AR' 'IL' 'MN' 'NC' 'NV'
+ 'FL' 'GV' 'CA' 'NH' 'MD' 'CT' 'MO' 'RI' 'MS' 'MA' 'MI' 'TN' 'WV' 'AL'
+ 'OR' 'KS' 'VA' 'KY' 'AZ' 'WA' 'NM' 'CO' 'SC' 'WI' 'ME' 'DE' 'HI' 'IN'
+ 'WY' 'MT' 'NE' 'VT' 'GA' 'LA' 'SD' 'ON' 'IA' 'ID' 'ND' 'SK' 'UT' 'AK'
+ 'QB' 'AB' 'BC' 'MX' 'PR' 'NS' 'MB' 'FO']
+VehicleColor: ['BLACK' 'SILVE' 'GREY' 'WHITE' 'RED' 'OTHER' 'BLUE' 'GY' 'BLK' 'BK'
+ 'PURPL' 'TAN' 'GREEN' 'YELLO' 'ORANG' 'BL' 'SILV' 'GRAY' 'BROWN' nan
+ 'GRY' 'WH' 'SIL' 'GOLD' 'WT' 'WHT' 'GR' 'RD' 'YW' 'BR' 'LTG' 'WH/' 'OR'
+ 'WHB' 'TN' 'BRN' 'MR' 'DK/' 'BLW' 'GL' 'PR' 'BU' 'DKB' 'W' 'GRT' 'ORG'
+ 'RD/' 'LT/' 'NO' 'LTT' 'GRN' 'BN' 'TB' 'BRO' 'B' 'RDW' 'SL' 'BURG' 'BLU'
+ 'NOC' 'BK/' 'DKG' 'WHG' 'PINK' 'G' 'LAVEN' 'BL/' 'YEL' 'OG' 'GRW' 'WHI'
+ 'WHTE' 'BUR' 'GY/' 'DKR' 'RDT' 'GN' 'BUN' 'SV' 'BKG' 'YELL' 'WHIT' 'GR/'
+ 'LTTN' 'SLV' 'BRWN' 'GYB' 'WHTIE' 'WI' 'BUS' 'LTB' 'TN/' 'GD' 'MAROO'
+ 'BW' 'BLG' 'ORA' 'GRA' 'DKP' 'NAVY' 'GREG' 'GRB' 'BRW' 'BBRN' 'R' 'GRRY'
+ 'BLA' 'BG' 'MAR' 'BURGA' 'BRWON' 'YLW' 'ORNG' 'HREY' 'DERD' 'YL' 'PLE'
+ 'BWN' 'BI']</code></pre>
 
+        The first two registration types account are the most common:
+        <pre><code class=blockcode>count = len(newDF)
+pasCount = len(newDF[newDF['Registration'] == 'PAS'])
+comCount = len(newDF[newDF['Registration'] == 'COM'])
+print(f'{count} different vehicles, {100*(pasCount+comCount)/count} percent are passenger or commercial plates.')</code></pre>
+        <p>And for the Precinct District 19 dataset that contains almost a half million tickets:
+  <pre><code class=blockcode>159928 different vehicles, 93.95477965084288 percent are passenger or commercial plates.</code></pre>
 
-      Build the classifer into the example code.
-      Split-train-test in the example that calls the functions.  Test how well they do.
-      Do this as part of the example in the spec:  Train the model:
+       And similarly, 15 of the entries for vehicle color account for most of the entries:
+       <pre><code class=blockcode>print(newDF['VehicleColor'].unique())
+print(f"The top 15 values account for {100*newDF['VehicleColor'].value_counts()[:15].sum()/len(newDF)} percent.")
+print(f"Those values are: {newDF['VehicleColor'].value_counts()[:15]}.")</code></pre>
 
-      https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+ <pre><code class=blockcode>The top 15 values account for 95.37291781301586 percent.
+Those values are:
+ WH       27814
+GY       24704
+WHITE    20817
+BK       20778
+BLACK    14486
+GREY      9629
+BL        9249
+SILVE     5704
+BLUE      5300
+RD        4395
+RED       3303
+OTHER     2678
+GR        1674
+BROWN     1059
+TN         938</code></pre>
 
-
-
+      <p>To clean the data, write two functions that can be applied to the DataFrame:
+      <ul>
+        <li> <code class=inline>cleanReg(reg):</code> If <code class=inline>reg</code> is coded as passenger <code class=inline>'PAS'</code> or commercial
+        <code class=inline>'COM'</code>, return those values.  Otherwise, return <code class=inline>'OTHER'</code>.
+        <li> <code class=inline>cleanColor(c):</code> Return the following for the values of <code class=inline>c</code>:
         <ul>
-          <li> <code class = "inline">addIndicator(df,numDays,columns=[]):</code>:
-            This function has three inputs and returns a DataFrame:
-            <ul>
-                <li> <code class = "inline">df</code>: a DataFrame that
-                      including the specified columns.
-                <li> <code class = "inline">num_days</code>:  a column name of the specified DataFrame containing locations.  It is one of the independent variables for the model (the other is from the list <code class = "inline">columns</code>).  It has a default value is "shot_distance".
-                <li> <code class = "inline">columns</code>: a list of column names of the specified DataFrame.
-          </ul>
-          Returns the specified columns of the DataFrame with two additional columns:
-          <code class = "inline">count</code> of the number of occurrences of those values and an indicator column <code class = "inline">DailyTicket</code>
-          Describe what function does.
-          <li> <code class = "inline">buildClassifer(df, test_size = 0.25, random_state=42)</code>:
-            This function has three inputs and returns a classifier:
-            <ul>
-                <li> <code class = "inline">df</code>: a DataFrame that
-                    including the specified columns.
-                <li> <code class = "inline">y_col</code>: a column name of the specified DataFrame containing locations.  This is the dependent variable (what's being predicted) in the model.  It has a default value is "shot_made".
-                <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">40</code>.
-                <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">42</code>.
-            </ul>
-
-            The function returns the highest prediction accuracy found from the columns inputted, as well as the name of the column that increases prediction accuracy the most.
-          </ul>
-
-          <p>
-          For example, assuming your function <code class="inline">bestForPredict()</code> was in the <code class="inline">p37.py</code> for the file <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/24/lebron.csv">lebron.csv</a>, the code:
-          <pre><code class="blockcode">df = pd.read_csv('lebron.csv')
-columns = ['minute', 'action_type', 'shot_type', 'opponent']
-acc,col_name = p37.bestForPredict(df,columns)
-print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')</code></pre>
-          would print:
-          <pre><code class="datablock">The highest accuracy, 0.725, was obtained by including column, action_type.</code></pre>
-
-          <p>Another example with the same DataFrame:
-            <pre><code class="blockcode">columns = ['minute', 'opponent']
-acc,col_name = p37.bestForPredict(df,columns, test_size = 100, random_state = 17)
-print(f'The highest accuracy, {acc}, was obtained by including column, {col_name}.')
-</code></pre>
-            would print:
-            <pre><code class="datablock">The highest accuracy, 0.6, was obtained by including column, opponent.</code></pre>
+          <li> <code class=inline>'GRAY'</code>: for <code class=inline>GY</code>,
+            <code class=inline>GRAY</code>,
+            <code class=inline>GREY</code>,<code class=inline>SILVE</code>,
+              <code class=inline>SIL</code>, <code class=inline>SL</code>,
+          <li> <code class=inline>'WHITE'</code>: for <code class=inline>WH</code>,
+            <code class=inline>WHITE</code>,
+          <li> <code class=inline>'BLACK'</code>: for <code class=inline>BK</code>,
+            <code class=inline>BLACK</code>, <code class=inline>BL</code>,
+          <li> <code class=inline>'BLUE'</code>: for <code class=inline>BLUE</code>,
+          <li> <code class=inline>'RED'</code>: for <code class=inline>RED</code>,
+              <code class=inline>RD</code>,
+          <li> <code class=inline>'GREEN'</code>: for <code class=inline>GR</code>,
+              <code class=inline>GREEN</code>,
+          <li> <code class=inline>'BROWN'</code>: for <code class=inline>BROWN</code>,
+              <code class=inline>TAN</code>,
+          <li> Otherwise, return <code class=inline>'OTHER'</code>.
+        </ul>
+      </ul>
+      <p>After applying these functions, the resulting DataFrame can then be used to build a classifer on how likely a particular car is to be one that has more than a ticket a day (see <a href="#p42">Program 42</a>).
 
 
       <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-      <i>
-      <p>Hints:
-        <ul>
-            <li> This program focuses on the 311 parking ticket data set on OpenData NYC.  Use the datasets from Program 35 or download your own for testing.
-            <li>  See Lectures #17 and #18 for techniques to introduce indicator variables.
-        </ul>
-      </i>
-
-
+<!--
   <p><a name="p39"><b>Program 39: Iris Classification.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
       <br>(Learning Objective: to introduce multiway classification techniques.)</p>
       <p>
@@ -2023,6 +2051,7 @@ print(f'The highest accuracy, {acc}, was obtained by including column, {col_name
 
       In Lecture #19 and TEXTBOOK EX, we used multiway classification on the canonical iris data set (add links!).  Repeat here.
 
+      <p> Write a fucnction that allows you to specify the size of the training set and returns the confusion matrix for the iris classifier done in Lecture and the textbook.
 
       <p>fit a simple logistic regression using out of box:
       from sklearn.linear_model import LogisticRegression
@@ -2046,69 +2075,64 @@ print(f'The highest accuracy, {acc}, was obtained by including column, {col_name
       compute accuracy, precision, recall
       record CPU time and wall time
 
-<p><a name="p40"><b>Program 40: Compute Enrollments.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
+<p><a name="p40"><b>Program 40: Enrollments by Courses.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
       <br>(Learning Objective: to reinforce categorical encoding and aggregation techniques.)</p>
-      <p>
-      </p>
-      Do this one after doing one-hot encoding in Python:
 
-      >>> movie_entry = [{'category': ['thriller', 'drama'], 'year': 2003},
-...                {'category': ['animation', 'family'], 'year': 2011},
-...                {'year': 1974}]
->>> vec.fit_transform(movie_entry).toarray()
-array([[0.000e+00, 1.000e+00, 0.000e+00, 1.000e+00, 2.003e+03],
-       [1.000e+00, 0.000e+00, 1.000e+00, 0.000e+00, 2.011e+03],
-       [0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 1.974e+03]])
->>> vec.get_feature_names_out()
-array(['category=animation', 'category=drama', 'category=family',
-       'category=thriller', 'year'], ...)
->>> vec.transform({'category': ['thriller'],
-...                'unseen_feature': '3'}).toarray()
-array([[0., 0., 0., 1., 0.]])
+      Building on <a href="#p24">Program 24</a> and <a href="#p28">Program 28</a>,
+      write a function, <code class="inline">byCourses()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by <code class="inline">' '</code>), and returns a DataFrame that
+      <ul>
+        <li> The rows are the courses enrolled, a separate row for each course listed by any student.
+        <li> The columns are:
+            <ul>
+                <li> <code class="inline">Lower</code>: the number of lower-division students, those with fewer than 60 credits completed, enrolled,
+                <li> <code class="inline">Upper</code> the number of upper-division students, those with more than 60 credits completed, enrolled, and
+                <li> <code class="inline">Total</code> the total number of students enrolled
+            </ul>
+        <li> No other rows or columns should be included in the DataFrame.
 
-https://scikit-learn.org/stable/modules/feature_extraction.html
-      <p>
+      </ul>
 
-https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html
+      <p> For example, assuming your function <code class="inline">byCourses()</code> was in the <code class="inline">p40.py</code>:
+          <pre><code class="blockcode">classDF = pd.DataFrame({'Name': ["Ana","Bao","Cara","Dara","Ella","Fatima"],\
+                          '# Credits': [45,50,80,115,30,90],\
+                          'Current Courses': ["csci160 csci235 math160 jpn201",\
+                                              "csci160 csci235 cla101 germn241",\
+                                              "csci265 csci335 csci39542 germn241",\
+                                              "csci49362 csci499",\
+                                              "csci150 csci235 math160",\
+                                              "csci335 csci39542 cla101 dan102"]})
+print(f'Starting df:\n {classDF}')
+print(f'Ending df:\n {p40.computeEnrollments(classDF)}')</code></pre>
+          Would give output:
+      <pre><code class="datablock">Starting df:
+          Name  # Credits                     Current Courses
+    0     Ana         45      csci160 csci235 math160 jpn201
+    1     Bao         50     csci160 csci235 cla101 germn241
+    2    Cara         80  csci265 csci335 csci39542 germn241
+    3    Dara        115                   csci49362 csci499
+    4    Ella         30             csci150 csci235 math160
+    5  Fatima         90     csci335 csci39542 cla101 dan102
 
-      Reinforce HR style function to take DF, split up column values, and summarize.
-      Build on Program 24's class lists.  Reorg to have a tabbed list of number of 100 level, # of 200 level, upper div CS, and other courses each student is taking and summarize columns-- maybe multiple columns into a single col?
-      Building on <href="#p24">Program 24</a>,
-      Write a function, <code class="inline">computeEnrollments()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by ` `), and returns a DataFrame that
-      <ol>
-        <li> Includes only students taking 3 or more courses, and
-        <li> Replaces the column of current courses with two different columns: the first that counts the number of computer science courses currently taking (all courses that start 'csci') and the second column with the number of other courses the student is taking.
-      </ol>
+    Ending df:
+          Name  # Credits  NumCourses  CS  Other
+    0     Ana         45           4   2      2
+    1     Bao         50           4   2      2
+    2    Cara         80           4   3      1
+    4    Ella         30           3   2      1
+    5  Fatima         90           4   2      2</code></pre>
 
-      <p>
-      For example, assuming your function <code class="inline">cleanClassList()</code> was in the <code class="inline">p24.py</code>:
-      <pre><code class="blockcode">
-  </code></pre>
-      Would give output:
-  <pre><code class="datablock">
-  </code></pre>
-      since ...
 
-    <p> Using the function on the seaborn tips dataset:
-  <pre><code class="blockcode">
-  </code></pre>
-
-      </p>
-
-      <p><i>Hints:
-        <ul>
-          <li> To compute the number of courses taken, count the number of spaces and add 1.
-          <li> To find the courses taken by all students, there are several ways to do this, but one useful function is <code class="inline">unique()</code> which would give an (unsorted) list of all the entries of a column.  For the example above,
-          <code class="inline">classDF['course'].unique()</code> gives:
-          <pre><code class="datablock">
-          </code></pre>
-        </ul>
-      </i>
-    </p>
+    <p>The resulting DataFrame has only 5 students, since the student, Dara, has fewer than 3 current courses and that row is dropped.</p>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-
+      <p><i>Hints:
+        <ul>
+          <li> Use categorical encoding (i.e. one-hot encoding) on the courses each student is taking.
+          <li> A recent addition to Pandas allows multiple values to encoded per entry:  <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get_dummies.html">Series.str.get_dummies(sep = '|')</a>.  Note the default for the delimiter is not <code class = inline>' '</code> as it is for many Python string methods but code class = inline>'|'</code>.
+          <li> Pandas includes useful functions that manipulate matrices such as <code class=inline>df.transpose</code> that will reflect a DataFrame by writing its rows as columns and columns as rows.  See <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.transpose.html">panda documentation</a> for details.
+        </ul>
+      </i>
     </p>
 
 
@@ -2117,35 +2141,93 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.ht
   <p><a name="p41"><b>Program 41: Binary Digit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
       <br>(Learning Objective: to build classifers using sklearn.)</p>
       <p>
+      This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> discussed in Lecture #20 and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
+            <br>
+      <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+        <img src="sklearn_digits.png" height=400>
+      </a>
 
-      Introduce MNIST dataset of digits.  Restrict to 0 and 1's and build two models: one for logistic and one an SVM.
+      <br>
+      The dataset has 1797 scans of hand-written digits.
+      Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
+      <br>
+      <img src = "mnist_first5.png", height = 100>
+      <br>
+      The gray scales for the first 5 entries, flattened to one dimensional array:
+      <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
 
-      Test also on 1 versus 2.
+      <br>To start, we will focus on entries that represent 0's and 1's:
+      <br>
+        <img src = "mnist_binary10.png", height = 175>
 
-      </p>
 
-      # P40
-      same data as P39
-      train/test split
-      fit stochastic gradient descent
-      tune hyperparameters (are we doing different search methods?)
-      compare results to P39.  which one would you choose?
 
-      --------- Evaluating Logistic Models; Multiclass Classification
-
-      P41
-      re-use one of the previous examples to create a binary logit classifier
-      then use sklearn built in functions to calculate confusion matrix
+      <p>
+      Write two functions:
+      <ul>
+        <li> Takes the digit data set and a list of targets, and returns the DataFrame with all entries whose target is included in the list of targets,
+        <li> Adds an indicator, <code class=inline>NonZero</code> that is 0 for a row if its target is 0, and 1 otherwise.
+      </ul>
+      We split up the data and create a binary logit classifier<br>
+      As part of the program, use sklearn built in functions to calculate confusion matrix
       also use sklearn built in functions to calculate and then plot AUC
 
       <p>explicitly use sklearn.model_selection.train_test_split() in function or example
 
 
-    <p><a name="p42"><b>Program 42: Multiway SVM.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
+    <p><a name="p42"><b>Program 42: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
       <br> Learning Objective: to use the tools provided by sklearn to create a support vector machine.)
       </p>
       <p>
-      </p>
+      Use the data prepped in <a href="p38">Program 38</a> on traffic tickets to train a support vector machine that predicts which vehicles will receive an excessive number of tickets (more than 1 a day).
+
+            Build the classifer into the example code.
+            Split-train-test in the example that calls the functions.  Test how well they do.
+            Do this as part of the example in the spec:  Train the model:
+
+            https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+
+
+              <ul>
+                <li> <code class = "inline">cleanAndCount(df):</code>:
+                  This function has three inputs and returns a DataFrame:
+                <li> <code class = "inline">addIndicator(df,numDays,columns=[]):</code>:
+                  This function has three inputs and returns a DataFrame:
+                  <ul>
+                      <li> <code class = "inline">df</code>: a DataFrame that
+                            including the specified columns.
+                      <li> <code class = "inline">num_days</code>:  a column name of the specified DataFrame containing locations.  It is one of the independent variables for the model (the other is from the list <code class = "inline">columns</code>).  It has a default value is "shot_distance".
+                      <li> <code class = "inline">columns</code>: a list of column names of the specified DataFrame.
+                </ul>
+                Returns the specified columns of the DataFrame with two additional columns:
+                <code class = "inline">count</code> of the number of occurrences of those values and an indicator column <code class = "inline">DailyTicket</code>
+                Describe what function does.
+                <li> <code class = "inline">buildClassifer(df, test_size = 0.25, random_state=42)</code>:
+                  This function has three inputs and returns a classifier:
+                  <ul>
+                      <li> <code class = "inline">df</code>: a DataFrame that
+                          including the specified columns.
+                      <li> <code class = "inline">y_col</code>: a column name of the specified DataFrame containing locations.  This is the dependent variable (what's being predicted) in the model.  It has a default value is "shot_made".
+                      <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">40</code>.
+                      <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">42</code>.
+                  </ul>
+
+                  The function returns the highest prediction accuracy found from the columns inputted, as well as the name of the column that increases prediction accuracy the most.
+                </ul>
+
+
+
+
+
+
+<p><a name="p43"><b>Program 43: Multiway SVM.</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
+    <br>(Learning Objective: .)</p>
+    <p>
 
       P42
       create a multilabel classifier
@@ -2154,41 +2236,10 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.ht
 
       <p>explicitly use sklearn.model_selection.train_test_split() in function or example
 
-
-<p><a name="p43"><b>Program 43: Component Retention.</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
-    <br>(Learning Objective: to employ programming skills to evaluate the number of principal components to use in dimensionality reduction.)</p>
-    <p>
-    In lecture and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
-
-    <ul>
-      <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
-          the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <code class="inline">arr</code> is
-<pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
-24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-1.95,   0.04])</code></pre>
-          Then <code class="inline">cv</code> would be:
-<pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
-       0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
-          and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
-      <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
-        <code class="inline">arr</code> (in decreasing order), computes
-          the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.  Using the example from the textbook, if <code class="inline">arr</code> is:
-          <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
-        24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-         1.95,   0.04])</code></pre>
-          Then <code class="inline">avg</code> would be 75.07,
-          and the function would return 3 since the first three coordinates are larger than the average.
-    </ul>
-
-    </p>
-    <p>
-    Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
-
-
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
     <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
     <p>
-    In lecture, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
+    In Lecture #21, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
     <p>
     <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
       <img src="sklearn_digits.png" height=400>
@@ -2198,7 +2249,37 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.ht
 
 
 
-  <p><a name="p45"><b>Program 45: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+  <p><a name="p45"><b>Program 45: Component Retention.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+        <br>(Learning Objective: to employ programming skills to evaluate the number of principal components to use in dimensionality reduction.)</p>
+        <p>
+        In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
+
+        <ul>
+          <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
+              the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <code class="inline">arr</code> is
+    <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+    24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+    1.95,   0.04])</code></pre>
+              Then <code class="inline">cv</code> would be:
+    <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
+           0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
+              and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
+          <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
+            <code class="inline">arr</code> (in decreasing order), computes
+              the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.  Using the example from the textbook, if <code class="inline">arr</code> is:
+              <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+            24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+             1.95,   0.04])</code></pre>
+              Then <code class="inline">avg</code> would be 75.07,
+              and the function would return 3 since the first three coordinates are larger than the average.
+        </ul>
+
+        </p>
+        <p>
+        Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
+
+
+
       <br>(Learning Objective: to introduce existing tools for multidimensional scaling in sklearn.)</p>
       <p>
       </p>
@@ -2220,7 +2301,7 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
 <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<p><a name="p47"><b>Program 47: Easy clustering?.</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
+<p><a name="p47"><b>Program 47: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
     <br>(Learning Objective: .)</p>
     <p>
     </p>
@@ -2481,18 +2562,39 @@ There are periodic check-ins to make sure that you are making progress on your p
 <ul>
   <li> The title of your project
   <li> Brief description of your project (1-2 sentences)
-  <li> Any major changes to the focus of your project and why (i.e. could not find the data needed, or data was more compelling for a related project).
+  <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
   <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
 </ul>
+In addition, the first one focuses on data collection and for the URL's for your publicly available datasets, the size and features of each data set (e.g. df.columns).
 
-<!--
+
 
 <h3>Check-in #2 (Analysis)</h3>
 <a name="analysis"></a>
 
+There are periodic check-ins to make sure that you are making progress on your project.  All ask for the following information:
+<ul>
+  <li> The title of your project
+  <li> Brief description of your project (1-2 sentences)
+  <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
+  <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
+</ul>
+In addition, the second one focuses on progress you have made on your data analysis and asks that you list the techniques you have applied and the initial results.
+
+
 <h3>Check-in #3 (Visualization)</h3>
 <a name="visualization"></a>
 
+There are periodic check-ins to make sure that you are making progress on your project.  All ask for the following information:
+<ul>
+  <li> The title of your project
+  <li> Brief description of your project (1-2 sentences)
+  <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
+  <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
+</ul>
+In addition, the third one focuses on the visualizations you are making for the project and an update on the data analysis.  This check-in also asks for you to identify the main theme of your topic (e.g. schools, transportation, health/covid, social justice, etc.).  The peer review of your draft abstract and website will be by others with a similar theme, so, this will determine to which subcourse you will submit the next component.
+
+<!--
 <h3>Draft Abstract & Website</h3>
 <a name="draft"></a>
 
