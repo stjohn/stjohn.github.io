@@ -1998,7 +1998,7 @@ print(f"Those values are: {newDF['VehicleColor'].value_counts()[:15]}.")</code><
 
  <pre><code class=blockcode>The top 15 values account for 95.37291781301586 percent.
 Those values are:
- WH       27814
+WH       27814
 GY       24704
 WHITE    20817
 BK       20778
@@ -2043,37 +2043,125 @@ TN         938</code></pre>
 
       <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
-  <p><a name="p39"><b>Program 39: Iris Classification.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
-      <br>(Learning Objective: to introduce multiway classification techniques.)</p>
-      <p>
-      </p>
+  <p><a name="p39"><b>Program 39: Binary Digit Classification.</b></b> &emsp; <i>Due noon, Friday, 12 November.</i>
+    <br>(Learning Objective: to build classifers using sklearn.)</p>
+    <p>
+    This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> discussed in Lecture #19 and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
+          <br>
+    <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
+      <img src="sklearn_digits.png" height=400>
+    </a>
 
-      In Lecture #19 and TEXTBOOK EX, we used multiway classification on the canonical iris data set (add links!).  Repeat here.
+    <br>
+    The dataset has 1797 scans of hand-written digits.
+    Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
+    <br>
+    <img src = "mnist_first5.png", height = 100>
+    <br>
+    The gray scales for the first 5 entries, flattened to one dimensional array:
+    <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
 
-      <p> Write a fucnction that allows you to specify the size of the training set and returns the confusion matrix for the iris classifier done in Lecture and the textbook.
+    <br>To start, we will focus on entries that represent 0's and 1's.  The first 10 from the dataset are displayed below:
+    <br>
+      <img src = "mnist_binary10.png", height = 175>
 
-      <p>fit a simple logistic regression using out of box:
-      from sklearn.linear_model import LogisticRegression
-      Y ~ X1
-      compare accuracy of this against accuracy of always predicting 0 or 1
+    <p>
+    Write a function that builds a logistic regression model that classifies binary digits:
+        <ul>
+          <li> <code class = "inline">def binary_digit_clf(data, target, test_size = 0.25, random_state = 21):</code>:
+            This function has four inputs:
+            <ul>
+                <li> <code class = "inline">data</code>: a numpy array that
+                      includes rows of equal size flattend arrays,
+                <li> <code class = "inline">target</code> a numpy array that takes values 0 or 1 corresponding to the rows of <code class = "inline">data</code>.
+                <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
+                <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">21</code>.
+            </ul>
+
+            The function returns the Area Under the Curve (AUC) computed by
+            <code class = "inline">sklearn.metrics.roc_auc_score</code> as well as the classifier built.
+          </ul>
+
+          <p>
+          For example, let's flatten the entries and restrict the dataset to just binary digits, as we did in lecture:
+          <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+#Using the digits data set from sklearn:
+from sklearn import datasets
+digits = datasets.load_digits()
+print(digits.target)
+print(type(digits.target), type(digits.data))
+#flatten the images
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+print(data[0:5])
+print(f'The targets for the first 5 entries: {digits.target[:5]}')
+#Make a DataFrame with just the binary digits:
+binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
+bd,bt = zip(*binaryDigits)
+print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
+          which will print:
+<pre><code class="datablock">
+  [0 1 2 ... 8 9 8]
+<class 'numpy.ndarray'> <class 'numpy.ndarray'>
+[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
+  15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
+   0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
+   0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
+ [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
+   3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
+  16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
+   0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
+ [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
+   8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
+  15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
+   5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
+ [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
+   1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
+  12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
+   9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
+ [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
+   1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
+   0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
+   0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
+The targets for the first 5 entries: [0 1 2 3 4]
+The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
+</code></pre>
+
+          <p>We can then use the restricted data and targets datasets as input to our function, assuming your function <code class="inline">binary_digit_clf()</code> was in the <code class="inline">p39.py</code>:
+  <pre><code class="blockcode">confuse_mx = p39.binary_digit_clf(bd,bt,test_size=0.95)
+print(f'Confusion matrix:\n{confuse_mx}')
+disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
+#Use a different color map since the default is garish:
+disp.plot(cmap = "Purples")
+plt.title("Logistic Regression Classifier for Binary Digits")
+plt.show()</code></pre>
+            which will print:
+  <pre><code class="datablock">Confusion matrix:
+[[172   0]
+ [  4 166]]</code></pre>
+          and display:
+          <br>
+          <img src="logReg_clf_confuse.png" height = 300>
+
+          <p>Another example with the same data, but different size for the data reserved for testing:
+            <pre><code class="blockcode">confuse_mx = p39.binary_digit_clf(bd,bt)
+print(f'Confusion matrix:\n{confuse_mx}')</code></pre>
+            would print:
+            <pre><code class="datablock">Confusion matrix:
+[[43  0]
+ [ 0 47]]</code></pre>
 
 
-
-      # P38
-      using same data as P37, do train/test split (with seeding)
-      Y ~ X1 + X2 ... (possibly with one-hot encoding)
-      compare accuracy of this against bsaeline of always predicting 0 or 1
-      compare accuracy of test vs train
+      <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-      --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
-
-      # P39
-      train/test split
-      fit logistic regression
-      compute accuracy, precision, recall
-      record CPU time and wall time
 
 <p><a name="p40"><b>Program 40: Enrollments by Courses.</b></b> &emsp; <i>Due noon, Monday, 15 November.</i>
       <br>(Learning Objective: to reinforce categorical encoding and aggregation techniques.)</p>
@@ -2081,12 +2169,8 @@ TN         938</code></pre>
       Building on <a href="#p24">Program 24</a> and <a href="#p28">Program 28</a>,
       write a function, <code class="inline">byCourses()</code>, that takes a DataFrame that contains students' names, number of credits completed, and current courses (a string with the course names separated by <code class="inline">' '</code>), and returns a DataFrame that
       <ul>
-        <li> The rows are the courses enrolled, a separate row for each course listed by any student.
-        <li> The columns are:
-            <ul>
-                <li> <code class="inline">Lower</code>: the number of lower-division students, those with fewer than 60 credits completed, enrolled,
-                <li> <code class="inline">Upper</code> the number of upper-division students, those with more than 60 credits completed, enrolled, and
-                <li> <code class="inline">Total</code> the total number of students enrolled
+        <li> The column indices are the names of the computer science courses only, and
+        <li> The one column is <code class="inline">NumEnrolled</code>, the total number of students enrolled.
             </ul>
         <li> No other rows or columns should be included in the DataFrame.
 
@@ -2101,82 +2185,74 @@ TN         938</code></pre>
                                               "csci49362 csci499",\
                                               "csci150 csci235 math160",\
                                               "csci335 csci39542 cla101 dan102"]})
-print(f'Starting df:\n {classDF}')
-print(f'Ending df:\n {p40.computeEnrollments(classDF)}')</code></pre>
+print(f'Starting df:\n {classDF}\n')
+print(f'CS courses:\n {p40.byCourses(classDF)}')</code></pre>
           Would give output:
       <pre><code class="datablock">Starting df:
-          Name  # Credits                     Current Courses
-    0     Ana         45      csci160 csci235 math160 jpn201
-    1     Bao         50     csci160 csci235 cla101 germn241
-    2    Cara         80  csci265 csci335 csci39542 germn241
-    3    Dara        115                   csci49362 csci499
-    4    Ella         30             csci150 csci235 math160
-    5  Fatima         90     csci335 csci39542 cla101 dan102
+      Name  # Credits                     Current Courses
+0     Ana         45      csci160 csci235 math160 jpn201
+1     Bao         50     csci160 csci235 cla101 germn241
+2    Cara         80  csci265 csci335 csci39542 germn241
+3    Dara        115                   csci49362 csci499
+4    Ella         30             csci150 csci235 math160
+5  Fatima         90     csci335 csci39542 cla101 dan102
 
-    Ending df:
-          Name  # Credits  NumCourses  CS  Other
-    0     Ana         45           4   2      2
-    1     Bao         50           4   2      2
-    2    Cara         80           4   3      1
-    4    Ella         30           3   2      1
-    5  Fatima         90           4   2      2</code></pre>
+CS courses:
+csci150      1
+csci160      2
+csci235      3
+csci265      1
+csci335      2
+csci39542    2
+csci49362    1
+csci499      1</code></pre>
 
-
-    <p>The resulting DataFrame has only 5 students, since the student, Dara, has fewer than 3 current courses and that row is dropped.</p>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
       <p><i>Hints:
         <ul>
           <li> Use categorical encoding (i.e. one-hot encoding) on the courses each student is taking.
-          <li> A recent addition to Pandas allows multiple values to encoded per entry:  <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get_dummies.html">Series.str.get_dummies(sep = '|')</a>.  Note the default for the delimiter is not <code class = inline>' '</code> as it is for many Python string methods but code class = inline>'|'</code>.
+          <li> A recent addition to Pandas allows multiple values to encoded per entry:  <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.get_dummies.html">Series.str.get_dummies(sep = '|')</a>.  Note the default for the delimiter is not <code class = inline>' '</code> as it is for many Python string methods, instead it is
+          <code class = inline>'|'</code>.
           <li> Pandas includes useful functions that manipulate matrices such as <code class=inline>df.transpose</code> that will reflect a DataFrame by writing its rows as columns and columns as rows.  See <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.transpose.html">panda documentation</a> for details.
         </ul>
       </i>
     </p>
 
+<!--
+  <p><a name="p41"><b>Program 41: Iris Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
+    <br>(Learning Objective: to introduce multiway classification techniques.)</p>
+    <p>
+    </p>
+
+    In Lecture #19 and TEXTBOOK EX, we used multiway classification on the canonical iris data set (add links!).  Repeat here.
+
+    <p> Write a fucnction that allows you to specify the size of the training set and returns the confusion matrix for the iris classifier done in Lecture and the textbook.
+
+    <p>fit a simple logistic regression using out of box:
+    from sklearn.linear_model import LogisticRegression
+    Y ~ X1
+    compare accuracy of this against accuracy of always predicting 0 or 1
 
 
 
-  <p><a name="p41"><b>Program 41: Binary Digit Classifier.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
-      <br>(Learning Objective: to build classifers using sklearn.)</p>
-      <p>
-      This program uses the canonical <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset of hand-written digits</a> discussed in Lecture #20 and available in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a>:
-            <br>
-      <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">
-        <img src="sklearn_digits.png" height=400>
-      </a>
-
-      <br>
-      The dataset has 1797 scans of hand-written digits.
-      Each entry has the digit represented (<code class=inline>target</code>) as well as the 64 values representing the gray scale for the 8 x 8 image.  The first 5 entries are:
-      <br>
-      <img src = "mnist_first5.png", height = 100>
-      <br>
-      The gray scales for the first 5 entries, flattened to one dimensional array:
-      <pre><code class="datablock">[[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3. 15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.  0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.  0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
- [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.  3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16. 16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
- [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.  8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13. 15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.  5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
- [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.  1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1. 12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.  9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
- [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.  1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.  0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.  0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]</code></pre>
-
-      <br>To start, we will focus on entries that represent 0's and 1's:
-      <br>
-        <img src = "mnist_binary10.png", height = 175>
+    # P38
+    using same data as P37, do train/test split (with seeding)
+    Y ~ X1 + X2 ... (possibly with one-hot encoding)
+    compare accuracy of this against bsaeline of always predicting 0 or 1
+    compare accuracy of test vs train
 
 
+    --------- Approximating the Empirical Probability Distribution; Fitting a Logistic Model
 
-      <p>
-      Write two functions:
-      <ul>
-        <li> Takes the digit data set and a list of targets, and returns the DataFrame with all entries whose target is included in the list of targets,
-        <li> Adds an indicator, <code class=inline>NonZero</code> that is 0 for a row if its target is 0, and 1 otherwise.
-      </ul>
-      We split up the data and create a binary logit classifier<br>
-      As part of the program, use sklearn built in functions to calculate confusion matrix
-      also use sklearn built in functions to calculate and then plot AUC
+    # P39
+    train/test split
+    fit logistic regression
+    compute accuracy, precision, recall
+    record CPU time and wall time
 
-      <p>explicitly use sklearn.model_selection.train_test_split() in function or example
+
 
 
     <p><a name="p42"><b>Program 42: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
@@ -2303,8 +2379,34 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 
 <p><a name="p47"><b>Program 47: Mystery Point.</b></b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
     <br>(Learning Objective: .)</p>
+
     <p>
+    The inputs are:
+    <ul>
+      <li> A DataFrame of NYC locations that includes their names, latitudes and longitudes,
+      <li> A matrix of distances between points, and
+      <li> The latitude and longitude of the first three points in the distance matrix.
+    </ul>
+    You should return a list of names of NYC locations corresponding to the entries in the distance matrix.  The order of names in your list should match the order in the distance matrix.  That is, the first name in your list should be the name of the first location in your list.  The second name in your list should be the name of the second location in your list, and so on.
     </p>
+
+    Look up what the distance is for lat and lon in NYC.
+
+    <ol>
+      <li> Use MDS to get the coordinates in miles for each entry.
+      <li> Use the first three locations lat and lon to anchor the rotation (i.e. flip coordinates to make match).
+      <li> Scale the coordinates to lat and lon
+      <li> Look up entries and return names
+    </ol>
+
+    Maybe make easier and ask for the fourth, given the first 3?
+
+    <i>
+      <p>Hints:
+      <ul>
+          <li> Use MDS-- see book+??? for tutorial
+      </ul>
+    </i>
 
 <p><a name="p48"><b>Program 48: HR challenge.</b></b> &emsp; <i>Due noon, Thursday, 2 December.</i>
         <br>(Learning Objective: .)</p>
@@ -2316,12 +2418,14 @@ https://en.wikipedia.org/wiki/Transformation_matrix#Affine_transformations
 <p><a name="p49"><b>Program 49: Clustering.</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
   <br>(Learning Objective: .)</p>
   <p>
+  Pick one that has nice implementation in sklearn, and implement on NYC data-- maybe trashcans?
   </p>
 
 <p><a name="p50"><b>Program 50: Lead-in to A/B Testing.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
   <br>(Learning Objective: .)</p>
   <p>
 
+    Maybe website testing?
     A/B Testing-- do as part of quizzes when we do Bayes Theorem
   </p>
 -->
@@ -2349,29 +2453,11 @@ Generate a 3D plot of the data under the first three axis of a Principal Compone
 Include the Python code that you used to generate your plots.
 Make sure to include in the title of your plot the date plotted.
 
-Using the New York City data for district test scores, shade your map above by percentage of students proficient in mathematics (i.e. scored a 3 or 4 on the exam-- the last column in the CSV file).
-
-#6: Using the New York City data for district test scores, compute the covariance matrix for District 1 schools across grades (that is, rows 8 to 28, columns G onward). Which rows are most highly correlated? Submit a typeset or neatly handwritten image of your answer.</i>
-
 When do mapping, something with litter baskets:  https://data.cityofnewyork.us/dataset/DSNY-Litter-Basket-Map-/d6m8-cwh9
 
 
 HW 12:  The file landmarkDistances.txt contains a distance matrix for 10 landmarks in New York City. The file landmarks.txt contains the names of 9 of the landmarks. The last name is "mystery". Use multidimensional scaling to display all 10 points on the screen with landmarks labeled. Using your displayed information, identify the last mystery landmark.
 (Based on the inspired homework from dasGupta's machine learning course at UCSD.)
-
-
-HW 12:  Modeling question-- not sure when to integrate into topics:
-Given the data:
-x	0	1	2	4	5	7	8	9	12	15
-y	0	0	0	1	1	0	1	0	1	1
-
-and two possible logistic functions:
-
-f(x) = 1/(1 +e^{-(6+.75x)})
-g(x) = 1/(1 +e^{-(-8+x)})
-#6: Which function predicts more of the data correctly? That is, out of the 10 input values, how many values were predicted to be 1 with greater than 50% probability were actually 1 (true positives), were actually 0 (false positives); how many values were predicted to be 0 with greater than 50% probability were actually 0 (true negatives), were actually 1 (false negatives)?
-
-
 
 -->
 <br><br>
@@ -2458,7 +2544,7 @@ The project is broken down into smaller pieces that must be submitted by the dea
 
 <tr>
 	<td>Friday, 10 December, noon</td>
-  <td><a href="#completeSite">Complete Project Website</a></td>
+  <td><a href="#completeSite">Complete Project & Website</a></td>
   <td>50</td>
   <td>Gradescope</td>
 </tr>
@@ -2565,7 +2651,16 @@ There are periodic check-ins to make sure that you are making progress on your p
   <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
   <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
 </ul>
-In addition, the first one focuses on data collection and for the URL's for your publicly available datasets, the size and features of each data set (e.g. df.columns).
+In addition, the first one focuses on data collection and includes
+<ul>
+	<li> a list (with links) of all data sources used,
+	<li> for each data source:
+		<ul>
+			<li> a description of what and why you are using that source,
+			<li> how you extracted the data from the source (i.e. detail how you downloaded/scraped the data as well as the file processing needed), and
+			<li> any issues you had or forsee with the analysis of the data.
+		</ul>
+</ul>
 
 
 
@@ -2579,7 +2674,8 @@ There are periodic check-ins to make sure that you are making progress on your p
   <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
   <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
 </ul>
-In addition, the second one focuses on progress you have made on your data analysis and asks that you list the techniques you have applied and the initial results.
+In addition, the second one focuses on progress you have made on your data analysis and includes the results of the initial analysis for each data set.
+
 
 
 <h3>Check-in #3 (Visualization)</h3>
@@ -2592,90 +2688,48 @@ There are periodic check-ins to make sure that you are making progress on your p
   <li> Any major changes to the focus of your project and why (e.g. could not find the data needed, or data was more compelling for a related project).
   <li> Progress made towards your final project:  how much have you completed on data collection, analysis, visualization, website and final presentation.
 </ul>
-In addition, the third one focuses on the visualizations you are making for the project and an update on the data analysis.  This check-in also asks for you to identify the main theme of your topic (e.g. schools, transportation, health/covid, social justice, etc.).  The peer review of your draft abstract and website will be by others with a similar theme, so, this will determine to which subcourse you will submit the next component.
+In addition, the third one focuses on the visualizations and includes:
+<ul>
+	<li> links to draft images (can be scans of hand drawn sketches with details of what you plan to do) that you plan to use in your project website presentation,
+  <li> identify the main theme of your topic (e.g. schools, transportation, health/covid, social justice, etc.).  The peer review of your draft abstract and website will be by others with a similar theme, so, this will determine to which subcourse you will submit the next component.  If you do not choose a theme, we will include you in the "General" group.
+</ul>
 
-<!--
+
+
 <h3>Draft Abstract & Website</h3>
 <a name="draft"></a>
+
+This is done via Gradescope.  You will be sent an invitation to a subcourse (based on your theme you specified in the last check-in).  If you did not submit a theme, you will be automatically placed in the "general" subcourse.
+
+The following are requested:
+<ul>
+  <li> Project Title
+  <li> Theme:  we will be grouping projects by themes for peer reviews as well as on the course projects page.
+  <li> Your preferred version of your name for our projects page.  If you use multiple names, use the one here that you use (or plan to use) for internships and job applications
+  <li> Your LinkedIn name (optional, but makes it easier for employers to find you by linking in your project with your digital portfolio)
+  <li> Location (URL) of your website
+  <li> The final version of the abstract will be listed on the course project page.
+</ul>
 
 <h3>Peer Review #2</h3>
 <a name="peerReview2"></a>
 
+This is done via Gradescope.  You will be sent an invitation to a subcourse (based on your theme).  Your access to the subcourse will be changed to "teaching assistant" after the drafts have been submitted.  You need to complete peer reviews for 4 other students.  The system logs all entries and grades will be assigned based on the automatic entries.  The points for this portion are given for each peer review you complete (up to 4).
+
+
+<!--
 <h3>Abstract</h3>
 <a name="abstract"></a>
 
-<h3>Complete Project Website</h3>
+This is the final version of your abstract.  It should include 2-3 sentences describing the project and your results.
+
+It will be graded on the following:
+
+<h3>Complete Project & Website</h3>
 <a name="completeSite"></a>
 
-<h3>Project Video</h3>
-<a name="presentation"></a>
+This publicly available website will be graded on the following:
 
-<!--
-
-<h3>Presentation Slides</h3>
-<a name="slides"></a>
-
-REWRITE-- need 30 second preview (recorded) + grading rubric of others?  Maybe have feed back from other students earlier in the process?
-
-
-The presentation .  The first part consists of a "sneak preview" of your project where your group speaks for 90 seconds about what they did.  After every group has given their sneak preview, each group will display their project on a lab computer (see below for more details).
-
-<p>
-For the sneak preview, every group submits 2 slides with
-<ul>
-	<li> Slide 1: the front image and title from website, as well as the names of group members
-	<li> Slide 2:  discoveries & conclusions (with images)
-</ul>
-</div>
-
-<div>
-<h3>Data Collection</h3>
-<a name="slides"></a>
-
-<p>
-For the data collection milestone, you must submit:
-<ul>
-	<li> a list (with links) of all data sources used,
-	<li> for each data source:
-		<ul>
-			<li> a description of what and why you are using that source,
-			<li> how you extracted the data from the source (i.e. detail how you downloaded/scraped the data as well as the file processing needed), and
-			<li> any issues you had or forsee with the analysis of the data.
-		</ul>
-</ul>
-
-
-</div>
-
-<div>
-<h3>Analysis</h3>
-<a name="slides"></a>
-
-<p>
-For the analysis milestone, you must submit:
-<ul>
-	<li> the results of the initial analysis for each data set, and
-	<li> details of at least one data set per group member (that is, each group member submits the details of a different data set used).
-</ul>
-
-</div>
-
-<div>
-<h3>Visualization</h3>
-<a name="slides"></a>
-
-<p>
-For the visualization milestone, you must submit:
-<ul>
-	<li> draft images that you plan to use in your project presentation, and
-	<li> detailed description of the creation of at least one image per group member (that is, each group member submits the details of a different image from the project).
-</ul>
-
-</div>
-
-<div>
-<h3>Complete Project</h3>
-<a name="complete"></a>
 
 <p> The project must be submitted as a webpage (use google sites or other pre-built if you're not comfortable writing html).  The project website must include:
 <ul>
@@ -2687,13 +2741,18 @@ For the visualization milestone, you must submit:
 	<li> a techniques section with a paragraph detailing,
 	the process and tools you usedeach technique use,
 	<li> a citations section with links to all data sources, code sources, publications used.
-</li>
-</div>
+</ul>
 
-
-<div>
-<h3>Project Presentation Video</h3>
+<h3>Project Video</h3>
 <a name="presentation"></a>
+
+need 30 second preview (recorded) + grading rubric of others?  Maybe have feed back from other students earlier in the process?
+The presentation .  The first part consists of a "sneak preview" of your project.
+<p>Two slides:
+<ul>
+	<li> Slide 1: the front image and title from website, as well as the names of group members
+	<li> Slide 2:  discoveries & conclusions (with images)
+</ul>
 
 <p>
 The project presentations are on the last day of class and consist of two parts:
@@ -2703,27 +2762,11 @@ The project presentations are on the last day of class and consist of two parts:
 
 </div>
 
-<div>
-<h3>Grading</h3>
-
-
-<p>
-Half of the points are awarded for the work-in-process milestones during the semester, and half are awarded for the final project and presentation.
-
-<h3>Examples</h3>
-
-<p>
-This course has not been taught at Lehman College before, so, no previous student projects exist.  Below is a sampled list of stellar student projects from other data science programs:
-<ul>
-	<li> <a href="http://cs109hubway.github.io/classp/">Predicting Hubway (Boston's Citibike) Station Status</a>:  a group project from Harvard's data science class.  Includes excellent presentation of the motivation as well as data visualizations.
-	<li> <a href="http://www.michaelhintze.com/tv-series/">Longest Running TV Series</a>:  a class project by Lehman alum, Michael Hintze, for one of his masters courses at <a href="http://www.ischool.berkeley.edu/courses/i247">UC Berkeley School of Information</a>.
-	<li> <a href="http://isoscope.martinvonlupin.de">Isoscope</a>:  a group project comparing modes of transportation for the masters degree program at the <a href="http://idl.fh-potsdam.de">University of Applied Sciences, Potsdam, Germany</a>.
-
-</ul>
--->
+<!--
 
 <p>
   <i>More to come...</i>
+-->
 
 </div>
 </body>
