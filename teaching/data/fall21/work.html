@@ -1938,6 +1938,8 @@ print(f'The highest accuracy, {acc}, was obtained by including column, {col_name
             <pre><code class="blockcode">rows = df[[x_col,c]].to_dict('records')
 onehot = DictVectorizer(sparse=False).fit(rows)</code></pre>
             See Lecture #18 for details.
+          <li> If your program stuggles to converge when fitting the model, use the keyword parameter to increase the number of iterations, as we did in lecture:  <code class=inline>clf = LogisticRegression(max_iter = 1000)</code>.
+
         </ul>
       </i>
 
