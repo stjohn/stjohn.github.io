@@ -2221,7 +2221,7 @@ csci499      1</code></pre>
       </i>
     </p>
 
-<!--
+
   <p><a name="p41"><b>Program 41: Classifier Misses.</b></b> &emsp; <i>Due noon, Tuesday, 16 November.</i>
     <br>(Learning Objective: to refresh matrix manipulation skills and strengthen understanding of multiway classification results.)</p>
     <p>
@@ -2239,94 +2239,46 @@ csci499      1</code></pre>
               The function returns the label of the class that is most commonly misidentified.  That is the row which has the greatest fraction of its entries not on the diagonal.
             </ul>
 
-      <p> For example, in <a href="http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 24</a>, the confusion matrix computed for the iris dataset was:
+      <p> In <a href="http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 24</a>, the confusion matrix computed for the iris dataset was:
       <br>
       <img src="ds100_iris_confuse_mx.png" height = 300>
 
       <br>The first row has no entries not in its diagonal entry and a total of 19 members of the class, so has value <code class=inline>0%</code>.  The second column has <code class=inline>2/17 = 11.76%</code> elements mislabeled.  The third column has <code class=inline>0%</code> mislabeled.  So, your function would return the label of the second row, or <code class=inline>iris-versicolor</code>.
 
-      <p>Running this example:
-      <pre><code class="blockcode">#Import datasets, classifiers and performance metrics:
-  from sklearn import datasets, svm, metrics
-  from sklearn.model_selection import train_test_split
-  from sklearn.linear_model import LogisticRegression
-  #Using the digits data set from sklearn:
-  from sklearn import datasets
-  digits = datasets.load_digits()
-  print(digits.target)
-  print(type(digits.target), type(digits.data))
-  #flatten the images
-  n_samples = len(digits.images)
-  data = digits.images.reshape((n_samples, -1))
-  print(data[0:5])
-  print(f'The targets for the first 5 entries: {digits.target[:5]}')
-  #Make a DataFrame with just the binary digits:
-  binaryDigits = [(d,t) for (d,t) in zip(data,digits.target) if t <= 1]
-  bd,bt = zip(*binaryDigits)
-  print(f'The targets for the first 5 binary entries: {bt[:5]}')</code></pre>
-            which will print:
-  <pre><code class="datablock">
-    [0 1 2 ... 8 9 8]
-  <class 'numpy.ndarray'> <class 'numpy.ndarray'>
-  [[ 0.  0.  5. 13.  9.  1.  0.  0.  0.  0. 13. 15. 10. 15.  5.  0.  0.  3.
-    15.  2.  0. 11.  8.  0.  0.  4. 12.  0.  0.  8.  8.  0.  0.  5.  8.  0.
-     0.  9.  8.  0.  0.  4. 11.  0.  1. 12.  7.  0.  0.  2. 14.  5. 10. 12.
-     0.  0.  0.  0.  6. 13. 10.  0.  0.  0.]
-   [ 0.  0.  0. 12. 13.  5.  0.  0.  0.  0.  0. 11. 16.  9.  0.  0.  0.  0.
-     3. 15. 16.  6.  0.  0.  0.  7. 15. 16. 16.  2.  0.  0.  0.  0.  1. 16.
-    16.  3.  0.  0.  0.  0.  1. 16. 16.  6.  0.  0.  0.  0.  1. 16. 16.  6.
-     0.  0.  0.  0.  0. 11. 16. 10.  0.  0.]
-   [ 0.  0.  0.  4. 15. 12.  0.  0.  0.  0.  3. 16. 15. 14.  0.  0.  0.  0.
-     8. 13.  8. 16.  0.  0.  0.  0.  1.  6. 15. 11.  0.  0.  0.  1.  8. 13.
-    15.  1.  0.  0.  0.  9. 16. 16.  5.  0.  0.  0.  0.  3. 13. 16. 16. 11.
-     5.  0.  0.  0.  0.  3. 11. 16.  9.  0.]
-   [ 0.  0.  7. 15. 13.  1.  0.  0.  0.  8. 13.  6. 15.  4.  0.  0.  0.  2.
-     1. 13. 13.  0.  0.  0.  0.  0.  2. 15. 11.  1.  0.  0.  0.  0.  0.  1.
-    12. 12.  1.  0.  0.  0.  0.  0.  1. 10.  8.  0.  0.  0.  8.  4.  5. 14.
-     9.  0.  0.  0.  7. 13. 13.  9.  0.  0.]
-   [ 0.  0.  0.  1. 11.  0.  0.  0.  0.  0.  0.  7.  8.  0.  0.  0.  0.  0.
-     1. 13.  6.  2.  2.  0.  0.  0.  7. 15.  0.  9.  8.  0.  0.  5. 16. 10.
-     0. 16.  6.  0.  0.  4. 15. 16. 13. 16.  1.  0.  0.  0.  0.  3. 15. 10.
-     0.  0.  0.  0.  0.  2. 16.  4.  0.  0.]]
-  The targets for the first 5 entries: [0 1 2 3 4]
-  The targets for the first 5 binary entries: (0, 1, 0, 1, 0)
-  </code></pre>
+      <p>For example, examining a confusion matrix for the MNIST digits dataset and assuming <code class=inline>clf_misses</code> is in <code class=inline>p41</code> and the appropriate libraries are loaded:
+      <pre><code class="blockcode">digits = datasets.load_digits()
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+X_train, X_test, y_train, y_test = train_test_split(data, digits.target,random_state=42, test_size=.75)
+clf = LogisticRegression(max_iter=1000)
+clf.fit(X_train,y_train)
+y_predict = clf.predict(X_test)
+confuse_mx = metrics.confusion_matrix(y_test,y_predict)
+disp = metrics.ConfusionMatrixDisplay(confusion_matrix=confuse_mx)
+disp.plot(cmap = "Purples")
+plt.title("Logistic Regression Classifier for Digits")
+plt.show()
+print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></pre>
+<p>would display:
+  <br><img src="mnist_confuse_mx_75_test.png" height = 300>
+  <br>
+      and print:
+      <pre><code class="datablock">The most misclassified class is 3.</code></pre>
 
 
-
-
-      <ul>
-        <li>  classifier from before
-        <li>  mostConfused(cmx):  Takes a confusion matrix and returns the most mislabeled entry
-      </ul>
-
-      Run on binary data-- complete repeat from above
-
-      Run on full data set
-
-      Run on iris data set
-
-       that allows you to specify the size of the training set and for the classifier done in Lecture and the textbook.  Your function should then return the most common misclassification as well as the confusion matrix.
-    <p> Return as two strings and a numpy array.
-
-    <p> Run on irises (do that as an example in class)
-
-    <p> Run same code on digits.
-
-    <i>
     Hints:
       <ul>
-        <li> For the first function, make small modifications to the binary digit classifier from <a href="p39">Program 39</a>.
-        <li> For the second function, you are seeking the maximum value that is not on the diagonal.  CLEVER WAY? to get rid of the diagonal??
+        <li> Break up this question into parts:  first, print out the diagonal entries of the matrix.  Next, how would sum a row of a matrix?  Once you have both of these pieces, the desired row is the one with the highest difference between the row sum and its diagonal entry.
+        <li> A useful function for finding at which index a maximal entry occurs is <code class=inline>argmax</code>.
       </ul>
     </i>
 
-
+<!--
     <p><a name="p42"><b>Program 42: Daily Tickets.</b></b> &emsp; <i>Due noon, Thursday, 18 November.</i>
       <br> (Learning Objective: to use the tools provided by sklearn to create a support vector machine.)
       </p>
       <p>
-      Use the data prepped in <a href="p38">Program 38</a> on traffic tickets to train a support vector machine that predicts which vehicles will receive an excessive number of tickets (more than 1 a day).  Return the accuracy of your classifier on the test data.
+      Use the data prepped in <a href="p38">Program 38</a> on traffic tickets to train a support vector machine that predicts which vehicles will receive an excessive number of tickets (more than 1 a day).  Return the accuracy (score) of your classifier on the test data.
       <ul>
             <li> <code class = "inline">addIndicator(df,numDays,columns=[]):</code>:
                 This function has three inputs and returns a DataFrame:
