@@ -156,36 +156,41 @@ The quiz covers the logistic model from Lectures #17-18 and the reading: <a href
 <p><a name="q20"><b>Quiz 20: </b> &emsp; <i>Due 4pm, Friday, 12 November.</i>&emsp;
     This is a <b>coding quiz on HackerRank</b>. A link to access the quiz is available on Blackboard 24 hours before the due date.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.<p>
 </p>
-<!--
+
 <p><a name="q21"><b>Quiz 21: </b> &emsp; <i>Due 4pm, Tuesday, 16 November.</i>&emsp;
+    The quiz covers classification from Lectures #17-21 and the reading: <a href= "http://www.textbook.ds100.org/ch/24/classification_intro.html">DS 100: Chapter 20</a> (Classification) and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.07-support-vector-machines.html">Python DS Handbook Chapter 5</a> (SVMs).
 </p>
 <p><a name="q22"><b>Quiz 22: </b> &emsp; <i>Due 4pm, Friday, 19 November.</i>&emsp;
+    The quiz covers the linear algebra review from Lecture #21.
 </p>
 <p><a name="q23"><b>Quiz 23: </b> &emsp; <i>Due 4pm, Tuesday, 23 October.</i>&emsp;
+    The quiz focuses on Principal Components Analysis from Lectures #21-22 and the reading: <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA).
 </p>
+
 <p><a name="q24"><b>Quiz 24: </b> &emsp; <i>Due 4pm, Tuesday, 30 November.</i>&emsp;
+    The quiz covers multidimensional scaling and dimensionality reduction from Lectures #22-23 and the reading:       <a href="https://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py">Manifold Learning</a> (sklearn).
 </p>
+
 <p><a name="q25"><b>Quiz 25: </b> &emsp; <i>Due 4pm, Friday, 3 December.</i>&emsp;
-        This is a <b>coding quiz on HackerRank</b>. You will be sent an invitation to the email you use for Gradescope for this quiz.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.<p>
+    This is a <b>coding quiz on HackerRank</b>. You will be sent an invitation to the email you use for Gradescope for this quiz.  You have 30 minutes to complete the quiz, and the quiz cannot be repeated.<p>
 </p>
+
 <p><a name="q26"><b>Quiz 26: </b> &emsp; <i>Due 4pm, Tuesday, 7 December.</i>&emsp;
+    The quiz covers the K-Means Clustering from Lectures #24-26 and the reading: 	<td><a href="http://www.textbook.ds100.org/ch/28/clustering_intro.html">DS 100: Chapter 28</a> (clustering)  and     <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.9</a> (K-Means).
 </p>
-<p><a name="q77"><b>Quiz 27: </b> &emsp; <i>Due 4pm, Friday, 9 December.</i>&emsp;
+
+<p><a name="q27"><b>Quiz 27: </b> &emsp; <i>Due 4pm, Friday, 9 December.</i>&emsp;
+    The quiz reviews topics from the first 26 lectures.
 </p>
 <p><a name="q28"><b>Quiz 28: </b> &emsp; <i>Due 4pm, Tuesday, 14 December.</i>&emsp;
-  End of semester survey.
+    The last quiz is an end of the semester survey.
 </p>
 
--->
 
-
-<p>
-  <i>More to come...</i>
 
 <!--
-  This quiz covers data representation from Lecture #5 and <a href=
-  "http://www.textbook.ds100.org/ch/07/repr_intro.html">DS 100, Chapter 7</a> (Data Representation).</p>
-
+<p>
+  <i>More to come...</i>
 -->
 <br><br><br><br>
 <hr>
@@ -2278,32 +2283,44 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
       <br> (Learning Objective: to use the tools provided by sklearn to create a support vector machine.)
       </p>
       <p>
-      Use the data prepped in <a href="p38">Program 38</a> on traffic tickets to train a support vector machine that predicts which vehicles will receive an excessive number of tickets (more than 1 a day).  Return the accuracy (score) of your classifier on the test data.
+      For this program, we will train a support vector machine to predict which vehicles are likely to receive an excessive number of tickets (more than 1 a day).  The data is first cleaned using the functions you wrote in <a href="#p38">Program 38</a> to give all rows standardized spellings of color names as well as one of three vehicle classes.  The first function adds an indicator that is 1 if the vehicle has averaged more than a ticket a day, and 0 otherwise.  The second function trains a support vector machine classifier on the data and returns the accuracy (score) of your classifier on the test data, as well as the classifier.
       <ul>
-            <li> <code class = "inline">addIndicator(df,numDays,columns=[]):</code>:
-                This function has three inputs and returns a DataFrame:
+            <li> <code class = "inline">addIndicator(df,numDays):</code>:
+                This function has two inputs and returns a DataFrame:
                 <ul>
                     <li> <code class = "inline">df</code>: a DataFrame that
-                            including the specified columns.
-                    <li> <code class = "inline">num_days</code>:  a column name of the specified DataFrame containing locations.  It is one of the independent variables for the model (the other is from the list <code class = "inline">columns</code>).  It has a default value is "ADD IN NAME".
-                    <li> <code class = "inline">columns</code>: a list of column names of the specified DataFrame.
+                            including the a column <code class = "inline">numTickets</code>.
+                    <li> <code class = "inline">numDays</code>: the number of days  covered included in the DataFrame.
+                    <li>
                 </ul>
-                Returns the specified columns of the DataFrame with two additional columns:
-                <code class = "inline">count</code> of the number of occurrences of those values and an indicator column <code class = "inline">DailyTicket</code> that is 1 if that vehicle has more tickets than the value of <code class = "inline">num_days</code>
+                Returns the DataFrame with an additional column: <code class = "inline">DailyTicket</code> that is 1 if that vehicle has more tickets than the value of <code class = "inline">num_days</code>
                 and 0 otherwise.
 
-            <li> <code class = "inline">buildClassifer(df, xes, y = "count", test_size = 0.25, random_state=17)</code>:
+            <li> <code class = "inline">buildClassifer(df, xes, y_col = "DailyTicket", test_size = 0.25, random_state=17)</code>:
                 This function has five inputs and returns a classifier:
                 <ul>
                     <li> <code class = "inline">df</code>: a DataFrame that includes the specified columns.
                     <li> <code class = "inline">xes</code>: the columns that are the independent variables for the model.
-                    <li> <code class = "inline">y_col</code>: a column name containing the dependent variable (what's being predicted) in the model.  It has a default value is <code class = "inline">count</code>.
+                    <li> <code class = "inline">y_col</code>: a column name containing the dependent variable (what's being predicted) in the model.  It has a default value is <code class = "inline">DailyTicket</code>.
                     <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.25</code>.
                     <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">17</code>.
                   </ul>
 
-                  The function returns the accuracy (score) of the model computed on the test data.
+                  The function returns the SVM classifier and the accuracy (score) of the model computed on the test data.
                 </ul>
+
+                <p>
+                For example, let's clean the dataset using the functions from <a href="#p39">Program 39</a>, as we did in lecture:
+                <pre><code class="blockcode"></code></pre>
+                which will print:
+      <pre><code class="datablock">
+      </code></pre>
+
+        <p>We can then use the cleaned data, assuming your functions are in the <code class="inline">p41.py</code>:
+        <pre><code class="blockcode"></code></pre>
+                  which will print:
+        <pre><code class="datablock"></code></pre>
+
 
       <i>
         Hints:
@@ -2320,22 +2337,77 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
 
       In Lecture #21 and <a href="https://setosa.io/ev/eigenvectors-and-eigenvalues/">Explained Visually</a>, we reviewed matrices, eigenvectors and eigenvalues.
 
+      <p>
+      <iframe src="https://setosa.io/ev/eigenvectors-and-eigenvalues#steady-states" style="width: 60%; height: 500px" name="internal"></iframe>
+
+
+      <p>For this program, write a function that extends the moving between information about any number of states, starting populations, and the number of years, and returns an array of the ending population of each state.
+
+      <ul>
+            <li> <code class = "inline">moving(transition_mx, starting_pop, num_years = 1)</code>:
+                This function has three inputs and returns an array:
+                <ul>
+                    <li> <code class = "inline">transition_mx</code>: a DataFrame that includes the specified columns.
+                    <li> <code class = "inline">starting_pop</code>: the columns that are the independent variables for the model.
+                    <li> <code class = "inline">num_years</code>: a column name containing the dependent variable (what's being predicted) in the model.  It has a default value is <code class = "inline">1</code>.
+                </ul>
+
+                The function returns an array of the population of each state after <code class = "inline">num_years</code>.
+                </ul>
+
+      Write a second function that uses the eigenvector to compute the steady state population.
+
+
       Write a function that will take a 3 x 3 array where all the rows sum to 1 and all the columns sum to 1, a 1D array of 3 numeric values, and a positive integer represening years.  Assuming that the 2D array represents transition probabilities, the 1D array represents starting values, compute the populations after numYears, and return as a vector.
 
-      For example, if you have that people move from the following three states with the probabilities:
+      For example, if you have that people move from the following three states with the probabilities of moving each year:
       <ul>
-        <li> 70% stay in NY	25% of NYers move to California	5% of NYers move to Texas
-      7% CA move to NY	90% of CA stay in CA	3% of CA move to TX
-      15% of TX move to NY	25% of TX stay to CA	60% of TX stays in TX
+        <li> New Yorkers:
+            <ul>
+                <li> 70% of New Yorkers stay in New York
+                <li> 25% of New Yorkers move to California
+                <li> 5% of New Yorkers move to Texas</td>
+            </ul>
+        <li> Californians:
+            <ul>
+                <li>7% of Californians move to New York</td>
+                <li>90% of Californians stay in California</td>
+                <li>3% of Californians move to Texas</td>
+            </ul>
+        <li> Texans:
+            <ul>
+              <li>15% of Texans move to New York</td>
+              <li>25% of Texans stay to California</td>
+              <li>60% of Texans stays in Texas</td>
+            </ul>
       </ul>
+      If the initial populations are California: 40 million, New York: 20 million, and Texas: 25 million.  Then, we can compute the population after 1 years, by taking the intial populations, computing what fraction move to each of the other states:
 
-      Write a function that takes a transition matrix, starting populations of the California, New York and Texas as an array, and the number of years, and returns an array with the respective populations at the end of the specified years.
+      <p>FILL IN MATH-- multiply matrices.
 
-      #5: Represent the transitions that people move between states as a matrix. Compute the eigenvalues and eigenvectors for this matrix, or show that none exist. Submit your answer as a text file or scan of a neatly handwritten file.
-      #6: If the initial populations are California: 40 million, New York: 20 million, and Texas: 25 million. What are the populations for each state in 1 year? In 5 years? In 10 years? Submit your answer as a text file or scan of a neatly handwritten file. Include a list of any packages (i.e. numpy, maple, etc) used to solve this.
+      <p> Similarly, the population after 2 years, can be found by multiplying the population after 1 year by the transition matrix.  And similarly, after k years
 
-      Hint: The module numpy has many useful functions for computing determinants and eigenvalues in its linear algebra package. Note that the * for matrices is element-wise (not regular matrix multiplication). To multiply two matrices, a and b together use a.dot(b).
+      <p>FILL IN MATH
 
+      The steady state population can be found by first finding the eigenvector corresponding to the maximal eigenvalue of 1, and multiplying the percentages by the total population.
+
+
+      <p>FILL IN MATH
+
+      <p>Write example out in Python:
+        <p>For example, assuming your functions are in <code class=inline>p43</code> and the appropriate libraries are loaded:
+        <pre><code class="blockcode"></code></pre>
+
+        and print:
+        <pre><code class="datablock"></code></pre>
+
+
+      <i>
+      Hints:
+        <ul>
+            <li> The module numpy has many useful functions for computing determinants and eigenvalues in its linear algebra package. Note that the * for matrices is element-wise (not regular matrix multiplication). To multiply two matrices, a and b together use a.dot(b).
+        </ul>
+      </i>
 
 <p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
     <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
@@ -2346,6 +2418,7 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
       <img src="sklearn_digits.png" height=400>
     </a>
     <p>
+    ADD IN EXAMPLE
     </p>
 
 
@@ -2374,7 +2447,6 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
               Then <code class="inline">avg</code> would be 75.07,
               and the function would return 3 since the first three coordinates are larger than the average.
         </ul>
-
         </p>
         <p>
         Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
@@ -2392,6 +2464,7 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
   <p>
   The inputs are:
   <ul>
+    <li>
     <li> A DataFrame of NYC locations that includes their names, latitudes and longitudes,
     <li> A matrix of distances between points, and
     <li> The latitude and longitude of the first three points in the distance matrix.
@@ -2425,8 +2498,11 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
 
     Cluster the digit datas and print out the centroids of each as a digit.
 
-  Put a clustering question here--
-  Pick one that has nice implementation in sklearn, and implement on NYC data-- maybe trashcans?
+    Have the function take general input, and output centroids info
+
+    In example code, display the centroids found as well as a 2D plot of points (what axis to use?)
+
+    <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 <p><a name="p48"><b>Program 48: HR challenge.</b></b> &emsp; <i>Due noon, Thursday, 2 December.</i>
         <br>(Learning Objective: .)</p>
@@ -2439,6 +2515,8 @@ print(f'The most misclassified class is {p41.clf_misses(confuse_mx)}.')</code></
   <br>(Learning Objective: .)</p>
   <p>
   Coloring images-- k-means clustering to choose 4 colors for your image.  Use sklearn?
+
+  Need small test image and check efficiency
   </p>
 
 <p><a name="p50"><b>Program 50: Lead-in to A/B Testing.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
