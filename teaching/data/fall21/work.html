@@ -2387,7 +2387,7 @@ NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
+
 <p></p><p><a name="p43"><b>Program 43: Moving.</b></b> &emsp; <i>Due noon, Friday, 19 November.</i>
     <br>(Learning Objective: to reinforce linear algebra concepts from prerequisite course and build corresponding facility in Python.)</p>
     <p>
@@ -2405,7 +2405,7 @@ NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
                 This function has three inputs and returns an array:
                 <ul>
                     <li> <code class = "inline">transition_mx</code>: an square
-                      array of values between 0 and 1.  Each row sums to 1.
+                      array of values between 0 and 1.  Each column sums to 1.
                     <li> <code class = "inline">starting_pop</code>: an 1D array of positive numeric values
                       that has the same length as <code class = "inline">transition_mx</code>.
                     <li> <code class = "inline">num_years</code>: a column name containing the dependent variable (what's being predicted) in the model.  It has a default value is <code class = "inline">1</code>.
@@ -2420,7 +2420,7 @@ NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
                           that has the same length as <code class = "inline">transition_mx</code>.
                         <li> <code class = "inline">num_years</code>: a column name containing the dependent variable (what's being predicted) in the model.  It has a default value is <code class = "inline">1</code>.
                     </ul>
-                    The function returns an array of the population of each state at the steady state.  That is, it returns the eigenvector corresponding to the largest eigenvalue multiplied by the sum of the starting populations.
+                    The function returns an array of the population of each state at the steady state.  That is, it returns the eigenvector corresponding to the largest eigenvalue, scaled so that it's entries sum to 1, and then multiplied by the sum of the starting populations.
                 </ul>
 
       <p>
@@ -2441,37 +2441,42 @@ NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
         <li> Texans:
             <ul>
               <li>15% of Texans move to New York
-              <li>25% of Texans stay to California
-              <li>60% of Texans stays in Texas
+              <li>25% of Texans move to California
+              <li>60% of Texans stay in Texas
             </ul>
       </ul>
-      If the initial populations are California: 40 million, New York: 20 million, and Texas: 25 million.  Then, the transition matrix is:
-<pre><code class="blockcode">[[.7, .25, .05],
- [.07,.9,.03],
- [.15,.25,.60]]
+      If the initial populations are New York: 20 million, California: 40 million,  and Texas: 25 million.  Then, the transition matrix is:
+<pre><code class="blockcode">t_mx = np.array([[.7, .07, .1],
+         [.25,.9,.15],
+         [.05,.03,.75]])
 </code></pre>
       and the starting populations (in millions) are:
-      <code class="blockcode">[40, 20, 25]</code>
+      <code class="blockcode">pop0 = np.array([20, 40, 25])</code>
 
       we can compute the population after 1 years, by taking the intial populations, computing what fraction move to each of the other states:
 
-      <p>FILL IN MATH-- multiply matrices.
+      <pre><code class="blockcode">pop1 = t_mx @ pop0
+print(f'Population of each state after 1 year: {pop1}.')</code></pre>
 
-      <p> Similarly, the population after 2 years, can be found by multiplying the population after 1 year by the transition matrix.  And similarly, after k years
+      which is
+      <pre><code class="blockcode">Population of each state after 1 year: [19.3  44.75 20.95].</code></pre>
 
-      <p>FILL IN MATH
+      <p> Similarly, the population after 2 years, can be found by multiplying the population after 1 year by the transition matrix.  More generally, the population after k+1 years can be found by multiplying the populations at year k by the transition matrix.
 
-      The steady state population can be found by first finding the eigenvector corresponding to the maximal eigenvalue of 1, and multiplying the percentages by the total population.
+      The steady state population can be found by first finding the eigenvector corresponding to the maximal eigenvalue of 1, scaling it so its entries sum to 1 (i.e. divide through by its sum) to get percentages.  And then, multiplying the percentages by the total population.
 
-
-      <p>FILL IN MATH
-
-      <p>Write example out in Python:
-        <p>For example, assuming your functions are in <code class=inline>p43</code> and the appropriate libraries are loaded:
-        <pre><code class="blockcode"></code></pre>
+        <p>For example, continuing from above, and assuming your functions are in <code class=inline>p43</code> and the appropriate libraries are loaded:
+        <pre><code class="blockcode">pop1 = p43.moving(t_mx, pop0)
+print(f'Population of each state after 1 year: {pop1}')
+pop100 = p43.moving(t_mx, pop0, num_years=100)
+print(f'Population of each state after 100 years: {pop1}')
+pop_steady = p43.steadyState(t_mx, pop0)
+print(f'Steady state population: {pop_steady}')</code></pre>
 
         and print:
-        <pre><code class="datablock"></code></pre>
+        <pre><code class="datablock">Population of each state after 1 year: [19.3  44.75 20.95]
+Population of each state after 100 years: [16.91747573 57.76699029 10.31553398]
+Steady state population: [16.91747573 57.76699029 10.31553398]</code></pre>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
@@ -2479,9 +2484,25 @@ NY state, gray passenger vehicle (encoded as: [1,0,1,1,0,0])
       <i>
       Hints:
         <ul>
-            <li> The module numpy has many useful functions for computing determinants and eigenvalues in its linear algebra package. Note that the * for matrices is element-wise (not regular matrix multiplication). To multiply two matrices, a and b together use a.dot(b).
+            <li> The module numpy has many useful functions for computing determinants and eigenvalues in its linear algebra package. Note that the * for matrices is element-wise (not regular matrix multiplication). To multiply two matrices, a and b together use a @ b.
+            <li> A useful function to raise a matrix to a power, is
+              <code class=inline>numpy.linalg.matrix_power</code> described in
+                the <a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.matrix_power.html">numpy API reference</a>.
+            <li> The <code class=inline>numpy.linalg.eig</code> function returns an array of eigenvalues and the associated eigenvectors as columns of an array.  For the example above,
+              <pre><code class="blockcode">import numpy.linalg as LA
+w,v = LA.eig(t_mx)
+print(f'The eigenvalues are: {w} and eigenvectors are:\n{v}.')</code></pre>
+
+              would print:
+              <pre><code class="datablock">The eigenvalues are: [ 1.  -0.2  0.1] and eigenvectors are:
+[[-6.67423812e-01 -7.07106781e-01  2.67261242e-01]
+ [-5.72077554e-01  6.87552368e-17 -8.01783726e-01]
+ [-4.76731295e-01  7.07106781e-01  5.34522484e-01]].</code></pre>
+              The eigenvector for eigenvalue = 1 is the first column (not the first row-- the rows are grouped together since we enter/print 2D arrays by rows).  See Lecture #21 notes for scaling the vector to compute the steady state population.
         </ul>
       </i>
+
+<!--
 
 <p></p><p><a name="p44"><b>Program 44: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
     <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
