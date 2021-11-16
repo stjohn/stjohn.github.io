@@ -2502,15 +2502,91 @@ print(f'The eigenvalues are: {w} and eigenvectors are:\n{v}.')</code></pre>
         </ul>
       </i>
 
-<!--
+
 
 <p></p><p><a name="p44"><b>Program 44: Model Comparison.</b></b> &emsp; <i>Due noon, Monday, 22 November.</i>
-br>(Learning Objective: to build facility with fitting multiclass models.)</p>
-
-    Compare logistic regression and SVM on iris dataset
+<br>(Learning Objective: to build facility with fitting multiclass models.)</p>
 
 
-  <p></p><p><a name="p45"><b>Program 45: Digits Components.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+    In Lectures #21 and #22 and <a href="http://www.textbook.ds100.org/ch/24/classification_multiclass.html">Chapter 24</a>, we build classifiers for the iris dataset.  Write a function that fits a Logistic Regression model and a Support Vector Machine to the same training data and returns the score of each on the same testing data.
+
+    <ul>
+    <li> <code class = "inline">compare_clf(xes, y, test_size = 0.20, random_state=66,max_iter=500):</code>
+        This function has five inputs and returns a linear regression classifier:
+        <ul>
+            <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
+            <li> <code class = "inline">y</code>: the independent variable for the model.
+            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
+            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
+            <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
+          </ul>
+
+          The function returns the score of the model score computed on the test data by each classifier.
+      </ul>
+
+      <p>For example, assuming your functions are in <code class=inline>p44</code> and the appropriate libraries are loaded:
+      <pre><code class="blockcode">iris = datasets.load_iris()
+l_40,s_40 = p44.compare_clf(iris.data,iris.target,test_size=.4)
+print(f'With a 40% test set, LogReg classifer has score {l_40}.\nSVM classifier had score {s_40}.')
+
+xes = list(range(5,100,5))
+runs = [p44.compare_clf(iris.data,iris.target,test_size=x/100) for x in xes]
+lr_runs, svm_runs = zip(*runs)
+plt.plot(xes, lr_runs, label="LogReg")
+plt.plot(xes, svm_runs, label= "SVM")
+plt.xlabel('Test Size (Percent)')
+plt.ylabel('Score')
+plt.title('Iris Dataset:  Test Size vs Score')
+plt.legend()
+plt.show()</code></pre>
+
+      would print:
+      <pre><code class="datablock">With a 40% test set, LogReg classifer has score 0.9833333333333333.
+SVM classifier had score 0.9833333333333333.</code></pre>
+
+      and display:
+      <p>
+      <img src = "iris_logR_svm.png" height=300>
+
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+<p></p><p><a name="p45"><b>Program 45: Component Retention.</b></b> &emsp; <i>Due noon, Tuesday, 23 November.</i>
+  <br>(Learning Objective: to employ programming skills to evaluate the number of principal components to use in dimensionality reduction.)</p>
+
+  <p>
+  In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
+
+  <ul>
+    <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
+            the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.
+        <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
+          <code class="inline">arr</code> (in decreasing order), computes
+            the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.
+      </ul>
+      </p>
+
+      Using the example from the textbook, if <code class="inline">arr</code> is
+      <pre><code class="datablock">a = array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
+      24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
+      1.95,   0.04])</code></pre>
+      Then <code class="inline">cv</code> would be:
+      <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
+      0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
+      and the function, <code class="inline">capture85(a)</code>, would return 2 sin ce the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
+
+      <p>
+      For the second function, again using the example from the textbook, <code class="inline">a</code> the <code class="inline">avg</code> would be 75.07,
+      and the function, <code class="inline">averageEigenvalue(a)</code> would return 3 since the first three coordinates are larger than the average.
+
+      <p>
+      Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
+
+
+<!--
+
+  <p></p><p><a name="p46"><b>Program 46: Digits Components.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
+
     <br>(Learning Objective: to strengthen understanding of intrinistic dimensions of data sets via exploration of the classic digits dataset.)</p>
     <p>
     In Lecture #21, we introduced Principal Components Analysis and the number of components needed to capture the intrinistic dimension of the data set.  For this program, write a function that allows the user to explore how many dimensions are needed to see the underlying structure of images from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html">sklearn digits dataset</a> (inspired by <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA)).
@@ -2522,35 +2598,9 @@ br>(Learning Objective: to build facility with fitting multiclass models.)</p>
     ADD IN EXAMPLE
     </p>
 
+    <p> and function definitions
 
 
-  <p></p><p><a name="p46"><b>Program 46: Component Retention.</b></b> &emsp; <i>Due noon, Monday, 29 November.</i>
-    <br>(Learning Objective: to employ programming skills to evaluate the number of principal components to use in dimensionality reduction.)</p>
-    <p>
-        In Lecture 22 and (also in <a href="http://www.textbook.ds100.org/ch/25/pca_in_practice.html">Chapter 25</a>), we used scree plots to provide a visualization of the captured variance.  This assignment asks you to implement two other popular ways of determining the number of dimensions to retain.
-
-    <ul>
-      <li> <code class="inline">captures85(arr):</code> Takes an array <code class="inline">arr</code> (in decreasing order), computes
-              the captured variance (<code class="inline">cv = (arr**2)/sum(arr**2)</code>) and returns the number of elements needed to capture more than 85% of the variance.  Using the example from the textbook, if <code class="inline">arr</code> is
-    <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
-    24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-    1.95,   0.04])</code></pre>
-              Then <code class="inline">cv</code> would be:
-    <pre><code class="datablock">array([0.76, 0.15, 0.06, 0.01, 0.01, 0.  , 0.  , 0.  ,   0.  , 0.  , 0.  ,
-           0.  , 0.  , 0.  , 0.  , 0.  , 0.  , 0.  ])</code></pre>
-              and the function would return 2 since the first coordinate captures 76% of the variance which is less than 85%, the first 2 coordinates capture 76 + 15 = 91% of the variance.
-          <li> <code class="inline">averageEigenvalue(arr):</code> Takes an array
-            <code class="inline">arr</code> (in decreasing order), computes
-              the average (<code class="inline">avg = sum(arr)/len(arr)</code>) and returns the number of elements greater than <code class="inline">avg</code>.  Using the example from the textbook, if <code class="inline">arr</code> is:
-              <pre><code class="datablock">array([585.57, 261.06, 166.31,  57.14,  48.16,  39.79,  31.71,  28.91,
-            24.23,  22.23,  20.51,  18.96,  17.01,  15.73,   7.72,   4.3 ,
-             1.95,   0.04])</code></pre>
-              Then <code class="inline">avg</code> would be 75.07,
-              and the function would return 3 since the first three coordinates are larger than the average.
-        </ul>
-        </p>
-        <p>
-        Note:  you should submit a file with only the standard comments at the top, and these two functions.  The grading scripts will then import the file for testing.
 
 
 
@@ -2599,6 +2649,7 @@ br>(Learning Objective: to build facility with fitting multiclass models.)</p>
     In example code, display the centroids found as well as a 2D plot of points (what axis to use?)
 
     <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
 
 <p></p><p><a name="p49"><b>Program 49: 4-Coloring.</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
   <br>(Learning Objective: .)</p>
