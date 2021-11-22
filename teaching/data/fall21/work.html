@@ -2655,41 +2655,77 @@ plt.show()</code></pre>
 
         <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-<!--
+
 
 <p></p><p><a name="p47"><b>Program 47: Voting MDS.</b> &emsp; <i>Due noon, Tuesday, 30 November.</i>
   <br>(Learning Objective: to build intuition and strengthen competency with dimensionality reduction methods.)</p>
 
   <p>
-  In Lecture #22 and <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">DS 100, Chapter 26.3</a>, we explored Principal Components Analysis (PCA) for a <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/26/vote_pivot.csv">US Representatives voting dataset</a>.  For this program, we will examine the dataset with  Multidimensional Scaling (MDS).
+  In Lecture #22 and <a href="http://www.textbook.ds100.org/ch/26/pca_in_practice.html">DS 100, Chapter 26.3</a>, we explored Principal Components Analysis (PCA) for a <a href="https://raw.githubusercontent.com/DS-100/textbook/master/content/ch/26/vote_pivot.csv">US Representatives voting dataset</a>.  For this program, we will examine the dataset with  Multidimensional Scaling (MDS)
+  for different distance matrices.  There are two functions to write:
 
-  <p>The default for MDS is to use Euclidean distance.  Write a function that takes
-  a matrix of elements and values, and returns the MDS matrix of their Manhattan ('cityblock' or L1) distance between them.
 
-  Need to compare these?
   <ul>
-  <li> <code class = "inline"></code>
-      This function has five inputs and returns a linear regression classifier:
+  <li> <code class = "inline">makeMDS(points,metric='euclidean'):</code>
+      This function has two inputs, fits the data, and returns the embedded coordinates:
       <ul>
-          <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
-          <li> <code class = "inline">y</code>: the independent variable for the model.
-          <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
-          <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
-          <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
+          <li> <code class = "inline">points</code>:
+          <li> <code class = "inline">metric</code>: the metric used to compute the distance matrix.  The default value is 'euclidean'.  Other common values are 'hamming' and 'cityblock'.
         </ul>
 
-        The function returns the score of the model score computed on the test data by each classifier.
+        The function first computes the distance matrix for <code class = "inline">points</code>, using the specified distance as a parameter to
+        <code class = "inline">scipy.spatial.distance.cdist</code>.  The distance matrix is used to fit the MDS model and the result of <code class = "inline">fit_transform</code> is returned.
+
+        <li> <code class = "inline">makeDisplayDF(df,md_fit,legs):</code>
+            This function has three inputs and returns a DataFrame:
+            <ul>
+                <li> <code class = "inline">df</code>: a DataFrame that includes the column <code class = "inline">member</code> that contains the legislator ID of the member.
+                <li> <code class = "inline">md_fit</code>: an array of fitted coordinates, in the same order as <code class = "inline">df</code>.
+                <li> <code class = "inline">legs</code>: a DataFrame containing information about the legislators that contains columns <code class = "inline">leg_id</code> with the legislator's ID and <code class = "inline">party</code> containing the legislator's party.
+              </ul>
+
+              The function returns a DataFrame to use for plotting with columns
+              <code class = "inline">x</code> (storing <code class = "inline">md_fit[:,0]</code>), <code class = "inline">y</code> (storing <code class = "inline">md_fit[:,1]</code>), <code class = "inline">party</code> (storing the party affiliation of the legislator).
     </ul>
 
     <p>For example, assuming your functions are in <code class=inline>p47</code> and the appropriate libraries are loaded:
-    <pre><code class="blockcode"></code></pre>
+    <pre><code class="blockcode">from sklearn.manifold import MDS
+from scipy.spatial.distance import cdist
+import p47
+#Helper function to display plots:
+def displayPlot(vote2d,title):
+    sns.scatterplot(data = vote2d,x="x", y="y", hue="party",
+                    hue_order=['Democrat', 'Republican', 'Libertarian']);
+    plt.title(title)
+    plt.show()
+df = pd.read_csv('vote_pivot.csv')
+votes = df.drop('member',axis=1).to_numpy()
+legs = pd.read_csv('legislators.csv')[['leg_id','party']]
+#Fit to Euclidean distances:
+md_fit = p47.makeMDS(votes)
+vote2d = p47.makeDisplayDF(df,md_fit,legs)
+displayPlot(vote2d,'MDS of Votes with Eucidean Distances')
+#Fit to Hamming distances:
+md_fit = p47.makeMDS(votes, metric="hamming")
+vote2d = p47.makeDisplayDF(df,md_fit,legs)
+displayPlot(vote2d,'MDS of Votes with Hamming Distances')
+#Fit to Manhattan distances:
+md_fit = p47.makeMDS(votes, metric="cityblock")
+vote2d = p47.makeDisplayDF(df,md_fit,legs)
+displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
+</code></pre>
 
-    would print:
-    <pre><code class="datablock"></code></pre>
+    <p>would display:
+
+    <p>
+    <img src = "votes_mds_euclid.png" height = 300>
+    <img src = "votes_mds_hamming.png" height = 300>
+    <img src = "votes_mds_manhattan.png" height = 300>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
+<!--
 
   <p></p><p><a name="p48"><b>Program 48: Transit Distances.</b> &emsp; <i>Due noon, Thursday, 2 December.</i>
       <br>(Learning Objective: to explore non-Euclidean distances via dimensionality reduction methods.)</p>
