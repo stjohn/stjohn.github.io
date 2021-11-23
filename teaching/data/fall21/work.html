@@ -2666,11 +2666,12 @@ plt.show()</code></pre>
 
 
   <ul>
-  <li> <code class = "inline">makeMDS(points,metric='euclidean'):</code>
-      This function has two inputs, fits the data, and returns the embedded coordinates:
+  <li> <code class = "inline">makeMDS(points,metric='euclidean',random_state=25):</code>
+      This function has three inputs, fits the data, and returns the embedded coordinates:
       <ul>
-          <li> <code class = "inline">points</code>:
+          <li> <code class = "inline">points</code>: a numpy array representing the features/coordinates of the input.  Assumes all values in the array are numeric.
           <li> <code class = "inline">metric</code>: the metric used to compute the distance matrix.  The default value is 'euclidean'.  Other common values are 'hamming' and 'cityblock'.
+          <li> <code class = "inline">random_state</code>:  the random seed used when instantiating the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html">MDS analysis</a>.  The default value is 25.
         </ul>
 
         The function first computes the distance matrix for <code class = "inline">points</code>, using the specified distance as a parameter to
@@ -2729,12 +2730,31 @@ displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
+
 <!--
-
   <p></p><p><a name="p48"><b>Program 48: Transit Distances.</b> &emsp; <i>Due noon, Thursday, 2 December.</i>
-      <br>(Learning Objective: to explore non-Euclidean distances via dimensionality reduction methods.)</p>
+      <br>(Learning Objective: to gain better insight intop non-Euclidean distances via dimensionality reduction methods.)</p>
 
-      <p> Using transit distances, run MDS.  And compare to true distances-- show image with graphs, but have them compute the difference between the Euclidean distances.  Scale both matrices to have distance 1 between the max distances in the two matrices.
+      <p> This program focuses on travel times in NYC and how well they estimate the aerial (Euclidean) distance between points.
+
+      Two examples:  stops on the A-train and 6 landmarks-- one for each borough + Hunter + Roosevelt Island.
+
+      <p> Write a function that takes a set of points, xes and yes, and computes the distance matrix (this is very similar to Program 46)
+
+      <p> Write a second function that takes a distance matrix and an entry, and scales all the distances by that entry.  The new matrix has the entry's value as 1 and all other entries divided by given entry.  You may assume that the inputed entry is non-zero.
+
+      <p>
+      Generate a Series with the names of each to label, and a distance matrix underlying Euclidean, transit, biking, and driving.
+
+      Link to how data was generated.
+
+      Normalize to the first entry 0,1 (can't use 0,0 since it's a distance matrix so would be dividing through by 0).
+
+      Compute loss function for each versus the euclidean.
+      Euclidean should give 0, see how well the rest of them do...
+
+
+        Using transit distances, run MDS.  And compare to true distances-- show image with graphs, but have them compute the difference between the Euclidean distances.  Scale both matrices to have distance 1 between the max distances in the two matrices.
 
       Steps:
       <ul>
@@ -2745,8 +2765,6 @@ displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
       </ul>
 
 <p>Run on just the A train, Euclidean distance and transit distances and driving times?, show comparison images side-by-side, scale so distances are compute MSE between them.  If both times, then no need to scale
-  <p> Run A & D trains, Euclidean distance and transit distances,
-    show comparison images side-by-side
 
 
 <p>Make a google spreadsheet?  Or easier to do directly?
@@ -2761,46 +2779,28 @@ displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
 
     Compare transit, driving, biking?
 
-    Make a dataset of CUNY campuses-- build distance matrix for these
-
-  The inputs are:
-  <ul>
-    <li>
-    <li> A DataFrame of NYC locations that includes their names, latitudes and longitudes,
-    <li> A matrix of distances between points, and
-    <li> The latitude and longitude of the first three points in the distance matrix.
-  </ul>
-  You should return a list of names of NYC locations corresponding to the entries in the distance matrix.  The order of names in your list should match the order in the distance matrix.  That is, the first name in your list should be the name of the first location in your list.  The second name in your list should be the name of the second location in your list, and so on.
-  </p>
-
-  Look up what the distance is for lat and lon in NYC.
-
-  <ol>
-    <li> Use MDS to get the coordinates in miles for each entry.
-    <li> Use the first three locations lat and lon to anchor the rotation (i.e. flip coordinates to make match).
-    <li> Scale the coordinates to lat and lon
-    <li> Look up entries and return names
-  </ol>
-
-  <i>
-    <p>Hints:
-    <ul>
-        <li> Use MDS-- see book+??? for tutorial
-    </ul>
-  </i>
 
 
   <ul>
-  <li> <code class = "inline">scaleMatrix(distMx, i,j):</code>
+    <li> <code class = "inline">scaleMatrix(distMx, i=0,j=1):</code>
       This function has three inputs and returns the matrix distMx scaled by the ith, jth entry.
       <ul>
-          <li> <code class = "inline">distMx</code>: a array of the depedendent variables for the model.
-          <li> <code class = "inline">i</code>: the independent variable for the model.
-          <li> <code class = "inline">j</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
+          <li> <code class = "inline">distMx</code>: a distance matrix.  Assumes diagonal values are 0, and all other values are numeric and non-negative.
+          <li> <code class = "inline">i</code>: the x coordinate of the entry to be used to scale the matrix.  It has a default value of 0.
+          <li> <code class = "inline">j</code>: the y coordinate of the entry to be used to scale the matrix.  It has a default value of 1.
         </ul>
-
-        The function returns the score of the model score computed on the test data by each classifier.
-    </ul>
+        The function returns the array scaled by the entry at [0,1].
+    <li>
+    <li> <code class = "inline">scaleMatrix(distMx, i=0,j=1):</code>
+      This function has three inputs and returns the matrix distMx scaled by the ith, jth entry.
+      <ul>
+          <li> <code class = "inline">distMx</code>: a distance matrix.  Assumes diagonal values are 0, and all other values are numeric and non-negative.
+          <li> <code class = "inline">i</code>: the x coordinate of the entry to be used to scale the matrix.  It has a default value of 0.
+          <li> <code class = "inline">j</code>: the y coordinate of the entry to be used to scale the matrix.  It has a default value of 1.
+        </ul>
+        The function returns the array scaled by the entry at [0,1].
+    <li>
+  </ul>
 
     <p>For example, assuming your functions are in <code class=inline>p47</code> and the appropriate libraries are loaded:
     <pre><code class="blockcode"></code></pre>
