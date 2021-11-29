@@ -164,7 +164,7 @@ The quiz covers the logistic model from Lectures #17-18 and the reading: <a href
     The quiz covers the linear algebra review from Lecture #21.
 </p>
 <p><a name="q23"><b>Quiz 23: </b> &emsp; <i>Due 4pm, Tuesday, 23 October.</i>&emsp;
-    The quiz focuses on Principal Components Analysis from Lectures #21-22 and the reading: <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA).
+    <strike>The quiz focuses on Principal Components Analysis from Lectures #21-23 and the reading: <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">Python Data Science Handbook: Section 5.9</a> (PCA).</strike>  Since we did not cover all the material yet, this quiz will now be review topics from Lectures 1-20.
 </p>
 
 <p><a name="q24"><b>Quiz 24: </b> &emsp; <i>Due 4pm, Tuesday, 30 November.</i>&emsp;
@@ -2730,92 +2730,94 @@ displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-
-<!--
   <p></p><p><a name="p48"><b>Program 48: Transit Distances.</b> &emsp; <i>Due noon, Thursday, 2 December.</i>
-      <br>(Learning Objective: to gain better insight intop non-Euclidean distances via dimensionality reduction methods.)</p>
+      <br>(Learning Objective: to gain better insight into non-Euclidean distances via dimensionality reduction methods.)</p>
 
-      <p> This program focuses on travel times in NYC and how well they estimate the aerial (Euclidean) distance between points.
+      <p> This program focuses on travel times in NYC and how well they estimate the aerial (Euclidean) distance between points.  To compare various measures of distances, we need several functions:
 
-      Two examples:  stops on the A-train and 6 landmarks-- one for each borough + Hunter + Roosevelt Island.
-
-      <p> Write a function that takes a set of points, xes and yes, and computes the distance matrix (this is very similar to Program 46)
-
-      <p> Write a second function that takes a distance matrix and an entry, and scales all the distances by that entry.  The new matrix has the entry's value as 1 and all other entries divided by given entry.  You may assume that the inputed entry is non-zero.
-
-      <p>
-      Generate a Series with the names of each to label, and a distance matrix underlying Euclidean, transit, biking, and driving.
-
-      Link to how data was generated.
-
-      Normalize to the first entry 0,1 (can't use 0,0 since it's a distance matrix so would be dividing through by 0).
-
-      Compute loss function for each versus the euclidean.
-      Euclidean should give 0, see how well the rest of them do...
-
-
-        Using transit distances, run MDS.  And compare to true distances-- show image with graphs, but have them compute the difference between the Euclidean distances.  Scale both matrices to have distance 1 between the max distances in the two matrices.
-
-      Steps:
-      <ul>
-        <li> Run MDS on transit distances.
-        <li> Write a scale matrix-- specify entry (i,j) to use to normalize.
-        <li> Apply to true distances and MDS of first two coordinates of transit distances.
-        <li> Compute the stress between the two (i.e. MSE)
-      </ul>
-
-<p>Run on just the A train, Euclidean distance and transit distances and driving times?, show comparison images side-by-side, scale so distances are compute MSE between them.  If both times, then no need to scale
-
-
-<p>Make a google spreadsheet?  Or easier to do directly?
-
-<p> Start with just 6 locations in NYC-- landmarks?
-    Bronx Zoo,
-    Federal Hall,
-    National Lighthouse Museum,
-    Four Freedoms Monument
-    Citi Field
-    Coney Island
-
-    Compare transit, driving, biking?
-
-
-
-  <ul>
-    <li> <code class = "inline">scaleMatrix(distMx, i=0,j=1):</code>
-      This function has three inputs and returns the matrix distMx scaled by the ith, jth entry.
-      <ul>
-          <li> <code class = "inline">distMx</code>: a distance matrix.  Assumes diagonal values are 0, and all other values are numeric and non-negative.
-          <li> <code class = "inline">i</code>: the x coordinate of the entry to be used to scale the matrix.  It has a default value of 0.
-          <li> <code class = "inline">j</code>: the y coordinate of the entry to be used to scale the matrix.  It has a default value of 1.
+        <ul>
+          <li> <code class = "inline">extractMx(df, dropCols = ['Name','Position']):</code>
+            This function has two inputs and returns matrix with all times in minutes.
+            <ul>
+                <li> <code class = "inline">df</code>: a DataFrame.  Assumes that
+                  the columns specificed by <code class = "inline">dropCols</code>
+                  are columns of <code class = "inline">df</code> and the remaining entries are expressed as hours and minutes.
+                <li> <code class = "inline">dropCols</code>: columns containing non-temporal data and to be dropped before converting to numeric values.
+                  The default values is <code class = "inline">['Name','Position']</code>.
+              </ul>
+              The function returns the array of numeric values.  Each entry is the corresponding number of minutes to the input.  For example, if the entry in the DataFrame is <code class = "inline">59 mins</code>, then
+              <code class = "inline">59</code> is placed in the corresponding entry of the matrix.  Similarly, if the entry in the DataFrame is <code class = "inline">2 hours 3 mins</code>, then
+              <code class = "inline">123</code> is placed in the corresponding entry of the matrix.
+          <li> <code class = "inline">scaleMx(distMx, i=0,j=1):</code>
+            This function has three inputs and returns the matrix distMx scaled by the ith, jth entry.
+            <ul>
+                <li> <code class = "inline">distMx</code>: a distance matrix.  Assumes diagonal values are 0, and all other values are numeric and non-negative.
+                <li> <code class = "inline">i</code>: the x coordinate of the entry to be used to scale the matrix.  It has a default value of 0.
+                <li> <code class = "inline">j</code>: the y coordinate of the entry to be used to scale the matrix.  It has a default value of 1.
+              </ul>
+              The function returns the array scaled by the entry at [0,1].  That is, it divides through all entries by that value.  For example, if the specified entry is <code class = "inline">59</code>, then all entries in the returned matrix are divided by <code class = "inline">59</code>.
         </ul>
-        The function returns the array scaled by the entry at [0,1].
-    <li>
-    <li> <code class = "inline">scaleMatrix(distMx, i=0,j=1):</code>
-      This function has three inputs and returns the matrix distMx scaled by the ith, jth entry.
-      <ul>
-          <li> <code class = "inline">distMx</code>: a distance matrix.  Assumes diagonal values are 0, and all other values are numeric and non-negative.
-          <li> <code class = "inline">i</code>: the x coordinate of the entry to be used to scale the matrix.  It has a default value of 0.
-          <li> <code class = "inline">j</code>: the y coordinate of the entry to be used to scale the matrix.  It has a default value of 1.
+
+        <p> Using <a href="https://developers.google.com/maps/documentation/distance-matrix/overview">Google Maps API</a>, we generated the amount of time it would take to travel between the following landmarks:
+        <ul>
+            <li> Bronx Zoo (Bronx),
+            <li> Empire State Building (Manhattan),
+            <li> National Lighthouse Museum (Staten Island),
+            <li> FDR Four Freedoms Park (Roosevelt Island),
+            <li> Citi Field (Queens),
+            <li> Coney Island (Brooklyn), and
+            <li> Hunter College (Manhattan)
         </ul>
-        The function returns the array scaled by the entry at [0,1].
-    <li>
-  </ul>
+        by biking, driving, transit, and walking
+        (files:  <a href="nyc_landmarks_biking.csv">nyc_landmarks_biking.csv</a>,
+        <a href="nyc_landmarks_biking.csv">nyc_landmarks_driving.csv</a>,
+        <a href="nyc_landmarks_biking.csv">nyc_landmarks_transit.csv</a>,
+        <a href="nyc_landmarks_biking.csv">nyc_landmarks_walking.csv</a>
+        ).
 
-    <p>For example, assuming your functions are in <code class=inline>p47</code> and the appropriate libraries are loaded:
-    <pre><code class="blockcode"></code></pre>
+      Each file has the entries listed in hours and minutes.  The first function extracts the time from each and returns a matrix of numeric values representing total minutes for each entry.
+      <p>For example, assuming your functions are in <code class=inline>p48</code> and the appropriate libraries are loaded:
+      <pre><code class="blockcode">transit = pd.read_csv('nyc_landmarks_transit.csv')
+print(transit)
+transit_mx = p48.extractMx(transit)
+print(transit_mx)</code></pre>
 
-    would print:
-    <pre><code class="datablock"></code></pre>
+      would print:
+      <pre><code class="datablock">                          Name  ...  Hunter College
+0        Empire State Building  ...         21 mins
+1                    Bronx Zoo  ...   1 hour 2 mins
+2   National Lighthouse Museum  ...  1 hour 21 mins
+3  FDR Four Freedom State Park  ...         37 mins
+4                   Citi Field  ...         35 mins
+5                 Coney Island  ...  1 hour 10 mins
+6               Hunter College  ...          0 mins
 
-    and display:  DISPLAY the MDS of transit overlaid with true distances.
-    <p>
-    <img src = "iris_logR_svm.png" height=300>
+[7 rows x 9 columns]
+[[  0  55  79  29  40  61  21]
+ [ 55   0 105  72  70 106  62]
+ [ 99 113   0  83  98 105  81]
+ [ 29  71  92   0  41  84  37]
+ [ 39  73 105  41   0  95  35]
+ [ 59 123  91  83 102   0  70]
+ [ 16  67  86  24  35  71   0]]</code></pre>
+
+      If we normalize by the first non-zero entry (0,1) (note that we can't use (0,0), or any (i,i) since it's a distance matrix so would be dividing through by 0):
+      <pre><code class="blockcode">transit_normed = p48.scaleMx(transit_mx)
+print(transit_normed)</code></pre>
+      would print:
+<pre><code class="datablock">[[0.         1.         1.43636364 0.52727273 0.72727273 1.10909091 0.38181818]
+ [1.         0.         1.90909091 1.30909091 1.27272727 1.92727273  1.12727273]
+ [1.8        2.05454545 0.         1.50909091 1.78181818 1.90909091  1.47272727]
+ [0.52727273 1.29090909 1.67272727 0.         0.74545455 1.52727273  0.67272727]
+ [0.70909091 1.32727273 1.90909091 0.74545455 0.         1.72727273  0.63636364]
+ [1.07272727 2.23636364 1.65454545 1.50909091 1.85454545 0.          1.27272727]
+ [0.29090909 1.21818182 1.56363636 0.43636364 0.63636364 1.29090909  0.        ]]</code></pre>
+
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-
+<!--
 
 <p></p><p><a name="p49"><b>Program 49: Digit Clusters.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
     <br>(Learning Objective: to build intuition and facility with k-means clustering.)</p>
