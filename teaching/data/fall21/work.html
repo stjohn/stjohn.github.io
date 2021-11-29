@@ -2774,9 +2774,13 @@ displayPlot(vote2d,'MDS of Votes with Manhattan Distances')
         <a href="nyc_landmarks_biking.csv">nyc_landmarks_transit.csv</a>,
         <a href="nyc_landmarks_biking.csv">nyc_landmarks_walking.csv</a>
         ).
+        <p>
+        <iframe src="nycMap.html" style="height: 400px" name="internal"></iframe>
 
+
+        <p>
       Each file has the entries listed in hours and minutes.  The first function extracts the time from each and returns a matrix of numeric values representing total minutes for each entry.
-      <p>For example, assuming your functions are in <code class=inline>p48</code> and the appropriate libraries are loaded:
+      For example, assuming your functions are in <code class=inline>p48</code> and the appropriate libraries are loaded:
       <pre><code class="blockcode">transit = pd.read_csv('nyc_landmarks_transit.csv')
 print(transit)
 transit_mx = p48.extractMx(transit)
