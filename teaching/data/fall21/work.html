@@ -2821,93 +2821,152 @@ print(transit_normed)</code></pre>
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
-<!--
 
-<p></p><p><a name="p49"><b>Program 49: Digit Clusters.</b></b> &emsp; <i>Due noon, Monday, 6 December.</i>
+<p></p><p><a name="p49"><b>Program 49: Toy Clusters.</b></b> &emsp; <i>Due noon, Friday, 3 December.</i>
     <br>(Learning Objective: to build intuition and facility with k-means clustering.)</p>
     <p>
 
-
-    Cluster the digit datas and print out the centroids of each as a digit.
-
-    <p>
-    Have the function take general input, and output centroids info
+    In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we clustered the digits data set using K-means clustering and used t-SNE to improve accuracy.  The digits data set is one of 7 <a href="https://scikit-learn.org/stable/datasets/toy_dataset.html">toy datasets</a> included in <a href="https://scikit-learn.org/stable/index.html">sklearn</a> that can be quickly loaded to  try different algorithms.
 
     <p>
-    In example code, display the centroids found as well as a 2D plot of points (what axis to use?)
-
+    For this program, modify the code from lecture to write a function that allows you to run three different preprocessing of a toy dataset ("none", "TSNE", or "MDS"), applies K-Means clustering, takes the mode of each cluster as the predicted label, and then returns the accuracy of the prediction.
 
     <ul>
-    <li> <code class = "inline">:</code>
-        This function has five inputs and returns a linear regression classifier:
+    <li> <code class = "inline">clusterDemo(toy_dataset, n_components = 2, n_clusters = 3, method = "none", random_state=0):</code>
+        This function has five inputs and returns the accuracy (value between 0 and 1):
         <ul>
-            <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
-            <li> <code class = "inline">y</code>: the independent variable for the model.
-            <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
-            <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
-            <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
+            <li> <code class = "inline">toy_dataset</code>: a dataset from the sklearn toy datasets (see above).  Assumes that the dataset is of type
+            <code class = "inline">sklearn.utils.Bunch</code> and has fields
+            <code class = "inline">data</code> and
+            <code class = "inline">target</code>.
+            <li> <code class = "inline">n_components</code>: the number of components for the MDS or t-SNE analysis.  The default value is <code class = "inline">2</code>.
+            <li> <code class = "inline">n_clusters</code>: the number of components for the K-Means analysis.  The default value is <code class = "inline">3</code>.
+            <li> <code class = "inline">method</code>: the method used for preprocessing the data.  Possible values are <code class = "inline">"none"</code> (which does no preprocessing), <code class = "inline">"MDS"</code> (which uses MDS to preprocess), and
+            <code class = "inline">"TSNE"</code>.The default value is <code class = "inline">"none"</code>.
+            <li> <code class = "inline">random_state</code>: the random seed for MDS, TSNE, and K-Means clustering methods.  The default value is <code class = "inline">0</code>.
           </ul>
-
-          The function returns the score of the model score computed on the test data by each classifier.
+          The function should:
+          <ol>
+              <li> Preprocess the dataset via the method specified.  If method is <code class = "inline">"none"</code>, then the original data is used.
+              <li> Run the K-means clustering method on the data.
+              <li> Label each element by the most common label for its cluster (i.e. the mode of the labels).
+              <li> Return the accuracy of the predicted labels versus the actual labels in the dataset.
       </ul>
 
-      <p>For example, assuming your functions are in <code class=inline>p44</code> and the appropriate libraries are loaded:
-      <pre><code class="blockcode"></code></pre>
+      <p>For example, assuming your functions are in <code class=inline>p49</code> and the appropriate libraries are loaded, we can run the function on the relatively small datasets of iris species and wine classifications:
+      <pre><code class="blockcode">iris = datasets.load_iris()
+no_preproc = p49.clusterDemo(iris)
+print(f'Iris:  The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(iris, method = "TSNE")
+print(f'Iris: The accuracy with TSNE preprocessing is {tsne_proc}.')
+mds_proc = p49.clusterDemo(iris, method = "MDS")
+print(f'Iris: The accuracy with MDS preprocessing is {mds_proc}.')
+
+wine = datasets.load_wine()
+no_preproc = p49.clusterDemo(wine, n_components = 3, random_state=10)
+print(f'Wine:  The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(wine, n_components = 3, method = "TSNE", random_state=10)
+print(f'Wine: The accuracy with TSNE preprocessing is {tsne_proc}.')</code></pre>
 
       would print:
-      <pre><code class="datablock"></code></pre>
+      <pre><code class="datablock">Iris:  The accuracy with no-preprocessing is 0.8933333333333333.
+Iris: The accuracy with TSNE preprocessing is 0.9133333333333333.
+Iris: The accuracy with MDS preprocessing is 0.9.
+Wine:  The accuracy with no-preprocessing is 0.702247191011236.
+Wine: The accuracy with TSNE preprocessing is 0.6797752808988764.</code></pre>
 
-      and display:
-      <p>
-      <img src = "iris_logR_svm.png" height=300>
+      <p>We can also run on the digits dataset.  It's larger and the t-SNE and MDS methods will take a bit of time to return their answers:
+      <pre><code class="blockcode">digits = datasets.load_digits()
+no_preproc = p49.clusterDemo(digits, n_clusters = 10, method = "none", random_state=20)
+print(f'Digits: The accuracy with no-preprocessing is {no_preproc}.')
+tsne_proc = p49.clusterDemo(digits, n_clusters = 10, method = "TSNE", random_state=20)
+print(f'Digits: The accuracy with TSNE preprocessing is {tsne_proc}.')
+mds_proc = p49.clusterDemo(digits, n_clusters = 10, method = "MDS", random_state=20)
+print(f'Digits: The accuracy with MDS preprocessing is {mds_proc}.')</code></pre>
+
+      would print:
+      <pre><code class="datablock">Digits: The accuracy with no-preprocessing is 0.7946577629382304.
+Digits: The accuracy with TSNE preprocessing is 0.9432387312186978.
+Digits: The accuracy with MDS preprocessing is 0.676126878130217.</code></pre>
+
 
     <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
-
+    <p><i>Hints:
+      <ul>
+        <li> The import statements needed for the function are:
+          <pre><code class="blockcode">import pandas as pd
+import numpy as np
+from sklearn.manifold import TSNE, MDS
+from sklearn.cluster import KMeans
+from scipy.stats import mode
+from sklearn.metrics import accuracy_score</code></pre>
+        <li> Both the MDS and t-SNE methods use the <code class=inline>n_components</code> when instatiating the model.  Not passing this parameter to the functions will give different answers.
+        <li> The <code class=inline>random_state</code> parameter is used by both the preprocessing steps (MDS and t-SNE) as well as for the K-Means clustering.  Not passing this parameter to the functions will give different answers.
+      </ul>
+    </i>
 
 <p></p><p><a name="p50"><b>Program 50: 4-Coloring.</b> &emsp; <i>Due noon, Tuesday, 7 December.</i>
     <br>(Learning Objective: to apply k-means clustering to larger datasets.)</p>
       <p>
 
-  Coloring images-- k-means clustering to choose 4 colors for your image.  Use sklearn?
+    In Lecture #25 and <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook: Section 5.11</a>, we used K-Means clustering to display an image using 16 colors.  The color values of the image were treated as 3D vectors, and the chosen colors were the centers of the clusters of those values.  For this program, write a function that takes an image and the number of clusters and returns the image recolored with cluster centers.
 
-  Need small test image and check efficiency
-  </p>
-
-
-  <ul>
-  <li> <code class = "inline">:</code>
-      This function has five inputs and returns a linear regression classifier:
+    <ul>
+      <li> <code class = "inline">coloring(img, n_clusters = 4, random_state=5):</code>
+      This function has three inputs and returns an np-array containing the recolored image:
       <ul>
-          <li> <code class = "inline">xes</code>: a array of the depedendent variables for the model.
-          <li> <code class = "inline">y</code>: the independent variable for the model.
-          <li> <code class = "inline">test_size</code>: the size of the test set created when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">0.20</code>.
-          <li> <code class = "inline">random_state</code>: the random seed used when the data is divided into test and training sets with <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">train_test_split</a>. The default value is <code class = "inline">66</code>.
-          <li> <code class = "inline">max_iter</code>: the maximum number of iterations flag used for <code class = "inline">LogisticRegression</code>.The default value is <code class = "inline">500</code>.
-        </ul>
-
-        The function returns the score of the model score computed on the test data by each classifier.
+          <li> <code class = "inline">img</code>: an np-array containing an image, from <code class = "inline">sklearn.datasets.load_sample_image()</code>sor <code class = "inline">plt.imread()</code>.
+          <li> <code class = "inline">n_clusters</code>: the number of clusters used for <code class = "inline">MiniBatchKMeans</code>. The default value is <code class = "inline">4</code>.
+          <li> <code class = "inline">random_state</code>: the random seed used for the <code class = "inline">MiniBatchKMeans</code>. The default value is <code class = "inline">5</code>.
+      </ul>
+      The function returns a recolored image, where each pixel is assigned the value of its cluster..
     </ul>
 
-    <p>For example, assuming your functions are in <code class=inline>p44</code> and the appropriate libraries are loaded:
-    <pre><code class="blockcode"> </code></pre>
+    <p>For example, assuming your functions are in <code class=inline>p50</code> and the appropriate libraries are loaded.  Here is the example from lecture:
+    <pre><code class="blockcode">from sklearn.datasets import load_sample_image
+china = load_sample_image("china.jpg")
+china_4col = p50.coloring(china)
+fig, ax = plt.subplots(1, 2, figsize=(16, 6),
+                       subplot_kw=dict(xticks=[], yticks=[]))
+fig.subplots_adjust(wspace=0.05)
+ax[0].imshow(china)
+ax[0].set_title('Original Image', size=16)
+ax[1].imshow(china_4col)
+ax[1].set_title('4-color Image', size=16);
+plt.show()</code></pre>
 
-    would print:
-    <pre><code class="datablock"> </code></pre>
-
-    and display: SHOW before and after images
+    which displays:
     <p>
-    <img src = "iris_logR_svm.png" height=300>
+    <img src = "china_4col.png" height=300>
+
+    <p>We can also run it on <a href="hunterFlag.jpg">hunterFlag.jpg</a> (since it's a larger file it will take a bit longer to run):
+    <pre><code class="blockcode">hunter = plt.imread('hunterFlag.jpg')
+hunter_4col = p50.coloring(hunter, random_state = 70)
+hunter_2col = p50.coloring(hunter, n_clusters = 2, random_state = 70)
+fig, ax = plt.subplots(1, 3, figsize=(16, 6),
+                       subplot_kw=dict(xticks=[], yticks=[]))
+fig.subplots_adjust(wspace=0.05)
+ax[0].imshow(hunter)
+ax[0].set_title('Original Image', size=16)
+ax[1].imshow(hunter_4col)
+ax[1].set_title('4-color Image', size=16);
+ax[2].imshow(hunter_2col)
+ax[2].set_title('2-color Image', size=16);
+plt.show()</code></pre>
+
+    and display:
+    <p>
+    <img src = "hunter_4col.png" height=300>
 
   <p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
 
 
--->
-
-
+<!--
 <br><br>
   <p>
     <i>More to come...</i>
+-->
 
 <br><br><br><br><br><br>
 <hr>
