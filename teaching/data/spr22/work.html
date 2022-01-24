@@ -124,6 +124,117 @@ and then followed by his Python program.
 <br>
 <hr>
 
+<p></p><p><a name="p1"><b>Program 1: Popular Names.</b></b> &emsp; <i>Due noon, Thursday, 10 February.
+  <br>Learning Objective: to build competency with string and file I/O functionality of core Python.
+  <br>Available Libraries:  Core Python 3.6+ only.</i>
+
+  <p>
+  In lecture and the textbook, we looked at how popular names were over time. For this program, we will focus on the most common names in a given file, as well the names that make up a fixed fraction of the names. To allow for unit testing, the assignment is broken into the following functions:</p>
+  <ul>
+    <li> <code class = "inline">extract_names(file_name, sep = ["\n"])</code>:  Returns a list of names.  Assumes that the names are separated by the separators listed in <code class = "inline">sep</code>.  The default value is <code class = "inline">["\n"]</code> but the possible inputs are 1 or more separators.  Your function should remove any empty strings from the list.
+    <li> <code class = "inline">count_names(names_lst)</code>:
+      Returns a dictionary of names with values the number of times each name occurs in the input, <code class = "inline">names_lst</code>.
+    <li> <code class = "inline">popular_names(names_dict,num = 3)</code>:
+      Returns a list of the <code class="inline">num</code> most popular names as a list of strings.  If no value is passed for <code class="inline">num</code>, the default value of 3 is used (that is, it returns the 3 most popular names).
+    <li> <code class = "inline">percent_captured(names_dict,threshold = 75)</code>:
+      Returns the number of names needed to have at least <code class="inline">threshold</code> percent of all the names in the dictionary.  If no value is passed for <code class="inline">percent</code>, the default value of 75 is used (that is, it returns the number of names needed to have 75 percent (or more) of the total occurrances of names).
+  </ul>
+
+  <p>For example, assuming these functions are in a file, <code class="inline">p1.py</code> and run on a file containing names that start with 'A', <a href="a_names.txt">a_names.txt</a>:
+
+<pre><code class="blockcode">lst = p1.extract_names('a_names.txt')
+print(f'The list is:\n{lst}')
+dict = p1.count_names(lst)
+print(f'The dictionary is:\n{dict}')
+lstTop = p1.popular_names(dict)
+print(f'The top 3 names are: {lstTop}.')
+num = p1.percent_captured(dict, threshold = 50)
+print(f'The top {num} names make up 50% of the list.')
+</code></pre>
+gives the output:
+<pre><code class="datablock">The list is:
+['Alex', 'Andy', 'Amy', 'Alani', 'Alex', 'Ana', 'Angela', 'Ai', 'Asia', 'Alex', 'Anna', 'Ana', 'Asami', 'Andrea', 'Alex', 'Ana', 'Anya', 'Aiko', 'Ana', 'Angela', 'Ai', 'Alexander', 'Alex', 'Ana', 'Andy']
+The dictionary is:
+{'Alex': 5, 'Andy': 2, 'Amy': 1, 'Alani': 1, 'Ana': 5, 'Angela': 2, 'Ai': 2, 'Asia': 1, 'Anna': 1, 'Asami': 1, 'Andrea': 1, 'Anya': 1, 'Aiko': 1, 'Alexander': 1}
+The top 3 names are: ['Alex', 'Ana', 'Andy'].
+The top 4 names make up 50% of the list.
+</code></pre>
+
+<p>Another example with a file <a href="korea_most_pop2019.txt">korea_most_pop2019.txt</a>, containing the most popular names in South Korea in 2019, separated by both newlines and spaces:
+
+<pre><code class="blockcode">lst = p1.extract_names('korea_most_pop2019.txt',sep=["\n"," "])
+print(lst)
+</code></pre>
+gives the output:
+<pre><code class="datablock">['Ji-an', 'Ha-yoon', 'Seo-ah', 'Ha-eun', 'Seo-yun', 'Ha-rin', 'Ji-yoo', 'Ji-woo', 'Soo-ah', 'Ji-a', 'Seo-jun', 'Ha-joon', 'Do-yun', 'Eun-woo', 'Si-woo', 'Ji-ho', 'Ye-jun', 'Yu-jun', 'Ju-won', 'Min-jun']
+</code></pre>
+
+
+<br>
+  <p>Notes:  you should submit a file with only the standard comments at the top, and these functions.  The grading scripts will then import the file for testing and expect the functions to match in name and return values to above:
+  <pre><code class="blockcode">
+"""
+Name:  YOUR NAME
+Email: YOUR EMAIL
+Resources:  RESOURCES USED
+"""
+
+def extract_names(file_name, sep = ["\n"]):
+    """
+    Opens and reads from file_name, and returns a list of names.
+
+    Keyword arguments:
+    sep -- the deliminators for splitting up the data (default ['\n'])
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+def count_names(names_lst):
+    """
+    Returns a dictionary of names with values the number of times
+    each name occurs in the input, names_lst.
+    """
+
+    #Placeholder-- replace with your code
+    dict = {}
+    return dict
+
+def popular_names(names_dict,num = 3):
+    """
+    Returns a list of the num most popular names as a list of strings.
+
+    Keyword arguments:
+    sep -- the number of names to return (default is 3)
+    """
+
+    #Placeholder-- replace with your code
+    lst = []
+    return lst
+
+
+def percent_captured(names_dict,threshold = 75):
+    """
+    Returns the number of names needed to have at least threshold percent of
+    all the names in the dictionary.
+
+    Keyword arguments:
+    threshold -- the percent used for threshold (default 75)
+    """
+
+    #Placeholder-- replace with your code
+    count = 0
+    return count
+
+    </pre></code>
+  If your file includes code outside of these functions, either comment the code out before submitting or use a main function that is conditionally executed (see <a href="https://runestone.academy/ns/books/published//thinkcspy/Functions/mainfunction.html">Think CS: Section 6.8</a> for details).
+
+
+</p>
+
+
+<br><br>
 
     <i>More to come...</i>
 
