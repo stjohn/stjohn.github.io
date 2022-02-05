@@ -87,10 +87,11 @@ Access information is given during the corresponding lecture.
 
   <br><i>If you do have access to the course on Gradescope, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and we will manually generate an invitation.</i>
 
+
 <p><a name="cw1"><b>Classwork 1: </b> &emsp; <i>Due 4pm, Monday, 31 January.</i> &emsp;
   Available during Lecture 1 on Gradescope (paper version also available for those without a phone or laptop at lecture), this classwork complements the exploratory data analysis of names and foreshadows the sampling of data in Lecture 2.
 
-<p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due 4pm, Thursday, 3 February.</i> &emsp;
+<p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due midnight, Thursday, 3 February.</i> &emsp;
   Available during Lecture 2 on Gradescope, this classwork introduces the autograder that is used for the programming assignments.  The structure of the sample program mirrors the structure and content of the upcoming <a href="#p1">Program 1</a>.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
   <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
   <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
@@ -137,12 +138,46 @@ Seat:  YOUR_SEAT
       If you did not attend lecture, do not include the above lines.
 
 
-<p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due 4pm, Monday, 7 February.</i> &emsp;
-  Available during Lecture 3 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
+
+<p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due midnight, Monday, 7 February.</i> &emsp;
+  Available during Lecture 3 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
+
+  <p>
+  Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+  Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and <code class = "inline">last_name</code> to a file with the output file name provided by the user.
+
+  <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
+  <pre><code class=datablock>last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
+Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
+Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell</code></pre>
+
+    Then a sample run of the program:
+
+    <pre><code class="blockcode">Enter input file name: legislators-current.csv
+Enter output file name:  senatorNames.csv</code></pre>
+
+    And the first three lines of <code class = "inline">senatorNames.csv</code> would be:
+    <pre><code class=datablock>first_name,last_name
+Sherrod,Brown
+Maria,Cantwell</code></pre>
+
+    Notes:
+    <ul>
+        <li> If you attended lecture, see the note for Classwork 2 about getting credit and seating location.
+        <li> if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+    </ul>
+
+
+<p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due midnight, Thursday, 10 February.</i> &emsp;
+  Available during Lecture 4 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
 To get the most out of this exercise, bring an electronic device on which you can easily type into a web-based IDE (possible on a phone, but much easier with the bigger screen and keyboards on some tablets and most laptops.
   <br>
   <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
   <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
+
+<p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due midnight, Monday, 14 February.</i> &emsp;
+  Available during Lecture 5 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture.
+
 
 <br><br><br><br>
 <hr>
