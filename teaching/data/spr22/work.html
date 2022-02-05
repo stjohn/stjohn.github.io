@@ -81,52 +81,51 @@ Access information is given during the corresponding lecture.
 </ul>
 <p>
 
-<p><a name="cw0"><b>Classwork 0: </b> &emsp; <i>Due midnight, Monday, 31 January.</i> &emsp;
-  Available on Gradescope, this classwork focuses on the course
-  <a href="syl.html">syllabus.</a>
+  <p><a name="cw0"><b>Classwork 0: </b> &emsp; <i>Due midnight, Monday, 31 January.</i> &emsp;
+    Available on Gradescope, this classwork focuses on the course
+    <a href="syl.html">syllabus.</a>
 
-  <br><i>If you do have access to the course on Gradescope, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and we will manually generate an invitation.</i>
+    <br><i>If you do have access to the course on Gradescope, write to <code class="inline">datasci@hunter.cuny.edu</code>.  Include in your email that you not receive a Gradescope invitation, your preferred email, and we will manually generate an invitation.</i>
 
+  <p><a name="cw1"><b>Classwork 1: </b> &emsp; <i>Due 4pm, Monday, 31 January.</i> &emsp;
+    Available during Lecture 1 on Gradescope (paper version also available for those without a phone or laptop at lecture), this classwork complements the exploratory data analysis of names and foreshadows the sampling of data in Lecture 2.
 
-<p><a name="cw1"><b>Classwork 1: </b> &emsp; <i>Due 4pm, Monday, 31 January.</i> &emsp;
-  Available during Lecture 1 on Gradescope (paper version also available for those without a phone or laptop at lecture), this classwork complements the exploratory data analysis of names and foreshadows the sampling of data in Lecture 2.
+  <p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due midnight, Thursday, 3 February.</i> &emsp;
+    Available during Lecture 2 on Gradescope, this classwork introduces the autograder that is used for the programming assignments.  The structure of the sample program mirrors the structure and content of the upcoming <a href="#p1">Program 1</a>.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
+    <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
+    <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
 
-<p><a name="cw2"><b>Classwork 2: </b> &emsp; <i>Due midnight, Thursday, 3 February.</i> &emsp;
-  Available during Lecture 2 on Gradescope, this classwork introduces the autograder that is used for the programming assignments.  The structure of the sample program mirrors the structure and content of the upcoming <a href="#p1">Program 1</a>.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
-  <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
-  <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
-
-  <p>Write a function that takes the name of a file and makes a dictionary of the lines of the file.
-    <ul>
-      <li> <code class = "inline">make_dict(file_name, sep=': ')</code>:  Takes a name of a file, <code class = "inline">file_name</code> and a delimiter <code class = "inline">sep</code>.  The default value is <code class = "inline">': '</code>.  If a line of the file does not include <code class = "inline">sep</code>, the line should be ignored.   Otherwise, for each line, the string preceding the delimiter <code class = "inline">sep</code> is the key, and the string after <code class = "inline">sep</code> is the value.  Your function returns the dictionary.
-    </ul>
+    <p>Write a function that takes the name of a file and makes a dictionary of the lines of the file.
+      <ul>
+        <li> <code class = "inline">make_dict(file_name, sep=': ')</code>:  Takes a name of a file, <code class = "inline">file_name</code> and a delimiter <code class = "inline">sep</code>.  The default value is <code class = "inline">': '</code>.  If a line of the file does not include <code class = "inline">sep</code>, the line should be ignored.   Otherwise, for each line, the string preceding the delimiter <code class = "inline">sep</code> is the key, and the string after <code class = "inline">sep</code> is the value.  Your function returns the dictionary.
+      </ul>
 
     <p>For example, assuming these functions are in a file, <code class="inline">cw2.py</code> and run on a file containing names that start with 'A', <a href="contacts.txt">contacts.txt</a>:
 
     <pre><code class="blockcode">contacts = cw2.make_dict('contacts.txt')
 who = 'CS Department'
 print(f'Contact info for {who} is {contacts[who]}.')</pre></code>
-</pre></code>
-    will print:
-<pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
+  </pre></code>
+      will print:
+  <pre><code class="datablock">Contact info for CS Department is 10th Floor HN, x5213.</pre></code>
 
-<p>Another example with <a href="nick_names.txt">nick_names.txt</a>:
+  <p>Another example with <a href="nick_names.txt">nick_names.txt</a>:
 
-<pre><code class="blockcode">nick_names = cw2.make_dict('nick_names.txt', sep = ' ')
+  <pre><code class="blockcode">nick_names = cw2.make_dict('nick_names.txt', sep = ' ')
 names = ['Beth','Lisa','Meg','Greta','Amy','Mia']
 for n in names:
     print(f'Full name for {n} is {nick_names[n]}.')</pre></code>
-</pre></code>
-will print:
-<pre><code class="datablock">Full name for Beth is Elizabeth.
+  </pre></code>
+  will print:
+  <pre><code class="datablock">Full name for Beth is Elizabeth.
 Full name for Lisa is Elizabeth.
 Full name for Meg is Margaret.
 Full name for Greta is Margaret.
 Full name for Amy is Amelia.
 Full name for Mia is Amelia.</pre></code>
 
-    <p>If you attended lecture, include the last three lines to the the introductory comment:
-      <pre><code class="blockcode">"""
+      <p>If you attended lecture, include the last three lines to the the introductory comment:
+        <pre><code class="blockcode">"""
 Name:  YOUR_NAME
 Email: YOUR_EMAIL
 Resources:  RESOURCES USED
@@ -135,48 +134,82 @@ Row:  YOUR_ROW
 Seat:  YOUR_SEAT
 """</pre></code>
 
-      If you did not attend lecture, do not include the above lines.
+        If you did not attend lecture, do not include the above lines.
 
 
 
-<p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due midnight, Monday, 7 February.</i> &emsp;
-  Available during Lecture 3 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
+  <p><a name="cw3"><b>Classwork 3: </b> &emsp; <i>Due midnight, Monday, 7 February.</i> &emsp;
+    Available during Lecture 3 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.  <br>
 
-  <p>
-  Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
-  Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and <code class = "inline">last_name</code> to a file with the output file name provided by the user.
+    <p>
+    Write a program that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+    Next, the program should select rows where the field <code class="inline">Grade</code> is equal to 3 and the <code class="inline">Year</code> is equal to 2019 and write all rows that match that criteria to a new CSV file.
 
-  <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
-  <pre><code class=datablock>last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
+    <p>
+    Then a sample run of the program:
+  <pre><code class="blockcode">Enter input file name: school-ela-results-2013-2019.csv
+Enter output file name:  ela2013.csv</code></pre>
+    where the file <code class="inline">school-ela-results-2013-2019.csv</code> is extracted from <a href="https://infohub.nyced.org/reports/academics/test-results">NYC Schools Test Results</a> (and <a href="../fall21/school_ELA_2013_2019_truncated.csv">truncated version</a> of roughly the first 1000 lines for testing).  The first lines of the output file would be:
+
+  <pre><code class="datablock">School,Name,Grade,Year,Category,Number Tested,Mean Scale Score,# Level 1,% Level 1,# Level 2,% Level 2,# Level 3,% Level 3,# Level 4,% Level 4,# Level 3+4,% Level 3+4
+01M015,P.S. 015 ROBERTO CLEMENTE,3,2019,All Students,27,606,1,3.7,7,25.9,18,66.7,1,3.7,19,70.4
+01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
+01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
+
+
+  <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due midnight, Thursday, 10 February.</i> &emsp;
+    Available during Lecture 4 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
+    To get the most out of this exercise, bring an electronic device on which you can easily type into a web-based IDE (possible on a phone, but much easier with the bigger screen and keyboards on some tablets and most laptops.
+      <br>
+      <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
+      <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
+
+  <p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due midnight, Monday, 14 February.</i> &emsp;
+     Available during Lecture 5 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture.
+
+  <p><a name="cw6"><b>Classwork 6: </b> &emsp; <i>Due midnight, Thursday, 17 February.</i> &emsp;
+      Available during Lecture 6 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+    <p>
+    Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
+    Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and <code class = "inline">last_name</code> to a file with the output file name provided by the user.
+
+    <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
+    <pre><code class=datablock>last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
 Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
 Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell</code></pre>
 
-    Then a sample run of the program:
+      Then a sample run of the program:
 
-    <pre><code class="blockcode">Enter input file name: legislators-current.csv
+      <pre><code class="blockcode">Enter input file name: legislators-current.csv
 Enter output file name:  senatorNames.csv</code></pre>
 
-    And the first three lines of <code class = "inline">senatorNames.csv</code> would be:
-    <pre><code class=datablock>first_name,last_name
+      And the first three lines of <code class = "inline">senatorNames.csv</code> would be:
+      <pre><code class=datablock>first_name,last_name
 Sherrod,Brown
 Maria,Cantwell</code></pre>
 
-    Notes:
+      Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+      <br>
+
+
+  <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due midnight, Thursday, 24 February.</i> &emsp;
+    Available during Lecture 7 on Gradescope, this classwork introduces regular expressions for data cleaning.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+    <p>
+    Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+
+  <pre><code class="datablock">the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
+POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
+POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1</code></pre>
+
+    Each function takes as input a row of the table:
     <ul>
-        <li> If you attended lecture, see the note for Classwork 2 about getting credit and seating location.
-        <li> if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
+      <li> <code class = "inline">extractLatLon(row)</code>:  This function takes the values from the column <code class = "inline">the_geom</code> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
+      <li> <code class = "inline">extractTitle(row)</code>:  This function concatenates the values from the columns <code class = "inline">NAME</code>, <code class = "inline">CITY</code>, and <code class = "inline">ZIP</code> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
+      For example, when applying this function to the first data row, the return value would be:
+      <code class = "inline">115th Street, New York, 10026</code>.
     </ul>
-
-
-<p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due midnight, Thursday, 10 February.</i> &emsp;
-  Available during Lecture 4 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
-To get the most out of this exercise, bring an electronic device on which you can easily type into a web-based IDE (possible on a phone, but much easier with the bigger screen and keyboards on some tablets and most laptops.
-  <br>
-  <i>Note:  Hunter College is committed to all students having the technology needed for their courses.  If you are in need of technology, see
-  <a href="https://ww2.hunter.cuny.edu/students/student-life/emergency-support-and-resources">Student Life's Support & Resources Page</a>.</i>
-
-<p><a name="cw5"><b>Classwork 5: </b> &emsp; <i>Due midnight, Monday, 14 February.</i> &emsp;
-  Available during Lecture 5 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture.
 
 
 <br><br><br><br>
