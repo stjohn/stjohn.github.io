@@ -156,6 +156,10 @@ Enter output file name:  ela2013.csv</code></pre>
 01M019, P.S. 019 ASHER LEVY,3,2019,All Students,24,606,0,0.0,8,33.3,15,62.5,1,4.2,16,66.7
 01M020,P.S. 020 ANNA SILVER,3,2019,All Students,57,593,13,22.8,24,42.1,18,31.6,2,3.5,20,35.1</code></pre>
 
+  <p>Hints:
+    <ul>
+      <li> Since the <code class=inline>Grade</code> column contains a mixtures of numbers (e.g. 3) and strings ("All Grades"), the column is stored as strings.
+    </ul>
 
   <p><a name="cw4"><b>Classwork 4: </b> &emsp; <i>Due midnight, Thursday, 10 February.</i> &emsp;
     Available during Lecture 4 on HackerRank, this classwork introduces the timed coding environment used for quizzes. This classwork mirrors the structure and content of the upcoming <a href="#q1">Quiz 1</a>.
@@ -192,7 +196,7 @@ Maria,Cantwell</code></pre>
       Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
       <br>
 
-
+<!--
   <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due midnight, Thursday, 24 February.</i> &emsp;
     Available during Lecture 7 on Gradescope, this classwork introduces regular expressions for data cleaning.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
@@ -210,7 +214,7 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
       For example, when applying this function to the first data row, the return value would be:
       <code class = "inline">115th Street, New York, 10026</code>.
     </ul>
-
+-->
 
 <br><br><br><br>
 <hr>
@@ -222,9 +226,14 @@ POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,N
 Unless otherwise noted, quizzes focus on the corresponding programming assignment.  The quizzes are 30 minutes long and cannot be repeated.  They are available for the 24 hours after lecture and assess your programming skill using HackerRank. Access information for each quiz will be available under the Quizzes menu on  Blackboard.
 
 
-<p><a name="q1"><b>Quiz 1: </b> &emsp; <i>Due 4pm, Friday, 11 February.</i> &emsp;
+<p><a name="q1"><b>Quiz 1: Core Python</b> &emsp; <i>Due 4pm, Friday, 11 February.</i> &emsp;
   Link to access HackerRank available at the end of Lecture 4 (and posted on Blackboard).
   <br>This first coding challenge focuses on reading and processing data from a file using core Python 3.6+ as in <a href="#p1">Program 1</a>.
+
+<p><a name="q2"><b>Quiz 2: Pandas Basics</b> &emsp; <i>Due 4pm, Friday, 11 February.</i> &emsp;
+  Link to access HackerRank available at the end of Lecture 4 (and posted on Blackboard).
+  <br>This is the first quiz using Pandas and focuses on manipulating and creating new columns in DataFrames as in <a href="#p2">Program 2</a>.
+
 
 <!--
   This quiz covers data representation from Lecture #5 and <a href=
@@ -415,7 +424,7 @@ Violation In Front Of Or Opposite,House Number,Street Name,Vehicle Color
                     <code class = "inline">Plate Type</code> column.
                     The default value is <code class = "inline">["COM", "PAS"]</code>.
           </ul>
-    The function returns the DataFrame with only rows that have <code class = "inline">Registration</code> with a value from the list <code class = "inline">keep</code>.  All rows where the <code class = "inline">Registration</code> column contains a different value are dropped.
+    The function returns the DataFrame with only rows that have <code class = "inline">Plate Type</code> with a value from the list <code class = "inline">keep</code>.  All rows where the <code class = "inline">Plate Type</code> column contains a different value are dropped.
 
     <li> <code class = "inline">add_indicator(reg_state)</code>:
     This function takes one input:
