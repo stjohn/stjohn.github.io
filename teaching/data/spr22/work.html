@@ -196,25 +196,145 @@ Maria,Cantwell</code></pre>
       Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
       <br>
 
-<!--
+
   <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due midnight, Thursday, 24 February.</i> &emsp;
     Available during Lecture 7 on Gradescope, this classwork introduces regular expressions for data cleaning.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
     <p>
-    Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+    Write a program that asks the user for the name of an input HTML file and the name of an output CSV file.  Your program should use regular expressions (see <a href="http://www.textbook.ds100.org/ch/12/text_re.html">Chapter 12.4</a> for using the <code class="inline">re</code> package in Python) to find all links in the input file and store the link text and URL as columns:  <code class="inline">Title</code> and <code class="inline">URL</code> in the CSV file specified by the user.  For the URL, strip off the leading <code class="inline">https://</code> or <code class="inline">http://</code> and any trailing slashes (<code class="inline">/</code>):
 
-  <pre><code class="datablock">the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
-POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
-POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1</code></pre>
+    <p>For example, if the input file is:
 
-    Each function takes as input a row of the table:
+  <pre><code class="datablock">
+&lt;html>
+&lt;head>&lt;title>Simple HTML File&lt;/title>&lt;/head>
+
+&lt;body>
+  &lt;p> Here's a link for &lt;a href="http://www.hunter.</i>cuny.edu/csci">Hunter CS Department&lt;/a>
+  and for &lt;a href="https://stjohn.github.io/teaching/data/fall21/index.html">CSci 39542&lt;/a>.  &lt;/p>
+
+  &lt;p> And for &lt;a href="https://www.google.com/">google&lt;/a>
+&lt;/body>
+&lt;/html>
+  </code></pre>
+
+    Then a sample run of the program:
+<pre><code class="blockcode">Enter input file name: simple.html
+Enter output file name:  links.csv</code></pre>
+
+    And the <code class="inline">links.csv</code> would be:
+  <pre><code class="datablock">Title,URL
+Hunter CS Department,www.hunter.</i>cuny.edu/csci
+CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
+google,www.google.com</code></pre>
+  </p>
+    <br>
+
+  </p>
+
+
+
+  <p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
+      Available during Lecture 8 on Gradescope, this classwork introduces the <code class=inline>datetime</code> package and plotting.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+      <p>     Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
+      <ul>
+        <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
+        <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
+      </ul>
+
+      <p>
+      For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">cw8.py</code>:
+      <pre><code class="blockcode">import seaborn as sns
+taxi = sns.load_dataset('taxis')
+print(taxi.iloc[0:10])
+taxi['tripTime'] = taxi.apply(lambda x: cw8.tripTime(x['pickup'], x['dropoff']), axis=1)
+print(taxi.iloc[0:10])</code></pre>
+      Would give output:
+  <pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
+  0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
+  1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+  2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+  3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
+  4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
+  5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+  6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+  7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+  8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
+  9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+
+  [10 rows x 14 columns]
+                  pickup              dropoff  ...  dropoff_borough        tripTime
+  0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
+  1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
+  2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
+  3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
+  4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
+  5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
+  6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
+  7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
+  8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
+  9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
+
+  [10 rows x 15 columns]
+  </code></pre>
+
+    <p> Using the function our second function:
+  <pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+  weekdays = p26.weekdays(taxi,'pickup')
+  print(weekdays.iloc[0:10])
+  </code></pre>
+    will give output:
+  <pre><code class="datablock">
+    pickup              dropoff  ...  pickup_borough  dropoff_borough
+  1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+  2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+  5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+  6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+  7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+  9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+  11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
+  12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
+  13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
+  14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
+
+  [10 rows x 14 columns]
+  </code></pre>
+      note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
+      </p>
+
+
+<i>Hints:
     <ul>
-      <li> <code class = "inline">extractLatLon(row)</code>:  This function takes the values from the column <code class = "inline">the_geom</code> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
-      <li> <code class = "inline">extractTitle(row)</code>:  This function concatenates the values from the columns <code class = "inline">NAME</code>, <code class = "inline">CITY</code>, and <code class = "inline">ZIP</code> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
-      For example, when applying this function to the first data row, the return value would be:
-      <code class = "inline">115th Street, New York, 10026</code>.
+        <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+        <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
+        See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
     </ul>
--->
+  </i>
+
+
+      </p>
+
+
+  <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
+      Available during Lecture 9 on Gradescope, this classwork is builds the <code class=inline>GeoJSON</code> objects with a visual editor.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+
+
+      <p>
+      Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
+
+    <pre><code class="datablock">the_geom,NAME,STREETNAME,HOUSENUM,CITY,ZIP,URL,BIN,BBL,X,Y,SYSTEM,BOROCODE
+  POINT (-73.95353074430393 40.80297988196676),115th Street,West 115th Street,203,New York,10026,http://www.nypl.org/locations/115th-street,1055236,1018310026,997115.12977,231827.652864,NYPL,1
+  POINT (-73.9348475633247 40.80301816141575),125th Street,East 125th Street,224,New York,10035,http://www.nypl.org/locations/125th-street,1054674,1017890037,1002287.604,231844.894956,NYPL,1</code></pre>
+
+      Each function takes as input a row of the table:
+      <ul>
+        <li> <code class = "inline">extractLatLon(row)</code>:  This function takes the values from the column <code class = "inline">the_geom</code> and extracts the longitude and latitude from the string (they are surrounded by parenthesis and separated by a space, and returns the two as numerical values.  For example, the function would return -73.95353074430393, 40.80297988196676 when applied to the first row of data.
+        <li> <code class = "inline">extractTitle(row)</code>:  This function concatenates the values from the columns <code class = "inline">NAME</code>, <code class = "inline">CITY</code>, and <code class = "inline">ZIP</code> code into a single string, separated by a comma and space, and returns the string (to be used as the title for our visualizations).
+        For example, when applying this function to the first data row, the return value would be:
+        <code class = "inline">115th Street, New York, 10026</code>.
+      </ul>
+
 
 <br><br><br><br>
 <hr>
@@ -599,8 +719,170 @@ The motocycle with plate 19UB23 got the following tickets: ['NO PARKING-STREET C
 <h2>Project</h2>
 </a>
 
-A final project is optional for this course. The grade for the project is a combination of grades earned on the milestones (e.g. deadlines during the semester to keep the projects on track) and the overall submitted program. If you choose not to complete the project, your final exam grade will replace its portion of the overall grade.
+A final project is optional for this course.
+Projects should synthesize the skills acquired in the course to analyze and visualize data on a topic of your choosing.  It is your chance to demonstrate what you have learned, your creativity, and a project that you are passionate about.  The intended audience for your project is your classmates as well as tech recruiters and potential employers.
 
+<p>
+The grade for the project is a combination of grades earned on the milestones (e.g. deadlines during the semester to keep the projects on track) and the overall submitted program. If you choose not to complete the project, your final exam grade will replace its portion of the overall grade.
+
+
+
+<h3>Milestones</h3>
+
+The project is broken down into smaller pieces that must be submitted by the deadlines below.  For details of each milestone, see the links.  The project is worth 20% of the final grade.  The point breakdown is listed in the right hand column.  All components of the project are submitted via Gradescope unless other noted.
+
+
+<p>
+<table class="handouts" border="1">
+<tr>
+	<th>Deadline:</th><th>Deliverables:</th><th>Points:</th>
+  <th>Submission Window Opens:</th>
+</tr>
+<tr>
+	<td>Monday, 28 February, noon</td>
+  <td><a href="#opt_in">Opt-In</a></td>
+  <td></td>
+  <td>14 February</td>
+</tr>
+<tr>
+	<td>Monday, 7 March, noon </td>
+  <td><a href="#proposal">Proposal</a></td>
+  <td>50</td>
+  <td>1 March</td>
+</tr>
+<tr>
+	<td>Monday, 4 April, noon</td>
+  <td><a href="#check_in">Interim Check-In</a></td>
+  <td>25</strike></td>
+  <td>14 March</td>
+</tr>
+
+<tr>
+	<td>Monday, 25 April, noon</td>
+  <td><a href="#complete">Complete Project & Website</a></td>
+  <td>100</td>
+  <td>5 April</td>
+</tr>
+
+
+<tr>
+	<td>Monday, 9 May, noon</td><td><a href="#presentation">Presentation Slides</a></td>
+  <td>25</td>
+  <td>14 April</td>
+</tr>
+<tr>
+	<th colspan=2>Total Points:</th>
+  <td>200</td>
+  <td></td>
+</tr>
+
+
+</table>
+
+
+<br><br><br><br>
+<h3>Project Opt-In</h3>
+<a name="opt_in"></a>
+
+Review the following FAQs before filling out the Project Opt-In form (available on Gradescope on 14 February).
+
+<ul>
+  <li> <b>Is the final project mandatory?</b><br>
+No, the final project is optional for this course.
+
+  <li> <b>Will the project be difficult?</b><br>
+Expect the project to be time consuming because we will hold you to a high standard.  However, in turn, we hope that this will produce a high quality project that you could proudly add to your coding portfolio, to showcase when seeking internships and full-time jobs.
+
+  <li> <b>What counts as "opting in" to the project?</b><br>
+That's easy.  Your response to this Gradescope assignment counts as your "opt in".  If you respond "No" or do not submit this assignment before the deadline due date, we will count you as having "opted out".
+
+  <li> <b>What happens after I "opt in"?</b><br>
+If you "opt in", we will continue to send you information on completing the next steps for the final project via Gradescope.  If you "opt out", you will no longer receive follow up assignments for the project.
+
+  <li> <b>Does "opting in" place me under obligation to complete the project?</b><br>
+Yes and no.  We would like you to seriously consider your availability before making this commitment.  Likewise, we would like to focus our time to help those who are serious about doing this project.  That being said, if you decide midway through the process that you no longer have the time nor capacity to complete the project, no harm no foul, your final written exam will once again be weighted 40% of your cumulative grade (see more in the question below).
+
+  <li> <b>How does the final project factor into my final grade?</b><br>
+If you choose to do the project, your Written Exam will be worth 20% of your overall course grade:
+  <ul>
+      <li> Optional Project: 20%
+      <li> Final Exam - Written Exam: 20%
+      <li> Final Exam - Coding Exam: 20%
+  </ul>
+If you choose not to do the project, your Written Exam will be worth 40% of your overall course grade:
+
+<ul>
+    <li> Final Exam - Written Exam: 40%
+    <li> Final Exam - Coding Exam: 20%
+</ul>
+For more details, see the <a href="syl.html">syllabus.</a>
+</ul>
+
+<br>
+<h3>Project Proposal</h3>
+<a name="proposal"></a>
+
+<p>
+
+The window for submitting proposals opens 1 March.  If you would like feedback and the opportunity to resubmit for a higher grade, submit early in the window.  Feel free to re-submit as many times as you like, up until the assignment deadline.  The instructing team will work hard to give feedback on your submission as quickly as possible, and we will grade them in the order they were received.
+
+<p>The proposal is split into the following sections:
+  <ul>
+    <li> <b>Overview:</b> (10 Points)<br>
+    Think of the overview section as the equivalent of an abstract in a research paper or an
+    <a href="https://en.wikipedia.org/wiki/Elevator_pitch">elevator pitch</a> for the project.  The following questions will help you frame your thoughts if you ever have to succinctly describe your project in an interview:
+    <p>
+    <ul>
+      <li>Title:  should capture the topic/theme of your project.
+      <li>Objective:  In 1 to 2 sentences, succinctly describe what you are hoping to accomplish in this project in simple, non technical English.
+      <li>Importance:  In 1 to 2 sentences, describe why this project has personal significance to you.
+      <li>Originality: In 1 to 2 sentences, describe why you believe this project idea is unique and original.
+    </ul>
+    <br>
+    <li><b>Background Research:</b> (10 Points)<br>
+      In this section, please prove to us that you have already done research in the project you are proposing by answering the questions below.
+      <p>
+      <ul>
+          <li>Key Term Definitions:  What are some terms specific to your project that someone else might not know?  List and define these terms here.
+          <li> Existing Solutions: What are some existing solutions (if any) that are already available for your problem.  What are the drawbacks to these solutions?
+      </ul>
+      <br>
+      <li><b>Data:</b> (10 points)<br>
+        In order to write a successful proposal, you must already have obtained the data and done basic exploratory analysis on it, enough so that you feel confident you have enough data to answer the questions you wish to explore. We cannot stress this enough:  <b>You must use NYC specific data that is publicly available.</b>  If your data does not fit this criteria, your proposal will be rejected.
+
+        <p> The following questions will guide you through some criteria you should be using to assess if the data you have is enough for a successful project.
+          <ul>
+              <li>Data Source: Include a list of your planned data source(s), complete with URL(s) for downloading.  All data must be NYC specific and must be publicly available.
+
+              <li> Data Volume: How many columns in your dataset?  How many rows?  If you are joining multiple datasets together, please tell us how many rows and columns remain after the data has been merged into a single dataset.
+
+              <li> Data Richness: What type of data is in your dataset?  You don't need to describe every column.  A generalized overview is fine.  (e.g. "My data contains 311 complaint types, the date the complaints are created and closed, as well as a description of the complaint").  If you found a data dictionary, feel free to link us to that as well.
+            </ul><br>
+        <li><b>The Predictive Model:</b> (10 Points)<br>
+
+            A strong data science project should demonstrate your knowledge of predictive modeling.  We will be covering models extensively in the latter half of the course.  At this stage of the proposal writing, we will not have covered all the modeling techniques yet, so it's okay to be a bit vague here.
+
+            <p> Hint: Look ahead in the textbook the chapters for "Linear Modeling" and "Multiple Linear Modeling" at the running examples of models.
+
+            <ul>
+                <li> The Predicted (Y):  Which column in the dataset are you interested in predicting?
+                <li> The Predictors (X's): Which column(s) in the dataset will be used to predict the column listed above?
+                <li> Python Dependencies: What Python libraries and dependencies will you be using?
+                <li> Security and Privacy Considerations: Will you be working with personal identifiable information (PII)? Can your model be mis-used for evil, not good? If so, how do you plan to mitigate that?
+           </ul>
+           <br>
+       <li><b>The Visualization:</b> (10 Points)<br>
+          A key part of making a great data science portfolio are the visualizations.  This is a quick and elegant way of showcasing your work during the job hunting process, even to a non-technical audience.
+
+          <p>Thus, a major part of this final project will center around making the following three types of visualizations with the data you choose.
+          If your data cannot support all three types of visualizations, then please, reconsider choosing another dataset.
+
+          <ul>
+            <li>Summary Statistics Plots: Write out in detail at least 3 types of summary statistics graphs you plan to make with your data (e.g. "I plan to make a histogram using the column X").
+            <li>Map Graphs: Write out in detail how you plan to make at least 1 map data visualization using your data (e.g. "I plan to create a choropleth map to visualize the volume of 311 service requests in NYC in 2021").
+            <li>Model Performance Plots: At the time of writing this proposal, we would not have covered how to visualize model accuracy yet.  So, no worries if this part is still confusing to you.  Give it your best shot on explaining what kind of visualization you think will best showcase that your model is "successful" and "accurate".
+        </ul>
+        <br>
 <p>
   <i>More to come...</i>
 
