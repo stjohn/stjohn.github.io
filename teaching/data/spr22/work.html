@@ -172,29 +172,87 @@ Enter output file name:  ela2013.csv</code></pre>
      Available during Lecture 5 on Gradescope, this classwork focuses on the structure and topics for the optional project, based on the project overview in lecture.
 
   <p><a name="cw6"><b>Classwork 6: </b> &emsp; <i>Due midnight, Thursday, 17 February.</i> &emsp;
-      Available during Lecture 6 on Gradescope, this classwork asks that you write a program using Pandas and its file I/O.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+    Available during Lecture 6 on Gradescope, this classwork introduces the <code class=inline>datetime</code> package.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
+    <p> Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
+    <ul>
+      <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
+      <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
+    </ul>
 
     <p>
-    Write a program, using the <code class = "inline">pandas</code> package, that asks the user for the name of an input CSV file and the name of an output CSV file.  The program should open the file name provided by the user.
-    Next, the program should select rows where the field <code class = "inline">senate_class</code> is non-empty and write the <code class = "inline">first_name</code> and <code class = "inline">last_name</code> to a file with the output file name provided by the user.
+    For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">cw6.py</code>:
+    <pre><code class="blockcode">import seaborn as sns
+taxi = sns.load_dataset('taxis')
+print(taxi.iloc[0:10])
+taxi['tripTime'] = taxi.apply(lambda x: cw6.tripTime(x['pickup'], x['dropoff']), axis=1)
+print(taxi.iloc[0:10])
+</code></pre>
+    Would give output:
+<pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
 
-    <p>For example, if the file was <a href="https://theunitedstates.io/congress-legislators/legislators-current.csv">legislators-current.csv</a> with the first 3 lines of:
-    <pre><code class=datablock>last_name,first_name,middle_name,suffix,nickname,full_name,birthday,gender,type,state,district,senate_class,party,url,address,phone,contact_form,rss_url,twitter,facebook,youtube,youtube_id,bioguide_id,thomas_id,opensecrets_id,lis_id,fec_ids,cspan_id,govtrack_id,votesmart_id,ballotpedia_id,washington_post_id,icpsr_id,wikipedia_id
-Brown,Sherrod,,,,Sherrod Brown,1952-11-09,M,sen,OH,,1,Democrat,https://www.brown.senate.gov,503 Hart Senate Office Building Washington DC 20510,202-224-2315,http://www.brown.senate.gov/contact/,http://www.brown.senate.gov/rss/feeds/?type=all&amp;,SenSherrodBrown,SenatorSherrodBrown,SherrodBrownOhio,UCgy8jfERh-t_ixkKKoCmglQ,B000944,00136,N00003535,S307,"H2OH13033,S6OH00163",5051,400050,27018,Sherrod Brown,,29389,Sherrod Brown
-Cantwell,Maria,,,,Maria Cantwell,1958-10-13,F,sen,WA,,1,Democrat,https://www.cantwell.senate.gov,511 Hart Senate Office Building Washington DC 20510,202-224-3441,http://www.cantwell.senate.gov/public/index.cfm/email-maria,http://www.cantwell.senate.gov/public/index.cfm/rss/feed,SenatorCantwell,senatorcantwell,SenatorCantwell,UCN52UDqKgvHRk39ncySrIMw,C000127,00172,N00007836,S275,"S8WA00194,H2WA01054",26137,300018,27122,Maria Cantwell,,39310,Maria Cantwell</code></pre>
+[10 rows x 14 columns]
+                pickup              dropoff  ...  dropoff_borough        tripTime
+0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
+1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
+2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
+3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
+4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
+5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
+6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
+7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
+8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
+9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
 
-      Then a sample run of the program:
+[10 rows x 15 columns]
+</code></pre>
 
-      <pre><code class="blockcode">Enter input file name: legislators-current.csv
-Enter output file name:  senatorNames.csv</code></pre>
+  <p> Using the function our second function:
+<pre><code class="blockcode">taxi = sns.load_dataset('taxis')
+weekdays = cw6.weekdays(taxi,'pickup')
+print(weekdays.iloc[0:10])
+</code></pre>
+  will give output:
+<pre><code class="datablock">
+  pickup              dropoff  ...  pickup_borough  dropoff_borough
+1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
+2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
+5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
+6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
+7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
+9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
+11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
+12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
+13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
+14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
 
-      And the first three lines of <code class = "inline">senatorNames.csv</code> would be:
-      <pre><code class=datablock>first_name,last_name
-Sherrod,Brown
-Maria,Cantwell</code></pre>
+[10 rows x 14 columns]
+</code></pre>
+    note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
+    </p>
 
-      Note:  if you use the legislators CSV file above, your output file should have 101 lines:  1 line of header information and 100 rows of data.
-      <br>
+<p>Note: you should submit a file with only the standard comments at the top, this function, and any helper functions you have written. The grading scripts will then import the file for testing.</p>
+
+
+    <i>Hints:
+        <ul>
+          <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
+          <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
+          See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
+        </ul>
+    </i>
+
+
+    </p>
 
 
   <p><a name="cw7"><b>Classwork 7: </b> &emsp; <i>Due midnight, Thursday, 24 February.</i> &emsp;
@@ -228,97 +286,15 @@ Hunter CS Department,www.hunter.</i>cuny.edu/csci
 CSci 39542,stjohn.github.io/teaching/data/fall21/index.html
 google,www.google.com</code></pre>
   </p>
-    <br>
 
-  </p>
 
 
 
   <p><a name="cw8"><b>Classwork 8: </b> &emsp; <i>Due midnight, Monday, 28 February.</i> &emsp;
-      Available during Lecture 8 on Gradescope, this classwork introduces the <code class=inline>datetime</code> package and plotting.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
-
-      <p>     Use the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> of Pandas to write the following functions:
-      <ul>
-        <li> <code class = "inline">tripTime(start,end)</code>:  This function takes two variables of type <code class = "inline">datetime</code> and returns the difference between them.
-        <li> <code class = "inline">weekdays(df,col)</code>:  This function takes a DataFrame, <code class = "inline">df</code>, containing the column name, <code class = "inline">col</code>, and returns a DataFrame containing only times that fall on a weekday (i.e. Monday through Friday).
-      </ul>
-
-      <p>
-      For example, using the <a href="https://github.com/mwaskom/seaborn-data">Seaborn's Green Taxi Data Set</a> and assuming your functions are in the <code class="inline">cw8.py</code>:
-      <pre><code class="blockcode">import seaborn as sns
-taxi = sns.load_dataset('taxis')
-print(taxi.iloc[0:10])
-taxi['tripTime'] = taxi.apply(lambda x: cw8.tripTime(x['pickup'], x['dropoff']), axis=1)
-print(taxi.iloc[0:10])</code></pre>
-      Would give output:
-  <pre><code class="datablock">                pickup              dropoff  ...  pickup_borough  dropoff_borough
-  0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...       Manhattan        Manhattan
-  1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
-  2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
-  3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...       Manhattan        Manhattan
-  4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...       Manhattan        Manhattan
-  5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
-  6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
-  7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
-  8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...       Manhattan        Manhattan
-  9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
-
-  [10 rows x 14 columns]
-                  pickup              dropoff  ...  dropoff_borough        tripTime
-  0  2019-03-23 20:21:09  2019-03-23 20:27:24  ...        Manhattan 0 days 00:06:15
-  1  2019-03-04 16:11:55  2019-03-04 16:19:00  ...        Manhattan 0 days 00:07:05
-  2  2019-03-27 17:53:01  2019-03-27 18:00:25  ...        Manhattan 0 days 00:07:24
-  3  2019-03-10 01:23:59  2019-03-10 01:49:51  ...        Manhattan 0 days 00:25:52
-  4  2019-03-30 13:27:42  2019-03-30 13:37:14  ...        Manhattan 0 days 00:09:32
-  5  2019-03-11 10:37:23  2019-03-11 10:47:31  ...        Manhattan 0 days 00:10:08
-  6  2019-03-26 21:07:31  2019-03-26 21:17:29  ...        Manhattan 0 days 00:09:58
-  7  2019-03-22 12:47:13  2019-03-22 12:58:17  ...        Manhattan 0 days 00:11:04
-  8  2019-03-23 11:48:50  2019-03-23 12:06:14  ...        Manhattan 0 days 00:17:24
-  9  2019-03-08 16:18:37  2019-03-08 16:26:57  ...        Manhattan 0 days 00:08:20
-
-  [10 rows x 15 columns]
-  </code></pre>
-
-    <p> Using the function our second function:
-  <pre><code class="blockcode">taxi = sns.load_dataset('taxis')
-  weekdays = p26.weekdays(taxi,'pickup')
-  print(weekdays.iloc[0:10])
-  </code></pre>
-    will give output:
-  <pre><code class="datablock">
-    pickup              dropoff  ...  pickup_borough  dropoff_borough
-  1   2019-03-04 16:11:55  2019-03-04 16:19:00  ...       Manhattan        Manhattan
-  2   2019-03-27 17:53:01  2019-03-27 18:00:25  ...       Manhattan        Manhattan
-  5   2019-03-11 10:37:23  2019-03-11 10:47:31  ...       Manhattan        Manhattan
-  6   2019-03-26 21:07:31  2019-03-26 21:17:29  ...       Manhattan        Manhattan
-  7   2019-03-22 12:47:13  2019-03-22 12:58:17  ...       Manhattan        Manhattan
-  9   2019-03-08 16:18:37  2019-03-08 16:26:57  ...       Manhattan        Manhattan
-  11  2019-03-20 19:39:42  2019-03-20 19:45:36  ...       Manhattan        Manhattan
-  12  2019-03-18 21:27:14  2019-03-18 21:34:16  ...       Manhattan        Manhattan
-  13  2019-03-19 07:55:25  2019-03-19 08:09:17  ...       Manhattan        Manhattan
-  14  2019-03-27 12:13:34  2019-03-27 12:25:48  ...       Manhattan        Manhattan
-
-  [10 rows x 14 columns]
-  </code></pre>
-      note that rows 0,4,8, and 10 have been dropped from the original DataFrame since those corresponded to weekend days.
-      </p>
-
-
-<i>Hints:
-    <ul>
-        <li> When read in from the CSV, the columns may be stored as a string.  Cast as a <code class = "inline">datetime</code> object (e.g. <code class = "inline">pd.to_datetime(start)</code>) to use the functionality.
-        <li> For datetime objects, you can access properties such as day of the week using <code class = "inline">dt</code> prefix, similar to <code class = "inline">.str</code> similar to .str to use string methods and properties (e.g. <code class = "inline">dt.dayofweek</code>).
-        See the Python Docs: <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#overview">date time functionality</a> for more details.
-    </ul>
-  </i>
-
-
-      </p>
-
+    Available during Lecture 8 on Gradescope, this classwork focuses on the <a href="https://geojson.org">GeoJSON</a> format, including hands-on activity with <a href="https://geojson.io">GeoJSON visual editor</a>.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
 
   <p><a name="cw9"><b>Classwork 9: </b> &emsp; <i>Due midnight, Thursday, 3 March.</i> &emsp;
       Available during Lecture 9 on Gradescope, this classwork is builds the <code class=inline>GeoJSON</code> objects with a visual editor.  To get the most out of this exercise, bring a laptop with you to lecture with a development environment (IDE) that has Python 3+ to work through in lecture.
-
 
       <p>
       Write two functions that will be used to clean the OpenData NYC dataset of <a href="https://data.cityofnewyork.us/Business/Library/p4pf-fyc4">Libraries in New York City</a> (downloaded as CSV file).  The first three lines of the CSV file look like:
