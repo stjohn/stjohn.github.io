@@ -521,7 +521,7 @@ def percent_captured(names_dict,threshold = 75):
 
   <p><img src="../fall21/streetsblog_unpaid_tickets_20211013.png" height=300px>
 
-  <p>The data is aggregated across the whole city? Does the same occur when the datasets are focused on individual neighborhoods?  To answer that question, as well as what are the most common reasons for tickets, we will use the parking ticket data from OpenData NYC.   In Lecture 3, we started data cleaning efforts on the parking ticket data.  We will continue the data cleaning efforts for this program, as well as introduce auxiliary files that link the codes stored with a short explanation of the violation.  The assignment is broken into the following functions to allow for unit testing:
+  <p>The data is aggregated across the whole city. Does the same occur when the datasets are focused on individual neighborhoods?  To answer that question, as well as what are the most common reasons for tickets, we will use the parking ticket data from OpenData NYC.   In Lecture 3, we started data cleaning efforts on the parking ticket data.  We will continue the data cleaning efforts for this program, as well as introduce auxiliary files that link the codes stored with a short explanation of the violation.  The assignment is broken into the following functions to allow for unit testing:
 
   <ul>
     <li> <code class = "inline">make_df(file_name)</code>:
@@ -758,10 +758,11 @@ The motocycle with plate 19UB23 got the following tickets: ['NO PARKING-STREET C
               </ul>
               The function should open the file <code class = "inline">file_name</code> as DataFrame, returns a DataFrame
               containing only the columns, <code class = "inline">NTACode</code> and <code class = "inline">NTAName</code>.
-          <li> <code class = "inline">compute_ave_grade(df,nta_df)</code>:
-              This function takes one inputs:
+          <li> <code class = "inline">compute_ave_grade(df,col)</code>:
+              This function takes two inputs:
               <ul>
                   <li> <code class = "inline">df</code>: the name of a CSV file containing Parking Ticket Data from OpenData NYC.
+                  <li> <code class = "inline">col</code>: the name of a numeric-valued col in the DataFrame.
                   </ul>
               This function returns a DataFrame and returns a DataFrame with two columns, the <code class = "inline">NTACode</code> and the average of <code class = "inline">col</code> for each NTA.
               <li> <code class = "inline">neighborhood_grades(ave_df,nta_df)</code>:
