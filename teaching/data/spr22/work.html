@@ -822,13 +822,12 @@ scores_with_nbhd_names = p3.neighborhood_grades(scores,nta_df)
 print(scores_with_nbhd_names.head())</code></pre>
 
           The first couple of rows are:
-          <pre><code class=datablock>    NUM   PRE NUM NTACode                                         NTAName
-0   4.0  4.000000    BK09                    Brooklyn Heights-Cobble Hill
-1   4.0  4.000000    BK17  Sheepshead Bay-Gerritsen Beach-Manhattan Beach
-2   4.0  4.000000    BK25                                       Homecrest
-3   NaN  2.000000    BK26                                       Gravesend
-4   4.0  3.250000    BK28                                Bensonhurst West</code></pre>
-
+          <pre><code class=datablock>    NUM   PRE NUM                                         NTAName
+0   4.0  4.000000                    Brooklyn Heights-Cobble Hill
+1   4.0  4.000000  Sheepshead Bay-Gerritsen Beach-Manhattan Beach
+2   4.0  4.000000                                       Homecrest
+3   NaN  2.000000                                       Gravesend
+4   4.0  3.250000                                Bensonhurst West</code></pre>
     Our predicted scores are the same but almost always decrease when we include the predicted grades from the scores reported.
 
     <p>
