@@ -802,8 +802,8 @@ print(df[ ['DBA','SCORE','GRADE','NUM','PREDICTED','PRE NUM'] ])</code></pre>
 [243 rows x 6 columns]</code></pre>
 
     <p>We can use the numeric grade to compute the averages for neighborhoods for both provided and predicted scores:
-    <pre><code class=blockcode>actual_scores = answer.compute_ave_grade(df,'NUM')
-predicted_scores = answer.compute_ave_grade(df,'PRE NUM')
+    <pre><code class=blockcode>actual_scores = p3.compute_ave_grade(df,'NUM')
+predicted_scores = p3.compute_ave_grade(df,'PRE NUM')
 scores = actual_scores.join(predicted_scores, on='NTA')
 print(scores.head())</code></pre>
           The first couple of rows are:
