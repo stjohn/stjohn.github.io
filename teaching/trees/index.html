@@ -14,12 +14,12 @@ table { border: 1px solid black; border-collapse: collapse}</STYLE>
 <div style="margin: 15px;width=100%;">
     <span style= "float: left;font-size:larger"><a href="index.html">CSci 493</a></span>
     <span style= "float: right">
-<!--
+
       <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
-      <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
-      <a href="work.html">Coursework</a>
+      <!-- <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a>-->
 &nbsp;&nbsp;&nbsp;
-      <a href="faq.html">FAQ</a>-->
+      <a href="faq.html">FAQ</a>
     </span>
 </div>
 
@@ -27,68 +27,32 @@ table { border: 1px solid black; border-collapse: collapse}</STYLE>
 <br>
 <hr>
 
-<div style="margin:50px">
+<div style="margin:50px; float: left">
+<img src="7-nni-space-color.jpg" alt="7-leaf nni treespace nni by MP" width = 250>
+</div>
+
+<div style="margin-left:350px;">
 
 
-<h2>CSci 493: Algorithms for Tree Distributions<br>
+
+<h2><br><br><br>CSci 493: Algorithms for Tree Distributions<br>
 <a href="http://www.hunter.cuny.edu/csci">Department of Computer Science</a><br>
 <a href="https://hunter.cuny.edu">Hunter College</a>, <a href="https://www.cuny.edu">City University of New York</a><br>
 Fall 2022<br><br>
+<br><br><br>
 </h2>
+</div>
 
+<div style="margin:50px;">
 <p>
 <i>
 TL;DR:  Hands-on algorithms seminar with coding, design, group work, and presentations.
 </i>
 
-<p>
-  <img src="6taxaFullColorTree.jpg" alt="6 leaf tree space" height=300>
-
-
-<h3>FAQ's:</h3>
-
-<ul>
-  <li> I tried to register, but CUNYFirst says it's not open.  Can I get permission to register?
-    <p><i>That was a glitch with CUNYFirst.  As of May 30, it's been fixed, and you should be able to register
-    directly via CUNYFirst.  The registrar is listing all new honors seminars  as "CSci 49300: Seminar" with the title moved to the "Course Topic" section, instead of a unique 5-digit number and descriptive title.  This course is now listed with the course topic: "Algorithms for Tree Distributions" (57611).
-    If you can't register, send email to <tt>trees AT hunter cuny edu</tt>, so, we can work with
-    the registrar to fix it.</i>
-  <li> How can I find out more about this honors seminar?
-    <p><i>First, read through the questions below.  If you have additional questions, write to <tt>trees AT hunter cuny edu</tt>.</i>
-  <li> When/where does the course meet?
-    <p><i>Wednesdays, 10am-12:30pm, from 31 August to 7 December (due to CUNY holiday schedule, there is no class on 5 October).  The course will be in-person with the occassional hybrid session when we have outside speakers.</i>
-  <li> What are the prerequisites?
-    <p><i>The prequisites are  CSci 265 and 335.</i>
-  <li> I haven't taken the prerequisites, can I still take the course?
-    <p><i>Probably not.  We're going to design and implement algorithms.  To contribute (and pass) the course, you need mastery of the canonical data structures and algorithms taught in the programming sequence (through CSci 335), as well as competency with complexity classes (from CSci 265).  If you are a graduate student or have mastered the material elsewhere and would like permission to enroll, write to <tt>trees AT hunter cuny edu</tt>.</i>
-  <li> Are there really no exams or quizzes?
-    <p><i>Yes, there are no exams or quizzes. Instead, there's regular presentations of technical papers as well the code you're writing.  </i>
-  <li> Does attendance matter?
-    <p><i>Yes.  As a research methods seminar, participation is integral to the course.  Missing the weekly class means that you miss the discussions and design groupwork.  There will be occasional hybrid sessions when we have outside speakers.  Also, since many students will be seniors and will have conflicts with job interviews, we will set up on-line participation links to minimize missed classes when interview season starts.</i>
-  <li> Is this a theory or applied course?
-    <p><i>Yes, it's both a theory and an applied course.  We will first design and analyze algorithms.  And then, we will implement those algorithms.</i>
-  <li> Do we have to code?
-    <p><i>Yes.  We will be primarily coding in Python 3.6+.</i>
-  <li> I don't know Python, can I still enroll for the course?
-    <p><i>Yes, but work through <a href="https://runestone.academy/ns/books/published/thinkcspy/index.html">How to Think Like a Computer Scientist</a> (the CSci 127 textbook) before the course starts.  Since you have completed CSci 335, the concepts, if not the syntax, should be very familiar.  In addition to the interactive code challenges in that book, make sure that you can run code in an IDE on your laptop (need to have Python 3.6+ and the standard packages). </i>
-  <li> I'm not a Hunter student-- can I take the course?
-    <p><i>Maybe.  The Hunter computer science department does allows ePermit's.  See your home department's advisor for their rules about taking outside courses and details on the process.</i>
-
-  <li> What is a tree?
-    <p><i>A <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree</a> is a data structure that has a similar structure to a living tree.  It has "leaves" (also called tips), and each leaf is connected to internal "nodes" (vertices) by branches (edges).  Between any two nodes in the tree, there is only one path of branches that connects them (i.e. the structure is acyclic).</i>
-  <li> What is a tree distribution?
-    <p><i>It is a set of trees, often generated by some underlying process.  For example, you could have some biological species and are interested in how well a tree captures the evolutionary history of the species.  If each possible tree, with leaves labeled by the species, is given a score, we examine the distribution of the trees that score well.  The image below shows the 945 unrooted 7-leaf trees shaded by their score and organized by NNI metric (see <a href="https://link.springer.com/article/10.1007/s11538-016-0174-0">Urheim et al, 2016</a> for details):</i>
-
-    <p><img src="7-nni-space-color.jpg" alt="7-leaf nni treespace nni by MP" height = 300>
-
-  <li> What's the image of at the top of the page?
-    <p><i>The points are the 6-leaf unrooted trees.  There's an edge between two points if they're very similar.  For this drawing of treespace, two trees are connected if they differ by a single nearest-neighbor-interchange (more details at <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975?login=true"> St. John, 2016</a>).</i>
-
-</ul>
-
 
 <p>
-<p>
+  Questions?  See the <a href="faq.html">FAQ's</a>.
+
 
 
 <br><br>
@@ -104,42 +68,74 @@ TL;DR:  Hands-on algorithms seminar with coding, design, group work, and present
 <br>
 <h3>Calendar:</h3>
 
+The following sources are abbreviated below:
+<ul>
+  <li> <b>Python DS</b>:  <a href="https://runestone.academy/ns/books/published/pythonds/index.html">Problem Solving with Algorithms and Data Structures using Python</a> by
+  Brad Miller and David Ranum, Luther College.
+  <li> <b>Treespace</b>:  <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Review Paper:  The Shape of Phylogenetic Treespace</a>, Katherine St. John,
+  <b>Systematic Biology</b>, Volume 66, Issue 1, January 2017, Pages e83-e94.
+</ul>
+
+<p>
 <table >
 	<tr>
 		<th style="text-align: left">&nbsp;<b>Week:</b></th>
 		<th style="text-align: left"><b>Topics:</b></th>
-		<th style="text-align: left"><b>Coursework:</b></th>
+		<th style="text-align: left"><b>Techniques:</b></th>
+    <th style="text-align: left"><b>Assignments:</b></th>
 		<th style="text-align: left"><b>Reading:</b></th>
 
 	</tr>
 	<tr>
 		<td><b>#1: </b>Wednesday, <br>31 August</td>
-		<td><a href="syl.html">Syllabus</a> & Class Policies;<br><br>
-      Overview; Edit Moves on Trees, Nearest Neighbor Interchange (NNI)
+		<td><a href="syl.html">Syllabus</a> & Class Policies; Overview; <br>
+      Tree Similarity & Balance Measures
+
+
+
 		</td>
-		<td><a href="cw1.html">CW 1:  Discrete Treespace</a></td>
-		<td></td>
+		<td>Representing Trees in Newick Notation;<br> Using Github</td>
+    <td>CW 1: Counting Trees</td>
+		<td>
+      <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Treespace</a>
+      (first 2 pages)<br>
+      <a href="http://marvin.cs.uidaho.edu/Teaching/CS515/newickFormat.html">Newick Tree Format</a> (Heckendorn)<br>
+      <a href="https://docs.github.com/en/get-started">Getting Started with Github</a>
+    </td>
 	</tr>
 	<tr>
 		<td><b>#2: </b>Wednesday,<br>7 September</td>
-    <td>Searching Treespaces, Neighborhoods in NNI-Treespace
+    <td>
+      Edit Moves on Trees, Nearest Neighbor Interchange (NNI)
+
     </td>
-		<td><a href="cw2.html">CW 2:</a></td>
-    <td></td>
+		<td>Recap:  Tree Abstract Data Type; <br>
+      Classes in Python;<br>
+      BioPython & ETE3
+    </td>
+    <td>CW 2: Drawing Treespace</td>
+    <td> <a href="https://runestone.academy/ns/books/published/pythonds/ProperClasses/a_proper_python_class.html">Python DS: Chapter 2</a> (classes), <br>
+      <a href="https://runestone.academy/ns/books/published/pythonds/Trees/toctree.html">Python DS: Chapter 7</a> (trees), <br>
+      <a href="https://biopython.org">BioPython</a>,  <br>
+      <a href="http://etetoolkit.org">Environment for Tree Exploration (ETE)</a>
+    </td>
 	</tr>
 
 	<tr>
 		<td><b>#3: </b>Wednesday,<br> 14 September</td>
-    <td></td>
-		<td><a href="cw3.html">CW 3:</a></td>
-  	<td></td>
+    <td>Searching Treespaces; Neighborhoods in NNI-Treespace
+      </td>
+		<td>Graph Searches:  Breadth First Search</td>
+    <td>PS 1:  Tree ADT Warm-ups<br> CW 3: Drawing Treespace</td>
+  	<td><a href="https://runestone.academy/ns/books/published/pythonds/Graphs/ImplementingBreadthFirstSearch.html">Python DS: Section 8.9</a> (BFS)</td>
 
   	</tr>
 
 	<tr>
 		<td><b>#4: </b>Wednesday,<br> 21 September</td>
-    <td></td>
-		<td><a href="cw4.html">CW 4:</a></td>
+    <td>Survey:  Move-Based & Vector-Based Tree Metrics;<br>
+       Diameter of Treespace </td>
+		<td></td><td></td>
     <td></td>
 	</tr>
 
@@ -147,80 +143,84 @@ TL;DR:  Hands-on algorithms seminar with coding, design, group work, and present
 
 	<tr>
 		<td><b>#5: </b>Wednesday,<br> 28 September</td>
-    <td>Tanglegrams
+    <td>Semester Project Lists;<br>
+      Continuous Treespace
+
       <!-- Phillipe's code:  https://github.com/oseminck/tree_order_evaluation
       -->
     </td>
-    <td><a href="cw5.html">CW 5:</a></td>
+    <td></td><td></td>
     <td></td>
 	</tr>
 
   <tr>
     <td>4-5 October</td>
-    <td colspan = 3><span style="color:darkblue">CUNY:  No Class</span></td>
+    <td colspan =4><span style="color:darkblue">CUNY:  No Class</span></td>
   </tr>
 
 
 	<tr>
     <td><b>#6: </b>Wednesday,<br> 12 October</td>
-		<td>Continuous Treespace</td>
-		<td></td>
+		<td>Subtrees & Forests:  Maximum Agreement Subtrees (MASTs)
+    </td>
+		<td></td><td></td>
     <td></td>
 	</tr>
 
 	<tr>
 		<td><b>#7: </b>Wednesday,<br>19 October</td>
-		<td></td>
-		<td></td>
+		<td>
+      Agreement Forests; Approximating SPR & TBR Distances</td>
+		<td></td><td></td>
 		<td></td>
 	</tr>
 
 	<tr>
 		<td><b>#8: </b>Wednesday, <br>26 October</td>
-		<td></td>
-		<td></td>
+		<td>Tanglegrams</td>
+		<td></td><td></td>
     <td></td>
 	</tr>
 
 	<tr>
 		<td><b>#9: </b>Wednesday,<br>2 November</td>
 		<td></td>
-		<td></td>
+		<td></td><td></td>
 		<td></td>
 	</tr>
 
 	<tr>
 		<td><b>#10: </b>Wednesday,<br>9 November</td>
 		<td></td>
-    <td></td>
+    <td></td><td></td>
 		<td></td>
   </tr>
 
 	<tr>
 		<td><b>#11: </b>Wednesday, <br>16 November</td>
 		<td></td>
-		<td></td>
+		<td></td><td></td>
     <td></td>
   </tr>
 
 	<tr>
 		<td><b>#12: </b>Wednesday,<br>23 November</td>
     <td></td>
-		<td></td>
+		<td></td><td></td>
     <td></td>
 	</tr>
 
 	<tr>
 		<td><b>#13: </b>Wednesday, <br>30 November</td>
 		<td></td>
-		<td></td>
+		<td></td><td></td>
 		<td></td>
   </tr>
 
 	<tr>
 		<td><b>#14: </b>Wednesday,<br>7 December</td>
     <td></td>
-		<td></td>
+		<td></td><td></td>
     <td></td>
   </tr>
 
@@ -235,5 +235,5 @@ TL;DR:  Hands-on algorithms seminar with coding, design, group work, and present
 
 
 <div>
-<i style="float:right">(This file was last modified on 10 August 2022.)</i><br>
+<i style="float:right">(This file was last modified on 21 August 2022.)</i><br>
 </div>
