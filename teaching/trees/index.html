@@ -98,51 +98,56 @@ The following sources are abbreviated below:
     <td>CW 1: Counting Trees</td>
 		<td>
       <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Treespace</a>
-      (first 2 pages)<br>
-      <a href="http://marvin.cs.uidaho.edu/Teaching/CS515/newickFormat.html">Newick Tree Format</a> (Heckendorn)<br>
+      (first 2 pages);<br>
+      <a href="http://marvin.cs.uidaho.edu/Teaching/CS515/newickFormat.html">Newick Tree Format</a> (Heckendorn);<br>
       <a href="https://docs.github.com/en/get-started">Getting Started with Github</a>
     </td>
 	</tr>
 	<tr>
 		<td><b>#2: </b>Wednesday,<br>7 September</td>
     <td>
+      Equality for Leaf-Labeled Trees; Counting Trees;<br>
       Balance Indices, Vector Representation of Trees<br>
-      Robinson-Foulds Distance:  Day's Algorithm<br>
-      Edit Moves on Trees, Nearest Neighbor Interchange (NNI)
-
     </td>
 		<td>Recap:  Tree Abstract Data Type; <br>
       Classes in Python;<br>
       BioPython & ETE3
     </td>
-    <td>CW 2: Drawing Treespace</td>
-    <td> <a href="https://runestone.academy/ns/books/published/pythonds/ProperClasses/a_proper_python_class.html">Python DS: Chapter 2</a> (classes), <br>
-      <a href="https://runestone.academy/ns/books/published/pythonds/Trees/toctree.html">Python DS: Chapter 7</a> (trees), <br>
-      <a href="https://biopython.org">BioPython</a>,  <br>
+    <td>CW 2: Balance Indices</td>
+    <td> <a href="https://runestone.academy/ns/books/published/pythonds/ProperClasses/a_proper_python_class.html">Python DS: Chapter 2</a> (classes); <br>
+      <a href="https://runestone.academy/ns/books/published/pythonds/Trees/toctree.html">Python DS: Chapter 7</a> (trees); <br>
+      <a href="https://biopython.org">BioPython</a>;  <br>
       <a href="http://etetoolkit.org">Environment for Tree Exploration (ETE)</a>
     </td>
 	</tr>
 
 	<tr>
 		<td><b>#3: </b>Wednesday,<br> 14 September</td>
-    <td>Searching Treespaces; Neighborhoods in NNI-Treespace
+    <td>Vector-Based Tree Metrics:
+      Robinson-Foulds Distance & Day's Algorithm,
+      Rooted Triples Distance, Cophenetic/KC Distance
       </td>
-		<td>Graph Searches:  Breadth First Search;<br>
-      Recap:  Hashing & Recursion on Trees</td>
+		<td>
+      Recap:  Hashing, Recursion on Trees</td>
     <td>PS 1:  Tree Warm-ups<br> CW 3: Hashing Trees</td>
-  	<td><a href="https://runestone.academy/ns/books/published/pythonds/Graphs/ImplementingBreadthFirstSearch.html">Python DS: Section 8.9</a> (BFS)</td>
+  	<td> Robinson, Foulds, 1981;<br>
+        Day, 1985;<br>
+        <a href="https://link.springer.com/article/10.1186/1471-2105-14-S2-S18">Sand et al., 2013</a> (triples)
+      </td>
 
   	</tr>
 
 	<tr>
 		<td><b>#4: </b>Wednesday,<br> 21 September</td>
-    <td>Survey:  Move-Based & Vector-Based Tree Metrics;<br>
-       Diameter of Treespace </td>
+    <td>Edit Moves on Trees: Nearest Neighbor Interchange (NNI),
+      Subtree Prune & Regraph (SPR), and Tree Bisection & Reconnection (TBR)
+    </td>
 		<td>Recap:  Big-Oh Notation;<br>
     Recurrence Relations</td>
     <td>CW 4:  Poly-time Metrics</td>
-    <td><a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Treespace</a>
-    (sections on discrete & continuous spaces)</td>
+    <td><a href="https://www.math.canterbury.ac.nz/~m.steel/Non_UC/files/research/rearrangement.pdf">Allen & Steel</a>, 1981;<br>
+      <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Treespace</a>
+    (discrete treespaces)</td>
 	</tr>
 
 
@@ -158,7 +163,9 @@ The following sources are abbreviated below:
     <td>Recap:  Network Flows</td>
     <td>PS 2:  Trees as Vectors; <br>
       CW 5:  Continuous Treespace</td>
-    <td><a href="https://www.sciencedirect.com/science/article/pii/S0196885801907596">Billera, Holmes, Vogtmann, 2001</a> (BHV)</td>
+    <td><a href="https://www.sciencedirect.com/science/article/pii/S0196885801907596">Billera, Holmes, Vogtmann, 2001</a> (BHV);<br>
+      <a href="https://academic.oup.com/sysbio/article/66/1/e83/2669975">Treespace</a>
+      (continuous treespaces)</td>
 	</tr>
 
   <tr>
@@ -169,7 +176,7 @@ The following sources are abbreviated below:
 
 	<tr>
     <td><b>#6: </b>Wednesday,<br> 12 October</td>
-		<td>Subtrees & Forests:  Maximum Agreement Subtrees (MASTs)
+		<td>Subtrees & Forests;<br>Maximum Agreement Subtrees (MASTs)
     </td>
 		<td>Dynamic Programming</td>
     <td>CW 6: MASTs</td>
@@ -183,27 +190,31 @@ The following sources are abbreviated below:
       Kernelization</td>
     <td>PS 3:  Agreement Forests<br>
       </td>
-		<td></td>
+		<td><a href="https://www.math.canterbury.ac.nz/~m.steel/Non_UC/files/research/rearrangement.pdf">Allen & Steel</a>, 1981</td>
 	</tr>
 
 	<tr>
 		<td><b>#8: </b>Wednesday, <br>26 October</td>
-		<td>Approximating SPR & TBR Distances</td>
-		<td>Approximation Algorithms</td>
+		<td>Diameter of Treespaces;  <br>
+       Searching Treespaces; Neighborhoods in NNI-Treespace
+       </td>
+		<td>
+    Graph Searches:  Breadth First Search;</td>
     <td></td>
-    <td></td>
+    <td><a href="https://runestone.academy/ns/books/published/pythonds/Graphs/ImplementingBreadthFirstSearch.html">Python DS: Section 8.9</a> (BFS),<br></td>
 	</tr>
 
 	<tr>
 		<td><b>#9: </b>Wednesday,<br>2 November</td>
-		<td>Tanglegrams</td>
-		<td></td><td></td>
+		<td>Approximating SPR & TBR Distances</td>
+		<td>Approximation Algorithms<br></td>
+    <td></td>
 		<td></td>
 	</tr>
 
 	<tr>
 		<td><b>#10: </b>Wednesday,<br>9 November</td>
-		<td></td>
+		<td>Tanglegrams</td>
     <td></td><td></td>
 		<td></td>
   </tr>
@@ -246,5 +257,5 @@ The following sources are abbreviated below:
 
 
 <div>
-<i style="float:right">(This file was last modified on 31 August 2022.)</i><br>
+<i style="float:right">(This file was last modified on 1 September 2022.)</i><br>
 </div>
