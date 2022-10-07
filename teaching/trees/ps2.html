@@ -55,8 +55,7 @@ code {
 <div style="margin:50px">
 
 
-<h2>Syllabus<br><br>
-Problem Set 2<br>
+<h2>Problem Set 2<br>
 CSci 493: Algorithms for Tree Distributions<br>
 Fall 2022<br><br>
 </h2>
@@ -79,7 +78,7 @@ Fall 2022<br><br>
 
 <h2>Program Descriptions</h2>
 
-   <p><a name="p1.1"><b>Program 2.1: Bipartitions.</b></b> &emsp; <i>Due 10am, Wednesday, 14 September.</i>
+   <p><a name="p1.1"><b>Program 2.1: Bipartitions.</b></b> &emsp; <i>Target Date: Wednesday, 12 October.</i>
      <br>Learning Objective:  to use built-in functions to extract properties (in this case, edge information) from tree objects.
      <br>Available Libraries: biopython and core Python 3.7+.
      <!-- <br>Data Sources: .
@@ -95,53 +94,42 @@ Fall 2022<br><br>
 <pre><code class="blockcode">((1,2),3)
 </code></pre>
 
-   The splits are:
-   <code class="inline">0 | 1 2 3, 1 | 0 2 3, 2 | 0 1 3, 3 | 0 1 2, 0 3 | 1 2</code>
+   There is one non-trivial split of <tt>0 3 | 1 2</tt> and the rest of the splits are a single leaf (or root) versus all the other leaves (i.e., <tt>0 | 1 2 3; 1 | 0 2 3; 2 | 0 1 3; 3 | 0 1 2; 0 3 | 1 2</tt>).   Your program should only print out the non-trivial splits.  Further, each split should have each "side" ordered lexicographically, as well as ordering the sides (i.e. <tt>0 3 | 1 2</tt> instead of <tt>1 2 | 3 0</tt>).
+   For this example, your program should print:
+   <pre><code class="blockcode">0 3 | 1 2</pre></code >
     <!--<p> A sample run:-->
 
   <p> For example, if the user enters:
 
-  <pre><code class="blockcode">((1,2),((3,4),5))
-  </code></pre>
+  <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+
+  your program would print:
+
+  <pre><code class="blockcode">0 3 4 5 | 1 2; 0 5 | 1 2 3 4</code></pre>
+
 
 <br>
-   <p><a name="p1.2"><b>Program 2.2: LCA's.</b></b> &emsp; <i>Due 10am, Thursday, 15 September.</i>
+   <p><a name="p1.2"><b>Program 2.2: LCA's.</b></b> &emsp; <i>Target Date: Thursday, 13 October.</i>
      <br>Learning Objective:  to increase facility with Newick tree format and the biopython libraries.
      <br>Available Libraries: biopython and core Python 3.7+.
      <!-- <br>Data Sources: .
 
      <br>Sample Datasets:  ADD SAMPLES-->
 
-    <p> Description:  Write a function that returns true if two biopython trees represent the same leaf labeled tree and false otherwise.
+    <p> Description:  Write a function that takes a tree in Newick format and two leave labels and returns the depth of their least common ancestor.
 
-    <p> You may use either tree class in Biopython (i.e. the class from Phylo or Nexus).
 
 <br>
 
 
 
-   <p><a name="p1.3"><b>Program 1.3: Co-Phenetic Vectors.</b></b> &emsp; <i>Due 10am, Friday, 14 September.</i>
+   <p><a name="p1.3"><b>Program 1.3: Co-Phenetic Vectors.</b></b> &emsp; <i>Target Date: Friday, 14 October.</i>
      <br>Learning Objective:  to increase facility with Newick tree format and the biopython libraries.
      <br>Available Libraries: biopython and core Python 3.7+.
      <!-- <br>Data Sources: .
      <br>Sample Datasets:  ADD SAMPLES-->
 
-    <p> Description:  Write a complete program that uses Biopython to read in a
-      rooted tree in Newick format.  Your program should print out the height of the tree.
-
-      <p>Recall that the depth of a leaf in a rooted tree is the number of edges between the leaf and the root.  The height of a tree is the maximum depth of a leaf in the tree.
-
-<br>
-   <p><a name="p1.4"><b>Program 1.4: Tree Balance.</b></b> &emsp; <i>Due 10am, Monday, 19 September.</i>
-     <br>Learning Objective:  to increase facility with Newick tree format and the biopython libraries.
-     <br>Available Libraries: biopython and core Python 3.7+.
-     <br>Reference:  <a href="https://treebalance.wordpress.com/colless-index/">Colless Index</a> (Tree Balance)<br>
-     <!-- <br>Data Sources: .
-     <br>Sample Datasets:  ADD SAMPLES-->
-
-    <p> Description:  Read in a rooted binary tree in Newick format and print out its Colless Index.
-
-    <p> See the Tree Balance website for the formal definition of Colless Index.
+    <p> Description:  Write a program that takes a tree in Newick format and returns a cophenetic vector of the tree.  The ordering of the coordinates in the vector should match the ordering of the leaves in Newick format.
 
 
 </body>
