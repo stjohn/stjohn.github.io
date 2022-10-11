@@ -61,8 +61,7 @@ Fall 2022<br><br>
 </h2>
 
 <br>
-<p>
-<img src="https://biopython.org/assets/images/biopython_logo_xs.png">
+
 
 <p>Learning Objective:  to recap standard tree traversal techniques and gain fluency with the <a href="https://biopython.org">biopython</a> <tt>phylo</tt> and <tt>nexus</tt> submodules.
 
@@ -116,7 +115,17 @@ Fall 2022<br><br>
 
      <br>Sample Datasets:  ADD SAMPLES-->
 
-    <p> Description:  Write a function that takes a tree in Newick format and two leave labels and returns the depth of their least common ancestor.
+    <p> Description:  Write a function that takes a tree in Newick format and two leaf labels and returns the depth of their least common ancestor.
+
+      <p> For example, if the user enters:
+
+      <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+
+      as the tree and the nodes 1 and 5, your program would return 0 since the least common ancestor of 1 and 5 is the root, and the root's depth is 0.
+
+      <p>With the same tree, if the nodes entered are 3 and 5, then the least common ancestor is the child of the root with leaves 3, 4, and 5, which has depth 1.  So, 1 would be returned.
+
+      <p><i>Hint:</i>  In the tree class of <a href="https://biopython.org/docs/1.76/api/Bio.Nexus.Trees.html">Biopython</a>, there are methods that will find the common ancestor of two nodes as well as the distance between two nodes that may be useful for computing the depth of the least common ancestor.
 
 
 <br>
@@ -131,6 +140,27 @@ Fall 2022<br><br>
 
     <p> Description:  Write a program that takes a tree in Newick format and returns a cophenetic vector of the tree.  The ordering of the coordinates in the vector should match the ordering of the leaves in Newick format.
 
+    <p>
+        For example, if the user enters:
 
+    <pre><code class="blockcode">((1,2),(3,4))
+    </code></pre>
+
+    There are 4 leaves, so, 4*3/2 = 6 pairs of distances.  If we order the pairs, lexicographically, we have
+    <table>
+      <tr><th>pairs:</th><th>12</th><th>13</th><th>14</th><th>23</th><th>24</th><th>34</th>
+      </tr>
+      <tr><td>depths:</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+      </tr>
+    </table>
+    and your program should return
+    <code class="inline">(1, 0, 0, 0, 0, 1)</code>.
+
+    <p> For example, if the user enters:
+
+    <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+
+    There are 5*4/2=10 pairs, and the program should return
+    <code class="inline">(1, 0, 0, 0, 0, 0, 0, 2, 1, 1)</code>.
 </body>
 </html>
