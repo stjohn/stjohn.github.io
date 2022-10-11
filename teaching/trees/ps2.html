@@ -90,7 +90,7 @@ Fall 2022<br><br>
   <p>
     For example, if the user enters:
 
-<pre><code class="blockcode">((1,2),3)
+<pre><code class="blockcode">((1,2),3);
 </code></pre>
 
    There is one non-trivial split of <tt>0 3 | 1 2</tt> and the rest of the splits are a single leaf (or root) versus all the other leaves (i.e., <tt>0 | 1 2 3; 1 | 0 2 3; 2 | 0 1 3; 3 | 0 1 2; 0 3 | 1 2</tt>).   Your program should only print out the non-trivial splits.  Further, each split should have each "side" ordered lexicographically, as well as ordering the sides (i.e. <tt>0 3 | 1 2</tt> instead of <tt>1 2 | 3 0</tt>).
@@ -100,7 +100,7 @@ Fall 2022<br><br>
 
   <p> For example, if the user enters:
 
-  <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+  <pre><code class="blockcode">((1,2),((3,4),5));</code></pre>
 
   your program would print:
 
@@ -119,7 +119,7 @@ Fall 2022<br><br>
 
       <p> For example, if the user enters:
 
-      <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+      <pre><code class="blockcode">((1,2),((3,4),5));</code></pre>
 
       as the tree and the nodes 1 and 5, your program would return 0 since the least common ancestor of 1 and 5 is the root, and the root's depth is 0.
 
@@ -132,7 +132,7 @@ Fall 2022<br><br>
 
 
 
-   <p><a name="p1.3"><b>Program 1.3: Co-Phenetic Vectors.</b></b> &emsp; <i>Target Date: Friday, 14 October.</i>
+   <p><a name="p1.3"><b>Program 2.3: Co-Phenetic Vectors.</b></b> &emsp; <i>Target Date: Friday, 14 October.</i>
      <br>Learning Objective:  to increase facility with Newick tree format and the biopython libraries.
      <br>Available Libraries: biopython and core Python 3.7+.
      <!-- <br>Data Sources: .
@@ -143,8 +143,7 @@ Fall 2022<br><br>
     <p>
         For example, if the user enters:
 
-    <pre><code class="blockcode">((1,2),(3,4))
-    </code></pre>
+    <pre><code class="blockcode">((1,2),(3,4));</code></pre>
 
     There are 4 leaves, so, 4*3/2 = 6 pairs of distances.  If we order the pairs, lexicographically, we have
     <table>
@@ -158,7 +157,7 @@ Fall 2022<br><br>
 
     <p> For example, if the user enters:
 
-    <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+    <pre><code class="blockcode">((1,2),((3,4),5));</code></pre>
 
     There are 5*4/2=10 pairs, and the program should return
     <code class="inline">(1, 0, 0, 0, 0, 0, 0, 2, 1, 1)</code>.
