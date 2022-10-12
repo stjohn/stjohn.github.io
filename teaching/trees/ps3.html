@@ -1,0 +1,148 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <title>PS 3, CSci 493, Hunter College</title>
+</head>
+<STYLE>A {text-decoration: none;}
+th, td { padding: 5px; }
+code {
+  background-color: #eeeeee;
+}
+.inline {
+  padding: 1px;
+}
+.blockcode {
+  border: 1px solid #999999;
+  display: block;
+  padding-left: 10px;
+  padding-top : 2px;
+  padding-bottom : 2px;
+  margin: 5px;
+}
+.datablock {
+  border: 1px solid #eeeeee;
+  display: block;
+  padding: 7px;
+  padding-top : 0px;
+  margin: 5px;
+}
+</STYLE>
+<body>
+
+
+<div style="margin: 15px;width=100%;">
+    <span style= "float: left;font-size:larger"><a href="index.html">CSci 493</a></span>
+    <span style= "float: right">
+
+      <a href="syl.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+      <!-- <a href="resources.html">Resources</a>&nbsp;&nbsp;&nbsp;
+      <a href="work.html">Coursework</a>-->
+&nbsp;&nbsp;&nbsp;
+      <a href="faq.html">FAQ</a>
+    </span>
+</div>
+
+<br>
+<br>
+<hr>
+
+
+
+
+
+<div style="margin:50px">
+
+
+<h2>Problem Set 3:  Agreement Forests<br>
+CSci 493: Algorithms for Tree Distributions<br>
+Fall 2022<br><br>
+</h2>
+
+<br>
+
+<p>Learning Objective:  to recap standard tree traversal techniques and gain fluency with the <a href="https://biopython.org">biopython</a> <tt>phylo</tt> and <tt>nexus</tt> submodules.
+
+<h2>General Notes</h2>
+
+<ul>
+  <li> You will need Python 3.7+ running in your IDE.
+  <li> See the <a href="https://biopython.org/wiki/Download">biopython download</a> page for installing biopython on your machine.
+  <li> We are using GitHub for submission of programs.  If you did not get an invitation for this course, write <tt>trees AT hunter cuny edu</tt>.
+</ul>
+
+<p>
+
+<h2>Program Descriptions</h2>
+
+   <p><a name="p1.1"><b>Program 3.1: Subtree Replacement.</b></b> &emsp; <i>Due 10am, Wednesday, 26 September.</i>
+     <br>Learning Objective:  to use built-in functions to manipulate tree objects.
+     <br>Available Libraries: Biopython and core Python 3.7+.
+     <!-- <br>Data Sources: .
+     <br>Sample Datasets:  ADD SAMPLES-->
+
+  <p> Description:  Write a program that takes a tree (as a Newick string) and a pair of leaves, and returns a new tree with the subtree containing those leaves replaced by a placeholder.
+
+
+  <p> For example, if the user enters:
+
+  <pre><code class="blockcode">((1,2),((3,4),5))</code></pre>
+  as the tree, and <code class="inline">3 5</code>, your program should find the least common ancestor of the leaves (in this case, the parent of (3,4) and 5), and replace it by a placeholder:
+  <pre><code class="blockcode">((1,2),A)</code></pre>
+
+  <p>If instead, the leaves entered were <code class="inline">3 4</code>, the output would be:
+    <pre><code class="blockcode">((1,2),(A,5))</code></pre>
+
+
+  <br>
+   <p><a name="p1.2"><b>Program 3.2: Cluster Reduction Rule.</b></b> &emsp; <i>Due 10am, Thursday, 27 September.</i>
+     <br>Learning Objective:  to use built-in functions to manipulate tree objects.
+     <br>Available Libraries: biopython and core Python 3.7+.
+     <!-- <br>Data Sources: .
+
+     <br>Sample Datasets:  ADD SAMPLES-->
+
+    <p> Description:  Write a program that takes two trees (as a Newick strings).  If the trees have no identical subtrees, the two inputted trees are returned.  Otherwise, an identical subtree (with 2 or more leaves) is replaced by a placeholder and the modified trees are returned.
+
+    <p> For example, if the user enters:
+
+      <pre><code class="blockcode">((1,2),((3,4),5)); ((((1,2),3),4),5);</code></pre>
+      The only subtree in common is <code class="inline">(1,2)</code>, so the output is:
+      <pre><code class="blockcode">(A,((3,4),5)); (((A,3),4),5);</code></pre>
+      <p> For example, if the user enters:
+
+        <pre><code class="blockcode">((1,2),((3,4),(5,6)); ((((1,2),3),4),(5,6));</code></pre>
+        There are two subtrees in common: <code class="inline">(1,2)</code> and <code class="inline">(5,6)</code>.  Your program only needs to replace one of them.  So, a possible output is:
+      <pre><code class="blockcode">((1,2),((3,4),A)); ((((1,2),3),4),A);</code></pre>
+
+<br>
+
+
+
+   <p><a name="p1.3"><b>Program 3.3: Forest Equality.</b></b> &emsp; <i>Due 10am, Friday, 28 September.</i>
+     <br>Learning Objective:  to use built-in functions to manipulate tree objects.
+     <br>Available Libraries: biopython and core Python 3.7+.
+     <!-- <br>Data Sources: .
+     <br>Sample Datasets:  ADD SAMPLES-->
+
+    <p> Description:  Write a program that takes two forests and returns true if they are equal and false otherwise.
+
+
+    <p> For example, if the user enters:
+
+    <pre><code class="blockcode">(1,2); ((3,4),5)); (6);</code></pre>
+    as the first forest and
+    <pre><code class="blockcode">(1,(6,2); ((3,4),5));</code></pre>
+    as the second forest, your program should return false, since the first forest has 3 trees and the second forest has 2 trees, so are not equal.
+
+    <p> But, if the user enters:
+
+    <pre><code class="blockcode">((3,4),5)); (1,(2,6);</code></pre>
+    as the first forest and
+    <pre><code class="blockcode">(1,(6,2); ((3,4),5));</code></pre>
+    as the second forest, the forests have the same number of trees, and the trees can be matched to equivalent trees in the other forest, so, it should return true.
+
+
+</body>
+</html>
