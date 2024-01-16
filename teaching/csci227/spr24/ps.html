@@ -110,15 +110,23 @@ and then followed by his Python program.
 <br>
 <ol>
   <a id="ps1"></a>
-  <li > <b>Due Date: 5pm, Friday, 2 February</b>  <b style="float:right">Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
-
+  <li > 
+    <p style="float:right"><b>Due Date: 5pm, Friday, 2 February</b><br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b></p>
+    <p><b>Hello</b></p>
     <p>Write a Python program that prints "Hello, World!" to the screen.  For full credit, make sure to follow Python style guide and include introductory comments.	
   
     <p><i>Hint:  See style & pylint in Lecture 1 and <a href="lab1.html">Lab 1</a>.</i>
   
   <a id="ps2"></a>
-  <li > <b>Due Date: 5pm, Monday, 5 February</b>  <b style="float:right">Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
-
+  <li > 
+    <p style="float:right">
+      <b >Due Date: 5pm, Monday, 5 February</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b>
+    </p>
+    <p><b>Leap Years</b></p>
     <p>	
     Write a function <code class="inline">is_leap()</code> that takes an integer between 1000 and 10,000 and returns <code class="inline">True</code> if it is leap year and <code class="inline">False</code> otherwise.  The following conditions are used to determine leap years:
     <blockquote>
@@ -135,6 +143,50 @@ and then followed by his Python program.
 
 
     <p><i>Hint:  See HackerRank <a href="https://www.hackerrank.com/challenges/write-a-function/">function challenge</a> from Lecture 1.</i>
+
+  <a id="ps3"></a>
+  <li > 
+    <p style="float:right"><b>Due Date: 5pm, Thursday, 8 February</b>  <br>
+    <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
+    <b>Available Libraries:  Core Python 3.6+</b> </p>
+      
+    <p>	<b>Duplicate Names</b></p>
+    <p>
+    Write a function <code class="inline">duplicates()</code> that takes a list of names and returns a list of the names that occur more.
+
+    <p>For example:</p>
+    <pre><code class = "blockcode">names = ['Daniel','Dorothy','Bethany','Beth','Daniel','Georgi']
+print(duplicates[names])</code></pre>
+  
+    would print:
+    <pre><code class="datablock">["Daniel"]</code></pre>
+
+
+    <p><i>Hint:  See classwork from Lecture 1 and the Program 2 notes above.</i>
+
+  <a id="ps4"></a>
+  <li > 
+      <p style="float:right"><b>Due Date: 5pm, Friday, 9 February</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab1.html">Lab 1</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+
+    <p><b>Unique Visitors</b></p> 
+    <p>	
+    When students visit the lab, there EmpID is stored as an 8-digit string.  Many students visit multiple times, but we are interested in the total number of unique visitors to the lab.  Write a function <code class="inline">unique_visitors()</code> that takes a list of 8-digit strings and returns the number of unique strings that occur.</p>
+    
+    <p>
+    Your function should also screen out any strings that are too long (more than 8 digits) or too short (less than 8 digits) and not include those in the final count returned.
+    </p>
+
+    <p>For example:</p>
+    <pre><code class = "blockcode">ids = ['12345678','11223344','123','12345678']
+print(f"The number of unique visitors is {unique_visitors[ids]}.")</code></pre>
+  
+    would print:
+    <pre><code class="datablock">The number of unique visitors is 2.</code></pre>
+    since there are 3 entries of the correct length but only 2 unique ones (the first and fourth entries are duplicates of each other).
+
+    <p><i>Hint:  See classwork from Lecture 1 and the Program 2 notes above.</i>
 
 
 </ol>
