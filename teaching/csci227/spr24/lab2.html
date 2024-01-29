@@ -77,9 +77,13 @@ These are a useful tool for note taking and as well as studying for the quizzes 
 
 <h2>String Methods</h2>
 
-Link to ThinkCS chapters.
+
+<p>To start today's lab, work through the <a href="https://runestone.academy/ns/books/published/pythonds3/index.html">textbook's</a> recap of string methods (Chapter 1).  Test yourself on the interactive code examples.</p>
+
+<p>If you're a bit rusty on string methods, you can also work through the <a href="https://runestone.academy/ns/books/published/thinkcspy/Strings/toctree.html">introductory Python textbook's sections</a> (Chapter 9) on strings.</p>
 
 
+<p>Try these two LeetCode challenges on strings.  Work through as much as possible before looking at the hints:</p>
 
 <ul>
   <li><a href="https://leetcode.com/problems/plus-one/">66. Plus One</a> (hint: get it working without the carry, and then think about how to add that in)</li>
@@ -88,10 +92,40 @@ Link to ThinkCS chapters.
   </li>
 </ul>
 
-Talk through LeetCode:  Plus One
+<p>Let's work through the first one: </p>
+<ul>
+  <li>A good way to get started on technical challenges is to add in the <code class="inline">return</code> statement.  Since almost all the challenges are structured as a "fill-in-the-function", it's a good first step.  What to return?  Let's look at the function:
+  
+  <p><img height="100" src="lc_plus_one_header.png"></p> 
+    
+  <p>To start, just return a dummy value that matches the type needed.  Great dummy values are <code class="inline">0</code>, <code class="inline">""</code> (empty string), or one of the input parameters.  The expected return type is a list of integers which happens to match that of the input parameter, <code class="inline">digits</code>.  So, start by returning it:</p>
+
+  <pre><code class="blockcode">return digits</code></pre>
+  
+  <p>Click run to make sure there's no syntax errors.  It won't pass the tests, but we can let it run while we read more of the challenge description.</p>
+  </li>
+
+  <li>Our current return value is exactly the input, but the challenge asks that it be one more.  When the last digit is less than 9, then we just add one to it (otherwise, we need to "carry" to the next digit).  We can do the easy case, make sure it works on go on to the next.  Python has an easy way to get the last item in a list or string-- index of -1:
+
+  <pre><code class="blockcode">digits[-1] = digits[-1] + 1 
+return digits</code></pre>
+
+    <p>Make sure that runs with no errors.  It will also pass the easy tests when there's no carry.</p>
+  </li>
+
+  <li>Next, let's worry about the case where the digit is 9 and when we add one to it, we need to carry to next place.  
+
+  </li>
+
+
+
+
+</ul>
 
 
 <h2>F-Strings</h2>
+
+<p>Python has several way to format strings.  A convenient one is "format-strings", or just "f-strings".</p>
 
 Link to Real Python notes
 
