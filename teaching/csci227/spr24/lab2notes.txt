@@ -102,17 +102,19 @@ For each, give an example of how you would:
 
 
 
-Explain 
+Explain how you would loop through a file and print the first word from each line:
 
 
 
-What does 
 
 
 
 What is the output of: 
 
-
+firsts = ['Thomas','Donna','Jennifer','Ann']
+lasts = ['Hunter','Shalala','Raab','Kirschner']
+for first, last in zip(firsts,lasts):
+    print(f'President {first} {last}')
 
 
 

@@ -78,7 +78,7 @@ These are a useful tool for note taking and as well as studying for the quizzes 
 <h2>String Methods</h2>
 
 
-<p>To start today's lab, work through the <a href="https://runestone.academy/ns/books/published/pythonds3/index.html">textbook's</a> recap of string methods (Chapter 1).  Test yourself on the interactive code examples.</p>
+<p>To start this week's lab, work through the <a href="https://runestone.academy/ns/books/published/pythonds3/index.html">textbook's</a> Chapter 1 which recaps string methods.  Test yourself on the interactive code examples.</p>
 
 <p>If you're a bit rusty on string methods, you can also work through the <a href="https://runestone.academy/ns/books/published/thinkcspy/Strings/toctree.html">introductory Python textbook's sections</a> (Chapter 9) on strings.</p>
 
@@ -105,7 +105,7 @@ These are a useful tool for note taking and as well as studying for the quizzes 
   <p>Click run to make sure there's no syntax errors.  It won't pass the tests, but we can let it run while we read more of the challenge description.</p>
   </li>
 
-  <li>Our current return value is exactly the input, but the challenge asks that it be one more.  When the last digit is less than 9, then we just add one to it (otherwise, we need to "carry" to the next digit).  We can do the easy case, make sure it works on go on to the next.  Python has an easy way to get the last item in a list or string-- index of -1:
+  <li>Our current return value is exactly the input, but the challenge asks that it be one more.  When the last digit is less than 9, then we just add one to it (otherwise, we need to "carry" to the next digit).  We can do the easy case, make sure it works on go on to the next.  Python has an easy way to get the last item in a list or string-- index of <code class="inline">-1</code>:
 
   <pre><code class="blockcode">digits[-1] = digits[-1] + 1 
 return digits</code></pre>
@@ -114,44 +114,91 @@ return digits</code></pre>
   </li>
 
   <li>Next, let's worry about the case where the digit is 9 and when we add one to it, we need to carry to next place.  
+  
+  <p>If <code class="inline">digits[-1]</code></p> is <code class="inline">9</code>, then we need to set it to <code class="inline">0</code> and add one to  <code class="inline">digits[-1]</code></p>:
 
+  <pre><code class="blockcode">if digits[-1] < 9:
+    #Code from before:
+    digits[-1] = digits[-1] + 1 
+else:
+    digits[-1] = 0
+    digits[-2] = digits[-2] + 1
+return digits</code></pre>
+
+    <p>That will take care of large numbers that end in <code class="inline">[...,9,9]</code>, but what about more generally?</p>
   </li>
 
+  <li>To generalize to large numbers with any number of <code class="inline">9</code>'s at the end, we need a loop.  Here's the outline to fill out with your code:
+  
+  <ol>
+    <li>Initialize pos = -1 and carry = True.</li>
+    <li>While pos > 0 and carry:</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp; If digits[pos] < 9:</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Increment digits[pos] and set carry to False.</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp; else:</li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set digits[pos] & decrement position.</li>
+    <li>If carry flag is still set, then pos must be 0, and insert a new element at the front of the list with '1'. </li>
+    <li>return digits</li>
+  </ol>
+  </li>
 
-
+  <p>Translate the pseudocode into Python and try running it against the test cases on LeetCode.  See also <a href="https://stjohn.github.io/teaching/csci227/spr24/ps.html#ps5">Program 5 (Hexidecimal Plus One</a>.</p>
 
 </ul>
 
 
-<h2>F-Strings</h2>
+<h2>String Formatting</h2>
 
-<p>Python has several way to format strings.  A convenient one is "format-strings", or just "f-strings".</p>
+<p>Python has several way to format strings.  In lecture, we briefly covered one way (f-strings).  If you didn't work through the textbook's overview of the ways to format strings (in particular the f-strings towards the end of the section are very useful), do so now: </p>
 
-Link to Real Python notes
+<iframe src="https://runestone.academy/ns/books/published/pythonds3/Introduction/InputandOutput.html#string-formatting" title="Textbook:  1.9.1 Formatting Strings" height="400" width="90%"></iframe>
 
-Talk through some examples, include in focus questions.
+<p>Test your understanding by completing the interactive coding exercises embedded in the textbook chapter. </p>
 
 <h2>List Comprehensions and Zips</h2>
 
-Link to Real Python notes.
+<p>Python has some nice tools for lists.  Work through the quick tutorials on list comprehensions and zips below:</p>
 
-Talk through some examples, include in focus questions.
+<ul>
+  <li>
+    A list comprehension is a compact way of creating a new list from an existing one.  Work through the <a href="https://www.w3schools.com/python/python_lists_comprehension.asp">W3 Schools tutorial on list comprehensions</a>.
+  </li>
+  <li>
+    The <code class="inline">zip</code> function combines lists (or more generally iterators) into a single object and are very useful when writing <code class="inline">for</code> loops.  Work through the <a href="https://www.w3schools.com/python/ref_func_zip.asp">W3 Schools tutorial on zips</a>.
+  </li>
+</ul>
+
+
+
+
 
 <h2>File I/O</h2>
 
-Open/close files, using with
+<p>Working with files follows a similar format in most programming languages:</p>
+<ol>
+  <li>Open the file and create a file descriptor variable that keeps track of where you are in the file.</li>
+  <li>Read or write to the file (via the file descriptor).</li>
+  <li>When done, close the file.</li>
+</ol>
 
-Three built-in ways to access file:
-  read(), readlines(), readline()
+<p>Work through the chapter on File I/0 from the CSCI 127 textbook:</p>
 
-looping through a file
+<iframe src="https://runestone.academy/ns/books/published//thinkcspy/Files/intro-WorkingwithDataFiles.html" title="ThinkCS:  Chapter 11:  Working with Data Files" height="400" width="90%"></iframe>
 
-Double spacing a file?  Pull out the longest word in each line...
+<p>There's a way in Python to combine the opening and closing of a file into a single step, with a <code class="inline">with</code>, covered in Section 11.7 above.  This approach is very popular, since it handles the "bookkeeping" of accessing files. </p>
+
+<p>For classwork, we sketched an algorithm for double spacing a file.  Using that same approach, sketch algorithms to:</p>
+
+<ol>
+  <li>Copy the first letter of each line of the old file to the new file.</li>
+  <li>Copy the first word of each line of the old file  to the new file.</li>
+  <li>Copy the longest word of each line of the old file  to the new file. (See <a href="file:///Users/stjohn/gitHub/stjohn.github.io.git/teaching/csci227/spr24/ps.html#ps6">Program 6</a>.</li>  
+</ol>
 
 
 <h2>Quizzes and Code Reviews</h2>
 
-There are weekly written quizzes and code reviews in 1001G.  Make sure to sign up for quiz and code review appointments by Thursday, 15 February.
+There are weekly written quizzes and code reviews in 1001G, 11:30-5:30, Mondays-Fridays when classes are in session.  No appointments are needed for CSCI 227 students.  Make sure to complete Quiz 2 and Code Review 2 by Thursday, 15 February.
 
 
 
