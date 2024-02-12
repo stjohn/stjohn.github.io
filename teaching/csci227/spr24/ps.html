@@ -267,10 +267,8 @@ lunch?'
 
     <p>For example, if you ran your program:
 
-    <pre><code class="blockcode">
-Enter your input file name:  grades.txt
-Enter your output file name:  ave.txt    
-    </code>
+    <pre><code class="blockcode">Enter your input file name:  grades.txt
+Enter your output file name:  ave.txt</code>
   </pre>
       
       
@@ -293,7 +291,7 @@ Esme 6.0</code></pre>
 
 <a id="ps8"></a>
 <li > 
-  <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 23 February</b>  <br>
+  <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 27 February</b>  <br>
     <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 1</a> & <a href="lab2.html">Lab 2</a></b><br>
     <b>Available Libraries:  Core Python 3.6+</b> 
   </p>
@@ -302,13 +300,13 @@ Esme 6.0</code></pre>
 
   <p>Write a function that takes a string and returns a list of all words that start with capital letter.  Words in the string are separated by spaces.</p>
 
+  <pre><code class="blockcode">def find_proper_nouns(data: str) -> List[str]:</code></pre>
+
   <p>For example, if you ran your program:
 
   <pre><code class="blockcode">data = "Jack and Jill went up the hill."
 nouns = find_proper_nouns(data)
-print(nouns)
-  </code>
-</pre>
+print(nouns)</code></pre>
     
 <p>Then the output would be:</p>
 
@@ -318,6 +316,45 @@ print(nouns)
   <ul>
     <li>See notes for Program 2 about code outside of functions.</li>
     <li>There's lots of ways to test for the first letter capital.  One easy way is if <code class="inline">word</code>, then <code class="inline">word[0] == word[0].upper()</code> will return true if the first letter is upper case.</li>
+  </ul>
+  </i>
+
+</li>
+
+
+<a id="ps9"></a>
+<li > 
+  <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 23 February</b>  <br>
+    <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 2</a> & <a href="lab3.html">Lab 3</a></b><br>
+    <b>Available Libraries:  Core Python 3.6+</b> 
+  </p>
+
+  <p><b>Anagram</b></p>    
+
+  <p>Write a function that takes two string and returns <code class="inline">False</code> if they are anagrams and <code class="inline">False</code> otherwise.  The strings will only consist of letters, and your function should be case insensitive (e.g. 'A' and 'a' are considered the same).</p>
+
+  <pre><code class="blockcode">def find_proper_nouns(word_1: str, word_2: str) -> bool:</code></pre>
+
+  <p>For example, if you ran your program:
+
+  <pre><code class="blockcode">word_1 = 'Evian'
+word2 = 'water'
+word3 = 'naive'
+print(f'{word_1} and {word_2}:  function returns {find_proper_nounts}.')
+print(f'{word_1} and {word_3}:  function returns {find_proper_nounts}.')
+</code>
+</pre>
+    
+<p>Then the output would be:</p>
+
+<pre><code class="datablock">Evian and water:  function returns False.
+Evian and naive:  function returns True.
+</code></pre>
+
+<i><p>Hints:  </p>
+  <ul>
+    <li>See notes for Program 2 about code outside of functions.</li>
+    <li>See Classwork 3 and <a href="lab3.html">Lab 3</a> where we sketch out this problem.</li>
   </i>
 
 </li>
