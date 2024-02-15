@@ -333,22 +333,22 @@ print(nouns)</code></pre>
 
   <p>Write a function that takes two string and returns <code class="inline">False</code> if they are anagrams and <code class="inline">False</code> otherwise.  The strings will only consist of letters, and your function should be case insensitive (e.g. 'A' and 'a' are considered the same).</p>
 
-  <pre><code class="blockcode">def find_proper_nouns(word_1: str, word_2: str) -> bool:</code></pre>
+  <pre><code class="blockcode">def anagram(word_1: str, word_2: str) -> bool:</code></pre>
 
   <p>For example, if you ran your program:
 
-  <pre><code class="blockcode">word_1 = 'Evian'
-word2 = 'water'
-word3 = 'naive'
-print(f'{word_1} and {word_2}:  function returns {find_proper_nounts}.')
-print(f'{word_1} and {word_3}:  function returns {find_proper_nounts}.')
+  <pre><code class="blockcode">word_1 = 'coast'
+word_2 = 'water'
+word_3 = 'tacos'
+print(f'{word_1} and {word_2}:  function returns {anagram(word_1,word_2)}.')
+print(f'{word_1} and {word_3}:  function returns {anagram(word_1,word_3)}.')
 </code>
 </pre>
     
 <p>Then the output would be:</p>
 
-<pre><code class="datablock">Evian and water:  function returns False.
-Evian and naive:  function returns True.
+<pre><code class="datablock">coast and water:  function returns False.
+coast and tacos:  function returns True.
 </code></pre>
 
 <i><p>Hints:  </p>
