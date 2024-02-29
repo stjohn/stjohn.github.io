@@ -502,25 +502,26 @@ For sum_loop with num=19000: result = 180509500 in time 0.0017712116.</code></pr
     </ol>
     </tt>
 
-<!--
+
   <p>For example, if you ran your program:
 
-  <pre><code class="blockcode">word_1 = 'coast'
-word_2 = 'water'
-word_3 = 'tacos'
-print(f'{word_1} and {word_2}:  function returns {anagram(word_1,word_2)}.')
-print(f'{word_1} and {word_3}:  function returns {anagram(word_1,word_3)}.')
-</code>
+  <pre><code class="blockcode">cards = [1,1,2,3,8,9,10,11,12]
+purples = ["amethyst","eggplant","grape","indigo","lavendar","lilac","magenta","plum","violet"]
+
+
+print(f"Is 7 in the cards? {binary_search(cards,0,len(cards)-1,7)}")
+print(f"How about 8? {binary_search(cards,0,len(cards)-1,8)}\n")
+
+print(f"Is mauve one of our purples?  {binary_search(purples, 0,len(purples)-1,'mauve')}")</code>
 </pre>
     
 <p>Then the output would be:</p>
 
-<pre><code class="datablock">coast and water:  function returns False.
-coast and tacos:  function returns True.
+<pre><code class="datablock">Is 7 in the cards? False
+How about 8? True
+  
+Is mauve one of our purples?  False
 </code></pre>
--->
-
-
 
 <i><p>Hints:  </p>
   <ul>
