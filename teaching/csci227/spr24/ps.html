@@ -486,19 +486,19 @@ For sum_loop with num=19000: result = 180509500 in time 0.0017712116.</code></pr
 
   <p>For Classwork 4, we traced through the pseudocode for linear search and binary search.  Convert the pseudocode for binary search into a function: </p>
 
-  <pre><code class="blockcode">def binary_search(cards, min, max, target):</code></pre>
+  <pre><code class="blockcode">def binary_search(cards, min_ind, max_ind, target):</code></pre>
 
   <p>The pseudocode from Classwork 4:</p>
     <tt>
     <ol>
-      <li>If min > max, </li>
+      <li>If min_ind > max_ind, </li>
       <li>&nbsp;&nbsp;&nbsp;&nbsp;Return False</li>
-      <li>Let mid = (min+max)//2</li>
+      <li>Let mid = (min_ind+max_ind)//2</li>
       <li>If cards[mid] is target,</li>
       <li>&nbsp;&nbsp;&nbsp;&nbsp;Return True</li>
       <li>If cards[mid] < target,</li>
-      <li>&nbsp;&nbsp;&nbsp;&nbsp;Return binary_search( cards, mid+1, max, target )</li>
-      <li>Return binary_search( cards, min, mid-1, target )</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;Return binary_search( cards, mid+1, max_ind, target )</li>
+      <li>Return binary_search( cards, min_ind, mid-1, target )</li>
     </ol>
     </tt>
 
