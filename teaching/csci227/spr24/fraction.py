@@ -3,16 +3,16 @@ The Fraction class and gcd helper function from
 ThinkCS Chapter 18:  https://runestone.academy/ns/books/published//thinkcspy/
 """
 
-def gcd(m, n):
+def gcd(mmm, nnn):
     """
     Helper function that computes the GCD of two numbers.
     """
-    while m % n != 0:
-        oldm = m
-        oldn = n
-        m = oldn
-        n = oldm % oldn
-    return n
+    while mmm % nnn != 0:
+        oldm = mmm
+        oldn = nnn
+        mmm = oldn
+        nnn = oldm % oldn
+    return nnn
 
 class Fraction:
     """
