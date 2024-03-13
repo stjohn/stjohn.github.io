@@ -103,9 +103,9 @@ The textbook has an overview of abstraction and ADT's:  </p>
 <p>As shown in lecture and the textbook section above, linked lists are built up from nodes.  Here's the simple node from lecture (and many LeetCode challenges):</p>
 
 <pre><code class="blockcode">class ListNode:
-  def __init__(self, val=0, next=None):
+  def __init__(self, val=0, next_node=None):
     self.val = val
-    self.next = next</code></pre>
+    self.next = next_node</code></pre>
 
 <p>Each <code>ListNode</code> has two attributes:  its value and a link to the next node in the list.  We often represent this pictorially as:</p>
 

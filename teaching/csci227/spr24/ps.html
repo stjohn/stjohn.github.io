@@ -726,16 +726,29 @@ Maria,Cantwell
     where a <code>ListNode</code> is:
 
     <pre><code class="blockcode">class ListNode:
-  def __init__(self, val=0, next=None):
+  def __init__(self, val=0, next_node=None):
     self.val = val
-    self.next = next</code></pre>
+    self.next = next_node</code></pre>
 
 
-    <p>For example, if <code>target</code> is <code>4</code> and <code>lst_1</code> is:</p>
+    <p>For example, if <code>target</code> is <code>3</code> and <code>lst_1</code> is:</p>
 
     <p><img src="lc_2_first_lst.png" height="100"></p>
 
-    then <code>search_list( lst_1, target )</code> would return <code>True</code>.
+    <p>then <code>search_list( lst_1, target )</code> would return <code>True</code>.  Writing this in Python:</p>
+    
+    <pre><code class="datablock">lst = ListNode(2)
+lst.next = ListNode(4)
+lst.next.next = ListNode(3)
+
+print(f"Is 3 in lst?  {search_list(lst,3)}")
+print(f"Is 10 in lst?  {search_list(lst,10)}")</code></pre>
+
+    <p>The resulting output:</p>
+
+    <pre><code class="datablock">Is 3 in lst?  True
+Is 10 in lst?  False</code></pre>
+
 
   </li>       
 
