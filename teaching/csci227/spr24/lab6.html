@@ -104,6 +104,9 @@ The textbook has an overview of abstraction and ADT's:  </p>
 
 <pre><code class="blockcode">class ListNode:
   def __init__(self, val=0, next_node=None):
+    """
+    Textbook's node class, with next_node for next (for pylint warning)
+    """
     self.val = val
     self.next = next_node</code></pre>
 
