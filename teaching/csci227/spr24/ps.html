@@ -749,6 +749,22 @@ print(f"Is 10 in lst?  {search_list(lst,10)}")</code></pre>
     <pre><code class="datablock">Is 3 in lst?  True
 Is 10 in lst?  False</code></pre>
 
+    <br><br>
+    <p><i>A helpful function for printing out your list:</i></p>
+
+    <pre><code class="blockcode">def list_2_str( lst ):
+  """
+  Helper function for printing out lists
+  """
+  current = lst
+  lst_str = ""
+  while current is not None:
+      lst_str = lst_str + "->" + str(current.val)
+      current = current.next
+  if len(lst_str) > 0:
+      #Get rid of leading "->" in string 
+      lst_str = lst_str[2:]
+  return lst_str</code></pre>
 
   </li>       
 
@@ -802,7 +818,7 @@ Is 10 in lst?  False</code></pre>
     <p>The smallest part, or ones column, is 2.  The tens column is 4.  And the hundreds column is 3.  So this represents 342.</p>
 
     <p>
-      Write a function that searches adds one to a large number and returns the value.  Your function should be of the format:</p>
+      Write a function that adds one to a large number and returns the value.  Your function should be of the format:</p>
 
     <pre><code class="blockcode">def increment_num( lst : Optional[ListNode] ) -> Optional[ListNode]:</code></pre>
     
@@ -851,6 +867,7 @@ Is 10 in lst?  False</code></pre>
     <p>Note:  This is LC 125.  See Classwork 6 in Lecture 6.</p>
   </li>  
 
+
   <!--
   <a id="ps20"></a>
   <li > 
@@ -862,7 +879,100 @@ Is 10 in lst?  False</code></pre>
     <p><b>Tutoring Queues</b></p>   
 
 
+
+  <a id="ps21"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 26 March</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p>       
     
+
+  <a id="ps22"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 2 April</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p>     
+ 
+    
+  <a id="ps23"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 5 April</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p>  
+    
+  <a id="ps24"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 9 April</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p> 
+    
+  <a id="ps25"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 12 April</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p>        
+
+
+  <a id="ps26"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Monday, 15 April</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p>    
+
+
+  <a id="ps27"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 3 May</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p> 
+
+  <a id="ps28"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 7 May</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p> 
+
+  <a id="ps29"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 10 May</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p> 
+
+  <a id="ps30"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 14 May</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
+    <p><b></b></p> 
 -->
 </ol>
 <hr>
