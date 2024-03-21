@@ -956,7 +956,24 @@ Is 10 in lst?  False</code></pre>
   
     <p><b>Number Converter</b></p>  
     
-    <p></p>
+    <p>In <a href="https://runestone.academy/ns/books/published/pythonds3/BasicDS/ConvertingDecimalNumberstoBinaryNumbers.html">Section 3.8</a> from Lab 7, code was developed to convert decimal numbers into binary.</p>
+
+    <p>For this program, write a function that will convert decimal numbers into other base numbers (where the base is <= 10):</p>
+
+    <pre><code class="blockcode">def number_converter(num: int, base=2:int) -> str</code></pre> 
+
+    <p>The default is to convert the number to binary (base = 2) but your function should allow the user to specify other bases.</p>
+
+    <p>For example:</p>
+
+    <pre><code class="blockcode">print(f"15 base 2 is {number_converter(15)}.")
+  print(f"15 base 8 is {number_converter(15,base=8)}.")</code></pre>
+  
+    <p>would print:</p>
+
+    <pre><code class="datablock">15 base 2 is 1111.
+15 base 8 is 17.
+    </code></pre>
     
 <!--
   <a id="ps22"></a>
