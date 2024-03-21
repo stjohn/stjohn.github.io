@@ -879,42 +879,74 @@ Is 10 in lst?  False</code></pre>
     <p><b>Checkout Lines</b></p>   
 
 
-    <p>Design a grocery store checkout lines that has:
-      \begin{itemize}
-          \itemsep -2pt
-          \item A list of customers with number of items in their carts.
-          \item 3 checkers that display the number of items left to process.
-          \item and returns the time it took to serve all customers.
-      \end{itemize}
-      
-      
-      \parbox{3.25in}{
-      {\bf Example:}  if {\tt customers = [5,1,2,4,2]}.  At time 0, all checkers are available and we send the first 3 customers to checkers: 5,1,2 items to be processed.
-      At time 1, we have processed an item, so, there's 4,0,1 items.  Since Checker \#2 is available, we send the next customer to them and decrease the other two checkers to get 3,4,0.  Now, Checker \#3 is available, so, we send the next customer there and decrease the other two to get 2,3,2.  We continue sending customers to open checkers and decrementing counts until we reach 0,0,0.  
-      Total time is 7.
-      }
-      \hfill
-      \parbox{2.75in}{
-      \begin{tabular}{|c||c|c|c|}
-      \hline
-      & Checker & Checker  & Checker \\
-      Time &  \#1 &  \#2 &  \#3\\
-      \hline
-      \hline
-      0 & 0 & 0 & 0\\
-      1 & 5 & 1 & 2\\
-      2 & 4 & 0 & 1\\
-      3 & 3 & 4 & 0\\
-      4 & 2 & 3 & 2\\
-      5 & 1 & 2 & 1\\
-      6 & 0 & 1 & 0\\
-      7 & 0 & 0 & 0\\
-      \hline
-      \end{tabular}
-      }</p>
+    <p>Write a function that models a  grocery store checkout lines</p>
 
+    <pre><code class="blockcode">def checkout_lines(carts: List) -> int</code></pre>  
 
- <!--    
+    <p>that takes a list of integers representing the number of items in customers carts and returns the amount of time it takes for all customers to checkout.</p>
+
+    <p>There are 3 checkout lines, and at each time step, one item can be processed.  Any checkout with 0 items left to process takes the next customer from <code>carts</code>.</p>
+
+    <p><b>Example:</b>  Say <code>carts = [5,1,2,4,2]</code>.</p>
+    <ul>
+      <li>At time 0, all checkers are available and we send the first 3 customers to checkers: 5,1,2 items to be processed.</li>
+      <li>At time 1, we have processed an item, so, there's 4,0,1 items. </li>
+      <li>Since Checker #2 is available, we send the next customer to them and decrease the other two checkers to get 3,4,0.  </li>
+      <li>Now, Checker #3 is available, so, we send the next customer there and decrease the other two to get 2,3,2.  </li>
+      <li>We continue sending customers to open checkers and decrementing counts until we reach 0,0,0.  
+      The function returns the total time which is 7.</li>
+    </ul>
+      
+    <p>More details:</p>
+    <table>
+      <tr><td><b>Time</b></td>
+        <td>Checker #1</td>
+        <td>Checker #2</td>
+        <td>Checker #3</td>
+      </tr>
+      <tr><td><b>0</b></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>      
+      <tr><td><b>1</b></td>
+        <td>5</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr><td><b>2</b></td>
+        <td>4</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>  
+      <tr><td><b>3</b></td>
+        <td>3</td>
+        <td>4</td>
+        <td>0</td>
+      </tr> 
+      <tr><td><b>4</b></td>
+        <td>2</td>
+        <td>3</td>
+        <td>2</td>
+      </tr>  
+      <tr><td><b>5</b></td>
+        <td>1</td>
+        <td>2</td>
+        <td>1</td>
+      </tr> 
+      <tr><td><b>6</b></td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+      </tr> 
+      <tr><td><b>7</b></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>                                    
+    </table>  
+
+   
   <a id="ps21"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 26 March</b>  <br>
@@ -922,9 +954,11 @@ Is 10 in lst?  False</code></pre>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
-    <p><b></b></p>       
+    <p><b>Number Converter</b></p>  
     
-
+    <p></p>
+    
+<!--
   <a id="ps22"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 2 April</b>  <br>
