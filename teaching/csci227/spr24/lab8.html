@@ -78,10 +78,40 @@ These are a useful tool for note taking and as well as studying for the quizzes 
 <hr>
 
 
-<h3></h3>
+<h3>Maps</h3>
+
+<h3>Hashing</h3>
 
 
-<br><i>More to come... </i>
+<h3>Array Tricks</h3>
+
+<p>As we wrap up the section of our course on linear data types, let's look at other ways we can use the linear structure in efficiently solving the problems.</p>
+
+<p>Here's a classic question:</p>
+
+<img src="lc_442_find_all_duplicates.png" height="300">
+
+
+<a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/description/">442.  Find All Duplicates</a>
+
+<p>While we can use a dictionary or look-up table to solve this with linear additional space, can you use less space? </p>
+
+<p>The idea is to use the inputted array to store what you have seen before.  When we've seen the number, we'll multiply its box by -1.  If we see a box that's negative, then we know that it's a duplicate.</p>
+
+<p>Looping through the list:  <code>nums = [4,3,2,7,8,2,3,1]</code></p>
+  <ul>
+    <li>For 4: multiply <code>nums[4-1] *= -1</code> and the array:  <code>nums = [4,3,2,-7,8,2,3,1]</code> </li>
+    <li>For 3: multiply <code>nums[3-1] *= -1</code> and the array:  <code>nums = [4,3,-2,-7,8,2,3,1]</code> </li>
+    <li>For 2: multiply <code>nums[2-1] *= -1</code> and the array:  <code>nums = [4,-3,-2,-7,8,2,3,1]</code> </li>
+    <li>For 7: multiply <code>nums[7-1] *= -1</code> and the array:  <code>nums = [4,-3,-2,-7,8,2,-3,1]</code> </li>
+    <li>For 8: multiply <code>nums[8-1] *= -1</code> and the array:  <code>nums = [4,-3,-2,-7,8,2,-3,-1]</code> </li>
+    <li>For 2: <code>nums[2-1] < 0</code> so we've seen it before and add 2 to the duplicates list.</code> </li>
+    <li>For 3: <code>nums[3-1] < 0</code> so we've seen it before and add 3 to the duplicates list.</code> </li>
+    <li>For 1: multiply <code>nums[1-1] *= -1</code> and the array:  <code>nums = [-4,-3,-2,-7,8,2,-3,-1]</code> </li>
+  </ul>
+
+<p>Next, write out the approach as pseudocode and then translate it into Python (see <a href="ps.html#ps22">Problem 22</a>).</p>
+
 
 
 
