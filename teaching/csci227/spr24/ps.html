@@ -982,7 +982,11 @@ print(f"15 base 8 is {number_converter(15,base=8)}.")</code></pre>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
 
-    <p>Given an integer array nums of length <code>n</code> where all the integers of nums are in the range <code>1, n]</code>[ and each integer appears once or twice, return an array of all the integers that appears twice.</p>
+    <p><b>Find All Duplicates</b></p>
+
+    <p>Given an integer array nums of length <code>n</code> where all the integers of nums are in the range <code>[1, n]</code> and each integer appears once or twice, return an array of all the integers that appears twice.</p>
+
+    <pre><code class="blockcode">def find_all_duplicates(nums: List) -> List</code></pre>     
 
     <p>You must write an algorithm that runs in <code>O(n)</code> time and uses only constant extra space.</p>
     
@@ -1050,7 +1054,9 @@ Output: [2]</code></pre>
   
     <p><b>Minimum in Rotated Sorted Array</b></p> 
 
-    <p>Given the sorted rotated array <code>nums</code> of unique elements, return the minimum element of this array.</p>
+    <p>Given a sorted rotated array <code>nums</code> of unique elements, return the minimum element of this array.</p>
+    <p></p>
+    <pre><code class="blockcode">def min_rotated(nums: List) -> int</code></pre>     
 
     <p>You must write an algorithm that runs in <code>O(log n)</code> time.</p>
 
@@ -1073,27 +1079,65 @@ Output: 11</code></pre></li>
   <p>Hint:  This is <a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/">LC 153. Find Minimum in Rotated Sorted Array</a>.</p>
     
 
-<!--    
+  
   <a id="ps25"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 12 April</b>  <br>
-      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 5</a> & <a href="lab10.html">Lab 10</a></b><br>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
-    <p><b>Program 25:  Sort with Keys
-</b></p>        
+    <p><b>Sort Array By Parity</b></p>        
+
+
+    <p>Given an integer array <code>nums</code>, move all the even integers at the beginning of the array followed by all the odd integers.</p>
+
+    <p>Return any array that satisfies this condition.</p>
+
+    <p>Examples:</p>
+
+    <ol>
+      <li><pre><code class="datablock">Input: nums = [3,2,1,4]
+Output: [2,4,3,1]</code></pre>
+        Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</li>
+      <li><pre><code class="datablock">Input: nums = [0]
+Output: [0]</code></pre></li>
+    </ol>
+
+    <p>Hint:  This is <a href="https://leetcode.com/problems/sort-array-by-parity/description/">LC 905. Sort Array By Parity</a> and see <a href="lab10.html">Lab 10</a>.</p>
+
 
 
   <a id="ps26"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Monday, 15 April</b>  <br>
-      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 5</a> & <a href="lab10.html">Lab 10</a></b><br>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
-    <p><b>Program 26:  Group Anagrams</b></p>    
+    <p><b>Group Anagrams</b></p>  
+    
+    <p>Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.</p>
+      
+    <p>An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>
+      
+    <p>Examples:</p>
+    <ol>
+      <li><pre><code class="datablock">Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]</code></pre></li>
 
+      <li><pre><code class="datablock">Input: strs = [""]
+Output: [[""]]</code></pre></li>
+
+      <li><pre><code class="datablock">Input: strs = ["a"]
+Output: [["a"]]</code></pre></li>
+
+    </ol>   
+
+
+    <p>Hint:  This is <a href="https://leetcode.com/problems/group-anagrams/description/">LC 49. Group Anagrams</a> and see <a href="lab10.html">Lab 10</a>.</p>
+
+<!--      
 
   <a id="ps27"></a>
   <li > 
