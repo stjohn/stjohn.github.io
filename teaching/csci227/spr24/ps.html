@@ -1092,6 +1092,7 @@ Output: 11</code></pre></li>
 
     <p>Given an integer array <code>nums</code>, move all the even integers at the beginning of the array followed by all the odd integers.</p>
 
+    <br>
     <pre><code class="blockcode">def sort_by_parity(nums: List) -> List</code></pre>    
 
     <p>Return any array that satisfies this condition.</p>
@@ -1121,6 +1122,7 @@ Output: [0]</code></pre></li>
     
     <p>Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.</p>
     
+    <br>
     <pre><code class="blockcode">def group_anagram(strs: List) -> List</code></pre>     
 
     <p>An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.</p>
@@ -1150,10 +1152,37 @@ Output: [["a"]]</code></pre></li>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
+    
+    <p><b>Kth Smallest Element</b></p> 
+
+    <p>Write a function that takes a list of numbers and returns the kth smallest number: </p>
+    
+    
+    <br>
+    <pre><code class="blockcode">def kth_smallest(nums: List, kth = 1: int) -> int</code></pre>    
+
+    <p>Examples:</p>
+    <ol>
+      <li>If <code class>nums = [19,8,1,20,5,45,7,10]</code>, then <code>kth_smallest(nums)</code> returns <code>1</code>.</li>
+      <li>If <code class>nums = [19,8,1,20,5,45,7,10]</code>, then <code>kth_smallest(nums, kth=3)</code> returns <code>7</code>.</li>
+      <li>If <code class>nums = [30,25,20,15,10,5,0]</code>, then <code>kth_smallest(nums, kth=4)</code> returns <code>15</code>.</li>     
+    </ol> 
+    
+
+    <p>Hint:  The built-in Python library <a href="https://docs.python.org/3/library/heapq.html">heapq</a> may be useful.</p>
+
+  <a id="ps28"></a>
+  <li > 
+    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 7 May</b>  <br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 5</a> & <a href="lab12.html">Lab 12</a></b><br>
+      <b>Available Libraries:  Core Python 3.6+</b> 
+    </p>
+  
     <p><b>BST Insert</b></p> 
 
     <p>You are given the root node of a binary search tree (BST) and a value to insert into the tree. Return the root node of the BST after the insertion. It is guaranteed that the new value does not exist in the original BST.</p>
 
+    <br>
     <pre><code class="blockcode">def insert(root: TreeNode, val: int) -> TreeNode</code></pre>     
 
 
@@ -1173,16 +1202,8 @@ class TreeNode:
 
     <p>Hint:  This is <a href="https://leetcode.com/problems/insert-into-a-binary-search-tree/">701. Insert into a Binary Search Tree</a> and see <a href="lab11.html">Lab 11</a>.</p>
 
-<!--
 
-  <a id="ps28"></a>
-  <li > 
-    <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 7 May</b>  <br>
-      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
-      <b>Available Libraries:  Core Python 3.6+</b> 
-    </p>
-  
-    <p><b></b></p> 
+<!--
 
   <a id="ps29"></a>
   <li > 
