@@ -1202,21 +1202,54 @@ class TreeNode:
     <p>Hint:  This is <a href="https://leetcode.com/problems/insert-into-a-binary-search-tree/">701. Insert into a Binary Search Tree</a> and see <a href="lab11.html">Lab 11</a>.</p>
 
 
-<!--
+
 
   <a id="ps29"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Friday, 10 May</b>  <br>
-      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 7</a> & <a href="lab12.html">Lab 12</a></b><br>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
-    <p><b></b></p> 
+    <p><b>Find the Town Judge</b></p> 
+
+    <p>In a town, there are n people labeled from <code>1</code> to <code>n</code>. There is a rumor that one of these people is secretly the town judge.</p>
+
+    <p>If the town judge exists, then:</p>
+    
+    <ol>
+      <li>The town judge trusts nobody.</li>
+      <li>Everybody (except for the town judge) trusts the town judge.</li>
+      <li>There is exactly one person that satisfies properties 1 and 2.</li>
+    </ol>
+    
+    <p>You are given an array trust where <code>trust[i] = [a_i, b_i]</code> representing that the person labeled <code>a_i</code> trusts the person labeled <code>b_i</code>. If a trust relationship does not exist in trust array, then such a trust relationship does not exist.</p>   
+
+    <p>Your function should be of the form :</p>
+    <pre><code class="blockcode">def find_judge(n: int, trust: List[List[int]]) -> int:</code></pre> 
+    
+    <p>and return the label of the town judge if the town judge exists and can be identified, or return <code>-1</code> otherwise.</p>
+    
+    <p>Examples:</p>
+    
+    <ol>
+      <li>Input: <code>n = 2, trust = [[1,2]]</code><br>
+      Output: <code>2</code></li>
+      <li>Input: <code>n = 3, trust = [[1,3],[2,3]]</code><br>
+      Output: <code>3</code></li></li>
+      <li>Input: <code>n = 3, trust = [[1,3],[2,3],[3,1]]</code><br>
+      Output: <code>-1</code></li></li>        
+    </ol>
+  
+    </p>
+
+
+<!--
 
   <a id="ps30"></a>
   <li > 
     <p style="float:right;margin-left:10pt"><b>Due Date: 5pm, Tuesday, 14 May</b>  <br>
-      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 3</a> & <a href="lab7.html">Lab 7</a></b><br>
+      <b>Reading: <a href="https://runestone.academy/ns/books/published/pythonds3/Introduction/toctree.html">Textbook: Chapter 7</a> & <a href="lab13.html">Lab 13</a></b><br>
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
