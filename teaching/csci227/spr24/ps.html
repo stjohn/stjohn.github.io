@@ -1199,6 +1199,50 @@ class TreeNode:
     <p>Example:  The <code>val = 5</code> inserted into the tree:</p>
     <img src = "lc_701_insert_bst_cropped.png" height="200">
 
+    <p>The file <a href="p28_driver.py">p28_driver.py</a> contains some more examples that test the function.  The first part sets up a new tree:</p>
+
+    <pre><code class="blockcode">my_tree = None
+my_tree = insert(my_tree, 10)
+print("added first node")
+print(inorder(my_tree))</code></pre>
+
+    <p>The <code>inorder()</code> function is a helper function that prints out a node with arrows pointing to its left and right children.  Since there's only a root node to start, the left and right have no values, just parenthesis to show that they are there:</p>
+
+    <pre><code class="datablock">() <- 10 -> ()</code></pre>
+
+    <p>We can more nodes to binary search tree:</p>
+
+    <pre><code class="blockcode">some_vals = [3,5,20,15,1]
+for val in some_vals:
+    my_tree = insert(my_tree, val)
+    print(inorder(my_tree))</code></pre> 
+    
+    <p>As we loop through the list, we insert the value and then print out the modified tree:</p>
+
+    <pre><code class="datablock">(() <- 3 -> ()) <- 10 -> ()
+(() <- 3 -> (() <- 5 -> ())) <- 10 -> ()
+(() <- 3 -> (() <- 5 -> ())) <- 10 -> (() <- 20 -> ())
+(() <- 3 -> (() <- 5 -> ())) <- 10 -> ((() <- 15 -> ()) <- 20 -> ())
+((() <- 1 -> ()) <- 3 -> (() <- 5 -> ())) <- 10 -> ((() <- 15 -> ()) <- 20 -> ())</code></pre>
+
+    <p>Similarly, we can build another tree from the list, [1,2,4,8,16,32]:</p>
+
+    <pre><code>#Making another tree from [1,2,4,8,16,32]
+double_vals = [1,2,4,8,16,32]
+another_tree = None
+for val in double_vals:
+    another_tree = insert(another_tree, val)
+    print(inorder(another_tree))</code></pre>
+
+    <p>Since the values are in order, inserting into the binary search tree yields are very long, stringy tree with no left children:</p>
+
+    <pre><code class="datablock">() <- 1 -> ()
+() <- 1 -> (() <- 2 -> ())
+() <- 1 -> (() <- 2 -> (() <- 4 -> ()))
+() <- 1 -> (() <- 2 -> (() <- 4 -> (() <- 8 -> ())))
+() <- 1 -> (() <- 2 -> (() <- 4 -> (() <- 8 -> (() <- 16 -> ()))))
+() <- 1 -> (() <- 2 -> (() <- 4 -> (() <- 8 -> (() <- 16 -> (() <- 32 -> ())))))</code></pre>
+
     <p>Hint:  This is <a href="https://leetcode.com/problems/insert-into-a-binary-search-tree/">LC 701. Insert into a Binary Search Tree</a> and see Lecture 12 and <a href="lab12.html">Lab 12</a>.</p>
 
 
