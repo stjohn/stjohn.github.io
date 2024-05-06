@@ -1298,29 +1298,31 @@ for val in double_vals:
       <b>Available Libraries:  Core Python 3.6+</b> 
     </p>
   
-    <p><b>Number of Providences</b></p> 
+    <p><b>Providence Size</b></p> 
 
-    <p>There are <code>num</code> cities. Some of them are connected, while some are not. If city <code>a</code> is connected directly with city <code>b</code>, and city <code>b</code> is connected directly with city <code>c</code>, then city <code>a</code> is connected indirectly with city <code>c</code>.
+    <p>There are <code>n</code> cities. Some of them are connected, while some are not. If city <code>a</code> is connected directly with city <code>b</code>, and city <code>b</code> is connected directly with city <code>c</code>, then city <code>a</code> is connected indirectly with city <code>c</code>.
     
     <p>A <b>province</b> is a group of directly or indirectly connected cities and no other cities outside of the group.
     </p>
       
-    <p>You are given an <code>num</code> x <code>num</code> matrix <code>is_connected</code> where <code>is_connected[i][j] = 1</code> if the ith city and the jth city are directly connected, and <code>is_connected[i][j] = 0</code> otherwise.</p>
+    <p>You are given the number of a city, <code>num</code> and an <code>n</code> x <code>n</code> matrix <code>is_connected</code> where <code>is_connected[i][j] = 1</code> if the ith city and the jth city are directly connected, and <code>is_connected[i][j] = 0</code> otherwise.</p>
   
     <p>Write a function:</p>
-    <pre><code class="blockcode">def num_provinces(num: int, is_connected: List[List[int]]) -> int:</code></pre> 
+    <pre><code class="blockcode">def province_size(num: int, is_connected: List[List[int]]) -> int:</code></pre> 
 
-    <p>that return the total number of provinces.</p>
+    <p>that return the total number of cities in the province containing <code>num</code>.</p>
 
     <p>Examples:</p>
 
-    <p><img src="lc_547_number_of_provinces_ex1.png" height=300></p>
+    <p><img src="lc_547_number_of_provinces_ex1.png" height=250></p>
+    <p>The return value is <code>2</code> for <code>num = 1</code> since there are 2 cities in the province containing <code>2</code>.  If <code>num = 3</code>, then the return is <code>1</code> since city <code>3</code> is isolated and its province contains only it.</p>
     
-    <p><img src="lc_547_number_of_provinces_ex2.png" height="300"></p>
+    <p><img src="lc_547_number_of_provinces_ex2.png" height="250"></p>
+    <p>The return value is <code>1</code> for <code>num = 1</code> since city <code>1</code> is isolated and its province contains only it.  Similarly, the return value is also <code>1</code> for cities <code>2</code> and <code>3</code> since they are also isolated and their provinces contain only themselves.</p>
 
     
     <br>
-    <p>Hint:  This is <a href="https://leetcode.com/problems/number-of-provinces/description/">LC 547 (Number of Provinces) and see Lecture 13 and <a href="lab13.html">Lab 13</a>.</p>
+    <p>Hint:  This is a simplier version of <a href="https://leetcode.com/problems/number-of-provinces/description/">LC 547 (Number of Provinces) </a>.  See Lecture 13 and <a href="lab13.html">Lab 13</a>.</p>
 
 
 </ol>
