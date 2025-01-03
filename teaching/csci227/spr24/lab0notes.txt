@@ -30,7 +30,7 @@ For your Blackboard and Gradescope accounts, double check that you have access:
 
 Blackboard:  make sure it has your Hunter email so you get course announcements.
 
-Gradescope:  will be email you have in Blackboard.  Write csci227@hunter.cuny.edu if you use another email fo Gradescope.
+Gradescope:  will use email you have in Blackboard.  Write csci227@hunter.cuny.edu if you use another email fo Gradescope.
 
 
 
